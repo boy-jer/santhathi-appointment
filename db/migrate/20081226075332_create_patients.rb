@@ -1,7 +1,6 @@
 class CreatePatients < ActiveRecord::Migration
   def self.up
     create_table :patients do |t|
-      t.string :hospital_no
       t.date :reg_date
       t.string :patient_name
       t.string :age

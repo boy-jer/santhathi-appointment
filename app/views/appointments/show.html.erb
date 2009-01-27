@@ -12,8 +12,18 @@
     <tr><th><b>Gender:</b></th><td><%=h @appointment.patient.gender %></td></tr>
     <tr><th><b>Contact no:</b></th><td><%=h @appointment.patient.contact_no %></td></tr>
   </table>
-</div>
 
+
+<%if @appointment.new_app? %>
+  <br />
+  <table>
+     <tr> <td 'rowspan=2'>Confirm &</td><td> <%= button_to('Register for Individual', confirm_appointment_url(@appointment)) %></td> </tr>
+     <tr> <td><%= button_to('Register for Couple', confirm_appointment_url(@appointment)) %> </td> </tr>
+  </table>
+
+<%end%>
+
+</div>
 <script type="text/javascript">
   jQuery(".continer-show").corner("corner 15px") 
 </script>

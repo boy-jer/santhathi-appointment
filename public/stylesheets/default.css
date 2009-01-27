@@ -268,7 +268,7 @@ line-height: 3px;
            padding: 5px 0px 0px 30px;}
 
 .continer-show{ background: #ffffff;
-           height: 250px;
+           height: 300px;
            padding: 25px 0px 25px 25px;}
 		   
 .form-wrapper{
@@ -307,7 +307,7 @@ table.time-slots tr.d0 td {
 	
 }
 table.time-slots tr td.available {
-	background-color: #a6f1d4;
+	background-color: #c3ffb5;
         margin:0px;
 	width:100px;
         padding: 1px 0px 1px 0px;
@@ -350,17 +350,17 @@ table.time-slots tr.appointment td {
 .odd {background: #eff7fb;}
  
 .listing tr:hover {background-color: #c7dfea; color: #ffffff;} /*not for IE*/
-.listing th {background-color: #b4c9d2;
-             color: #F5FFFA;
+.listing th {background-color: #c6d3dc;
+             color: #667987;
 }
 .listing th {padding: 0.1em .8em;
-             border:1px solid #575a59;}
+             border:1px solid #c6c8c9;}
 .listing td {padding: 0em 1em;
-             border:1px solid #575a59;}
+             border:1px solid #c6c8c9;}
 .listing{
 	    border-collapse: collapse;
             width: auto;
-            border: 1px solid #4b6977;
+            border: 1px solid #c6c8c9;
 }
 
 #patients tr:hover {background-color: #c7dfea; color: #ffffff;} /*not for IE*/

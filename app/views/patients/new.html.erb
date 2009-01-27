@@ -1,47 +1,13 @@
-<h1>New patient</h1>
+<div class='continer'>
+<h3>New patient</h3>
 
 <% form_for :patient,:url=>patients_path do |f| %>
   <%= f.error_messages %>
-
-  <p>
-    <%= f.label :hospital_no %><br />
-    <%= f.text_field :hospital_no %>
-  </p>
-  <p>
-    <%= f.label :reg_date %><br />
-    <%= f.date_select :reg_date %>
-  </p>
-  <p>
-    <%= f.label :patient_name %><br />
-    <%= f.text_field :patient_name %>
-  </p>
-  <p>
-    <%= f.label :age %><br />
-    <%= f.text_field :age %>
-  </p>
-  <p>
-    <%= f.label :dob %><br />
-    <%= f.date_select :dob %>
-  </p>
-  <p>
-    <%= f.label :spouse_name %><br />
-    <%= f.text_field :spouse_name %>
-  </p>
-  <p>
-    <%= f.label :spouse_age %><br />
-    <%= f.text_field :spouse_age %>
-  </p>
-  <p>
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </p>
-  <p>
-    <%= f.label :contact_no %><br />
-    <%= f.text_field :contact_no %>
-  </p>
+  <%= render :partial => 'individual', :locals => {:f => f} %>
   <p>
     <%= f.submit "Create" %>
   </p>
 <% end %>
 
 <%= link_to 'Back', patients_path %>
+</div>

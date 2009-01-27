@@ -1,5 +1,5 @@
 <div class='continer'>
-<h1>Listing patients</h1>
+<h3>Listing patients</h3>
 
 <table class="listing">
   <tr>
@@ -15,7 +15,7 @@
   </tr>
 
 <% for patient in @patients %>
-  <tr>
+  <tr class="<%= cycle('odd', 'even') %>">
     <td><%=h patient.hospital_no %></td>
     <td><%=h patient.reg_date %></td>
     <td><%=h patient.patient_name %></td>

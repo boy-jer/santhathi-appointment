@@ -6,31 +6,31 @@ class Appointment < ActiveRecord::Base
   
   belongs_to :doctor
   belongs_to :patient
-  belongs_to :department
+  #belongs_to :department
   
   aasm_column :state
-  aasm_initial_state :new
-  aasm_state :confirmed
+  aasm_initial_state :new_app
+
+  aasm_state :new_app
+  aasm_state :visited
   #aasm_state :read
   #aasm_state :closed
   
-  aasm_event :confirm do
-    transitions :to => :confirmed, :from => [:new]
+  aasm_event :mark_visited do
+    transitions :to => :visited, :from => [:new_app]
   end
 
   #aasm_event :close do
     #transitions :to => :closed, :from => [:read, :new]
   #end
 
-
-  
   validates_presence_of :doctor_id, :appointment_date, :minute, :hour
   
   named_scope :on_date,lambda { |date| { :conditions => ["appointment_date = ?", date ] } }  
   named_scope :on_time,lambda { |time| { :conditions => ["appointment_time = ?", time] } }
  
   def update_time
-    time = "#{hour}:#{minute}"
+    time = "#{hour}:#{minute}" unless hour.blank?
     write_attribute(:appointment_time, time) unless time.blank?
   end
 aasm_column :state

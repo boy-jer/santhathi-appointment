@@ -1,0 +1,41 @@
+<table>
+   <tr><th><%= f.label :reg_date %></th>
+       <td><%= f.date_select :reg_date %></td>
+   </tr>
+
+   <tr><th><%= f.label :patient_name %></th>
+       <td><%= f.text_field :patient_name, {:class => 'textbox'} %></td>
+   </tr>
+
+   <tr><th><%= f.label :age %></th>
+      <td><%= f.text_field :age , {:class => 'textbox'}%></td>
+   </tr>
+
+   <tr><th><%= f.label :dob %></th>
+      <td><%= f.date_select :dob, {:class => 'textbox'} %></td>
+   </tr>
+
+   <tr><th><%= f.label :spouse_name %></th>
+       <td><%= f.text_field :spouse_name, {:class => 'textbox'} %></td>
+   </tr>
+
+   <tr><th><%= f.label :spouse_age %></th>
+       <td><%= f.text_field :spouse_age, {:class => 'textbox'} %></td>
+   </tr>
+
+   <tr><th><%= f.label :address %></th>
+       <td><%= f.text_field :address, {:class => 'textbox'} %></td>
+   </tr>
+
+   <tr><th><%= f.label :contact_no %></th>
+       <td><%= f.text_field :contact_no, {:class => 'textbox'} %></td>
+   </tr>
+
+   <tr><th><%= label_tag :referal_type %></th>
+       <td><%= radio_button_tag ('ref_type', 'd', checked = false) %> Doctor
+           <%= radio_button_tag ('ref_type', 's', checked = true) %> Self
+           <%= radio_button_tag ('ref_type', 'o', checked = false) %> Others
+       </td>
+   </tr>
+   
+</table> 

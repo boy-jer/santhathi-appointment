@@ -145,9 +145,11 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
   end
   
   def confirm
-    appointment = Appointment.find(params[:id])
-    #appointment.confirm!
-    redirect_to edit_patient_url(appointment.patient)
+    @appointment = Appointment.find(params[:id])
+    if @appointment.new_app?
+       @appointment.mark_visited!
+       redirect_to edit_patient_url(@appointment.patient)    
+    end
   end
   
 private
