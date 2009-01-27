@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title><%= configatron.site_name %></title>
+	
+	<%= stylesheet_link_merged :admin %>
+  	<%= javascript_include_merged :base %>
+	<%=javascript_include_tag 'jquery-1', 'jquery_corner' %> 
+        <script type="text/javascript">
+           jQuery.noConflict();
+        </script>
+</head>
+
+<body>
+
+  <div id="header">
+    <div id="global_links">
+      <%= render :partial => 'shared/global_links' %>
+    </div>
+      <h1><%= configatron.site_name %></h1> 
+  </div>
+
+  <div id="main_login">
+    <div id="left-login">
+    
+     <% if flash[:notice] %>
+       <div id="notice"><%= flash[:notice] %></div>
+     <% end %>
+
+     <% if flash[:warning] %>
+       <div id="warning"><%= flash[:warning] %></div>
+     <% end %>
+     
+     <% if flash[:error] %>
+       <div id="error"><%= flash[:error] %></div>
+     <% end %>
+
+      <div id="screen">
+        <%= yield %>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="footer">
+     Powered by <a href = "www.isiritech.com">iSiri Tecnologies</a>
+  </div>
+  <script type="text/javascript">
+    jQuery("#left-login").corner("corner 20px") 
+    jQuery("#footer").corner("corner 10px") 
+ </script>
+   
+</body>
+</html>

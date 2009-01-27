@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  dept_name: MyString
+  abbrevation: MyString
+  description: MyString
+  system_defined: MyString
+
+two:
+  dept_name: MyString
+  abbrevation: MyString
+  description: MyString
+  system_defined: MyString

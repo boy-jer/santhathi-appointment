@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  department_id: 1
+  doctor_name: MyString
+  designation: MyString
+  medical_id: MyString
+  working_from: 2008-12-26 11:36:42
+  working_to: 2008-12-26 11:36:42
+  comments: MyString
+
+two:
+  department_id: 1
+  doctor_name: MyString
+  designation: MyString
+  medical_id: MyString
+  working_from: 2008-12-26 11:36:42
+  working_to: 2008-12-26 11:36:42
+  comments: MyString

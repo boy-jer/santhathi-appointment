@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  department_id: 1
+  doctor_id: 1
+  name: MyString
+  appointment_date: 2008-12-26
+  appointment_time: 2008-12-26 12:49:11
+  reg_no: MyString
+  age: MyString
+  gender: MyString
+  contact_no: MyString
+
+two:
+  department_id: 1
+  doctor_id: 1
+  name: MyString
+  appointment_date: 2008-12-26
+  appointment_time: 2008-12-26 12:49:11
+  reg_no: MyString
+  age: MyString
+  gender: MyString
+  contact_no: MyString

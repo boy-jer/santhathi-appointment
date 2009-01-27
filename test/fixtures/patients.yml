@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  hospital_no: MyString
+  reg_date: 2008-12-26
+  patient_name: MyString
+  age: MyString
+  dob: 2008-12-26
+  spouse_name: MyString
+  spouse_age: MyString
+  address: MyString
+  contactno: MyString
+
+two:
+  hospital_no: MyString
+  reg_date: 2008-12-26
+  patient_name: MyString
+  age: MyString
+  dob: 2008-12-26
+  spouse_name: MyString
+  spouse_age: MyString
+  address: MyString
+  contactno: MyString

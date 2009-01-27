@@ -1,0 +1,38 @@
+<p>
+  <b>Department:</b>
+  <%=h @doctor.department_id %>
+</p>
+
+<p>
+  <b>Doctor name:</b>
+  <%=h @doctor.doctor_name %>
+</p>
+
+<p>
+  <b>Designation:</b>
+  <%=h @doctor.designation %>
+</p>
+
+<p>
+  <b>Medical:</b>
+  <%=h @doctor.medical_id %>
+</p>
+
+<p>
+  <b>Working from:</b>
+  <%=h @doctor.working_from %>
+</p>
+
+<p>
+  <b>Working to:</b>
+  <%=h @doctor.working_to %>
+</p>
+
+<p>
+  <b>Comments:</b>
+  <%=h @doctor.comments %>
+</p>
+
+
+<%= link_to 'Edit', edit_doctor_path(@doctor) %> |
+<%= link_to 'Back', doctors_path %>

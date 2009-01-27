@@ -1,0 +1,7 @@
+<%= calendar(:year => Time.now.year, :month => Time.now.month, :previous_month_text=> (link_to_remote image_tag('previous.png', :title => 'Previous', :border => 0),  :url => "http://www.yahoo.com"), :next_month_text => (link_to_remote image_tag('next.png', :title => 'Next', :border => 0), :url => "http://www.yahoo.com")) do |d|
+                      link_to_remote(d.mday, 
+                               :before => "Element.show('spinner')",
+                               :success => "Element.hide('spinner')",
+                               :url => { :controller => '/appointments', :action => 'index'}, 
+                               :method => :get,
+                               :with => "'date=' + #{d.to_s.gsub('-', '')}")   end %> 

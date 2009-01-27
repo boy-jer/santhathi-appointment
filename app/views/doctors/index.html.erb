@@ -1,0 +1,33 @@
+<div class='continer'>
+<h1>Listing doctors</h1>
+
+<table class="listing">
+  <tr>
+    <th>Department</th>
+    <th>Doctor name</th>
+    <th>Designation</th>
+    <th>Medical</th>
+    <th>Working from</th>
+    <th>Working to</th>
+	<th>Action</th>
+  </tr>
+
+<% for doctor in @doctors %>
+  <tr>
+    <td><%=h doctor.department.dept_name %></td>
+    <td><%=h doctor.doctor_name %></td>
+    <td><%=h doctor.designation %></td>
+    <td><%=h doctor.medical_id %></td>
+    <td><%=h Time.parse(doctor.working_from.to_s).strftime('%H:%M').to_s %></td>
+    <td><%=h Time.parse(doctor.working_to.to_s).strftime('%H:%M').to_s %></td>
+    <td><%= link_to 'Show', doctor_path(doctor) %> |
+        <%= link_to 'Edit',  edit_doctor_path(doctor) %> |
+        <%= link_to 'Destroy', doctor_path(doctor), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New doctor',  new_doctor_path %>
+</div>

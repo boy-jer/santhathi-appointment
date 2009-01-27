@@ -1,0 +1,3 @@
+h1. Welcome to Santhathi
+
+A Hospital management app.

@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title><%= configatron.site_name %></title>
+	
+	<%= stylesheet_link_merged :admin %>
+  	<%= javascript_include_merged :base %>
+	<%=javascript_include_tag 'facebox' %>
+    <%= stylesheet_link_tag 'calendar/option2- blue/style', 'facebox' %>
+	<!--[if lte IE 6]>
+		<%= stylesheet_link_tag 'ie6.css', media="screen" %>
+	<![endif]-->
+</head>
+
+<body>
+
+  <div id="header">
+    <div id="global_links">
+      <%= render :partial => 'shared/global_links' %>
+    </div>
+	
+	<h1><%= configatron.site_name %></h1>
+	<div id="menu"> <%= render :partial => 'admin/shared/tabs' %> </div>
+
+	<div id="sub-menu"> <%= render :partial => 'admin/shared/sub_tabs' %> </div>
+  </div>
+
+  <div id="main">
+    <div id="left">
+    
+     <% if flash[:notice] %>
+       <div id="notice"><%= flash[:notice] %></div>
+     <% end %>
+
+     <% if flash[:warning] %>
+       <div id="warning"><%= flash[:warning] %></div>
+     <% end %>
+     
+     <% if flash[:error] %>
+       <div id="error"><%= flash[:error] %></div>
+     <% end %>
+
+      <div id="screen">
+        <%= yield %>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="footer">
+     ddddddddddddddddd
+  </div>
+  
+  <!--border -->
+  <div id="left-border"></div>
+  <div id="right-border"></div>
+  <div id="top-border"></div>
+  <div id="bottom-border"></div>
+</body>
+</html>

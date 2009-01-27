@@ -1,0 +1,26 @@
+<% content_for :header do -%>
+<%= configatron.site_name %> Login
+<% end -%>
+
+<% form_tag session_path do -%>
+     <div id= 'login-logo'>  <%= image_tag("Logo.jpeg") %></div>
+     <div id= 'login-box'>
+	 <p><%=image_tag('lock.png', :border => 0) %> <label for="login">Login Here</label></p>
+	 <p><label for="login">Login</label><br/>
+	 <%= text_field_tag 'login', '', :class => 'textbox' %></p>
+ 
+         <p><label for="password">Password</label><br/>
+	 <%= password_field_tag 'password', '', :class => 'textbox' %></p>
+
+	 <p><label for="remember_me">Remember me:</label>
+	 <%= check_box_tag 'remember_me' %></p>
+         <div id="submitbutton">
+	    <%= image_submit_tag('login_but.gif') %>
+         </div>
+      </div>
+
+
+<% end -%>
+<script type="text/javascript">
+  jQuery("#login-box").corner("corner 20px") 
+</script>
