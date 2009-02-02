@@ -9,19 +9,19 @@
 </div>
 
 <div id="new-department">
-  <table cellpadding="5px">           
-     <tr> <td><%= f.label :department %></td> <td><%= select :departament, :id, [['Select department' , '']] + Department.departments_for_select_list %></td> </tr>
-     <tr> <td><label>Doctor</label></td><td><div id="doctors"><%=render :partial => 'doctors_list', :locals => {:f => f, :doctors => doctors_list} %></div></td> </tr>
-     <tr> <td> <%= f.label :appointment_time %>:</td>
+  <table cellpadding="5px" class="form-table">           
+     <tr> <th><%= f.label :department %>:</th> <td><%= select :departament, :id, [['Select department' , '']] + Department.departments_for_select_list %></td> </tr>
+     <tr> <th><label>Doctor:</label></th><td><div id="doctors"><%=render :partial => 'doctors_list', :locals => {:f => f, :doctors => doctors_list} %></div></td> </tr>
+     <tr> <th> <%= f.label :appointment_time %>:</th>
           <td><%= f.select :hour, hours, :selected => (@hour || 9) %> <%= f.select :minute, minutes, :selected => (@minute || 30) %></td> 
      </tr>  
-     <tr> <td><label>New patient?</label></td>
+     <tr> <th><label>New patient ?</label></th>
           <td><%= radio_button_tag ('new_patient_check', 'yes', checked = true, 
                                                     options = {:onclick => "Element.show('new_patient'); Element.hide('patient_search');"}) %> Yes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;              <%= radio_button_tag ('new_patient_check', 'no', checked = false, 
                                                    options = {:onclick => "Element.show('patient_search'); Element.hide('new_patient');"}) %> No        </td> 
      </tr>
   </table>
-
+   <br />
    <%=image_submit_tag('button.png')%> 
 
   <%= observe_field(:appointment_doctor_id, :frequency => 0.5, 

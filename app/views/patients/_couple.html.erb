@@ -1,1 +1,59 @@
+<h3>Registration for couple</h3>
+<div class='left'>
+  <table class="form-table">
+   <tr><th><%= f.label :reg_date %></th>
+       <td><%= f.date_select :reg_date %></td>
+   </tr>
+
+   <tr><th><%= f.label :patient_name %></th>
+       <td><%= f.text_field :patient_name, {:class => 'textbox'} %></td>
+   </tr>
+
+   <tr><th><%= f.label :age %></th>
+      <td><%= f.text_field :age, {:class => 'textbox'}%></td>
+   </tr>
+
+   <tr><th><%= f.label :dob %></th>
+      <td><%= f.date_select :dob, {:class => 'textbox'} %></td>
+   </tr>
+
+   <tr><th><%= f.label :address %></th>
+       <td><%= f.text_field :address, {:class => 'textbox'} %></td>
+   </tr>
+
+   <tr><th><%= f.label :contact_no %></th>
+       <td><%= f.text_field :contact_no, {:class => 'textbox'} %></td>
+   </tr>
+
+   <tr><th><%= label_tag :referal_type %></th>
+       <td><%= radio_button_tag ('ref_type', 'd', checked = false) %> Doctor
+           <%= radio_button_tag ('ref_type', 's', checked = true) %> Self
+           <%= radio_button_tag ('ref_type', 'o', checked = false) %> Others
+       </td>
+   </tr>
+   
+  </table> 
+</div>
+
+<div class='right'>
+  <table class="form-table">
+   <tr><th><%= f.label :patient_name %></th>
+       <td><%= f.text_field :patient_name, :spouse, {:class => 'textbox'} %></td>
+   </tr>
+
+   <tr><th><%= f.label :age %></th>
+      <td><%= f.text_field :age, {:class => 'textbox'}%></td>
+   </tr>
+
+   <tr><th><%= f.label :dob %></th>
+      <td><%= f.date_select :dob, {:class => 'textbox'} %></td>
+   </tr>
+
+ 
+   <tr><th><%= f.label :contact_no %></th>
+       <td><%= f.text_field :contact_no, {:class => 'textbox'} %></td>
+   </tr>
+
+  </table> 
+</div>
 

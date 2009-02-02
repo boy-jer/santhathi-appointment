@@ -1,4 +1,5 @@
-<table>
+<h3>Individual registration</h3>
+<table class="form-table">
    <tr><th><%= f.label :reg_date %></th>
        <td><%= f.date_select :reg_date %></td>
    </tr>
@@ -19,10 +20,6 @@
        <td><%= f.text_field :spouse_name, {:class => 'textbox'} %></td>
    </tr>
 
-   <tr><th><%= f.label :spouse_age %></th>
-       <td><%= f.text_field :spouse_age, {:class => 'textbox'} %></td>
-   </tr>
-
    <tr><th><%= f.label :address %></th>
        <td><%= f.text_field :address, {:class => 'textbox'} %></td>
    </tr>
@@ -39,3 +36,4 @@
    </tr>
    
 </table> 
+

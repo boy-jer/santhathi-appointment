@@ -11,4 +11,8 @@ class Doctor < ActiveRecord::Base
     time2 = "#{hour_to}:#{minute_to}"
     write_attribute(:working_to, time2) unless time2.blank?
   end
+
+  def self.doctors_list
+    self.find(:all).collect{|doc| [doc.name, doc.id]}
+  end
 end

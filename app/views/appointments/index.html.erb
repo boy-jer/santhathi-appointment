@@ -1,5 +1,11 @@
 <div class='continer'>
-<h3>Listing appointments</h3>
+  <table>
+    <tr><td><h3>Appointments list</h3></td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><%= link_to image_tag('add.png', :border => 0), new_appointment_path %></td>
+        <td><%= link_to 'New appointment', new_appointment_path %></td>
+    </tr>
+  </table>
 
 <table class="listing">
   <thead>
@@ -7,13 +13,13 @@
     <th>App No </th>
     <th>Date</th>
     <th>Time</th>
-    <th>Patient Name</th>
+    <th>Patient name</th>
     <th>Department</th>
     <th>Doctor</th>
     <th>Age</th>
     <th>Gender</th>
     <th>Contact no</th>
-    <th>Show| Edit| Delete</th>
+    <th>Show| Edit | Delete</th>
   </tr>
   </thead>
 <% for appointment in @appointments %>
@@ -24,11 +30,11 @@
     <td><%=h Time.parse(appointment.appointment_time.to_s).strftime('%H:%M').to_s %></td>
     <td><%=h appointment.patient.patient_name %></td>
     <td><%=h appointment.doctor.department.dept_name%></td>
-    <td><%=h appointment.doctor.doctor_name%></td>
+    <td><%=h appointment.doctor.name%></td>
     <td><%=h appointment.patient.age %></td>
     <td><%=h appointment.patient.gender %></td>
     <td><%=h appointment.patient.contact_no %></td>
-    <td>&nbsp;&nbsp; <%= link_to image_tag('show.png', {:title => 'Edit', :border => 0}), appointment_url(appointment), :rel=> "facebox" %> &nbsp;&nbsp;| &nbsp;&nbsp; <%= link_to image_tag('edit.png', {:title => 'Edit', :border => 0}), edit_appointment_path(appointment) %> &nbsp;&nbsp;|&nbsp;&nbsp; <%= link_to image_tag('delete.png', {:title => 'delete', :border => 0}), appointment_path(appointment), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td>&nbsp;&nbsp; <%= link_to image_tag('show.png', {:title => 'Show', :border => 0}), appointment_url(appointment), :rel=> "facebox" %> &nbsp;&nbsp;| &nbsp;&nbsp; <%= link_to image_tag('edit.png', {:title => 'Edit', :border => 0}), edit_appointment_path(appointment) %> &nbsp;&nbsp;|&nbsp;&nbsp; <%= link_to image_tag('delete.png', {:title => 'delete', :border => 0}), appointment_path(appointment), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
   </tbody>
 <% end %>
@@ -37,5 +43,5 @@
 
 <br />
  <%= will_paginate @appointments %>
-<%= link_to image_tag('add.png', :border => 0), new_appointment_path %><%= link_to 'New appointment', new_appointment_path %>
+
 </div>

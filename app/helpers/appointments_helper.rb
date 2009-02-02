@@ -5,19 +5,9 @@ module AppointmentsHelper
     return ((((dt2 - dt1)/60)/60)* 12).to_i
   end
 
-  def appointments(doctor, date = nil)
-    #All appointments for the day
-    date = date.nil? ? Date.today : date
-    app_list = {}
-    appointments1 = doctor.appointments.on_date(date) 
-    appointments1.collect {|appt| app_list[appt.appointment_time.strftime('%H:%M').to_s]= appt}
-
-    return app_list
-  end
-  
   def doctors_list(dept_id = nil)
     if dept_id.nil?
-      doctors = Doctor.find(:all).collect{|x| [x.doctor_name, x.id]}
+      doctors = Doctor.find(:all).collect{|x| [x.name, x.id]}
     else
       doctors = Department.find(dept_id).doctors
     end

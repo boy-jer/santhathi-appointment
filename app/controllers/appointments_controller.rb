@@ -148,7 +148,7 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
     @appointment = Appointment.find(params[:id])
     if @appointment.new_app?
        @appointment.mark_visited!
-       redirect_to edit_patient_url(@appointment.patient)    
+       redirect_to edit_patient_url(@appointment.patient, :reg_type => params[:reg_type])    
     end
   end
   

@@ -9,13 +9,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081226075332) do
+ActiveRecord::Schema.define(:version => 20090129090914) do
 
   create_table "appointments", :force => true do |t|
-    t.integer  "doctor_id",        :limit => 11
-    t.integer  "patient_id",       :limit => 11
+    t.integer  "doctor_id"
+    t.integer  "patient_id"
     t.date     "appointment_date"
     t.time     "appointment_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "state"
+  end
+
+  create_table "cms", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -29,8 +35,13 @@ ActiveRecord::Schema.define(:version => 20081226075332) do
     t.datetime "updated_at"
   end
 
+  create_table "doctor_appointments", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "doctors", :force => true do |t|
-    t.integer  "department_id", :limit => 11
+    t.integer  "department_id"
     t.string   "doctor_name"
     t.string   "designation"
     t.string   "medical_id"
@@ -43,17 +54,19 @@ ActiveRecord::Schema.define(:version => 20081226075332) do
 
   create_table "patients", :force => true do |t|
     t.string   "hospital_no"
+    t.string   "reg_no"
+    t.string   "gender"
     t.date     "reg_date"
     t.string   "patient_name"
     t.string   "age"
     t.date     "dob"
-    t.string   "gender"
     t.string   "spouse_name"
     t.string   "spouse_age"
     t.string   "address"
     t.string   "contact_no"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "spouse"
   end
 
   create_table "pms", :force => true do |t|
@@ -62,7 +75,7 @@ ActiveRecord::Schema.define(:version => 20081226075332) do
   end
 
   create_table "profiles", :force => true do |t|
-    t.integer  "user_id",    :limit => 11
+    t.integer  "user_id"
     t.string   "real_name"
     t.string   "location"
     t.string   "website"
@@ -75,8 +88,8 @@ ActiveRecord::Schema.define(:version => 20081226075332) do
   end
 
   create_table "roles_users", :id => false, :force => true do |t|
-    t.integer "role_id", :limit => 11
-    t.integer "user_id", :limit => 11
+    t.integer "role_id"
+    t.integer "user_id"
   end
 
   create_table "settings", :force => true do |t|
@@ -85,6 +98,15 @@ ActiveRecord::Schema.define(:version => 20081226075332) do
     t.text     "description"
     t.string   "field_type",  :default => "string"
     t.text     "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "time_slots", :force => true do |t|
+    t.datetime "schedule_date"
+    t.time     "start_time"
+    t.integer  "doctor_id"
+    t.integer  "patient_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,9 +1,7 @@
-<table>	
-   <tr><td colspan='2'><h3> New patient details: </h3></td></tr>
-   <tr><td> <%= patient.label :name %>: </td> <td> <%= patient.text_field :patient_name, {:class => 'textbox'} %></td></tr>
-   <!--<tr><td> <%= patient.label :reg_no %>: </td> <td> <%= text_field_tag :reg_no,'', {:class => 'textbox'} %></td></tr>-->
-   <tr><td> <%= patient.label :age %>: </td> <td>  <%= patient.text_field :age, {:class => 'textbox'} %> </td></tr>
-   <tr><td> <%= patient.label :gender %>: </td> <td> <%= patient.select :gender, genders, :selected =>'f' %></td></tr>
-   <tr><td> <%= patient.label :contact_no %>:&nbsp; &nbsp;</td> <td> <%= patient.text_field :contact_no, {:class => 'textbox'} %></td></tr>
-   <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+<h3> New patient details: </h3>
+<table class="form-table">	
+   <tr><th> <%= patient.label :name %>: </th> <td> <%= patient.text_field :patient_name, {:class => 'textbox'} %></td></tr>
+   <tr><th> <%= patient.label :age %>: </th> <td>  <%= patient.text_field :age, {:class => 'textbox'} %> </td></tr>
+   <tr><th> <%= patient.label :gender %>: </th> <td> <%= patient.select :gender, genders, :selected =>'f' %></td></tr>
+   <tr><th> <%= patient.label :contact_no %>:&nbsp; &nbsp;</th> <td> <%= patient.text_field :contact_no, {:class => 'textbox'} %></td></tr>
 </table>  

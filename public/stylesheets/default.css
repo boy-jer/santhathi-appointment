@@ -17,13 +17,13 @@ a:hover {
 	color: #87CEFA;
 }
 input {
-	font-size: 1.1em;
+	font-size: 1em;
 }
 
 input.textbox{
 	border:#7D99B2 1px solid;
-	background:#fff url(/images/field-top.gif) repeat-x top;
-	padding:3px 2px;
+	background:#ffffff url(/images/field-top.gif) repeat-x top;
+	padding:2px 2px;
 
 	width:150px;
 }
@@ -42,6 +42,7 @@ select {
  font: 1em Verdana, Arial, Sans-Serif;
  background:#ffffff; 
  border:#7D99B2 1px solid;
+ padding:1px 1px;
 }   
 
 fieldset 
@@ -62,9 +63,14 @@ line-height: 3px;
 h3 {
 font-size:14px;
 color: #50798c;
-line-height: 3px;
+line-height: 2px;
 }
 
+h3 span {
+	font-size: 0.8em;
+	color: #50798c;
+        font-weight: normal;
+}
 
 /** Header */
 #header {
@@ -83,7 +89,7 @@ line-height: 3px;
 }
 #header h1 span {
 	font-size: 0.4em;
-	color: #bfd82d;
+	color: #bfd82d;ssss
 }
 #global_links {
 	float: right;
@@ -241,7 +247,7 @@ line-height: 3px;
  width: 36%;
  float: right;
  padding:0px 0px 0px 10px;
- background: #ffffff;
+ background-color: #fbfbfb;
  height: 420px;
  border: #ddd 1px solid;
 }
@@ -251,24 +257,23 @@ line-height: 3px;
  width: 61%;
  display: inline;
  padding:0px 0px 0px 10px;
- background: #ffffff;
+ background-color: #fbfbfb;
  border: #ddd 1px solid;
  height: 420px;
 }
 
 #new-appointment {
-	float: left;
- 	width: 30%;
- 	background: #000;
- 		
+	   float: left;
+           width: 30%;
+ 	   background: #000;	
 }
 
-.continer{ background: #ffffff;
-           height: 410px;
+.continer {background: #fbfbfb;
+           height: 120%;
            padding: 5px 0px 0px 30px;}
 
-.continer-show{ background: #ffffff;
-           height: 300px;
+.continer-show{ background: #fbfbfb;
+           height: 330px;
            padding: 25px 0px 25px 25px;}
 		   
 .form-wrapper{
@@ -288,44 +293,49 @@ line-height: 3px;
            border: 1px solid #e6f6fd;
           }
 
-table.time-slots td {
+/* ---------------------tables --------------------*/
+.time-slots{
+	    border-collapse: collapse;
+            width: auto;
+            border: 1px solid #c6c8c9;
+}
+
+.time-slots td {
 	border: 1px solid #ced8dc;
 	padding: 0.2em 1ex 0.2em 2em;
 	color: black;
 	font-size: 11px;
 }
 
-table.time-slots th {
+.time-slots th {
 	padding: 0em 1.2em;
-        background-color: #cde8f4; 
+        background-color: #f3f3f3; 
         color: #557685;
         font-size: 12px;
 }
 
-table.time-slots tr.d0 td {
+.time-slots tr.d0 td {
 	background-color: #FCF6CF;
 	
 }
-table.time-slots tr td.available {
-	background-color: #c3ffb5;
+.time-slots tr td.available {
+	background-color: #c6ffed;
         margin:0px;
 	width:100px;
         padding: 1px 0px 1px 0px;
         line-height: normal;
 }
 
-table.time-slots tr td.available a {
-	 color: #4082bf;
-	 font-weight:bold;
+.time-slots tr td.available a {
+	 color: #3c4e6f;
 }
 
-table.time-slots tr td.available a:hover {
-	 color:#dfeff1;
-	 font-weight:bold;
+.time-slots tr td.available a:hover {
+	 color:#6481b5;
 }
 
 
-table.time-slots tr td.available-new {
+.time-slots tr td.available-new {
 	background-color:#fff;
         margin:0px;
 	width:120px;
@@ -334,7 +344,7 @@ table.time-slots tr td.available-new {
 }
 
 
-table.time-slots tr.appointment td {
+.time-slots tr.appointment td {
 	background-color: #fffdea;
         margin:0px;
         padding: 1px 0px 1px 0px;
@@ -345,17 +355,16 @@ table.time-slots tr.appointment td {
  a { text-decoration: none; }
 
 
-	
 /*-----------------For table alternate row color ---------------------------*/
-.odd {background: #eff7fb;}
+.odd {background: #f3f8f9;}
  
-.listing tr:hover {background-color: #c7dfea; color: #ffffff;} /*not for IE*/
-.listing th {background-color: #c6d3dc;
+.listing tr:hover {background-color: #ebeff1; color: #ffffff;} /*not for IE*/
+.listing th {background-color: #ebeff1;
              color: #667987;
 }
 .listing th {padding: 0.1em .8em;
              border:1px solid #c6c8c9;}
-.listing td {padding: 0em 1em;
+.listing td {padding: .1em 1em;
              border:1px solid #c6c8c9;}
 .listing{
 	    border-collapse: collapse;
@@ -364,17 +373,37 @@ table.time-slots tr.appointment td {
 }
 
 #patients tr:hover {background-color: #c7dfea; color: #ffffff;} /*not for IE*/
+
 #patients th {background-color: #b4c9d2;
              color: #F5FFFA;
 }
 #patients th {padding: 0em 1em;
               border:1px solid #575a59;}
+
 #patients td {padding: 0.1em 1em;
               border:1px solid #575a59;}
 #patients{
 	    border-collapse: collapse;
             /*width: auto;*/
             border: 1px solid #d2dade;
+}
+
+
+.form-table tr:hover {background-color: #ffffff; color: #858b8e;} /*not for IE*/
+
+.form-table th {background-color: #fdfdfd;
+                color: #667987;
+                padding: 0.3em .8em;
+                border:1px solid #e8ebec;
+                text-align: left;}
+
+.form-table td {background-color: #fefefe;
+                padding: 0.3em .8em;
+                border:1px solid #e8ebec;}
+
+.form-table {border-collapse: collapse;
+             width: auto;
+             border: 1px solid #e8ebec;
 }
 
 /* Menu */
@@ -559,3 +588,5 @@ hr {
     float:left;
     clear:both;    
 }
+
+/*------------------------submit buttons-------------------- */
