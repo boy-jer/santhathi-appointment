@@ -28,7 +28,7 @@
        <td><%= f.text_field :contact_no, {:class => 'textbox'} %></td>
    </tr>
 
-   <tr><th><%= label_tag :referal_type %></th>
+   <tr><th><label>Referal type: </lable></th>
        <td><%= radio_button_tag ('ref_type', 'd', checked = false) %> Doctor
            <%= radio_button_tag ('ref_type', 's', checked = true) %> Self
            <%= radio_button_tag ('ref_type', 'o', checked = false) %> Others

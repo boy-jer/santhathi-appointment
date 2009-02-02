@@ -74,7 +74,7 @@ module ApplicationHelper
     #All appointments for the day
     date = date.nil? ? Date.today : date
     app_list = {}
-    appointments1 = (doctor.appointments.on_date(date) unless @appointments.blank?) || @appointments
+    appointments1 = (doctor.appointments.on_date(date) if @appointments.blank?) || @appointments
     appointments1.collect {|appt| app_list[appt.appointment_time.strftime('%H:%M').to_s]= appt}
 
     return app_list

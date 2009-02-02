@@ -12,13 +12,13 @@
 ActiveRecord::Schema.define(:version => 20090129090914) do
 
   create_table "appointments", :force => true do |t|
-    t.integer  "doctor_id"
-    t.integer  "patient_id"
+    t.integer  "doctor_id",        :limit => 11
+    t.integer  "patient_id",       :limit => 11
     t.date     "appointment_date"
     t.time     "appointment_time"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "state"
+    t.string   "state",            :limit => 45
   end
 
   create_table "cms", :force => true do |t|
@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(:version => 20090129090914) do
   end
 
   create_table "doctors", :force => true do |t|
-    t.integer  "department_id"
-    t.string   "doctor_name"
+    t.integer  "department_id", :limit => 11
+    t.string   "name"
     t.string   "designation"
     t.string   "medical_id"
     t.time     "working_from"
@@ -54,19 +54,18 @@ ActiveRecord::Schema.define(:version => 20090129090914) do
 
   create_table "patients", :force => true do |t|
     t.string   "hospital_no"
-    t.string   "reg_no"
-    t.string   "gender"
     t.date     "reg_date"
     t.string   "patient_name"
     t.string   "age"
     t.date     "dob"
+    t.string   "gender"
     t.string   "spouse_name"
     t.string   "spouse_age"
     t.string   "address"
     t.string   "contact_no"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "spouse"
+    t.string   "reg_no",       :limit => 45
   end
 
   create_table "pms", :force => true do |t|
@@ -75,7 +74,7 @@ ActiveRecord::Schema.define(:version => 20090129090914) do
   end
 
   create_table "profiles", :force => true do |t|
-    t.integer  "user_id"
+    t.integer  "user_id",    :limit => 11
     t.string   "real_name"
     t.string   "location"
     t.string   "website"
@@ -88,8 +87,8 @@ ActiveRecord::Schema.define(:version => 20090129090914) do
   end
 
   create_table "roles_users", :id => false, :force => true do |t|
-    t.integer "role_id"
-    t.integer "user_id"
+    t.integer "role_id", :limit => 11
+    t.integer "user_id", :limit => 11
   end
 
   create_table "settings", :force => true do |t|
@@ -98,15 +97,6 @@ ActiveRecord::Schema.define(:version => 20090129090914) do
     t.text     "description"
     t.string   "field_type",  :default => "string"
     t.text     "value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "time_slots", :force => true do |t|
-    t.datetime "schedule_date"
-    t.time     "start_time"
-    t.integer  "doctor_id"
-    t.integer  "patient_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
