@@ -1,0 +1,36 @@
+
+<div class='continer'>
+  <h3>Appointment list: <span>(Select the Doctor and/or Date to view the Appointment list/ Time slots) </span> </h3>
+  <% form_tag(doctor_appointments_url, :method => :get, :id => "search_form") do %>
+    
+     <table class="form-table">
+        <tr>
+            <th><%=label_tag 'Doctor:'%></th> <th><%=label_tag 'Appointment date:'%></th>
+            <th><%=label_tag 'Appointments:'%></th> <th><%=label_tag 'Time slots:'%></th>
+        </tr>
+        <tr><td><%= select :doctor, :id, [['Select doctor' , '']] + Doctor.doctors_list %></td>
+            <td><%= calendar_date_select_tag "date", Date.today , :class =>'textbox' %></td>
+            <td><%= radio_button_tag ('filter', '1', checked = true) %></td>
+            <td><%= radio_button_tag ('filter', '2', checked = false) %></td>
+	</tr>
+     </table>
+  <% end %>	
+	 
+  <%= observe_form("search_form", :frequency => 1,
+                 :before => "Element.show('spinner')",
+                 :success => "Element.hide('spinner')",
+                 :url => doctor_appointments_url, :method => :get) %> 
+
+  
+  <!-- Ajax search result indicator -->
+  <%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner",
+              :style =>"display: none;" ) %>
+  <div id='appointment_list'>
+    <%= render :partial => 'appointment_list' %>
+  </div>
+  <br />
+
+</div>

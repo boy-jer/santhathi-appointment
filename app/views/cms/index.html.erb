@@ -1,0 +1,18 @@
+<h1>Listing cms</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% for cms in @cms %>
+  <tr>
+    <td><%= link_to 'Show', cms %></td>
+    <td><%= link_to 'Edit', edit_cms_path(cms) %></td>
+    <td><%= link_to 'Destroy', cms, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New cms', new_cms_path %>
