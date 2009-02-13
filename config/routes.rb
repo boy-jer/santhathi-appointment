@@ -56,6 +56,9 @@ ActionController::Routing::Routes.draw do |map|
  
  
   # Install the default routes as the lowest priority.
+  #map.musics  ':section/:subsection/:id', :controller => 'select_options', :action => 'show'
+  #map.connect ':section/:subsection/:id', :controller => 'select_options'
+  map.resources :select_options #TODO: Need to do it in better way
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end

@@ -26,7 +26,11 @@ class Appointment < ActiveRecord::Base
 
   validates_presence_of :doctor_id, :appointment_date, :minute, :hour
   
-  named_scope :on_date,lambda { |date| { :conditions => ["appointment_date = ?", date ] } }  
+  named_scope :on_date, lambda { |date| { :conditions => ["appointment_date = ?", date ] } }
+  named_scope :doctor_name, lambda { |doct| {:joins => :doctor, :conditions => ["doctors.id = ?", doct ] }} 
+  named_scope :patient_name, lambda { |name| {:joins => :patient, :conditions => ["patients.patient_name like ? ", "%name%" ] }}
+  named_scope :reg_no, lambda { |no| {:joins => :patient, :conditions => ["patient_name.reg_no like ? ", "no" ] }}
+    
   named_scope :on_time,lambda { |time| { :conditions => ["appointment_time = ?", time] } }
  
   def update_time

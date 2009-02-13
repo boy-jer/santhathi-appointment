@@ -1,11 +1,5 @@
 <div id="calendar-display">
-  <%= calendar(:year => Time.now.year, :month => Time.now.month) do |d|
-      link_to_remote(d.mday, 
-          :before => "Element.show('spinner')",
-          :success => "Element.hide('spinner')",
-          :url => { :controller => '/appointments', :action => 'index'}, 
-          :method => :get,
-          :with => "'date=' + #{d.to_s.gsub('-', '')}")   end %> 
+  <%= calendar_date_select_tag "date", Date.today, :embedded => true, :year_range => 100 %>
 </div>
 
 <div id="new-department">
@@ -22,14 +16,22 @@
      </tr>
   </table>
    <br />
-   <%=image_submit_tag('button.png')%> 
+   <%=image_submit_tag('button.gif')%> 
 
   <%= observe_field(:appointment_doctor_id, :frequency => 0.5, 
                     :before => "Element.show('spinner')",
                     :success => "Element.hide('spinner')",
                     :url => appointments_url, 
                     :method => :get,
-                    :with => "'doctor=' + value"
+                    :with => "'doctor=' + value+'&date=' + $('date').value"
+                   ) %>	 
+
+ <%= observe_field(:date, :frequency => 0.5, 
+                    :before => "Element.show('spinner')",
+                    :success => "Element.hide('spinner')",
+                    :url => appointments_url, 
+                    :method => :get,
+                    :with => "'date=' + value+'&doctor=' + $('appointment_doctor_id').value"
                    ) %>	 </div>
 	    		  
 <div id='new_patient'>

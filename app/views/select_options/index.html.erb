@@ -1,0 +1,25 @@
+<div class='continer'>
+  <div class='continer-inner'>
+   <h3> Listing <%=params[:type].pluralize%> </h3>
+    <table class="listing">
+    <tr>
+      <th>Name</th>
+      <th>Abbrevation</th>
+      <th>Description</th>
+      <th>Show| Edit| Delete</th>
+    </tr>
+
+    <% for option in @options %>
+      <tr>
+        <td><%=h option.name %></td>
+        <td><%=h option.abbrevation %></td>
+        <td><%=h option.description %></td>
+        <td>&nbsp;&nbsp;<%= link_to image_tag('show.png', {:title => 'Show', :border => 0}), select_option_path(option, :type => params[:type]) %> &nbsp; &nbsp;| &nbsp;&nbsp; <%= link_to image_tag('edit.png', {:title => 'Edit', :border => 0}), edit_select_option_path(option, :type => params[:type]) %> &nbsp;&nbsp;|&nbsp;&nbsp; <%= link_to image_tag('delete.png', {:title => 'delete', :border => 0}), select_option_path(option, :type => params[:type]), :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+    </table>
+  <br />
+
+  <%= link_to "<span>New #{params[:type]}</span>", new_select_option_path(:type => params[:type]), :class=> "button" %>
+  </div>
+</div>

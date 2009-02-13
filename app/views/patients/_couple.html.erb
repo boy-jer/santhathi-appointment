@@ -1,11 +1,10 @@
-<h3>Registration for couple</h3>
-<div class='left'>
+<h3> Registration for couple</h3>
+<div>
+<div class='left-box'>
   <table class="form-table">
-   <tr><th><%= f.label :reg_date %></th>
-       <td><%= f.date_select :reg_date %></td>
-   </tr>
-
-   <tr><th><%= f.label :patient_name %></th>
+   <tr><th colspan='2'>Patient detail</th></tr>
+   
+   <tr><th><%= f.label :name %></th>
        <td><%= f.text_field :patient_name, {:class => 'textbox'} %></td>
    </tr>
 
@@ -14,15 +13,19 @@
    </tr>
 
    <tr><th><%= f.label :dob %></th>
-      <td><%= f.date_select :dob, {:class => 'textbox'} %></td>
-   </tr>
-
-   <tr><th><%= f.label :address %></th>
-       <td><%= f.text_field :address, {:class => 'textbox'} %></td>
+      <td><%= f.date_select :dob%></td>
    </tr>
 
    <tr><th><%= f.label :contact_no %></th>
        <td><%= f.text_field :contact_no, {:class => 'textbox'} %></td>
+   </tr>
+   
+   <tr><th><%= f.label :address %></th>
+       <td><%= f.text_field :address, {:class => 'address'} %></td>
+   </tr>
+   
+   <tr><th><%= f.label :reg_date %></th>
+       <td><%= f.date_select :reg_date %></td>
    </tr>
 
    <tr><th><%= label_tag :referal_type %></th>
@@ -35,25 +38,26 @@
   </table> 
 </div>
 
-<div class='right'>
-  <table class="form-table">
-   <tr><th><%= f.label :patient_name %></th>
-       <td><%= f.text_field :patient_name, :spouse, {:class => 'textbox'} %></td>
-   </tr>
+ <div class='right-box'>
+   <%fields_for @patient2 do |p| %>
+     <table class="form-table">
+        <tr><th colspan='2'>Spouse detail</th></tr>
+        <tr><th><%= p.label :spouse_name %></th>
+            <td><%= p.text_field :patient_name, {:class => 'textbox'} %></td>
+        </tr>
 
-   <tr><th><%= f.label :age %></th>
-      <td><%= f.text_field :age, {:class => 'textbox'}%></td>
-   </tr>
-
-   <tr><th><%= f.label :dob %></th>
-      <td><%= f.date_select :dob, {:class => 'textbox'} %></td>
-   </tr>
-
- 
-   <tr><th><%= f.label :contact_no %></th>
-       <td><%= f.text_field :contact_no, {:class => 'textbox'} %></td>
-   </tr>
-
-  </table> 
+        <tr><th><%= p.label :age %></th>
+            <td><%= p.text_field :age, {:class => 'textbox'}%></td>
+        </tr>
+  
+        <tr><th><%= p.label :dob %></th>
+            <td><%= p.date_select :dob, {:class => 'textbox'} %></td>
+        </tr>
+  
+        <tr><th><%= p.label :contact_no %></th>
+            <td><%= f.text_field :contact_no, {:class => 'textbox'} %></td>
+        </tr>
+      </table> 
+    <%end%>
+ </div>
 </div>
-

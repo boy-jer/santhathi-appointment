@@ -1,0 +1,9 @@
+.dropdown {padding:0; margin:0}
+.dropdown {float:left; padding-left: 100px;}
+.dropdown dt {width:150px; padding:3px; font-weight:bold; cursor:pointer; }
+.dropdown dd {position:absolute; overflow:hidden; width:150px; display:none; background:#fff; z-index:200; opacity:0}
+.dropdown ul {width:150px; border:1px solid #9ac1c9; list-style:none; border-top:none}
+.dropdown li {display:inline}
+.dropdown a, .dropdown a:active, .dropdown a:visited {display:block; color:#333; text-decoration:none; background:#eaf0f2; width:150px}
+.dropdown a:hover {background:#d9e1e4; color:#000}
+.dropdown .underline {border-bottom:1px solid #b9d6dc}

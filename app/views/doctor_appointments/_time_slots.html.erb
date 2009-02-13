@@ -1,5 +1,6 @@
 <br />
 <table class="time-slots" cellspacing="1">
+     <tr><th>Slot</th> <th>Patient name </th> <th>Registration No</th> <th>Appointment No </th> <th>Appointment Given by </th> <th>Reason </th></tr>
      <%unless @doctor.blank? %>
        <% dt1 = Time.parse(@doctor.working_from.to_s) %>
        <% appoitments_hash = appointments(@doctor, @date) %>
@@ -14,7 +15,9 @@
             </tr>
          <% else %>
             <tr><td class="available">
-                <%= link_to_function("#{(dt1.strftime('%H:%M').to_s)} - #{(dt1 = dt1 + 5.minutes).strftime('%H:%M').to_s}", "setTime('#{slot}')") %></td>
+                <%= "#{(dt1.strftime('%H:%M').to_s)} - #{(dt1 = dt1 + 5.minutes).strftime('%H:%M').to_s}" %></td>
+            <td class="available-new"> &nbsp; </td>
+            <td class="available-new"> &nbsp; </td>
             <td class="available-new"> &nbsp; </td>
             <td class="available-new"> &nbsp; </td>
             </tr>

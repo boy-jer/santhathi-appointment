@@ -5,31 +5,32 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
   # GET /appointments.xml
   def index
     respond_to do |format|
-      format.html { @appointments = Appointment.paginate(:all, :per_page => 10, :page => params[:page]) 
+      format.html { @appointments = Appointment.paginate(:all, :per_page => 12, :page => params[:page]) 
                     session[:doctor] = nil
                     session[:date] = nil
                   }
-      format.js   {  
-                    unless params[:doctor].blank?
-                      @doctor = Doctor.find(params[:doctor])
-                      session[:doctor] = @doctor
-                    else
-                      unless params[:date].blank?
-                        @doctor = session[:doctor]
+      format.js   { if params.has_key?(:pname) #Searching in appointments list view
+                      search = 'Appointment'
+                      search = search + '.on_date(params[:date])' unless params[:date].blank?
+                      search = search + '.doctor_name(params[:doctor][:id])' unless params[:doctor][:id].blank?
+                      search = search + '.patient_name(params[:pname])' unless params[:pname].blank?
+                      search = search + '.reg_no(params[:rnum])' unless params[:rnum].blank?
+                      
+                      unless  search == 'Appointment' #no search parameters provided
+                        @appointments = eval(search).paginate(:all, :per_page => 12, :page => params[:page]) 
                       else
-                        @doctor = nil
-                      end 
-                    end
-                    
-                    unless params[:date].blank?
-                      @date = Date.parse(params[:date])
-                      session[:date] = @date
+                        @appointments = Appointment.paginate(:all, :per_page => 12, :page => params[:page])
+                      end  
+                      
+                      render :update do |page|
+                        page.replace_html 'appointment-list', :partial => 'appointments_list'
+                      end
                     else
-                      @date = session[:date]
-                    end
-                     
-                    render :update do |page|
-                      page.replace_html 'schedule', :partial => 'appointments_detail', :locals => {:doctor => @doctor, :date =>@date}
+                      @doctor = Doctor.find(params[:doctor]) unless params[:doctor].blank?
+                      @date = Date.parse(params[:date])
+                      render :update do |page|
+                        page.replace_html 'schedule', :partial => 'appointments_detail', :locals => {:doctor => @doctor, :date =>@date}
+                      end
                     end
                   }
     end
@@ -148,7 +149,7 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
     @appointment = Appointment.find(params[:id])
     if @appointment.new_app?
        @appointment.mark_visited!
-       redirect_to edit_patient_url(@appointment.patient, :reg_type => params[:reg_type])    
+       redirect_to edit_patient_url(@appointment.patient, :type => params[:reg_type])    
     end
   end
   

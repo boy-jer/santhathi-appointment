@@ -10,8 +10,8 @@
 	<%= stylesheet_link_merged :admin %>
   	<%= javascript_include_merged :base %>
         <%= calendar_date_select_includes %>
-	<%=javascript_include_tag 'facebox', 'jquery-1', 'jquery_corner', 'interface', 'rb_menu' %>
-        <%= stylesheet_link_tag 'calendar/option2- blue/style', 'facebox' %>
+	<%=javascript_include_tag 'facebox', 'jquery-1', 'jquery_corner', 'interface', 'dropdown' %>
+        <%= stylesheet_link_tag 'calendar/option2- blue/style', 'facebox', 'dropdown' %>
         
 	<!--[if lte IE 6]>
 		<%= stylesheet_link_tag 'ie6.css', media="screen" %>
@@ -67,6 +67,7 @@
   <div id="bottom-border"></div>
   <script type="text/javascript">
     jQuery(".continer").corner("corner 10px")
+    jQuery(".continer-inner").corner("corner 10px")
     jQuery("#footer").corner("corner 5px") 
   </script>
 </body>

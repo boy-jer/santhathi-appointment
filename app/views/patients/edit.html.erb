@@ -1,10 +1,9 @@
 <div class='continer'>
-<% form_for :patient,:url=>patient_path(@patient),:html=>{:method=>:put} do |f| %>
-  <%= f.error_messages %>
-  <%= render :partial => 'individual', :locals => {:f => f} %>
+<% form_for :patient1, :url=> patient_path(@patient), :html=>{:method=>:put} do |f| %>
+  <%= f.error_messages %> 
+  <%= render :partial => @partail, :locals => {:f => f} %>
   <p> <%= f.submit "Register" %> </p>
 <% end %>
 
-<%= link_to 'Show', patient_path(@patient)%> |
-<%= link_to 'Back',patients_path %>
+<%= link_to 'Patients list',patients_path %>
 </div>

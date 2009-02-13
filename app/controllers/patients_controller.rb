@@ -35,7 +35,9 @@ class PatientsController < ApplicationController
 
   # GET /patients/1/edit
   def edit
-    @patient = Patient.find(params[:id])
+    @partail = params[:type] == '1'? 'individual' : 'couple'
+    @patient1 = Patient.find(params[:id])
+    @patient2 = @patient1.spouse.blank? ? Patient.new : Patient.find(@patient1.spouse)
   end
 
   # POST /patients

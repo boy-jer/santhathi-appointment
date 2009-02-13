@@ -1,0 +1,26 @@
+<div class='continer'>
+  <div class='continer-inner'>
+     <h2>New <%= params[:type] %></h2>
+     <% form_for :option, :url => select_options_path(:type => params[:type]) do |f| %>
+     <%= f.error_messages %>
+
+     <p>
+       <%= f.label :name %><br />
+       <%= f.text_field :name, {:class => 'textbox'} %>
+     </p>
+     <p>
+       <%= f.label :abbrevation %><br />
+       <%= f.text_field :abbrevation, {:class => 'textbox'} %>
+     </p>
+     <p>
+       <%= f.label :description %><br />
+       <%= f.text_field :description, {:class => 'textbox'} %>
+     </p>
+       <%= f.hidden_field :type, {:value=> params[:type]} %>
+     <p>
+       <table><tr><td><%= image_submit_tag "create.gif" %></td> <td><%= link_to "<span>Cancel</span>", select_options_path(:type =>  params[:type]), :class=> "button" %></td></tr></table>
+     </p>
+   <% end %>
+
+   </div>
+</div>
