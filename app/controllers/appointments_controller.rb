@@ -5,21 +5,21 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
   # GET /appointments.xml
   def index
     respond_to do |format|
-      format.html { @appointments = Appointment.paginate(:all, :per_page => 12, :page => params[:page]) 
+      format.html { @appointments = Appointment.paginate(:all, :order => 'appointment_date DESC', :per_page => 10, :page => params[:page]) 
                     session[:doctor] = nil
                     session[:date] = nil
                   }
       format.js   { if params.has_key?(:pname) #Searching in appointments list view
                       search = 'Appointment'
-                      search = search + '.on_date(params[:date])' unless params[:date].blank?
+                      search = search + '.on_date(Time.parse(params[:date]).to_date)' unless params[:date].blank?
                       search = search + '.doctor_name(params[:doctor][:id])' unless params[:doctor][:id].blank?
                       search = search + '.patient_name(params[:pname])' unless params[:pname].blank?
                       search = search + '.reg_no(params[:rnum])' unless params[:rnum].blank?
                       
                       unless  search == 'Appointment' #no search parameters provided
-                        @appointments = eval(search).paginate(:all, :per_page => 12, :page => params[:page]) 
+                        @appointments = eval(search).paginate(:all, :order => 'appointment_date DESC', :per_page => 10, :page => params[:page]) 
                       else
-                        @appointments = Appointment.paginate(:all, :per_page => 12, :page => params[:page])
+                        @appointments = Appointment.paginate(:all, :order => 'appointment_date DESC', :per_page => 10, :page => params[:page])
                       end  
                       
                       render :update do |page|
@@ -116,7 +116,7 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
   # DELETE /appointments/1.xml
   def destroy
     @appointment = Appointment.find(params[:id])
-    @appointment.destroy
+    @appointment.cancel!
 
     respond_to do |format|
       format.html { redirect_to(appointments_url) }
@@ -147,7 +147,7 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
   
   def confirm
     @appointment = Appointment.find(params[:id])
-    if @appointment.new_app?
+    if @appointment.new?
        @appointment.mark_visited!
        redirect_to edit_patient_url(@appointment.patient, :type => params[:reg_type])    
     end

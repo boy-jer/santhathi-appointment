@@ -1,14 +1,15 @@
 <div class='continer'>
-<h3>New patient</h3>
+  <div class='continer-inner'>
+     <h3>New patient</h3>
 
-<% form_for :patient,:url=>patients_path do |f| %>
-  <%= f.error_messages %>
-  <%= render :partial => 'individual', :locals => {:f => f} %>
-  <p>
-    <%= f.submit "Create" %>
-    
-  </p>
-<% end %>
+     <% form_for :patient,:url=>patients_path do |f| %>
+       <%= f.error_messages %>
+       <%= render :partial => 'individual', :locals => {:f => f} %>
+       <p>
+         <%= f.submit "Create" %>
+       </p>
+     <% end %>
 
-<%= link_to 'Back', patients_path %>
+     <%= link_to 'Back', patients_path %>
+   </div>
 </div>

@@ -2,8 +2,9 @@ body {
     font: 1em Verdana, Arial, Sans-Serif; 
 	
 	/*background: #00c9ee repeat-x ;*/
-    /*background: #b2d5e5;*/
-	background: #55ABD5;
+	/*background: #55ABD5;*/
+        /*background: #F5FAFC;*/
+        background: #ffffff;
 	color: #666666;
 	margin: 0;
 	padding: 0;
@@ -55,7 +56,7 @@ select {
 
 fieldset 
 {
-	border:none;
+     	border:none;
 }
 
 ul {
@@ -125,6 +126,7 @@ h3 span {
 #left, #right {
 	float: left;
 }
+
 #left {
 	/*background: #104E8B;*/
 	/*background: #82B8E4;*/
@@ -196,13 +198,18 @@ h3 span {
 /** Footer */
 #footer {
 	clear: both;
-	padding: 0px 10px 10px 10px;
+	padding: 3px 3px 3px 3px;
 	margin:0px 15px 10px 15px;
-	color: #b5aea1;
-	font-size: 0.8em;
-	background: #ffffff;
+	background: #b8d3e0;
 }
 
+#footer-inner {
+	clear: both;
+	padding: 0px 10px 10px 10px;
+	color: #b5aea1;
+	font-size: 0.9em;
+	background: #ffffff;
+}
 
 /* Pagination */
 .pagination {
@@ -219,16 +226,16 @@ h3 span {
 }
 .pagination a:hover, .pagination a:active {
 	border: 1px solid #666;
-	background-color: #aaa;
+	background-color: #d8e9f1;
 	color: #000;
 }
 .pagination span.current {
 	padding: 0px 5px 0px 5px;
 	margin: 2px;
-	border: 1px solid #666;
+	border: 1px solid #aaa;
 	font-weight: bold;
-	background-color: #666;
-	color: #FFF;
+	background-color: #f6f7f8;
+	color: #434343;
 }
 .pagination span.disabled {
 	padding: 0px 5px 0px 5px;
@@ -243,12 +250,12 @@ h3 span {
 
 
 /*------------------------For appointment booking page\------------------*/
-#main-scedules { 
+#main-schedules { 
  color: #333;
  width: 36%;
  float: right;
- padding:0px 0px 0px 10px;
- background-color: #fbfbfb;
+ padding:8px 8px 0px 8px;
+ background-color: #b8d3e0;
  height: 430px;
  border: #ddd 1px solid;
 }
@@ -266,6 +273,13 @@ h3 span {
 #new-booking-inner { 
  background-color: #fbfbfb;
  height: 422px;
+ padding: 0px 5px 0px 10px
+}
+
+#main-schedules-inner { 
+ background-color: #fbfbfb;
+ height: 422px;
+ padding: 0px 5px 0px 10px
 }
 
 #new-appointment {
@@ -274,13 +288,14 @@ h3 span {
  	   background: #000;	
 }
 
-.continer {background: #d7e3e8;
+.continer {background: #b8d3e0;
            height: 420px;
            padding: 7px 7px 0px 7px;}
 
 .continer-inner {background: #ffffff;
-                 height: 414px;
-                 padding: 10px 5px 0px 10px
+                 height: 404px;
+                 padding: 10px 5px 0px 10px;
+                 /*overflow: auto;*/
                 }
 
 
@@ -322,7 +337,7 @@ h3 span {
 
 .time-slots th {
 	padding: 0em 1.2em;
-        background-color: #f3f3f3; 
+        background-color: #e9f0f3; 
         color: #557685;
         font-size: 12px;
 }
@@ -369,24 +384,30 @@ h3 span {
 
 
 /*-----------------For table alternate row color ---------------------------*/
-.odd {background: #f6f7f8;}
- 
-.listing tr:hover {background-color: #f2f7f9; color: #ffffff;} /*not for IE*/
-.listing th {background-color: #c5deea;
-             color: #ffffff;
+.even {background: #F3F6F9;}
+/*.odd {background: #b8d3e0;}*/
+
+.listing tr:hover {background-color: #f2f7f9; color: #000;} /*not for IE*/
+.listing th {background-color: #F6F6F6;
+             color: #3E4A4D;
 }
 .listing th {padding: 0.1em .8em;
              border:1px solid #c6c8c9;}
 .listing h3 {text-align: center;
              line-height: 0;}
-.listing td {padding: 0.5px 1em;
+.listing td {padding: .3em .8em;
              border:1px solid #c6c8c9;}
 .listing{
 	    border-collapse: collapse;
             width: auto;
             border: 1px solid #c6c8c9;
             color: #3a3a3a;
-             padding 0px 10px 0px 10px;
+            padding 0px 10px 0px 10px;
+}
+.listing a {
+	 color: #8F4F62;
+         font-weight: bold;
+         font-size: 11px;
 }
 
 #patients tr:hover {background-color: #c7dfea; color: #ffffff;} /*not for IE*/
@@ -395,10 +416,12 @@ h3 span {
              color: #667987;
 }
 #patients th {padding: 0em 1em;
-              border:1px solid #d6dcde;}
+              border:1px solid #d6dcde;
+              font-size: 11px;}
 
 #patients td {padding: 0.1em 1em;
-              border:1px solid #d6dcde;}
+              border:1px solid #d6dcde;
+              font-size: 11px;}
 #patients{
 	    border-collapse: collapse;
             /*width: auto;*/
@@ -410,7 +433,7 @@ h3 span {
 
 .form-table th {background-color: #fdfdfd;
                 color: #667987;
-                padding: 0.3em .8em;
+                padding: 0.1em .8em;
                 border:1px solid #e8ebec;
                 text-align: left;}
 
@@ -452,7 +475,7 @@ h3 span {
 	display: block;
 	float: left;
 	margin:21px 0px 0px 0px;
-	padding: 5px 1px 0px 1px;
+	padding: 5px 2px 0px 1px;
 	width:90px;height:20px;
 	text-transform: uppercase;
 	text-decoration: none;
@@ -584,7 +607,7 @@ hr {
  	width: 55%;
  	padding:0px 5px 0px 0px;
         float:right;
-	margin:8px 0px 0px 0px;
+	margin:2px 0px 0px 0px;
 
  		
 }

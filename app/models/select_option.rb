@@ -10,4 +10,7 @@ class SelectOption < ActiveRecord::Base
      end
    end 
 
+   def self.select_list()
+     self.find(:all).collect{|x| [x.name, x.id]}
+   end
 end

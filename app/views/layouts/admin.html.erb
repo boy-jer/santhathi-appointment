@@ -28,7 +28,7 @@
       <%= render :partial => 'shared/global_links' %>
     </div>
 	
-	<h1><%= configatron.site_name %></h1>
+	<!--<h1><%= configatron.site_name %></h1>-->
 	<div id="menu"> <%= render :partial => 'admin/shared/tabs' %> </div>
 
 	<div id="sub-menu"> <%= render :partial => 'admin/shared/sub_tabs' %> </div>
@@ -55,11 +55,13 @@
 
     </div>
   </div>
-
+<!--
   <div id="footer">
+    <div id="footer-inner">
       Powered by iSiri Tecnologies Pvt Ltd
+    </div>
   </div>
-  
+ --> 
   <!--border -->
   <div id="left-border"></div>
   <div id="right-border"></div>
@@ -69,6 +71,7 @@
     jQuery(".continer").corner("corner 10px")
     jQuery(".continer-inner").corner("corner 10px")
     jQuery("#footer").corner("corner 5px") 
+    jQuery("#footer-inner").corner("corner 5px")
   </script>
 </body>
 </html>

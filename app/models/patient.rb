@@ -1,5 +1,5 @@
 class Patient < ActiveRecord::Base
-  has_many :appointment
+  has_many :appointments
   validates_presence_of :patient_name, :age, :gender, :contact_no
   
   named_scope :name_filter, lambda{|name| {:conditions => ["patient_name like ?", name]}}

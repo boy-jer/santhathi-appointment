@@ -1,10 +1,5 @@
 # See how all your routes lay out with "rake routes"
 ActionController::Routing::Routes.draw do |map|
-  map.resources :doctor_appointments
-
-  map.resources :cms
-
-  
   # RESTful rewrites
   
   map.signup   '/signup',   :controller => 'users',    :action => 'new'
@@ -28,7 +23,9 @@ ActionController::Routing::Routes.draw do |map|
                                      :update_avatar => :put }
   
   map.resources :appointments, :member => {:confirm => :post} 
-  map.resources :patients
+  map.resources :patients do |patient|
+    patient.resources :patient_appointments, :as => :pappointments
+  end
   map.resources :departments 
   map.resources :doctors
   map.root :controller => 'sessions', :action => 'new'                          
@@ -36,7 +33,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :pms
   # Profiles
   map.resources :profiles
+  map.resources :doctor_appointments
   
+  map.resources :cms
+
   # Administration
   map.namespace(:admin) do |admin|
     admin.root :controller => 'sessions', :action => 'new'

@@ -15,7 +15,7 @@
          <% if appoitments_hash.key?(slot) %>
             <tr class="appointment"><td>
                <%= link_to "#{(dt1.strftime('%H:%M').to_s)} - #{(dt1 = dt1 + 5.minutes).strftime('%H:%M').to_s}", appointment_url(appoitments_hash[slot]), :rel=> "facebox" %>
-               <td><%= link_to appoitments_hash[slot].patient.patient_name, confirm_appointment_url(appoitments_hash[slot]), :method => :post, :confirm => "This action will confirm the appointment. Are you sure?" %> </td>
+               <td><%= link_to appoitments_hash[slot].patient.patient_name, patient_url(appoitments_hash[slot].patient), :rel=> "facebox" %> </td>
                <td><%= appoitments_hash[slot].patient.reg_no %> </td>
             </tr>
          <% else %>

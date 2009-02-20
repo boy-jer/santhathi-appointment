@@ -4,7 +4,6 @@
   <div id='appointment-list'>
     <%=render :partial=> 'appointments_list'%>
   </div>	
-  <table><tr><td><%= link_to "<span>Create appointment</span>", new_appointment_path, :class=> "button" %></td><td><%= will_paginate @appointments %></td></tr></table>
-  <br />
+  <table><tr><td><%= link_to "<span>New appointment</span>", new_appointment_path, :class=> "button" %></td><td><%= will_paginate @appointments %></td></tr></table>
   </div>
 </div>

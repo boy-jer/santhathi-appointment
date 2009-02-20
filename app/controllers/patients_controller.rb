@@ -3,7 +3,7 @@ class PatientsController < ApplicationController
   # GET /patients
   # GET /patients.xml
   def index
-    @patients = Patient.find(:all)
+    @patients = Patient.paginate(:all, :per_page => 12, :page => params[:page]) 
 
     respond_to do |format|
       format.html # index.html.erb
@@ -19,6 +19,7 @@ class PatientsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @patient }
+      format.js { render :layout => false }
     end
   end
 

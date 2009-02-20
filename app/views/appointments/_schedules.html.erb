@@ -1,7 +1,9 @@
-<div id="main-scedules">
-  <h3>Existing Appointment details</h3>
-    <table class='time-slots'><tr><th><b>Time slot</b>&nbsp; </th><th><b>Patient name</b> </th> <th><b>Reg. Number</b></th></tr></table>
-   <div id="schedule">
-      <%=render :partial => "appointments_detail", :locals => {:doctor => nil, :date => nil}%> 
+<div id="main-schedules">
+  <div id="main-schedules-inner">
+    <h3>Existing Appointment details</h3>
+      <table class='time-slots'><tr><th><b>Time slot</b>&nbsp; </th><th><b>Patient name</b> </th> <th><b>Reg. Number</b></th></tr></table>
+     <div id="schedule">
+        <%=render :partial => "appointments_detail", :locals => {:doctor => nil, :date => nil}%> 
+     </div>
    </div>
 </div>

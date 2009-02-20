@@ -1,0 +1,37 @@
+<%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner",
+              :style =>"display: none;" ) %>
+<h3>All Appointments list of <%= @patient.patient_name %></h3>	  
+<table class="listing">
+  <thead>
+  <tr>
+    <th>No </th>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Doctor</th>
+    <th>Reason</th>
+    <th>Status</th>
+    <th>Show</th>
+  </tr>
+  </thead>
+<% for appointment in @appointments %>
+  <tbody>
+  <tr valign="top" class="<%= cycle('odd', 'even') %>">
+    <td><%=h appointment.id %></td>
+    <td><%=h appointment.appointment_date %></td>
+    <td><%=h Time.parse(appointment.appointment_time.to_s).strftime('%H:%M').to_s %></td>
+    <td><%=h appointment.doctor.name%></td>
+    <td><%=h appointment.reason.name %></td>
+    <td><%=h appointment.state %></td>
+    
+    <td>&nbsp;&nbsp; <%= link_to image_tag('show.png', {:title => 'Show', :border => 0}), appointment_url(appointment), :rel=> "facebox" %> </td> 
+    
+  </tr>
+  </tbody>
+<% end %>
+
+</table>
+
+<br />
