@@ -3,7 +3,7 @@ class PatientsController < ApplicationController
   # GET /patients
   # GET /patients.xml
   def index
-    @patients = Patient.paginate(:all, :per_page => 12, :page => params[:page]) 
+    @patients = Patient.paginate(:all, :per_page => 10, :page => params[:page]) 
 
     respond_to do |format|
       format.html # index.html.erb

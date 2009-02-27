@@ -1,5 +1,5 @@
-<%= stylesheet_link_tag "default" %>
 <div class='continer-show'>
+  <div class='continer-show-inner'>
   <h3>Showing Appointment</h3><br />	
   <table class="form-table">
     <tr><th><b>Department:</b></th><td><%=h @appointment.doctor.department.dept_name %></td></tr>
@@ -16,23 +16,21 @@
 <% if @appointment.patient.reg_no.blank? %>
   <br />
   <% if params[:act] == 'register' %>
-    <% form_tag confirm_appointment_url(@appointment) do -%>
+    <% form_tag(edit_patient_url(@appointment.patient), :method => :get) do -%>
       <table>
          <tr><th>Register for:</th>
            <td><%= radio_button_tag ('reg_type', '1', checked = true) %> Individual
                <%= radio_button_tag ('reg_type', '2', checked = false) %> Copule
-           </td>
-         </tr>
-        <tr><td>&nbsp;</td> <td> <br /> <a class="button" onclick="$(this).up('form').submit(); return false;"><span>Register</span></a> </td> </tr>         
+           </td> </tr>
+            <tr><td><a class="button" onclick="$(this).up('form').submit(); return false;"><span>Register</span></a> </td> </tr>         
       </table>
-    <% end %> 
+    <% end %>     
   <% end %> 
 <% end %> 
 
-<% if params[:act] == 'register' %>
-  
-<% end %>
+  </div>
 </div>
+
 <script type="text/javascript">
   jQuery(".continer-show").corner("corner 5px") 
 </script>

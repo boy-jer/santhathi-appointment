@@ -288,21 +288,24 @@ h3 span {
  	   background: #000;	
 }
 
-.continer {background: #b8d3e0;
-           height: 420px;
+.continer {background: #81D4E0;
+           height: 430px;
            padding: 7px 7px 0px 7px;}
 
 .continer-inner {background: #ffffff;
-                 height: 404px;
+                 height: 414px;
                  padding: 10px 5px 0px 10px;
                  /*overflow: auto;*/
                 }
 
 
-.continer-show{ background: #fbfbfb;
-           height: 330px;
-           padding: 25px 0px 25px 25px;}
+.continer-show{ background: #8DD8E2;
+           height: 320px;
+           padding:  7px 7px 0px 7px;}
 
+.continer-show-inner{ background: #fbfbfb;
+           height: 304px;
+           padding: 10px 5px 0px 10px;}
 		   
 .form-wrapper{
  margin: 0 auto;
@@ -384,7 +387,7 @@ h3 span {
 
 
 /*-----------------For table alternate row color ---------------------------*/
-.even {background: #F3F6F9;}
+.even {background: #f0f5f6;}
 /*.odd {background: #b8d3e0;}*/
 
 .listing tr:hover {background-color: #f2f7f9; color: #000;} /*not for IE*/
@@ -395,7 +398,7 @@ h3 span {
              border:1px solid #c6c8c9;}
 .listing h3 {text-align: center;
              line-height: 0;}
-.listing td {padding: .3em .8em;
+.listing td {padding: .26em .8em;
              border:1px solid #c6c8c9;}
 .listing{
 	    border-collapse: collapse;
@@ -474,9 +477,9 @@ h3 span {
 #menu li a {
 	display: block;
 	float: left;
-	margin:21px 0px 0px 0px;
+	margin:21px 4px 0px 0px;
 	padding: 5px 2px 0px 1px;
-	width:90px;height:20px;
+	width:88px;height:20px;
 	text-transform: uppercase;
 	text-decoration: none;
 	font-size: 11px;
@@ -651,7 +654,7 @@ a.button {
     margin-right: 6px;
     padding-right: 18px; /* sliding doors padding */
     text-decoration: none;
-    font-weight: bold;
+
 }
 
 a.button span {

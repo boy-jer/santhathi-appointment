@@ -1,48 +1,19 @@
-<p>
-  <b>Hospital no:</b>
-  <%=h @patient.hospital_no %>
-</p>
+<div class='continer-show'>
+  <div class='continer-show-inner'>
+     <h3>Patient Detail</h3><br />
+     <table class="form-table">
+       <tr><th><b>Reg date:</b></th><td><%=h @patient.reg_date %></td></tr>
+       <tr><th><b>Name:</b></th><td><%=h @patient.patient_name %></td></tr>
+       <tr><th><b>Age:</b></th><td><%=h @patient.age %></td></tr>
+       <tr><th><b>DOB:</b></th><td><%=h @patient.dob %></td></tr>
+       <tr><th><b>Spouse name:</b></th><td><%=h @patient.spouse_name %></td></tr>
+       <tr><th><b>Address:</b></th><td><%=h @patient.address %></td></tr>
+       <tr><th><b>Contact No:</b></th><td><%=h @patient.contact_no %></td></tr>
+     </table>
+  </div>
+</div>
 
-<p>
-  <b>Reg date:</b>
-  <%=h @patient.reg_date %>
-</p>
-
-<p>
-  <b>Patient name:</b>
-  <%=h @patient.patient_name %>
-</p>
-
-<p>
-  <b>Age:</b>
-  <%=h @patient.age %>
-</p>
-
-<p>
-  <b>Dob:</b>
-  <%=h @patient.dob %>
-</p>
-
-<p>
-  <b>Spouse name:</b>
-  <%=h @patient.spouse_name %>
-</p>
-
-<p>
-  <b>Spouse age:</b>
-  <%=h @patient.spouse_age %>
-</p>
-
-<p>
-  <b>Address:</b>
-  <%=h @patient.address %>
-</p>
-
-<p>
-  <b>Contactno:</b>
-  <%=h @patient.contact_no %>
-</p>
-
-
-<%= link_to 'Edit', edit_patient_path(@patient) %> |
-<%= link_to 'Back', patients_path %>
+<script type="text/javascript">
+  jQuery(".continer-show").corner("corner 5px") 
+  jQuery(".continer-show-inner").corner("corner 5px") 
+</script>

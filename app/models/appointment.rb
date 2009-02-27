@@ -10,26 +10,26 @@ class Appointment < ActiveRecord::Base
   #belongs_to :department
   
   aasm_column :state
-  aasm_initial_state :new1
+  aasm_initial_state :new_appointment
 
-  aasm_state :new1
+  aasm_state :new_appointment
   aasm_state :visited
   aasm_state :canceled
   
   aasm_event :mark_visited do
-    transitions :to => :visited, :from => [:new]
+    transitions :to => :visited, :from => [:new_appointment]
   end
   
   aasm_event :cancel do
-    transitions :to => :canceled, :from => [:new]
+    transitions :to => :canceled, :from => [:new_appointment]
   end
 
   validates_presence_of :doctor_id, :appointment_date, :minute, :hour
   
   named_scope :on_date, lambda { |date| { :conditions => ["appointment_date = ?", date ] } }
   named_scope :doctor_name, lambda { |doct| {:joins => :doctor, :conditions => ["doctors.id = ?", doct ] }} 
-  named_scope :patient_name, lambda { |name| {:joins => :patient, :conditions => ["patients.patient_name like ?", name] }}
-  named_scope :reg_no, lambda { |reg| {:joins => :patient, :conditions => ["patients.reg_no like ? ", reg ] }}
+  named_scope :patient_name, lambda { |name| {:joins => :patient, :conditions => ["patients.patient_name like ?", '%'+ name +'%'] }}
+  named_scope :reg_no, lambda { |reg| {:joins => :patient, :conditions => ["patients.reg_no like ? ", reg +'%'] }}
     
   named_scope :on_time,lambda { |time| { :conditions => ["appointment_time = ?", time] } }
  

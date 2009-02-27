@@ -8,9 +8,10 @@ class CreatePatients < ActiveRecord::Migration
       t.date :dob
       t.string :gender
       t.string :spouse_name
-      t.string :spouse_age
+      t.integer :spouse
       t.string :address
       t.string :contact_no
+      t.string :reg_type
 
       t.timestamps
     end

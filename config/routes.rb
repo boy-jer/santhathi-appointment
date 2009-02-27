@@ -22,7 +22,7 @@ ActionController::Routing::Routes.draw do |map|
                                      :edit_avatar => :get, 
                                      :update_avatar => :put }
   
-  map.resources :appointments, :member => {:confirm => :post} 
+  map.resources :appointments, :member => {:confirm => :get} 
   map.resources :patients do |patient|
     patient.resources :patient_appointments, :as => :pappointments
   end

@@ -1,13 +1,13 @@
 <% form_tag(appointments_url, :method => :get, :id => "search_form") do %>
    <table class="form-table">
      <tr>
-       <th><%=label_tag 'Doctor:'%></th> <th><%=label_tag 'Appointment date:'%></th>
        <th><%=label_tag 'Patient name:'%></th> <th><%=label_tag 'Registration No:'%></th>
+       <th><%=label_tag 'Registration Date:'%></th> <th><%=label_tag 'Phone No:'%></th>
      </tr>
-     <tr><td><%= select :doctor, :id, [['Select doctor' , '']] + Doctor.doctors_list %></td>
-         <td><%= calendar_date_select_tag "date", '' , :class =>'textbox' %></td>
-         <td><%= text_field_tag ('pname', '', :class => 'textbox') %></td>
+     <tr><td><%= text_field_tag ('pname', '', :class => 'textbox') %></td>
          <td><%= text_field_tag ('rnum', '', :class => 'textbox') %></td>
+         <td><%= calendar_date_select_tag "rdate", '' , :class =>'textbox' %></td>
+         <td><%= text_field_tag ('phone', '', :class => 'textbox') %></td>
 	 </tr>
   </table>
 <% end %>	
