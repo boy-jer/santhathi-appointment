@@ -288,7 +288,7 @@ h3 span {
  	   background: #000;	
 }
 
-.continer {background: #81D4E0;
+.continer {background: #80C6E7;
            height: 430px;
            padding: 7px 7px 0px 7px;}
 
@@ -387,11 +387,11 @@ h3 span {
 
 
 /*-----------------For table alternate row color ---------------------------*/
-.even {background: #f0f5f6;}
+.even {background: #F7FBFD;}
 /*.odd {background: #b8d3e0;}*/
 
 .listing tr:hover {background-color: #f2f7f9; color: #000;} /*not for IE*/
-.listing th {background-color: #F6F6F6;
+.listing th {background-color: #F7FBFD;
              color: #3E4A4D;
 }
 .listing th {padding: 0.1em .8em;
