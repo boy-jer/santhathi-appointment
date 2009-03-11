@@ -1,8 +1,14 @@
+<div id="menu">
 <ul>
-	<li style="float: right;"><a href="#">Tab 1</a></li>
-	<li style="float: right;"><a href="#">Tab 2</a></li>
+	<% if Setting.count > 0 %>
+	<li style="float: right;"><%= tab_to "Settings", [{:controller => "admin/settings"}] %></li>
+	<% end %>
 
-	<li><%= tab_to "Dashboard", [{:controller => "dashboard" }] %></li>
-	<li><%= tab_to "Ping Tab" %></li> 
-	<li><%= tab_to "Pong Tab" %></li>
+	<li><%= tab_to "Dashboard", [{:controller => "admin/dashboard"}] %></li>
+	<li><%= tab_to "<span>Users</span>", [{:controller => "admin/users"}] %></li>
+    <li class="active"><%=tab_to  "<span> PMS </span>", [{:controller => "pms"}]  %></li>
+	<li ><%=tab_to  "<span>CMS</span>", [{:controller => "cms"}]  %></li>
+    <li><%=tab_to  "<span>Accounts</span>", [{:controller => "admin/pms"}]  %></li>
+<li><%=tab_to  "<span>Laboratory</span>", [{:controller => "laboratories"}]  %></li>
 </ul>
+</div>

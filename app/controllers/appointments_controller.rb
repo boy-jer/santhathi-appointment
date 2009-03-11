@@ -1,11 +1,11 @@
 class AppointmentsController < ApplicationController
-layout 'admin'
+layout 'pms'
 require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
   # GET /appointments
   # GET /appointments.xml
   def index
     respond_to do |format|
-      format.html { @appointments = Appointment.paginate(:all, :order => 'appointment_date DESC', :per_page => 10, :page => params[:page]) 
+      format.html { @appointments = Appointment.paginate(:all, :order => 'appointment_date DESC', :per_page => 10, :page => params[:page])
                   }
       format.js   { if params.has_key?(:pname) #Search request via ajax call
                       search = 'Appointment'
@@ -13,13 +13,13 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
                       search = search + '.doctor_name(params[:doctor][:id])' unless params[:doctor][:id].blank?
                       search = search + '.patient_name(params[:pname])' unless params[:pname].blank?
                       search = search + '.reg_no(params[:rnum])' unless params[:rnum].blank?
-                      
+
                       unless search == 'Appointment' #if no search parameters provided, return all.
-                        @appointments = eval(search).paginate(:all, :order => 'appointment_date DESC', :per_page => 10, :page => params[:page]) 
+                        @appointments = eval(search).paginate(:all, :order => 'appointment_date DESC', :per_page => 10, :page => params[:page])
                       else
                         @appointments = Appointment.paginate(:all, :order => 'appointment_date DESC', :per_page => 10, :page => params[:page])
-                      end  
-                      
+                      end
+
                       render :update do |page|
                         page.replace_html 'appointment-list', :partial => 'appointments_list'
                       end
@@ -41,7 +41,7 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
     @appointment = Appointment.find(params[:id])
 
     respond_to do |format|
-      format.html 
+      format.html
       format.xml  { render :xml => @appointment }
       format.js { render :layout => false }
     end
@@ -71,9 +71,9 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
  def create
     date = session[:date].blank? ? Date.today : session[:date]
     @appointment = Appointment.new(params[:appointment].merge({:appointment_date => date}))
-    
+
     if params[:new_patient_check] == 'yes'
-      @patient = Patient.new(params[:patient]) 
+      @patient = Patient.new(params[:patient])
     else
       @patient = Patient.find(params[:patient_id])
     end
@@ -85,7 +85,7 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
         flash[:notice] = 'Appointment was successfully created.'
         redirect_to appointments_path
       else
-        render :action => "new"  
+        render :action => "new"
       end
     else
       render :action => "new"
@@ -130,14 +130,14 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
       page.replace_html 'doctors', :partial => 'doctors_list', :object => doctors
     end
   end
-  
+
   def patient_search
     @patients = Patient.name_filter(params[:name]) unless params[:name].blank?
     render :update do |page|
       page.replace_html 'patient_search_results', :partial => 'patient_search_results', :object => @patients
     end
   end
-  
+
 
   def confirm
     @appointment = Appointment.find(params[:id])
@@ -146,7 +146,7 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
        redirect_to(appointments_path(:page => params[:page]))
     end
   end
-  
+
 private
- 
+
 end

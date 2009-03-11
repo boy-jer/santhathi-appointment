@@ -28,13 +28,9 @@
       <%= render :partial => 'shared/global_links' %>
     </div>
 
-	<!--<h1><%= configatron.site_name %></h1>-->
-	<div id="menu"> <%= render :partial => 'admin/shared/tabs' %> </div>
-
-	<div id="sub-menu"> <%= render :partial => 'admin/shared/sub_tabs' %> </div>
-  </div>
-
-
+	<div id="menu"> <%= render :partial => 'shared/tabs' %> </div>
+	<div id="sub-menu"><%= render :partial => 'shared/laboratory_sub_tabs' %>
+	</div></div>
 
 
  <%= render :partial => 'shared/layout_body' %>

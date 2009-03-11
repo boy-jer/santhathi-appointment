@@ -9,16 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090203133728) do
+ActiveRecord::Schema.define(:version => 20090311074958) do
 
   create_table "appointments", :force => true do |t|
     t.integer  "doctor_id"
     t.integer  "patient_id"
+    t.integer  "reason_id"
     t.date     "appointment_date"
     t.time     "appointment_time"
+    t.string   "state"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "state"
   end
 
   create_table "cms", :force => true do |t|
@@ -35,11 +36,6 @@ ActiveRecord::Schema.define(:version => 20090203133728) do
     t.datetime "updated_at"
   end
 
-  create_table "doctor_appointments", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "doctors", :force => true do |t|
     t.integer  "department_id"
     t.string   "name"
@@ -52,21 +48,37 @@ ActiveRecord::Schema.define(:version => 20090203133728) do
     t.datetime "updated_at"
   end
 
+  create_table "measurement_units", :force => true do |t|
+    t.string   "name"
+    t.string   "abbreviation"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "parameters", :force => true do |t|
+    t.string   "parameter_name"
+    t.string   "value_type"
+    t.string   "measurement_unit"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "patients", :force => true do |t|
-    t.string   "hospital_no"
-    t.string   "reg_no"
-    t.string   "gender"
     t.date     "reg_date"
     t.string   "patient_name"
     t.string   "age"
+    t.string   "reg_no"
     t.date     "dob"
+    t.string   "gender"
     t.string   "spouse_name"
-    t.string   "spouse_age"
+    t.integer  "spouse"
     t.string   "address"
     t.string   "contact_no"
+    t.string   "reg_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "spouse"
   end
 
   create_table "pms", :force => true do |t|
@@ -97,6 +109,14 @@ ActiveRecord::Schema.define(:version => 20090203133728) do
     t.integer "user_id"
   end
 
+  create_table "samples", :force => true do |t|
+    t.string   "sample_name"
+    t.string   "description"
+    t.string   "used_in_diagnosis_of"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "select_options", :force => true do |t|
     t.string   "name"
     t.string   "type"
@@ -113,15 +133,6 @@ ActiveRecord::Schema.define(:version => 20090203133728) do
     t.text     "description"
     t.string   "field_type",  :default => "string"
     t.text     "value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "time_slots", :force => true do |t|
-    t.datetime "schedule_date"
-    t.time     "start_time"
-    t.integer  "doctor_id"
-    t.integer  "patient_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

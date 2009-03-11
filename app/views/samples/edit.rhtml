@@ -1,0 +1,19 @@
+<div class='continer'>
+  <div class='continer-inner'>
+<h3>Editing sample</h3><br/>
+
+<% form_for(@sample) do |f| %>
+  <%= f.error_messages %>
+<table cellpadding="5px" class="form-table">
+
+   <tr><th><%= f.label :sample_name %>:</th>
+       <td> <%= f.text_field :sample_name,:class=>"textbox" %></td></tr>
+<tr> <th>   <%= f.label :description %>:<br /></th>
+<td>   <%= f.text_field :description,:class=>"address" %></td></tr>
+  <tr><th>
+    <%= f.label :used_in_diagnosis_of %>:</th>
+<td>    <%= f.text_field :used_in_diagnosis_of,:class=>"address" %></td></tr>
+ <table><br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= f.submit "Update" %>
+ <% end %>
+</div></div>

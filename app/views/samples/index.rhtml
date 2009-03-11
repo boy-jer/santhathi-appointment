@@ -1,0 +1,30 @@
+<div class='continer'>
+  <div class='continer-inner'>
+<h3>Sample List</h3> <br/>
+<table class="listing">
+  <tr>
+    <th>Sample name</th>
+    <th>Description</th>
+    <th>Used in diagnosis of</th>
+    <th>Show</th>
+    <th>Modify</th>
+    <th>Delete</th>
+  </tr>
+
+<% for sample in @samples %>
+  <tr>
+    <td><%=h sample.sample_name %></td>
+    <td><%=h sample.description %></td>
+    <td><%=h sample.used_in_diagnosis_of %></td>
+    <td><%= link_to 'Show', sample %></td>
+    <td><%= link_to 'Modify', edit_sample_path(sample) %></td>
+    <td><%= link_to 'Delete', sample, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate @samples %> <br/>
+
+<%= link_to "<span>New #{params[:type]}</span>", new_sample_path(:type => params[:type]), :class=> "button" %>
+  </div>
+</div>

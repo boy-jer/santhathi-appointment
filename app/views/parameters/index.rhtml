@@ -1,0 +1,34 @@
+<div class='continer'>
+  <div class='continer-inner'>
+
+
+<h3>Parameter Master List</h3><br/>
+
+<table class="listing">
+  <tr>
+    <th>Parameter name</th>
+    <th>Value type</th>
+    <th>Measurement unit</th>
+    <th>Description</th>
+    <th>Show</th>
+    <th>Modify</th>
+    <th>Delete</th>
+  </tr>
+
+<% for parameter in @parameters %>
+  <tr>
+    <td><%=h parameter.parameter_name %></td>
+    <td><%=h parameter.value_type %></td>
+    <td><%=h parameter.measurement_unit %></td>
+    <td><%=h parameter.description %></td>
+    <td><%= link_to 'Show', parameter %></td>
+    <td><%= link_to 'Modify', edit_parameter_path(parameter) %></td>
+    <td><%= link_to 'Delete', parameter, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<%= will_paginate @parameters %>
+<br />
+<%= link_to "<span>New #{params[:type]}</span>", new_parameter_path(:type => params[:type]), :class=> "button" %>
+  </div>
+</div>
