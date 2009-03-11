@@ -1,5 +1,5 @@
 class PmsController < ApplicationController
-   layout 'admin'
+   layout 'cms'
   # GET /pms
   # GET /pms.xml
   def index
@@ -80,5 +80,5 @@ class PmsController < ApplicationController
     end
   end
 
-  
+
 end

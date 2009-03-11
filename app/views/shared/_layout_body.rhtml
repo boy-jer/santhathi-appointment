@@ -1,0 +1,35 @@
+<div id="main">
+    <div id="left">
+
+     <% if flash[:notice] %>
+       <div id="notice"><%= flash[:notice] %></div>
+     <% end %>
+
+     <% if flash[:warning] %>
+       <div id="warning"><%= flash[:warning] %></div>
+     <% end %>
+
+     <% if flash[:error] %>
+       <div id="error"><%= flash[:error] %></div>
+     <% end %>
+
+      <div id="screen">
+        <%= yield %>
+      </div>
+
+    </div>
+  </div>
+<!--
+  <div id="footer">
+    <div id="footer-inner">
+      Powered by iSiri Tecnologies Pvt Ltd
+    </div>
+  </div>
+ -->
+  <!--border -->
+  <script type="text/javascript">
+    jQuery(".continer").corner("corner 10px")
+    jQuery(".continer-inner").corner("corner 10px")
+    jQuery("#footer").corner("corner 5px")
+    jQuery("#footer-inner").corner("corner 5px")
+  </script>

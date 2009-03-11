@@ -1,11 +1,18 @@
-# This controller handles the login/logout function of the site.  
+# This controller handles the login/logout function of the site.
 class SessionsController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :create
-  
+
   layout 'login'
 
   def new
-    redirect_to appointments_url, :method => :get if logged_in?
+  	 	puts "xxxxxxxxxxxxxxxxxxxxxxxxx #{current_user}"
+  	if 1 #current_user.has_role?(:admin)
+  		puts "pppppppppppppppppppppp"
+ 	   redirect_to admin_dashboard_index_path, :method => :get if logged_in?
+  	else
+  		puts "zzzzzzzzzzzzzzzz"
+    	redirect_to appointments_url, :method => :get if logged_in?
+   	end
   end
 
   def create
@@ -18,7 +25,7 @@ class SessionsController < ApplicationController
     flash[:notice] = "You have been logged out."
     redirect_back_or_default(root_path)
   end
-  
+
   protected
 
   def password_authentication
@@ -33,8 +40,8 @@ class SessionsController < ApplicationController
       render :action => :new
     end
   end
-  
-  def successful_login    
+
+  def successful_login
     new_cookie_flag = (params[:remember_me] == "1")
     handle_remember_cookie! new_cookie_flag
     redirect_to appointments_url
@@ -45,4 +52,5 @@ class SessionsController < ApplicationController
     flash[:error] = "Couldn't log you in as '#{params[:login]}'"
     logger.warn "Failed login for '#{params[:login]}' from #{request.remote_ip} at #{Time.now.utc}"
   end
+
 end

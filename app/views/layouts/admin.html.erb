@@ -6,13 +6,13 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
 	<title><%= configatron.site_name %></title>
-	 
-	<%= stylesheet_link_merged :admin %>
+
+
   	<%= javascript_include_merged :base %>
         <%= calendar_date_select_includes %>
 	<%=javascript_include_tag 'facebox', 'jquery-1', 'jquery_corner', 'interface', 'dropdown' %>
-        <%= stylesheet_link_tag 'calendar/option2- blue/style', 'facebox', 'dropdown' %>
-        
+        <%= stylesheet_link_tag 'default','calendar/option2- blue/style', 'facebox', 'dropdown' %>
+
 	<!--[if lte IE 6]>
 		<%= stylesheet_link_tag 'ie6.css', media="screen" %>
 	<![endif]-->
@@ -27,16 +27,16 @@
     <div id="global_links">
       <%= render :partial => 'shared/global_links' %>
     </div>
-	
+
 	<!--<h1><%= configatron.site_name %></h1>-->
 	<div id="menu"> <%= render :partial => 'admin/shared/tabs' %> </div>
 
 	<div id="sub-menu"> <%= render :partial => 'admin/shared/sub_tabs' %> </div>
-  </div> 
+  </div>
 
   <div id="main">
     <div id="left">
-    
+
      <% if flash[:notice] %>
        <div id="notice"><%= flash[:notice] %></div>
      <% end %>
@@ -44,7 +44,7 @@
      <% if flash[:warning] %>
        <div id="warning"><%= flash[:warning] %></div>
      <% end %>
-     
+
      <% if flash[:error] %>
        <div id="error"><%= flash[:error] %></div>
      <% end %>
@@ -61,16 +61,12 @@
       Powered by iSiri Tecnologies Pvt Ltd
     </div>
   </div>
- --> 
+ -->
   <!--border -->
-  <div id="left-border"></div>
-  <div id="right-border"></div>
-  <div id="top-border"></div>
-  <div id="bottom-border"></div>
   <script type="text/javascript">
     jQuery(".continer").corner("corner 10px")
     jQuery(".continer-inner").corner("corner 10px")
-    jQuery("#footer").corner("corner 5px") 
+    jQuery("#footer").corner("corner 5px")
     jQuery("#footer-inner").corner("corner 5px")
   </script>
 </body>

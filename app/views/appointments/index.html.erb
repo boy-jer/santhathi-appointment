@@ -1,10 +1,11 @@
+
 <div class='continer'>
   <div class='continer-inner'>
   <%=render :partial=> 'filters'%>
   <br />
   <div id='appointment-list'>
     <%=render :partial=> 'appointments_list'%>
-  </div>	
+  </div>
   <table><tr><td><%= link_to "<span>New appointment</span>", new_appointment_path, :class=> "button" %></td><td><%= will_paginate @appointments %></td></tr></table>
   </div>
 </div>

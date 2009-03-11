@@ -1,10 +1,10 @@
 class CmsController < ApplicationController
-  layout 'admin'
+  layout 'cms'
   # GET /cms
   # GET /cms.xml
   def index
     @cms = Cms.find(:all)
-    
+
     redirect_to doctor_appointments_url
   end
 

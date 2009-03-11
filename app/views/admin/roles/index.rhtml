@@ -1,0 +1,36 @@
+<div class='continer'>
+
+<table class="index">
+  <br></br>
+  <tr>
+	<th>ID</th>
+	<th>Login</th>
+	<th>Email</th>
+	<th>Status</th>
+	<th>  Roles   </th><th>   Add & Remove Roles</th>
+  </tr>
+  <tr></tr>
+<% # TODO: (base_app) Add some sort of search feature to easily find users %>
+<% for user in @users %>
+  <tr>
+	<td><%=h user.id %></td>
+	<td><%= link_to h(user.login), admin_user_url(user) %></td>
+	<td><%=h user.email %></td>
+	<td><%=h user.state %></td>
+   <!-- <td class="actions">
+		<%= link_to 'Show', admin_user_url(user) %>
+	</td> -->
+	<td><%= user.roles.map {|role| role.name}.join(" ") %></td>
+	<td><%= link_to  'manage Roles',edit_user_role_url(:id=>user.id), :rel=> "facebox" %> &nbsp;&nbsp;</td>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate @users %>
+
+<p>
+	<%= link_to 'New user', new_admin_user_path %>
+</p>
+
+
+</div>
