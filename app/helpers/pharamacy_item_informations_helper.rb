@@ -1,0 +1,2 @@
+module PharamacyItemInformationsHelper
+end

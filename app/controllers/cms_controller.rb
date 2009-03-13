@@ -5,7 +5,7 @@ class CmsController < ApplicationController
   def index
     @cms = Cms.find(:all)
 
-    redirect_to doctor_appointments_url
+   # redirect_to doctor_appointments_url
   end
 
   # GET /cms/1

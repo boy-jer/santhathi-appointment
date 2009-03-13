@@ -1,5 +1,5 @@
 module ApplicationHelper
-  # Yield the content for a given block. If the block yiels nothing, the optionally specified default text is shown. 
+  # Yield the content for a given block. If the block yiels nothing, the optionally specified default text is shown.
   #
   #   yield_or_default(:user_status)
   #
@@ -7,23 +7,24 @@ module ApplicationHelper
   #
   # +target+ specifies the object to yield.
   # +default_message+ specifies the message to show when nothing is yielded. (Default: "")
+
   def yield_or_default(message, default_message = "")
     message.nil? ? default_message : message
   end
 
   # Create tab.
-  # 
+  #
   # The tab will link to the first options hash in the all_options array,
   # and make it the current tab if the current url is any of the options
   # in the same array.
-  # 
+  #
   # +name+ specifies the name of the tab
   # +all_options+ is an array of hashes, where the first hash of the array is the tab's link and all others will make the tab show up as current.
-  # 
+  #
   # If now options are specified, the tab will point to '#', and will never have the 'active' state.
+
   def tab_to(name, all_options = nil)
     url = all_options.is_a?(Array) ? all_options[0].merge({:only_path => false}) : "#"
-
     current_url = url_for(:action => @current_action, :only_path => false)
     html_options = {}
 
@@ -33,9 +34,8 @@ module ApplicationHelper
           html_options = {:class => "current"}
           break
         end
-      end  
+      end
     end
-
     link_to(name, url, html_options)
   end
 
@@ -43,40 +43,40 @@ module ApplicationHelper
   def admin?
     logged_in? && current_user.has_role?(:admin)
   end
-  
+
   # Write a secure email adress
   def secure_mail_to(email)
     mail_to email, nil, :encode => 'javascript'
   end
-  
+
   def cell(label, value)
     "<tr>
   		<td class='label' nowrap='nowrap'>#{label}</td>
   		<td class='value'>#{value}</td>
   	</tr>"
   end
-  
+
   def cell_separator
     "<tr>
   		<td colspan='2' class='separator'></td>
   	</tr>"
   end
 
- def all_doctors
-   Doctor.find(:all).collect{|h| [h.doctor_name, h.id]}
- end
+  def all_doctors
+     Doctor.find(:all).collect{|h| [h.doctor_name, h.id]}
+  end
 
- def genders
-  return [['Male', 'm'], ['Female', 'f']]
- end
- 
+  def genders
+     return [['Male', 'm'], ['Female', 'f']]
+  end
+
  def appointments(doctor, date = nil)
     #All appointments for the day
-    date = date.nil? ? Date.today : date
-    app_list = {}
-    appointments1 = (doctor.appointments.on_date(date) if @appointments.blank?) || @appointments
-    appointments1.collect {|appt| app_list[appt.appointment_time.strftime('%H:%M').to_s]= appt}
+   date = date.nil? ? Date.today : date
+   app_list = {}
+   appointments1 = (doctor.appointments.on_date(date) if @appointments.blank?) || @appointments
+   appointments1.collect {|appt| app_list[appt.appointment_time.strftime('%H:%M').to_s]= appt}
 
-    return app_list
+   return app_list
   end
 end

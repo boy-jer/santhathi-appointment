@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090311074958) do
+ActiveRecord::Schema.define(:version => 20090311130340) do
 
   create_table "appointments", :force => true do |t|
     t.integer  "doctor_id"
@@ -27,11 +27,35 @@ ActiveRecord::Schema.define(:version => 20090311074958) do
     t.datetime "updated_at"
   end
 
+  create_table "deactivate_slots", :force => true do |t|
+    t.string   "department"
+    t.string   "doctor_name"
+    t.date     "from_date"
+    t.date     "to_date"
+    t.time     "time_from"
+    t.time     "time_to"
+    t.string   "reason_for_absence"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "departments", :force => true do |t|
     t.string   "dept_name"
     t.string   "abbrevation"
     t.string   "description"
     t.string   "system_defined"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "disease_lists", :force => true do |t|
+    t.string   "disease"
+    t.string   "icd_code"
+    t.string   "family_history"
+    t.string   "immunization"
+    t.string   "med_history"
+    t.string   "gyno_history"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -81,6 +105,28 @@ ActiveRecord::Schema.define(:version => 20090311074958) do
     t.datetime "updated_at"
   end
 
+  create_table "pharamacy_item_informations", :force => true do |t|
+    t.string   "item_name"
+    t.string   "item_code"
+    t.string   "uom"
+    t.string   "category_name"
+    t.string   "user_sku"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pharmacy_course_lists", :force => true do |t|
+    t.string   "course_type_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pharmacy_dosage_lists", :force => true do |t|
+    t.string   "dosage_type_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "pms", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -96,6 +142,13 @@ ActiveRecord::Schema.define(:version => 20090311074958) do
   end
 
   create_table "reasons", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "registration_summaries", :force => true do |t|
+    t.string   "registration_summary"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

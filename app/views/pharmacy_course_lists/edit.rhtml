@@ -1,0 +1,18 @@
+<div class='continer'>
+  <div class='continer-inner'>
+<h3>Editing Pharmacy Course list</h3><br/>
+
+
+<% form_for(@pharmacy_course_list) do |f| %>
+  <%= f.error_messages %>
+
+<table cellpadding="5px" class="form-table">
+   <tr><th>
+    <%= f.label :course_type_name %>:</th><td>
+    <%= f.text_field :course_type_name ,:class=>"textbox" %></td></tr>
+ </table><br/>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+</div></div>

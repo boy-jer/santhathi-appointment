@@ -1,0 +1,41 @@
+<div class='continer'>
+  <div class='continer-inner'>
+<h3>Deactivate Slot List</h3>
+<br/>
+
+<table class="listing">
+  <tr>
+    <th>Department</th>
+    <th>Doctor name</th>
+    <th>From date</th>
+    <th>To date</th>
+    <th>Time from</th>
+    <th>Time to</th>
+    <th>Reason for absence</th>
+    <th>Show</th>
+    <th>Modify</th>
+    <th>Delete</th>
+  </tr>
+
+<% for deactivate_slot in @deactivate_slots %>
+  <tr>
+    <td><%=h deactivate_slot.department %></td>
+    <td><%=h deactivate_slot.doctor_name %></td>
+    <td><%=h deactivate_slot.from_date %></td>
+    <td><%=h deactivate_slot.to_date %></td>
+    <td><%=h deactivate_slot.time_from %></td>
+    <td><%=h deactivate_slot.time_to %></td>
+    <td><%=h deactivate_slot.reason_for_absence %></td>
+    <td><%= link_to 'Show', deactivate_slot, :rel=> "facebox" %></td>
+    <td><%= link_to 'Modify', edit_deactivate_slot_path(deactivate_slot) %></td>
+    <td><%= link_to 'Delete', deactivate_slot, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= will_paginate @deactivate_slots %>
+<%= link_to "<span>New #{params[:type]}</span>", new_deactivate_slot_path(:type => params[:type]), :class=> "button" %>
+
+</div>
+</div>

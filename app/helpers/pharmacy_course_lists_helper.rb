@@ -1,0 +1,2 @@
+module PharmacyCourseListsHelper
+end

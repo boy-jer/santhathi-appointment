@@ -1,0 +1,39 @@
+<div class='continer'>
+  <div class='continer-inner'>
+<h3>Pharamacy Item Information</h3>
+
+<br/>
+
+<table class="listing">
+  <tr>
+    <th>Item name</th>
+    <th>Item code</th>
+    <th>Uom</th>
+    <th>Category name</th>
+    <th>User sku</th>
+    <th>Show</th>
+    <th>Modify</th>
+    <th>Delete</th>
+  </tr>
+
+<% for pharamacy_item_information in @pharamacy_item_informations %>
+  <tr>
+    <td><%=h pharamacy_item_information.item_name %></td>
+    <td><%=h pharamacy_item_information.item_code %></td>
+    <td><%=h pharamacy_item_information.uom %></td>
+    <td><%=h pharamacy_item_information.category_name %></td>
+    <td><%=h pharamacy_item_information.user_sku %></td>
+    <td><%= link_to 'Show', pharamacy_item_information,:rel=> "facebox" %></td>
+    <td><%= link_to 'Modify', edit_pharamacy_item_information_path(pharamacy_item_information) %></td>
+    <td><%= link_to 'Delete', pharamacy_item_information, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= will_paginate @pharamacy_item_informations %>
+
+<%= link_to "<span>New #{params[:type]}</span>", new_pharamacy_item_information_path(:type => params[:type]), :class=> "button" %>
+
+</div>
+</div>

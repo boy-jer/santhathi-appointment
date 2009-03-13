@@ -1,0 +1,27 @@
+<div class='continer'>
+  <div class='continer-inner'>
+
+  <h3>Showing Pharamacy Item Information</h3><br />
+  <table class="form-table">
+  <tr> <th>
+  Item name:</th><td>
+  <%=h @pharamacy_item_information.item_name %></td><tr>
+<tr> <th>
+  Item code:</th><td>
+  <%=h @pharamacy_item_information.item_code %></td><tr>
+<tr> <th>
+  Uom:</th><td>
+  <%=h @pharamacy_item_information.uom %></td><tr>
+<tr> <th>
+  Category name:</th><td>
+  <%=h @pharamacy_item_information.category_name %></td><tr>
+<tr> <th>
+  User sku:</th><td>
+  <%=h @pharamacy_item_information.user_sku %></td><tr>
+</table>
+<br/><br/>
+
+
+<%= link_to 'Edit', edit_pharamacy_item_information_path(@pharamacy_item_information) %> |
+<%= link_to 'Back', pharamacy_item_informations_path %>
+</div></div>

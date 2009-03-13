@@ -1,0 +1,20 @@
+
+<div class='continer'>
+  <div class='continer-inner'>
+<h3>Editing Pharmacy Dosage List</h3><br/>
+
+
+<% form_for(@pharmacy_dosage_list) do |f| %>
+  <%= f.error_messages %>
+
+
+<table cellpadding="5px" class="form-table">
+
+<tr><th> <%= f.label :dosage_type_name %>:</th><td>
+    <%= f.text_field :dosage_type_name,:classname =>"textbox" %></td></tr>
+    </table><br/>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+</div></div>

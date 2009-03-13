@@ -1,0 +1,35 @@
+<div class='continer'>
+  <div class='continer-inner'>
+<h3>New Disease List</h3> <br/>
+
+<% form_for(@disease_list) do |f| %>
+  <%= f.error_messages %>
+
+ <table cellpadding="5px" class="form-table">
+  <tr><th>   <%= f.label :disease %>:</th><td>
+    <%= f.text_field :disease,:class=>"textbox" %></td></tr>
+  <tr><th>
+    <%= f.label :icd_code %>:</th><td>
+    <%= f.text_field :icd_code,:class=>"textbox" %></td></tr>
+  <tr><th>
+    <%= f.label :family_history %>:</th><td>
+    <%= f.text_field :family_history,:class=>"textbox" %></td></tr>
+   <tr><th>
+    <%= f.label :immunization %>:</th><td>
+    <%= f.text_field :immunization ,:class=>"textbox"%></td></tr>
+   <tr><th>
+    <%= f.label :med_history %>:</th><td>
+    <%= f.text_field :med_history,:class=>"textbox" %></td></tr>
+   <tr><th>
+    <%= f.label :gyno_history %>:</th><td>
+    <%= f.text_field :gyno_history,:class=>"textbox" %></td></tr>
+  <tr><th>
+    <%= f.label :description %>:</th><td>
+    <%= f.text_field :description,:class=>"textbox" %></td></tr>
+  </table> <br/>
+
+    <%= image_submit_tag "create.gif" %>
+
+<% end %>
+</div>
+</div>

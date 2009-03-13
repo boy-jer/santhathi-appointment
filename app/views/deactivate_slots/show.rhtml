@@ -1,0 +1,24 @@
+<div class='continer'>
+  <div class='continer-inner'>
+   <h3>Showing Deactivate slot</h3><br />
+     <table class="form-table">
+  <tr> <th>Department:</th><td>
+  <%=h @deactivate_slot.department %></td></tr>
+<tr> <th>Doctor name:</th><td>
+  <%=h @deactivate_slot.doctor_name %></td></tr>
+<tr><th>From date:</th><td>
+  <%=h @deactivate_slot.from_date %></td></tr>
+<tr><th>To date:</th><td>
+  <%=h @deactivate_slot.to_date %></td></tr>
+<tr><th>Time from:</th><td>
+  <%=h @deactivate_slot.time_from %></td></tr>
+<tr><th>Time to:</th><td>
+  <%=h @deactivate_slot.time_to %></td></tr>
+<tr><th>Reason for absence:</th><td>
+  <%=h @deactivate_slot.reason_for_absence %></td></tr>
+</table>
+
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<%= link_to 'Edit', edit_deactivate_slot_path(@deactivate_slot) %> |
+<%= link_to 'Back', deactivate_slots_path %>
+</div></div>

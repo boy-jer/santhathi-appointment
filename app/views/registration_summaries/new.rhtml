@@ -1,0 +1,23 @@
+<div class='continer'>
+  <div class='continer-inner'>
+<h3>New Registration Summary</h3><br/>
+
+<% form_for(@registration_summary) do |f| %>
+  <%= f.error_messages %>
+
+<table cellpadding="5px" class="form-table">
+  <tr><th>  <%= f.label :registration_summary %>:</th><td>
+    <%= f.text_field :registration_summary %></td></tr>
+  <tr><th>
+    <%= f.label :description %>:</th><td>
+    <%= f.text_field :description %></td></tr>
+    </table> <br/>
+
+    <%= image_submit_tag "create.gif" %>
+
+<% end %>
+
+
+
+</div>
+</div>

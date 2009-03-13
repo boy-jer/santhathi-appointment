@@ -21,7 +21,7 @@
     <td><%=h parameter.value_type %></td>
     <td><%=h parameter.measurement_unit %></td>
     <td><%=h parameter.description %></td>
-    <td><%= link_to 'Show', parameter %></td>
+    <td><%= link_to 'Show', parameter,:rel=> "facebox"%></td>
     <td><%= link_to 'Modify', edit_parameter_path(parameter) %></td>
     <td><%= link_to 'Delete', parameter, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

@@ -1,0 +1,36 @@
+<div class='continer'>
+  <div class='continer-inner'>
+<h3>New Deactivate Slot</h3><br/>
+
+<% form_for(@deactivate_slot) do |f| %>
+  <%= f.error_messages %>
+
+<table cellpadding="5px" class="form-table">
+  <tr><th>  <%= f.label :department %>:</th><td>
+    <%= f.text_field :department,:class=>"textbox" %></td></tr>
+  <tr><th>
+    <%= f.label :doctor_name %>:</th><td>
+    <%= f.text_field :doctor_name ,:class=>"textbox"%></td></tr>
+  <tr><th>
+    <%= f.label :from_date %>:</th><td>
+    <%= f.date_select :from_date,:class=>"textbox" %></td></tr>
+  <tr><th>
+    <%= f.label :to_date %>:</th><td>
+    <%= f.date_select :to_date,:class=>"textbox" %></td></tr>
+ <tr><th>
+    <%= f.label :time_from %>:</th><td>
+    <%= f.datetime_select :time_from,:class=>"textbox" %></td></tr>
+ <tr><th>
+    <%= f.label :time_to %>:</th><td>
+    <%= f.datetime_select :time_to,:class=>"textbox" %></td></tr>
+  <tr><th>
+    <%= f.label :reason_for_absence %>:</th><td>
+    <%= f.text_field :reason_for_absence,:class=>"textbox" %></td></tr>
+</table><br/>
+      <%= image_submit_tag "create.gif" %>
+
+<% end %>
+
+
+</div>
+</div>
