@@ -1,7 +1,29 @@
 # See how all your routes lay out with "rake routes"
 ActionController::Routing::Routes.draw do |map|
+  map.resources :pharamacy_item_informations
+
+  map.resources :pharmacy_course_lists
+
+  map.resources :pharmacy_dosage_lists
+
+  map.resources :disease_lists
+
+  map.resources :registration_summaries
+
+  map.resources :deactivate_slots
+
+  map.resources :parameters
+
+  map.resources :samples
+
+  map.resources :measurement_units
+
+ # map.resources :roles
+
+  map.resources :user_roles
+
   # RESTful rewrites
-  
+
   map.signup   '/signup',   :controller => 'users',    :action => 'new'
   map.register '/register', :controller => 'users',    :action => 'create'
   map.activate '/activate/:activation_code', :controller => 'users',    :action => 'activate'
@@ -13,48 +35,49 @@ ActionController::Routing::Routes.draw do |map|
   map.user_forgot_password '/users/forgot_password', :controller => 'users', :action => 'forgot_password'
   map.user_reset_password  '/users/reset_password/:password_reset_code', :controller => 'users', :action => 'reset_password'
   map.user_forgot_login    '/users/forgot_login',    :controller => 'users', :action => 'forgot_login'
-  map.user_clueless        '/users/clueless',        :controller => 'users', :action => 'clueless'  
-    
+  map.user_clueless        '/users/clueless',        :controller => 'users', :action => 'clueless'
+
   map.resources :users, :member => { :edit_password => :get,
                                      :update_password => :put,
                                      :edit_email => :get,
                                      :update_email => :put,
-                                     :edit_avatar => :get, 
+                                     :edit_avatar => :get,
                                      :update_avatar => :put }
-  
-  map.resources :appointments, :member => {:confirm => :get} 
+
+  map.resources :appointments, :member => {:confirm => :get}
   map.resources :patients do |patient|
     patient.resources :patient_appointments, :as => :pappointments
   end
-  map.resources :departments 
+  map.resources :departments
   map.resources :doctors
-  map.root :controller => 'sessions', :action => 'new'                          
+  map.root :controller => 'sessions', :action => 'new'
   map.resource :session
   map.resources :pms
   # Profiles
   map.resources :profiles
   map.resources :doctor_appointments
-  
+
   map.resources :cms
 
   # Administration
   map.namespace(:admin) do |admin|
-    admin.root :controller => 'sessions', :action => 'new'
+    admin.root :controller => 'admin/dashboard', :action => 'index'
     admin.resources :settings
     admin.resources :users, :member => { :suspend   => :put,
                                          :unsuspend => :put,
-                                         :activate  => :put, 
+                                         :activate  => :put,
                                          :purge     => :delete,
                                          :reset_password => :put },
                             :collection => { :pending   => :get,
-                                             :active    => :get, 
-                                             :suspended => :get, 
+                                             :active    => :get,
+                                             :suspended => :get,
                                              :deleted   => :get }
- 
-   
+    admin.resources :dashboard
+    admin.resources :roles
+
   end
- 
- 
+
+
   # Install the default routes as the lowest priority.
   #map.musics  ':section/:subsection/:id', :controller => 'select_options', :action => 'show'
   #map.connect ':section/:subsection/:id', :controller => 'select_options'
