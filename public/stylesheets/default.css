@@ -87,7 +87,7 @@ h3 span {
 	padding: 0em 0em 0em 0em;
 	/*position: absolute;*/
 	background: url(/images/top-bar-12.png) repeat-x;
-	height: 70px;
+	height: 45px;
 }
 #header h1 {
 	float: left;
@@ -252,7 +252,7 @@ h3 span {
 /*------------------------For appointment booking page\------------------*/
 #main-schedules { 
  color: #333;
- width: 36%;
+ width: 34%;
  float: right;
  padding:8px 8px 0px 8px;
  background-color: #b8d3e0;
@@ -262,7 +262,7 @@ h3 span {
 
 #new-booking { 
  float: left;
- width: 61%;
+ width: 62%;
  display: inline;
  padding:8px 8px 0px 8px;
  background-color: #b8d3e0;
@@ -397,19 +397,20 @@ h3 span {
              border:1px solid #d1f0ff;
 }
 
-.listing td {padding: .26em .5em;}
+.listing td {padding: .26em .5em;color: #000;}
  
 .listing tr {padding: .26em .5em .26em;
-             border:1px solid #d1f0ff; }
+             border:1px solid #d1f0ff;
+			 font-size: 11px; }
 .listing{
 	    border-collapse: collapse;
             width: auto;
             border: 1px solid #d1f0ff;
             color: #3a3a3a;
-            padding 0px 10px 0px 10px;
+            padding: 0px 10px 0px 10px;
 }
 .listing a {
-	 color: #007db7;
+	     color: #007db7;
          font-size: 12px;
 }
 

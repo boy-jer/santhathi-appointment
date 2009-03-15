@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title><%= configatron.site_name %></title>
+
+
+  	<%= javascript_include_merged :base %>
+        <%= calendar_date_select_includes %>
+	<%=javascript_include_tag 'facebox', 'jquery-1', 'jquery_corner', 'interface', 'dropdown' %>
+        <%= stylesheet_link_tag 'default','calendar/option2- blue/style', 'facebox', 'dropdown' %>
+
+	<!--[if lte IE 6]>
+		<%= stylesheet_link_tag 'ie6.css', media="screen" %>
+	<![endif]-->
+        <script type="text/javascript">
+           jQuery.noConflict();
+        </script>
+</head>
+
+<body>
+
+<div id="header">
+    <div id="global_links">
+      <%= render :partial => 'shared/global_links' %>
+    </div>
+
+	<!--<h1><%= configatron.site_name %></h1>-->
+	<div id="menu"> <%= render :partial => 'shared/tabs' %> </div>
+
+	<div id="sub-menu"> <%= render :partial => 'shared/pms_sub_tabs' %> </div>
+  </div>
+
+
+
+
+ <%= render :partial => 'shared/layout_body' %>
+ </body>
+</html>

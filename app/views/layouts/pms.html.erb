@@ -10,8 +10,8 @@
 
   	<%= javascript_include_merged :base %>
         <%= calendar_date_select_includes %>
-	<%=javascript_include_tag 'facebox', 'jquery-1', 'jquery_corner', 'interface', 'dropdown' %>
-        <%= stylesheet_link_tag 'default','calendar/option2- blue/style', 'facebox', 'dropdown' %>
+	<%=javascript_include_tag 'facebox', 'jquery-1', 'jquery_corner', 'jquery-ui-1.7.custom.min', 'menu'%>
+    <%= stylesheet_link_tag 'default','calendar/option2- blue/style', 'facebox', 'menu' %>
 
 	<!--[if lte IE 6]>
 		<%= stylesheet_link_tag 'ie6.css', media="screen" %>
@@ -19,24 +19,104 @@
         <script type="text/javascript">
            jQuery.noConflict();
         </script>
+		
+		<style type="text/css">
+	/* COMMON */
+	
+
+	.clear{
+		clear:both;
+		float:none;
+		height:0px;
+	}
+
+	/* NAVIGATION */
+	.navigation{
+		width:15%;
+		height:80%;
+		margin: 5px 5px 0px 5px;
+		border:solid 1px #6394CE;
+		background-color:#ffffff;
+		float:left;
+		vertical-align:bottom;
+		position:relative;
+	}
+	.navPanel{
+		padding:5px;
+		height:60%;
+	}
+
+	/* CONTENT */
+	.content{
+		width:83%;
+		margin: 5px 0px 0px 0px;
+		background-color:#ffffff;
+		
+		vertical-align:top;
+		float:left;
+	}
+	.contentPanel{
+		padding:10px;
+		overflow:auto;
+	}
+	
+</style>
 </head>
 
-<body>
 
-<div id="header">
-    <div id="global_links">
-      <%= render :partial => 'shared/global_links' %>
-    </div>
+ <body onresize="resizeWindow()" onload="resizeWindow()">
+            <div id="global_links">
+               <%= render :partial => 'shared/global_links' %>
+            </div>
+			<div id="header"> <%= render :partial => 'shared/tabs' %> </div>		
+ 		<div class="clear"></div>
+           <div class="navigation" id="navigation">
+            	
+                <div class="navPanel">
+                	<ul id="menu1">
+		<li>
+			<a href="#">Weblog Tools</a>
+			<ul>
+				<li><a href="http://www.pivotx.net/">PivotX</a></li>
 
-	<!--<h1><%= configatron.site_name %></h1>-->
-	<div id="menu"> <%= render :partial => 'shared/tabs' %> </div>
+				<li><a href="http://www.wordpress.org/">WordPress</a></li>
+				<li><a href="http://www.textpattern.com/">Textpattern</a></li>
+				<li><a href="http://typosphere.org/">Typo</a></li>
+			</ul>
+		</li>
+		
+	    <li>
+			<a href="#">Cool Stuff</a>
+			<ul>
 
-	<div id="sub-menu"> <%= render :partial => 'shared/pms_sub_tabs' %> </div>
-  </div>
+				<li><a href="http://www.apple.com/">Apple</a></li>
+				<li><a href="http://www.nikon.com/">Nikon</a></li>
+				<li><a href="http://www.xbox.com/en-US/">XBOX360</a></li>
+				<li><a href="http://www.nintendo.com/">Nintendo</a></li>
+			</ul>
+		</li>
+		<li>
 
+			<a href="#">Search Engines</a>
+			<ul>
+				<li><a href="http://search.yahoo.com/">Yahoo!</a></li>
+				<li><a href="http://www.google.com/">Google</a></li>
+				<li><a href="http://www.ask.com/">Ask.com</a></li>
+				<li><a href="http://www.live.com/?searchonly=true">Live Search</a></li>
 
+			</ul>
+		</li>
+	</ul>
 
-
- <%= render :partial => 'shared/layout_body' %>
- </body>
+                </div>
+               
+            </div>
+            <div class="content" id="content">
+            	
+            	<!--<div class="contentPanel" id="contentPanel">-->
+					<%= render :partial => 'shared/layout_body' %>
+				<!--</div>-->
+            </div>
+            <div class="clear"></div>
+</body>
 </html>
