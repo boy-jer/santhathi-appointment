@@ -7,18 +7,9 @@
 <% form_for(@parameter) do |f| %>
   <%= f.error_messages %>
 
- <table cellpadding="5px" class="form-table">
-  <tr><th><%= f.label :parameter_name %>:</th>
-  <td><%= f.text_field :parameter_name,:class=>"textbox" %></td></tr>
-  <tr><th><%= f.label :value_type %>:</th>
-    <td><%= f.text_field :value_type,:class=>"textbox" %></td></tr>
-<tr><th> <%= f.label :measurement_unit %>:</th>
-   <td> <%= f.text_field :measurement_unit ,:class=>"textbox"%></td></tr>
- <tr><th><%= f.label :description %>:</th>
-<td>    <%= f.text_field :description,:class=>"address" %></td></tr>
-  </table><br/>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <%= f.submit "Update" %>
+  <%= render :partial => 'fields', :locals => {:f => f} %>
+  <br />
+  <%= f.submit "Update" %>
 
 <% end %><br/>
 

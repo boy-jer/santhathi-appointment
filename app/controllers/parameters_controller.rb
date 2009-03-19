@@ -1,7 +1,7 @@
 class ParametersController < ApplicationController
   layout 'laboratory'
   def index
-    @parameters = Parameter.paginate :page => params[:page],:per_page => 10
+    @parameters = Parameter.paginate(:include => :measurement_unit, :page => params[:page],:per_page => 10)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -80,6 +80,16 @@ class ParametersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(parameters_url) }
       format.xml  { head :ok }
+    end
+  end
+
+  def multiple_section
+    respond_to do |format|
+      format.js {
+                 render :update do |page|
+                   page.replace_html 'multiple', :partial => 'multiple_section'
+                 end 
+                }
     end
   end
 end

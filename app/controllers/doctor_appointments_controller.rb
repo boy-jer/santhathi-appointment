@@ -1,5 +1,5 @@
 class DoctorAppointmentsController < ApplicationController
-  layout 'admin'
+  layout 'cms'
   # GET /doctor_appointments
   # GET /doctor_appointments.xml
   def index

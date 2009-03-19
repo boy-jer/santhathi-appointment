@@ -1,0 +1,23 @@
+<div class='continer'>
+  <div class='continer-inner'>
+  <h3>Services</h3>
+
+  <div id="sidetree">
+  <div id="sidetreecontrol"><a href="?#">Collapse All</a> | <a href="?#">Expand All</a></div>
+
+  <ul id="tree">
+     <% for dept in @departments %>
+       <li><a href="#"><strong><%= dept.dept_name %></strong></a> 
+          <ul> 
+               <%= render :partial => 'service', :collection => dept.services.find_all_by_parent_id(nil) %> 
+          </ul>
+       </li>
+     <%end%>
+  </ul>
+	
+  </div>
+
+  </div>
+
+  </div>
+</div>

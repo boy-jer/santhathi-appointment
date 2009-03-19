@@ -29,6 +29,14 @@ input.textbox{
 	width:150px;
 }
 
+input.textbox-small{
+	border:#7D99B2 1px solid;
+	background:#ffffff url(/images/field-top.gif) repeat-x top;
+	padding:2px 2px;
+
+	width:60px;
+}
+
 input.address{
 	border:#7D99B2 1px solid;
 	background:#ffffff url(/images/field-top.gif) repeat-x top;
@@ -255,7 +263,7 @@ h3 span {
  width: 34%;
  float: right;
  padding:8px 8px 0px 8px;
- background-color: #b8d3e0;
+ background-color: #7ED1F8;
  height: 430px;
  border: #ddd 1px solid;
 }
@@ -265,7 +273,7 @@ h3 span {
  width: 62%;
  display: inline;
  padding:8px 8px 0px 8px;
- background-color: #b8d3e0;
+ background-color: #7ED1F8;
  border: #ddd 1px solid;
  height: 430px;
 }
@@ -288,18 +296,18 @@ h3 span {
  	   background: #000;	
 }
 
-.continer {background: #80C6E7;
+.continer {background: #7ED1F8;
            height: 430px;
            padding: 7px 7px 0px 7px;}
 
 .continer-inner {background: #ffffff;
                  height: 414px;
                  padding: 10px 5px 0px 10px;
-                 /*overflow: auto;*/
                 }
 
+.scrollable { height: 73%; overflow: auto; }
 
-.continer-show{ background: #8DD8E2;
+.continer-show{ background: #7ED1F8;
            height: 320px;
            padding:  7px 7px 0px 7px;}
 
@@ -388,6 +396,7 @@ h3 span {
 
 /*-----------------For table alternate row color ---------------------------*/
 .even {background: #F3F3F3;}
+
 /*.odd {background: #b8d3e0;}*/
 
 .listing tr:hover {background-color: #f2f7f9; color: #000;} /*not for IE*/
@@ -397,9 +406,9 @@ h3 span {
              border:1px solid #d1f0ff;
 }
 
-.listing td {padding: .26em .5em;color: #000;}
+.listing td {padding: .3em .6em .3em;color: #000;}
  
-.listing tr {padding: .26em .5em .26em;
+.listing tr {padding: ..3em .5em ..3em;
              border:1px solid #d1f0ff;
 			 font-size: 11px; }
 .listing{
@@ -411,7 +420,7 @@ h3 span {
 }
 .listing a {
 	     color: #007db7;
-         font-size: 12px;
+            font-size: 11px;
 }
 
 #patients tr:hover {background-color: #c7dfea; color: #ffffff;} /*not for IE*/

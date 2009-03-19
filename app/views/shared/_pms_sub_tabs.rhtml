@@ -1,24 +1,37 @@
-<%if params[:controller] == 'appointments' %>
-  <dl class="dropdown">
-    <dt id="one-ddheader", onmouseover="ddMenu('one',1)" onmouseout="ddMenu('one',-1)">Transact</dt>
-    <dd id="one-ddcontent", onmouseover="cancelHide('one')" onmouseout="ddMenu('one',-1)">
+<ul id="menu1">
+   <li>
+      <a href="#">Transact</a>
       <ul>
         <li><%= link_to "Departments", departments_url %></li>
         <li><%= link_to "Doctors", doctors_path %></li>
-        <li><%= link_to "Appointments", appointments_url %></li>
+        <li class="<%= "current" if request.request_uri =~ Regexp.new(appointments_path) %>"><%= link_to "Appointments", appointments_url%></li>
+
         <li><%= link_to "New Appointment", new_appointment_url %></li>
         <li><%= link_to "Patients", patients_url %></li>
         <li><%= link_to "Reasons", select_options_url(:type => 'Reason') %></li>
-      </ul>
-     </dd>
-  </dl>
-<% else %>
-    <dl class="dropdown">
-      <dt id="one-ddheader", onmouseover="ddMenu('one',1)" onmouseout="ddMenu('one',-1)">Transact</dt>
-      <dd id="one-ddcontent", onmouseover="cancelHide('one')" onmouseout="ddMenu('one',-1)">
-        <ul>
+     </ul>
+   </li>
+		
+	    <li>
+			<a href="#">Masters</a>
+			<ul>
 
-        </ul>
-       </dd>
-     </dl>
-<% end %>
+				<li><a href="http://www.apple.com/">Apple</a></li>
+				<li><a href="http://www.nikon.com/">Nikon</a></li>
+				<li><a href="http://www.xbox.com/en-US/">XBOX360</a></li>
+				<li><a href="http://www.nintendo.com/">Nintendo</a></li>
+			</ul>
+		</li>
+		<li>
+
+			<a href="#">Reports</a>
+			<ul>
+				<li><a href="http://search.yahoo.com/">Yahoo!</a></li>
+				<li><a href="http://www.google.com/">Google</a></li>
+				<li><a href="http://www.ask.com/">Ask.com</a></li>
+				<li><a href="http://www.live.com/?searchonly=true">Live Search</a></li>
+
+			</ul>
+		</li>
+	</ul>
+

@@ -1,5 +1,6 @@
 
 <div class='continer'>
+  <div class='continer-inner'>   
   <h3>Appointment list: <span></span> </h3>
   <% form_tag(doctor_appointments_url, :method => :get, :id => "search_form") do %>
     
@@ -28,9 +29,11 @@
               :border => 0,
               :id => "spinner",
               :style =>"display: none;" ) %>
-  <div id='appointment_list'>
-    <%= render :partial => 'appointment_list' %>
+  <div class='scrollable'>
+    <div id='appointment_list'>
+      <%= render :partial => 'appointment_list' %>
+    </div>
+    <br />
   </div>
-  <br />
-
+  </div>
 </div>

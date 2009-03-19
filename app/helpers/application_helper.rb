@@ -31,7 +31,8 @@ module ApplicationHelper
     if all_options.is_a?(Array)
       all_options.each do |o|
         if url_for(o.merge({:only_path => false})) == current_url
-          html_options = {:class => "current"}
+          #html_options = {:class => "current"}
+          name = "<span class = 'current'> #{name} </span>" 
           break
         end
       end
@@ -68,6 +69,10 @@ module ApplicationHelper
 
   def genders
      return [['Male', 'm'], ['Female', 'f']]
+  end
+
+  def value_types
+     return [['Select value type', ''], 'Numeric', 'Text', 'Boolean(+, -)', 'Multiple', 'Header', 'Comments']
   end
 
  def appointments(doctor, date = nil)

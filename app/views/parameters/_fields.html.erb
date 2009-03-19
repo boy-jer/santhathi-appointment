@@ -1,0 +1,16 @@
+<table class="form-table">
+      <tr><th><%= f.label :parameter_name %>:</th><td>
+      <%= f.text_field :parameter_name,:class=>"textbox" %></td></tr>
+
+      <tr><th><%= f.label :value_type %>:</th>
+      <td> <%= f.select :value_type, value_types, :class=>"textbox" %></td></tr>
+
+      <tr><th><%= f.label :measurement_unit %>:</th>
+      <td><%= f.select :measurement_unit_id, [['Select UOM', '']] + MeasurementUnit.mesurement_units %></td></tr>
+
+      <tr><th><%= f.label :description %>:</th>
+      <td><%= f.text_field :description,:class=>"address" %></td></tr>
+
+      <div id='multiple'></div>
+       
+</table>

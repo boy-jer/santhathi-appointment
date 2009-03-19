@@ -4,12 +4,14 @@
 
 <div id="new-department">
   <table cellpadding="5px" class="form-table">
-     <tr> <th><%= f.label :department %>:</th> <td><%= select :departament, :id, [['Select department' , '']] + Department.departments_for_select_list %></td> </tr>
-     <tr><th><label>Doctor:</label></th><td><div id="doctors"><%=render :partial => 'doctors_list', :locals => {:f => f, :doctors => doctors_list} %></div></td> </tr>
+     <tr> <th><%= f.label :department %>:</th> 
+     <td><%= select :departament, :id, [['Select department' , '']] + Department.departments_for_select_list %></td> </tr>
+
+     <tr><th><label>Doctor:</label></th><td>
+     <div id="doctors"><%=render :partial => 'doctors_list', :locals => {:f => f, :doctors => doctors_list} %></div></td> </tr>
 
      <tr> <th> <%= f.label :appointment_time %>:</th>
-          <td><%= f.select :hour, hours, :selected => (@hour || 9) %> <%= f.select :minute, minutes, :selected => (@minute || 30) %></td>
-     </tr>
+          <td><%= f.select :hour, hours, :selected => (@hour || 9) %> <%= f.select :minute, minutes, :selected => (@minute || 30) %></td></tr>
 
      <tr> <th><%= f.label :reason %>:</th> <td><%= f.select :reason_id, [['Select reason' , '']] + Reason.select_list %></td> </tr>
 
