@@ -1,14 +1,14 @@
-<h1>Editing doctor</h1>
+<div class='continer'>
+<h2>New doctor</h2>
 
-<% form_for :doctor,:url=>doctor_path(@doctor),:html=>{:method=>:put} do |f| %>
+<% form_for :doctor,:url=>doctors_path do |f| %>
   <%= f.error_messages %>
-
- <table>
+  <table>
     <tr><td> <%= f.label :department_id %></td></tr>
     <tr><td> <%= f.select :department_id, [['Select department' , '']] + Department.departments_for_select_list %></td></tr>
   
-    <tr><td><%= f.label :name %></td></tr>
-    <tr><td><%= f.text_field :name, {:class => 'textbox'} %></td></tr>
+    <tr><td><%= f.label :doctor_name %></td></tr>
+    <tr><td><%= f.text_field :doctor_name, {:class => 'textbox'} %></td></tr>
   
     <tr><td> <%= f.label :designation %></td></tr>
     <tr><td><%= f.text_field :designation,  {:class => 'textbox'} %></td></tr>
@@ -25,9 +25,9 @@
     <tr><td>  <%= f.text_field :comments, {:class => 'textbox'} %></td> </tr>
   </table>
   <p>
-    <%= f.submit "Update" %>
+    <%= f.submit "Create" %>
   </p>
 <% end %>
 
-<%= link_to 'Show', doctor_path(@doctor) %> |
 <%= link_to 'Back', doctors_path %>
+</div>

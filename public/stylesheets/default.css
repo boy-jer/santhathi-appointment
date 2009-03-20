@@ -11,6 +11,8 @@ body {
 	font-size: 0.8em;
 	min-width: 900px;
 }
+
+
 a:link, a:visited {
 	color: #0054ff;
 }
@@ -48,7 +50,7 @@ input.address{
 input:focus, textarea:focus{
 	background:#fff url(/images/field-top.gif) repeat-x top;
 	border:#34718e 1px solid;
-}
+}text-align: center;
 
 label {
 	font-weight: bold;
@@ -95,7 +97,7 @@ h3 span {
 	padding: 0em 0em 0em 0em;
 	/*position: absolute;*/
 	background: url(/images/top-bar-12.png) repeat-x;
-	height: 45px;
+	height: 50px;
 }
 #header h1 {
 	float: left;
@@ -262,7 +264,7 @@ h3 span {
  color: #333;
  width: 34%;
  float: right;
- padding:8px 8px 0px 8px;
+ padding:4px 4px 0px 4px;
  background-color: #7ED1F8;
  height: 430px;
  border: #ddd 1px solid;
@@ -272,7 +274,7 @@ h3 span {
  float: left;
  width: 62%;
  display: inline;
- padding:8px 8px 0px 8px;
+ padding:4px 4px 0px 4px;
  background-color: #7ED1F8;
  border: #ddd 1px solid;
  height: 430px;
@@ -280,13 +282,13 @@ h3 span {
 
 #new-booking-inner { 
  background-color: #ffffff;
- height: 422px;
+ height: 426px;
  padding: 0px 5px 0px 10px
 }
 
 #main-schedules-inner { 
  background-color: #ffffff;
- height: 422px;
+ height: 426px;
  padding: 0px 5px 0px 10px
 }
 
@@ -298,10 +300,10 @@ h3 span {
 
 .continer {background: #7ED1F8;
            height: 430px;
-           padding: 7px 7px 0px 7px;}
+           padding: 4px 4px 0px 4px;}
 
 .continer-inner {background: #ffffff;
-                 height: 414px;
+                 height: 416px;
                  padding: 10px 5px 0px 10px;
                 }
 
@@ -335,7 +337,7 @@ h3 span {
 /* ---------------------tables --------------------*/
 .time-slots{
 	    border-collapse: collapse;
-            width: auto;
+            width: 95%;
             border: 1px solid #c6c8c9;
 }
 
@@ -348,9 +350,10 @@ h3 span {
 
 .time-slots th {
 	padding: 0em 1.2em;
-        background-color: #e9f0f3; 
+        background-color: #fbfbfb; 
         color: #557685;
         font-size: 12px;
+        border: 1px solid #f1f1f1;
 }
 
 .time-slots tr.d0 td {
@@ -371,6 +374,62 @@ h3 span {
 
 .time-slots tr td.available a:hover {
 	 color:#6481b5;
+}
+
+.time-slots tr.appointment1 td {
+	background-color: #eed4b5;
+        margin:0px;
+        padding: 1px 0px 1px 0px;
+        line-height: normal;
+}
+.time-slots tr.appointment2 td {
+	background-color: #e2cdee;
+        margin:0px;
+        padding: 1px 0px 1px 0px;
+        line-height: normal;
+}
+.time-slots tr.appointment3 td {
+	background-color: #cdeecd;
+        margin:0px;
+        padding: 1px 0px 1px 0px;
+        line-height: normal;
+}
+.time-slots tr.appointment4 td {
+	background-color: #ebadb0;
+        margin:0px;
+        padding: 1px 0px 1px 0px;
+        line-height: normal;
+}
+.time-slots tr.appointment5 td {
+	background-color: #d8e9f3;
+        margin:0px;
+        padding: 1px 0px 1px 0px;
+        line-height: normal;
+}
+.time-slots tr.appointment6 td {
+	background-color: #e5ff88;
+        margin:0px;
+        padding: 1px 0px 1px 0px;
+        line-height: normal;
+}
+.time-slots tr.appointment7 td {
+	background-color: #f6adcf;
+        margin:0px;
+        padding: 1px 0px 1px 0px;
+        line-height: normal;
+}
+.time-slots tr.appointment8 td {
+	background-color: #d2d2d2;
+        margin:0px;
+        padding: 1px 0px 1px 0px;
+        line-height: normal;
+}
+
+.time-slots tr.appointment9 td {
+	background-color: #b3e5fd;
+        margin:0px;
+        padding: 1px 0px 1px 0px;
+        line-height: normal;
 }
 
 
@@ -395,26 +454,27 @@ h3 span {
 
 
 /*-----------------For table alternate row color ---------------------------*/
-.even {background: #F3F3F3;}
+.even {background: #FaFaFa;}
 
 /*.odd {background: #b8d3e0;}*/
 
 .listing tr:hover {background-color: #f2f7f9; color: #000;} /*not for IE*/
-.listing th {background-color: #f8f8f8;
-             color: #888888;
-             padding: 0.1em .5em;
-             border:1px solid #d1f0ff;
+.listing th {background-color: #f3f3f3;
+             color: #4E6A78;
+             text-align: left;
+             padding: 0.3em .5em;
+             border:1px solid #e8ebec;
 }
 
-.listing td {padding: .3em .6em .3em;color: #000;}
+.listing td {padding: .4em .6em .3em; color: #000;}
  
 .listing tr {padding: ..3em .5em ..3em;
-             border:1px solid #d1f0ff;
+             border:1px solid #e8ebec;
 			 font-size: 11px; }
 .listing{
 	    border-collapse: collapse;
-            width: auto;
-            border: 1px solid #d1f0ff;
+            width: 100%;
+            border: 1px solid #e8ebec;
             color: #3a3a3a;
             padding: 0px 10px 0px 10px;
 }
@@ -444,37 +504,25 @@ h3 span {
 
 .form-table tr:hover {background-color: #ffffff; color: #858b8e;} /*not for IE*/
 
-.form-table th {background-color: #fdfdfd;
-                color: #667987;
-                padding: 0.1em .8em;
-                border:1px solid #e8ebec;
-                text-align: left;}
+.form-table th {background-color: #ffffff; color: #667987; padding: 0.1em .8em; border:1px solid #e8ebec; text-align: left;}
 
-.form-table td {background-color: #fefefe;
-                padding: 0.3em .8em;
-                border:1px solid #e8ebec;}
+.form-table td {background-color: #Ffffff; padding: 0.2em .8em; border:1px solid #e8ebec;}
 
-.form-table {border-collapse: collapse;
-             width: auto;
-             border: 1px solid #e8ebec;
-}
+.form-table {border-collapse: collapse; width: auto; border: 1px solid #e8ebec; }
+
+.search-table tr:hover {background-color: #ffffff; color: #858b8e;} /*not for IE*/
+
+.search-table th {background-color: #fff; color: #667987; padding: 0.1em 1em; border:1px solid #e8ebec; text-align: left; }
+
+.search-table td {background-color: #F3F3F3; padding: 0.2em .8em; border:1px solid #e8ebec; text-align: center;}
+
+.search-table {border-collapse: collapse; width: auto; border: 1px solid #e8ebec; }
 
 /* Menu */
 
-#menu {
-	float: left;
-	padding: 0;
-	margin: 0px 0px 0px 10px;
-	list-style: none;
+#menu { float: left; padding: 0; margin: 0px 0px 0px 10px; list-style: none; }
 
-
-}
-#menu ul{
-	margin:0;
-	padding:0px 0px 0px 0px;
-	list-style:none;
-
-}
+#menu ul{margin:0; padding:0px 0px 0px 0px; list-style:none; }
 
  
 #menu li {
@@ -613,9 +661,8 @@ hr {
  	width: 20%;
  	padding:5px 5px 0px 8px;
         float:left;
- 		.continer {background: #fbfbfb;
-           height: 420px;
-           padding: 5px 0px 0px 5px;}
+
+
 }
 #new-department {
 	float: left;
@@ -658,7 +705,7 @@ hr {
 
 a.button {
     background: transparent url('/images/bg_button_a.gif') no-repeat scroll top right;
-    color: #4b85a0;
+    color: #007db7;
     display: block;
     float: left;
     font-size: 11px;

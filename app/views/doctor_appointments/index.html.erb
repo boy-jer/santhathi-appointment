@@ -1,10 +1,9 @@
 
 <div class='continer'>
   <div class='continer-inner'>   
-  <h3>Appointment list: <span></span> </h3>
-  <% form_tag(doctor_appointments_url, :method => :get, :id => "search_form") do %>
+    <% form_tag(doctor_appointments_url, :method => :get, :id => "search_form") do %>
     
-     <table class="form-table">
+     <table class="search-table">
         <tr>
             <th><%=label_tag 'Doctor:'%></th> <th><%=label_tag 'Appointment date:'%></th>
             <th><%=label_tag 'Appointments:'%></th> <th><%=label_tag 'Time slots:'%></th>
@@ -15,8 +14,9 @@
             <td><%= radio_button_tag ('filter', '2', checked = false) %></td>
 	</tr>
      </table>
-  <% end %>	
-	 
+  <% end %><br />
+  <%= render :partial => 'reason_display' %>
+  <br />	 
   <%= observe_form("search_form", :frequency => 1,
                  :before => "Element.show('spinner')",
                  :success => "Element.hide('spinner')",

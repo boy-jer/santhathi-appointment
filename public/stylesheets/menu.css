@@ -9,11 +9,11 @@
 
 	/* NAVIGATION */
 	.navigation{
-		width:11.3%;
-		height:80%;
+		width:13.5%;
+		height: 425px;
 		margin: 5px 5px 0px 5px;
 		border:solid 2px #80C6E7;
-		background-color:#ffffff;
+		background-color:#fdfdfd;
 		float:left;
 		vertical-align:bottom;
 		position:relative;
@@ -25,7 +25,7 @@
 
 	/* CONTENT */
 	.content{
-		width:85%;
+		width:84%;
 		margin: 5px 0px 0px 0px;
 		background-color:#ffffff;
 		
@@ -43,7 +43,7 @@ ul#menu1, ul#menu1 ul {
   list-style-type:none;
   margin: 0;
   padding: 0;
-  width: 12em;
+  width: 100%;
 }
 
 ul#menu1 a {
@@ -66,15 +66,14 @@ ul#menu1 li a:hover {
 }
 
 ul#menu1 li ul li a {
-  background: #effaff;
+  background: #fff;
   color: #000;
   padding-left: 20px;
 }
 
 ul#menu1 li ul li a:hover {
   background: #effaff;
-  border-left: 5px #000 solid;
-  padding-left: 15px;
+  padding-left: 20px;
 }
 
 .code { border: 1px solid #ccc; list-style-type: decimal-leading-zero; padding: 5px; margin: 0; }

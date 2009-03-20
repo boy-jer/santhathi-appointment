@@ -14,7 +14,7 @@
 
 <% for doctor in @doctors %>
   <tr>
-    <td><%=h doctor.department.dept_name %></td>
+    <td><%=h doctor.department.name %></td>
     <td><%=h doctor.name %></td>
     <td><%=h doctor.designation %></td>
     <td><%=h doctor.medical_id %></td>

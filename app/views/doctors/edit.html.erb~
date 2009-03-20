@@ -1,0 +1,40 @@
+<h1>Editing doctor</h1>
+
+<% form_for :doctor,:url=>doctor_path(@doctor),:html=>{:method=>:put} do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :department_id %><br />
+    <%= f.text_field :department_id %>
+  </p>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :designation %><br />
+    <%= f.text_field :designation %>
+  </p>
+  <p>
+    <%= f.label :medical_id %><br />
+    <%= f.text_field :medical_id %>
+  </p>
+  <p>
+    <%= f.label :working_from %><br />
+    <%= f.datetime_select :working_from %>
+  </p>
+  <p>
+    <%= f.label :working_to %><br />
+    <%= f.datetime_select :working_to %>
+  </p>
+  <p>
+    <%= f.label :comments %><br />
+    <%= f.text_field :comments %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', doctor_path(@doctor) %> |
+<%= link_to 'Back', doctors_path %>
