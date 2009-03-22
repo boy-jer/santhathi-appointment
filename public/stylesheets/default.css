@@ -266,7 +266,7 @@ h3 span {
  float: right;
  padding:4px 4px 0px 4px;
  background-color: #7ED1F8;
- height: 430px;
+ height: 440px;
  border: #ddd 1px solid;
 }
 
@@ -277,18 +277,18 @@ h3 span {
  padding:4px 4px 0px 4px;
  background-color: #7ED1F8;
  border: #ddd 1px solid;
- height: 430px;
+ height: 440px;
 }
 
 #new-booking-inner { 
  background-color: #ffffff;
- height: 426px;
+ height: 436px;
  padding: 0px 5px 0px 10px
 }
 
 #main-schedules-inner { 
  background-color: #ffffff;
- height: 426px;
+ height: 436px;
  padding: 0px 5px 0px 10px
 }
 
@@ -299,11 +299,11 @@ h3 span {
 }
 
 .continer {background: #7ED1F8;
-           height: 430px;
+           height: 460px;
            padding: 4px 4px 0px 4px;}
 
 .continer-inner {background: #ffffff;
-                 height: 416px;
+                 height: 446px;
                  padding: 10px 5px 0px 10px;
                 }
 
