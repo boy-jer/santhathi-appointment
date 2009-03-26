@@ -3,8 +3,9 @@
   <h3>Services</h3>
 
   <div id="sidetree">
-  <div id="sidetreecontrol"><a href="?#">Collapse All</a> | <a href="?#">Expand All</a></div>
-
+  <table><tr><td><div id="sidetreecontrol"><a href="?#">Collapse All</a> | <a href="?#">Expand All</a> </div></td>
+   <td> <%= link_to "<span>New Service</span>", new_service_path, :method => :get , :class=> "button"%></td></tr></table>
+  <br />
   <ul id="tree">
      <% for dept in @departments %>
        <li><a href="#"><strong><%= dept.dept_name %></strong></a> 

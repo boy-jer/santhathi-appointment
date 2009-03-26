@@ -1,0 +1,35 @@
+<%unless @appointments.blank?%>
+<%form_tag clinical_screen_doctor_patients_path do%>
+<table class="listing">
+      <thead>
+      <tr>
+        <th></th>
+        <th>Reg No.</th>
+        <th>Patient Name</th>
+        <th>PVR No.</th>
+        <th>Doctor</th>
+        <th>Department</th>
+        <th>Reason For Visit</th>
+        <th>Visit Type</th>
+      </tr> 
+       
+    <%for appointment in @appointments %>
+    <tr id = <%=row_class(appointment.state)  %>>
+      
+         <td><%= check_box_tag("appointment", appointment.id, false,:id=>appointment.id)%></td>
+         <td><%=h appointment.patient.reg_no%></td>
+         <td><%=h appointment.patient.patient_name%></td>
+         <td><%=h appointment.id%></td>
+         <td><%=h appointment.doctor.name %></td>
+         <td><%=h appointment.doctor.department.dept_name%></td>
+         <td><%=h appointment.reason.name%></td>
+         <td><%= link_to 'Previous Appointments', patient_patient_appointments_url(appointment.patient), :rel=> "facebox" %></td>
+       </tr>
+     <%end%>
+    </table><br/>   
+    <%=submit_tag "Recommended For Discharge", :value=>"Recommended For Discharge",:name=>"commit"%>
+    <%=submit_tag "Clinical Screen",:value=>"Clinical Screen",:name=>"commit"%>
+   <br/>
+  <%end%> 
+ <%end%> 
+ 

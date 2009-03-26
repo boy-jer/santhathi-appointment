@@ -1,0 +1,18 @@
+<% form_tag(doctor_patients_url, :method => :get, :id => "search_form") do %>
+   <table class="search-table">
+     <tr>
+       <th><%=label_tag 'Doctor:'%></th> <th><%=label_tag 'Appointment date:'%></th>
+       <th><%=label_tag 'Patient name:'%></th> <th><%=label_tag 'Registration No:'%></th>
+     </tr>
+     <tr><td><%= select :doctor, :id, [['Select doctor' , '']] + Doctor.doctors_list %></td>
+         <td><%= calendar_date_select_tag "date", '' , :class =>'textbox' %></td>
+         <td><%= text_field_tag ('pname', '', :class => 'textbox') %></td>
+         <td><%= text_field_tag ('rnum', '', :class => 'textbox') %></td>
+	 </tr>
+  </table>
+<% end %>
+
+<%= observe_form("search_form", :frequency => 1,
+                 :before => "Element.show('spinner')",
+                 :success => "Element.hide('spinner')",
+                 :url => appointments_url, :method => :get) %>

@@ -2,24 +2,19 @@
    <li>
       <a href="#">Transact</a>
       <ul>
-        <li><%= link_to "Departments", departments_url %></li>
-        <li><%= link_to "Doctors", doctors_path %></li>
+       
         <li class="<%= "current" if request.request_uri =~ Regexp.new(appointments_path) %>"><%= link_to "Appointments", appointments_url%></li>
-
-        <li><%= link_to "New Appointment", new_appointment_url %></li>
         <li><%= link_to "Patients", patients_url %></li>
-        <li><%= link_to "Reasons", select_options_url(:type => 'Reason') %></li>
-     </ul>
+        <li><%= link_to "New Appointment", new_appointment_url %></li>
+      </ul>
    </li>
 		
 	    <li>
 			<a href="#">Masters</a>
 			<ul>
-
-				<li><a href="http://www.apple.com/">Apple</a></li>
-				<li><a href="http://www.nikon.com/">Nikon</a></li>
-				<li><a href="http://www.xbox.com/en-US/">XBOX360</a></li>
-				<li><a href="http://www.nintendo.com/">Nintendo</a></li>
+			    <li><%= link_to "Departments", departments_url %></li>
+                <li><%= link_to "Doctors", doctors_path %></li>
+				<li><%= link_to "Reasons", select_options_url(:type => 'Reason') %></li>
 			</ul>
 		</li>
 		<li>

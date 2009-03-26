@@ -7,8 +7,8 @@
     <tr><td> <%= f.label :department_id %></td></tr>
     <tr><td> <%= f.select :department_id, [['Select department' , '']] + Department.departments_for_select_list %></td></tr>
   
-    <tr><td><%= f.label :doctor_name %></td></tr>
-    <tr><td><%= f.text_field :doctor_name, {:class => 'textbox'} %></td></tr>
+    <tr><td><%= f.label :name %></td></tr>
+    <tr><td><%= f.text_field :name, {:class => 'textbox'} %></td></tr>
   
     <tr><td> <%= f.label :designation %></td></tr>
     <tr><td><%= f.text_field :designation,  {:class => 'textbox'} %></td></tr>

@@ -40,7 +40,7 @@ iframe.ie6_blocker {
 
 
 .calendar_date_select .cds_header {
-  background-color: #e3f6ff;
+  background-color: #efefef;
   border-bottom: 1px solid #55ABD5;
   text-align:center;
 }
@@ -100,7 +100,7 @@ iframe.ie6_blocker {
   border-right:1px solid #e3f6ff;
 }
 .calendar_date_select td.weekend {
-  background-color: #c3ecff;
+  background-color: #f3fbff;
   border-left:1px solid #e3f6ff;
   border-right:1px solid #e3f6ff;
 }

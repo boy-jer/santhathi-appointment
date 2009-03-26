@@ -97,7 +97,7 @@ h3 span {
 	padding: 0em 0em 0em 0em;
 	/*position: absolute;*/
 	background: url(/images/top-bar-12.png) repeat-x;
-	height: 50px;
+	height: 45px;
 }
 #header h1 {
 	float: left;
@@ -265,8 +265,8 @@ h3 span {
  width: 34%;
  float: right;
  padding:4px 4px 0px 4px;
- background-color: #7ED1F8;
- height: 440px;
+ background-color: #e5e5e5;
+ height: 460px;
  border: #ddd 1px solid;
 }
 
@@ -275,20 +275,20 @@ h3 span {
  width: 62%;
  display: inline;
  padding:4px 4px 0px 4px;
- background-color: #7ED1F8;
+ background-color: #e5e5e5;
  border: #ddd 1px solid;
- height: 440px;
+ height: 460px;
 }
 
 #new-booking-inner { 
  background-color: #ffffff;
- height: 436px;
+ height: 456px;
  padding: 0px 5px 0px 10px
 }
 
 #main-schedules-inner { 
  background-color: #ffffff;
- height: 436px;
+ height: 456px;
  padding: 0px 5px 0px 10px
 }
 
@@ -298,7 +298,7 @@ h3 span {
  	   background: #000;	
 }
 
-.continer {background: #7ED1F8;
+.continer {background: #e5e5e5;
            height: 460px;
            padding: 4px 4px 0px 4px;}
 
@@ -309,7 +309,7 @@ h3 span {
 
 .scrollable { height: 73%; overflow: auto; }
 
-.continer-show{ background: #7ED1F8;
+.continer-show{ background: #e5e5e5;
            height: 320px;
            padding:  7px 7px 0px 7px;}
 
@@ -506,7 +506,7 @@ h3 span {
 
 .form-table th {background-color: #ffffff; color: #667987; padding: 0.1em .8em; border:1px solid #e8ebec; text-align: left;}
 
-.form-table td {background-color: #Ffffff; padding: 0.2em .8em; border:1px solid #e8ebec;}
+.form-table td {background-color: #Ffffff; padding: 1em .8em; border:1px solid #e8ebec;}
 
 .form-table {border-collapse: collapse; width: auto; border: 1px solid #e8ebec; }
 
@@ -535,12 +535,12 @@ h3 span {
 #menu li a {
 	display: block;
 	float: left;
-	margin:21px 4px 0px 0px;
+	margin:17px 4px 0px 0px;
 	padding: 5px 2px 0px 1px;
 	width:88px;height:20px;
 	text-transform: uppercase;
 	text-decoration: none;
-	font-size: 11px;
+	font-size: 10px;
 	font-weight: bold;
 	color: #015982;
 	text-align:center;
@@ -551,7 +551,7 @@ h3 span {
 #menu li a:hover {
 	display: block;
 	float: left;
-	margin:21px 4px 0px 0px;
+	margin:17px 4px 0px 0px;
 	padding: 5px 2px 0px 1px;
 
 	text-transform: uppercase;
@@ -745,3 +745,14 @@ a.button:hover span {
     padding: 5px 0 5px 18px; /* push text down 1px */
 }
 /*------------------------- links as buttons --------------*/
+
+/*--------------------------clinical-screen----------------*/
+.clinical-table{border-collapse: collapse; width: 100%; border: 1px solid #e8ebec; }
+
+.clinical-table tr:hover{background-color: #ffffff; color: #858b8e; border:1px solid #e8ebec;} /*not for IE*/
+
+.clinical-table th {background-color: #ffffff; color: #667987; padding: 0.1em .8em; border:1px solid #e8ebec; text-align: left;}
+
+.clinical-table td {background-color: #Ffffff; padding: 0.2em .8em; border:1px solid #e8ebec;}
+
+/*--------------------------clinical-screen----------------*/

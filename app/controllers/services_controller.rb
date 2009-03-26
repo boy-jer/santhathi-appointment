@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  layout 'laboratory'
+  layout 'cms'
   def index
     @departments = Department.find(:all)
     @services = Service.find(:all)
@@ -40,6 +40,13 @@ class ServicesController < ApplicationController
       else
         format.html { render :action => "new" }
       end
+    end
+  end
+
+  def child_list
+    @child_list = Department.find(params[:department]).services.find_all_by_parent_id(nil)
+    render :update do |page|
+      page.replace_html 'child_list', :partial => 'child_list', :collection =>@child_list, :as => :service
     end
   end
 

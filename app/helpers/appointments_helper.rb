@@ -7,12 +7,12 @@ module AppointmentsHelper
 
   def doctors_list(dept_id = nil)
     if dept_id.nil?
-      doctors = Doctor.find(:all).collect{|x| [x.name, x.id]}
+      @doctors = Doctor.find(:all).collect{|x| [x.name, x.id]}
     else
-      doctors = Department.find(dept_id).doctors
+      @doctors = Department.find(dept_id).doctors.collect{|x| [x.name, x.id]}
     end
     
-    return doctors
+    return @doctors
   end
   
   def hours

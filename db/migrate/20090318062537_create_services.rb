@@ -8,8 +8,7 @@ class CreateServices < ActiveRecord::Migration
       t.string :follow_up_visit
       t.integer :department_id
       t.integer :parent_id
-      t.boolean :final_level
-
+      t.integer :depth
       t.timestamps
     end
   end

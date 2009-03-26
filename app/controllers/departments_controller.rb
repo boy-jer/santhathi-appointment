@@ -1,5 +1,5 @@
 class DepartmentsController < ApplicationController
-   layout 'admin'
+   layout 'pms'
   # GET /departments
   # GET /departments.xml
   def index

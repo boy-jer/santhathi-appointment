@@ -1,5 +1,5 @@
 class PatientsController < ApplicationController
-  layout 'admin'
+  layout 'pms'
   # GET /patients
   # GET /patients.xml
   def index
@@ -44,10 +44,10 @@ class PatientsController < ApplicationController
   # POST /patients
   # POST /patients.xml
   def create
-    @patient = Patient.new(params[:patient])
-
+    @patient1 = Patient.new(params[:patient1])
+    @patient2 = Patient.new(params[:patient])
     respond_to do |format|
-      if @patient.save
+      if @patient.save && @patient2.save
         flash[:notice] = 'Patient was successfully created.'
         format.html { redirect_to(patients_path) }
         format.xml  { render :xml => @patient, :status => :created, :location => @patient }
@@ -61,16 +61,17 @@ class PatientsController < ApplicationController
   # PUT /patients/1
   # PUT /patients/1.xml
   def update
-    @patient = Patient.find(params[:id])
+    @patient1 = Patient.find(params[:id])
+    @patient2 = @patient1.spouse.blank? ? Patient.new(params[:patient]) : Patient.find(@patient1.spouse)
 
     respond_to do |format|
-      if @patient.update_attributes(params[:patient])
+      if @patient1.update_attributes(params[:patient1]) && @patient2.update_attributes(params[:patient])
         flash[:notice] = 'Patient was successfully updated.'
         format.html { redirect_to(patients_path) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @patient.errors, :status => :unprocessable_entity }
+        format.html { render :action => "edit", :type => params[:type] }
+        format.xml  { render :xml => @patient1.errors, :status => :unprocessable_entity }
       end
     end
   end

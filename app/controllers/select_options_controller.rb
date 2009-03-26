@@ -1,5 +1,5 @@
 class SelectOptionsController < ApplicationController
- layout 'admin'
+ layout 'pms'
 
   def index
     @options = params[:type].constantize.find(:all)

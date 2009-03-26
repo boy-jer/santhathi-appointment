@@ -5,12 +5,16 @@
 <div id="new-department">
   <table cellpadding="5px" class="form-table">
      <tr> <th><%= f.label :department %>:</th> 
-     <td><%= select :departament, :id, [['Select department' , '']] + Department.departments_for_select_list %></td> </tr>
+     <td><%= select :departament, :id, [['Select department' , '']] + Department.departments_for_select_list %></td> <%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner1",
+              :style =>"display: none;" ) %></tr>
 
      <tr><th><label>Doctor:</label></th><td>
      <div id="doctors"><%=render :partial => 'doctors_list', :locals => {:f => f, :doctors => doctors_list} %></div></td> </tr>
 
-     <tr> <th> <%= f.label :appointment_time %>:</th>
+     <tr><th> <%= f.label :appointment_time %>:</th>
           <td><%= f.select :hour, hours, :selected => (@hour || 9) %> <%= f.select :minute, minutes, :selected => (@minute || 30) %></td></tr>
 
      <tr> <th><%= f.label :reason %>:</th> <td><%= f.select :reason_id, [['Select reason' , '']] + Reason.select_list %></td> </tr>
@@ -38,7 +42,15 @@
                     :url => appointments_url,
                     :method => :get,
                     :with => "'date=' + value+'&doctor=' + $('appointment_doctor_id').value"
-                   ) %></div>
+                   ) %>
+ 
+ <%= observe_field(:departament_id, :frequency => 0.5,
+                    :before => "Element.show('spinner1')",
+                    :success => "Element.hide('spinner1')",
+                    :url => update_doctors_list_appointments_url,
+                    :method => :get,
+                    :with => "'department_id=' + value"
+                   ) %>                  </div>
 
 <div id='new_patient'>
    <% fields_for :patient do |patient| %>

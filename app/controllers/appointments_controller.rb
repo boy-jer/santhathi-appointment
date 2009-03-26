@@ -146,6 +146,20 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
        redirect_to(appointments_path(:page => params[:page]))
     end
   end
+  
+  def update_doctors_list
+    dept_id = params[:department_id]
+    if dept_id.blank?
+      @doctors = Doctor.find(:all).collect{|x| [x.name, x.id]}
+    else
+      @doctors = Department.find(dept_id).doctors.collect{|x| [x.name, x.id]}
+    end
+    
+    render :update do |page|
+      page.replace_html 'doctors', :partial => 'doctors_list', :object => @doctors
+    end
+   
+  end
 
 private
 

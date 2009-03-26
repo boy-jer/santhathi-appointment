@@ -1,0 +1,6 @@
+ <li>
+     <%=radio_button_tag('parent_id', service.id, checked = false, options = {:onclick => "$('main_form').service_parent_id.value=#{service.id};"})%> <%= service.service_name %> 
+      <% unless service.children.empty? %>
+        <ul><%= render :partial => 'child_list', :collection => service.children, :as => :service %></ul>
+      <% end %>  
+ </li> 
