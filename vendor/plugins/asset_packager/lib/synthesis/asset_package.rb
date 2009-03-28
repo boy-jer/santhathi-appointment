@@ -58,6 +58,12 @@ module Synthesis
         source_names.uniq
       end
 
+      def lint_all
+        @@asset_packages_yml.keys.each do |asset_type|
+          @@asset_packages_yml[asset_type].each { |p| self.new(asset_type, p).lint }
+        end
+      end
+
       def build_all
         @@asset_packages_yml.keys.each do |asset_type|
           @@asset_packages_yml[asset_type].each { |p| self.new(asset_type, p).build }
@@ -66,7 +72,7 @@ module Synthesis
 
       def delete_all
         @@asset_packages_yml.keys.each do |asset_type|
-          @@asset_packages_yml[asset_type].each { |p| self.new(asset_type, p).delete_all_builds }
+          @@asset_packages_yml[asset_type].each { |p| self.new(asset_type, p).delete_previous_build }
         end
       end
 
@@ -102,68 +108,59 @@ module Synthesis
       @asset_path = ($asset_base_path ? "#{$asset_base_path}/" : "#{RAILS_ROOT}/public/") +
           "#{@asset_type}#{@target_dir.gsub(/^(.+)$/, '/\1')}"
       @extension = get_extension
-      @match_regex = Regexp.new("\\A#{@target}_\\d+.#{@extension}\\z")
+      @file_name = "#{@target}_packaged.#{@extension}"
+      @full_path = File.join(@asset_path, @file_name)
     end
   
+    def package_exists?
+      File.exists?(@full_path)
+    end
+
     def current_file
-      @target_dir.gsub(/^(.+)$/, '\1/') +
-          Dir.new(@asset_path).entries.delete_if { |x| ! (x =~ @match_regex) }.sort.reverse[0].chomp(".#{@extension}")
+      build unless package_exists?
+
+      path = @target_dir.gsub(/^(.+)$/, '\1/')
+      "#{path}#{@target}_packaged"
     end
 
     def build
-      delete_old_builds
+      delete_previous_build
       create_new_build
     end
-  
-    def delete_old_builds
-      Dir.new(@asset_path).entries.delete_if { |x| ! (x =~ @match_regex) }.each do |x|
-        File.delete("#{@asset_path}/#{x}") unless x.index(revision.to_s)
-      end
-    end
 
-    def delete_all_builds
-      Dir.new(@asset_path).entries.delete_if { |x| ! (x =~ @match_regex) }.each do |x|
-        File.delete("#{@asset_path}/#{x}")
+    def delete_previous_build
+      File.delete(@full_path) if File.exists?(@full_path)
+    end
+    
+    def lint
+      yui_path = "#{RAILS_ROOT}/vendor/plugins/asset_packager/lib"
+      if @asset_type == "javascripts"
+        (@sources - %w(prototype effects dragdrop controls)).each do |s|
+          puts "==================== #{s}.#{@extension} ========================"
+          system("java -jar #{yui_path}/yuicompressor-2.4.2.jar --type js -v #{full_asset_path(s)} >/dev/null")
+        end
       end
     end
 
     private
-      def revision
-        unless @revision
-          revisions = [1]
-          @sources.each do |source|
-            revisions << get_file_revision("#{@asset_path}/#{source}.#{@extension}")
-          end
-          @revision = revisions.max
-        end
-        @revision
-      end
-  
-      def get_file_revision(path)
-        if File.exists?(path)
-          begin
-            `svn info #{path}`[/Last Changed Rev: (.*?)\n/][/(\d+)/].to_i
-          rescue # use filename timestamp if not in subversion
-            File.mtime(path).to_i
-          end
-        else
-          0
-        end
-      end
-
       def create_new_build
-        if File.exists?("#{@asset_path}/#{@target}_#{revision}.#{@extension}")
-          log "Latest version already exists: #{@asset_path}/#{@target}_#{revision}.#{@extension}"
+        new_build_path = "#{@asset_path}/#{@target}_packaged.#{@extension}"
+        if File.exists?(new_build_path)
+          log "Latest version already exists: #{new_build_path}"
         else
-          File.open("#{@asset_path}/#{@target}_#{revision}.#{@extension}", "w") {|f| f.write(compressed_file) }
-          log "Created #{@asset_path}/#{@target}_#{revision}.#{@extension}"
+          File.open(new_build_path, "w") {|f| f.write(compressed_file) }
+          log "Created #{new_build_path}"
         end
+      end
+      
+      def full_asset_path(source)
+        "#{@asset_path}/#{source}.#{@extension}"
       end
 
       def merged_file
         merged_file = ""
         @sources.each {|s| 
-          File.open("#{@asset_path}/#{s}.#{@extension}", "r") { |f| 
+          File.open(full_asset_path(s), "r") { |f| 
             merged_file += f.read + "\n" 
           }
         }
@@ -179,33 +176,55 @@ module Synthesis
 
       def compress_js(source)
         jsmin_path = "#{RAILS_ROOT}/vendor/plugins/asset_packager/lib"
-        tmp_path = "#{RAILS_ROOT}/tmp/#{@target}_#{revision}"
-      
-        # write out to a temp file
-        File.open("#{tmp_path}_uncompressed.js", "w") {|f| f.write(source) }
-      
-        # compress file with JSMin library
-        `ruby #{jsmin_path}/jsmin.rb <#{tmp_path}_uncompressed.js >#{tmp_path}_compressed.js \n`
-
-        # read it back in and trim it
         result = ""
-        File.open("#{tmp_path}_compressed.js", "r") { |f| result += f.read.strip }
-  
-        # delete temp files if they exist
-        File.delete("#{tmp_path}_uncompressed.js") if File.exists?("#{tmp_path}_uncompressed.js")
-        File.delete("#{tmp_path}_compressed.js") if File.exists?("#{tmp_path}_compressed.js")
+        begin
+          # attempt to use YUI compressor
+          IO.popen "java -jar #{jsmin_path}/yuicompressor-2.4.2.jar --type js 2>/dev/null", "r+" do |f|
+            f.write source
+            f.close_write
+            result = f.read
+          end
+          return result if $?.success?
+        rescue
+          # fallback to included ruby compressor
+          tmp_path = "#{RAILS_ROOT}/tmp/#{@target}_packaged"
 
-        result
+          # write out to a temp file
+          File.open("#{tmp_path}_uncompressed.js", "w") {|f| f.write(source) }
+          `ruby #{jsmin_path}/jsmin.rb <#{tmp_path}_uncompressed.js >#{tmp_path}_compressed.js \n`
+
+          # read it back in and trim it
+          result = ""
+          File.open("#{tmp_path}_compressed.js", "r") { |f| result += f.read.strip }
+
+          # delete temp files if they exist
+          File.delete("#{tmp_path}_uncompressed.js") if File.exists?("#{tmp_path}_uncompressed.js")
+          File.delete("#{tmp_path}_compressed.js") if File.exists?("#{tmp_path}_compressed.js")
+
+          return result
+        end
       end
   
       def compress_css(source)
-        source.gsub!(/\s+/, " ")           # collapse space
-        source.gsub!(/\/\*(.*?)\*\/ /, "") # remove comments - caution, might want to remove this if using css hacks
-        source.gsub!(/\} /, "}\n")         # add line breaks
-        source.gsub!(/\n$/, "")            # remove last break
-        source.gsub!(/ \{ /, " {")         # trim inside brackets
-        source.gsub!(/; \}/, "}")          # trim inside brackets
-        source
+        yui_path = "#{RAILS_ROOT}/vendor/plugins/asset_packager/lib"
+        result = ""
+        begin
+          # attempt to use YUI compressor
+          IO.popen "java -jar #{yui_path}/yuicompressor-2.4.2.jar --type css 2>/dev/null", "r+" do |f|
+            f.write source
+            f.close_write
+            result = f.read
+          end
+          return result if $?.success?
+        rescue
+          source.gsub!(/\/\*(.*?)\*\//m, "") # remove comments - caution, might want to remove this if using css hacks
+          source.gsub!(/\s+/, " ")           # collapse space
+          source.gsub!(/\} /, "}\n")         # add line breaks
+          source.gsub!(/\n$/, "")            # remove last break
+          source.gsub!(/ \{ /, " {")         # trim inside brackets
+          source.gsub!(/; \}/, "}")          # trim inside brackets
+          source
+        end
       end
 
       def get_extension

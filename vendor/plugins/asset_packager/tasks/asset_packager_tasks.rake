@@ -19,5 +19,10 @@ namespace :asset do
       Synthesis::AssetPackage.create_yml
     end
     
+    desc "Check Syntax of asset files in asset_packages.yml"
+    task :check do
+      Synthesis::AssetPackage.lint_all
+    end
+    
   end
 end

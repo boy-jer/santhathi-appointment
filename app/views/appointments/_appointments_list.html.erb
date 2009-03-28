@@ -7,21 +7,23 @@
 <table class="listing">
   <thead>
   <tr>
-    <th>No. </th>
+  	<th></th>
+    <th>No</th>
     <th>Date</th>
     <th>Time</th>
     <th>Doctor</th>
-    <th>Patient name</th>
+    <th>Patient</th>
     <th>Reason</th>
     <th>Status</th>
-    <th>Register No</th>
-    <th>Details</th>
-    <th NOWRAP = NOWRAP>Show| Edit | Cancel</th>
+    <th>Reg. No</th>
+    <!--<th>Details</th>-->
+    <th NOWRAP = NOWRAP>View | Edit | Cancel</th>
   </tr>
   </thead>
 <% for appointment in @appointments %>
   <tbody>
   <tr valign="top" class="<%= cycle('odd', 'even') %>">
+  	<td><%=radio_button_tag ('appointment', appointment.id, checked = false, options = {:onclick => "$('main_form').appointment_id.value=#{appointment.id};"})%></td>
     <td><%=h appointment.id %></td>
     <td><%=h appointment.appointment_date %></td>
     <td><%=h Time.parse(appointment.appointment_time.to_s).strftime('%H:%M').to_s %></td>
@@ -33,7 +35,7 @@
 
     <td><%= appointment.patient.reg_no.blank? ? link_to('Register', appointment_url(appointment, :act => 'register'), :rel=> "facebox") : appointment.patient.reg_no%> </td>
       
-    <td><%= link_to 'All appointments', patient_patient_appointments_url(appointment.patient), :rel=> "facebox" %></td>
+    <!--<td><%= link_to 'Appointments', patient_patient_appointments_url(appointment.patient), :rel=> "facebox" %></td> -->
 
     <td NOWRAP = NOWRAP>&nbsp;&nbsp; <%= link_to image_tag('show.png', {:title => 'Show', :border => 0}), appointment_url(appointment), :rel=> "facebox" %> &nbsp;&nbsp;| &nbsp;&nbsp; <%= link_to image_tag('edit.png', {:title => 'Edit', :border => 0}), edit_appointment_path(appointment) %> &nbsp;&nbsp;|&nbsp;&nbsp; <%= link_to image_tag('delete.png', {:title => 'cancel appointment', :border => 0}), appointment_path(appointment), :confirm => 'Are you sure?', :method => :delete %></td> 
     

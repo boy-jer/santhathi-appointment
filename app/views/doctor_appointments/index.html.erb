@@ -15,8 +15,7 @@
 	</tr>
      </table>
   <% end %><br />
-  <%= render :partial => 'reason_display' %>
-  <br />	 
+  <%= render :partial => 'reason_display' %>	 
   <%= observe_form("search_form", :frequency => 1,
                  :before => "Element.show('spinner')",
                  :success => "Element.hide('spinner')",

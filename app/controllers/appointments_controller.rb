@@ -143,7 +143,8 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
     @appointment = Appointment.find(params[:id])
     if @appointment.new_appointment?
        @appointment.mark_visited!
-       redirect_to(appointments_path(:page => params[:page]))
+       page = params[:page].blank? ? 1: params[:page]
+       redirect_to(appointments_path(:page => page))
     end
   end
   

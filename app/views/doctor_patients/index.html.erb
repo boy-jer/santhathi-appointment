@@ -1,6 +1,6 @@
 <div class='continer'>
   <div class='continer-inner'>  
-    <%=render :partial=> '/appointments/filters'%><br />
+    <%=render :partial=> '/appointments/filters'%>
   
   <div>
    <%form_tag discharge_doctor_patients_path, :method=>:post do %>
@@ -8,8 +8,10 @@
      <tr>
        <td>Discharge patients visited on:</td>
        <td><%= calendar_date_select_tag "date", Date.today , :class =>'textbox' %></td>
-       <td><%= submit_tag "Discharge" %></td> <td> &nbsp; </td>
-       <td>Discharge Recommended</td><td id= 'color3'></td> <td> &nbsp; </td>
+       <td><%= submit_tag"Discharge" %></td> <td> &nbsp; </td>
+	</table>
+	<table>   
+       <td>Discharge Recommended</td><td id='color3'></td> <td> &nbsp; </td>
           <td>Prescribed</td><td id= 'color5'></td> <td> &nbsp; </td>
           <td>Visited</td><td id= 'color1'></td> <td> &nbsp; </td></tr>
       </tr> 
