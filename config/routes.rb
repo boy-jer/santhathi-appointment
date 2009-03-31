@@ -44,7 +44,7 @@ ActionController::Routing::Routes.draw do |map|
                                      :edit_avatar => :get,
                                      :update_avatar => :put }
 
-  map.resources :appointments, :member => {:confirm => :get}
+  map.resources :appointments, :member => {:confirm => :get}, :collection => {:update_doctors_list => :get}
   map.resources :patients do |patient|
     patient.resources :patient_appointments, :as => :pappointments
   end

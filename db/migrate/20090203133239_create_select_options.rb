@@ -7,6 +7,8 @@ class CreateSelectOptions < ActiveRecord::Migration
       t.integer :position
       t.string :description
 
+
+
       t.timestamps
     end
   end
