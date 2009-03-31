@@ -1,0 +1,2 @@
+class VisitType < SelectOption
+end
