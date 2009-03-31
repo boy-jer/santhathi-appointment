@@ -4,7 +4,11 @@
       <ul>
         <br />
         <% for department in @departments %>
-           <li><%= link_to "#{department.dept_name} Prescription", new_prescription_url(:department => department.id, :appointment => @appointment.id) , :rel=> "facebox" %></li>
+           <li><%= link_to_remote("#{department.dept_name} Prescription", 
+                                   :before => "Element.show('spinner')",
+                                   :success => "Element.hide('spinner')",
+                                   :url => { :controller => :prescriptions, :action => :new },
+                                   :with => "'department=' + #{department.id} + '&appointment=' + #{@appointment.id}") %></li>
         <% end %>
       </ul>
    </li>

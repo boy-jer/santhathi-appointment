@@ -1,5 +1,10 @@
 class PrescriptionsController < ApplicationController
   layout 'cms'
+  
+  def index
+    
+
+  end
 
   def new
     @prescription = Prescription.new
@@ -9,28 +14,30 @@ class PrescriptionsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.js { render :layout => false }
+      format.js { render :update do |page|
+                    page.replace_html 'clinical-screen', :partial => 'prescriptions/new'
+                  end
+                }
     end 
   end
 
-  # GET /cms/1/edit
-  def edit
-    @cms = Cms.find(params[:id])
-  end
 
-  # POST /cms
-  # POST /cms.xml
   def create
-    @cms = Cms.new(params[:cms])
-
+    @prescription = Prescription.new(params[:prescription])
+    @department = Department.find(params[:prescription][:department_id])
+    @appointment = Appointment.find(params[:prescription][:appointment_id])
+   
     respond_to do |format|
-      if @cms.save
-        flash[:notice] = 'Cms was successfully created.'
-        format.html { redirect_to(@cms) }
-        format.xml  { render :xml => @cms, :status => :created, :location => @cms }
+      if @prescription.save
+        params[:services].map{|service| @prescription.services << Service.find(service)}
+        format.html
+        format.js { render :update do |page|
+                      page.replace_html 'clinical-screen', :partial => 'prescriptions/new'
+                      page.replace_html 'clinical-screen', :partial => 'prescriptions/new'
+                    end
+                  }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @cms.errors, :status => :unprocessable_entity }
+        format.html { redirect_to clinical_screen_doctor_patients_url(:id => @appointment) }
       end
     end
   end

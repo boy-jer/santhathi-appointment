@@ -299,7 +299,7 @@ h3 span {
  	   background: #000;	
 }
 
-.continer {background: #D1CFBF;
+.continer {background: #9CD7F5;
            height: 480px;
            padding: 4px 4px 0px 4px;}
 
@@ -455,7 +455,7 @@ h3 span {
 
 
 /*-----------------For table alternate row color ---------------------------*/
-.even {background: #FaFaFa;}
+.even1 {background: #FaFaFa;}
 
 /*.odd {background: #b8d3e0;}*/
 
@@ -757,3 +757,9 @@ a.button:hover span {
 .clinical-table td {background-color: #Ffffff; padding: 0.2em .8em; border:1px solid #e8ebec;}
 
 /*--------------------------clinical-screen----------------*/
+
+#prescription {
+           height: 100px;
+           overflow: auto;
+          }
+

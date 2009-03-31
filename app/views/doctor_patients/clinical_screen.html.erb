@@ -1,7 +1,5 @@
 <div class='continer'>
   <div class='continer-inner'> 
-  <h3> Clinical screen for <%= @patient.patient_name %> </h3>
-  <%unless @patient.blank?%> 
     <table class="clinical-table">
      <tr><th>Visit Date:</th><td> <%= Date.today %></td>
          <th>Visit Type:</th><td></td>
@@ -22,12 +20,16 @@
        <th></th><td></td></td>
      </tr>
     </table>
-  <%else%>
-   Need To Select Atleast One Record<br/>
-  <%end%>
-  <br />    
-   <%= render :partial => 'clinical_screen_sub_tabs' %>
-       
+    <br />    
+   
+   <div id='clinical-screen'><%= render :partial => 'clinical_screen_sub_tabs' %></div>
+
+   <div id = 'prescription-list'>  </div>
+    <%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner",
+              :style =>"display: none;" ) %>   
   <div>
 </div>  
 
