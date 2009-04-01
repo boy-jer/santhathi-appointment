@@ -9,17 +9,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090330072323) do
+ActiveRecord::Schema.define(:version => 20090331125043) do
 
   create_table "appointments", :force => true do |t|
     t.integer  "doctor_id"
-    t.integer  "reason_id"
     t.integer  "patient_id"
+    t.integer  "reason_id"
     t.date     "appointment_date"
     t.time     "appointment_time"
+    t.string   "state"
+    t.integer  "mode_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "state"
   end
 
   create_table "cms", :force => true do |t|
@@ -60,11 +61,6 @@ ActiveRecord::Schema.define(:version => 20090330072323) do
     t.datetime "updated_at"
   end
 
-  create_table "doctor_appointments", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "doctors", :force => true do |t|
     t.integer  "department_id"
     t.string   "name"
@@ -95,20 +91,19 @@ ActiveRecord::Schema.define(:version => 20090330072323) do
   end
 
   create_table "patients", :force => true do |t|
-    t.string   "hospital_no"
-    t.string   "reg_no"
-    t.string   "reg_type"
-    t.string   "gender"
     t.date     "reg_date"
     t.string   "patient_name"
     t.string   "age"
+    t.string   "reg_no"
     t.date     "dob"
+    t.string   "gender"
     t.string   "spouse_name"
+    t.integer  "spouse"
     t.string   "address"
     t.string   "contact_no"
+    t.string   "reg_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "spouse"
   end
 
   create_table "pharamacy_item_informations", :force => true do |t|
@@ -177,7 +172,7 @@ ActiveRecord::Schema.define(:version => 20090330072323) do
   end
 
   create_table "registration_summaries", :force => true do |t|
-    t.string   "registration_summary"
+    t.string   "name"
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -217,11 +212,10 @@ ActiveRecord::Schema.define(:version => 20090330072323) do
     t.string   "first_visit"
     t.string   "follow_up_visit"
     t.integer  "department_id"
-    t.boolean  "final_level"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.integer  "parent_id"
     t.integer  "depth"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "settings", :force => true do |t|
@@ -230,21 +224,6 @@ ActiveRecord::Schema.define(:version => 20090330072323) do
     t.text     "description"
     t.string   "field_type",  :default => "string"
     t.text     "value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "test_results", :force => true do |t|
-    t.integer "prescription_id"
-    t.integer "service_id"
-    t.string  "result"
-  end
-
-  create_table "time_slots", :force => true do |t|
-    t.datetime "schedule_date"
-    t.time     "start_time"
-    t.integer  "doctor_id"
-    t.integer  "patient_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -268,5 +247,13 @@ ActiveRecord::Schema.define(:version => 20090330072323) do
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
+
+  create_table "vital_signs", :force => true do |t|
+    t.integer  "patient_id"
+    t.integer  "registration_summary_id"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
