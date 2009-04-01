@@ -16,7 +16,7 @@ class VitalSignsController < ApplicationController
 
   def edit
   	   @all_summaries = {}
-      @all_summaries= RegistrationSummary.find(:all).map{|reg|  [reg.id , reg.name]  }
+       @all_summaries= RegistrationSummary.find(:all).map{|reg|  [reg.id , reg.name]  }
        @vital_signs = @patient.vital_signs
   end
 

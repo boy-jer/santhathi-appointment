@@ -1,7 +1,7 @@
 <% form_tag ("/vital_signs/#{@patient.id}", :method => :put) do %>
 <div class='continer'>
  	 <div class='continer-inner'>
-<h3>Editing Vital Sign</h3>
+<h3>Editing Vital Sign</h3><br/>
 	<table cellpadding="5px" class="form-table">
 	  <% for reg_summary in @all_summaries %>
 	    <tr>
@@ -14,7 +14,7 @@
           </tr>
 
 	 <%end%>
-		     </table>
+		     </table><br/>
 	 <%= submit_tag "update" %>
 
 </div>
