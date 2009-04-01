@@ -12,12 +12,13 @@
         <th>Reason</th>
         <th>History</th>
         <th>Clinical Screen</th>
-      </tr> 
-       
+        <th>Vitalsigns</th>
+      </tr>
+
     <%for appointment in @appointments %>
      <tr>
          <td  id = <%=row_class(appointment.state) %>><%= check_box_tag("appointment[]", appointment.id, false,:id=>appointment.id)%></td>
-         <td><%=h appointment.patient.reg_no%></td>
+         <td><%=h appointment.patient.id%></td>
          <td><%=h appointment.patient.patient_name%></td>
          <td><%=h appointment.id%></td>
          <td><%=h appointment.doctor.name %></td>
@@ -25,12 +26,12 @@
          <td><%=h appointment.reason.name%></td>
          <td><%= link_to 'Appointments', patient_patient_appointments_url(appointment.patient), :rel=> "facebox" %></td>
          <td><%= link_to 'Clinical screen', clinical_screen_doctor_patients_url(:id => appointment)%></td>
+         <td><%= link_to 'Vitalsigns', new_vital_sign_url(:patient_id => appointment.patient.id) , :rel=> "facebox"%></td>
        </tr>
      <%end%>
     </table>
     <%=submit_tag "Recommended For Discharge" %>
-    
+
    <br/>
-  <%end%> 
- <%end%> 
- 
+  <%end%>
+ <%end%>

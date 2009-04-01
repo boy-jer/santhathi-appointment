@@ -1,0 +1,18 @@
+<h1>Listing vital_signs</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% for vital_sign in @vital_signs %>
+  <tr>
+    <td><%= link_to 'Show', vital_sign %></td>
+    <td><%= link_to 'Edit', edit_vital_sign_path(vital_sign) %></td>
+    <td><%= link_to 'Destroy', vital_sign, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New vital_sign', new_vital_sign_path %>

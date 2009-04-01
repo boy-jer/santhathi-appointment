@@ -14,7 +14,7 @@
 
 <% for registration_summary in @registration_summaries %>
   <tr>
-    <td><%=h registration_summary.registration_summary %></td>
+    <td><%=h registration_summary.name %></td>
     <td><%=h registration_summary.description %></td>
     <td><%= link_to 'Show', registration_summary , :rel=> "facebox" %></td>
     <td><%= link_to 'Modify', edit_registration_summary_path(registration_summary) %></td>

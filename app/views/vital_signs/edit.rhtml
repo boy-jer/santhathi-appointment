@@ -1,0 +1,22 @@
+<% form_tag ("/vital_signs/#{@patient.id}", :method => :put, :patient_id => @patient.id) do %>
+<div class='continer'>
+ 	 <div class='continer-inner'>
+<h3>Editing Vital Sign</h3>
+	<table cellpadding="5px" class="form-table">
+	  <% for reg_summary in @all_summaries %>
+	    <tr>
+		    <th>
+		        <%= label_tag("#{reg_summary[1]}")%>:</th>
+		        <td>
+  		         <% reg_value = reg_summary(@patient.id,reg_summary[0]) %>
+		           <%= text_field_tag("vital_signs[#{reg_summary[0]}]","#{reg_value}",:class=>"textbox" )%>
+		        </td>
+          </tr>
+
+	 <%end%>
+		     </table>
+	 <%= submit_tag "update" %>
+
+</div>
+   </div>
+   <%end%>
