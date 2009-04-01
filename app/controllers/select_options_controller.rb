@@ -32,4 +32,9 @@ class SelectOptionsController < ApplicationController
     end
   end
 
+  def destroy
+  	select_option = SelectOption.find(params[:id]).destroy
+  	 redirect_to(select_options_path(:type => params[:type]))
+  end
+
 end
