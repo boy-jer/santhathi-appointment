@@ -11,7 +11,8 @@ class PrescriptionsController < ApplicationController
     @department = Department.find(params[:department])
     @appointment = Appointment.find(params[:appointment])
     @child_list = @department.services.find_all_by_parent_id(nil)
-
+    @prescription_list = @appointment.prescriptions
+   
     respond_to do |format|
       format.html
       format.js { render :update do |page|
@@ -26,14 +27,14 @@ class PrescriptionsController < ApplicationController
     @prescription = Prescription.new(params[:prescription])
     @department = Department.find(params[:prescription][:department_id])
     @appointment = Appointment.find(params[:prescription][:appointment_id])
-   
+    @prescription_list = @appointment.prescriptions
+
     respond_to do |format|
       if @prescription.save
-        params[:services].map{|service| @prescription.services << Service.find(service)}
+        params[:services].map{|service| PrescribedTest.create(:prescription_id => @prescription.id, :service_id => service)}
         format.html
         format.js { render :update do |page|
-                      page.replace_html 'clinical-screen', :partial => 'prescriptions/new'
-                      page.replace_html 'clinical-screen', :partial => 'prescriptions/new'
+                      page.replace_html 'clinical-screen', :partial => 'prescriptions/new', :object => @prescription_list
                     end
                   }
       else

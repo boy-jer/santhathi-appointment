@@ -1,5 +1,7 @@
 class Prescription < ActiveRecord::Base
   belongs_to :appointment
   belongs_to :department
-  has_and_belongs_to_many :services
+  has_many :prescribed_tests
+  has_many :services, :through => :prescribed_tests
+
 end

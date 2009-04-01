@@ -759,7 +759,13 @@ a.button:hover span {
 /*--------------------------clinical-screen----------------*/
 
 #prescription {
-           height: 100px;
+           height: 80px;
            overflow: auto;
           }
 
+#prescription-list{
+           padding: 2px 5px 2px 5px;
+           width: 98%;
+           height: 104px;
+           overflow: auto;
+          }

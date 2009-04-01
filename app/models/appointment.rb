@@ -8,6 +8,7 @@ class Appointment < ActiveRecord::Base
   belongs_to :patient
   belongs_to :reason
   #belongs_to :department
+  has_many :prescriptions
   
   aasm_column :state
   aasm_initial_state :new_appointment

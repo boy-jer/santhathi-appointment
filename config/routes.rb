@@ -18,10 +18,11 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :measurement_units
 
+   map.resources :services,  :collection=>{:child_list =>:get}
  # map.resources :roles
 
   map.resources :user_roles
-
+  map.resources :prescriptions
   # RESTful rewrites
 
   map.signup   '/signup',   :controller => 'users',    :action => 'new'
@@ -44,7 +45,7 @@ ActionController::Routing::Routes.draw do |map|
                                      :edit_avatar => :get,
                                      :update_avatar => :put }
 
-  map.resources :appointments, :member => {:confirm => :get}
+  map.resources :appointments, :member => {:confirm => :get},:collection=>{:update_doctors_list =>:get}
   map.resources :patients do |patient|
     patient.resources :patient_appointments, :as => :pappointments
   end
@@ -56,7 +57,7 @@ ActionController::Routing::Routes.draw do |map|
   # Profiles
   map.resources :profiles
   map.resources :doctor_appointments
-
+  map.resources :doctor_patients, :collection => { :discharge => :post,:clinical_screen=>:get }
   map.resources :cms
 
   # Administration
