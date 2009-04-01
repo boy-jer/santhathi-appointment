@@ -1,0 +1,18 @@
+<div class='continer'>
+  <div class='continer-inner'>
+  <h3>Services</h3>
+
+  <div id="sidetree">
+  <table><tr><td><div id="sidetreecontrol"><a href="?#">Collapse All</a> | <a href="?#">Expand All</a> </div></td>
+   <td> <%= link_to "<span>New Service</span>", new_lab_test_path, :method => :get , :class=> "button"%></td></tr></table>
+  <br />
+  <ul id="tree">
+     <%= render :partial => 'service', :collection =>  @child_list %> 
+  </ul>
+	
+  </div>
+
+  </div>
+
+  </div>
+</div>

@@ -63,7 +63,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :doctor_appointments
   map.resources :doctor_patients, :collection => { :discharge => :post,:clinical_screen=>:get }
   map.resources :cms
-
+  map.resources :lab_tests
   # Administration
   map.namespace(:admin) do |admin|
     admin.root :controller => 'admin/dashboard', :action => 'index'

@@ -1,21 +1,22 @@
-class ServicesController < ApplicationController
-  layout 'cms'
+class LabTestsController < ApplicationController
+  layout 'laboratory'
+
   def index
-    @departments = Department.find(:all)
-    @services = Service.find(:all)
+   @tests = LabTest.find(:all)
+   @child_list = LabTest.find_all_by_parent_id(nil)
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @services }
+      format.xml  { render :xml => @tests }
     end
   end
 
   def new
-    @service = Service.new
-
+    @lab_test = LabTest.new
+    @child_list = LabTest.find_all_by_parent_id(nil)
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @service }
+      format.xml  { render :xml => @lab_test }
     end
   end
 
@@ -31,13 +32,13 @@ class ServicesController < ApplicationController
   # POST /parameters
   # POST /parameters.xml
   def create
-    @service = Service.new(params[:service])
-    @parent = Service.find(params[:service][:parent_id]) unless params[:service][:parent_id].blank?
-    @service.depth =  @parent.blank? ? 1 : @parent.dept + 1
+    @lab_test = LabTest.new(params[:lab_test])
+    @parent = Service.find(params[:lab_test][:parent_id]) unless params[:lab_test][:parent_id].blank?
+    @lab_test.depth =  @parent.blank? ? 1 : @parent.depth.to_i + 1
     respond_to do |format|
-      if @service.save
+      if  @lab_test.save
         flash[:notice] = 'Service was successfully created.'
-        format.html { redirect_to(@service) }
+        format.html { redirect_to(lab_tests_url) }
       else
         format.html { render :action => "new" }
       end
