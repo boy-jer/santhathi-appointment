@@ -55,7 +55,7 @@ input:focus, textarea:focus{
 label {
 	font-weight: bold;
 	font-size: 11px; 
-    /*color: #5a869a;*/
+    color: #4AA7C0;
 }
 
 select {
@@ -536,14 +536,14 @@ h3 span {
 #menu li a {
 	display: block;
 	float: left;
-	margin:19px 4px 0px 0px;
+	margin:18px 4px 0px 0px;
 	padding: 5px 2px 0px 1px;
 	width:88px;height:17px;
 	text-transform: uppercase;
 	text-decoration: none;
 	font-size: 10px;
 	font-weight: bold;
-	color: #015982;
+	color: #fff;
 	text-align:center;
 	background-image: url('/images/nw-tab.gif');
 
@@ -552,7 +552,7 @@ h3 span {
 #menu li a:hover {
 	display: block;
 	float: left;
-	margin:19px 4px 0px 0px;
+	margin:18px 4px 0px 0px;
 	padding: 5px 2px 0px 1px;
 
 	text-transform: uppercase;

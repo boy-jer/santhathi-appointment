@@ -14,7 +14,7 @@
 		margin: 5px 5px 0px 5px;
 		border: 2px solid #9CD7F5;
                 background: #fffefb;
-		/*background: url(/images/side-nav1.png) repeat-x;*/
+		/*background:; url(/images/side-nav1.png) repeat-x;*/
 		float:left;
 		vertical-align:bottom;
 		position:relative;
@@ -73,7 +73,7 @@ ul#menu1 li {
 
 ul#menu1 li a {
   background-color: #9CD7F5;
-  background: url(/images/tab.png) repeat-x;
+  background: url(/images/tab2.png) repeat-x;
   color: #fff;	
   font-weight: bold;
   padding: 0.3em;
