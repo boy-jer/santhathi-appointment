@@ -22,18 +22,18 @@ class LabTestsController < ApplicationController
 
   # GET /parameters/1/edit
   def edit
-     @service = Service.find(params[:id])
+     @lab_test = LabTest.find(params[:id])
   end
-  
+
   def show
-     @service = Service.find(params[:id])
+    @lab_test = LabTest.find(params[:id])
   end
 
   # POST /parameters
   # POST /parameters.xml
   def create
     @lab_test = LabTest.new(params[:lab_test])
-    @parent = Service.find(params[:lab_test][:parent_id]) unless params[:lab_test][:parent_id].blank?
+    @parent = LabTest.find(params[:lab_test][:parent_id]) unless params[:lab_test][:parent_id].blank?
     @lab_test.depth =  @parent.blank? ? 1 : @parent.depth.to_i + 1
     respond_to do |format|
       if  @lab_test.save
@@ -45,11 +45,5 @@ class LabTestsController < ApplicationController
     end
   end
 
-  def child_list
-    @child_list = Department.find(params[:department]).services.find_all_by_parent_id(nil)
-    render :update do |page|
-      page.replace_html 'child_list', :partial => 'child_list', :collection =>@child_list, :as => :service
-    end
-  end
 
 end

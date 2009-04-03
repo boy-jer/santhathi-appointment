@@ -8,15 +8,18 @@
 		    <th>
 		        <%= label_tag("#{reg_summary[1]}")%>:</th>
 		        <td>
-  		         <% reg_value = reg_summary(@patient.id,reg_summary[0]) %>
+  		         <% reg_value = reg_summary(@vital_signs,reg_summary[0]) %>
 		           <%= text_field_tag("vital_signs[#{reg_summary[0]}]","#{reg_value}",:class=>"textbox" )%>
 		        </td>
           </tr>
 
 	 <%end%>
-		     </table><br/>
+	</table>
+
+	<br/>
+
 	 <%= submit_tag "update" %>
 
-</div>
-   </div>
+	</div>
+ </div>
    <%end%>

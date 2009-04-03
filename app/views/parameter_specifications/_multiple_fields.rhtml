@@ -1,0 +1,28 @@
+
+
+<% fields_for(@parameter_specification) do |f| %>
+<table cellpadding="5px" class="form-table">
+   <tr><th> Age from: </th><td><%= f.text_field :age_group_from %></td></tr>
+    <tr><th>Age to: </th><td><%= f.text_field :age_group_to %></td></tr>
+     <tr><th>Sex : </th><td>
+       <% if @parameter_specification[:gender] == "male" %>
+          <%= f.radio_button :gender, "male", :checked => true %>
+       <%else%>
+          <%= f.radio_button :gender, "male", :checked => false %>
+       <%end%>Male
+
+        <% if @parameter_specification[:gender] == "female" %>
+           <%= f.radio_button :gender, "female", :checked => true %>
+        <%else%>
+           <%= f.radio_button :gender, "female", :checked => false %>
+        <%end%>Female
+
+        <% if @parameter_specification[:gender] == "both" %>
+           <%= f.radio_button :gender, "both", :checked => true %>
+        <%else%>
+          <%= f.radio_button :gender, "both", :checked => false %>
+        <%end%>Both(Male/Female)
+       </td></tr>
+ </table>
+
+<%end%>

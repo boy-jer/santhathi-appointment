@@ -1,0 +1,43 @@
+<div class='continer'>
+  <div class='continer-inner'>
+<h3>Listing parameter specifications</h3>
+<br/>
+
+<table class="listing">
+  <tr>
+    <th>Parameter name </th>
+    <th>Age from</th>
+    <th>Age to</th>
+    <th> Gender </th>
+    <th>Ideal value</th>
+    <th>Min value</th>
+    <th>Max value</th>
+    <th>Special Condition</th>
+    <th>Show</th>
+    <th>Modify</th>
+    <th>Delete</th>
+  </tr>
+
+<% for parameter_specification in @parameter_specifications %>
+  <tr>
+    <td><%=h parameter_specification.parameter.parameter_name %></td>
+    <td><%=h parameter_specification.age_group_from %></td>
+    <td><%=h parameter_specification.age_group_to %></td>
+    <td><%=h parameter_specification.gender %></td>
+    <td><%=h parameter_specification.ideal_value %></td>
+    <td><%=h parameter_specification.min_value %></td>
+    <td><%=h parameter_specification.max_value %></td>
+    <td><%=h parameter_specification.special_condition %></td>
+    <td><%= link_to 'Show', lab_test_parameter_specification_path(@lab_test,parameter_specification), :rel=> "facebox"  %></td>
+    <td><%= link_to 'Edit', edit_lab_test_parameter_specification_path(@lab_test,parameter_specification) %></td>
+    <td><%= link_to 'Destroy', lab_test_parameter_specification_path(@lab_test,parameter_specification), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+
+<%= link_to "<span>New Parameter Specfication</span>",  new_lab_test_parameter_specification_path(@lab_test), :class=> "button" %>
+</div>
+</div>
