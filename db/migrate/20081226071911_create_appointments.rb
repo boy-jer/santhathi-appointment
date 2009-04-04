@@ -8,7 +8,8 @@ class CreateAppointments < ActiveRecord::Migration
       t.date :appointment_date
       t.time :appointment_time
       t.string :state
-      
+      t.integer :mode_id
+
       t.timestamps
     end
   end

@@ -1,0 +1,47 @@
+<div class='continer'>
+  <div class='continer-inner'>
+<h3>New sample_specfication</h3><br/>
+<% form_for ([@lab_test,@sample_specfication]) do |f| %>
+
+  <%= f.error_messages %>
+<table cellpadding="5px" class="form-table">
+  <tr><th>
+    <%= f.label :age_group_from %>:</th><td>
+    <%= f.text_field :age_group_from %> </td></tr>
+  <tr><th>
+    <%= f.label :age_group_to %>:</th><td>
+    <%= f.text_field :age_group_to %> </td></tr>
+   <tr><th>
+    <%= f.label :specimen %>:</th><td>
+    <%= f.text_field :specimen %> </td></tr>
+  <tr><th>
+    <%= f.label :volume %>:</th><td>
+    <%= f.text_field :volume %> </td></tr>
+   <tr><th>
+    <%= f.label :min_volume %>:</th><td>
+    <%= f.text_field :min_volume %> </td></tr>
+   <tr><th>
+    <%= f.label :sample_for %>:</th><td>
+    <%= f.text_field :sample_for %> </td></tr>
+  <tr><th>
+    <%= f.label :collection_proedure %>:</th><td>
+    <%= f.text_field :collection_proedure %> </td></tr>
+  <tr><th>
+    <%= f.label :specimen_condition %>:</th><td>
+    <%= f.text_field :specimen_condition %> </td></tr>
+   <tr><th>
+    <%= f.label :container_type %>:</th><td>
+    <%= f.text_field :container_type %> </td></tr>
+   <tr><th>
+    <%= f.label :storage_instructions %>:</th><td>
+    <%= f.text_field :storage_instructions %> </td></tr>
+
+  </table>
+ <br/>
+    <%= image_submit_tag "create.gif" %>
+
+<% end %>
+
+
+</div>
+</div>

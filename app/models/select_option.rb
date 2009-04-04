@@ -8,7 +8,7 @@ class SelectOption < ActiveRecord::Base
      else
        SelectOption.new(params)
      end
-   end 
+   end
 
    def self.select_list()
      self.find(:all).collect{|x| [x.name, x.id]}

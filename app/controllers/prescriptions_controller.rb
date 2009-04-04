@@ -1,36 +1,44 @@
 class PrescriptionsController < ApplicationController
   layout 'cms'
+  
+  def index
+    
+
+  end
 
   def new
     @prescription = Prescription.new
     @department = Department.find(params[:department])
     @appointment = Appointment.find(params[:appointment])
     @child_list = @department.services.find_all_by_parent_id(nil)
-
+    @prescription_list = @appointment.prescriptions
+   
     respond_to do |format|
       format.html
-      format.js { render :layout => false }
+      format.js { render :update do |page|
+                    page.replace_html 'clinical-screen', :partial => 'prescriptions/new'
+                  end
+                }
     end 
   end
 
-  # GET /cms/1/edit
-  def edit
-    @cms = Cms.find(params[:id])
-  end
 
-  # POST /cms
-  # POST /cms.xml
   def create
-    @cms = Cms.new(params[:cms])
+    @prescription = Prescription.new(params[:prescription])
+    @department = Department.find(params[:prescription][:department_id])
+    @appointment = Appointment.find(params[:prescription][:appointment_id])
+    @prescription_list = @appointment.prescriptions
 
     respond_to do |format|
-      if @cms.save
-        flash[:notice] = 'Cms was successfully created.'
-        format.html { redirect_to(@cms) }
-        format.xml  { render :xml => @cms, :status => :created, :location => @cms }
+      if @prescription.save
+        params[:services].map{|service| PrescribedTest.create(:prescription_id => @prescription.id, :service_id => service)}
+        format.html
+        format.js { render :update do |page|
+                      page.replace_html 'clinical-screen', :partial => 'prescriptions/new', :object => @prescription_list
+                    end
+                  }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @cms.errors, :status => :unprocessable_entity }
+        format.html { redirect_to clinical_screen_doctor_patients_url(:id => @appointment) }
       end
     end
   end

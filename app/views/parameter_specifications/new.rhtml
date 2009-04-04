@@ -1,0 +1,36 @@
+<div class='continer'>
+ 	 <div class='continer-inner'>
+<h3>New Parameter Specification</h3>
+
+<% form_for([@lab_test, @parameter_specification]) do |f| %>
+  <%= f.error_messages %>
+  <table cellpadding="5px" class="form-table">
+  <tr>
+    <th><%= f.label :parameter %>:</th>
+    <td><%= f.select :parameter_id, [['Select parameter' , '']] + Parameter.parameter_list %>
+     <%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner1",
+              :style =>"display: none;" ) %></td>
+      </tr>
+
+    <div id='parameter_fields'>       </div>
+
+
+
+
+<%= observe_field(:parameter_specification_parameter_id, :frequency => 0.5,
+                    :before => "Element.show('spinner1')",
+                    :success => "Element.hide('spinner1')",
+                    :url => {:controller => 'parameter_specifications', :action => 'new'},
+                    :method => :get,
+                    :with => "'parameter_id=' + value"
+                   ) %>
+                   <br/>
+   <%= image_submit_tag "create.gif" %>
+</table>
+<% end %>
+
+</div>
+</div>

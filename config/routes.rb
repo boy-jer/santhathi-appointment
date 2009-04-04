@@ -1,5 +1,11 @@
 # See how all your routes lay out with "rake routes"
 ActionController::Routing::Routes.draw do |map|
+
+
+
+
+
+  map.resources :vital_signs
   map.resources :pharamacy_item_informations
 
   map.resources :pharmacy_course_lists
@@ -18,10 +24,11 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :measurement_units
 
+   map.resources :services,  :collection=>{:child_list =>:get}
  # map.resources :roles
 
   map.resources :user_roles
-
+  map.resources :prescriptions
   # RESTful rewrites
 
   map.signup   '/signup',   :controller => 'users',    :action => 'new'
@@ -44,10 +51,15 @@ ActionController::Routing::Routes.draw do |map|
                                      :edit_avatar => :get,
                                      :update_avatar => :put }
 
-  map.resources :appointments, :member => {:confirm => :get}
+
+  map.resources :appointments, :member => {:confirm => :get},:collection=>{:update_doctors_list =>:get}
+
   map.resources :patients do |patient|
     patient.resources :patient_appointments, :as => :pappointments
   end
+
+  map.resources :lab_tests ,:has_many =>[:sample_specfications, :parameter_specifications]
+
   map.resources :departments
   map.resources :doctors
   map.root :controller => 'sessions', :action => 'new'
@@ -56,8 +68,11 @@ ActionController::Routing::Routes.draw do |map|
   # Profiles
   map.resources :profiles
   map.resources :doctor_appointments
-
+  map.resources :doctor_patients, :collection => { :discharge => :post,:clinical_screen=>:get }
   map.resources :cms
+
+
+
 
   # Administration
   map.namespace(:admin) do |admin|
@@ -84,4 +99,5 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :select_options #TODO: Need to do it in better way
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
+
 end

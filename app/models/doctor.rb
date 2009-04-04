@@ -2,6 +2,8 @@ class Doctor < ActiveRecord::Base
   has_many :appointments
   belongs_to :department
   before_save :update_time
+  validates_presence_of :department_id,:name,:designation
+
   #has_many :time_slots
   attr_accessor :hour, :minute, :hour_to, :minute_to
 

@@ -32,7 +32,8 @@ class ServicesController < ApplicationController
   # POST /parameters.xml
   def create
     @service = Service.new(params[:service])
-
+    @parent = Service.find(params[:service][:parent_id]) unless params[:service][:parent_id].blank?
+    @service.depth =  @parent.blank? ? 1 : @parent.dept + 1
     respond_to do |format|
       if @service.save
         flash[:notice] = 'Service was successfully created.'

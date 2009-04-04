@@ -4,7 +4,7 @@
 
 <div id="new-department">
   <table cellpadding="5px" class="form-table">
-     <tr> <th><%= f.label :department %>:</th> 
+     <tr> <th><%= f.label :department %>:</th>
      <td><%= select :departament, :id, [['Select department' , '']] + Department.departments_for_select_list %></td> <%= image_tag("spinner.gif",
               :align => "absmiddle",
               :border => 0,
@@ -18,6 +18,8 @@
           <td><%= f.select :hour, hours, :selected => (@hour || 9) %> <%= f.select :minute, minutes, :selected => (@minute || 30) %></td></tr>
 
      <tr> <th><%= f.label :reason %>:</th> <td><%= f.select :reason_id, [['Select reason' , '']] + Reason.select_list %></td> </tr>
+
+     <tr> <th><%= f.label :mode %>:</th> <td><%= f.select :mode_id, [['Select mode' , '']] + Mode.select_list %></td> </tr>
 
      <tr> <th><label>New patient ?</label></th>
           <td><%= radio_button_tag ('new_patient_check', 'yes', checked = true,
@@ -43,14 +45,14 @@
                     :method => :get,
                     :with => "'date=' + value+'&doctor=' + $('appointment_doctor_id').value"
                    ) %>
- 
+
  <%= observe_field(:departament_id, :frequency => 0.5,
                     :before => "Element.show('spinner1')",
                     :success => "Element.hide('spinner1')",
                     :url => update_doctors_list_appointments_url,
                     :method => :get,
                     :with => "'department_id=' + value"
-                   ) %>                  </div>
+                   ) %></div>
 
 <div id='new_patient'>
    <% fields_for :patient do |patient| %>
