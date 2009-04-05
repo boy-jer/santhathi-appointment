@@ -55,7 +55,7 @@ input:focus, textarea:focus{
 label {
 	font-weight: bold;
 	font-size: 11px; 
-    color: #4AA7C0;
+    color: #0075B0;
 }
 
 select {
@@ -455,22 +455,22 @@ h3 span {
 
 
 /*-----------------For table alternate row color ---------------------------*/
-.even1 {background: #FaFaFa;}
+.even1 {background: #F2F2EE;}
 
 /*.odd {background: #b8d3e0;}*/
 
 .listing tr:hover {background-color: #f2f7f9; color: #000;} /*not for IE*/
-.listing th {background-color: #F9F9F2;
+.listing th {background-color: #F4F3E9;
              color: #4A4D4A;
              text-align: left;
              padding: 0.3em .5em;
              border:1px solid #ccc;
 }
 
-.listing td {padding: .4em .5em .3em; color: #000;}
+.listing td {padding: .6em .5em .3em; color: #000;}
  
-.listing tr {padding: .3em .5em .3em;
-             border:1px solid #ccc;
+.listing tr {
+             border:1px solid #BBBBBB;
 			 font-size: 11px; }
 .listing{
 	    border-collapse: collapse;
@@ -543,7 +543,7 @@ h3 span {
 	text-decoration: none;
 	font-size: 10px;
 	font-weight: bold;
-	color: #fff;
+	color: #0075B0;
 	text-align:center;
 	background-image: url('/images/nw-tab.gif');
 

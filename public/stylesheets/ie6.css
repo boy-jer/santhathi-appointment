@@ -37,32 +37,35 @@ display: none;}
 #menu li a {
 	display: block;
 	float: left;
-	margin:6px 2px 0px 2px;
+	margin:13px 2px 0px 2px;
 	padding: 0px 0px 0px 0px;
-	width:110px;
+	width:90px;
 	text-transform: uppercase;
 	text-decoration: none;
-	font-size: 13px;
+	font-size: 10px;
 	font-weight: bold;
 	color: #015982;
 	text-align:center;
-	line-height: 2.5em;
-	background-image: url('/images/3.jpg');
+	line-height: 2.3em;
+	background-image: url('/images/nw-tab.gif');
 
 }
 
 #menu li a:hover {
 	display: block;
 	float: left;
-	padding: 0px 0px 0px 0px;width:110px;
-	text-transform: uppercase;margin:6px 2px 0px 2px;
+	padding: 0px 0px 0px 0px;
+      width:90px;
+	text-transform: uppercase;
+      margin:13px 2px 0px 2px;
+
 	text-decoration: none;
-	font-size: 13px;
+	font-size: 10px;
 	font-weight: bold;
 	text-align:center;
 	color: #4b4b4b;
-	line-height: 2.5em;
-	background-image: url('/images/1.jpg');
+	line-height: 2.3em;
+	background-image: url('/images/nw-tab.gif');
 }
 
 #sub-menu {
@@ -80,7 +83,8 @@ display: none;}
 	margin:0;
 	padding:0px 0px 0 2px;
 	list-style:none;
-	display:inline;}
+	display:inline;
+}
 
 
 #sub-menu li {
