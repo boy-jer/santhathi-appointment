@@ -11,6 +11,7 @@ class Appointment < ActiveRecord::Base
 
   #belongs_to :department
   has_many :prescriptions
+  has_many :laboratory_test_results
 
   validates_presence_of :doctor_id,:reason_id,:mode_id
 

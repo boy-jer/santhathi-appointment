@@ -81,6 +81,8 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
     if [@appointment.valid?, @patient.valid?].all?
       if @appointment.save && @patient.save
         @appointment.patient = @patient
+        @appointment.created_by_id = @current_user.id
+        @appointment.updated_by_id = @current_user.id
         @appointment.save
         flash[:notice] = 'Appointment was successfully created.'
         redirect_to appointments_path
@@ -96,9 +98,11 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
   # PUT /appointments/1.xml
   def update
     @appointment = Appointment.find(params[:id])
-
+    @appointment.update_attribute('updated_by_id',@current_user.id)
     respond_to do |format|
+
       if @appointment.update_attributes(params[:appointment])
+
         flash[:notice] = 'Appointment was successfully updated.'
         format.html { redirect_to(appointments_path) }
         format.xml  { head :ok }
@@ -147,7 +151,7 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
        redirect_to(appointments_path(:page => page))
     end
   end
-  
+
   def update_doctors_list
     dept_id = params[:department_id]
     if dept_id.blank?
@@ -155,11 +159,11 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
     else
       @doctors = Department.find(dept_id).doctors.collect{|x| [x.name, x.id]}
     end
-    
+
     render :update do |page|
       page.replace_html 'doctors', :partial => 'doctors_list', :object => @doctors
     end
-   
+
   end
 
 private

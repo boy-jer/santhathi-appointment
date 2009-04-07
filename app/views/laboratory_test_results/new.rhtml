@@ -1,0 +1,61 @@
+<div class='continer'>
+  <div class='continer-inner'>
+
+<h3>New Laboratory Test Result</h3><br/>
+
+<% form_for(@laboratory_test_result) do |f| %>
+
+  <%= f.error_messages %>
+   <table cellpadding="5px" class="form-table">
+       <tr>  <th>Test Name : </th><td><%=h @lab_test.name %></td> </tr>
+       <tr>  <th>Patient Name :</th><td><%=h @appointment.patient.patient_name %></td>
+             <th> Patient Age :</th><td><%=h @appointment.patient.age %></td>
+             <th> Patient Gender :</th><td><%= @appointment.patient.gender %></td></tr>
+       <tr>   <th>Age Group :</th><td> From  <% age_group = find_age_group(@appointment.patient.gender)%>
+                                       <%=h age_group.age_group_from %>
+                                       To <%=h age_group.age_group_to %>
+              <th>Regestration No :</th><td> <%= @appointment.patient.reg_no%></td>
+              <th> PVR No :</th><td><%=h @appointment.patient.id%></td></tr>
+  </table><br/>
+
+    <table cellpadding="5px" class="form-table">
+        <tr> <th>  Parameter Name </th>
+             <th> UOM </th>
+              <th>Result(Max Allowed Character 500)</th>
+              <th>Remarks(Max Allowed Character 500)</th>
+         </tr>
+         <tr>
+            <td> <%=h @lab_test.name %> </td>
+            <td> <% measure = find_measurement(@lab_test.name)%>
+                  <%=h measure  %>
+            </td>
+            <td> <%= f.text_field :results ,:class => 'textbox' %> </td>
+            <td> <%= f.text_field :remarks ,:class => 'textbox' %> </td>
+          </tr>
+    </table> <br/>
+
+ <b> Prescription Action Details </b> <br/><br/>
+    <table cellpadding="5px" class="form-table">
+      <tr> <th> Date of Action  :</th> <td><%= calendar_date_select_tag "laboratory_test_result[date_of_action]", Date.today , :class =>'textbox' %></td></tr>
+      <tr> <th> Time of Action  :</th> <td><%= f.time_select  :time_of_action%></td></tr>
+      <tr> <th> Action Taken By : </th> <td>
+      <%= select :laboratory_test_result,"action_taken_by", Doctor.laboratory_docator_list,{:prompt => 'Select Doctor'} %> </td> </tr>
+      <tr> <th> Authorised By : </th> <td>
+      <%=select :laboratory_test_result, "authorised_by", Doctor.laboratory_docator_list ,{:prompt => 'Select Doctor'}%></td> </tr>
+      <tr> <th> Desscription :</th> <td> <%= f.text_field :description ,:class => 'address' %> </td> </tr>
+
+
+    </table>
+<br/><br/>
+<input type="hidden" id="laboratory_test_result_appointment_id" name="laboratory_test_result[appointment_id]" value="<%= @appointment.id %>" />
+<input type="hidden" id="laboratory_test_result_prescription_id" name="laboratory_test_result[prescription_id]" value="<%= @prescription.id %>" />
+<input type="hidden" id="laboratory_test_result_lab_test_id" name="laboratory_test_result[lab_test_id]" value="<%= @lab_test.id %>" />
+
+      <%= image_submit_tag "create.gif" %>
+
+<% end %>
+
+<%= link_to 'Back', :controller =>:laboratory_prescriptions ,:action =>'index'%>
+
+ </div>
+</div>

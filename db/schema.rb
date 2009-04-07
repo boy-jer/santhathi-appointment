@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090402071233) do
+ActiveRecord::Schema.define(:version => 20090407124821) do
 
   create_table "appointments", :force => true do |t|
     t.integer  "doctor_id"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(:version => 20090402071233) do
     t.integer  "mode_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "created_by_id"
+    t.integer  "updated_by_id"
   end
 
   create_table "cms", :force => true do |t|
@@ -79,6 +81,21 @@ ActiveRecord::Schema.define(:version => 20090402071233) do
     t.string   "pre_requisites"
     t.integer  "parent_id"
     t.integer  "depth"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "laboratory_test_results", :force => true do |t|
+    t.integer  "appointment_id"
+    t.integer  "prescription_id"
+    t.integer  "lab_test_id"
+    t.string   "results"
+    t.string   "remarks"
+    t.date     "date_of_action"
+    t.time     "time_of_action"
+    t.string   "action_taken_by"
+    t.string   "authorised_by"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -246,7 +263,7 @@ ActiveRecord::Schema.define(:version => 20090402071233) do
   end
 
   create_table "services", :force => true do |t|
-    t.string   "service_name"
+    t.string   "name"
     t.string   "description"
     t.string   "cost"
     t.string   "first_visit"

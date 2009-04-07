@@ -2,10 +2,7 @@
    <li>
       <a href="#">Transact</a>
       <ul>
-         <li><%= link_to "Measurement Unit", measurement_units_url %></li>
-        <li><%= link_to "Samples", samples_path %></li>
-        <li><%= link_to "Parameters", parameters_url %></li>
-        <li><%= link_to "Lab Tests",  lab_tests_path %></li>
+           <li><%= link_to "History" ,:controller =>'laboratory_prescriptions' ,:action =>'index' %> </li>
      </ul>
    </li>
 
@@ -13,10 +10,10 @@
 			<a href="#">Masters</a>
 			<ul>
 
-				<li><a href="http://www.apple.com/">Apple</a></li>
-				<li><a href="http://www.nikon.com/">Nikon</a></li>
-				<li><a href="http://www.xbox.com/en-US/">XBOX360</a></li>
-				<li><a href="http://www.nintendo.com/">Nintendo</a></li>
+				 <li><%= link_to "Measurement Unit", measurement_units_url %></li>
+        <li><%= link_to "Samples", samples_path %></li>
+        <li><%= link_to "Parameters", parameters_url %></li>
+        <li><%= link_to "Lab Tests",  lab_tests_path %></li>
 			</ul>
 		</li>
 		<li>
