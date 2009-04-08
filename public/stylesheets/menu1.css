@@ -10,10 +10,10 @@
 	/* NAVIGATION */
 	.navigation{
 		width:14%;
-		height: 92%;
-		margin: 0px 5px 0px 5px;
-		border:1px solid #ADC7F3;
-                background: #fff;
+		height: 480px;
+		margin: 5px 5px 0px 5px;
+		border: 3px solid #9CD7F5;
+                background: #F9F9F2;
 		/*background: url(/images/side-nav1.png) repeat-x;*/
 		float:left;
 		vertical-align:bottom;
@@ -40,7 +40,14 @@
 	}
 
 	/* CONTENT */
-
+	.content{
+		width:84%;
+		margin: 5px 0px 0px 0px;
+		background-color:#ffffff;
+		
+		vertical-align:top;
+		float:left;
+	}
 	.contentPanel{
 		padding:10px;
 		overflow:auto;
@@ -65,7 +72,6 @@ ul#menu1 li {
 }
 
 ul#menu1 li a {
-  font-size: 13px;
   background-color: #9CD7F5;
   background: url(/images/tab.png) repeat-x;
   color: #fff;	
@@ -75,14 +81,13 @@ ul#menu1 li a {
 }
 
 ul#menu1 li a:hover {
-  background: #DFEBFF;
+  background: #9CD7F5;
 }
 
 ul#menu1 li ul li a {
   background: #fff;
   color: #000;
   padding-left: 20px;
-   font-size: 12px;
    border:#ccc 1px solid;
   font-weight: normal;
 }

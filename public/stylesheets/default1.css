@@ -1,17 +1,15 @@
-html{ height: 100%}
-
 body {       	
-        font: 1em Verdana, Arial, Sans-Serif; 
+    font: 1em Verdana, Arial, Sans-Serif; 
+	
 	/*background: #00c9ee repeat-x ;*/
 	/*background: #55ABD5;*/
         /*background: #F5FAFC;*/
-        background: #ffffff;
-	color: #000000;
+    background: #ffffff;
+	color: #4A4D4A;
 	margin: 0;
 	padding: 0;
 	font-size: 0.8em;
 	min-width: 900px;
-        height: 100%
 }
 
 
@@ -37,6 +35,7 @@ input.textbox-small{
 	border:#7D99B2 1px solid;
 	background:#ffffff url(/images/field-top.gif) repeat-x top;
 	padding:2px 2px;
+
 	width:60px;
 }
 
@@ -56,7 +55,7 @@ input:focus, textarea:focus{
 label {
 	font-weight: bold;
 	font-size: 11px; 
-    color: #3F4C6B;
+    color: #0075B0;
 }
 
 select {
@@ -127,16 +126,6 @@ h3 span {
 }
 
 
-.content{
-	width:84.8%;
-	margin: 0px 0px 0px 0px;
-	background-color:#ffffff;
-		
-	vertical-align:top;
-	float:left;
-               height: 90%;
-	}
-
 /** Main body */
 #main {
 	margin: 0 0 0 0;
@@ -159,7 +148,6 @@ h3 span {
 
 #left #screen {
 	padding: 0 .5em ;
-         height: 100%;
 }
 
 #left #notice {
@@ -311,13 +299,12 @@ h3 span {
  	   background: #000;	
 }
 
-.continer {border:3px solid #ADC7F3;
-           background: #fff;
-           height: 100%;
-           padding: 10px 10px 0px 10px;}
+.continer {background: #9CD7F5;
+           height: 480px;
+           padding: 4px 4px 0px 4px;}
 
 .continer-inner {background: #ffffff;
-                 height: 100%;
+                 height: 466px;
                  padding: 10px 5px 0px 10px;
                 }
 
@@ -473,7 +460,7 @@ h3 span {
 /*.odd {background: #b8d3e0;}*/
 
 .listing tr:hover {background-color: #f2f7f9; color: #000;} /*not for IE*/
-.listing th {background-color: #F9F9F2;
+.listing th {background-color: #F4F3E9;
              color: #4A4D4A;
              text-align: left;
              padding: 0.3em .5em;
@@ -484,7 +471,7 @@ h3 span {
  
 .listing tr {
              border:1px solid #BBBBBB;
-			 font-size: 0.9em; }
+			 font-size: 11px; }
 .listing{
 	    border-collapse: collapse;
             width: 100%;
@@ -494,7 +481,7 @@ h3 span {
 }
 .listing a {
 	     color: #007db7;
-            font-size: 12px;
+            font-size: 11px;
 }
 
 #patients tr:hover {background-color: #c7dfea; color: #ffffff;} /*not for IE*/
@@ -526,11 +513,11 @@ h3 span {
 
 .search-table tr:hover {background-color: #ffffff; color: #858b8e;} /*not for IE*/
 
-.search-table th {background-color: #FFF; color: #4A4D4A; padding: 0.1em 1em; border:1px solid #ccc; text-align: left;  }
+.search-table th {background-color: #fff; color: #4A4D4A; padding: 0.1em 1em; border:1px solid #ccc; text-align: left; }
 
-.search-table td {background-color: #F9F9F2; padding: 0.2em .8em; border:1px solid #ccc; text-align: left;}
+.search-table td {background-color: #F9F9F2; padding: 0.2em .8em; border:1px solid #ccc; text-align: center;}
 
-.search-table {border-collapse: collapse; width: 100%; border: 1px solid #e8ebec; }
+.search-table {border-collapse: collapse; width: auto; border: 1px solid #e8ebec; }
 
 /* Menu */
 
@@ -549,14 +536,14 @@ h3 span {
 #menu li a {
 	display: block;
 	float: left;
-	margin:19px 4px 0px 0px;
+	margin:18px 4px 0px 0px;
 	padding: 5px 2px 0px 1px;
 	width:88px;height:17px;
 	text-transform: uppercase;
 	text-decoration: none;
 	font-size: 10px;
 	font-weight: bold;
-	color: #3F4C6B;
+	color: #0075B0;
 	text-align:center;
 	background-image: url('/images/nw-tab.gif');
 
@@ -565,7 +552,7 @@ h3 span {
 #menu li a:hover {
 	display: block;
 	float: left;
-	margin:19px 4px 0px 0px;
+	margin:18px 4px 0px 0px;
 	padding: 5px 2px 0px 1px;
 
 	text-transform: uppercase;
