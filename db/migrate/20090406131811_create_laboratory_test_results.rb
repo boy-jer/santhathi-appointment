@@ -8,8 +8,8 @@ class CreateLaboratoryTestResults < ActiveRecord::Migration
          t.string  :remarks
          t.date :date_of_action
          t.time :time_of_action
-         t.integer :action_taken_by_id
-         t.integer :authorised_by_id
+         t.string :action_taken_by
+         t.string :authorised_by
          t.string :description
 
       t.timestamps
