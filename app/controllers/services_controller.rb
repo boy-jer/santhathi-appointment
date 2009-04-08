@@ -23,7 +23,7 @@ class ServicesController < ApplicationController
   def edit
      @service = Service.find(params[:id])
   end
-  
+
   def show
      @service = Service.find(params[:id])
   end
@@ -33,7 +33,7 @@ class ServicesController < ApplicationController
   def create
     @service = Service.new(params[:service])
     @parent = Service.find(params[:service][:parent_id]) unless params[:service][:parent_id].blank?
-    @service.depth =  @parent.blank? ? 1 : @parent.dept + 1
+    @service.depth =  @parent.blank? ? 1 : @parent.depth + 1
     respond_to do |format|
       if @service.save
         flash[:notice] = 'Service was successfully created.'
@@ -44,11 +44,40 @@ class ServicesController < ApplicationController
     end
   end
 
-  def child_list
-    @child_list = Department.find(params[:department]).services.find_all_by_parent_id(nil)
-    render :update do |page|
-      page.replace_html 'child_list', :partial => 'child_list', :collection =>@child_list, :as => :service
+  def update
+    @service = Service.find(params[:id])
+
+    respond_to do |format|
+      if @service.update_attributes(params[:service])
+        flash[:notice] = 'Service was successfully updated.'
+        format.html { redirect_to(services_path ()) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @service.errors, :status => :unprocessable_entity }
+      end
     end
   end
+
+  def child_list
+    @child_list = Department.find(params[:department]).services.find_all_by_parent_id(nil)
+
+    render :update do |page|
+       	page.replace_html 'child_list', :partial => 'child_list', :collection =>@child_list, :as => :service
+    end
+  end
+
+  def destroy
+
+  	puts '111111111111111111111111111111111111111111'
+    @service = Service.find(params[:id])
+    @service.destroy
+
+    respond_to do |format|
+      format.html { redirect_to( services_path ()) }
+      format.xml  { head :ok }
+    end
+  end
+
 
 end

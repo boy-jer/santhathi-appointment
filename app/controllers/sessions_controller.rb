@@ -31,6 +31,7 @@ class SessionsController < ApplicationController
   def password_authentication
     user = User.authenticate(params[:login], params[:password])
     if user
+
       self.current_user = user
       successful_login
     else

@@ -35,6 +35,15 @@ class LabTestsController < ApplicationController
     @lab_test = LabTest.new(params[:lab_test])
     @parent = LabTest.find(params[:lab_test][:parent_id]) unless params[:lab_test][:parent_id].blank?
     @lab_test.depth =  @parent.blank? ? 1 : @parent.depth.to_i + 1
+
+    service_parent = Service.find_by_name(@parent.name) unless params[:lab_test][:parent_id].blank?
+    service = Service.new
+    service.name = params[:lab_test][:name]
+    service.parent_id = service_parent
+    service.depth =  service_parent.blank? ? 1 : service_parent.depth.to_i + 1
+    service.department_id = Department.find_by_dept_name("laboratory").id
+    service.save
+
     respond_to do |format|
       if  @lab_test.save
         flash[:notice] = 'Service was successfully created.'

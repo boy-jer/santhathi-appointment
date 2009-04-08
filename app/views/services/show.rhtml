@@ -2,11 +2,19 @@
   <div class='continer-inner'>
   <h3>Showing Service</h3><br />
   <table class="form-table">
-  <tr> <th>Registration summary:</th><td>
+  <tr> <th>Service Name:</th><td>
   <%=h @service.name %></td></tr>
  <tr> <th>Description:</th><td>
   <%=h @service.description %></td></tr>
+   <tr> <th>Cost:</th><td> <%=h @service.cost %></td></tr>
+   <tr> <th>First visit:</th><td> <%=h @service.first_visit %></td></tr>
+    <tr> <th>Follow up visit:</th><td> <%=h @service.follow_up_visit %></td></tr>
+
+
+
 </table>
+<%= link_to "Edit", edit_service_path(@service)%>
+<%= link_to "Back", services_path %>
 <br/><br/>
 
 </div></div>

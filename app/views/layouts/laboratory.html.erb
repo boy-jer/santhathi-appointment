@@ -9,8 +9,10 @@
 
 
         <%=javascript_include_tag :defaults, 'facebox', 'jquery-1', 'jquery_corner', 'jquery-ui-1.7.custom.min', 'menu', 'jquery.cookie', 'jquery.treeview.min' %>
-        <%= calendar_date_select_includes %>
+
         <%= stylesheet_link_tag 'default','calendar/option2- blue/style', 'facebox', 'menu', 'reasons', 'jquery.treeview' %>
+         <%= calendar_date_select_includes %>
+
 
 	<!--[if lte IE 6]>
 		<%= stylesheet_link_tag 'ie6.css', media="screen" %>
@@ -28,13 +30,13 @@
 				persist: "location"
 			});
 		})
-		
+
 	</script>
 </head>
 
 <body>
             <div id="global_links"> <%= render :partial => 'shared/global_links' %> </div>
-	    <div id="header"> <%= render :partial => 'shared/tabs' %> </div>		
+	    <div id="header"> <%= render :partial => 'shared/tabs' %> </div>
  	    <div class="clear"></div>
             <div class="navigation" id="navigation">
               <div class="navPanel">

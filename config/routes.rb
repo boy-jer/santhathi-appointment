@@ -2,10 +2,10 @@
 ActionController::Routing::Routes.draw do |map|
 
 
-
-
-
   map.resources :vital_signs
+
+  map.resources :laboratory_prescription
+
   map.resources :pharamacy_item_informations
 
   map.resources :pharmacy_course_lists
@@ -24,11 +24,12 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :measurement_units
 
-   map.resources :services,  :collection=>{:child_list =>:get}
+   map.resources :services, :collection=>{:child_list =>:get}
  # map.resources :roles
 
   map.resources :user_roles
   map.resources :prescriptions
+   map.resources :laboratory_test_results
   # RESTful rewrites
 
   map.signup   '/signup',   :controller => 'users',    :action => 'new'

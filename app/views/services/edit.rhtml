@@ -2,20 +2,38 @@
   <div class='continer-inner'>
 <h3>Editing Registration Summary</h3><br/>
 
-<% form_for(@registration_summary) do |f| %>
+<% form_for(@service) do |f| %>
   <%= f.error_messages %>
 
 <table cellpadding="5px" class="form-table">
-  <tr><th>   <%= f.label :registration_summary %>:</th><td>
-   <%= f.text_field :registration_summary ,:class=>"textbox"%></td></tr>
-   <tr><th>
-    <%= f.label :description %>:</th><td>
-    <%= f.text_field :description,:class=>"textbox" %></td></tr>
+
+      <tr><th> <%= f.label :name %>:</th><td>
+     <%= f.text_field :name, {:class => 'text_box'} %></td></tr>
+     <tr><th> <%= f.label :description %>:</th><td>
+     <%= f.text_field :description, {:class => 'address'} %></td></tr>
+  <tr>
+      <th> <%= f.label :first_visit %>:</th>
+     <td> <%= f.text_field :first_visit, {:class => 'textbox-small'} %> &nbsp; %</td>
+     </tr>
+    <tr>
+     <th> <%= f.label :follow_up_visit %>:</th><td>
+     <%= f.text_field :follow_up_visit, {:class => 'textbox-small'} %> &nbsp; %</td>
+    </tr>
+
+     <tr><th> <%= f.label :cost %>:</th><td>
+     <%= f.text_field :cost, {:class => 'textbox-small'} %></td></tr>
+
 
   </table><br /><br/>
    &nbsp;   &nbsp;   &nbsp;   &nbsp; <%= f.submit "update" %>
+   <br/><br/>
+<%= link_to "<span>Service List </span>", services_path(), :class=> "button" %>
+
+<%= link_to "<span>Delete</span>",service_path(@service), :confirm => 'Are you sure?', :method => :delete,:class =>'button'  %>
+
 
 <% end %>
+
 
 
 
