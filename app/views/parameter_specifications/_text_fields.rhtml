@@ -1,5 +1,5 @@
 <% fields_for(:parameter_specification) do |f| %>
-<table cellpadding="5px" class="form-table">
+<table class="form-table">
    <tr><th> Age from: </th><td><%= f.text_field :age_group_from %></td></tr>
     <tr><th>Age to: </th><td><%= f.text_field :age_group_to %></td></tr>
     <tr><th>Sex : </th><td>
@@ -23,6 +23,6 @@
                         </td></tr>
 
      <tr><th>Special conditions/(Normal value): </th><td><%= f.text_field :special_condition %></td></tr>
- </table>
 
+</table>
 <%end%>

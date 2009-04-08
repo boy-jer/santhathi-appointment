@@ -5,7 +5,7 @@ body {
 	/*background: #00c9ee repeat-x ;*/
 	/*background: #55ABD5;*/
         /*background: #F5FAFC;*/
-        background: #ffffff;
+        background: #f9fbff;
 	color: #000000;
 	margin: 0;
 	padding: 0;
@@ -484,7 +484,7 @@ h3 span {
  
 .listing tr {
              border:1px solid #BBBBBB;
-			 font-size: 0.9em; }
+			 font-size: 11px; }
 .listing{
 	    border-collapse: collapse;
             width: 100%;
@@ -494,7 +494,7 @@ h3 span {
 }
 .listing a {
 	     color: #007db7;
-            font-size: 12px;
+            font-size: 11px;
 }
 
 #patients tr:hover {background-color: #c7dfea; color: #ffffff;} /*not for IE*/
@@ -723,7 +723,7 @@ a.button {
     display: block;
     float: left;
     font-size: 11px;
-    height: 24px;
+    height: 22px;
     margin-right: 6px;
     padding-right: 18px; /* sliding doors padding */
     text-decoration: none;
@@ -733,7 +733,7 @@ a.button {
 a.button span {
     background: transparent url('/images/bg_button_span.gif') no-repeat;
     display: block;
-    line-height: 14px;
+    line-height: 12px;
     padding: 5px 0 5px 18px;
 }
 

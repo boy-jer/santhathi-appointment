@@ -1,22 +1,27 @@
 <div class='continer'>
-  <div class='continer-inner'>
-<h3>Editing Registration Summary</h3><br/>
 
-<% form_for(@registration_summary) do |f| %>
+<h3>Test Details</h3><br/>
+
+<% form_for(@lab_test) do |f| %>
   <%= f.error_messages %>
 
 <table cellpadding="5px" class="form-table">
-  <tr><th>   <%= f.label :registration_summary %>:</th><td>
-   <%= f.text_field :registration_summary ,:class=>"textbox"%></td></tr>
-   <tr><th>
-    <%= f.label :description %>:</th><td>
-    <%= f.text_field :description,:class=>"textbox" %></td></tr>
-
-  </table><br /><br/>
-   &nbsp;   &nbsp;   &nbsp;   &nbsp; <%= f.submit "update" %>
-
+    <tr> <th><%= f.label :test_name %>:</th> 
+     <td><%= f.text_field :name, {:class => 'textbox'} %></td> </tr>
+     
+     <tr><th><label>Approximate Time For Test:</label></th> <td><%= time_select("lab_test", "duration")  %></td></tr>
+     <tr> <th><%= f.label :pre_requisites %>:</th> 
+     <td><%= f.text_field :pre_requisites, {:class => 'address'} %></td> </tr>
+</table> <br />
+<table>  
+  <tr><td><%= f.submit "Save" %> </td>
+      <td><%= link_to "<span>Sample Specfications</span>", lab_test_sample_specfications_path(@lab_test), :class => :button %> </td>
+      <td><%= link_to "<span>Parameter Specfications</span>",  lab_test_parameter_specifications_path(@lab_test), :class => :button %> </td>
+      <td><%= link_to "<span>Test List</span>",  lab_tests_path , :class => :button %> </td>
+  </tr>
+</table>
 <% end %>
 
 
 
-</div></div>
+</div>

@@ -1,6 +1,6 @@
- <li>
-   <%= link_to h(service.name), lab_test_path(service) %>
+<li>
+   <%= link_to(service.name, edit_lab_test_path(service)) %>
    <% unless service.children.empty? %>
      <ul><%= render :partial => 'service', :collection => service.children %></ul>
    <% end %>
- </li>
+</li>

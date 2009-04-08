@@ -1,32 +1,25 @@
 <div class='continer'>
-  <div class='continer-inner'>
-  <div class='scrollable'>
   <h3>Services</h3>
 
-  <div id="sidetree">
-  <table><tr><td><div id="sidetreecontrol"><a href="?#">Collapse All</a> | <a href="?#">Expand All</a> </div></td>
-   <td> <%= link_to "<span>New Service</span>", new_service_path, :method => :get , :class=> "button"%></td></tr></table>
-  <br />
+    <div id="sidetree">
+       <table><tr><td><div id="sidetreecontrol"><a href="?#">Collapse All</a> | <a href="?#">Expand All</a> </div></td>
+            <td> <%= link_to "<span>New Service</span>", new_service_path, :method => :get , :class=> "button"%></td></tr>
+       </table>
+       <br />
 
-  <ul id="tree">
-     <% for dept in @departments %>
-       <li><a href="#"><strong><%= dept.dept_name %></strong></a> 
-          <ul> 
-               <%= render :partial => 'service', :collection => dept.services.find_all_by_parent_id(nil) %> 
-          </ul>
-       </li>
-     <%end%>
-       <li><a href="#"><strong>Laboratory</strong></a> 
-          <ul> 
-               <%= render :partial => 'service', :collection => LabTest.find_all_by_parent_id(nil) %> 
-          </ul>
-       </li>
-  </ul>
-  </div>
-	
-  </div>
-
-  </div>
-
-  </div>
+       <ul id="tree">
+          <% for dept in @departments %>
+             <li><a href="#"><strong><%= dept.dept_name %></strong></a> 
+                <ul> 
+                    <%= render :partial => 'service', :collection => dept.services.find_all_by_parent_id(nil) %> 
+                </ul>
+             </li>
+          <%end%>
+          <li><a href="#"><strong>Laboratory</strong></a> 
+             <ul> 
+                 <%= render :partial => 'service', :collection => LabTest.find_all_by_parent_id(nil) %> 
+             </ul>
+          </li>
+        </ul>
+     </div>
 </div>

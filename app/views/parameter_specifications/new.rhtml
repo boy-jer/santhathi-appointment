@@ -1,6 +1,6 @@
 <div class='continer'>
- 	 <div class='continer-inner'>
-<h3>New Parameter Specification</h3>
+ 
+  <h3>New Parameter Specification</h3>
 
 <% form_for([@lab_test, @parameter_specification]) do |f| %>
   <%= f.error_messages %>
@@ -14,8 +14,8 @@
               :id => "spinner1",
               :style =>"display: none;" ) %></td>
       </tr>
-
-    <div id='parameter_fields'>       </div>
+   </table>
+    <div id='parameter_fields'> </div>
 
 
 
@@ -27,10 +27,10 @@
                     :method => :get,
                     :with => "'parameter_id=' + value"
                    ) %>
-                   <br/>
+                   <br/>  <br/>
+
    <%= image_submit_tag "create.gif" %>
-</table>
 <% end %>
 
-</div>
+
 </div>

@@ -1,5 +1,5 @@
 <div class='continer'>
-  <div class='continer-inner'>
+
   <h3>New Service</h3>
 
   <% form_for(@lab_test, :html => {:id => 'main_form'}) do |f| %>
@@ -13,7 +13,7 @@
      <tr> <th><%= f.label :pre_requisites %>:</th> 
      <td><%= f.text_field :pre_requisites, {:class => 'address'} %></td> </tr>
   
-     <tr> <th> Parent Service: </th>
+     <tr> <th> <label>Parent Service:</label> </th>
           <td colspan=3>
              <ul id='tree'><div id = 'child_list'><%= render :partial => 'child_list', :collection => @child_list, :as => :service %> </div></ul>
          </td> 
@@ -26,5 +26,5 @@
 
   <% end %>
 
-  </div>
+
 </div>
