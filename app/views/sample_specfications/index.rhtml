@@ -5,26 +5,23 @@
 
 <table class="listing">
   <tr>
-    <th>Age group from</th>
-    <th>Age group to</th>
+    <th>Age Group </th>
     <th>Specimen</th>
     <th>Volume</th>
     <th>Min volume</th>
-    <th>Sample for</th>
-    <th>Collection proedure</th>
+    <th>Body Part For Sample</th>
+    <th>Collection procedure</th>
     <th>Specimen condition</th>
     <th>Container type</th>
     <th>Storage instructions</th>
-    <th>Show</th>
-    <th>Modify</th>
-    <th>Delete</th>
+    <th>Show | Edit | Delete</th>
   </tr>
 
 <% for sample_specfication in @sample_specfications %>
   <tr>
-    <td><%=h sample_specfication.age_group_from %></td>
-    <td><%=h sample_specfication.age_group_to %></td>
-    <td><%=h sample_specfication.specimen %></td>
+    <td><%=h sample_specfication.age_group_from %> -
+    <%=h sample_specfication.age_group_to %></td>
+    <td><%=h sample_specfication.sample.sample_name %></td>
     <td><%=h sample_specfication.volume %></td>
     <td><%=h sample_specfication.min_volume %></td>
     <td><%=h sample_specfication.sample_for %></td>
@@ -32,9 +29,9 @@
     <td><%=h sample_specfication.specimen_condition %></td>
     <td><%=h sample_specfication.container_type %></td>
     <td><%=h sample_specfication.storage_instructions %></td>
-    <td><%= link_to 'Show', lab_test_sample_specfication_path(@lab_test,sample_specfication) %></td>
-    <td><%= link_to 'Edit', edit_lab_test_sample_specfication_path(@lab_test,sample_specfication) %></td>
-    <td><%= link_to 'Destroy', lab_test_sample_specfication_path(@lab_test,sample_specfication), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', lab_test_sample_specfication_path(@lab_test,sample_specfication) %> |
+    <%= link_to 'Edit', edit_lab_test_sample_specfication_path(@lab_test,sample_specfication) %> |
+    <%= link_to 'Destroy', lab_test_sample_specfication_path(@lab_test,sample_specfication), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

@@ -69,7 +69,7 @@ class ServicesController < ApplicationController
 
   def destroy
 
-  	puts '111111111111111111111111111111111111111111'
+
     @service = Service.find(params[:id])
     @service.destroy
 

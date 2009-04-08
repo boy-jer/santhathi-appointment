@@ -1,0 +1,36 @@
+<div class='continer'>
+   <div class='continer-inner'>
+
+<%form_for(:patient,:url => patient_path(@patient),  :html => { :method => :put }) do |f|%>
+ 	 <%= f.error_messages %>
+
+       <table><tr> <th>Register for: </th> <td><%= @patient.id %>
+      Copule : <%= radio_button_tag ('type', 'couple') %>
+            <%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner1",
+              :style =>"display: none;" ) %></td>
+      </tr> </table><br/>
+
+  	       <div id="couple_fields"><%= render :partial => 'individual', :locals => {:f => f} %></div>
+
+           <br/>
+           <p>
+ <table><tr><td><a class="button" onclick="$(this).up('form').submit(); return false;"><span>Register</span></a></td>
+             <td><%= link_to "<span>Patients list</span>", patients_path, :class=> "button"%> </td>
+             <td><%= link_to "<span>Cancel</span>", patients_path, :class=> "button" %></td></tr></table>
+           </p>
+
+
+           <%= observe_field(:type_couple, :frequency => 0.5,
+                    :before => "Element.show('spinner1')",
+                    :success => "Element.hide('spinner1')",
+                    :url => {:controller => 'patients', :action => 'edit'},
+                    :method => :get,
+                    :with => "'patient_id=' + value"
+                   ) %>
+
+      <% end %>
+   </div>
+</div>

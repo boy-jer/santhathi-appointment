@@ -3,7 +3,7 @@ class PatientsController < ApplicationController
   # GET /patients
   # GET /patients.xml
   def index
-    @patients = Patient.paginate(:all, :per_page => 10, :page => params[:page]) 
+    @patients = Patient.paginate(:all, :per_page => 10, :page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -36,16 +36,26 @@ class PatientsController < ApplicationController
 
   # GET /patients/1/edit
   def edit
-    @partail = params[:type] == '1'? 'individual' : 'couple'
-    @patient1 = Patient.find(params[:id])
-    @patient2 = @patient1.spouse.blank? ? Patient.new : Patient.find(@patient1.spouse)
+    #@partail = 'individual'
+    @patient = Patient.find(params[:id])
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @patient }
+      format.js {
+                 @patient1 = @patient.spouse.blank? ? Patient.new : Patient.find(@patient.spouse)
+                 render :update do |page|
+                   page.replace_html 'couple_fields', :partial => 'couple'
+                 end
+               }
+   end
   end
 
   # POST /patients
   # POST /patients.xml
   def create
-    @patient1 = Patient.new(params[:patient1])
-    @patient2 = Patient.new(params[:patient])
+    @patient1 = Patient.new(params[:patient])
+    @patient2 = Patient.new(params[:patient1])
     respond_to do |format|
       if @patient.save && @patient2.save
         flash[:notice] = 'Patient was successfully created.'
@@ -61,17 +71,33 @@ class PatientsController < ApplicationController
   # PUT /patients/1
   # PUT /patients/1.xml
   def update
-    @patient1 = Patient.find(params[:id])
-    @patient2 = @patient1.spouse.blank? ? Patient.new(params[:patient]) : Patient.find(@patient1.spouse)
-
+    patient1 = Patient.find(params[:id])
+    patient2 = patient1.spouse.blank? ? Patient.new(params[:patient1]) : Patient.find(patient1.spouse)
+    patient1.update_attribute('reg_no',patient1.generate_reg_no)
     respond_to do |format|
-      if @patient1.update_attributes(params[:patient1]) && @patient2.update_attributes(params[:patient])
+      if patient1.update_attributes(params[:patient]) && patient2.update_attributes(params[:patient1])
+      	patient1.spouse = patient2.id
+      	patient2.spouse = patient1.id
+      	patient1.spouse_name = patient2.patient_name
+      	patient2.spouse_name = patient1.patient_name
+      	patient1.save
+      	patient2.generate_reg_no
+      	patient2.reg_date = Time.now
+      	if patient1.gender == "m"
+      	   patient2.gender = "f"
+     	else
+     	  patient2.gender = "m"
+    	end
+    	patient2.address = patient1.address
+      	patient2.save
+
+
         flash[:notice] = 'Patient was successfully updated.'
         format.html { redirect_to(patients_path) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit", :type => params[:type] }
-        format.xml  { render :xml => @patient1.errors, :status => :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => patient1.errors, :status => :unprocessable_entity }
       end
     end
   end

@@ -3,7 +3,7 @@ class CreateSampleSpecfications < ActiveRecord::Migration
     create_table :sample_specfications do |t|
       t.integer :age_group_from
       t.integer :age_group_to
-      t.string :specimen
+      t.integer :sample_id
       t.string :volume
       t.string :min_volume
       t.string :sample_for

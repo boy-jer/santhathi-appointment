@@ -3,7 +3,7 @@
               :border => 0,
               :id => "spinner",
               :style =>"display: none;" ) %>
-			  
+
 <table class="listing">
   <thead>
   <tr>
@@ -33,12 +33,12 @@
 
     <td><%= appointment.state == 'new_appointment'? 'New (' + link_to('Confirm', confirm_appointment_url(appointment, :page => params[:page]), :method => :get, :confirm => 'This action will mark this appointment as patient visited. are you sure?') + ')' :appointment.state %></td>
 
-    <td><%= appointment.patient.reg_no.blank? ? link_to('Register', appointment_url(appointment, :act => 'register'), :rel=> "facebox") : appointment.patient.reg_no%> </td>
-      
+    <td><%= appointment.patient.reg_no.blank? ? link_to('Register', edit_patient_url(appointment.patient)) : appointment.patient.reg_no%> </td>
+
     <!--<td><%= link_to 'Appointments', patient_patient_appointments_url(appointment.patient), :rel=> "facebox" %></td> -->
 
-    <td NOWRAP = NOWRAP>&nbsp;&nbsp; <%= link_to image_tag('show.png', {:title => 'Show', :border => 0}), appointment_url(appointment), :rel=> "facebox" %> &nbsp;&nbsp;| &nbsp;&nbsp; <%= link_to image_tag('edit.png', {:title => 'Edit', :border => 0}), edit_appointment_path(appointment) %> &nbsp;&nbsp;|&nbsp;&nbsp; <%= link_to image_tag('delete.png', {:title => 'cancel appointment', :border => 0}), appointment_path(appointment), :confirm => 'Are you sure?', :method => :delete %></td> 
-    
+    <td NOWRAP = NOWRAP>&nbsp;&nbsp; <%= link_to image_tag('show.png', {:title => 'Show', :border => 0}), appointment_url(appointment), :rel=> "facebox" %> &nbsp;&nbsp;| &nbsp;&nbsp; <%= link_to image_tag('edit.png', {:title => 'Edit', :border => 0}), edit_appointment_path(appointment) %> &nbsp;&nbsp;|&nbsp;&nbsp; <%= link_to image_tag('delete.png', {:title => 'cancel appointment', :border => 0}), appointment_path(appointment), :confirm => 'Are you sure?', :method => :delete %></td>
+
   </tr>
   </tbody>
 <% end %>

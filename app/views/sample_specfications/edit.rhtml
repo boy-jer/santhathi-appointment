@@ -8,37 +8,36 @@
 
 
 <table cellpadding="5px" class="form-table">
-  <tr><th>  <%= f.label :age_group_from %>:</th><td>
-    <%= f.text_field :age_group_from %>
+  <tr><th><label>Age Group</label></th>
+   <td><label>From: </label><%= f.text_field :age_group_from ,:class => 'textbox-small'%>
 
- <tr><th>
-    <%= f.label :age_group_to %>:</th><td>
-    <%= f.text_field :age_group_to %></td></tr>
+   <label>To:</label>
+    <%= f.text_field :age_group_to ,:class => 'textbox-small'%> </td></tr>
 
  <tr><th>
     <%= f.label :specimen %>:</th><td>
-    <%= f.text_field :specimen %></td></tr>
+    <%= select :sample_specfication, "sample_id", [['Select a Sample' , '']] + Sample.samples_list %></td></tr>
  <tr><th>
     <%= f.label :volume %>:</th><td>
-    <%= f.text_field :volume %></td></tr>
+    <%= f.text_field :volume ,:class =>'textbox'%></td></tr>
  <tr><th>
     <%= f.label :min_volume %>:</th><td>
-    <%= f.text_field :min_volume %></td></tr>
+    <%= f.text_field :min_volume,:class =>'textbox' %></td></tr>
   <tr><th>
     <%= f.label :sample_for %>:</th><td>
-    <%= f.text_field :sample_for %></td></tr>
+    <%= f.text_field :sample_for,:class =>'textbox' %></td></tr>
   <tr><th>
     <%= f.label :collection_proedure %>:</th><td>
-    <%= f.text_field :collection_proedure %></td></tr>
+    <%= f.text_field :collection_proedure ,:class =>'textbox'%></td></tr>
   <tr><th>
     <%= f.label :specimen_condition %>:</th><td>
-    <%= f.text_field :specimen_condition %></td></tr>
+    <%= f.text_field :specimen_condition ,:class =>'textbox'%></td></tr>
   <tr><th>
     <%= f.label :container_type %>:</th><td>
-    <%= f.text_field :container_type %>
+    <%= f.text_field :container_type ,:class =>'textbox'%>
  <tr><th>
     <%= f.label :storage_instructions %>:</th><td>
-    <%= f.text_field :storage_instructions %></td></tr>
+    <%= f.text_field :storage_instructions,:class =>'textbox' %></td></tr>
   </table><br/>
     <%= f.submit "Update" %>
 
