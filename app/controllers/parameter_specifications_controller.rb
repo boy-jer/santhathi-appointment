@@ -90,15 +90,36 @@ class ParameterSpecificationsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
+
   def sort
-    @parameter_specifications = @lab_test.parameter_specifications.find(:all, :order => 'position ASC')
+
     specs_array = params[:specifications]
     specs_array.map{|spec_id| ParameterSpecification.find(spec_id).update_attribute('position', specs_array.index(spec_id) + 1)}
+    @parameter_specifications = @lab_test.parameter_specifications.find(:all, :order => 'position ASC')
     render :update do |page|
                      page.replace_html 'specifications-list', :partial => 'specifications'
                    end
   end
+
+  def move_one_up
+    parameter_specification = ParameterSpecification.find(params[:id])
+    parameter_specification.move_higher
+    @parameter_specifications = @lab_test.parameter_specifications.find(:all, :order => 'position ASC')
+    render :update do |page|
+                     page.replace_html 'specifications-list', :partial => 'specifications'
+                   end
+  end
+
+
+  def move_one_down
+    parameter_specification = @lab_test.parameter_specifications.find(params[:id])
+    parameter_specification.move_lower
+    @parameter_specifications = @lab_test.parameter_specifications.find(:all, :order => 'position ASC')
+    render :update do |page|
+                     page.replace_html 'specifications-list', :partial => 'specifications'
+                   end
+  end
+
 
   private
 

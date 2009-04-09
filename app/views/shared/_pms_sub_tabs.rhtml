@@ -6,6 +6,9 @@
         <li class="<%= "current" if request.request_uri =~ Regexp.new(appointments_path) %>"><%= link_to "Appointments", appointments_url%></li>
         <li><%= link_to "Patients", patients_url %></li>
         <li><%= link_to "New Appointment", new_appointment_url %></li>
+        <li><%= link_to "Registration For Couple",  new_patient_url(:type=>1) %> </li>
+        <li><%= link_to "Registration For Individual",  new_patient_url(:type=>2) %> </li>
+
       </ul>
    </li>
 

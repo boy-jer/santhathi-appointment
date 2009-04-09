@@ -1,6 +1,6 @@
 <div class='continer-show'>
   <div class='continer-show-inner'>
-  <h3>Showing Appointment</h3><br />	
+  <h3>Showing Appointment</h3><br />
   <table class="form-table">
     <tr><th><b>Department:</b></th><td><%=h @appointment.doctor.department.dept_name %></td></tr>
     <tr><th><b>Doctor:</b></th><td><%=h @appointment.doctor.name %></td></tr>
@@ -11,8 +11,9 @@
     <tr><th><b>Age:</b></th><td><%=h @appointment.patient.age %></td></tr>
     <tr><th><b>Gender:</b></th><td><%=h @appointment.patient.gender %></td></tr>
     <tr><th><b>Contact no:</b></th><td><%=h @appointment.patient.contact_no %></td></tr>
+
   </table>
- 
+
 <% if @appointment.patient.reg_no.blank? %>
   <br />
   <% if params[:act] == 'register' %>
@@ -22,16 +23,15 @@
            <td><%= radio_button_tag ('type', '1', checked = true) %> Individual
                <%= radio_button_tag ('type', '2', checked = false) %> Copule
            </td> </tr>
-            <tr><td><a class="button" onclick="$(this).up('form').submit(); return false;"><span>Register</span></a> </td> </tr>         
+            <tr><td><a class="button" onclick="$(this).up('form').submit(); return false;"><span>Register</span></a> </td> </tr>
       </table>
-    <% end %>     
-  <% end %> 
-<% end %> 
+    <% end %>
+  <% end %>
+<% end %>
 
   </div>
 </div>
 
 <script type="text/javascript">
-  jQuery(".continer-show").corner("corner 5px") 
+  jQuery(".continer-show").corner("corner 5px")
 </script>
-

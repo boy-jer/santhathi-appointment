@@ -6,14 +6,23 @@
        <tr><th><b>Name:</b></th><td><%=h @patient.patient_name %></td></tr>
        <tr><th><b>Age:</b></th><td><%=h @patient.age %></td></tr>
        <tr><th><b>DOB:</b></th><td><%=h @patient.dob %></td></tr>
+       <tr><th><b>Gender:</b></th><td>
+        <% if @patient.gender == "m" %>
+           Male
+        <% else %>
+           Female
+        <% end%> </td></tr>
+
+
        <tr><th><b>Spouse name:</b></th><td><%=h @patient.spouse_name %></td></tr>
        <tr><th><b>Address:</b></th><td><%=h @patient.address %></td></tr>
        <tr><th><b>Contact No:</b></th><td><%=h @patient.contact_no %></td></tr>
-     </table>
+    </table><br/><br/>
+<%= link_to "<span>New Appointment</span>", new_appointment_url(:patient_id => @patient.id), :class=> "button" %>
   </div>
 </div>
 
 <script type="text/javascript">
-  jQuery(".continer-show").corner("corner 5px") 
-  jQuery(".continer-show-inner").corner("corner 5px") 
+  jQuery(".continer-show").corner("corner 5px")
+  jQuery(".continer-show-inner").corner("corner 5px")
 </script>

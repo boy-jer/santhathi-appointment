@@ -1,10 +1,8 @@
 <div class='continer'>
   <div class='continer-inner'>
-     <h3>New patient</h3>
-
-     <% form_for :patient1,:url=>patients_path do |f| %>
+     <% form_for :patient,:url=>patients_path do |f| %>
        <%= f.error_messages %>
-       <%= render :partial => 'individual', :locals => {:f => f} %>
+       <%= render :partial => @partial, :locals => {:f => f} %>
        <p>
          <%= f.submit "Create" %>
        </p>
