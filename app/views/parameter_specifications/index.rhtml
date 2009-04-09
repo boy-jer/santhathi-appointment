@@ -1,39 +1,27 @@
+<script type="text/javascript" charset="utf-8">
+    jQuery().ready(function() {
+     jQuery('#specifications').tableDnD({
+        onDrop: function(table, row) {
+         jQuery.ajax({
+             type: "POST",
+             url: "<%= url_for(:action => 'sort') %>",
+             data: jQuery.tableDnD.serialize() + '&lab_test_id=' + "<%=params[:lab_test_id]%>" + '&authenticity_token=' + encodeURIComponent('<%= form_authenticity_token if protect_against_forgery? %>'),
+             
+           });
+        }
+      })
+    });
+</script> 
+
 <div class='continer'>
-  <div class='continer-inner'>
+
 <h3>Listing parameter specifications</h3>
-<br/>
 
-<table class="listing">
-  <tr>
-    <th>Parameter name </th>
-    <th>Age Group </th>
-    <th> Gender </th>
-    <th>Ideal value</th>
-    <th>Min value</th>
-    <th>Max value</th>
-    <th>Special Condition</th>
-    <th>Show | Edit | Delete</th>
-  </tr>
-
-<% for parameter_specification in @parameter_specifications %>
-  <tr>
-    <td><%=h parameter_specification.parameter.parameter_name %></td>
-    <td><%=h parameter_specification.age_group_from %> -
-    <%=h parameter_specification.age_group_to %></td>
-    <td><%=h parameter_specification.gender %></td>
-    <td><%=h parameter_specification.ideal_value %></td>
-    <td><%=h parameter_specification.min_value %></td>
-    <td><%=h parameter_specification.max_value %></td>
-    <td><%=h parameter_specification.special_condition %></td>
-    <td><%= link_to 'Show', lab_test_parameter_specification_path(@lab_test,parameter_specification), :rel=> "facebox"  %> | <%= link_to 'Edit', edit_lab_test_parameter_specification_path(@lab_test,parameter_specification) %> |
-    <%= link_to 'Destroy', lab_test_parameter_specification_path(@lab_test,parameter_specification), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+<div id= 'specifications-list'><%= render :partial => 'specifications' %></div>
 
 <br />
 
 
 <%= link_to "<span>New Parameter Specfication</span>",  new_lab_test_parameter_specification_path(@lab_test), :class=> "button" %>
-</div>
+
 </div>

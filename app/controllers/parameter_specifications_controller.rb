@@ -1,9 +1,9 @@
 class ParameterSpecificationsController < ApplicationController
   layout 'laboratory'
-  before_filter :find_lab_test, :except => 'load_fields'
+  before_filter :find_lab_test, :except => ['load_fields']
 
   def index
-    @parameter_specifications = @lab_test.parameter_specifications.find(:all)
+    @parameter_specifications = @lab_test.parameter_specifications.find(:all, :order => 'position ASC')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -90,12 +90,20 @@ class ParameterSpecificationsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-
+  
+  def sort
+    @parameter_specifications = @lab_test.parameter_specifications.find(:all, :order => 'position ASC')
+    specs_array = params[:specifications]
+    specs_array.map{|spec_id| ParameterSpecification.find(spec_id).update_attribute('position', specs_array.index(spec_id) + 1)}
+    render :update do |page|
+                     page.replace_html 'specifications-list', :partial => 'specifications'
+                   end
+  end
 
   private
 
   def find_lab_test
-  	@lab_test = LabTest.find(params[:lab_test_id])
+     @lab_test = LabTest.find(params[:lab_test_id])
   end
 
 
