@@ -4,8 +4,8 @@
 <%form_for(:patient,:url => patient_path(@patient),  :html => { :method => :put }) do |f|%>
  	 <%= f.error_messages %>
 
-       <table><tr> <th>Register for: </th>
-      Copule : <%= radio_button_tag ('type', 'couple') %>
+       <table><tr> <th><label>Register for:  </label></th><td>
+    <label>   Copule : </label> <%= radio_button_tag ('type', 'couple') %>
             <%= image_tag("spinner.gif",
               :align => "absmiddle",
               :border => 0,
