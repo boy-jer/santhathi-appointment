@@ -32,7 +32,7 @@ module ApplicationHelper
       all_options.each do |o|
         if url_for(o.merge({:only_path => false})) == current_url
           #html_options = {:class => "current"}
-          name = "<span class = 'current'> #{name} </span>" 
+          name = "<span class = 'current'> #{name} </span>"
           break
         end
       end
@@ -68,7 +68,7 @@ module ApplicationHelper
   end
 
   def genders
-     return [['Male', 'm'], ['Female', 'f']]
+     return [['Female', 'f'], ['Male', 'm']]
   end
 
   def value_types

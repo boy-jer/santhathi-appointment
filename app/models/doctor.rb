@@ -19,7 +19,6 @@ class Doctor < ActiveRecord::Base
   end
 
   def self.laboratory_docator_list
-  	self.find(:all,:include => [:department],:conditions => ["departments.dept_name = ?","Laboratory"]).collect{|doc| doc.name}
-
+  	self.find(:all,:include => [:department],:conditions => ["departments.dept_name = ?","Laboratory"]).collect{|doc| [doc.name, doc.id]}
   end
 end

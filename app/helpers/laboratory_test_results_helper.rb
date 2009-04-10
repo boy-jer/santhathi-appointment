@@ -19,5 +19,10 @@ module LaboratoryTestResultsHelper
        return name
    	end
 
+   	def find_doctor_name(id)
+   		name = Doctor.find(id).name
+   		return name
+    end
+
 
 end

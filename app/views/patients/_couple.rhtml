@@ -1,4 +1,4 @@
-<h3> Registration for couple</h3>
+<h3> Registration for couple</h3><br/>
 <div>
 <div class='left-box'>
  <%fields_for :patient do |f| %>
@@ -13,7 +13,9 @@
    <tr><th><%= f.label :dob %></th>
       <td><%= f.date_select :dob%></td>
    </tr>
-
+   <tr><th><%= f.label :gender %></th>
+      <td><%= f.select :gender, {'Female' => 'f', 'Male' => 'm'} %></td>
+   </tr>
    <tr><th><%= f.label :contact_no %></th>
        <td><%= f.text_field :contact_no, {:class => 'textbox'} %></td>
    </tr>

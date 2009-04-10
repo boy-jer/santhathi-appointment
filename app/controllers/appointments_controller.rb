@@ -50,7 +50,9 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
   # GET /appointments/new
   # GET /appointments/new.xml
   def new
-    @appointment = Appointment.new
+  	@appointment = Appointment.new
+    @patient = params[:patient_id].blank? ? Patient.new : Patient.find(params[:patient_id])
+
     #@patient = Patient.new(:reg_no => generate_identifier)
     respond_to do|format|
       format.html # new.html.erb

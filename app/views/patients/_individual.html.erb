@@ -1,3 +1,4 @@
+<h3>  Registration for individual</h3><br/>
 <table class="form-table">
    <tr><th><%= f.label :reg_date %></th>
        <td><%= f.date_select :reg_date %></td>
@@ -10,6 +11,11 @@
    <tr><th><%= f.label :dob %></th>
       <td><%= f.date_select :dob, {:class => 'textbox'} %></td>
    </tr>
+
+   <tr><th><%= f.label :gender %></th>
+      <td><%= f.select :gender, {'Female' => 'f', 'Male' => 'm'} %></td>
+   </tr>
+
 
    <tr><th><%= f.label :spouse_name %></th>
        <td><%= f.text_field :spouse_name, {:class => 'textbox'} %></td>

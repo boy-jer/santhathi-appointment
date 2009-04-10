@@ -41,9 +41,9 @@
       <tr> <th> Date of Action  :</th> <td><%=h @laboratory_test_result.date_of_action %></td></tr>
       <tr> <th> Time of Action  :</th> <td><%=h @laboratory_test_result.time_of_action %></td></tr>
       <tr> <th> Action Taken By : </th> <td>
-      <%=h @laboratory_test_result.action_taken_by %> </td> </tr>
+      <%=h find_doctor_name(@laboratory_test_result.action_taken_by_id) %> </td> </tr>
       <tr> <th> Authorised By : </th> <td>
-      <%= @laboratory_test_result.authorised_by %>  </td> </tr>
+      <%= find_doctor_name(@laboratory_test_result.authorised_by_id) %>  </td> </tr>
       <tr> <th> Desscription :</th> <td> <%= @laboratory_test_result.description %> </td> </tr>
     </table>
 <br/><br/>

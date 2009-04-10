@@ -26,8 +26,15 @@ class PatientsController < ApplicationController
   # GET /patients/new
   # GET /patients/new.xml
   def new
-    @patient = Patient.new
 
+  	@patient = Patient.new
+
+  	if params[:type] == '1'
+       @patient1 = Patient.new
+       @partial = 'couple'
+    else
+        @partial = 'individual'
+    end
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @patient }
@@ -56,8 +63,23 @@ class PatientsController < ApplicationController
   def create
     @patient1 = Patient.new(params[:patient])
     @patient2 = Patient.new(params[:patient1])
+    @patient1.generate_reg_no
     respond_to do |format|
-      if @patient.save && @patient2.save
+      if @patient1.save && @patient2.save
+      	   @patient2.generate_reg_no
+      	   if @patient1.gender == "m"
+      	  	  @patient2.gender = "f"
+     	   else
+     	      @patient2.gender = "m"
+    	   end
+      	   @patient1.spouse = @patient2.id
+      	   @patient2.spouse = @patient1.id
+      	   @patient1.spouse_name = @patient2.patient_name
+           @patient2.spouse_name = @patient1.patient_name
+           @patient2.address = @patient1.address
+           @patient2.reg_date = Time.now
+           @patient1.save
+      	   @patient2.save
         flash[:notice] = 'Patient was successfully created.'
         format.html { redirect_to(patients_path) }
         format.xml  { render :xml => @patient, :status => :created, :location => @patient }
