@@ -12,9 +12,11 @@
 		width:14%;
 		height: 92%;
 		margin: 0px 5px 0px 5px;
-		border:1px solid #ADC7F3;
+        
+                border: 2px  #ADC7F3  solid;
+        
                 background: #fff;
-		/*background: url(/images/side-nav1.png) repeat-x;*/
+		/*background: url(/images/side-nav.png) repeat-x;*/
 		float:left;
 		vertical-align:bottom;
 		position:relative;
@@ -34,10 +36,7 @@
 		vertical-align:bottom;
 		position:relative;
 	}
-	.navPanel1{
-		padding:5px;
-		height:60%;
-	}
+
 
 	/* CONTENT */
 

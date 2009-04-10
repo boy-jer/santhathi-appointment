@@ -29,7 +29,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :user_roles
   map.resources :prescriptions
-   map.resources :laboratory_test_results
+   map.resources :laboratory_test_results, :collection=>{:details =>:get}
   # RESTful rewrites
 
   map.signup   '/signup',   :controller => 'users',    :action => 'new'

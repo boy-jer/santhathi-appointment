@@ -31,11 +31,14 @@ class LaboratoryTestResultsController < ApplicationController
   # GET /laboratory_test_results/new.xml
 
   def new
-  	@appointment = Appointment.find(params[:appointment_id])
-  	@prescription = Prescription.find(params[:prescription_id])
-  	@lab_test = LabTest.find(params[:lab_test_id])
-  	@laboratory_test_result = LaboratoryTestResult.new
+    @appointment = Appointment.find(params[:appointment_id])
+    @prescription = Prescription.find(params[:prescription_id])
+    @lab_test = LabTest.find(params[:lab_test_id])
+    
+    @patient = @appointment.patient
+    @specifications = @lab_test.parameter_specifications
 
+    @laboratory_test_result = LaboratoryTestResult.new
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @laboratory_test_result }
@@ -50,20 +53,17 @@ class LaboratoryTestResultsController < ApplicationController
 
 
   def create
-    @laboratory_test_result = LaboratoryTestResult.new(params[:laboratory_test_result])
-
-
-
-    respond_to do |format|
-      if @laboratory_test_result.save
-        flash[:notice] = 'LaboratoryTestResult was successfully created.'
-        format.html { redirect_to(:controller => 'laboratory_prescriptions',:action =>'index') }
-        format.xml  { render :xml => @laboratory_test_result, :status => :created, :location => @laboratory_test_result }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @laboratory_test_result.errors, :status => :unprocessable_entity }
-      end
-    end
+    specs = params[:specifications]
+    
+    specs[:ids].each_pair{ |key, value| 
+                          @laboratory_test_result = LaboratoryTestResult.new(params[:laboratory_test_result])
+                          @laboratory_test_result.parameter_specification_id = key
+                          @laboratory_test_result.result = value                      
+                          @laboratory_test_result.remarks = specs[:remarks]["r_#{key}"] 
+                          @laboratory_test_result.save
+                         }
+                          flash[:notice] = 'LaboratoryTestResult was successfully created.'
+                          redirect_to(:controller => 'laboratory_prescriptions', :action =>'index')
   end
 
 

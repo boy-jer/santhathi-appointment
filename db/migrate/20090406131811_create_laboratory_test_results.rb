@@ -4,7 +4,8 @@ class CreateLaboratoryTestResults < ActiveRecord::Migration
     	 t.integer :appointment_id
      	 t.integer :prescription_id
      	 t.integer :lab_test_id
-	     t.string  :results
+         t.integer :parameter_specification_id
+	 t.string  :result
          t.string  :remarks
          t.date :date_of_action
          t.time :time_of_action

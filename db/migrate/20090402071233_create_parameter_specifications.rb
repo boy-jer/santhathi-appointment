@@ -11,7 +11,7 @@ class CreateParameterSpecifications < ActiveRecord::Migration
       t.string :min_value
       t.string :max_value
       t.string :special_condition
-
+      t.integer :position
 
       t.timestamps
     end
