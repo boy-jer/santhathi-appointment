@@ -9,7 +9,7 @@
 
 	/* NAVIGATION */
 	.navigation{
-		width:15%;
+		width:13.5%;
 		height: 92%;
 		margin: 0px 5px 0px 5px;
         border: 2px  #ADC7F3  solid;
@@ -63,8 +63,8 @@ ul#menu1 li {
 
 ul#menu1 li a {
   font-size: 13px;
-  background-color: #8DC3FA;
-  /*background: url(/images/tab.png) repeat-x;*/
+  background-color: #9CD7F5;
+  background: url(/images/tab.png) repeat-x;
   color: #fff;	
   font-weight: bold;
   padding: 0.3em 0.3em;
@@ -110,7 +110,7 @@ ul#collapse-section li a {
   background: #F9F9F2;
   color: #4d585e;	
   font-weight: bold;
-  font-size: 10px;
+  font-size: 11px;
   padding: 0.3em;
   border:#e0eaf6 1px solid;
 }
