@@ -2,7 +2,7 @@
    <div class='continer-inner'>
 
 <%form_for(:patient,:url => patient_path(@patient),  :html => { :method => :put }) do |f|%>
- 	 <%= f.error_messages %>
+ 	 <%= error_messages_for  'patient1' , 'patient2'%>
 
        <table><tr> <th><label>Register for:  </label></th><td>
     <label>   Copule : </label> <%= radio_button_tag ('type', 'couple') %>
