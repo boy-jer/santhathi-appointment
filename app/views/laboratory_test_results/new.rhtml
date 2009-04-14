@@ -35,7 +35,7 @@
               <td><%= spec.parameter.measurement_unit.name %></td>
 
               <% if spec.parameter.value_type == 'Multiple' %>
-                 <td><%= select "specifications[ids]", "#{spec.id}", spec.parameter.values, :class => 'textbox' %></td>
+                 <td><%= select "specifications[ids]", "#{spec.id}", spec.parameter.values.nil? ? [] : spec.parameter.values %></td>
               <% else %>
                  <td><%= text_field_tag "specifications[ids][#{spec.id}]", '', :class => 'textbox' %></td>
               <%end%>

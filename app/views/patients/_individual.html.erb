@@ -9,7 +9,7 @@
    </tr>
 
    <tr><th><%= f.label :dob %></th>
-      <td><%= f.date_select :dob, {:class => 'textbox'} %></td>
+      <td><%= f.date_select :dob, :start_year => 1950, :default => {:year => Time.now.year - 30} %></td>
    </tr>
 
    <tr><th><%= f.label :gender %></th>

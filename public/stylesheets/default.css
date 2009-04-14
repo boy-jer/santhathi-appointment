@@ -786,6 +786,7 @@ a.button:hover span {
 #prescription {
            height: 80px;
            overflow: auto;
+           background: #F7FBFF;
           }
 
 #prescription-list{
