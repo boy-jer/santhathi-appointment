@@ -1,5 +1,5 @@
 <div class='continer'>
- 
+
   <h3>New Parameter Specification</h3>
 
 <% form_for([@lab_test, @parameter_specification]) do |f| %>
@@ -20,7 +20,7 @@
 
 
 
-<%= observe_field(:parameter_specification_parameter_id, :frequency => 0.5,
+<%= observe_field(:parameter_specification_parameter_id, :frequency => 1,
                     :before => "Element.show('spinner1')",
                     :success => "Element.hide('spinner1')",
                     :url => {:controller => 'parameter_specifications', :action => 'new'},

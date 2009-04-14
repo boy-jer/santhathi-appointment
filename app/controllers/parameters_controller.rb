@@ -40,7 +40,9 @@ class ParametersController < ApplicationController
   # POST /parameters
   # POST /parameters.xml
   def create
-    @parameter = Parameter.new(params[:parameter])
+    @parameter = Parameter.create(params[:parameter])
+    @parameter.values = params[:values].split(',') unless params[:values].blank?
+
 
     respond_to do |format|
       if @parameter.save
@@ -52,6 +54,8 @@ class ParametersController < ApplicationController
         format.xml  { render :xml => @parameter.errors, :status => :unprocessable_entity }
       end
     end
+
+
   end
 
   # PUT /parameters/1
@@ -83,13 +87,26 @@ class ParametersController < ApplicationController
     end
   end
 
+  def muliple_display
+  	@values = Parameter.find(params[:id]).values
+  	respond_to do |format|
+  		 format.js { render :layout => false }
+ 	end
+  end
+
   def multiple_section
     respond_to do |format|
       format.js {
                  render :update do |page|
-                   page.replace_html 'multiple', :partial => 'multiple_section'
-                 end 
+                   if params[:value_type] == 'Multiple'
+                      page.replace_html 'multiple', :partial => 'multiple_section'
+                   else
+                      page.replace_html 'multiple', ''
+                   end
+                 end
                 }
     end
   end
+
+
 end

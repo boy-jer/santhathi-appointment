@@ -1,0 +1,14 @@
+
+<div class='continer'>
+  <div class='continer-inner'>
+   <h3>Multiple Options</h3><br/>
+     <table class="form-table">
+        <tr><th></th> <th> Name </th></tr>
+        <% i=1 %>
+        <% for value in @values %>
+          <tr> <td><%=h i %></td><td> <%=h value %> <% i= i+1%></td></tr>
+        <%end%>
+     </table>
+
+  </div>
+</div>

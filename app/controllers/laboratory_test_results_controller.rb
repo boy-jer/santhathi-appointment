@@ -34,7 +34,7 @@ class LaboratoryTestResultsController < ApplicationController
     @appointment = Appointment.find(params[:appointment_id])
     @prescription = Prescription.find(params[:prescription_id])
     @lab_test = LabTest.find(params[:lab_test_id])
-    
+
     @patient = @appointment.patient
     @specifications = @lab_test.parameter_specifications
 
@@ -54,12 +54,12 @@ class LaboratoryTestResultsController < ApplicationController
 
   def create
     specs = params[:specifications]
-    
-    specs[:ids].each_pair{ |key, value| 
+
+    specs[:ids].each_pair{ |key, value|
                           @laboratory_test_result = LaboratoryTestResult.new(params[:laboratory_test_result])
                           @laboratory_test_result.parameter_specification_id = key
-                          @laboratory_test_result.result = value                      
-                          @laboratory_test_result.remarks = specs[:remarks]["r_#{key}"] 
+                          @laboratory_test_result.results = value
+                          @laboratory_test_result.remarks = specs[:remarks]["r_#{key}"]
                           @laboratory_test_result.save
                          }
                           flash[:notice] = 'LaboratoryTestResult was successfully created.'
@@ -92,6 +92,16 @@ class LaboratoryTestResultsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def details
+    @patient = Patient.find(params[:patient_id])
+    @parameter_specification = ParameterSpecification.find(params[:specification_id])
+    respond_to do |format|
+      format.js { render :layout => false }
+    end
+  end
+
+
   private
   def find_all_things
   	@appointment = Appointment.find(params[:appointment_id])

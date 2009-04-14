@@ -6,6 +6,7 @@ class CreateParameters < ActiveRecord::Migration
       t.string :description
 
       t.integer :measurement_unit_id
+      t.string :values
       t.timestamps
     end
 

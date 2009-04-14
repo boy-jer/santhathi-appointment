@@ -5,10 +5,10 @@
     <% form_for(@parameter) do |f| %>
       <%= f.error_messages %>
       <%= render :partial => 'fields', :locals => {:f => f} %>
-      <br/> 
-      <%= image_submit_tag "create.gif" %>
+      <br/>
+      <%= submit_tag "create" %>
 
-<% end %>
+    <% end %>
 
 
 </div></div>

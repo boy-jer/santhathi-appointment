@@ -93,11 +93,12 @@ ActiveRecord::Schema.define(:version => 20090407124821) do
     t.string   "remarks"
     t.date     "date_of_action"
     t.time     "time_of_action"
-    t.string   "action_taken_by"
-    t.string   "authorised_by"
+    t.integer  "action_taken_by_id"
+    t.integer  "authorised_by_id"
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "parameter_specification_id"
   end
 
   create_table "measurement_units", :force => true do |t|
@@ -120,6 +121,7 @@ ActiveRecord::Schema.define(:version => 20090407124821) do
     t.string   "special_condition"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position"
   end
 
   create_table "parameters", :force => true do |t|
@@ -129,6 +131,7 @@ ActiveRecord::Schema.define(:version => 20090407124821) do
     t.integer  "measurement_unit_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "values"
   end
 
   create_table "patients", :force => true do |t|
@@ -142,7 +145,7 @@ ActiveRecord::Schema.define(:version => 20090407124821) do
     t.integer  "spouse"
     t.string   "address"
     t.string   "contact_no"
-    t.string   "reg_type"
+    t.string   "ref_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -231,7 +234,7 @@ ActiveRecord::Schema.define(:version => 20090407124821) do
   create_table "sample_specfications", :force => true do |t|
     t.integer  "age_group_from"
     t.integer  "age_group_to"
-    t.string   "specimen"
+    t.integer  "sample_id"
     t.string   "volume"
     t.string   "min_volume"
     t.string   "sample_for"

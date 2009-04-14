@@ -1,4 +1,5 @@
 class Parameter < ActiveRecord::Base
+  serialize :multi_values, Array
   belongs_to :measurement_unit
   has_many :parameter_specifications
 
