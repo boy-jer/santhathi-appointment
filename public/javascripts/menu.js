@@ -32,11 +32,13 @@ Free for non-commercial use
 */
 
 function initMenu() {
-  jQuery('#menu1 ul').hide();
+
+  jQuery('#menu1 ul:last').hide();
   jQuery('#menu1 ul:first').show();
   jQuery('#collapse-section ul').hide();
   jQuery('#collapse-section ul:first').show(); 
-   
+
+
   jQuery('#menu1 li a').click(
     function() {
       var checkElement = jQuery(this).next();

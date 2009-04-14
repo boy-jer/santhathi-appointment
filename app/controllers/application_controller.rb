@@ -14,7 +14,6 @@ class ApplicationController < ActionController::Base
   end
 
   def admin?
-  	#puts "xxxxxxxxxxxxxxxxxxxxxxxxxfffffffffffffffffffffffff #{@current_user.has_role?(:admin)}"
     #logged_in? && @current_user.has_role?(:admin)
   end
 

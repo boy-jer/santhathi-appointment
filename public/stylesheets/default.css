@@ -1,7 +1,7 @@
-html{ height: 100%}
+html{ min-height: 550px;}
 
 body {       	
-        font: 1em Verdana, Arial, Sans-Serif; 
+        font: 11px Verdana, Arial, Sans-Serif; 
 	/*background: #00c9ee repeat-x ;*/
 	/*background: #55ABD5;*/
         /*background: #F5FAFC;*/
@@ -9,9 +9,9 @@ body {
 	color: #4B4B4B;
 	margin: 0;
 	padding: 0;
-	font-size: 0.8em;
+	font-size: 11px;
 	min-width: 900px;
-        height: 100%
+        min-height: 550px;
 }
 
 
@@ -136,13 +136,12 @@ h3 span {
 
 
 .content{
-	width:83%;
+	width:84.5%;
 	margin: 0px 0px 0px 0px;
-	background-color:#ffffff;
-		
+	background-color:#D3E9FF;
+
 	vertical-align:top;
 	float:left;
-               height: 90%;
 	}
 
 /** Main body */
@@ -202,7 +201,7 @@ h3 span {
 	width: 400px;
 	border: 1px solid red;
 	padding: 7px;
-	padding-bottom: 12px;
+	padding-bottom: 11px;
 	margin-bottom: 20px;
 	background-color: #f0f0f0;
 }
@@ -210,7 +209,7 @@ h3 span {
 	text-align: left;
 	font-weight: bold;
 	padding: 5px 5px 5px 15px;
-	font-size: 12px;
+	font-size: 11px;
 	margin: -7px;
 	background-color: #c00;
 	color: #fff;
@@ -221,7 +220,7 @@ h3 span {
 	padding: 5px;
 }
 #errorExplanation ul li {
-	font-size: 12px;
+	font-size: 11px;
 	list-style: square;
 }
 
@@ -323,10 +322,11 @@ h3 span {
            /*border-width: 4px;
            border-color: #ADC7F3;
            border-style: outset;*/
+           border: 2px  #ADC7F3  solid;
            background: #fff;
            height: 100%;
-           padding: 10px 10px 0px 10px;
-           overflow: auto;}
+           padding: 10px 10px 10px 10px;
+           }
 
 .continer-inner {background: #ffffff;
                  height: 100%;
@@ -480,7 +480,7 @@ h3 span {
 
 
 /*-----------------For table alternate row color ---------------------------*/
-.even1 {background: #E0ECFF;}
+.even {background: #F7FBFF;}
 .header {background: #E0ECFF;}
 /*.odd {background: #b8d3e0;}*/
 
@@ -495,7 +495,7 @@ h3 span {
 .listing td {padding: .6em .5em .3em; color: #000;}
  
 .listing tr {
-             border:1px solid #BBBBBB;
+             border:1px solid #D0DDEC;
 			 font-size: 11px; }
 .listing{
 	    border-collapse: collapse;
@@ -596,7 +596,7 @@ h3 span {
 	margin: 0px 0px 0px 0px;
 	padding: 0px 0px 0px 50px;
 	list-style: none;
-    height:30px;
+        height:30px;
 	margin: 0;
 	list-style: none;
 }
@@ -640,7 +640,7 @@ h3 span {
 	 color: #6B6A7B;;
 	 font-weight: bold;
 	 padding: 1px 0px 1px 0px;
-	 font-size: 12px;
+	 font-size: 11px;
 }
 
 #patient-search-header span {
@@ -717,7 +717,7 @@ hr {
     float:left;
     clear:both;    
 }
-
+background-imag
 .left-box{
     float: left;
     margin:0px 15px 0px 15px;
@@ -735,9 +735,9 @@ a.button {
     display: block;
     float: left;
     font-size: 11px;
-    height: 22px;
+    height: 21px;
     margin-right: 6px;
-    padding-right: 18px; /* sliding doors padding */
+    padding-right: 11px; /* sliding doors padding */
     text-decoration: none;
 
 }
