@@ -1,0 +1,26 @@
+<% form_tag(parameters_url, :method => :get, :id => "search_form") do %>
+   <table class="search-table">
+     <tr>
+       <th><%=label_tag 'Parameter Name:'%></th> <th><%=label_tag 'Value Type:'%></th>
+     </tr>
+      <%fields_for @search do |f|%>
+         <% f.fields_for @search.conditions do |p| %>
+           <td> <%= p.text_field :parameter_name_like, :class => 'textbox'%></td>
+           <td><%= p.text_field :value_type_like , :class => 'textbox'%></td>
+	 </tr>
+
+  </table>
+  <%end%>
+<%end%>
+<% end %>
+
+<%= observe_form("search_form", :frequency => 2,
+                 :before => "Element.show('spinner')",
+                 :success => "Element.hide('spinner')",
+                 :url => parameters_url, :method => :get) %>
+
+<%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner",
+              :style =>"display: none;" ) %>

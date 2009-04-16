@@ -16,6 +16,12 @@
 
       <tr><th><%= f.label :description %>:</th>
       <td><%= f.text_field :description,:class=>"address" %></td></tr>
+
+      <% unless @values.blank? %>
+            <tr><th><label> Multiple option saparated by ,</label>:</th> <td>
+            <%= f.text_field :values,:class=>"address" %></td></tr>
+
+      <%end%>
 </table>
 
      <div id='multiple'>  </div>

@@ -68,7 +68,7 @@ module ApplicationHelper
   end
 
   def genders
-     return [['Female', 'f'], ['Male', 'm']]
+     return [['Female', 'female'], ['Male', 'male']]
   end
 
   def value_types
@@ -84,4 +84,14 @@ module ApplicationHelper
 
    return app_list
   end
+
+  def calculate_age(dob)
+     today = Date.today
+     year = today.year - dob.year
+     if today.month < dob.month || (today.month == dob.month && dob.day >= today.day)
+       year = year - 1
+     end
+     return year
+  end
+
 end

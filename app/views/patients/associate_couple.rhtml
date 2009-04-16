@@ -1,0 +1,44 @@
+<div class='continer'>
+  <div id="flash-notice"> <% if flash[:notice] %>
+            <%=h flash[:notice] %>
+            <%=h flash[:notice] ='' %>
+         <%end%>
+  </div>
+
+  <label> <h3> Associate Couple </h3></label>
+  <div class='left-box'>
+     <h3 id='patient-search-header'> <img src="/images/search.gif" "border=0"> Patient Search:  <span>(Enter atleast one search parameter:)</span></h3>
+  <% form_remote_tag(:url =>{ :action => :patient_search}, :html => {:id => 'left_form'}) do %>
+      <table>
+        <tr><td><%=label_tag 'Name:'%></td><td><%=label_tag 'Contact No:'%></td><td><%=label_tag 'Register No:'%></td></tr>
+        <tr><td><%= text_field_tag 'name', '', {:class => 'textbox'}%></td><td><%= text_field_tag 'number', '' , {:class => 'textbox'}%></td>
+		    <td><%= text_field_tag 'reg_num', '' , {:class => 'textbox'}%></td> <td><%=image_submit_tag('go.gif')%></td>
+		<input id="partial_form" name="partial_form" type="hidden" value="left" />
+
+		</tr>
+       </table>
+<div id="left_patient_search_results">   </div>
+
+   <% end %>
+
+  </div>
+  <div class='right-box'>
+   <% form_remote_tag(:url =>{ :action => :patient_search}, :html => {:id => 'right_form'}) do %>
+      <table>
+        <tr><td><%=label_tag 'Name:'%></td><td><%=label_tag 'Contact No:'%></td><td><%=label_tag 'Register No:'%></td></tr>
+        <tr><td><%= text_field_tag 'name', '', {:class => 'textbox'}%></td><td><%= text_field_tag 'number', '' , {:class => 'textbox'}%></td>
+		    <td><%= text_field_tag 'reg_num', '' , {:class => 'textbox'}%></td> <td><%=image_submit_tag('go.gif')%></td>
+		  <input id="partial_form" name="partial_form" type="hidden" value="right" />
+		</tr>
+       </table>
+		 <div id="right_patient_search_results">   </div>
+   <% end %>
+  </div>
+
+
+    <% form_tag(associate_spouse_patients_path, :id => 'main_form') do -%>
+       <input id="patient_id" name="patient_id" type="hidden" value=""/>
+       <input id="spouse_id" name="spouse_id" type="hidden" value=""/>
+  <%=submit_tag "save" %>
+  <%end%>
+    </div>

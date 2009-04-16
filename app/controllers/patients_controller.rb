@@ -63,21 +63,22 @@ class PatientsController < ApplicationController
   def create
     @patient1 = Patient.new(params[:patient])
     @patient2 = Patient.new(params[:patient1])
+    @patient1.reg_date = Date.today
     @patient1.generate_reg_no
     respond_to do |format|
       if @patient1.save && @patient2.save
       	   @patient2.generate_reg_no
-      	   if @patient1.gender == "m"
-      	  	  @patient2.gender = "f"
+      	   if @patient1.gender == "male"
+      	  	  @patient2.gender = "female"
      	   else
-     	      @patient2.gender = "m"
+     	      @patient2.gender = "male"
     	   end
       	   @patient1.spouse = @patient2.id
       	   @patient2.spouse = @patient1.id
       	   @patient1.spouse_name = @patient2.patient_name
            @patient2.spouse_name = @patient1.patient_name
            @patient2.address = @patient1.address
-           @patient2.reg_date = Time.now
+           @patient2.reg_date = Date.today
            @patient1.save
       	   @patient2.save
         flash[:notice] = 'Patient was successfully created.'
@@ -105,10 +106,10 @@ class PatientsController < ApplicationController
       	patient1.save
       	patient2.generate_reg_no
       	patient2.reg_date = Time.now
-      	if patient1.gender == "m"
-      	   patient2.gender = "f"
+      	if patient1.gender == "male"
+      	   patient2.gender = "female"
      	else
-     	  patient2.gender = "m"
+     	  patient2.gender = "male"
     	end
     	patient2.address = patient1.address
       	patient2.save
@@ -135,4 +136,44 @@ class PatientsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def patient_search
+    @patients = Patient.name_filter(params[:name]) unless params[:name].blank?
+    render :update do |page|
+        if params[:partial_form] == "left"
+          page.replace_html params[:partial_form]+"_patient_search_results", :partial => "patient_search_results", :object => @patients
+        else
+          page.replace_html params[:partial_form]+"_patient_search_results", :partial => "spouse_search_results", :object => @patients
+       end
+    end
+  end
+
+  def associate_couple
+  	#flash[:notice] =''
+
+  end
+
+
+  def associate_spouse
+
+     if !params[:spouse_id].blank? and !params[:patient_id].blank?
+
+       	  patient = Patient.find(params[:patient_id])
+       	  spouse =  Patient.find(params[:spouse_id])
+       	  patient.spouse_name = spouse.patient_name
+       	  patient.spouse = spouse.id
+       	  spouse.spouse_name = patient.patient_name
+       	  spouse.spouse = patient.id
+       	  patient.save
+       	  spouse.save
+       	  flash[:notice] = 'Patient and Spouse Associated.'
+          redirect_to (associate_couple_patients_path())
+     else
+     	flash[:notice] = 'Plaese Select  Patient and Spouse'
+     	redirect_to (associate_couple_patients_path())
+       end
+  end
+
+
+
 end

@@ -6,15 +6,18 @@
 
    <tr><th colspan='2'>Patient detail</th></tr>
 
+   <tr><th><%= f.label :reg_date %></th>
+       <td><%= f.date_select :reg_date,:disabled =>true %></td>
+   </tr>
    <tr><th><%= f.label :name %></th>
        <td><%= f.text_field :patient_name, {:class => 'textbox'} %></td>
    </tr>
 
    <tr><th><%= f.label :dob %></th>
-      <td><%= f.date_select :dob%></td>
+      <td><%= f.date_select :dob,:start_year => 1950, :default => {:year => Time.now.year - 30}%></td>
    </tr>
    <tr><th><%= f.label :gender %></th>
-      <td><%= f.select :gender, {'Female' => 'f', 'Male' => 'm'} %></td>
+      <td><%= f.select :gender, {'Female' => 'female', 'Male' => 'male'} %></td>
    </tr>
    <tr><th><%= f.label :contact_no %></th>
        <td><%= f.text_field :contact_no, {:class => 'textbox'} %></td>
@@ -24,9 +27,7 @@
        <td><%= f.text_field :address, {:class => 'address'} %></td>
    </tr>
 
-   <tr><th><%= f.label :reg_date %></th>
-       <td><%= f.date_select :reg_date %></td>
-   </tr>
+
 
    <tr><th><%= label_tag :referal_type %></th>
        <td><%= radio_button_tag ('ref_type', 'd', checked = false) %> Doctor
@@ -47,7 +48,7 @@
         </tr>
 
         <tr><th><%= p.label :dob %></th>
-            <td><%= p.date_select :dob, {:class => 'textbox'} %></td>
+            <td><%= p.date_select :dob,:start_year => 1950, :default => {:year => Time.now.year - 30} %></td>
         </tr>
 
         <tr><th><%= p.label :contact_no %></th>

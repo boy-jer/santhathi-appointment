@@ -1,7 +1,7 @@
 <h3>  Registration for individual</h3><br/>
 <table class="form-table">
    <tr><th><%= f.label :reg_date %></th>
-       <td><%= f.date_select :reg_date %></td>
+       <td><%= f.date_select :reg_date,:disabled =>true %></td>
    </tr>
 
    <tr><th><%= f.label :patient_name %></th>
@@ -13,7 +13,7 @@
    </tr>
 
    <tr><th><%= f.label :gender %></th>
-      <td><%= f.select :gender, {'Female' => 'f', 'Male' => 'm'} %></td>
+      <td><%= f.select :gender, {'Female' => 'female', 'Male' => 'male'} %></td>
    </tr>
 
 

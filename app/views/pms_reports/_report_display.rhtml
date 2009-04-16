@@ -1,0 +1,8 @@
+
+	<label><h2>HEALTH CARE - OFSY </h2></label>
+	<label> <h3>PH:91-824-2451001/5 Fax:91-824-451050</h3></label>
+
+
+	<% for report in @reports%>
+	<%= report[0].to_s+" Date has many "+report[1].to_s+" appointments"  %><br/>
+	<%end%>

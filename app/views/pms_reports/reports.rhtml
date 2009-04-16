@@ -1,0 +1,27 @@
+<div class='continer'>
+  <fieldset >
+    <legend><label><h2>Reports:</h2></label></legend>
+     <label> Appointments</label>
+      <ul>
+          <li> <%= link_to "Date Wise Report", date_wise_reports_pms_reports_path()%> </li>
+          <li> <%= link_to "Department Wise Report", department_wise_report_pms_reports_path()   %> </li>
+          <li> <%= link_to  "Doctor Wise Report", patients_path%>
+          <li> <%= link_to "AppointmentType Report", patients_path%>
+      </ul>
+     <label>Registration Reports:</label>
+      <ul>
+          <li> <%= link_to "VisitType Report", patients_path%> </li>
+          <li> <%= link_to "Nationality Wise Report", patients_path%> </li>
+          <li> <%= link_to "Referral Reports", patients_path%> </li>
+      </ul>
+        <label>  Appointment Slot Reports: </label>
+      <ul>
+          <li> <%= link_to "Appointment List", patients_path%> </li>
+      </ul>
+      <label>Visit Report:</label>
+       <ul>
+          <%= link_to "Visit Report List",patients_path%> </li>
+       </ul>
+
+  </fieldset>
+</div>

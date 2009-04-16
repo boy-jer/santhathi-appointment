@@ -1,0 +1,40 @@
+<% if @parameter_count > 0 %>
+
+<h3>Parameter Master List</h3><br/>
+
+<table class="listing">
+  <tr>
+    <th>Parameter name</th>
+    <th>Value type</th>
+    <th>Measurement unit</th>
+    <th>Description</th>
+    <th>Show</th>
+    <th>Modify</th>
+    <th>Delete</th>
+  </tr>
+
+<% for parameter in @parameters %>
+  <tr>
+    <td><%=h parameter.parameter_name %></td>
+    <td><% if parameter.value_type =="Multiple" %>
+             <%= link_to "Multiple", "/parameters/muliple_display/#{parameter.id}", :rel=> "facebox" %>
+        <%else%>
+           <%=h parameter.value_type %></td>
+        <%end%>
+    <td><%=h 'ss' %></td>
+    <td><%=h parameter.description %></td>
+    <td><%= link_to 'Show', parameter,:rel=> "facebox"%></td>
+    <td><%= link_to 'Modify', edit_parameter_path(parameter) %></td>
+    <td><%= link_to 'Delete', parameter, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+  <br />
+  <% if @parameter_count > 1 %>
+    <div class="pages">
+      <%= remote_page_links %>
+    </div>
+  <% end %>
+
+<%end%>

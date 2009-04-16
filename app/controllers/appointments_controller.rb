@@ -76,6 +76,7 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
 
     if params[:new_patient_check] == 'yes'
       @patient = Patient.new(params[:patient])
+      @patient.reg_date = Date.today
     else
       @patient = Patient.find(params[:patient_id])
     end

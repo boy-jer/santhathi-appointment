@@ -1,11 +1,19 @@
 class ParametersController < ApplicationController
   layout 'laboratory'
-  def index
-    @parameters = Parameter.paginate(:include => :measurement_unit, :page => params[:page],:per_page => 10)
 
+  def index
+
+  	@search = Parameter.new_search(params[:search])
+    @search.per_page = 9
+   # @search.page = 1
+    @parameters,@parameter_count = @search.all,@search.count
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @parameters }
+      format.js  { render :update do |page|
+                      page.replace_html 'parameters_list', :partial => 'parameters_list'
+                   end
+                 }
     end
   end
 
@@ -35,6 +43,8 @@ class ParametersController < ApplicationController
   # GET /parameters/1/edit
   def edit
     @parameter = Parameter.find(params[:id])
+    @values = @parameter.values if @parameter.value_type =="Multiple"
+
   end
 
   # POST /parameters
@@ -65,6 +75,9 @@ class ParametersController < ApplicationController
 
     respond_to do |format|
       if @parameter.update_attributes(params[:parameter])
+      	  @parameter.values = params[:values].split(',') unless params[:values].blank?
+      	  @parameter.save
+
         flash[:notice] = 'Parameter was successfully updated.'
         format.html { redirect_to(@parameter) }
         format.xml  { head :ok }

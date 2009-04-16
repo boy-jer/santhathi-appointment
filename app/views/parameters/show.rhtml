@@ -6,6 +6,10 @@
  <tr><th>Value type:</th><td><%=h @parameter.value_type %></td></tr>
  <tr><th>Measurement unit:</th><td><%=h @parameter.measurement_unit.name %></td></tr>
  <tr><th>Description:</th><td> <%=h @parameter.description %></td></tr>
+ <% unless @parameter.values.nil?%>
+    <tr><th>Multiple options :</th><td> <%=h @parameter.values %></td></tr>
+ <%end%>
+
 </table>
 <br/></br>
 

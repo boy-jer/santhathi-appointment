@@ -1,38 +1,15 @@
 <div class='continer'>
   <div class='continer-inner'>
+	 <%=render :partial=> 'search'%>
+	 <br />
 
-
-<h3>Parameter Master List</h3><br/>
-
-<table class="listing">
-  <tr>
-    <th>Parameter name</th>
-    <th>Value type</th>
-    <th>Measurement unit</th>
-    <th>Description</th>
-    <th>Show</th>
-    <th>Modify</th>
-    <th>Delete</th>
-  </tr>
-
-<% for parameter in @parameters %>
-  <tr>
-    <td><%=h parameter.parameter_name %></td>
-    <td><% if parameter.value_type =="Multiple" %>
-             <%= link_to "Multiple", "/parameters/muliple_display/#{parameter.id}", :rel=> "facebox" %>
-        <%else%>
-           <%=h parameter.value_type %></td>
-        <%end%>
-    <td><%=h 'ss' %></td>
-    <td><%=h parameter.description %></td>
-    <td><%= link_to 'Show', parameter,:rel=> "facebox"%></td>
-    <td><%= link_to 'Modify', edit_parameter_path(parameter) %></td>
-    <td><%= link_to 'Delete', parameter, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-<%= will_paginate @parameters %>
-<br />
-<%= link_to "<span>New #{params[:type]}</span>", new_parameter_path(:type => params[:type]), :class=> "button" %>
+	<div id='parameters_list'>
+    	<%=render :partial=> 'parameters_list'%>
+    </div><br/>
+	<table>
+	<tr><td>
+		<%= link_to "<span>New Parameter</span>", new_parameter_path(:type => params[:type]), :class=> "button" %>
+	</td></tr>
+	</table>
   </div>
 </div>
