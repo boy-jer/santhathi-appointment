@@ -3,12 +3,12 @@
       <a href="#"> Diagnosis & Prescription(Current Visit) <%=image_tag('arrow_down.png', :border => 0) %></a>
       <ul>
         <br />
-        <% for department in @departments %>
-           <li><%= link_to_remote("#{department.dept_name} Prescription", 
+        <% for test in @lab_services %>
+           <li><%= link_to_remote("#{test.name} Prescription", 
                                    :before => "Element.show('spinner')",
                                    :success => "Element.hide('spinner')",
-                                   :url => { :controller => :prescriptions, :action => :new },
-                                   :with => "'department=' + #{department.id} + '&appointment=' + #{@appointment.id}") %></li>
+                                   :url => { :controller => :prescriptions, :action => @appointment.prescription.blank? ? :new : :edit },
+                                   :with => "'department='+ #{@department.id} + '&test_id='+ #{test.id} + '&appointment=' + #{@appointment.id}") %></li>
         <% end %>
       </ul>
    </li>

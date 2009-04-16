@@ -15,7 +15,7 @@ iframe.ie6_blocker {
 .calendar_date_select thead th {
   font-weight:bold;
   font-size:11px;
-  background-color: #8ED8FB;
+  background-color: #ACD2F9;
   border-top:1px solid #abccdc;
   border-bottom:1px solid #abccdc;
   color: white !important;
@@ -29,7 +29,7 @@ iframe.ie6_blocker {
 }
 
 .calendar_date_select .cds_footer {
-  background-color: #8ED8FB;
+  background-color: #ACD2F9;
   padding:1px;
   font-size:12px;
   text-align:center;

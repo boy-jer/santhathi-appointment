@@ -6,3 +6,4 @@ database.yml
 doc/api
 .DS_Store
 .svn
+db/schema.rb

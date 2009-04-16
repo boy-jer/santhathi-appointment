@@ -10,9 +10,9 @@
 	/* NAVIGATION */
 	.navigation{
 		width:14%;
-		min-height: 550px;
-		margin: 0px 5px 0px 5px;
-                border: 2px  #ADC7F3  solid;
+		min-height: 480px;
+		margin: 0px 5px 5px 5px;
+                border: 2px  #DAE7FF  solid;
                 background: #fff;
 		/*background: url(/images/side-nav.png) repeat-x;*/
 		float:left;
@@ -20,7 +20,7 @@
 		position:relative;
 	}
 	.navPanel{
-		padding:5px;
+		padding:10px;
 		height:60%;
 	}
 	
@@ -117,7 +117,7 @@ ul#collapse-section li a {
 
 
 ul#collapse-section li ul li a {
-  background: #fff;
+  background: #F7FBFF;
   color: #988484;
   padding-left: 20px;
   background-image: url(/images/list-arrow.png);

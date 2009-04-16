@@ -1,11 +1,8 @@
 <div class='continer'>
-  <div class='continer-inner'>
-  <h3>Completed Prescription List</h3>
- <br/>
+  <h3>Prescription List</h3>
 
-<table class="listing">
+ <table class="listing">
   <tr>
-    <th>  </th>
     <th> Hospital No </th>
     <th> PVR No </th>
     <th> Patient Name</th>
@@ -14,46 +11,24 @@
     <th> Status </th>
     <th>Test Report</th>
     <th>View Report</th>
-    <th>Modify</th>
-    <th>Delete</th>
-  </tr>
+   </tr>
 
- <% for appointment in @appointment %>
-  <tr valign="top" class="<%= cycle('odd', 'even') %>" >
+  <% for prescription in @prescriptions %>
+     <% for test in prescription.prescribed_tests %>
+        <tr class="<%= cycle('odd', 'even') %>" >
+          <% patient = prescription.appointment.patient%>
+          <td> <%=h patient.reg_no %>         </td>
+          <td> <%=h patient.id %>         </td>
+          <td> <%= patient.patient_name %>         </td>
+	  <td> <%= test.service.name %> </td>
+          <td> OP </td>
+	  <td> completed </td>
+	  <td> <%= link_to "Test Report", new_laboratory_test_result_path(:appointment_id=> prescription.appointment.id, :prescription_id=> prescription.id, :lab_test_id => test.service.id ) %></td>
+	  <td> <%= link_to "View Report", :action=>"show", :controller=>"laboratory_test_results", :appointment_id =>  prescription.appointment.id, :prescription_id => prescription.id, :lab_test_id => test.service.id  %></td>
+	</tr>
+      <%end%>
+  <% end %>
 
-    <% prescriptions_list(appointment) %>
-       <% unless @prescription_list.blank? %>
-         <% for prescription in @prescription_list %>
-           <% for test in prescription.prescribed_tests %>
-              <tr>
+ </table>
 
-                     <td>           </td>
-                     <% patient = dispaly_patient(prescription.appointment)%>
-                     <td>  <%=h patient.reg_no %>         </td>
-                     <td>  <%=h patient.id %>         </td>
-                     <td>  <%= patient.patient_name %>         </td>
-	                 <td> <%= test.service.name %> </td>
-           	         <td> OP </td>
-	                 <td> completed </td>
-	                 <td>
-	<%= link_to "Test Report", new_laboratory_test_result_path(:appointment_id=>appointment.id,:prescription_id=> prescription.id,:lab_test_id => test.service.id ) %></td>
-	                 <td>
-	    <%= link_to "View Report",:action=>"show", :controller=>"laboratory_test_results",:appointment_id=>appointment.id,:prescription_id=> prescription.id,:lab_test_id => test.service.id  %></td></td>
-	                 <td></td>
-	                 <td></td>
-	          </tr>
-             <%end%>
-          <% end %>
-        <% end %>
-
-   <%end%>
-
-
-
-
-</table>
-
-
-
-  </div>
 </div>

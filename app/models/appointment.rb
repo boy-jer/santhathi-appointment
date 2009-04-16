@@ -10,10 +10,10 @@ class Appointment < ActiveRecord::Base
   belongs_to :mode
 
   #belongs_to :department
-  has_many :prescriptions
+  has_one :prescription
   has_many :laboratory_test_results
 
-  validates_presence_of :doctor_id,:reason_id,:mode_id
+  validates_presence_of :doctor_id, :reason_id,:mode_id
 
   aasm_column :state
   aasm_initial_state :new_appointment

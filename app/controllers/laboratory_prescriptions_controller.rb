@@ -2,7 +2,7 @@ class LaboratoryPrescriptionsController < ApplicationController
   layout 'laboratory'
 
   def index
-	 @appointment = Appointment.find(:all)
+     @prescriptions = Prescription.find(:all, :order => 'p_date')
   end
 
 

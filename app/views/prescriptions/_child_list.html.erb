@@ -1,5 +1,5 @@
  <li>
-     <%=check_box_tag('services[]', service.id, checked = false )%> <%= service.name %> 
+     <%=check_box_tag('services[]', service.id, checked = @services.include?(service.id), :disabled => @services.include?(service.id) )%> <%= service.name %> 
       <% unless service.children.empty? %>
         <ul><%= render :partial => 'child_list', :collection => service.children, :as => :service %></ul>
       <% end %>  

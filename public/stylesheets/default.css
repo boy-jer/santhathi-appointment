@@ -31,6 +31,7 @@ input.textbox{
 	padding:2px 2px;
 
 	width:150px;
+        height: 15px;
 }
 
 textarea.textbox{
@@ -322,7 +323,7 @@ h3 span {
            /*border-width: 4px;
            border-color: #ADC7F3;
            border-style: outset;*/
-           border: 2px  #ADC7F3  solid;
+           border: 2px  #DAE7FF  solid;
            background: #fff;
            height: 100%;
            padding: 10px 10px 10px 10px;
@@ -502,7 +503,7 @@ h3 span {
             width: 100%;
             border: 1px solid #e8ebec;
             color: #3a3a3a;
-            padding: 0px 10px 0px 10px;
+            padding: 0px 5px 0px 5px;
 }
 .listing a {
 	     color: #007db7;
@@ -561,7 +562,7 @@ h3 span {
 #menu li a {
 	display: block;
 	float: left;
-	margin:19px 4px 0px 0px;
+	margin:21px 3px 0px 0px;
 	padding: 5px 2px 0px 1px;
 	width:88px;height:17px;
 	text-transform: uppercase;
@@ -577,7 +578,7 @@ h3 span {
 #menu li a:hover {
 	display: block;
 	float: left;
-	margin:19px 4px 0px 0px;
+	margin:21px 3px 0px 0px;
 	padding: 5px 2px 0px 1px;
 
 	text-transform: uppercase;
@@ -773,13 +774,11 @@ a.button:hover span {
 /*------------------------- links as buttons --------------*/
 
 /*--------------------------clinical-screen----------------*/
-.clinical-table{border-collapse: collapse; width: 100%; border: 1px solid #e8ebec; }
+.clinical-table{background-color: #F7FBFF;  width: 100%; border: 1px solid #E7EBEF; }
 
-.clinical-table tr:hover{background-color: #ffffff; color: #858b8e; border:1px solid #e8ebec;} /*not for IE*/
+.clinical-table th {color: #667987; padding: 0.1em .8em; border:1px solid #fff; text-align: left;}
 
-.clinical-table th {background-color: #ffffff; color: #667987; padding: 0.1em .8em; border:1px solid #e8ebec; text-align: left;}
-
-.clinical-table td {background-color: #Ffffff; padding: 0.2em .8em; border:1px solid #e8ebec;}
+.clinical-table td {padding: 0.2em .8em; border:1px solid #fff;}
 
 /*--------------------------clinical-screen----------------*/
 
@@ -795,3 +794,7 @@ a.button:hover span {
            height: 104px;
            overflow: auto;
           }
+#clinical-screen{
+border:#E7EBEF 1px solid;
+ padding: 5px 5px 5px 2px;
+}

@@ -58,7 +58,8 @@ class DoctorPatientsController < ApplicationController
        @appointment = Appointment.find(params[:id]) 
        @patient = @appointment.patient
        @doctor = @appointment.doctor
-       @departments = Department.find(:all)
+       @lab_services = LabTest.find_all_by_parent_id(nil)
+       @department = Department.find_by_dept_name("laboratory")
        #@age = Date.today - @patient.dob
     else
       flash[:notice]=" Please select at least one appointment."
