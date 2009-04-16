@@ -6,7 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :vital_signs
 
   map.resources :laboratory_prescription
-
+  map.resources :pms_reports,:collection =>{:reports =>:get,:date_wise_reports=>:get ,:department_wise_report=>:get}
   map.resources :pharamacy_item_informations
 
   map.resources :pharmacy_course_lists
@@ -55,7 +55,7 @@ ActionController::Routing::Routes.draw do |map|
 
 
   map.resources :appointments, :member => {:confirm => :get},:collection=>{:update_doctors_list =>:get}
-
+  map.resources :patients ,:collection =>{:associate_spouse=>:post, :associate_couple=>:get}
   map.resources :patients do |patient|
     patient.resources :patient_appointments, :as => :pappointments
   end
