@@ -1,27 +1,32 @@
 <div class='continer'>
   <fieldset >
-    <legend><label><h2>Reports:</h2></label></legend>
-     <label> Appointments</label>
+
+     <% if @type == "Appointment"%>
+     <label><h2> Appointments </h2></label><br/>
       <ul>
           <li> <%= link_to "Date Wise Report", date_wise_reports_pms_reports_path()%> </li>
           <li> <%= link_to "Department Wise Report", department_wise_report_pms_reports_path()   %> </li>
-          <li> <%= link_to  "Doctor Wise Report", patients_path%>
-          <li> <%= link_to "AppointmentType Report", patients_path%>
+          <li> <%= link_to  "Doctor Wise Report", doctor_wise_report_pms_reports_path() %>
+          <li> <%= link_to "AppointmentType Report",appointment_type_report_pms_reports_path()%>
       </ul>
-     <label>Registration Reports:</label>
+     <% elsif @type =="Registration" %>
+     <label><h2>Registration Reports </h2></label><br/>
       <ul>
           <li> <%= link_to "VisitType Report", patients_path%> </li>
           <li> <%= link_to "Nationality Wise Report", patients_path%> </li>
           <li> <%= link_to "Referral Reports", patients_path%> </li>
       </ul>
-        <label>  Appointment Slot Reports: </label>
+      <%elsif @type == "Appointment_slot"%>
+        <label> <h2> Appointment Slot Reports </h2> </label><br/>
       <ul>
+
           <li> <%= link_to "Appointment List", patients_path%> </li>
-      </ul>
-      <label>Visit Report:</label>
+      </ul> <%elsif @type == "vist_report"%>
+      <label><h2>Visit Report </h2></label><br/>
        <ul>
           <%= link_to "Visit Report List",patients_path%> </li>
        </ul>
+       <%end%>
 
   </fieldset>
 </div>

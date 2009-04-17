@@ -20,14 +20,19 @@
                 <li><%= link_to "Doctors", doctors_path %></li>
 				<li><%= link_to "Reasons", select_options_url(:type => 'Reason') %></li>
 				<li><%= link_to "Visit type" ,select_options_path(:type => 'VisitType') %></li>
-				<li><%= link_to "Mode" ,select_options_path(:type => 'Mode') %></li>
+				<li><%= link_to "Appointments reports" , reports_pms_reports_path(:type =>"Appointment")  %></li>
+				<li><%= link_to "Registration Reports" ,reports_pms_reports_path(:type =>"Registration")  %></li>
+				<li><%= link_to "Appointment Slot Reports" ,reports_pms_reports_path(:type =>"Appointment_slot")  %></li>
+				<li><%= link_to "Visit Reports" ,reports_pms_reports_path(:type =>"vist_report")  %></li>
+
+
+
 			</ul>
 		</li>
 		<li>
 
 			<a href="s">Reports</a>
 			<ul>
-				<li><%= link_to "Reports", reports_pms_reports_path() %></li>
 				<li><a href="http://www.google.com/">Google</a></li>
 				<li><a href="http://www.ask.com/">Ask.com</a></li>
 				<li><a href="http://www.live.com/?searchonly=true">Live Search</a></li>

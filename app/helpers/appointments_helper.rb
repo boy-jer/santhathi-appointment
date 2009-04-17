@@ -11,10 +11,9 @@ module AppointmentsHelper
     else
       @doctors = Department.find(dept_id).doctors.collect{|x| [x.name, x.id]}
     end
-    
     return @doctors
   end
-  
+
   def hours
      b = []
      (0..23).step(1) do |num|

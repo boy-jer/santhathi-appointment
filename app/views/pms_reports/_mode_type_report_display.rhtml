@@ -1,0 +1,25 @@
+
+<table class="listing"> <tr> <th><center>
+DateWise Report Of Appointment Type</center></th> </tr></table>
+
+<table class="listing">
+    <tr> <th>Date</th>
+    <% for mode_id in @mode_ids %>
+       <th><%=h display_mode(mode_id) %></th>
+     <%end%>
+    </tr>
+
+
+  <% for date in @from_date..@to_date %>
+
+   <tr> <td> <%=h date %></td>
+   <% count_all(date) %>
+   <td><%=h @others%> </td>
+   <td> <%=h @telephonic %></td>
+   <td><%=h @walk_ins %> </td>
+   </tr>
+     <%end%>
+<tr><td> </td><td><label><%=h @total_others %> </label></td><td><label><%=h  @total_telephonic %></label></td><td><label><%=h @total_walkins %></label></td></tr>
+   <tr><th> Total :</th><td><label><%=h add_all() %></label></td></tr>
+
+</table>

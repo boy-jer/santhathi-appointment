@@ -48,6 +48,10 @@ class Appointment < ActiveRecord::Base
 
   named_scope :on_time,lambda { |time| { :conditions => ["appointment_time = ?", time] } }
 
+ # named_scope :count_appointment,lambda { |from_date,to_date| {:conditions => {:appointment_date=>from_date..to_date} } }
+
+
+
   def update_time
     time = "#{hour}:#{minute}" unless hour.blank?
     write_attribute(:appointment_time, time) unless time.blank?

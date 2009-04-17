@@ -7,14 +7,14 @@
       <tr>  <td>  <%= radio_button_tag :option, "day" ,true %>  DayWise
         <%= radio_button_tag :option, "month" %> Monthwise </td></tr>
 
-       <tr><th>Department :</th><td> <%= select_tag "department",options_for_select(Department.departments_select_list_for_pms_report) %> </td></tr>
+       <tr><th>Department :</th><td> <%= select_tag "department_id",options_for_select(Department.departments_select_list_for_pms_report) %> </td></tr>
    </table>
-
+  <%= submit_tag "go"%>
    <% unless @reports.blank? -%>
       <%= render(:partial => "report_display" , :object => @reports) %>
    <%end%>
 
-  <%= submit_tag "go"%>
+
     <%end%>
 
 
