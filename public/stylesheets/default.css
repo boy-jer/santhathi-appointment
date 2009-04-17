@@ -5,7 +5,7 @@ body {
 	/*background: #00c9ee repeat-x ;*/
 	/*background: #55ABD5;*/
         /*background: #F5FAFC;*/
-        background: #D3E9FF;
+        background: #CDDFF0;
 	color: #4B4B4B;
 	margin: 0;
 	padding: 0;
@@ -93,7 +93,7 @@ line-height: 3px;
 h3 {
 font-size:13px;
 color: #50798c;
-line-height: 2px;
+line-height: 0px;
 }
 
 h3 span {
@@ -104,7 +104,7 @@ h3 span {
 
 /** Header */
 #header {
-	margin: 0px 0px 5px 0px;
+	margin: 0px 0px 0px 0px;
 	padding: 0em 0em 0em 0em;
 	/*position: absolute;*/
 	background: url(/images/top-bar-12.png) repeat-x;
@@ -139,7 +139,7 @@ h3 span {
 .content{
 	width:84.5%;
 	margin: 0px 0px 0px 0px;
-	background-color:#D3E9FF;
+	background-color:#F9F9F2;
 
 	vertical-align:top;
 	float:left;
@@ -157,7 +157,7 @@ h3 span {
 	float: left;
 }
 
-#left {
+#left {CDDFF0
 	/*background: #104E8B;*/
 	/*background: #82B8E4;*/
 	width: 100%;
@@ -323,10 +323,11 @@ h3 span {
            /*border-width: 4px;
            border-color: #ADC7F3;
            border-style: outset;*/
-           border: 2px  #DAE7FF  solid;
-           background: #fff;
+           border: 4px  #F6F6EE  solid;
+
+           background: #fff; /* url(/images/tab.png) repeat-x;*/
            height: 100%;
-           padding: 10px 10px 10px 10px;
+           padding: 5px 10px 20px 10px;
            }
 
 .continer-inner {background: #ffffff;
@@ -483,30 +484,31 @@ h3 span {
 /*-----------------For table alternate row color ---------------------------*/
 .even {background: #F7FBFF;}
 .header {background: #E0ECFF;}
+.radio-column{ border-right:1px solid #ccc; width: 4px; padding: 0px;}
 /*.odd {background: #b8d3e0;}*/
 
 /*.listing tr:hover {background-color: #f2f7f9; color: #000;} not for IE*/
-.listing th {background-color: #F9F9F2;
+.listing th {background-color: #F1F1E1;
              color: #4A4D4A;
              text-align: left;
              padding: 0.3em .5em;
-             border:1px solid #ccc;
+             border:1px solid #8BA5C0;
 }
 
 .listing td {padding: .6em .5em .3em; color: #000;}
 
 .listing tr {
-             border:1px solid #D0DDEC;
+             border:1px solid #8BA5C0;
 			 font-size: 11px; }
 .listing{
 	    border-collapse: collapse;
             width: 100%;
-            border: 1px solid #e8ebec;
             color: #3a3a3a;
             padding: 0px 5px 0px 5px;
 }
 .listing a {
-	     color: #007db7;
+	     color: #005DB8;
+             
             font-size: 11px;
 }
 
@@ -541,7 +543,7 @@ h3 span {
 
 .search-table th {background-color: #FFF; color: #4A4D4A; padding: 0.1em 1em; border:1px solid #ccc; text-align: left;  }
 
-.search-table td {background-color: #F9F9F2; padding: 0.2em .8em; border:1px solid #ccc; text-align: left;}
+.search-table td {background-color: #F9F9F2; padding: 0.2em .8em; border:1px solid #8BA5C0; text-align: left;}
 
 .search-table {border-collapse: collapse; width: 100%; border: 1px solid #e8ebec; }
 
@@ -562,7 +564,7 @@ h3 span {
 #menu li a {
 	display: block;
 	float: left;
-	margin:21px 3px 0px 0px;
+	margin:20px 3px 0px 0px;
 	padding: 5px 2px 0px 1px;
 	width:88px;height:17px;
 	text-transform: uppercase;
@@ -578,7 +580,7 @@ h3 span {
 #menu li a:hover {
 	display: block;
 	float: left;
-	margin:21px 3px 0px 0px;
+	margin:20px 3px 0px 0px;
 	padding: 5px 2px 0px 1px;
 
 	text-transform: uppercase;
@@ -732,7 +734,7 @@ background-imag
 
 a.button {
     background: transparent url('/images/bg_button_a.gif') no-repeat scroll top right;
-    color: #007db7;
+    color: #154F88;
     display: block;
     float: left;
     font-size: 11px;

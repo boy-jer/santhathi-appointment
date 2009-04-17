@@ -7,7 +7,7 @@
 <table class="listing">
   <thead>
   <tr>
-  	<th></th>
+    <th></th>
     <th>No</th>
     <th>Date</th>
     <th>Time</th>
@@ -23,7 +23,7 @@
 <% for appointment in @appointments %>
   <tbody>
   <tr valign="top" class="<%= cycle('odd', 'even') %>">
-  	<td><%=radio_button_tag ('appointment', appointment.id, checked = false, options = {:onclick => "$('main_form').appointment_id.value=#{appointment.id};"})%></td>
+  	<td class='radio-column'><%=radio_button_tag ('appointment', appointment.id, checked = false, options = {:onclick => "$('main_form').appointment_id.value=#{appointment.id};"})%></td>
     <td><%=h appointment.id %></td>
     <td><%=h appointment.appointment_date %></td>
     <td><%=h Time.parse(appointment.appointment_time.to_s).strftime('%H:%M').to_s %></td>

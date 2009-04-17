@@ -12,7 +12,7 @@
 		width:14%;
 		min-height: 480px;
 		margin: 0px 5px 5px 5px;
-                border: 2px  #DAE7FF  solid;
+                border: 3px  #F6F6EE  solid;
                 background: #fff;
 		/*background: url(/images/side-nav.png) repeat-x;*/
 		float:left;
@@ -91,6 +91,7 @@ ul#menu1 li ul li a:hover {
 
 
 ul#collapse-section, ul#collapse-section ul {
+  
   list-style-type:none;
   margin: 0;
   padding: 0;
