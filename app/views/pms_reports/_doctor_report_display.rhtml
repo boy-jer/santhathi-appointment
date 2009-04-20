@@ -2,7 +2,7 @@
 <table class="listing">
 
  <tr><th>From Date: <%=h @from_date %></th><th>To Date :  <%=h @to_date%></th></tr>
-
+    <% unless @department_name.nil? %>
     <tr><th>Department Name :</th><th>   <%=h @department_name %></th></tr></table>
     <%end%>
 <br/>
@@ -10,7 +10,7 @@
    <tr> <th> Date </th><th>CN</th> <th> Total </th></tr>
     <% @count = 0 %>
     <% for date in @from_date..@to_date %>
-       <% value= calculate_count(date) %>
+       <% value= calculate_count(@reports,date) %>
         <tr><td> <%=h date %></td>
             <td> <%=h value %></td>
            <td><%=h value %></td>

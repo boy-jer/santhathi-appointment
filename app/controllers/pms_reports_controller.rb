@@ -29,8 +29,6 @@ class PmsReportsController < ApplicationController
   end
 
 
-
-
   def department_wise_report
   	 unless params[:from_date].blank? and params[:to_date].blank?
   	 	 @from_date = params[:from_date].to_date

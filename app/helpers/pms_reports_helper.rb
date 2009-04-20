@@ -5,7 +5,6 @@ module PmsReportsHelper
   	return 0 if value.nil?
  	@count += value
   	return value
-
   end
 
 
