@@ -1,12 +1,14 @@
 module PmsReportsHelper
 
-  def calculate_count(date)
-  	value = @reports[date]
+  def calculate_count(reports,date)
+  	value = reports[date]
   	return 0 if value.nil?
  	@count += value
   	return value
 
   end
+
+
 
   def display_mode(id)
   	name = Mode.find(id).name
@@ -41,6 +43,20 @@ module PmsReportsHelper
   def add_all
      sum = @total_others + @total_telephonic + @total_walkins
      return sum
+  end
+
+  def count_first_visit(date)
+  	 count = 0
+  	 count = Appointment.count(:conditions=>['appointment_date = ? and visit_type = ?',date,"yes"])
+  	 @count_visit_type += count
+  	 return count
+  end
+
+  def count_follow_up(date)
+  	count = 0
+  	count = Appointment.count(:conditions=>['appointment_date = ? and visit_type = ?',date,"no"])
+  	@count_visit_type += count
+  	return count
   end
 
 end

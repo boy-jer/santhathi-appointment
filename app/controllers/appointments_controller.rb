@@ -74,7 +74,7 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
     date = session[:date].blank? ? Date.today : session[:date]
     @appointment = Appointment.new(params[:appointment].merge({:appointment_date => date}))
     @appointment.department_id = params[:departament][:id]
-    if params[:new_patient_check] == 'yes'
+    if params[:appointment][:visit_type] == 'yes'
       @patient = Patient.new(params[:patient])
       @patient.reg_date = Date.today
     else

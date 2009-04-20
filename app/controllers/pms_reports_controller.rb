@@ -19,6 +19,18 @@ class PmsReportsController < ApplicationController
     end
    end
 
+   def visit_type_report
+  	unless params[:from_date].blank? and params[:to_date].blank?
+  	  @from_date = params[:from_date].to_date
+  	  @to_date = params[:to_date].to_date
+  	  @first_visit_reports =  Appointment.count(:conditions => {:appointment_date=>@from_date..@to_date,:visit_type =>"yes"},:group=>"appointment_date")
+  	  @follow_up_reports =  Appointment.count(:conditions => {:appointment_date=>@from_date..@to_date,:visit_type =>"no"},:group=>"appointment_date")
+ 	end
+  end
+
+
+
+
   def department_wise_report
   	 unless params[:from_date].blank? and params[:to_date].blank?
   	 	 @from_date = params[:from_date].to_date
@@ -73,7 +85,7 @@ class PmsReportsController < ApplicationController
    	  unless params[:from_date].blank? and params[:to_date].blank?
    	  	@from_date = params[:from_date].to_date
   	    @to_date = params[:to_date].to_date
-		@mode_ids = Mode.find(:all,:order=>'name').map{ |mode| mode.id}
+		@mode_ids = Mode.find(:all,:order=>'name').map{ |mode| mode.id }
 		@total_others = 0
 		@total_telephonic = 0
 		@total_walkins = 0
@@ -87,6 +99,9 @@ class PmsReportsController < ApplicationController
       page.replace_html 'doctor_list', :partial => 'doctors_list', :object => @doctors
     end
   end
+
+
+
 
 end
 
