@@ -1,12 +1,8 @@
 module PmsReportsHelper
 
-  def calculate_count(reports,date)
-  	value = reports[date]
-  	return 0 if value.nil?
- 	@count += value
-  	return value
+  def count(counts, date)
+    counts.keys.include?(date)? counts[date] : '0'
   end
-
 
 
   def display_mode(id)

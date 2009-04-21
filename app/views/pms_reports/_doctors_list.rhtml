@@ -3,6 +3,6 @@
   <% doc = [["No Doctors",""]]%>
 <%else%>
 	<% doc =[["All Doctors","All"]]%>
-	<% doc+=@doctors%>
+	<% doc += @doctors%>
 <%end%>
 <%= select_tag "doctor_id",options_for_select(doc) %>
