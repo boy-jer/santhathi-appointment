@@ -13,18 +13,21 @@ class LaboratoryTestResultsController < ApplicationController
   # GET /laboratory_test_results/1
   # GET /laboratory_test_results/1.xml
   def show
-    @laboratory_test_result = LaboratoryTestResult.find(:first,
-           :conditions =>['appointment_id = ? AND prescription_id = ? AND lab_test_id = ?',
-           params[:appointment_id],params[:prescription_id],params[:lab_test_id]])
+    @appointment = Appointment.find(params[:appointment_id])
+    @prescription = Prescription.find(params[:prescription_id])
+    @lab_test = LabTest.find(params[:lab_test_id])
 
-    if @laboratory_test_result.nil?
-      redirect_to(new_laboratory_test_result_path(:appointment_id=>@appointment.id,:prescription_id=> @prescription.id,:lab_test_id => @lab_test.id ))
-    else
+    @patient = @appointment.patient
+    @specifications = @lab_test.parameter_specifications
+
+    @laboratory_test_results = LaboratoryTestResult.find(:all, :conditions =>['appointment_id = ? AND prescription_id = ? AND lab_test_id = ?',                params[:appointment_id], params[:prescription_id], params[:lab_test_id]] )
+    @results = {}
+    @laboratory_test_results.map{|r|  @results[r.parameter_specification_id] = [r.result, r.remarks] }
+    
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @laboratory_test_result }
+      format.xml  { render :xml => @laboratory_test_results}
     end
-   end
   end
 
   # GET /laboratory_test_results/new
@@ -58,7 +61,7 @@ class LaboratoryTestResultsController < ApplicationController
     specs[:ids].each_pair{ |key, value|
                           @laboratory_test_result = LaboratoryTestResult.new(params[:laboratory_test_result])
                           @laboratory_test_result.parameter_specification_id = key
-                          @laboratory_test_result.results = value
+                          @laboratory_test_result.result = value
                           @laboratory_test_result.remarks = specs[:remarks]["r_#{key}"]
                           @laboratory_test_result.save
                          }

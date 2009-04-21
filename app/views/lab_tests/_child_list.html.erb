@@ -1,4 +1,4 @@
- <li>
+ <li><%=image_tag("file-icon.gif") %>
      <%=radio_button_tag('parent_id', service.id, checked = false, options = {:onclick => "$('main_form').lab_test_parent_id.value=#{service.id};"})%> <%= service.name %> 
       <% unless service.children.empty? %>
         <ul><%= render :partial => 'child_list', :collection => service.children, :as => :service %></ul>

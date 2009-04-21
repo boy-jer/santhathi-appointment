@@ -10,10 +10,8 @@ class PrescriptionsController < ApplicationController
     @prescription = Prescription.new
     @lab_test = LabTest.find(params[:test_id])
     @appointment = Appointment.find(params[:appointment])
-    #@child_list = @lab_test.children
     @department = Department.find_by_dept_name('Laboratory')
-    @prescribed_tests = @prescription.prescribed_tests
-
+    @services = []
     respond_to do |format|
       format.html
       format.js { render :update do |page|
@@ -33,13 +31,7 @@ class PrescriptionsController < ApplicationController
 
     respond_to do |format|
       if @prescription.save
-      	#if @department.dept_name == "laboratory" or @department.dept_name == "Laboratory"
-       	 #params[:services].map{|service|
-       	       #lab_test = LabTest.find_by_name(Service.find(service).name)
-       	    #PrescribedTest.create(:prescription_id => @prescription.id, :service_id => lab_test.id )}
-     	#else
-           params[:services].map{|service| PrescribedTest.create(:prescription_id => @prescription.id, :service_id => service)}
-       #end
+        params[:services].map{|service| PrescribedTest.create(:prescription_id => @prescription.id, :lab_test_id => service)}
         format.html
         format.js { render :update do |page|
                       page.replace_html 'clinical-screen', :partial => 'prescriptions/new', :object => @prescription_list
@@ -55,11 +47,9 @@ class PrescriptionsController < ApplicationController
     @appointment = Appointment.find(params[:appointment])
     @prescription = @appointment.prescription
     @lab_test = LabTest.find(params[:test_id])
-    
-    #@child_list = @lab_test.children
     @department = Department.find_by_dept_name('Laboratory')
     @prescribed_tests = @prescription.prescribed_tests
-    @services = @prescribed_tests.map{|p| p.service.id}
+    @services = @prescribed_tests.map{|p| p.lab_test.id}
 
     respond_to do |format|
       format.html

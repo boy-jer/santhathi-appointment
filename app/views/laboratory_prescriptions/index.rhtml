@@ -20,11 +20,11 @@
           <td> <%=h patient.reg_no %>         </td>
           <td> <%=h patient.id %>         </td>
           <td> <%= patient.patient_name %>         </td>
-	  <td> <%= test.service.name %> </td>
+	  <td> <%= test.lab_test.name %> </td>
           <td> OP </td>
 	  <td> completed </td>
-	  <td> <%= link_to "Test Report", new_laboratory_test_result_path(:appointment_id=> prescription.appointment.id, :prescription_id=> prescription.id, :lab_test_id => test.service.id ) %></td>
-	  <td> <%= link_to "View Report", :action=>"show", :controller=>"laboratory_test_results", :appointment_id =>  prescription.appointment.id, :prescription_id => prescription.id, :lab_test_id => test.service.id  %></td>
+	  <td> <%= link_to "Test Report", new_laboratory_test_result_path(:appointment_id=> prescription.appointment.id, :prescription_id=> prescription.id, :lab_test_id => test.lab_test.id ) %></td>
+	  <td> <%= link_to "View Report", :action=>"show", :controller=>"laboratory_test_results", :appointment_id =>  prescription.appointment.id, :prescription_id => prescription.id, :lab_test_id => test.lab_test.id  %></td>
 	</tr>
       <%end%>
   <% end %>
