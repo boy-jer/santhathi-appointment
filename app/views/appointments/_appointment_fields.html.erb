@@ -21,10 +21,10 @@
 
      <tr> <th><%= f.label :mode %>:</th> <td><%= f.select :mode_id, [['Select mode' , '']] + Mode.select_list %></td> </tr>
 
-     <tr> <th><label>New patient ?</label></th>
-          <td><%= radio_button_tag ('new_patient_check', 'yes', checked = params[:patient_id].blank?,
-                                                    options = {:onclick => "Element.show('new_patient'); Element.hide('patient_search');"}) %> Yes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;              <%= radio_button_tag ('new_patient_check', 'no', checked = !params[:patient_id].blank?,
-                                                   options = {:onclick => "Element.show('patient_search'); Element.hide('new_patient');"}) %> No        </td>
+     <tr> <th><label> Visit Type</label></th>
+          <td><%= radio_button_tag ('appointment[visit_type]', 'yes', checked = params[:patient_id].blank?,
+                                                    options = {:onclick => "Element.show('new_patient'); Element.hide('patient_search');"}) %> first visit &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;              <%= radio_button_tag ('appointment[visit_type]', 'no', checked = !params[:patient_id].blank?,
+                                                   options = {:onclick => "Element.show('patient_search'); Element.hide('new_patient');"}) %> follow up visit        </td>
      </tr>
   </table>
    <br />

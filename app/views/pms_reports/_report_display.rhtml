@@ -10,11 +10,11 @@
    <tr> <th> Date </th><th>CN</th> <th> Total </th></tr>
     <% @count = 0 %>
     <% for date in @from_date..@to_date %>
-       <% value= calculate_count(date) %>
+       <% value= calculate_count(@reports,date) %>
         <tr><td> <%=h date %></td>
             <td> <%=h value %></td>
            <td><%=h value %></td>
         </tr>
     <%end%>
-<label> Total : <%=h @count %> </label>
+<tr> <th><label> Total : </th><td><%=h @count %> </label></td></tr>
 </table>

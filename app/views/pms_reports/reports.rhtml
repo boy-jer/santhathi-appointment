@@ -12,16 +12,11 @@
      <% elsif @type =="Registration" %>
      <label><h2>Registration Reports </h2></label><br/>
       <ul>
-          <li> <%= link_to "VisitType Report", patients_path%> </li>
-          <li> <%= link_to "Nationality Wise Report", patients_path%> </li>
+          <li> <%= link_to "VisitType Report",visit_type_report_pms_reports_path() %> </li>
           <li> <%= link_to "Referral Reports", patients_path%> </li>
       </ul>
-      <%elsif @type == "Appointment_slot"%>
-        <label> <h2> Appointment Slot Reports </h2> </label><br/>
-      <ul>
 
-          <li> <%= link_to "Appointment List", patients_path%> </li>
-      </ul> <%elsif @type == "vist_report"%>
+       <%elsif @type == "vist_report"%>
       <label><h2>Visit Report </h2></label><br/>
        <ul>
           <%= link_to "Visit Report List",patients_path%> </li>

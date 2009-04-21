@@ -9,6 +9,8 @@ class CreateAppointments < ActiveRecord::Migration
       t.time :appointment_time
       t.string :state
       t.integer :mode_id
+      t.string :visit_type
+
 
       t.timestamps
     end
