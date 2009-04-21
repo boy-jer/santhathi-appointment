@@ -5,6 +5,4 @@ class LaboratoryPrescriptionsController < ApplicationController
      @prescriptions = Prescription.find(:all, :order => 'p_date')
   end
 
-
-
 end

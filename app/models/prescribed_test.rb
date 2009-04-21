@@ -1,4 +1,4 @@
 class PrescribedTest < ActiveRecord::Base
-  belongs_to :service
+  belongs_to :lab_test
   belongs_to :prescription 
 end

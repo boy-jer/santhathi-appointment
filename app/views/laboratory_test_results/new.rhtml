@@ -2,6 +2,7 @@
 <% form_for(@laboratory_test_result) do |f| %>
 
   <%= f.error_messages %>
+  <h3> Patient Details </h3>
   <table class="listing">
      <tr> <th>Test Name : </th>
           <th>Patient Name :</th>
@@ -20,7 +21,7 @@
      </tr>
 
   </table><br/>
-
+  <h3> Test Parameters </h3>
   <table class="listing">
      <tr> <th>  Parameter Name </th>
           <th> UOM </th>
@@ -49,7 +50,7 @@
 
     </table> <br/>
 
-    <b> Prescription Action Details </b> <br/><br/>
+    <h3> Prescription Action Details </h3><br/>
     <table cellpadding="5px" class="form-table">
       <tr> <th> Date of Action  :</th> <td><%= calendar_date_select_tag "laboratory_test_result[date_of_action]", Date.today , :class =>'textbox' %></td></tr>
       <tr> <th> Time of Action  :</th> <td><%= f.time_select  :time_of_action%></td></tr>
