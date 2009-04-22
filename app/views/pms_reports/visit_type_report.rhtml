@@ -9,7 +9,7 @@
 <br/>
   <%= submit_tag "go"%>
 
-   <% if !@first_visit_reports.blank? or !@follow_up_reports.blank? -%>
+   <% unless @first_visit_reports.blank? or @follow_up_reports.blank? -%>
      <br/>
       <%= render(:partial => "visit_type_report_display" ) %>
    <%end%>

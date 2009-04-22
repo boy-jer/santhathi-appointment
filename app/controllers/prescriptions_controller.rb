@@ -33,7 +33,7 @@ class PrescriptionsController < ApplicationController
         params[:services].map{|service| PrescribedTest.create(:prescription_id => @prescription.id, :lab_test_id => service)}
         format.html
         format.js { render :update do |page|
-                      page.replace_html 'clinical-screen', :partial => 'prescriptions/new', :object => @prescription_list
+                      page.replace_html 'clinical-screen', :partial => 'prescriptions/edit'
                     end
                   }
       else
@@ -53,9 +53,24 @@ class PrescriptionsController < ApplicationController
     respond_to do |format|
       format.html
       format.js { render :update do |page|
-                    page.replace_html 'clinical-screen', :partial => 'prescriptions/new'
+                    page.replace_html 'clinical-screen', :partial => 'prescriptions/edit'
                   end
                 }
     end
   end
+
+   def update
+   	 @prescription = Prescription.find(params[:id])
+   	  respond_to do |format|
+       if @prescription.update_attributes(params[:prescription])
+       	   params[:services].map{|service| PrescribedTest.create(:prescription_id => @prescription.id, :lab_test_id => service)}
+
+        redirect_to (clinical_screen_doctor_patients_url(:id =>@prescription.appointment.id))
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @prescription.errors, :status => :unprocessable_entity }
+      end
+     end
+  end
+
 end

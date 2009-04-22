@@ -11,7 +11,7 @@ class PmsReportsController < ApplicationController
   	unless params[:from_date].blank? and params[:to_date].blank?
   	  @from_date = params[:from_date].to_date
   	  @to_date = params[:to_date].to_date
-      @reports =  Appointment.count(:conditions => {:appointment_date=>@from_date..@to_date},:group=>"appointment_date") if params[:option]=="day"
+      @reports =  Appointment.count(:conditions => ["appointment_date BETWEEN ? AND ?",@from_date,@to_date],:group=>"appointment_date") if params[:option]=="day"
     end
     respond_to do |format|
       format.html # index.html.erb
@@ -23,12 +23,10 @@ class PmsReportsController < ApplicationController
   	unless params[:from_date].blank? and params[:to_date].blank?
   	  @from_date = params[:from_date].to_date
   	  @to_date = params[:to_date].to_date
-  	  @first_visit_reports =  Appointment.count(:conditions => {:appointment_date=>@from_date..@to_date,:visit_type =>"yes"},:group=>"appointment_date")
-  	  @follow_up_reports =  Appointment.count(:conditions => {:appointment_date=>@from_date..@to_date,:visit_type =>"no"},:group=>"appointment_date")
+  	  @first_visit_reports =  Appointment.count(:conditions =>["appointment_date BETWEEN ? AND ? and visit_type = ? ",@from_date,@to_date,"yes"],:group=>"appointment_date")
+  	  @follow_up_reports =  Appointment.count(:conditions => ["appointment_date BETWEEN ? AND ? and visit_type = ? ",@from_date,@to_date,"no"],:group=>"appointment_date")
  	end
   end
-
-
 
 
   def department_wise_report
@@ -39,11 +37,11 @@ class PmsReportsController < ApplicationController
   	     	@department_name = "All Departments"
   	     	department_ids = Department.find(:all).map{ |department| department.id }
   	     	@reports = Appointment.count(:group =>"appointment_date",
-  	     	         :conditions =>["appointment_date IN (?) and department_id IN (?)",@from_date..@to_date,department_ids])
+  	     	         :conditions =>["appointment_date BETWEEN ? AND ? and department_id IN (?)",@from_date,@to_date,department_ids])
  	     else
            department = Department.find(params[:department_id])
            @department_name = department.dept_name
-           @reports = department.appointments.count(:conditions => {:appointment_date=>@from_date..@to_date},:group =>"appointment_date")
+           @reports = department.appointments.count(:conditions =>["appointment_date BETWEEN ? AND ?",@from_date,@to_date],:group =>"appointment_date")
          end
  	 end
    end
@@ -53,28 +51,25 @@ class PmsReportsController < ApplicationController
       unless params[:from_date].blank? and params[:to_date].blank?
 		@from_date = params[:from_date].to_date
   	    @to_date = params[:to_date].to_date
-=begin
-  	    if params[:department_id] == "All" and params[:doctor_id] =="All"
+  	    @reports = {}
+       	@counts = {}
+        if params[:doctor_id] == "All"
+       	  @doctors_list = Doctor.doctors_list
+          @temp_list = Appointment.find(:all, :select => "count('id') as count, appointment_date, doctor_id", :order => 'appointment_date', :group =>"appointment_date, doctor_id", :conditions =>["appointment_date BETWEEN ? AND ?", @from_date,@to_date])
+          @temp_list.map{|r| @reports["#{r.appointment_date}$#{r.doctor_id}" ] = {r.doctor_id => r.count} }
 
-
- 	    elsif params[:department_id] == "All" and params[:doctor_id] !="All"
- 	      @reports = Appointment.count(:group =>"appointment_date",:conditions =>["appointment_date IN (?) and doctor_id = ?",@from_date..@to_date,params[:doctor_id]])
-
-    	elsif params[:department_id] != "All" and params[:doctor_id] =="All"
-	      doctors_ids = Department.find(params[:department_id]).doctors.map{|doctor| doctor.id }.join(',')
-	      @reports = Appointment.count(:group =>"appointment_date",:conditions =>["appointment_date IN (?) and doctor_id IN (#{doctors_ids})",@from_date..@to_date])
-        else
-          @reports = Appointment.count(:group =>"appointment_date",:conditions =>["appointment_date IN (?) and doctor_id = ?",@from_date..@to_date,params[:doctor_id]])
-
-        end
-=end
-
-       if params[:doctor_id] == "All"
-       	 @doctor_ids = Doctor.find(:all).map{|doc| doc.id}
-
+          Appointment.count(:group =>"appointment_date", :conditions =>["appointment_date BETWEEN ? AND ?", @from_date,@to_date]).map{|c| @counts[c[0]] = c[1] }
        else
-      	  @reports = Appointment.count(:group =>"appointment_date",:conditions =>["appointment_date IN (?) and doctor_id = ?",@from_date..@to_date,params[:doctor_id]])
-       	  @doctor_ids = params[:doctor_id]
+       	   doc = Doctor.find(params[:doctor_id])
+       	   @doctors_list = [[doc.name, doc.id]]
+        	   @temp_list = Appointment.find(:all, :select => "count('id') as count, appointment_date, doctor_id", :order => 'appointment_date', :group =>"appointment_date, doctor_id", :conditions =>["appointment_date BETWEEN ? AND ? and doctor_id = ?", @from_date,@to_date,params[:doctor_id]])
+          @temp_list.map{|r| @reports[r.appointment_date] = {r.doctor_id => r.count} }
+
+          Appointment.count(:group =>"appointment_date", :conditions =>["(appointment_date BETWEEN ? AND ?) and doctor_id = ?", @from_date, @to_date, params[:doctor_id]]).map{|c| @counts[c[0]] = c[1] }
+
+
+
+
        end
 
       end

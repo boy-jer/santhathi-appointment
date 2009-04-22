@@ -24,6 +24,7 @@ ActionController::Routing::Routes.draw do |map|
 
    map.resources :services, :collection=>{:child_list =>:get}
  # map.resources :roles
+   map.resources :prescribed_tests
 
   map.resources :user_roles
   map.resources :prescriptions

@@ -1,5 +1,7 @@
 <div class='continer'>
+
     <h3>Clincal Screen </h3>
+
     <table class="clinical-table">
      <tr><th>Visit Date:</th><td> <%= Date.today %></td>
          <th>Visit Type:</th><td></td>
@@ -11,7 +13,7 @@
        <th>Registration No:</th><td><%= @patient.reg_no %></td></tr>
      <tr>
        <th>Dob:</th><td><%= @patient.dob %></td>
-       <th>Age:</th><td><%= @age %></td>
+       <th>Age:</th><td><%= calculate_age(@patient.dob) %></td>
        <th>Gender:</th><td><%= @patient.gender %></td>
      </tr>
      <tr>
@@ -20,14 +22,15 @@
        <th></th><td></td></td>
      </tr>
     </table>
-    <br />    
-   
+    <br />
+
    <div id='clinical-screen'><%= render :partial => 'clinical_screen_sub_tabs' %> </div>
-   
+
     <%= image_tag("spinner.gif",
               :align => "absmiddle",
               :border => 0,
               :id => "spinner",
               :style =>"display: none;" ) %>   
-</div>  
+
+</div>
 

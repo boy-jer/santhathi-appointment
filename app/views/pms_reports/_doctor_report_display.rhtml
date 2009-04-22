@@ -1,20 +1,29 @@
 <br/>
 <table class="listing">
-
- <tr><th>From Date: <%=h @from_date %></th><th>To Date :  <%=h @to_date%></th></tr>
-
-    <tr><th>Department Name :</th><th>   <%=h @department_name %></th></tr></table>
-    <%end%>
-<br/>
-<table class="listing">
-   <tr> <th> Date </th><th>CN</th> <th> Total </th></tr>
-    <% @count = 0 %>
+ <tr><th>From Date: <%=h @from_date %></th><th>To Date :  <%=h @to_date%></th> </tr>
+   <tr> <th> Date </th>
+   <%=@doctors_list%>
+        <% for doctor in  @doctors_list %>
+          <%=doctor.class %>
+          <th> <%= doctor[0] %> </th>
+        <%end%>
+        <th> Total </th>
+   </tr>
+<% @count = 0 %>
     <% for date in @from_date..@to_date %>
-       <% value= calculate_count(date) %>
-        <tr><td> <%=h date %></td>
-            <td> <%=h value %></td>
-           <td><%=h value %></td>
-        </tr>
+      <tr><td> <%=h date %></td>
+          <% for doctor in  @doctors_list %>
+             <% key = "#{date}$#{doctor[1]}" %>
+             <%if !@reports[key].blank? && @reports[key].keys.include?(doctor[1]) %>
+                 <td><%=  @reports[key][doctor[1]] %></td>
+               <%else%>
+                  <td> 0 </td>
+               <%end%>
+         <%end%>
+
+         <td><%=h count(@counts, date) %>  </td>
+
+      </tr>
     <%end%>
-<label> Total : <%=h @count %> </label>
+
 </table>
