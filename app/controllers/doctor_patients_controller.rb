@@ -60,8 +60,8 @@ class DoctorPatientsController < ApplicationController
        @doctor = @appointment.doctor
        @lab_services = LabTest.find_all_by_parent_id(nil)
        @department = Department.find_by_dept_name("laboratory")
-       #@age = Date.today - @patient.dob
-    else
+       @prescribed_tests = @appointment.prescription.prescribed_tests unless @appointment.prescription.blank?
+     else
       flash[:notice]=" Please select at least one appointment."
       redirect_to doctor_patients_path
     end 

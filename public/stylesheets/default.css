@@ -1,19 +1,90 @@
 html{ min-height: 550px;}
 
 body {
-        font: 11px Verdana, Arial, Sans-Serif;
-	/*background: #00c9ee repeat-x ;*/
-	/*background: #55ABD5;*/
-        /*background: #F5FAFC;*/
-        background: #D8EBFF;
-	color: #4B4B4B;
-	margin: 0;
-	padding: 0;
-	font-size: 11px;
-	min-width: 900px;
-        min-height: 550px;
+      font: 11px Verdana, Arial, Sans-Serif;
+      /*background: #00c9ee repeat-x ;*/
+      /*background: #55ABD5;*/
+      /*background: #F5FAFC;*/
+      background: #E6EEFF;
+      color: #4B4B4B;
+      margin: 0;
+      padding: 0;
+      font-size: 11px;
+      min-width: 900px;
+      }
+
+#wrapper { 
+     margin: 0px auto;
+     width: 100%;
 }
 
+.content{
+	margin: 0px;
+        width: 100% 
+	}
+
+.content-body { 
+        background-color: #fff;
+        width: 99.4%;
+        margin: 0px 0px 0px 0px ;  
+        border-bottom: #e0eaf6 4px solid; 
+        border-right: #e0eaf6 4px solid;
+        border-left: #e0eaf6 4px solid;            }
+
+.content-panel  { 
+ display: inline;
+ color: #333;
+ margin: 0px 5px 5px 0px;
+ padding:0;
+  width: 86%;
+ float: right;
+ height: 100%;
+}
+
+#separation{
+         margin: 1px 0px 1px 0px;
+         height: 550px;
+         float: left;
+         border:#F0F5F8 1px solid;
+         Previous
+}
+
+.navigation { 
+ height: 550px;
+ float: left;
+ color: #333;
+ margin:0px;
+ padding:0;
+ width: 13%;
+ display: inline;
+ position: relative;
+ background: #F8FAFF;
+}
+
+/*
+.content-panel { 
+        float: right;
+        color: #333;
+        margin: 0px 5px 5px 6px;
+        padding: 0;
+        width: 84.7%;
+        display: inline;
+        position: relative;
+        }
+
+.navigation{
+	    height: 100%;
+	    margin: 0px 10px 2px 0px;
+            width: 13%;
+            background: #fff;
+	    float:left;
+            display: inline;
+            color: #333;
+            padding:0;
+            float: left;
+	}
+
+*/
 
 a:link, a:visited {
 	color: #0054ff;
@@ -85,7 +156,7 @@ ul {
 	margin-left: 0;
 }
 h2 {
-font-size:16px;
+font-size:16px;A5CAE5
 color: #50798c;
 line-height: 3px;
 }
@@ -104,11 +175,11 @@ h3 span {
 
 /** Header */
 #header {
-	margin: 0px 0px 0px 0px;
-	padding: 0em 0em 0em 0em;
+	margin: 0px;
 	/*position: absolute;*/
 	background: url(/images/top-bar-12.png) repeat-x;
 	height: 45px;
+        border-top: #e0eaf6 1px solid;
 }
 #header h1 {
 	float: left;
@@ -136,14 +207,6 @@ h3 span {
 }
 
 
-.content{
-	width:84.5%;
-	margin: 0px 0px 0px 0px;
-	background-color:#F9F9F2;
-
-	vertical-align:top;
-	float:left;
-	}
 
 /** Main body */
 #main {
@@ -323,11 +386,11 @@ h3 span {
            /*border-width: 4px;
            border-color: #ADC7F3;
            border-style: outset;*/
-           border: 4px  #F6F6EE  solid;
+          /* border: 4px  #F6F6EE  solid;*/
 
            background: #fff; /* url(/images/tab.png) repeat-x;*/
            height: 100%;
-           padding: 5px 10px 20px 10px;
+           padding: 5px 5px 20px 10px;
            }
 
 .continer-inner {background: #ffffff;
@@ -488,15 +551,15 @@ h3 span {
 /*.odd {background: #b8d3e0;}*/
 
 /*.listing tr:hover {background-color: #f2f7f9; color: #000;} not for IE*/
-.listing th {background-color: #F9F9F2;
+.listing th {background: #F9F9F2;
              color: #000;
              text-align: left;
              padding: 0.3em .5em;
-             border:1px solid #8BA5C0;
+             border:1px solid #ccc;
              font-weight: normal;
 }
 
-.listing td {padding: .6em .5em .3em; color: #000;}
+.listing td {padding: .5em .5em .3em; color: #000;}
 
 .listing tr {
              border:1px solid #BDCFE1;
@@ -512,6 +575,10 @@ h3 span {
              
             font-size: 11px;
 }
+
+.table-header {background: url(/images/table_header.gif) repeat-x;}
+
+.table-footer {background: #D5E2F2; padding: 0px; }
 
 #patients tr:hover {background-color: #c7dfea; color: #ffffff;} /*not for IE*/
 
@@ -542,7 +609,7 @@ h3 span {
 
 .search-table tr:hover {background-color: #ffffff; color: #858b8e;} /*not for IE*/
 
-.search-table th {background-color: #FFF; color: #000; padding: 0.1em 1em; border:1px solid #ccc; text-align: left;  font-weight: normal;}
+.search-table th {background: #fff; color: #000; padding: 0.1em 1em; border:1px solid #ccc; text-align: left;  font-weight: normal;}
 
 .search-table td {background-color: #F9F9F2; padding: 0.2em .8em; border:1px solid #8BA5C0; text-align: left;}
 
@@ -550,7 +617,7 @@ h3 span {
 
 /* Menu */
 
-#menu { float: left; padding: 0; margin: 0px 0px 0px 10px; list-style: none; }
+#menu { float: left; padding: 0; margin-left: 6px; list-style: none; }
 
 #menu ul{margin:0; padding:0px 0px 0px 0px; list-style:none; }
 
@@ -565,7 +632,7 @@ h3 span {
 #menu li a {
 	display: block;
 	float: left;
-	margin:20px 3px 0px 0px;
+	margin:21px 3px 0px 0px;
 	padding: 5px 2px 0px 1px;
 	width:88px;height:17px;
 	text-transform: uppercase;
@@ -581,7 +648,7 @@ h3 span {
 #menu li a:hover {
 	display: block;
 	float: left;
-	margin:20px 3px 0px 0px;
+	margin:21px 3px 0px 0px;
 	padding: 5px 2px 0px 1px;
 
 	text-transform: uppercase;
@@ -750,7 +817,7 @@ a.button span {
     background: transparent url('/images/bg_button_span.gif') no-repeat;
     display: block;
     line-height: 11px;
-    padding: 5px 0 5px 18px;
+    padding: 5px 0 5px 17px;
 }
 
 a.button:active {
@@ -777,7 +844,7 @@ a.button:hover span {
 /*------------------------- links as buttons --------------*/
 
 /*--------------------------clinical-screen----------------*/
-.clinical-table{background-color: #F7FBFF;  width: 100%; border: 1px solid #E7EBEF; }
+.clinical-table{border-collapse: collapse; background-color: #EFEFEF;  width: 100%; border: 1px solid #E7EBEF; }
 
 .clinical-table th {color: #667987; padding: 0.1em .8em; border:1px solid #fff; text-align: left;}
 
@@ -786,18 +853,14 @@ a.button:hover span {
 /*--------------------------clinical-screen----------------*/
 
 #prescription {
+            
            height: 80px;
            overflow: auto;
            background: #F7FBFF;
           }
 
-#prescription-list{
-           padding: 2px 5px 2px 5px;
-           width: 98%;
-           height: 104px;
-           overflow: auto;
-          }
+ 
 #clinical-screen{
-border:#E7EBEF 1px solid;
- padding: 5px 5px 5px 2px;
+ border:#E7EBEF 1px solid;
+ padding: 0px;
 }

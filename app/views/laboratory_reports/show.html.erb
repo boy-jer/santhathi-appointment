@@ -1,0 +1,46 @@
+
+<div class='continer'>
+   <h3> Test Report </h3>
+    <table class="listing">
+       <tr> <th>Test Name : </th>
+           <th>Patient Name :</th>
+           <th> Patient Age :</th>
+           <th> Patient Gender :</th>
+           <th>Hospital No :</th>
+           <th> PVR No :</th>
+       </tr>
+     <tr>
+          <td> <%=h @lab_test.name %> </td>
+          <td> <%=h @patient.patient_name %> </td>
+          <td> <%=h @patient.age %> </td>
+          <td> <%=  @patient.gender %> </td>
+          <td> <%=  @patient.reg_no%> </td>
+          <td> <%=h @appointment.patient.id%> </td>
+     </tr>
+
+  </table><br/>
+  <h3> Test Name: <%=@lab_test.name %> </h3>
+  <table class="listing">
+     <tr> <th> Parameter Name </th>
+          <th> UOM </th>
+          <th> Result </th>
+          <th> Remarks </th>
+          <th> Details </th>
+     </tr>
+     <% unless @specifications.blank? %>
+        <% for spec in @specifications %>
+           <% unless spec.parameter.value_type == 'Header' %>
+              <tr><td><b><%= spec.parameter.parameter_name %></b></td>
+                <td><%= spec.parameter.measurement_unit.name %></td>
+                <td><%= @results[spec.id][0] %></td>
+                <td><%= @results[spec.id][1] %></td>
+              </tr>
+           <%else%>
+              <tr class= 'header'><td  colspan=5><b><%= spec.parameter.parameter_name %></b></td> </tr>
+           <%end%>
+        <%end%>
+      <%end%>
+    </table> <br/>
+
+
+</div>

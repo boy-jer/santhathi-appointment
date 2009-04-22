@@ -2,8 +2,7 @@ class PrescriptionsController < ApplicationController
   layout 'cms'
 
   def index
-
-
+     @prescriptions = Prescription.find(:all, :order => 'p_date')
   end
 
   def new

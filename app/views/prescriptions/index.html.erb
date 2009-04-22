@@ -1,21 +1,34 @@
 <div class='continer'>
-  <div class='continer-inner'>
-<h1>Listing cms</h1>
+  <h3>Prescription List</h3>
 
-<table>
+ <table class="listing">
   <tr>
-  </tr>
+    <th> Hospital No </th>
+    <th> PVR No </th>
+    <th> Patient Name</th>
+    <th> Test Prescribed</th>
+    <th> Patient Type(IP/OP)</th>
+    <th> Status </th>
+    <th>Test Report</th>
+    <th>View Report</th>
+   </tr>
 
-<% for cms in @cms %>
-  <tr>
-    <td><%= link_to 'Show', cms %></td>
-    <td><%= link_to 'Edit', edit_cms_path(cms) %></td>
-    <td><%= link_to 'Destroy', cms, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+  <% for prescription in @prescriptions %>
+     <% for test in prescription.prescribed_tests %>
+        <tr class="<%= cycle('odd', 'even') %>" >
+          <% patient = prescription.appointment.patient%>
+          <td> <%=h patient.reg_no %>         </td>
+          <td> <%=h patient.id %>         </td>
+          <td> <%= patient.patient_name %>         </td>
+	  <td> <%= test.lab_test.name %> </td>
+          <td> OP </td>
+	  <td> completed </td>
+	  <td> <%= link_to "Test Report", new_prescribed_test_laboratory_report_path(test) %></td>
+	  <td> <%= link_to "View Report", prescribed_test_laboratory_report_path(:prescribed_test_id => test, :id => test.lab_test.laboratory_report) unless test.lab_test.laboratory_report.blank? %></td>
+	</tr>
+      <%end%>
+  <% end %>
 
-<br />
+ </table>
 
-</div>
 </div>

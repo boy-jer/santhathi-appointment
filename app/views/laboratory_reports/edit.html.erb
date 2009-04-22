@@ -1,0 +1,12 @@
+<h1>Editing laboratory_report</h1>
+
+<% form_for(@laboratory_report) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @laboratory_report %> |
+<%= link_to 'Back', laboratory_reports_path %>

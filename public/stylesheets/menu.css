@@ -1,27 +1,13 @@
 /* COMMON */
 	
 
-	.clear{
-		clear:both;
-		float:none;
-		height:0px;
-	}
+.clear { clear: both; background: none; }
 
 	/* NAVIGATION */
-	.navigation{
-		width:14%;
-		min-height: 480px;
-		margin: 0px 5px 5px 5px;
-                border: 3px  #F6F6EE  solid;
-                background: #fff;
-		/*background: url(/images/side-nav.png) repeat-x;*/
-		float:left;
-		vertical-align:bottom;
-		position:relative;
-	}
+	
 	.navPanel{
 		padding:10px;
-		height:60%;
+		height:100%;
 	}
 	
 	.navigation1{
@@ -108,7 +94,7 @@ ul#collapse-section li {
 }
 
 ul#collapse-section li a {
-  background: #F9F9F2;
+  background: #EFEFEF;
   color: #4d585e;	
   font-weight: bold;
   font-size: 11px;
@@ -119,7 +105,7 @@ ul#collapse-section li a {
 
 ul#collapse-section li ul li a {
   background: #F7FBFF;
-  color: #988484;
+  color: #800000;
   padding-left: 20px;
   background-image: url(/images/list-arrow.png);
   background-repeat: no-repeat;

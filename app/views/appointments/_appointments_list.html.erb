@@ -5,7 +5,8 @@
               :style =>"display: none;" ) %>
 
 <table class="listing">
-  <thead>
+  <tr class= "table-header"><td colspan =10>Appointment List</td></tr>
+
   <tr>
     <th></th>
     <th>No</th>
@@ -19,9 +20,7 @@
     <!--<th>Details</th>-->
     <th NOWRAP = NOWRAP>View | Edit | Cancel</th>
   </tr>
-  </thead>
 <% for appointment in @appointments %>
-  <tbody>
   <tr valign="top" class="<%= cycle('odd', 'even') %>">
   	<td class='radio-column'><%=radio_button_tag ('appointment', appointment.id, checked = false, options = {:onclick => "$('main_form').appointment_id.value=#{appointment.id};"})%></td>
     <td><%=h appointment.id %></td>
@@ -40,9 +39,11 @@
     <td NOWRAP = NOWRAP>&nbsp;&nbsp; <%= link_to image_tag('show.png', {:title => 'Show', :border => 0}), appointment_url(appointment), :rel=> "facebox" %> &nbsp;&nbsp;| &nbsp;&nbsp; <%= link_to image_tag('edit.png', {:title => 'Edit', :border => 0}), edit_appointment_path(appointment) %> &nbsp;&nbsp;|&nbsp;&nbsp; <%= link_to image_tag('delete.png', {:title => 'cancel appointment', :border => 0}), appointment_path(appointment), :confirm => 'Are you sure?', :method => :delete %></td>
 
   </tr>
-  </tbody>
 <% end %>
-
+  <tr class="table-footer">
+  	     <td colspan = 2><%= link_to "<span>New appointment</span>", new_appointment_path, :class=> "button" %></td>
+         <td colspan = 8><%= will_paginate @appointments %></td>
+  </tr>
 </table>
 
 <br />

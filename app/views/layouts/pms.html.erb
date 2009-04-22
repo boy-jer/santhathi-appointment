@@ -23,19 +23,31 @@
 </head>
 
  <body>
-            <div id="global_links"> <%= render :partial => 'shared/global_links' %> </div>
-	    <div id="header"> <%= render :partial => 'shared/tabs' %> </div>		
- 	    <div class="clear"></div>
-            <div class="navigation">
-              <div class="navPanel">
-                <%= render :partial => 'shared/pms_sub_tabs' %>
-              </div>
-            </div>
-            <div class="content" id="content">
-               <%= render :partial => 'shared/layout_body' %>
-            </div>
-            <div class="clear"></div>
+   <div id="wrapper">
+      <div id="header"> <%= render :partial => 'shared/tabs' %> 
+           <div id="global_links"> 
+              <%= render :partial => 'shared/global_links' %> 
+           </div> 
+      </div>	
+	
+      <div class="content" id="content">     
+           <div class= "content-body">
+                <div class="navigation">
+                     <div class="navPanel">
+                          <%= render :partial => 'shared/pms_sub_tabs' %>
+                          <div class="clear"> </div>
+                     </div>
+                 </div>
+                 <div id="separation"> </div>
 
-  
+                 <div class= "content-panel">
+                      <%= render :partial => 'shared/layout_body' %>
+                      <div class="clear"></div>
+                 </div>
+                <div class="clear"> </div>
+           </div>
+      </div> <!-- End Content -->   
+   </div>    <!-- End Wrapper -->
+
 </body>
 </html>

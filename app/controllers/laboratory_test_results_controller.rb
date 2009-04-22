@@ -37,7 +37,6 @@ class LaboratoryTestResultsController < ApplicationController
     @appointment = Appointment.find(params[:appointment_id])
     @prescription = Prescription.find(params[:prescription_id])
     @lab_test = LabTest.find(params[:lab_test_id])
-
     @patient = @appointment.patient
     @specifications = @lab_test.parameter_specifications
 

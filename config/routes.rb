@@ -1,11 +1,8 @@
 
 # See how all your routes lay out with "rake routes"
 ActionController::Routing::Routes.draw do |map|
-
-
   map.resources :vital_signs
 
-  map.resources :laboratory_prescription
   map.resources :pms_reports,:collection =>{:reports =>:get,:date_wise_reports=>:get ,:department_wise_report=>:get,  	:doctor_wise_report =>:get ,:update_doctors =>:get,:appointment_type_report=>:get,:visit_type_report=>:get}
   map.resources :pharamacy_item_informations
 
@@ -72,8 +69,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :doctor_appointments
   map.resources :doctor_patients, :collection => { :discharge => :post,:clinical_screen=>:get }
   map.resources :cms
-
-
+  map.resources :prescribed_tests do |test|
+      test.resources :laboratory_reports
+  end
 
 
   # Administration

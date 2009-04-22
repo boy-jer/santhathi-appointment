@@ -2,7 +2,7 @@ class LaboratoriesController < ApplicationController
  layout	'laboratory'
 
   def index
-    #@sub_tabs = {'Departments' => departments_url, "Doctors" => doctors_path}
+    redirect_to prescriptions_url
   end
 
 end
