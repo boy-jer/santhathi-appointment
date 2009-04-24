@@ -1,9 +1,11 @@
 
 # See how all your routes lay out with "rake routes"
 ActionController::Routing::Routes.draw do |map|
+
+
   map.resources :vital_signs
 
-  map.resources :pms_reports,:collection =>{:reports =>:get,:date_wise_reports=>:get ,:department_wise_report=>:get,  	:doctor_wise_report =>:get ,:update_doctors =>:get,:appointment_type_report=>:get,:visit_type_report=>:get}
+  map.resources :pms_reports,:collection =>{:date_wise_reports=>:get ,:department_wise_report=>:get,  	:doctor_wise_report =>:get ,:update_doctors =>:get,:appointment_type_report=>:get,:visit_type_report=>:get}
   map.resources :pharamacy_item_informations
 
   map.resources :pharmacy_course_lists
@@ -52,7 +54,9 @@ ActionController::Routing::Routes.draw do |map|
                                      :update_avatar => :put }
 
 
-  map.resources :appointments, :member => {:confirm => :get},:collection=>{:update_doctors_list =>:get}
+
+
+
   map.resources :patients ,:collection =>{:associate_spouse=>:post, :associate_couple=>:get}
   map.resources :patients do |patient|
     patient.resources :patient_appointments, :as => :pappointments
@@ -74,6 +78,7 @@ ActionController::Routing::Routes.draw do |map|
       test.resources :laboratory_reports
   end
 
+ map.resources :appointments, :member => {:confirm => :get},:collection=>{:update_doctors_list =>:get},:has_one => :clinical_screen
 
   # Administration
   map.namespace(:admin) do |admin|

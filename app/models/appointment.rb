@@ -12,6 +12,7 @@ class Appointment < ActiveRecord::Base
   #belongs_to :department
   has_one :prescription
   has_many :laboratory_test_results
+  has_one :clinical_screen
 
   validates_presence_of :doctor_id, :reason_id,:mode_id
 
@@ -34,6 +35,7 @@ class Appointment < ActiveRecord::Base
   aasm_event :recommend_for_discharge do
    transitions :to => :recommend_for_discharge,:from => [:visited]
   end
+aasm_column :state
 
   validates_presence_of :doctor_id, :appointment_date, :minute, :hour
 
@@ -48,13 +50,112 @@ class Appointment < ActiveRecord::Base
 
   named_scope :on_time,lambda { |time| { :conditions => ["appointment_time = ?", time] } }
 
- # named_scope :count_appointment,lambda { |from_date,to_date| {:conditions => {:appointment_date=>from_date..to_date} } }
-
-
 
   def update_time
     time = "#{hour}:#{minute}" unless hour.blank?
     write_attribute(:appointment_time, time) unless time.blank?
   end
-aasm_column :state
+
+  def self.date_wise_report(from,to,option)
+  	 condition = {}
+  	 condition[:appointment_date] = from..to
+  	 reports = Appointment.count(:conditions => condition , :group=>"appointment_date") if option == "day"
+    return reports
+  end
+
+  def self.count_appointment(from,to)
+  	temp =  Appointment.find(:all,:conditions => ["appointment_date BETWEEN ? AND ?",from,to]).size
+  	return temp
+  end
+
+  def self.count_department_appointment(from,to,department)
+  	 condition = {}
+  	 if department =="All"
+  	 	department_ids = Department.find(:all).map{ |department| department.id }
+  	 	condition[:appointment_date] = from..to
+     	condition[:department_id] = department_ids
+  	else
+ 	   condition[:appointment_date] = from..to
+       condition[:department_id] = department
+	end
+	 temp = Appointment.find(:all , :conditions => condition ).size
+  	 return temp
+  end
+
+  def self.visit_type(from,to,visit_type)
+  	condition = {}
+  	condition[:appointment_date] = from..to
+  	condition[:visit_type] = visit_type
+  	reports = Appointment.count(:conditions => condition,:group=>"appointment_date")
+  	return reports
+
+  end
+
+  def self.departament_report(from,to,department_id)
+  	 condition = {}
+      if department_id == "All"
+  	     department_ids = Department.find(:all).map{ |department| department.id }
+  	     condition[:appointment_date] = from..to
+  	  else
+  	  	condition[:appointment_date] = from..to
+  	  	condition[:department_id] = department_id
+      end
+      reports = Appointment.count(:conditions => condition ,:group => "appointment_date")
+      return reports
+
+  end
+
+  def self.doctor_report(from,to,doctor_id)
+  	reports =  {}
+  	condition = {}
+  	  if doctor_id == "All"
+  	  	condition[:appointment_date] = from..to
+      else
+      	condition[:appointment_date] = from..to
+      	condition[:doctor_id] = doctor_id
+      end
+      temp_list = Appointment.find(:all, :select => "count('id') as count, appointment_date, doctor_id", :order => 'appointment_date', :group =>"appointment_date, doctor_id", :conditions =>condition)
+
+     temp_list.map{|r| reports["#{r.appointment_date}$#{r.doctor_id}"] = {r.doctor_id => r.count} }
+     return reports
+
+  end
+
+  def self.count_doctor_appointment(from,to,doctor_id)
+    	counts = {}
+    	condition = {}
+  	 if doctor_id == "All"
+  	   condition[:appointment_date] = from..to
+ 	 else
+ 	   condition[:appointment_date] = from..to
+ 	   condition[:doctor_id] = doctor_id
+ 	 end
+ 	 Appointment.count(:group =>"appointment_date", :conditions => condition ).map{|c| counts[c[0]] = c[1] }
+	 return counts
+
+  end
+
+  def self.count_doctor_appointments(from,to,doctor)
+  	condition = {}
+  	 if doctor =="All"
+  	 	condition[:appointment_date] = from..to
+     else
+ 	    condition[:appointment_date] = from..to
+      	condition[:doctor_id] = doctor
+ 	end
+ 	 temp = Appointment.find(:all, :conditions => condition ).size
+  	 return temp
+  end
+
+  def self.mode_report(from,to)
+  	 reports = {}
+  	 condition = {}
+  	 condition[:appointment_date] = from..to
+  	 temp_list = Appointment.find(:all, :select => "count('id') as count, appointment_date, mode_id", :order => 'appointment_date', :group =>"appointment_date, mode_id", :conditions => condition)
+     temp_list.map{|r| reports["#{r.appointment_date}$#{r.mode_id}" ] = {r.mode_id => r.count} }
+     return reports
+
+  end
+
+
 end

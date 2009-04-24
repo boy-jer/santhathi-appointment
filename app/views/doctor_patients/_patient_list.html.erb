@@ -25,7 +25,7 @@
          <td><%=h appointment.doctor.department.dept_name%></td>
          <td><%=h appointment.reason.name%></td>
          <td><%= link_to 'Appointments', patient_patient_appointments_url(appointment.patient), :rel=> "facebox" %></td>
-         <td><%= link_to 'Clinical screen', clinical_screen_doctor_patients_url(:id => appointment)%></td>
+         <td><%= link_to 'Clinical screen', new_appointment_clinical_screen_path(appointment)%></td>
          <td><%= link_to 'Vitalsigns', new_vital_sign_url(:patient_id => appointment.patient.id) , :rel=> "facebox"%></td>
        </tr>
      <%end%>

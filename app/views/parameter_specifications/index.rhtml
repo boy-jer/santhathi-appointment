@@ -6,18 +6,18 @@
              type: "POST",
              url: "<%= url_for(:action => 'sort') %>",
              data: jQuery.tableDnD.serialize() + '&lab_test_id=' + "<%=params[:lab_test_id]%>" + '&authenticity_token=' + encodeURIComponent('<%= form_authenticity_token if protect_against_forgery? %>'),
-             
+
            });
         }
       })
     });
-</script> 
+</script>
 
 <div class='continer'>
 
 <h3>Listing parameter specifications</h3>
 
-<div id= 'specifications-list'><%= render :partial => 'specifications' %></div>
+<div id= 'specifications-list'> <%= render :partial => 'specifications' %> </div>
 
 <br />
 

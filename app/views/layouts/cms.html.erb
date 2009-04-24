@@ -7,16 +7,24 @@
 
 	<title><%= configatron.site_name %></title>
 
-	<%=javascript_include_tag :defaults, 'facebox', 'jquery-1', 'jquery_corner', 'jquery-ui-1.6.custom.min', 'menu', 'jquery.cookie', 'jquery.treeview.min' %>
+	<%=javascript_include_tag :defaults, 'facebox', 'jquery-1', 'jquery_corner',  'menu', 'jquery.cookie', 'jquery.treeview.min','jquery-ui-1.6.custom.min' %>
         <%= calendar_date_select_includes %>
         <%= stylesheet_link_tag 'default', 'calendar/option2- blue/style', 'facebox', 'menu', 'reasons', 'jquery.treeview', 'ui.all.css' %>
 
 	<!--[if lte IE 6]>
 		<%= stylesheet_link_tag 'ie6.css', media="screen" %>
 	<![endif]-->
-        <script type="text/javascript">
-           jQuery.noConflict();
-        </script>
+
+	<script type="text/javascript">
+       jQuery.noConflict();
+    </script>
+
+    <script type="text/javascript">
+			jQuery(function(){
+                jQuery('#tabs').tabs();
+			});
+	</script>
+
         <script type="text/javascript">
 		jQuery(function() {
 			jQuery("#tree").treeview({
@@ -26,19 +34,19 @@
 				persist: "location"
 			});
 		})
-		
+
 	</script>
 </head>
 
 <body>
    <div id="wrapper">
-      <div id="header"> <%= render :partial => 'shared/tabs' %> 
-           <div id="global_links"> 
-              <%= render :partial => 'shared/global_links' %> 
-           </div> 
-      </div>	
-	
-      <div class="content" id="content">     
+      <div id="header"> <%= render :partial => 'shared/tabs' %>
+           <div id="global_links">
+              <%= render :partial => 'shared/global_links' %>
+           </div>
+      </div>
+
+      <div class="content" id="content">
            <div class= "content-body">
                 <div class="navigation">
                      <div class="navPanel">
@@ -46,7 +54,6 @@
                           <div class="clear"> </div>
                      </div>
                  </div>
-                 <div id="separation"> </div>
 
                  <div class= "content-panel">
                       <%= render :partial => 'shared/layout_body' %>
@@ -54,9 +61,9 @@
                  </div>
                 <div class="clear"> </div>
            </div>
-      </div> <!-- End Content -->   
+      </div> <!-- End Content -->
    </div>    <!-- End Wrapper -->
 
 </body>
- 
+
 </html>

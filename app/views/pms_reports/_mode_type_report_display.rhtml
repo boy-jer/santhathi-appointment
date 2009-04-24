@@ -1,25 +1,30 @@
-
-<table class="listing"> <tr> <th><center>
-DateWise Report Of Appointment Type</center></th> </tr></table>
-
+<br/>
 <table class="listing">
-    <tr> <th>Date</th>
-    <% for mode_id in @mode_ids %>
-       <th><%=h display_mode(mode_id) %></th>
-     <%end%>
-    </tr>
+ <tr><th>From Date: <%=h @from_date %></th><th>To Date :  <%=h @to_date%></th> </tr>
+   <tr> <th> Date </th>
+   <%=@doctors_list%>
+        <% for mode in  @modes %>
 
-
-  <% for date in @from_date..@to_date %>
-
-   <tr> <td> <%=h date %></td>
-   <% count_all(date) %>
-   <td><%=h @others%> </td>
-   <td> <%=h @telephonic %></td>
-   <td><%=h @walk_ins %> </td>
+          <th> <%= mode[0] %> </th>
+        <%end%>
+        <th> Total </th>
    </tr>
-     <%end%>
-<tr><td> </td><td><label><%=h @total_others %> </label></td><td><label><%=h  @total_telephonic %></label></td><td><label><%=h @total_walkins %></label></td></tr>
-   <tr><th> Total :</th><td><label><%=h add_all() %></label></td></tr>
+
+    <% for date in @from_date..@to_date %>
+      <tr><td> <%=h date %></td>
+          <% for mode in  @modes %>
+             <% key = "#{date}$#{mode[1]}" %>
+             <%if !@reports[key].blank? && @reports[key].keys.include?(mode[1]) %>
+                 <td><%= @reports[key][mode[1]] %></td>
+               <%else%>
+                  <td> 0 </td>
+               <%end%>
+         <%end%>
+
+         <td><%=h count(@counts, date) %>  </td>
+
+      </tr>
+    <%end%>
+    <tr><th>Total :</th><td><%=h @count %></td></tr>
 
 </table>

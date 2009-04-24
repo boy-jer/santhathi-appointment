@@ -3,11 +3,16 @@ class PatientsController < ApplicationController
   # GET /patients
   # GET /patients.xml
   def index
-    @patients = Patient.paginate(:all, :per_page => 10, :page => params[:page])
-
+  	@search = Patient.new_search(params[:search])
+    @search.per_page = 9
+    @patients, @patient_count = @search.all, @search.count
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @patients }
+       format.js {
+                      render :update do |page|
+                        page.replace_html 'patients-list', :partial => 'patients_list'
+                      end
+                 }
     end
   end
 

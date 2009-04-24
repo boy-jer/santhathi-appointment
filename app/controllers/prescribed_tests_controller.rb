@@ -6,7 +6,7 @@ class PrescribedTestsController < ApplicationController
       @prescribe_test.destroy
 
      respond_to do |format|
-         format.html { redirect_to clinical_screen_doctor_patients_url(:id => @appointment) }
+         format.html { redirect_to new_appointment_clinical_screen_path(@appointment) }
 	end
   end
 

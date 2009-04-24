@@ -2,13 +2,13 @@
 <table class="listing">
 
  <tr><th>From Date: <%=h @from_date %></th><th>To Date :  <%=h @to_date%></th></tr>
- <tr><th> Date </th><th> First Visit</th><th>Follow uo Visit</th></tr>
-  <% @count = 0 %>
+ <tr><th> Date </th><th> First Visit</th><th>Follow up Visit</th></tr>
+
 
   <%for date in @from_date..@to_date %>
    <tr><td> <%=h date %> </td>
-       <td><%= calculate_count(@first_visit_reports,date) %> </td>
-       <td><%= calculate_count(@follow_up_reports,date) %></td>
+       <td><%= count(@first_visit_reports,date) %> </td>
+       <td><%= count(@follow_up_reports,date) %></td>
    </tr>
  <%end%>
  <tr><th>Total : </th> <td> <label><%=h @count %> </label> </td></tr>

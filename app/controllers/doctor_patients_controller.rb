@@ -3,45 +3,29 @@ class DoctorPatientsController < ApplicationController
   # GET /doctor_appointments
   # GET /doctor_appointments.xml
   def index
-  
-  respond_to do |format|
-      format.html {  @appointments = Appointment.visited_and_discharge_recomonded('visited', 'recommend_for_discharge').paginate(:per_page => 10, :page => params[:page])
-                  }
-      format.js   { if params.has_key?(:pname) #Search request via ajax call
-                      search = 'Appointment'
-                      search = search + '.on_date(Time.parse(params[:date]).to_date)' unless params[:date].blank?
-                      search = search + '.doctor_name(params[:doctor][:id])' unless params[:doctor][:id].blank?
-                      search = search + '.patient_name(params[:pname])' unless params[:pname].blank?
-                      search = search + '.reg_no(params[:rnum])' unless params[:rnum].blank?
+    @search = Appointment.new_search(params[:search])
+    @search.per_page = 20
 
-                      unless search == 'Appointment' #if no search parameters provided, return all.
-                        @appointments = eval(search).paginate(:all, :order => 'appointment_date DESC', :per_page => 10, :page => params[:page])
-                      else
-                        @appointments = Appointment.paginate(:all, :order => 'appointment_date DESC', :per_page => 10, :page => params[:page])
-                      end
+    @appointments,@appointment_count = @search.all,@search.count
 
+    respond_to do |format|
+              format.html
+              format.js {
                       render :update do |page|
-                        page.replace_html 'appointment-list', :partial => 'patient_list'
+                        page.replace_html 'appointment-list', :partial => 'appointments_list'
                       end
+                      }
+              end
 
-                    else #Appointments list request via ajax call for a doctor
-                      @doctor = Doctor.find(params[:doctor]) unless params[:doctor].blank?
-                      @date = Date.parse(params[:date])
-                      render :update do |page|
-                        page.replace_html 'schedule', :partial => 'appointments_detail', :locals => {:doctor => @doctor, :date =>@date}
-                      end
-                    end
-                  }
-    end
   end
-  
+
   def discharge
     date = (Date.parse(params[:date]) unless params[:date].blank?) || Date.today
-    appointments = Appointment.on_date(date).status('visited') 
+    appointments = Appointment.on_date(date).status('visited')
     appointments.map {|appointment| appointment.discharge!}
     redirect_to doctor_patients_path
   end
-  
+
   def update
     unless params[:appointment].blank?
       params[:appointment].map{ |id| appointment = Appointment.find(id)
@@ -50,12 +34,12 @@ class DoctorPatientsController < ApplicationController
     else
       flash[:notice]=" Please select at least one appointment."
       redirect_to doctor_patients_path
-    end 
+    end
   end
 
   def clinical_screen
     unless params[:id].blank?
-       @appointment = Appointment.find(params[:id]) 
+       @appointment = Appointment.find(params[:id])
        @patient = @appointment.patient
        @doctor = @appointment.doctor
        @lab_services = LabTest.find_all_by_parent_id(nil)
@@ -64,8 +48,7 @@ class DoctorPatientsController < ApplicationController
      else
       flash[:notice]=" Please select at least one appointment."
       redirect_to doctor_patients_path
-    end 
-  end  
+    end
+  end
 
 end
-

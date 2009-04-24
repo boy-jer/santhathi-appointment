@@ -4,7 +4,7 @@ class LaboratoryReportsController < ApplicationController
   layout 'laboratory'
 
   def index
-   
+
   end
 
 
@@ -18,7 +18,7 @@ class LaboratoryReportsController < ApplicationController
     @laboratory_test_results =  @laboratory_report.laboratory_test_results
     @results = {}
     @laboratory_test_results.map{|r|  @results[r.parameter_specification_id] = [r.result, r.remarks] }
-    
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @laboratory_test_results}
@@ -31,7 +31,6 @@ class LaboratoryReportsController < ApplicationController
     @appointment = @prescription.appointment
     @patient = @appointment.patient
     @specifications = @lab_test.parameter_specifications
-
     @laboratory_report = LaboratoryReport.new
   end
 
@@ -39,21 +38,21 @@ class LaboratoryReportsController < ApplicationController
     @laboratory_report = LaboratoryReport.find(params[:id])
   end
 
-  
+
   def create
     @laboratory_report = LaboratoryReport.new(params[:laboratory_report])
     @laboratory_report.save
 
     specs = params[:specifications]
-    specs[:ids].each_pair{ |key, value| LaboratoryTestResult.create(:parameter_specification_id => key, 
-                                                                   :result => value, 
-                                                                   :remarks => specs[:remarks]["r_#{key}"],
-                                                                   :laboratory_report_id =>  @laboratory_report.id ) }
-    flash[:notice] = 'Report was successfully created.'                       
+    specs[:ids].each_pair{ |key, value| LaboratoryTestResult.create(:parameter_specification_id => key,
+                                                                    :result => value,
+                                                                    :remarks => specs[:remarks]["r_#{key}"],
+                                                                    :laboratory_report_id =>  @laboratory_report.id ) }
+    flash[:notice] = 'Report was successfully created.'
     redirect_to prescriptions_url
   end
 
-  
+
   def update
     @laboratory_report = LaboratoryReport.find(params[:id])
 

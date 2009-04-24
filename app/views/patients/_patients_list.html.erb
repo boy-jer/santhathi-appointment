@@ -4,6 +4,8 @@
               :id => "spinner",
               :style =>"display: none;" ) %>
 
+
+
 <table class="listing">
   <tr>
     <th>Reg. date</th>
@@ -19,6 +21,7 @@
 
 <% for patient in @patients %>
   <tr class="<%= cycle('odd', 'even') %>">
+ <td class='radio-column'><%=radio_button_tag ('patient', patient.id, checked = false, options = {:onclick => "$('main_form').patient_id.value=#{patient.id};"})%>
     <td><%=h patient.reg_date %></td>
     <td><%=h patient.reg_no %></td>
     <td><%=h patient.patient_name %></td>
@@ -32,8 +35,18 @@
 <% end %>
   <tr class="table-footer">
       <td colspan=5><%= link_to "<span>New patient</span>", new_patient_path, :class=> "button" %></td>
-      <td colspan=4><%= will_paginate @patients %></td>
+      <td>
+      <% form_tag(new_appointment_path, :id => 'main_form') do -%>
+       <input id="patient_id" name="patient_id" type="hidden" value=""/>
+
+      <%=submit_tag "new appointment" %>
+      <%end%>
+       </td>
+
+      <td colspan=4> <% if @patients.size > 1 %>
+    <div class="pages">
+      <%= remote_page_links %>
+    </div>
+  <% end %></td>
   </tr>
 </table>
-
-

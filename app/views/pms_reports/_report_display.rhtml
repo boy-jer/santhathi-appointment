@@ -8,9 +8,9 @@
 <br/>
 <table class="listing">
    <tr> <th> Date </th><th>CN</th> <th> Total </th></tr>
-    <% @count = 0 %>
+
     <% for date in @from_date..@to_date %>
-       <% value= calculate_count(@reports,date) %>
+       <% value= count(@reports,date) %>
         <tr><td> <%=h date %></td>
             <td> <%=h value %></td>
            <td><%=h value %></td>

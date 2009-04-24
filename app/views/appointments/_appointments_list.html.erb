@@ -41,8 +41,11 @@
 <% end %>
   <tr class="table-footer">
   	     <td colspan = 5><%= link_to "<span>New appointment</span>", new_appointment_path, :class=> "button" %></td>
-         <td colspan = 5><%= will_paginate @appointments %></td>
+         <td colspan = 5> <% if @appointments.size > 1 %>
+                             <div class="pagination">
+                                <%= remote_page_links %>
+                             </div>
+                           <% end %>
+         </td>
   </tr>
 </table>
-
-

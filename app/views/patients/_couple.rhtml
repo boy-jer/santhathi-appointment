@@ -19,6 +19,10 @@
    <tr><th><%= f.label :gender %></th>
       <td><%= f.select :gender, {'Female' => 'female', 'Male' => 'male'} %></td>
    </tr>
+
+   <tr><th><%= f.label :email %></th>
+       <td><%= f.text_field :email, {:class => 'textbox'} %></td>
+   </tr>
    <tr><th><%= f.label :contact_no %></th>
        <td><%= f.text_field :contact_no, {:class => 'textbox'} %></td>
    </tr>
@@ -51,6 +55,9 @@
             <td><%= p.date_select :dob,:start_year => 1950, :default => {:year => Time.now.year - 30} %></td>
         </tr>
 
+        <tr><th><%= p.label :email %></th>
+            <td><%= p.text_field :email, {:class => 'textbox'} %></td>
+        </tr>
         <tr><th><%= p.label :contact_no %></th>
             <td><%= p.text_field :contact_no, {:class => 'textbox'} %></td>
         </tr>

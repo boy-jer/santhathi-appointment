@@ -51,12 +51,12 @@
 
     <h3> Prescription Action Details </h3><br/>
     <table cellpadding="5px" class="form-table">
-      <tr> <th> Date of Action  :</th> <td><%= calendar_date_select_tag "laboratory_test_result[date_of_action]", Date.today , :class =>'textbox' %></td></tr>
+      <tr> <th> Date of Action  :</th> <td><%= calendar_date_select_tag "laboratory_report[date_of_action]", Date.today , :class =>'textbox' %></td></tr>
       <tr> <th> Time of Action  :</th> <td><%= f.time_select  :time_of_action%></td></tr>
       <tr> <th> Action Taken By : </th> <td>
-       <%= select :laboratory_test_result,"action_taken_by_id",[['Select Doctor' , '']] + Doctor.laboratory_docator_list %> </td> </tr>
+       <%= select :laboratory_report,"action_taken_by_id",[['Select Doctor' , '']] + Doctor.laboratory_docator_list %> </td> </tr>
       <tr> <th> Authorised By : </th> <td>
-       <%= select :laboratory_test_result,"authorised_by_id",[['Select Doctor' , '']] + Doctor.laboratory_docator_list %>
+       <%= select :laboratory_report,"authorised_by_id",[['Select Doctor' , '']] + Doctor.laboratory_docator_list %>
        </td> </tr>
       <tr> <th> Desscription :</th> <td> <%= f.text_field :description ,:class => 'address' %> </td> </tr>
     </table>

@@ -2,14 +2,13 @@
 <table class="listing">
  <tr><th>From Date: <%=h @from_date %></th><th>To Date :  <%=h @to_date%></th> </tr>
    <tr> <th> Date </th>
-   <%=@doctors_list%>
-        <% for doctor in  @doctors_list %>
-          <%=doctor.class %>
+      <% for doctor in  @doctors_list %>
+
           <th> <%= doctor[0] %> </th>
         <%end%>
         <th> Total </th>
    </tr>
-<% @count = 0 %>
+
     <% for date in @from_date..@to_date %>
       <tr><td> <%=h date %></td>
           <% for doctor in  @doctors_list %>
@@ -25,5 +24,6 @@
 
       </tr>
     <%end%>
+    <tr><th> Total : </th> <td>   <%=h @count %></td></tr>
 
 </table>

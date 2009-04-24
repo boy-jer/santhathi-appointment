@@ -1,0 +1,2 @@
+module ClinicalScreensHelper
+end

@@ -106,7 +106,7 @@ class ParameterSpecificationsController < ApplicationController
     parameter_specification.move_higher
     @parameter_specifications = @lab_test.parameter_specifications.find(:all, :order => 'position ASC')
     render :update do |page|
-                     page.replace_html 'specifications-list', :partial => 'specifications'
+                       page.replace_html 'specifications-list', :partial => 'specifications'
                    end
   end
 
@@ -116,7 +116,7 @@ class ParameterSpecificationsController < ApplicationController
     parameter_specification.move_lower
     @parameter_specifications = @lab_test.parameter_specifications.find(:all, :order => 'position ASC')
     render :update do |page|
-                     page.replace_html 'specifications-list', :partial => 'specifications'
+                       page.replace_html 'specifications-list', :partial => 'specifications'
                    end
   end
 

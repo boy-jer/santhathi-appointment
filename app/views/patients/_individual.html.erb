@@ -21,13 +21,19 @@
        <td><%= f.text_field :spouse_name, {:class => 'textbox'} %></td>
    </tr>
 
-   <tr><th><%= f.label :address %></th>
-       <td><%= f.text_field :address, {:class => 'textbox'} %></td>
+    <tr><th><%= f.label :email %></th>
+       <td><%= f.text_field :email, {:class => 'textbox'} %></td>
    </tr>
 
    <tr><th><%= f.label :contact_no %></th>
        <td><%= f.text_field :contact_no, {:class => 'textbox'} %></td>
    </tr>
+
+   <tr><th><%= f.label :address %></th>
+       <td><%= f.text_field :address, {:class => 'address'} %></td>
+   </tr>
+
+
 
    <tr><th><label>Referal type: </lable></th>
        <td><%= radio_button_tag ('ref_type', 'd', checked = false) %> Doctor

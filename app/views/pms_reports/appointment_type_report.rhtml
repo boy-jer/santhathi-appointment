@@ -9,7 +9,7 @@
 
   <%= submit_tag "go"%>
 
-   <% unless @mode_ids.blank? -%>
+   <% unless @reports.blank? -%>
       <%= render(:partial => "mode_type_report_display") %>
    <%end%>
 
