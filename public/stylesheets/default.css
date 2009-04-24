@@ -13,26 +13,26 @@ body {
       min-width: 900px;
       }
 
-#wrapper {
+#wrapper { 
      margin: 0px auto;
      width: 100%;
 }
 
 .content{
 	margin: 0px;
-        width: 100%
+        width: 100% ;
 	}
 
-.content-body {
+.content-body { 
         background-color: #fff;
         width: 99%;
-        margin: 0px;
-        border-bottom: #66ABE2 8px solid;
-        border-left: #66ABE2 6px solid;
+        margin: 0px;  
+        border-bottom: #66ABE2 8px solid; 
+        border-left: #66ABE2 6px solid;  
         border-right: #66ABE2 6px solid;
-        }
+                  }
 
-.content-panel  {
+.content-panel  { 
  display: inline;
  color: #333;
  margin: 0px 0px 5px 0px;
@@ -46,11 +46,11 @@ body {
          margin: 0px;
          height: 520px;
          float: left;
-         border:#F0F5F8 1px solid;
+         border:#99BBE8 1px solid;
          Previous
 }
 
-.navigation {
+.navigation { 
  height: 525px;
  float: left;
  color: #333;
@@ -60,8 +60,8 @@ body {
  display: inline;
  position: relative;
  background: #E0ECFF;
- border:1px solid #BDCFE1;
-border-right: 1px solid #F6FBFF;
+ border:1px solid #ccc;
+ border-right: 1px solid #fff;
 }
 
 a:link, a:visited {
@@ -156,7 +156,7 @@ h3 span {
 	margin: 0px;
 	/*position: absolute;*/
 	background: url(/images/top-bar-12.png) repeat-x;
-	height: 46px;
+	height: 54px;
         border-top: #e0eaf6 1px solid;
 }
 #header h1 {
@@ -368,7 +368,7 @@ h3 span {
            border-color: #ADC7F3;
            border-style: outset;*/
           /* border: 4px  #F6F6EE  solid;*/
-
+           
            background: #fff; /* url(/images/tab.png) repeat-x;*/
            height: 100%;
            padding: 1px 0px 0px 0px;
@@ -549,13 +549,14 @@ h3 span {
 	    border-collapse: collapse;
             width: 100%;
             color: #3a3a3a;
-
+        
 }
 .listing a {
 	     color: #005DB8;
-
+             
             font-size: 11px;
 }
+
 
 .table-header {background: url(/images/table_header.gif) repeat-x;}
 
@@ -612,7 +613,7 @@ h3 span {
 #menu li a {
 	display: block;
 	float: left;
-	margin:21px 2px 0px 0px;
+	margin:29px 2px 0px 0px;
 	padding: 5px 2px 0px 1px;
 	width:88px;height:17px;
 	text-transform: uppercase;
@@ -628,7 +629,7 @@ h3 span {
 #menu li a:hover {
 	display: block;
 	float: left;
-	margin:21px 2px 0px 0px;
+	margin:29px 2px 0px 0px;
 	padding: 5px 2px 0px 1px;
 
 	text-transform: uppercase;
@@ -833,45 +834,16 @@ a.button:hover span {
 /*--------------------------clinical-screen----------------*/
 
 #prescription {
-
+            
            height: 80px;
            overflow: auto;
            background: #F7FBFF;
           }
 
-
+ 
 #clinical-screen{
  border:#E7EBEF 1px solid;
  padding: 0px;
 }
 
 
-/*---------------------------Search Logic pagination css -----------*/
-div.pages {
-  font-weight: bold;
-}
-
-a.page, span.page {
-  padding: 4px 6px;
-}
-
-a.page {
-  margin: 0 3px;
-  border: 1px solid #ddd;
-  text-decoration: none;
-  color: #0063dc;
-}
-
-a.page:hover {
-  border: 1px solid #003366;
-  background-color: #0063dc;
-  color: #fff;
-}
-
-span.disabled_page {
-  color: #b1aab1;
-}
-
-span.current_page {
-  color: #ff0084;
-}
