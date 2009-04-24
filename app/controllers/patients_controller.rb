@@ -1,15 +1,14 @@
 class PatientsController < ApplicationController
   layout 'pms'
-  # GET /patients
-  # GET /patients.xml
+
   def index
   	@search = Patient.new_search(params[:search])
-    @search.per_page = 9
+    @search.per_page = 20
     @patients, @patient_count = @search.all, @search.count
     respond_to do |format|
       format.html # index.html.erb
        format.js {
-                      render :update do |page|
+                     render :update do |page|
                         page.replace_html 'patients-list', :partial => 'patients_list'
                       end
                  }

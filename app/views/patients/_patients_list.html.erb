@@ -8,6 +8,7 @@
 
 <table class="listing">
   <tr>
+    <th></th>
     <th>Reg. date</th>
     <th>Reg. no </th>
     <th>Name</th>
@@ -21,9 +22,10 @@
 
 <% for patient in @patients %>
   <tr class="<%= cycle('odd', 'even') %>">
- <td class='radio-column'><%=radio_button_tag ('patient', patient.id, checked = false, options = {:onclick => "$('main_form').patient_id.value=#{patient.id};"})%>
+ <td class='radio-column'><%=radio_button_tag ('patient', patient.id, checked = false, options = {:onclick => "$('main_form').patient_id.value=#{patient.id};"})%></td>
     <td><%=h patient.reg_date %></td>
-    <td><%=h patient.reg_no %></td>
+    <td><%= patient.reg_no.blank? ? link_to('Register', edit_patient_url(patient)) : patient.reg_no%> </td>
+
     <td><%=h patient.patient_name %></td>
     <td><%=h calculate_age(patient.dob) %></td>
     <td><%=h patient.dob %></td>

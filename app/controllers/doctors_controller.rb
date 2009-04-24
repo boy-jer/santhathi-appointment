@@ -3,12 +3,19 @@ class DoctorsController < ApplicationController
   # GET /doctors
   # GET /doctors.xml
   def index
-    @doctors = Doctor.find(:all)
+    @search = Doctor.new_search(params[:search])
+    @search.per_page = 20
+
+    @doctors,@doctor_count = @search.all,@search.count
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @doctors }
-    end
+              format.html
+              format.js {
+                      render :update do |page|
+                        page.replace_html 'doctor-list', :partial => 'doctors_list'
+                      end
+                      }
+              end
   end
 
   # GET /doctors/1
