@@ -1,7 +1,6 @@
 class PatientsController < ApplicationController
   layout 'pms'
-  # GET /patients
-  # GET /patients.xml
+
   def index
   	@search = Patient.new_search(params[:search])
     @search.per_page = 20
@@ -9,7 +8,7 @@ class PatientsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
        format.js {
-                      render :update do |page|
+                     render :update do |page|
                         page.replace_html 'patients-list', :partial => 'patients_list'
                       end
                  }
