@@ -6,7 +6,8 @@
            <li><%= link_to_remote("#{test.name} Prescription", 
                                    :before => "Element.show('spinner')",
                                    :success => "Element.hide('spinner')",
-                                   :url => { :controller => :prescriptions, :action => @appointment.prescription.blank? ? :new : :edit },
+                                   :url => { :controller => :prescriptions, :action => (@appointment.prescription.blank? ? 'new' : 'edit') },
+                                   :method => :get,
                                    :with => "'department='+ #{@department.id} + '&test_id='+ #{test.id} + '&appointment=' + #{@appointment.id}") %></li>
         <% end %>
       </ul>

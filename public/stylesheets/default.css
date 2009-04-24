@@ -5,7 +5,7 @@ body {
       /*background: #00c9ee repeat-x ;*/
       /*background: #55ABD5;*/
       /*background: #F5FAFC;*/
-      background: #E6EEFF;
+      background: #397EB7;
       color: #4B4B4B;
       margin: 0;
       padding: 0;
@@ -25,66 +25,43 @@ body {
 
 .content-body { 
         background-color: #fff;
-        width: 99.4%;
-        margin: 0px 0px 0px 0px ;  
-        border-bottom: #e0eaf6 4px solid; 
-        border-right: #e0eaf6 4px solid;
-        border-left: #e0eaf6 4px solid;            }
+        width: 99%;
+        margin: 0px;  
+        border-bottom: #66ABE2 8px solid; 
+        border-left: #66ABE2 6px solid;  
+        border-right: #66ABE2 6px solid;
+                  }
 
 .content-panel  { 
  display: inline;
  color: #333;
- margin: 0px 5px 5px 0px;
+ margin: 0px 0px 5px 0px;
  padding:0;
-  width: 86%;
+  width: 86.3%;
  float: right;
  height: 100%;
 }
 
 #separation{
-         margin: 1px 0px 1px 0px;
-         height: 550px;
+         margin: 0px;
+         height: 520px;
          float: left;
          border:#F0F5F8 1px solid;
          Previous
 }
 
 .navigation { 
- height: 550px;
+ height: 525px;
  float: left;
  color: #333;
  margin:0px;
  padding:0;
- width: 13%;
+ width: 13.5%;
  display: inline;
  position: relative;
- background: #F8FAFF;
+ background: #E0ECFF;
+ border:1px solid #BDCFE1;
 }
-
-/*
-.content-panel { 
-        float: right;
-        color: #333;
-        margin: 0px 5px 5px 6px;
-        padding: 0;
-        width: 84.7%;
-        display: inline;
-        position: relative;
-        }
-
-.navigation{
-	    height: 100%;
-	    margin: 0px 10px 2px 0px;
-            width: 13%;
-            background: #fff;
-	    float:left;
-            display: inline;
-            color: #333;
-            padding:0;
-            float: left;
-	}
-
-*/
 
 a:link, a:visited {
 	color: #0054ff;
@@ -178,7 +155,7 @@ h3 span {
 	margin: 0px;
 	/*position: absolute;*/
 	background: url(/images/top-bar-12.png) repeat-x;
-	height: 45px;
+	height: 46px;
         border-top: #e0eaf6 1px solid;
 }
 #header h1 {
@@ -252,7 +229,7 @@ h3 span {
 	padding: 0.7em 1em;
 	margin: 1em 1.5em;
 	background-color: #fff1c0;
-	font-weight: bold;
+	font-weight: bold;3764A0
 }
 /** Scaffold styles */
 .fieldWithErrors {
@@ -317,6 +294,7 @@ h3 span {
 	border: 1px solid #aaa;
 	text-decoration: none;
 	color: #666;
+        background-color: #fff;
 }
 .pagination a:hover, .pagination a:active {
 	border: 1px solid #666;
@@ -335,7 +313,9 @@ h3 span {
 	padding: 0px 5px 0px 5px;
 	margin: 2px;
 	border: 1px solid #eee;
-	color: #ddd;
+	color: #ccc;
+        background-color: #fff;
+        border: 1px solid #aaa;
 }
 #submitbutton {
 	margin: 0.8em;
@@ -387,10 +367,10 @@ h3 span {
            border-color: #ADC7F3;
            border-style: outset;*/
           /* border: 4px  #F6F6EE  solid;*/
-
+           
            background: #fff; /* url(/images/tab.png) repeat-x;*/
            height: 100%;
-           padding: 5px 5px 20px 10px;
+           padding: 1px 0px 0px 0px;
            }
 
 .continer-inner {background: #ffffff;
@@ -559,7 +539,7 @@ h3 span {
              font-weight: normal;
 }
 
-.listing td {padding: .5em .5em .3em; color: #000;}
+.listing td {padding: .4em .5em .3em; color: #000;}
 
 .listing tr {
              border:1px solid #BDCFE1;
@@ -568,7 +548,7 @@ h3 span {
 	    border-collapse: collapse;
             width: 100%;
             color: #3a3a3a;
-            padding: 0px 5px 0px 5px;
+        
 }
 .listing a {
 	     color: #005DB8;
@@ -578,7 +558,7 @@ h3 span {
 
 .table-header {background: url(/images/table_header.gif) repeat-x;}
 
-.table-footer {background: #D5E2F2; padding: 0px; }
+.table-footer {background: #E0ECFF; padding: 0px; }
 
 #patients tr:hover {background-color: #c7dfea; color: #ffffff;} /*not for IE*/
 
@@ -607,13 +587,12 @@ h3 span {
 
 .form-table {border-collapse: collapse; width: 100%; border: 1px solid #e8ebec; }
 
-.search-table tr:hover {background-color: #ffffff; color: #858b8e;} /*not for IE*/
 
-.search-table th {background: #fff; color: #000; padding: 0.1em 1em; border:1px solid #ccc; text-align: left;  font-weight: normal;}
+.search-table th {background: #E0ECFF; color: #3764A0; padding: .1em .5em; border:1px solid #BDCFE1; text-align: left;  font-weight: normal;}
 
-.search-table td {background-color: #F9F9F2; padding: 0.2em .8em; border:1px solid #8BA5C0; text-align: left;}
+.search-table td {background-color: #E0ECFF; padding: .1em .5em; border:1px solid #BDCFE1; text-align: left;}
 
-.search-table {border-collapse: collapse; width: 100%; border: 1px solid #e8ebec; }
+.search-table {border-collapse: collapse; width: 100%; border: 1px solid #ccc; }
 
 /* Menu */
 
@@ -632,7 +611,7 @@ h3 span {
 #menu li a {
 	display: block;
 	float: left;
-	margin:21px 3px 0px 0px;
+	margin:21px 2px 0px 0px;
 	padding: 5px 2px 0px 1px;
 	width:88px;height:17px;
 	text-transform: uppercase;
@@ -648,7 +627,7 @@ h3 span {
 #menu li a:hover {
 	display: block;
 	float: left;
-	margin:21px 3px 0px 0px;
+	margin:21px 2px 0px 0px;
 	padding: 5px 2px 0px 1px;
 
 	text-transform: uppercase;
@@ -864,3 +843,5 @@ a.button:hover span {
  border:#E7EBEF 1px solid;
  padding: 0px;
 }
+
+

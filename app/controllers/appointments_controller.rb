@@ -5,7 +5,7 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
   # GET /appointments.xml
   def index
     respond_to do |format|
-      format.html { @appointments = Appointment.paginate(:all, :include =>['reason', 'doctor', 'patient'], :order => 'appointment_date DESC', :per_page => 10, :page => params[:page])
+      format.html { @appointments = Appointment.paginate(:all, :include =>['reason', 'doctor', 'patient'], :order => 'appointment_date DESC', :per_page => 15, :page => params[:page])
                   }
       format.js   { if params.has_key?(:pname) #Search request via ajax call
                       search = 'Appointment'
@@ -15,9 +15,9 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
                       search = search + '.reg_no(params[:rnum])' unless params[:rnum].blank?
 
                       unless search == 'Appointment' #if no search parameters provided, return all.
-                        @appointments = eval(search).paginate(:all, :order => 'appointment_date DESC', :per_page => 10, :page => params[:page])
+                        @appointments = eval(search).paginate(:all, :order => 'appointment_date DESC', :per_page => 15, :page => params[:page])
                       else
-                        @appointments = Appointment.paginate(:all, :order => 'appointment_date DESC', :per_page => 10, :page => params[:page])
+                        @appointments = Appointment.paginate(:all, :order => 'appointment_date DESC', :per_page => 15, :page => params[:page])
                       end
 
                       render :update do |page|
