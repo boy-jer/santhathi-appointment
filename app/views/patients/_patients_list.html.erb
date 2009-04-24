@@ -30,6 +30,10 @@
     <td>&nbsp;&nbsp; <%= link_to image_tag('show.png', {:title => 'Show', :border => 0}), patient_url(patient), :rel=> "facebox" %> &nbsp;&nbsp;| &nbsp;&nbsp; <%= link_to image_tag('edit.png', {:title => 'Edit', :border => 0}), edit_patient_path(patient) %> &nbsp;&nbsp;|&nbsp;&nbsp; <%= link_to image_tag('delete.png', {:title => 'delete', :border => 0}), patient_path(patient), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
+  <tr class="table-footer">
+      <td colspan=5><%= link_to "<span>New patient</span>", new_patient_path, :class=> "button" %></td>
+      <td colspan=4><%= will_paginate @patients %></td>
+  </tr>
 </table>
 
-<br />
+

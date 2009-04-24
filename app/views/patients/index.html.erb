@@ -1,13 +1,7 @@
-<div class='continer'>
-  <div class='continer-inner'>
-   
+<div class='continer'>  
   <%=render :partial=> 'filters'%>
 
   <div id='patients-list'>
     <%=render :partial=> 'patients_list'%>
-  </div>
-  
-  <table><tr><td><%= link_to "<span>New patient</span>", new_patient_path, :class=> "button" %></td><td><%= will_paginate @patients %></td></tr></table>
- 
-   </div>
+  </div> 
 </div>
