@@ -6,7 +6,6 @@ class CreateLabTests < ActiveRecord::Migration
       t.string  :pre_requisites
       t.integer :parent_id
       t.integer :depth
-
       t.timestamps
     end
   end
