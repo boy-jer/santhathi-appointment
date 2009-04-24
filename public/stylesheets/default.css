@@ -61,6 +61,7 @@ body {
  position: relative;
  background: #E0ECFF;
  border:1px solid #BDCFE1;
+border-right: 1px solid #F6FBFF;
 }
 
 a:link, a:visited {
