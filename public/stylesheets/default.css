@@ -1,16 +1,15 @@
-html{ min-height: 550px;}
+html{ height: 100%;}
 
 body {
       font: 11px Verdana, Arial, Sans-Serif;
       /*background: #00c9ee repeat-x ;*/
       /*background: #55ABD5;*/
       /*background: #F5FAFC;*/
-      background: #397EB7;
+      background: #3B619C;
       color: #4B4B4B;
       margin: 0;
       padding: 0;
-      font-size: 11px;
-      min-width: 900px;
+      width: 100%;
       }
 
 #wrapper { 
@@ -25,30 +24,25 @@ body {
 
 .content-body { 
         background-color: #fff;
-        width: 99%;
+        width: 99.8%;
         margin: 0px;  
-        border-bottom: #66ABE2 8px solid; 
-        border-left: #66ABE2 6px solid;  
-        border-right: #66ABE2 6px solid;
+        border-bottom: #4674BA 3px solid; 
+        border-left: #4674BA 1px solid;  
+        border-right: #4674BA 1px solid;
                   }
 
 .content-panel  { 
+ background: #D3E5FA;
  display: inline;
  color: #333;
- margin: 0px 0px 5px 0px;
+ margin: 0px 0px 0px 0px;
  padding:0;
-  width: 86.3%;
+ width: 86.3%;
  float: right;
  height: 100%;
 }
 
-#separation{
-         margin: 0px;
-         height: 520px;
-         float: left;
-         border:#99BBE8 1px solid;
-         Previous
-}
+
 
 .navigation { 
  height: 525px;
@@ -59,9 +53,9 @@ body {
  width: 13.5%;
  display: inline;
  position: relative;
- background: #E0ECFF;
+ background: #D3E5FA;
  border:1px solid #ccc;
- border-right: 1px solid #fff;
+ border-right: 1px solid #ccc;
 }
 
 a:link, a:visited {
@@ -134,7 +128,7 @@ ul {
 	margin-left: 0;
 }
 h2 {
-font-size:16px;A5CAE5
+font-size:16px;
 color: #50798c;
 line-height: 3px;
 }
@@ -156,8 +150,7 @@ h3 span {
 	margin: 0px;
 	/*position: absolute;*/
 	background: url(/images/top-bar-12.png) repeat-x;
-	height: 54px;
-        border-top: #e0eaf6 1px solid;
+	height: 33px;
 }
 #header h1 {
 	float: left;
@@ -198,7 +191,7 @@ h3 span {
 	float: left;
 }
 
-#left {CDDFF0
+#left {
 	/*background: #104E8B;*/
 	/*background: #82B8E4;*/
 	width: 100%;
@@ -230,7 +223,7 @@ h3 span {
 	padding: 0.7em 1em;
 	margin: 1em 1.5em;
 	background-color: #fff1c0;
-	font-weight: bold;3764A0
+	font-weight: bold;
 }
 /** Scaffold styles */
 .fieldWithErrors {
@@ -371,7 +364,7 @@ h3 span {
            
            background: #fff; /* url(/images/tab.png) repeat-x;*/
            height: 100%;
-           padding: 1px 0px 0px 0px;
+           margin: 0px;
            }
 
 .continer-inner {background: #ffffff;
@@ -540,16 +533,13 @@ h3 span {
              font-weight: normal;
 }
 
-.listing td {padding: .4em .5em .3em; color: #000;}
+.listing td {font-size: 11px;padding: 1.2em .5em .3em .5em; color: #000; border-bottom:1px solid #BDCFE1;}
 
-.listing tr {
-             border:1px solid #BDCFE1;
-			 font-size: 11px; }
-.listing{
-	    border-collapse: collapse;
+
+.listing{   border-collapse: collapse;
             width: 100%;
-            color: #3a3a3a;
-        
+            color: #ccc;
+            border:1px solid #BDCFE1;
 }
 .listing a {
 	     color: #005DB8;
@@ -594,7 +584,7 @@ h3 span {
 
 .search-table td {background-color: #E0ECFF; padding: .1em .5em; border:1px solid #BDCFE1; text-align: left;}
 
-.search-table {border-collapse: collapse; width: 100%; border: 1px solid #ccc; }
+.search-table {border-collapse: collapse; width: 100%; border:1px solid #BDCFE1; }
 
 /* Menu */
 
@@ -613,7 +603,7 @@ h3 span {
 #menu li a {
 	display: block;
 	float: left;
-	margin:29px 2px 0px 0px;
+	margin:7px 2px 0px 0px;
 	padding: 5px 2px 0px 1px;
 	width:88px;height:17px;
 	text-transform: uppercase;
@@ -629,7 +619,7 @@ h3 span {
 #menu li a:hover {
 	display: block;
 	float: left;
-	margin:29px 2px 0px 0px;
+	margin:7px 2px 0px 0px;
 	padding: 5px 2px 0px 1px;
 
 	text-transform: uppercase;

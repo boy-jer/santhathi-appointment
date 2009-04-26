@@ -106,18 +106,14 @@ ul#collapse-section li a {
 ul#collapse-section li ul li a {
   background: #F7FBFF;
   color: #800000;
-  padding-left: 20px;
+  padding-left: 15px;
   background-image: url(/images/list-arrow.png);
   background-repeat: no-repeat;
   border:#fff 1px solid;
 }
 
 ul#collapse-section li ul li a:hover {
-  padding-left: 20px;
+  padding-left: 15px;
 }
 
-.code { border: 1px solid #ccc; list-style-type: decimal-leading-zero; padding: 5px; margin: 0; }
-.code code { display: block; padding: 3px; margin-bottom: 0; }
-.code li { background: #ddd; border: 1px solid #ccc; margin: 0 0 2px 2.2em; }
-.indent1 { padding-left: 1em; }
-.indent2 { padding-left: 2em; }
+

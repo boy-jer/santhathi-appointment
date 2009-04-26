@@ -1,52 +1,33 @@
 class AppointmentsController < ApplicationController
 layout 'pms'
 require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
-  # GET /appointments
-  # GET /appointments.xml
-  def index
 
+  def index
   	@search = Appointment.new_search(params[:search])
     @search.per_page = 20
-
     @appointments,@appointment_count = @search.all,@search.count
-
     respond_to do |format|
-              format.html
-              format.js {
-                      render :update do |page|
-                        page.replace_html 'appointment-list', :partial => 'appointments_list'
-                      end
-                      }
-              end
-
+                  format.html
+                  format.js {render :update do |page|
+                               page.replace_html 'appointment-list', :partial => 'appointments_list'
+                             end }
+               end
   end
 
-  # GET /appointments/1
-  # GET /appointments/1.xml
   def show
     @appointment = Appointment.find(params[:id])
-
+    
     respond_to do |format|
       format.html
-      format.xml  { render :xml => @appointment }
       format.js { render :layout => false }
     end
   end
 
-  # GET /appointments/new
-  # GET /appointments/new.xml
   def new
   	@appointment = Appointment.new
     @patient = params[:patient_id].blank? ? Patient.new : Patient.find(params[:patient_id])
-
-    #@patient = Patient.new(:reg_no => generate_identifier)
-    respond_to do|format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @appointment }
-    end
   end
 
-  # GET /appointments/1/edit
   def edit
     @appointment = Appointment.find(params[:id])
     @patient = @appointment.patient
@@ -54,8 +35,6 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
     @minute = Time.parse(@appointment.appointment_time.to_s).strftime('%M').to_i
   end
 
-  # POST /appointments
-  # POST /appointments.xml
  def create
     date = session[:date].blank? ? Date.today : session[:date]
     @appointment = Appointment.new(params[:appointment].merge({:appointment_date => date}))
@@ -83,35 +62,23 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
     end
   end
 
-  # PUT /appointments/1
-  # PUT /appointments/1.xml
+
   def update
     @appointment = Appointment.find(params[:id])
     @appointment.update_attribute('updated_by_id',@current_user.id)
-    respond_to do |format|
 
-      if @appointment.update_attributes(params[:appointment])
-
-        flash[:notice] = 'Appointment was successfully updated.'
-        format.html { redirect_to(appointments_path) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @appointment.errors, :status => :unprocessable_entity }
-      end
+    if @appointment.update_attributes(params[:appointment])
+      flash[:notice] = 'Appointment was successfully updated.'
+      redirect_to(appointments_path)
+    else
+      render :action => "edit" 
     end
   end
 
-  # DELETE /appointments/1
-  # DELETE /appointments/1.xml
   def destroy
     @appointment = Appointment.find(params[:id])
     @appointment.cancel!
-
-    respond_to do |format|
-      format.html { redirect_to(appointments_url) }
-      format.xml  { head :ok }
-    end
+    redirect_to(appointments_url)
   end
 
   def update_doctors
@@ -130,7 +97,6 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
       page.replace_html 'patient_search_results', :partial => 'patient_search_results', :object => @patients
     end
   end
-
 
   def confirm
     @appointment = Appointment.find(params[:id])
@@ -154,7 +120,5 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
     end
 
   end
-
-private
 
 end
