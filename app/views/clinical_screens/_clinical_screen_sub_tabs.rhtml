@@ -8,7 +8,7 @@
 
 	<div id="first_tab">
 	   <% for test in @lab_services %>
-         <p><%=image_tag('arrow_right.png', :border => 0) %>
+         <p><%=image_tag('arrow_right.png', :border => 0) %> &nbsp;
             <%= link_to_remote ( "#{test.name} Prescription",
                                :before => "Element.show('spinner')",
                                :success => "Element.hide('spinner')",
@@ -23,7 +23,8 @@
 	   <% unless @prescribed_tests.blank? %>
              <% for test in @prescribed_tests %>
                <% unless test.lab_test.laboratory_report.blank? %>
-                <%=image_tag('arrow_right.png', :border => 0)  %> <%= link_to "#{test.lab_test.name}", prescribed_test_laboratory_report_path(:prescribed_test_id=> test.id, :id => test.lab_test.laboratory_report.id) %>
+                <%=image_tag('arrow_right.png', :border => 0)  %> &nbsp;
+                <%= link_to "#{test.lab_test.name}", prescribed_test_laboratory_report_path(:prescribed_test_id=> test.id, :id => test.lab_test.laboratory_report.id) %>
                 <%end%>
              <%end%>
            <% else %>

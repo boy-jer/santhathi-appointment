@@ -2,7 +2,10 @@
    <table class="search-table">
      <tr>
        <th>Doctor Name:</th> <th>Appointment Date:</th>
-       <th>Patient Name:</th> <th>Registration No:</th><th> Phone No: </th>
+       <th>Patient Name:</th> 
+        <th>Registration No:</th>
+        <th> Phone No: </th>
+        <th rowspan='2'><input type="reset" value="Reset Search"> </th>
      </tr>
      <tr>
       <%fields_for @search do |f|%>
@@ -19,7 +22,7 @@
 
        <%end%>
        <%end%>
-	 </tr>
+       </tr>
   </table>
 <% end %>
 

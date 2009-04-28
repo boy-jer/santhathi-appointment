@@ -9,9 +9,11 @@
 
     <!--<%= javascript_include_merged :base %>-->
     <!--<%= stylesheet_link_merged :base %>-->
-	<%=javascript_include_tag :defaults, 'facebox', 'jquery-1', 'jquery_corner', 'jquery-ui-1.7.custom.min', 'menu'%>    
-    <%= stylesheet_link_tag 'default','calendar/option2- blue/style', 'facebox', 'menu' %>
+    <%=javascript_include_tag :defaults, 'facebox', 'jquery-1', 'jquery_corner', 'jquery-ui-1.7.custom.min', 'menu'%>    
+    <%= stylesheet_link_tag 'calendar/option2- blue/style', 'facebox', 'menu' %>
 	<%= calendar_date_select_includes %>
+    <%= stylesheet_link_tag('default', :media => :screen) %>
+    <%= stylesheet_link_tag('print', :media => :print) %>
     <script type="text/javascript">
         jQuery.noConflict();
     </script>

@@ -1,17 +1,43 @@
 class AppointmentsController < ApplicationController
 layout 'pms'
+require 'fastercsv'
 require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
 
   def index
-  	@search = Appointment.new_search(params[:search])
+    @search = Appointment.new_search(params[:search])
+    @params = params[:search]
     @search.per_page = 20
     @appointments,@appointment_count = @search.all,@search.count
     respond_to do |format|
                   format.html
                   format.js {render :update do |page|
                                page.replace_html 'appointment-list', :partial => 'appointments_list'
-                             end }
-               end
+                             end 
+                             }
+
+                  format.csv { 
+                              csv_file = FasterCSV.generate do |csv|
+                                 #Headers
+                                 csv << ['Appointment No', 'Appointment Date', 'Appointment Time', 'Doctor Name', 'Patient Name', 'Reason', 'Status', 'Reg No']
+                       
+                                 #Data
+                                 @appointments.each do |app|
+                                   csv << [app.id, app.appointment_date, app.appointment_time.strftime('%H:%M'), app.doctor.name, app.patient.patient_name, app.reason.name, app.state, app.patient.reg_no ]
+                                 end              
+                               end
+                               #sending the file to the browser
+                               send_data(csv_file, :filename => 'credit_desk_users_list.csv', :type => 'text/csv', :disposition => 'attachment')
+                             }
+                   format.pdf { 
+                               options = {:left_margin   => 20, 
+                                          :right_margin  => 20,
+                                          :top_margin    => 20,
+                                          :bottom_margin => 20
+    				         }
+                               prawnto :inline=>true, :prawn=> options, :filename => "appointments.pdf"
+                               render :layout => false
+                              }
+                end   
   end
 
   def show

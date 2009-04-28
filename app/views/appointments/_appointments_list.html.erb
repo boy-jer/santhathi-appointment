@@ -1,3 +1,11 @@
+<table class='form-table'><tr>
+           <td><h3>Appointment List</h3></td>
+           <td> <%= link_to_function("Print this Page", "javascript:print()") %> </td>
+           <td> <%= link_to("Export This Page to CSV", formatted_appointments_url('csv', :search => @params) )%> </td>
+           <td> <%= link_to("Export This Page to PDF", formatted_appointments_url('pdf', :search => @params)) %> </td>
+         </tr>
+</table>
+
 <%= image_tag("spinner.gif",
               :align => "absmiddle",
               :border => 0,
@@ -29,7 +37,7 @@
     <td><%= link_to appointment.patient.patient_name, patient_url(appointment.patient), :rel=> "facebox" %></td>
     <td><%=h appointment.reason.name %></td>
 
-    <td><%= appointment.state == 'new_appointment'? 'New (' + link_to('Confirm', confirm_appointment_url(appointment, :page => params[:page]), :method => :get, :confirm => 'This action will mark this appointment as patient visited. are you sure?') + ')' :appointment.state %></td>
+    <td><%= appointment.state == 'new_appointment'? link_to('Confirm', confirm_appointment_url(appointment, :page => params[:page]), :method => :get, :confirm => 'This action will mark this appointment as patient visited. are you sure?') :appointment.state %></td>
 
     <td><%= appointment.patient.reg_no.blank? ? link_to('Register', edit_patient_url(appointment.patient)) : appointment.patient.reg_no%> </td>
 

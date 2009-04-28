@@ -23,7 +23,7 @@ body {
 	}
 
 .content-body { 
-        background-color: #fff;
+        background-color: #D3E5FA;
         width: 99.8%;
         margin: 0px;  
         border-bottom: #4674BA 3px solid; 
@@ -45,17 +45,13 @@ body {
 
 
 .navigation { 
- height: 525px;
  float: left;
  color: #333;
- margin:0px;
  padding:0;
- width: 13.5%;
+ width: 13.2%;
  display: inline;
  position: relative;
  background: #D3E5FA;
- border:1px solid #ccc;
- border-right: 1px solid #ccc;
 }
 
 a:link, a:visited {
@@ -118,7 +114,7 @@ select {
  padding:1px 1px;
 }
 
-fieldset
+fieldsetEBF3FD
 {
      	border:none;
 }
@@ -150,7 +146,7 @@ h3 span {
 	margin: 0px;
 	/*position: absolute;*/
 	background: url(/images/top-bar-12.png) repeat-x;
-	height: 33px;
+	height: 32px;
 }
 #header h1 {
 	float: left;
@@ -272,7 +268,7 @@ h3 span {
 	clear: both;
 	padding: 0px 10px 10px 10px;
 	color: #b5aea1;
-	font-size: 0.9em;
+	font-size: 0.9egood,m;
 	background: #ffffff;
 }
 
@@ -299,7 +295,7 @@ h3 span {
 	padding: 0px 5px 0px 5px;
 	margin: 2px;
 	border: 1px solid #aaa;
-	font-weight: bold;
+	font-weight: bold;vijendra
 	background-color: #f6f7f8;
 	color: #434343;
 }
@@ -361,10 +357,10 @@ h3 span {
            border-color: #ADC7F3;
            border-style: outset;*/
           /* border: 4px  #F6F6EE  solid;*/
-           
+           min-height: 525px;
            background: #fff; /* url(/images/tab.png) repeat-x;*/
            height: 100%;
-           margin: 0px;
+           margin: 6px 0px;
            }
 
 .continer-inner {background: #ffffff;
@@ -533,12 +529,12 @@ h3 span {
              font-weight: normal;
 }
 
-.listing td {font-size: 11px;padding: 1.2em .5em .3em .5em; color: #000; border-bottom:1px solid #BDCFE1;}
+.listing td {font-size: 11px;padding: 1.3em .5em .3em .5em; color: #000; border-bottom:1px solid #BDCFE1;}
 
 
 .listing{   border-collapse: collapse;
             width: 100%;
-            color: #ccc;
+            color: #000;
             border:1px solid #BDCFE1;
 }
 .listing a {
@@ -580,11 +576,11 @@ h3 span {
 .form-table {border-collapse: collapse; width: 100%; border: 1px solid #e8ebec; }
 
 
-.search-table th {background: #E0ECFF; color: #3764A0; padding: .1em .5em; border:1px solid #BDCFE1; text-align: left;  font-weight: normal;}
+.search-table th {background: #EBF3FD; color: #3764A0; padding: .3em .5em; border:1px solid #BDCFE1; text-align: left;  font-weight: normal;}
 
-.search-table td {background-color: #E0ECFF; padding: .1em .5em; border:1px solid #BDCFE1; text-align: left;}
+.search-table td {background-color: #EBF3FD; padding: .1em .5em; border:1px solid #BDCFE1; text-align: left;}
 
-.search-table {border-collapse: collapse; width: 100%; border:1px solid #BDCFE1; }
+.search-table {border-collapse: collapse; width: 100%; border-top:2px solid #BDCFE1; }
 
 /* Menu */
 
@@ -603,14 +599,14 @@ h3 span {
 #menu li a {
 	display: block;
 	float: left;
-	margin:7px 2px 0px 0px;
+	margin:9px 2px 0px 0px;
 	padding: 5px 2px 0px 1px;
 	width:88px;height:17px;
 	text-transform: uppercase;
 	text-decoration: none;
 	font-size: 10px;
 	font-weight: normal;
-	color: #000;
+	color: #3764A0;
 	text-align:center;
 	background-image: url('/images/nw-tab.gif');
 
@@ -619,7 +615,7 @@ h3 span {
 #menu li a:hover {
 	display: block;
 	float: left;
-	margin:7px 2px 0px 0px;
+	margin:9px 2px 0px 0px;
 	padding: 5px 2px 0px 1px;
 
 	text-transform: uppercase;
@@ -815,7 +811,7 @@ a.button:hover span {
 /*------------------------- links as buttons --------------*/
 
 /*--------------------------clinical-screen----------------*/
-.clinical-table{border-collapse: collapse; background-color: #EFEFEF;  width: 100%; border: 1px solid #E7EBEF; }
+.clinical-table{border-collapse: collapse; background-color: #EFEFEF;  width: 99.2%; border: 1px solid #E7EBEF; margin: 4px; }
 
 .clinical-table th {color: #667987; padding: 0.1em .8em; border:1px solid #fff; text-align: left;}
 
@@ -832,8 +828,7 @@ a.button:hover span {
 
  
 #clinical-screen{
- border:#E7EBEF 1px solid;
- padding: 0px;
+  padding: 0px;
 }
 
 

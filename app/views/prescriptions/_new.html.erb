@@ -1,10 +1,9 @@
 <% remote_form_for( @prescription) do |f| %>
   <%= f.error_messages %>
-    <br />
     <table class = 'form-table'>
-    <tr> <td> <label><%= link_to "Back" , new_appointment_clinical_screen_path(@prescription.appointment.id) %> &nbsp; | &nbsp;
+    <tr> <td> <label><%= link_to "Back" , new_appointment_clinical_screen_path(@appointment.id) %> &nbsp; | &nbsp;
     <%= link_to "Patient List" ,  doctor_patients_path %>  &nbsp; | &nbsp;
-    <%= link_to "Cancel" , new_appointment_clinical_screen_path(@prescription.appointment.id) %> </label></td></tr>
+    <%= link_to "Cancel" , new_appointment_clinical_screen_path(@appointment.id) %> </label></td></tr>
 
        <tr><th>Prescription To: </th> <td> <%= @department.dept_name %> </td>
            <th>Prescribing Doctor:</th> <td> <%= @appointment.doctor.name %> </td></tr>
