@@ -3,20 +3,20 @@
      <tr>
        <th>Doctor Name:</th> <th>Appointment Date:</th>
        <th>Patient Name:</th> 
-        <th>Registration No:</th>
+        <th>Reg No:</th>
         <th> Phone No: </th>
-        <th rowspan='2'><input type="reset" value="Reset Search"> </th>
+        <th rowspan='2'><input type="reset" value="Reset"> </th>
      </tr>
      <tr>
       <%fields_for @search do |f|%>
         <% f.fields_for @search.conditions do |p| %>
         <td><%= p.select :doctor_id_like,  [['Select doctor' , '']] + Doctor.doctors_list, :class =>'select-list' %></td>
-         <td><%= p.calendar_date_select :appointment_date_like, :class =>'textbox' %></td>
+         <td><%= p.calendar_date_select :appointment_date_like, :class =>'textbox-small' %></td>
 
          <% p.fields_for p.object.patient do |patient| %>
              <td><%= patient.text_field :patient_name_like, :class => 'textbox' %></td>
-             <td><%= patient.text_field :reg_no_like, :class => 'textbox' %></td>
-             <td><%= patient.text_field :contact_no_like, :class => 'textbox' %></td>
+             <td><%= patient.text_field :reg_no_like, :class => 'textbox-small' %></td>
+             <td><%= patient.text_field :contact_no_like, :class => 'textbox-small' %></td>
          <%end%>
 
 
