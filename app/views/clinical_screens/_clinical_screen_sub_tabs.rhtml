@@ -20,6 +20,9 @@
 
 
 	<div id="second_tab">
+	        <ul> <li><a href="#current_visit_tab"> Current Visit </a></li>
+	        <li><a href="#last_visit_tab"> Last Visit </a></li></ul>
+             <br/>
 	   <% unless @prescribed_tests.blank? %>
              <% for test in @prescribed_tests %>
                <% unless test.lab_test.laboratory_report.blank? %>
@@ -43,5 +46,21 @@
 	</ul>
     </li>
 	</div>
+<div id="last_visit_tab">
+  </label> <%= link_to "Last_visit" , new_appointment_clinical_screen_path(last_visit(@appointment.patient_id))   %></label>
+<div>
+ <div id="current_visit_tab">
+
+    <% unless @prescribed_tests.blank? %>
+             <% for test in @prescribed_tests %>
+               <% unless test.lab_test.laboratory_report.blank? %>
+                <%=image_tag('arrow_right.png', :border => 0)  %> &nbsp;
+         <%= link_to "#{test.lab_test.name}", prescribed_test_laboratory_report_path(:prescribed_test_id=> test.id, :id => test.lab_test.laboratory_report.id) %>
+                <%end%>
+             <%end%>
+           <% else %>
+             <br /><p> No report available yet.</p> <br />
+           <%end%>
+ </div>
 
 </div>

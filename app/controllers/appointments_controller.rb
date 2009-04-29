@@ -6,30 +6,33 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
   def index
     @search = Appointment.new_search(params[:search])
     @params = params[:search]
-    @search.per_page = 20
-    @appointments,@appointment_count = @search.all,@search.count
+    @search.per_page ||= 1
+    puts "ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp #{@search.per_page}"
+
+    @appointments = @search.all
+
     respond_to do |format|
                   format.html
-                  format.js {render :update do |page|
+                  format.js { render :update do |page|
                                page.replace_html 'appointment-list', :partial => 'appointments_list'
-                             end 
+                             end
                              }
 
-                  format.csv { 
+                  format.csv {
                               csv_file = FasterCSV.generate do |csv|
                                  #Headers
                                  csv << ['Appointment No', 'Appointment Date', 'Appointment Time', 'Doctor Name', 'Patient Name', 'Reason', 'Status', 'Reg No']
-                       
+
                                  #Data
                                  @appointments.each do |app|
                                    csv << [app.id, app.appointment_date, app.appointment_time.strftime('%H:%M'), app.doctor.name, app.patient.patient_name, app.reason.name, app.state, app.patient.reg_no ]
-                                 end              
+                                 end
                                end
                                #sending the file to the browser
                                send_data(csv_file, :filename => 'credit_desk_users_list.csv', :type => 'text/csv', :disposition => 'attachment')
                              }
-                   format.pdf { 
-                               options = {:left_margin   => 20, 
+                   format.pdf {
+                               options = {:left_margin   => 20,
                                           :right_margin  => 20,
                                           :top_margin    => 20,
                                           :bottom_margin => 20
@@ -37,12 +40,12 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
                                prawnto :inline=>true, :prawn=> options, :filename => "appointments.pdf"
                                render :layout => false
                               }
-                end   
+                end
   end
 
   def show
     @appointment = Appointment.find(params[:id])
-    
+
     respond_to do |format|
       format.html
       format.js { render :layout => false }
@@ -97,7 +100,7 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
       flash[:notice] = 'Appointment was successfully updated.'
       redirect_to(appointments_path)
     else
-      render :action => "edit" 
+      render :action => "edit"
     end
   end
 

@@ -2,12 +2,20 @@ class SelectOptionsController < ApplicationController
  layout 'pms'
 
   def index
-    @options = params[:type].constantize.find(:all)
-
+  #  @type = params[:type]
+  	@search = SelectOption.new_search(params[:search])
+  	@search.conditions.type_like = params[:type]
+    @search.per_page = 20
+    @options = @search.all
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @options }
+       format.js {
+                      render :update do |page|
+                        page.replace_html 'select_option_list', :partial => 'select_option_list'
+                      end
+                 }
     end
+
   end
 
   def new

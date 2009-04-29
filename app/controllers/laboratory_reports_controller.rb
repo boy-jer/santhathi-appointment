@@ -22,8 +22,21 @@ class LaboratoryReportsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @laboratory_test_results}
+
+        format.pdf {
+                               options = {:left_margin   => 20,
+                                          :right_margin  => 20,
+                                          :top_margin    => 20,
+                                          :bottom_margin => 20
+    				         }
+                               prawnto :inline=>true, :prawn=> options, :filename => "appointments.pdf"
+                            render :layout => false
+                   }
+
+
     end
-  end
+
+   end
 
   def new
     @prescribed_test = PrescribedTest.find(params[:prescribed_test_id])
