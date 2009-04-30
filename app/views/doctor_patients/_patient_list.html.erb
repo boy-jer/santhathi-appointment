@@ -5,11 +5,11 @@
       <tr>
         <th></th>
         <th>Hospital No.</th>
-        <th>Patient Name</th>
+        <th><%= remote_order_by_link :patient_name %></th>
         <th>PVR No.</th>
-        <th>Doctor</th>
-        <th>Department</th>
-        <th>Reason</th>
+        <th><%= remote_order_by_link :doctor =>:name %></th>
+        <th><%= remote_order_by_link :department => :dept_name %></th>
+        <th><%= remote_order_by_link :reason=>:name %></th>
         <th>History</th>
         <th>Clinical Screen</th>
         <th>Vitalsigns</th>
@@ -29,9 +29,20 @@
          <td><%= link_to 'Vitalsigns', new_vital_sign_url(:patient_id => appointment.patient.id) , :rel=> "facebox"%></td>
        </tr>
      <%end%>
-    </table>
-    <%=submit_tag "Recommended For Discharge" %>
 
+    <tr class="table-footer">
+      <td colspan=3><%=submit_tag "Recommended For Discharge" %></td>
+       <td colspan = 2>  Per page: <%= remote_per_page_select %></td>
+      <td colspan=5> <% if @appointments.size > 1 %>
+                          <div class="pagination">
+                                <%= remote_page_links %>
+                          </div>
+                          <%end%>
+                          </td>
+     </tr>
+
+
+    </table>
    <br/>
   <%end%>
  <%end%>

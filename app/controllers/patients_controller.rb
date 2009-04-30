@@ -3,8 +3,8 @@ class PatientsController < ApplicationController
 
   def index
   	@search = Patient.new_search(params[:search])
-    @search.per_page = 20
-    @patients, @patient_count = @search.all, @search.count
+    @search.per_page ||= 5
+    @patients = @search.all
     respond_to do |format|
       format.html # index.html.erb
        format.js {

@@ -9,11 +9,11 @@
 <table class="listing">
   <tr>
     <th></th>
-    <th>Reg. date</th>
-    <th>Reg. no </th>
-    <th>Name</th>
+    <th><%= remote_order_by_link :reg_date %></th>
+    <th><%= remote_order_by_link :reg_no %></th>
+    <th><%= remote_order_by_link :patient_name %></th>
     <th>Age</th>
-    <th>Dob</th>
+    <th><%= remote_order_by_link :dob %></th>
     <th>Spouse name</th>
     <th>Address</th>
     <th>Contact no</th>
@@ -36,19 +36,19 @@
   </tr>
 <% end %>
   <tr class="table-footer">
-      <td colspan=5><%= link_to "<span>New patient</span>", new_patient_path, :class=> "button" %></td>
-      <td>
+      <td colspan = 3><%= link_to "<span>New patient</span>", new_patient_path, :class=> "button" %></td>
+      <td colspan = 1>
       <% form_tag(new_appointment_path, :id => 'main_form') do -%>
        <input id="patient_id" name="patient_id" type="hidden" value=""/>
 
       <%=submit_tag "new appointment" %>
       <%end%>
        </td>
-
-      <td colspan=4> <% if @patients.size > 1 %>
-    <div class="pages">
-      <%= remote_page_links %>
-    </div>
+        <td colspan = 1>  Per page: <%= remote_per_page_select %></td>
+      <td colspan = 5> <% if @patients.size > 1 %>
+                          <div class="pagination">
+                                <%= remote_page_links %>
+                          </div>
   <% end %></td>
   </tr>
 </table>

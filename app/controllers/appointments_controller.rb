@@ -6,11 +6,8 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
   def index
     @search = Appointment.new_search(params[:search])
     @params = params[:search]
-    @search.per_page ||= 1
-    puts "ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp #{@search.per_page}"
-
+    @search.per_page ||= 5
     @appointments = @search.all
-
     respond_to do |format|
                   format.html
                   format.js { render :update do |page|

@@ -18,9 +18,9 @@
     <th></th>
     <th><%= remote_order_by_link :id %></th>
     <th><%= remote_order_by_link :appointment_date %></th>
-    <th>Time</th>
+    <th><%= remote_order_by_link :appointment_time %></th>
     <th><%= remote_order_by_link :doctor => :name %></th>
-    <th>Patient</th>
+    <th><%= remote_order_by_link :patient => :patient_name %></th>
     <th>Reason</th>
 
     <th><%= remote_order_by_link :state %></th>
@@ -51,7 +51,7 @@
 <% end %>
   <tr class="table-footer">
   	     <td colspan = 3><%= link_to "<span>New appointment</span>", new_appointment_path, :class=> "button" %></td>
-         <td colspan = 2>  Per page: <%= remote_per_page_select(:options => '15') %></td>
+         <td colspan = 2>  Per page: <%= remote_per_page_select %></td>
          <td colspan = 6> <% unless @appointments.blank? %>
                              <div class="pagination">
                                 <%= remote_page_links %>
