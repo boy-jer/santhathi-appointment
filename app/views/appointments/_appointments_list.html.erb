@@ -1,11 +1,11 @@
 <table class='form-table'><tr>
-           <td><h3>Appointment List</h3></td>
+           <td>Appointment List</td>
            <td> <%= link_to_function("Print this Page", "javascript:print()") %> </td>
            <td> <%= link_to("Export This Page to CSV", formatted_appointments_url(:format => "csv", :search => @params) )%> </td>
            <td> <%= link_to("Export This Page to PDF", formatted_appointments_url(:format => "pdf", :search => @params)) %> </td>
          </tr>
 </table>
-
+<br />
 <%= image_tag("spinner.gif",
               :align => "absmiddle",
               :border => 0,
@@ -16,11 +16,11 @@
 
   <tr>
     <th></th>
-    <th><%= remote_order_by_link :id %></th>
-    <th><%= remote_order_by_link :appointment_date %></th>
-    <th><%= remote_order_by_link :appointment_time %></th>
-    <th><%= remote_order_by_link :doctor => :name %></th>
-    <th><%= remote_order_by_link :patient => :patient_name %></th>
+    <th><%= remote_order_by_link(:id) %></th>
+    <th><%= remote_order_by_link(:appointment_date) %></th>
+    <th><%= remote_order_by_link(:appointment_time) %></th>
+    <th><%= remote_order_by_link(:doctor => :name) %></th>
+    <th><%= remote_order_by_link(:patient => :patient_name) %></th>
     <th>Reason</th>
 
     <th><%= remote_order_by_link :state %></th>
@@ -51,9 +51,8 @@
 <% end %>
   <tr class="table-footer">
   	     <td colspan = 3><%= link_to "<span>New appointment</span>", new_appointment_path, :class=> "button" %></td>
-         <td colspan = 2>  Per page: <%= remote_per_page_select %></td>
-          <td colspan = 2> Go to page:
-                                     <% form_tag(appointments_url, :method => :get) do -%>
+         <td colspan = 1><%= remote_per_page_select %></td>
+         <td colspan = 2> Go to: <% form_tag(appointments_url, :method => :get) do -%>
                                         <% fields_for @search do |f|%>
                                           <%= f.text_field :page, :class => 'textbox-small' %>
 
@@ -63,7 +62,7 @@
 
 
         </td>
-         <td colspan = 3> <% unless @appointments.blank? %>
+         <td colspan = 4> <% unless @appointments.blank? %>
                              <div class="pagination">
                                 <%= remote_page_links %>
                              </div>
