@@ -1,7 +1,60 @@
 Server is ready to accept connections on port 1527.
-----------------------------------------------------------------
-2009-05-04 05:47:35.558 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.1.3.1 - (417277): instance c013800d-0121-0a29-b22d-000005997020
-on database directory C:\Documents and Settings\VIJJU\Desktop\santhathi\santhathi\public\stylesheets\aptanaDB 
-
-Database Class Loader started - derby.database.classpath=''
+2009-05-04 17:11:56.168 GMT Thread[Worker-7,5,main] Cleanup action starting
+ERROR XBM0J: Directory C:\Documents and Settings\VIJJU\Desktop\santhathi\santhathi\public\stylesheets\aptanaDB already exists.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.services.monitor.PersistentServiceImpl$8.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.derby.impl.services.monitor.PersistentServiceImpl.createServiceRoot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.bootService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.createPersistentService(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.createPersistentService(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.createDatabase(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection30.<init>(Unknown Source)
+	at org.apache.derby.jdbc.Driver30.getNewEmbedConnection(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at com.aptana.ide.core.db.AptanaDB.getConnection(AptanaDB.java:225)
+	at com.aptana.ide.core.db.EventLogger.tableExists(EventLogger.java:215)
+	at com.aptana.ide.core.db.EventLogger.getInstance(EventLogger.java:89)
+	at com.aptana.ide.core.ui.update.SchedulerStartup.getPreviewString(SchedulerStartup.java:351)
+	at com.aptana.ide.core.ui.update.SchedulerStartup.updateAnonymousId(SchedulerStartup.java:265)
+	at com.aptana.ide.core.ui.update.SchedulerStartup.startSearch(SchedulerStartup.java:175)
+	at com.aptana.ide.core.ui.update.SchedulerStartup.scheduleUpdateJob(SchedulerStartup.java:113)
+	at com.aptana.ide.core.ui.update.SchedulerStartup.earlyStartup(SchedulerStartup.java:77)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.runEarlyStartup(EarlyStartupRunnable.java:87)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:66)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.ui.internal.Workbench$21.run(Workbench.java:1775)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:58)
+Cleanup action completed
+2009-05-04 17:11:56.215 GMT Thread[Worker-7,5,main] Cleanup action starting
+ERROR XBM0J: Directory C:\Documents and Settings\VIJJU\Desktop\santhathi\santhathi\public\stylesheets\aptanaDB already exists.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.services.monitor.PersistentServiceImpl$8.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.derby.impl.services.monitor.PersistentServiceImpl.createServiceRoot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.bootService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.createPersistentService(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.createPersistentService(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.createDatabase(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection30.<init>(Unknown Source)
+	at org.apache.derby.jdbc.Driver30.getNewEmbedConnection(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at com.aptana.ide.core.db.AptanaDB.getConnection(AptanaDB.java:225)
+	at com.aptana.ide.core.db.AptanaDB.execute(AptanaDB.java:97)
+	at com.aptana.ide.core.db.EventLogger.clearEvents(EventLogger.java:172)
+	at com.aptana.ide.core.ui.update.SchedulerStartup.updateAnonymousId(SchedulerStartup.java:340)
+	at com.aptana.ide.core.ui.update.SchedulerStartup.startSearch(SchedulerStartup.java:175)
+	at com.aptana.ide.core.ui.update.SchedulerStartup.scheduleUpdateJob(SchedulerStartup.java:113)
+	at com.aptana.ide.core.ui.update.SchedulerStartup.earlyStartup(SchedulerStartup.java:77)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.runEarlyStartup(EarlyStartupRunnable.java:87)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:66)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.ui.internal.Workbench$21.run(Workbench.java:1775)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:58)
+Cleanup action completed
