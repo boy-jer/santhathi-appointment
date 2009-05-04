@@ -52,7 +52,18 @@
   <tr class="table-footer">
   	     <td colspan = 3><%= link_to "<span>New appointment</span>", new_appointment_path, :class=> "button" %></td>
          <td colspan = 2>  Per page: <%= remote_per_page_select %></td>
-         <td colspan = 6> <% unless @appointments.blank? %>
+          <td colspan = 2> Go to page:
+                                     <% form_tag(appointments_url, :method => :get) do -%>
+                                        <% fields_for @search do |f|%>
+                                          <%= f.text_field :page, :class => 'textbox-small' %>
+
+                                          <%= submit_tag "Go"%>
+                                       <%end -%>
+                                     <%end-%>
+
+
+        </td>
+         <td colspan = 4> <% unless @appointments.blank? %>
                              <div class="pagination">
                                 <%= remote_page_links %>
                              </div>

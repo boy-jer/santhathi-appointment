@@ -33,7 +33,18 @@
     <tr class="table-footer">
       <td colspan=3><%=submit_tag "Recommended For Discharge" %></td>
        <td colspan = 2>  Per page: <%= remote_per_page_select %></td>
-      <td colspan=5> <% if @appointments.size > 1 %>
+        <td colspan = 2> Go to page:
+                                     <% form_tag(doctor_patients_url, :method => :get) do -%>
+                                        <% fields_for @search do |f|%>
+                                          <%= f.text_field :page, :class => 'textbox-small' %>
+
+                                          <%= submit_tag "Go"%>
+                                       <%end -%>
+                                     <%end-%>
+
+
+        </td>
+       <td colspan=5> <% if @appointments.size > 1 %>
                           <div class="pagination">
                                 <%= remote_page_links %>
                           </div>

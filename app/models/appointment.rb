@@ -118,12 +118,11 @@ aasm_column :state
 
      temp_list.map{|r| reports["#{r.appointment_date}$#{r.doctor_id}"] = {r.doctor_id => r.count} }
      return reports
-
   end
 
   def self.count_doctor_appointment(from,to,doctor_id)
-    	counts = {}
-    	condition = {}
+     counts = {}
+     condition = {}
   	 if doctor_id == "All"
   	   condition[:appointment_date] = from..to
  	 else
@@ -136,7 +135,7 @@ aasm_column :state
   end
 
   def self.count_doctor_appointments(from,to,doctor)
-  	condition = {}
+  	 condition = {}
   	 if doctor =="All"
   	 	condition[:appointment_date] = from..to
      else
