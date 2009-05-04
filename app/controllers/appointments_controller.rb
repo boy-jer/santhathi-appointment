@@ -6,7 +6,7 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
   def index
     @search = Appointment.new_search(params[:search])
     @params = params[:search]
-    @search.per_page ||= 5
+    @search.per_page ||= 15
     @appointments = @search.all
     respond_to do |format|
                   format.html

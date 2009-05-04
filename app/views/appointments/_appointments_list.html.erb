@@ -26,7 +26,7 @@
     <th><%= remote_order_by_link :state %></th>
     <th><%= remote_order_by_link :patient => :reg_no %></th>
     <!--<th>Details</th>-->
-    <th NOWRAP = NOWRAP>View | Edit | Cancel</th>
+    <th NOWRAP = NOWRAP><%="#{image_tag('show.png')} | #{image_tag('edit.png')} | #{image_tag('delete.png')}"%></th>
   </tr>
 <% for appointment in @appointments %>
   <tr valign="top" class="<%= cycle('odd', 'even') %>">
@@ -39,13 +39,13 @@
     <td><%=h appointment.reason.name %></td>
 
 
-    <td><%= appointment.state == 'new_appointment'? link_to('Confirm', confirm_appointment_url(appointment, :page => params[:page]), :method => :get, :confirm => 'This action will mark this appointment as patient visited. are you sure?') :appointment.state %></td>
+    <td><%= appointment.state == 'new_appointment'? link_to('Confirm', confirm_appointment_url(appointment, :page => params[:page]), :method => :get, :confirm => 'This action will mark this appointment as patient visited. are you sure?') : status(appointment.state) %></td>
 
     <td><%= appointment.patient.reg_no.blank? ? link_to('Register', edit_patient_url(appointment.patient)) : appointment.patient.reg_no%> </td>
 
     <!--<td><%= link_to 'Appointments', patient_patient_appointments_url(appointment.patient), :rel=> "facebox" %></td> -->
 
-    <td NOWRAP = NOWRAP>&nbsp;&nbsp; <%= link_to image_tag('show.png', {:title => 'Show', :border => 0}), appointment_url(appointment), :rel=> "facebox" %> &nbsp;&nbsp;| &nbsp;&nbsp; <%= link_to image_tag('edit.png', {:title => 'Edit', :border => 0}), edit_appointment_path(appointment) %> &nbsp;&nbsp;|&nbsp;&nbsp; <%= link_to image_tag('delete.png', {:title => 'cancel appointment', :border => 0}), appointment_path(appointment), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td NOWRAP = NOWRAP><%= link_to image_tag('show.png', {:title => 'Show', :border => 0}), appointment_url(appointment), :rel=> "facebox" %> &nbsp;|&nbsp; <%= link_to image_tag('edit.png', {:title => 'Edit', :border => 0}), edit_appointment_path(appointment) %> &nbsp;|&nbsp; <%= link_to image_tag('delete.png', {:title => 'cancel appointment', :border => 0}), appointment_path(appointment), :confirm => 'Are you sure?', :method => :delete %></td>
 
   </tr>
 <% end %>
@@ -63,7 +63,7 @@
 
 
         </td>
-         <td colspan = 4> <% unless @appointments.blank? %>
+         <td colspan = 3> <% unless @appointments.blank? %>
                              <div class="pagination">
                                 <%= remote_page_links %>
                              </div>

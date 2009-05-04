@@ -1,7 +1,7 @@
 html{ height: 100%;}
 
 body {
-      font: 11px Verdana, Arial, Sans-Serif;
+      font: 12px Verdana, Arial, Sans-Serif;
       /*background: #00c9ee repeat-x ;*/
       /*background: #55ABD5;*/
       /*background: #F5FAFC;*/
@@ -262,7 +262,7 @@ h3 span {
 	clear: both;
 	padding: 0px 10px 10px 10px;
 	color: #b5aea1;
-	font-size: 0.9egood,m;
+	font-size: 0.9em;
 	background: #ffffff;
 }
 
@@ -289,8 +289,8 @@ h3 span {
 	padding: 0px 5px 0px 5px;
 	margin: 2px;
 	border: 1px solid #aaa;
-	font-weight: bold;vijendra
-	background-color: #f6f7f8;
+	font-weight: bold;
+	background: #f6f7f8;
 	color: #434343;
 }
 .pagination span.disabled {
@@ -522,19 +522,19 @@ h3 span {
              font-weight: normal;
 }
 
-.listing td {font-size: 11px;padding: 0.8em .5em .3em .5em; color: #000; border-bottom:1px solid #BDCFE1;}
+.listing td {font-size: 12px; padding: 0.8em .5em .3em .5em; color: #000; border-bottom:1px solid #BDCFE1;}
 
 
-.listing{   border-collapse: collapse;
+.listing    { border-collapse: collapse;
             width: 100%;
             color: #000;
             border:1px solid #BDCFE1;
 }
 .listing a {
-	     color: #005DB8;
-             
-            font-size: 11px;
-}
+	        color: #005DB8;
+            font-size: 12px;
+			text-decoration: none;
+           }
 
 
 .table-header {background: url(/images/table_header.gif) repeat-x;}

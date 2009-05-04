@@ -29,4 +29,12 @@ module AppointmentsHelper
      end
     return b
   end
+  
+  def status(original_state)
+    show_state = case original_state
+                 when 'new_appointment' then 'New'
+                 when 'recommend_for_discharge' then 'Discharge recommonded'
+                 else original_state.camelize
+     end
+  end
 end

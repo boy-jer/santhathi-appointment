@@ -50,7 +50,7 @@ ul#menu1 li {
 }
 
 ul#menu1 li a {
-  font-size: 11px;
+  font-size: 12px;
   background-color: #8DC3FA;
   background: url(/images/tab.png) repeat-x;
   color: #3764A0;	
@@ -65,9 +65,9 @@ ul#menu1 li a:hover {
 
 ul#menu1 li ul li a {
   background: #fff;
-  color: #274776;
+  color: #003DB2;
   padding-left: 20px;
-  font-size: 11px;
+  font-size: 12px;
   border-bottom:#BDCFE1 1px solid;
   font-weight: normal;
 }
