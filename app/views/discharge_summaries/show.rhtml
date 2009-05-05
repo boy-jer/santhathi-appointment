@@ -1,0 +1,33 @@
+<p>
+  <b>Preparation:</b>
+  <%=h @discharge_summary.preparation %>
+</p>
+
+<p>
+  <b>Complaints:</b>
+  <%=h @discharge_summary.complaints %>
+</p>
+
+<p>
+  <b>Symptoms:</b>
+  <%=h @discharge_summary.symptoms %>
+</p>
+
+<p>
+  <b>Treatment:</b>
+  <%=h @discharge_summary.treatment %>
+</p>
+
+<p>
+  <b>Treatment result:</b>
+  <%=h @discharge_summary.treatment_result %>
+</p>
+
+<p>
+  <b>Remarks:</b>
+  <%=h @discharge_summary.remarks %>
+</p>
+
+
+<%= link_to 'Edit', edit_discharge_summary_path(@discharge_summary) %> |
+<%= link_to 'Back', discharge_summaries_path %>

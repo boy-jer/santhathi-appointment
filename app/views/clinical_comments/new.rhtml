@@ -1,0 +1,14 @@
+<div class='continer'>
+  <div class='continer-inner'>
+<h3>New Clinical Comment</h3><br/>
+<% form_for(:clinical_comment ,:url=>appointment_clinical_comment_path(:appointment_id => @appointment),:html=>{:method=>:post} ) do |f| %>
+  <%= f.error_messages %>
+
+   <table cellpadding="5px" class="form-table">
+  <tr><th><%= f.label :Clinical_Comment %> :</th><td>
+    <%= f.text_area :commet ,:rows =>3,:class =>'textarea'%></td></tr>
+    </table><br/><br/>
+   <%= image_submit_tag "create.gif" %>
+
+<% end %>
+</div></div>

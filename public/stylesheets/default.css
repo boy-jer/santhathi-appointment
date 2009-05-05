@@ -12,7 +12,7 @@ body {
       width: 100%;
       }
 
-#wrapper { 
+#wrapper {
      margin: 0px auto;
      width: 100%;
 }
@@ -22,15 +22,15 @@ body {
         width: 100% ;
 	}
 
-.content-body { 
+.content-body {
         background-color: #C3D9FF;
         width: 100%;
-        margin: 0px;  
-        border-bottom: #4674BA 3px solid; 
-        
-                  }
+        margin: 0px;
+        border-bottom: #4674BA 3px solid;
 
-.content-panel  { 
+        }
+
+.content-panel  {
  background: #D3E5FA;
  display: inline;
  color: #333;
@@ -43,7 +43,7 @@ body {
 
 
 
-.navigation { 
+.navigation {
  float: left;
  color: #333;
  padding:0;
@@ -86,12 +86,18 @@ input.textbox-small{
 	padding:2px 2px;
 	width:78px;
 }
+input.textbox-tiny{
+	border:#7D99B2 1px solid;
+	background:#ffffff url(/images/field-top.gif) repeat-x top;
+	padding:2px 2px;
+	width:30px;
+}
 
 input.address{
 	border:#7D99B2 1px solid;
 	background:#ffffff url(/images/field-top.gif) repeat-x top;
 	padding:2px 2px;
-        height: 44px;
+    height: 44px;
 	width:200px;
 }
 
@@ -812,15 +818,13 @@ a.button:hover span {
 /*--------------------------clinical-screen----------------*/
 
 #prescription {
-            
+
            height: 80px;
            overflow: auto;
            background: #F7FBFF;
           }
 
- 
+
 #clinical-screen{
   padding: 0px;
 }
-
-

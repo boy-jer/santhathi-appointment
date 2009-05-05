@@ -1,0 +1,30 @@
+<h1>Listing discharge_summaries</h1>
+
+<table>
+  <tr>
+    <th>Preparation</th>
+    <th>Complaints</th>
+    <th>Symptoms</th>
+    <th>Treatment</th>
+    <th>Treatment result</th>
+    <th>Remarks</th>
+  </tr>
+
+<% @discharge_summaries.each do |discharge_summary| %>
+  <tr>
+    <td><%=h discharge_summary.preparation %></td>
+    <td><%=h discharge_summary.complaints %></td>
+    <td><%=h discharge_summary.symptoms %></td>
+    <td><%=h discharge_summary.treatment %></td>
+    <td><%=h discharge_summary.treatment_result %></td>
+    <td><%=h discharge_summary.remarks %></td>
+    <td><%= link_to 'Show', discharge_summary %></td>
+    <td><%= link_to 'Edit', edit_discharge_summary_path(discharge_summary) %></td>
+    <td><%= link_to 'Destroy', discharge_summary, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New discharge_summary', new_discharge_summary_path %>

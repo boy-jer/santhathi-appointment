@@ -16,15 +16,15 @@
 
   <tr>
     <th></th>
-    <th><%= remote_order_by_link(:id) %></th>
-    <th><%= remote_order_by_link(:appointment_date) %></th>
-    <th><%= remote_order_by_link(:appointment_time) %></th>
-    <th><%= remote_order_by_link(:doctor => :name) %></th>
-    <th><%= remote_order_by_link(:patient => :patient_name) %></th>
+    <th><%= remote_order_by_link(:id,:text =>"NO") %></th>
+    <th><%= remote_order_by_link(:appointment_date, :text => "Date") %></th>
+    <th><%= remote_order_by_link(:appointment_time, :text => "Time") %></th>
+    <th><%= remote_order_by_link({:doctor => :name}, :text => "Doctor") %></th>
+    <th><%= remote_order_by_link({:patient => :patient_name} , :text => "Patient") %></th>
     <th>Reason</th>
 
     <th><%= remote_order_by_link :state %></th>
-    <th><%= remote_order_by_link :patient => :reg_no %></th>
+    <th><%= remote_order_by_link ({:patient => :reg_no}, :text => "Reg.No" )%></th>
     <!--<th>Details</th>-->
     <th NOWRAP = NOWRAP><%="#{image_tag('show.png')} | #{image_tag('edit.png')} | #{image_tag('delete.png')}"%></th>
   </tr>
@@ -52,13 +52,13 @@
   <tr class="table-footer">
   	     <td colspan = 3><%= link_to "<span>New appointment</span>", new_appointment_path, :class=> "button" %></td>
          <td colspan = 1><%= remote_per_page_select %></td>
-         <td colspan = 2> Go to: <% form_tag(appointments_url, :method => :get) do -%>
-                                        <% fields_for @search do |f|%>
-                                          <%= f.text_field :page, :class => 'textbox-small' %>
+        <td colspan = 2>  Go to page:
 
-                                          <%= submit_tag "Go"%>
-                                       <%end -%>
-                                     <%end-%>
+         <% form_tag(appointments_url, :method => :get, :id => "goto") do %>
+             <% fields_for @search do |f|%>
+                     <%= f.text_field :page, :class => 'textbox-tiny' %></td>
+             <%end%>
+         <%end%>
 
 
         </td>
@@ -70,3 +70,7 @@
          </td>
   </tr>
 </table>
+<%= observe_form("goto", :frequency => 1,
+                 :before => "Element.show('spinner')",
+                 :success => "Element.hide('spinner')",
+                 :url => appointments_url, :method => :get) %>

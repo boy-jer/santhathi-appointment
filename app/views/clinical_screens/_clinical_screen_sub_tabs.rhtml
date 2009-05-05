@@ -4,6 +4,7 @@
 	 <li><a href="#first_tab">Diagnosis & Prescription(Current Visit)</a></li>
 	 <li><a href="#second_tab">Test Reports(Current Visit)</a></li>
 	 <li><a href="#third_tab"> References</a></li>
+	  <li><a href="#fourth_tab"> General Section </a></li>
    </ul>
 
 	<div id="first_tab">
@@ -72,5 +73,11 @@
              <br /><p> No report available yet.</p> <br />
            <%end%>
  </div>
+ <div id="fourth_tab">
+   <%= link_to "Discharge Summary" , new_appointment_discharge_summary_path(@appointment)  %>
+   <%= link_to "Next Appointment Remark" , new_appointment_next_appointment_remark_path (@appointment) , :rel=> "facebox" %>
+   <%= link_to "Clinical Comment " , new_appointment_clinical_comment_path (@appointment)  %>
+</div>
+
 
 </div>

@@ -1,0 +1,2 @@
+module ClinicalCommentsHelper
+end

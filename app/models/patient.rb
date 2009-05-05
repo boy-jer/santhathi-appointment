@@ -4,6 +4,11 @@ class Patient < ActiveRecord::Base
   has_many :vital_signs
   has_many :registration_summaries ,:through => :vital_signs
 
+ # has_one :discharge_summary
+ # has_one :next_appointment_remark
+ # has_one :clinical_comment
+
+
   validates_presence_of :patient_name, :contact_no
 
   #before_save :generate_reg_no

@@ -1,0 +1,39 @@
+<div class='continer'>
+  <div class='continer-inner'>
+<h3>Editing Discharge Summary</h3><br/>
+
+<% form_for(:discharge_summary,:url=>appointment_discharge_summary_path(@discharge_summary.appointment,:id =>@discharge_summary),:html=>{:method => :put }) do |f| %>
+
+  <%= f.error_messages %>
+
+ <table cellpadding="5px" class="form-table">
+ <tr> <th>   <%= f.label :preparation %> :</th><td>
+    <%= f.calendar_date_select  :preparation ,:class=>'textbox' %></td></tr>
+  <tr> <th>
+    <%= f.label :Complaints %> :</th><td>
+    <%= f.text_area :complaints,:rows =>3,:class =>'textarea' %></td></tr>
+  <tr> <th>
+    <%= f.label :Symptoms %> :</th><td>
+    <%= f.text_area :symptoms,:rows =>3,:class =>'textarea' %></td></tr>
+  <tr> <th>
+    <%= f.label :Line_Of_Treatment %>:</th><td>
+    <%= f.text_area :treatment,:rows =>3,:class =>'textarea' %></td></tr>
+   <tr> <th>
+    <%= f.label :treatment_result %> :</th><td>
+    <%= f.text_area :treatment_result,:rows =>3,:class =>'textarea' %></td></tr>
+  <tr> <th>
+    <%= f.label :Remarks %> :</th><td>
+    <%= f.text_area :remarks,:rows =>3,:class =>'textarea' %></td></tr>
+
+
+
+
+</table><br/><br/>
+    <%= f.submit 'Update' %>
+
+<% end %>
+
+
+
+</div>
+</div>

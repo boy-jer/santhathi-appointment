@@ -4,12 +4,12 @@
       <thead>
       <tr>
         <th></th>
-        <th>Hospital No.</th>
-        <th><%= remote_order_by_link :patient_name %></th>
-        <th>PVR No.</th>
+        <th><%= remote_order_by_link ({:patient => :reg_no} , :text => "Hospital No.") %></th>
+        <th><%= remote_order_by_link ({:patient => :patient_name} , :text => "Patient Name") %></th>
+        <th><%= remote_order_by_link (:id , :text => "PVR No.") %></th>
         <th><%= remote_order_by_link :doctor =>:name %></th>
-        <th><%= remote_order_by_link :department => :dept_name %></th>
-        <th><%= remote_order_by_link :reason=>:name %></th>
+        <th><%= remote_order_by_link ({:department => :dept_name }, :text => "Department")%></th>
+        <th><%= remote_order_by_link ({:reason => :name }, :text => "Reason") %></th>
         <th>History</th>
         <th>Clinical Screen</th>
         <th>Vitalsigns</th>
@@ -34,11 +34,11 @@
       <td colspan=3><%=submit_tag "Recommended For Discharge" %></td>
        <td colspan = 2>  Per page: <%= remote_per_page_select %></td>
         <td colspan = 2> Go to page:
-                                     <% form_tag(doctor_patients_url, :method => :get) do -%>
+                                  <% form_tag(doctor_patients_url, :method => :get, :id => "goto") do %>
                                         <% fields_for @search do |f|%>
-                                          <%= f.text_field :page, :class => 'textbox-small' %>
+                                          <%= f.text_field :page, :class => 'textbox-tiny' %>
 
-                                          <%= submit_tag "Go"%>
+
                                        <%end -%>
                                      <%end-%>
 
@@ -54,6 +54,10 @@
 
 
     </table>
+    <%= observe_form("goto", :frequency => 1,
+                 :before => "Element.show('spinner')",
+                 :success => "Element.hide('spinner')",
+                 :url => doctor_patients_url, :method => :get) %>
    <br/>
   <%end%>
  <%end%>

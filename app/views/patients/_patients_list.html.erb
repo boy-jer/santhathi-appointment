@@ -9,11 +9,11 @@
 <table class="listing">
   <tr>
     <th></th>
-    <th><%= remote_order_by_link :reg_date %></th>
-    <th><%= remote_order_by_link :reg_no %></th>
-    <th><%= remote_order_by_link :patient_name %></th>
+    <th><%= remote_order_by_link (:reg_date ,:text => "Reg.Date") %></th>
+    <th><%= remote_order_by_link  (:reg_no , :text => "Reg.No" )%></th>
+    <th><%= remote_order_by_link (:patient_name , :text => "Patient Name") %></th>
     <th>Age</th>
-    <th><%= remote_order_by_link :dob %></th>
+    <th><%= remote_order_by_link (:dob, :text => "Dob") %></th>
     <th>Spouse name</th>
     <th>Address</th>
     <th>Contact no</th>
@@ -46,11 +46,10 @@
        </td>
         <td colspan = 1>  Per page: <%= remote_per_page_select %></td>
         <td colspan = 2> Go to page:
-                                     <% form_tag(patients_url, :method => :get) do -%>
+                                      <% form_tag(patients_url, :method => :get, :id => "goto") do %>
                                         <% fields_for @search do |f|%>
-                                          <%= f.text_field :page, :class => 'textbox-small' %>
+                                          <%= f.text_field :page, :class => 'textbox-tiny' %>
 
-                                          <%= submit_tag "Go"%>
                                        <%end -%>
                                      <%end-%>
 
@@ -63,3 +62,7 @@
   <% end %></td>
   </tr>
 </table>
+<%= observe_form("goto", :frequency => 1,
+                 :before => "Element.show('spinner')",
+                 :success => "Element.hide('spinner')",
+                 :url => patients_url, :method => :get) %>

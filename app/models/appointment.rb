@@ -13,6 +13,9 @@ class Appointment < ActiveRecord::Base
   has_one :prescription
   has_many :laboratory_test_results
   has_one :clinical_screen
+  has_one :discharge_summary
+  has_one :next_appointment_remark
+  has_one :clinical_comment
 
   validates_presence_of :doctor_id, :reason_id,:mode_id
 
