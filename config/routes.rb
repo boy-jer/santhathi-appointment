@@ -28,8 +28,8 @@ ActionController::Routing::Routes.draw do |map|
    map.resources :prescribed_tests
 
   map.resources :user_roles
-  map.resources :prescriptions
-   map.resources :laboratory_test_results, :collection=>{:details =>:get}
+
+  map.resources :laboratory_test_results, :collection=>{:details =>:get}
   # RESTful rewrites
 
   map.signup   '/signup',   :controller => 'users',    :action => 'new'
@@ -78,7 +78,7 @@ ActionController::Routing::Routes.draw do |map|
   end
 
  map.resources :appointments, :member => {:confirm => :get},:collection=>{:update_doctors_list =>:get},:has_one =>[:clinical_screen,:discharge_summary,:next_appointment_remark,:clinical_comment]
-
+  map.resources :prescriptions
   # Administration
   map.namespace(:admin) do |admin|
     admin.root :controller => 'admin/dashboard', :action => 'index'

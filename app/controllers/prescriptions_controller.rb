@@ -23,7 +23,7 @@ class PrescriptionsController < ApplicationController
     respond_to do |format|
       format.html
       format.js { render :update do |page|
-                    page.replace_html 'first_tab', :partial => 'prescriptions/new'
+                    page.replace_html 'clinical-screen', :partial => 'prescriptions/new'
                   end
                 }
     end
