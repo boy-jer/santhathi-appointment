@@ -29,12 +29,11 @@
          <td><%= link_to 'Vitalsigns', new_vital_sign_url(:patient_id => appointment.patient.id) , :rel=> "facebox"%></td>
        </tr>
      <%end%>
-
+<%end%>
     <tr class="table-footer">
-      <td colspan=3><%=submit_tag "Recommended For Discharge" %></td>
-       <td colspan = 2>  Per page: <%= remote_per_page_select %></td>
-        <td colspan = 2> Go to page:
-                                  <% form_tag(doctor_patients_url, :method => :get, :id => "goto") do %>
+
+       <td colspan = 2> <%= remote_per_page_select %></td>
+        <td colspan = 2> <% form_tag(doctor_patients_url, :method => :get, :id => "goto") do %>
                                         <% fields_for @search do |f|%>
                                           <%= f.text_field :page, :class => 'textbox-tiny' %>
 
@@ -44,7 +43,7 @@
 
 
         </td>
-       <td colspan=5> <% if @appointments.size > 1 %>
+       <td colspan=6> <% if @appointments.size > 1 %>
                           <div class="pagination">
                                 <%= remote_page_links %>
                           </div>
@@ -59,5 +58,5 @@
                  :success => "Element.hide('spinner')",
                  :url => doctor_patients_url, :method => :get) %>
    <br/>
-  <%end%>
+
  <%end%>

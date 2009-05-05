@@ -2,7 +2,16 @@ class PrescriptionsController < ApplicationController
   layout 'cms'
 
   def index
-     @prescriptions = Prescription.find(:all, :order => 'p_date')
+     @search = Prescription.new_search()
+    # @search.per_page ||= 15
+     @prescriptions = @search.all
+     respond_to do |format|
+       format.html
+       format.js { render :update do |page|
+                      page.replace_html 'prescription-list', :partial => 'prescription_list'
+                   end
+                 }
+     end
   end
 
   def new

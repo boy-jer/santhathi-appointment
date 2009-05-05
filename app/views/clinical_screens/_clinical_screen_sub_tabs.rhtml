@@ -3,8 +3,7 @@
    <ul>
 	 <li><a href="#first_tab">Diagnosis & Prescription(Current Visit)</a></li>
 	 <li><a href="#second_tab">Test Reports(Current Visit)</a></li>
-	 <li><a href="#third_tab"> References</a></li>
-	  <li><a href="#fourth_tab"> General Section </a></li>
+	 <li><a href="#fourth_tab"> General Section </a></li>
    </ul>
 
 	<div id="first_tab">
@@ -23,7 +22,7 @@
 	<div id="second_tab">
 	        <ul> <li><a href="#current_visit_tab"> Current Visit </a></li>
 	        <li><a href="#last_visit_tab"> Last Visit </a></li></ul>
-             <br/>
+             <br/><br/>
 	   <% unless @prescribed_tests.blank? %>
              <% for test in @prescribed_tests %>
                <% unless test.lab_test.laboratory_report.blank? %>
@@ -37,17 +36,9 @@
 
 	</div>
 
-	<div id="third_tab">
-       <ul>
-	   <p><%=image_tag('arrow_right.png', :border => 0) %> <%= link_to "BNF(British National Formulary)", departments_url %></p>
-	   <p><%=image_tag('arrow_right.png', :border => 0) %><%= link_to "Alerts", departments_url %></p>
-	   <p><%=image_tag('arrow_right.png', :border => 0) %><%= link_to "Registration Summary", departments_url %></p>
-	   <p><%=image_tag('arrow_right.png', :border => 0) %><%= link_to "EMR(Patient History)", departments_url %></p>
-	   <p><%=image_tag('arrow_right.png', :border => 0) %><%= link_to "EMR(Patient History)", departments_url %></p>
-	</ul>
-    </li>
-	</div>
-<div id="last_visit_tab">
+	<div id="last_visit_tab">
+	<ul> <li><a href="#current_visit_tab"> Current Visit </a></li>
+	        <li><a href="#last_visit_tab"> Last Visit </a></li></ul>
     <% unless @last_visit_report.blank? %>
       <% for test in @last_visit_report %>
          <% unless test.lab_test.laboratory_report.blank? %>
@@ -61,7 +52,9 @@
 </div>
 
  <div id="current_visit_tab">
-
+     <ul> <li><a href="#current_visit_tab"> Current Visit </a></li>
+	        <li><a href="#last_visit_tab"> Last Visit </a></li></ul>
+	        <br/><br/>
     <% unless @prescribed_tests.blank? %>
              <% for test in @prescribed_tests %>
                <% unless test.lab_test.laboratory_report.blank? %>
@@ -70,13 +63,13 @@
                 <%end%>
              <%end%>
            <% else %>
-             <br /><p> No report available yet.</p> <br />
+            <br/> <br/><p> No report available yet.</p> <br/>
            <%end%>
  </div>
  <div id="fourth_tab">
-   <%= link_to "Discharge Summary" , new_appointment_discharge_summary_path(@appointment)  %>
-   <%= link_to "Next Appointment Remark" , new_appointment_next_appointment_remark_path (@appointment) , :rel=> "facebox" %>
-   <%= link_to "Clinical Comment " , new_appointment_clinical_comment_path (@appointment)  %>
+    <%=image_tag('arrow_right.png', :border => 0)  %> &nbsp; <%= link_to "Discharge Summary" , new_appointment_discharge_summary_path(@appointment)  %><br/><br/>
+      <%=image_tag('arrow_right.png', :border => 0)  %> &nbsp; <%= link_to "Next Appointment Remark" , new_appointment_next_appointment_remark_path (@appointment) , :rel=> "facebox" %><br/><br/>
+     <%=image_tag('arrow_right.png', :border => 0)  %> &nbsp;<%= link_to "Clinical Comment " , new_appointment_clinical_comment_path (@appointment)  %>
 </div>
 
 

@@ -4,4 +4,5 @@ class LabTest < ActiveRecord::Base
   has_many :sample_specfications
   has_many :parameter_specifications , :order => "position"
   has_one :laboratory_report
+  belongs_to :prescription
 end
