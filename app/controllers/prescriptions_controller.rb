@@ -1,9 +1,9 @@
 class PrescriptionsController < ApplicationController
-  layout 'cms'
+  layout 'laboratory'
 
   def index
      @search = Prescription.new_search()
-    # @search.per_page ||= 15
+     @search.per_page ||= 15
      @prescriptions = @search.all
      respond_to do |format|
        format.html

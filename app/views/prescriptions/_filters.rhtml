@@ -27,3 +27,9 @@
                  :before => "Element.show('spinner')",
                  :success => "Element.hide('spinner')",
                  :url => prescriptions_url, :method => :get) %>
+
+<%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner",
+              :style =>"display: none;" ) %>

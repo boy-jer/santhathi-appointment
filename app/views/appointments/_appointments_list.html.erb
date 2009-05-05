@@ -1,3 +1,4 @@
+<br />
 <table class='form-table'><tr>
            <td>Appointment List</td>
            <td class='hide-for-print'> <%= link_to_function("Print this Page", "javascript:print()") %> </td>
@@ -5,7 +6,7 @@
            <td class='hide-for-print'> <%= link_to("Export This Page to PDF", appointments_url(:format => "pdf", :search => @params)) %> </td>
          </tr>
 </table>
-<br />
+
 <%= image_tag("spinner.gif",
               :align => "absmiddle",
               :border => 0,
