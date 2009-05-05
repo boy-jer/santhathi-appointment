@@ -34,7 +34,7 @@ body {
  background: #D3E5FA;
  display: inline;
  color: #333;
- margin: 0px 0px 0px 0px;
+ margin: 0px;
  padding:0;
  width: 86.3%;
  float: right;
@@ -50,7 +50,7 @@ body {
  width: 13.2%;
  display: inline;
  position: relative;
- background: #D3E5FA;
+ background: #C3D9FF;
 }
 
 a:link, a:visited {
@@ -148,7 +148,8 @@ h3 span {
 
 /** Header */
 #header {
-	margin: 0px;
+	margin: 0em;
+        padding: 0em;
 	/*position: absolute;*/
 	background: url(/images/top-bar-12.png) repeat-x;
 	height: 60px;
@@ -545,7 +546,7 @@ h3 span {
 
 .table-header {background: url(/images/table_header.gif) repeat-x;}
 
-.table-footer {background: #E0ECFF; padding: 0px; }
+.table-footer td {background: #E0ECFF; padding: 4px; }
 
 #patients tr:hover {background-color: #c7dfea; color: #ffffff;} /*not for IE*/
 
@@ -570,9 +571,9 @@ h3 span {
 
 .form-table th {background-color: #ffffff; color: #667987; padding: 0.1em .8em; border:1px solid #e8ebec; text-align: left;}
 
-.form-table td {background-color: #Ffffff; padding: 0.2em .8em; border:1px solid #e8ebec;}
+.form-table td {background-color: #Ffffff; padding: 0.2em .8em; /*border:1px solid #e8ebec;*/}
 
-.form-table {border-collapse: collapse; width: 100%; border: 1px solid #e8ebec; }
+.form-table {border-collapse: collapse; width: 100%; /*border: 1px solid #e8ebec;*/ }
 
 
 .search-table th {background: #EBF3FD url(/images/tab.png) repeat-x; color: #274776; padding: .5em .5em; border:1px solid #BDCFE1; text-align: left;  font-weight: normal;}
@@ -598,7 +599,7 @@ h3 span {
 #menu li a {
 	display: block;
 	float: left;
-	margin:37px 3px 0px 0px;
+	margin:33px 3px 0px 0px;
 	padding: 5px 2px 0px 1px;
 	width:88px;height:17px;
 	text-transform: uppercase;
@@ -607,14 +608,14 @@ h3 span {
 	font-weight: bold;
 	color: #3764A0;
 	text-align:center;
-	background-image: url('/images/nw-tab.gif');
+	/*background-image: url('/images/nw-tab.gif');*/
 
 }
 
 #menu li a:hover {
 	display: block;
 	float: left;
-	margin:37px 3px 0px 0px;
+	margin:33px 3px 0px 0px;
 	padding: 5px 2px 0px 1px;
 	text-transform: uppercase;
 	text-decoration: none;

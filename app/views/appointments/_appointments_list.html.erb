@@ -1,3 +1,4 @@
+<br />
 <table class='form-table'><tr>
            <td>Appointment List</td>
            <td> <%= link_to_function("Print this Page", "javascript:print()") %> </td>
@@ -50,10 +51,9 @@
   </tr>
 <% end %>
   <tr class="table-footer">
-  	     <td colspan = 3><%= link_to "<span>New appointment</span>", new_appointment_path, :class=> "button" %></td>
-         <td colspan = 1><%= remote_per_page_select %></td>
-        <td colspan = 2>  Go to page:
-
+  	<td colspan = 3><%= link_to "<span>New appointment</span>", new_appointment_path, :class=> "button" %></td>
+        <td colspan = 1><%= remote_per_page_select %></td>
+        <td colspan = 2> 
          <% form_tag(appointments_url, :method => :get, :id => "goto") do %>
              <% fields_for @search do |f|%>
                      <%= f.text_field :page, :class => 'textbox-tiny' %></td>
