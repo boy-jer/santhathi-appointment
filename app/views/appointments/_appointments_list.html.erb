@@ -1,12 +1,12 @@
 <br />
-<table class='form-table'><tr>
+<table class='table-top'><tr>
            <td>Appointment List</td>
            <td class='hide-for-print'> <%= link_to_function("Print this Page", "javascript:print()") %> </td>
            <td class='hide-for-print'> <%= link_to("Export This Page to CSV", appointments_url(:format => "csv", :search => @params) )%> </td>
            <td class='hide-for-print'> <%= link_to("Export This Page to PDF", appointments_url(:format => "pdf", :search => @params)) %> </td>
          </tr>
 </table>
-
+<br />
 <%= image_tag("spinner.gif",
               :align => "absmiddle",
               :border => 0,
@@ -50,10 +50,13 @@
 
   </tr>
 <% end %>
+</table>
+
+<table class='table-bottom'>
   <tr class="table-footer">
-  	<td colspan = 3><%= link_to "<span>New appointment</span>", new_appointment_path, :class=> "button" %></td>
-        <td colspan = 1><%= remote_per_page_select %></td>
-        <td colspan = 2> 
+  	<td><%= link_to "<span>New appointment</span>", new_appointment_path, :class=> "button" %></td>
+        <td><%= remote_per_page_select %></td>
+        <td> 
          <% form_tag(appointments_url, :method => :get, :id => "goto") do %>
              <% fields_for @search do |f|%>
                      <%= f.text_field :page, :class => 'textbox-tiny' %></td>
@@ -62,7 +65,7 @@
 
 
         </td>
-         <td colspan = 4> <% unless @appointments.blank? %>
+         <td> <% unless @appointments.blank? %>
                              <div class="pagination">
                                 <%= remote_page_links %>
                              </div>

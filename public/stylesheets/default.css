@@ -5,7 +5,7 @@ body {
       /*background: #00c9ee repeat-x ;*/
       /*background: #55ABD5;*/
       /*background: #F5FAFC;*/
-      background: #3B619C;
+      background: #F6F8F4;
       color: #4B4B4B;
       margin: 0;
       padding: 0;
@@ -23,10 +23,10 @@ body {
 	}
 
 .content-body {
-        background-color: #C3D9FF;
+        background-color: #EBF3FD;
         width: 100%;
         margin: 0px;
-        border-bottom: #4674BA 3px solid;
+        border-bottom: #759CCF 1px solid;
 
         }
 
@@ -50,7 +50,7 @@ body {
  width: 13.2%;
  display: inline;
  position: relative;
- background: #C3D9FF;
+ background: #EBF3FD;
 }
 
 a:link, a:visited {
@@ -527,6 +527,7 @@ h3 span {
              padding: 0.3em .5em;
              border:1px solid #ccc;
              font-weight: normal;
+             background: url(/images/table-header.png) repeat-x;
 }
 
 .listing td { padding: 0.9em .5em .3em .5em; color: #000; border-bottom:1px solid #BDCFE1;}
@@ -570,10 +571,14 @@ h3 span {
 
 .form-table th {background-color: #ffffff; color: #667987; padding: 0.1em .8em; border:1px solid #e8ebec; text-align: left;}
 
-.form-table td {background-color: #Ffffff; padding: 0.2em .8em; /*border:1px solid #e8ebec;*/}
+.form-table td {background-color: #ffffff; padding: 0.2em .8em; border:1px solid #e8ebec;}
 
-.form-table {border-collapse: collapse; width: 100%; /*border: 1px solid #e8ebec;*/ }
+.form-table {border-collapse: collapse; width: 100%; border: 1px solid #e8ebec; }
 
+.table-top td {background-color: #F3F7F7; padding: 0.2em }
+.table-top {border-collapse: collapse; width: 100%; border: 1px solid #e8ebec;}
+
+.table-bottom{ width: 100%;}
 
 .search-table th {background: #EBF3FD url(/images/tab.png) repeat-x; color: #274776; padding: .5em .5em; border:1px solid #BDCFE1; text-align: left;  font-weight: normal;}
 
@@ -605,7 +610,7 @@ h3 span {
 	text-decoration: none;
 	font-size: 11px;
 	font-weight: bold;
-	color: #3764A0;
+	color: #004E9C;
 	text-align:center;
 	/*background-image: url('/images/nw-tab.gif');*/
 
@@ -621,7 +626,7 @@ h3 span {
 	font-size: 11px;
 	font-weight: bold;
 	text-align:center;
-	color: #fff;
+	color: #F0F7FF;
 	/*background-image: url('/images/nw-tab.gif');*/
 }
 

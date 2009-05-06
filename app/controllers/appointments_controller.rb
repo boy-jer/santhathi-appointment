@@ -11,7 +11,13 @@ require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
     respond_to do |format|
                   format.html
                   format.js { render :update do |page|
-                               page.replace_html 'appointment-list', :partial => 'appointments_list'
+                               unless params.has_key?(:date) #Search request via ajax call
+                                  page.replace_html 'appointment-list', :partial => 'appointments_list'
+                               else
+                                  @doctor = Doctor.find(params[:doctor]) unless params[:doctor].blank?
+                                  @date = Date.parse(params[:date])
+                                  page.replace_html 'schedule', :partial => 'appointments_detail', :locals => {:doctor => @doctor, :date =>@date}
+                               end
                              end
                              }
 

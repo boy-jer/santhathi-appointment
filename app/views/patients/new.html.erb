@@ -1,6 +1,5 @@
 <div class='continer'>
-  <div class='continer-inner'>
-     <% form_for :patient,:url=>patients_path do |f| %>
+     <% form_for :patient,:url=> patients_path do |f| %>
        <%= f.error_messages %>
        <%= render :partial => @partial, :locals => {:f => f} %>
        <p>
@@ -9,5 +8,4 @@
      <% end %>
 
      <%= link_to 'Back', patients_path %>
-   </div>
 </div>

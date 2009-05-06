@@ -83,7 +83,7 @@ module ApplicationHelper
    appointments1.collect {|appt| app_list[appt.appointment_time.strftime('%H:%M').to_s]= appt}
 
    return app_list
-  end
+ end
 
   def calculate_age(dob)
      today = Date.today
