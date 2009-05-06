@@ -1,0 +1,3 @@
+<%fields_for :deactivate_slot do |f| %>
+  <%= f.select :doctor_id, [['Select doctor' , '']] + @doctors %>
+<%end%>

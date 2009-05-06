@@ -1,7 +1,7 @@
 <% form_tag(prescriptions_url, :method => :get, :id => "search_form") do %>
    <table class="search-table">
      <tr>
-       <th>Hospital No</th> <th>Patient Name:</th> <th>PVR No</th>
+       <th>PVR No</th><th>Hospital No</th> <th>Patient Name:</th><th>Prescribed Test </th>
        <th rowspan='2'><input type="reset" value="Reset"> </th>
      </tr>
      <tr>
@@ -9,12 +9,18 @@
         <% f.fields_for @search.conditions do |p| %>
             <% p.fields_for p.object.appointment do |appointment| %>
                   <% appointment.fields_for appointment.object.patient do |patient| %>
+                     <td><%= patient.text_field :id_like, :class => 'textbox' %></td>
                      <td><%= patient.text_field :reg_no_like, :class => 'textbox' %></td>
                      <td><%= patient.text_field :patient_name_like, :class => 'textbox' %></td>
-
                   <%end%>
-                 <td><%= appointment.text_field :id_like, :class => 'textbox' %></td>
              <%end%>
+
+             <% p.fields_for p.object.prescribed_tests do |prescribed_test| %>
+                   <% prescribed_test.fields_for prescribed_test.object.lab_test do |lab_test| %>
+                     <td><%= lab_test.text_field :name_like, :class => 'textbox' %></td>
+                   <%end%>
+             <%end%>
+
          <%end%>
        <%end%>
 

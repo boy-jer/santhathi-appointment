@@ -8,7 +8,7 @@
 
 <table class="listing">
   <tr>
-    <th><%= remote_order_by_link :department =>:dept_name %></th>
+    <th><%= remote_order_by_link( {:department =>:dept_name } ,:text => "Department" ) %></th>
     <th><%= remote_order_by_link :name %></th>
     <th>Designation</th>
     <th>Medical</th>

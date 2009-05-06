@@ -4,21 +4,18 @@ class ParametersController < ApplicationController
   def index
 
   	@search = Parameter.new_search(params[:search])
-    @search.per_page = 9
-   # @search.page = 1
-    @parameters,@parameter_count = @search.all,@search.count
+    @search.per_page ||= 15
+    @parameters = @search.all
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @parameters }
-      format.js  { render :update do |page|
+      format.html
+      format.js  {  render :update do |page|
                       page.replace_html 'parameters_list', :partial => 'parameters_list'
-                   end
+                    end
                  }
-    end
+     end
   end
 
-  # GET /parameters/1
-  # GET /parameters/1.xml
+
   def show
     @parameter = Parameter.find(params[:id])
 

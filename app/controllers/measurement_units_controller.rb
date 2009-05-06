@@ -2,11 +2,16 @@ class MeasurementUnitsController < ApplicationController
   layout 'laboratory'
 
   def index
-    @measurement_units = MeasurementUnit.paginate :page => params[:page],:per_page => 10
 
+    @search = MeasurementUnit.new_search(params[:search])
+    @search.per_page ||= 15
+    @measurement_units  = @search.all
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @measurement_units }
+                  format.html
+                  format.js { render :update do |page|
+                                page.replace_html 'measurement_unit', :partial => 'measurement_units_list'
+                              end
+                            }
     end
   end
 

@@ -3,10 +3,10 @@
 
 <table class="listing">
   <tr>
-    <th> <%= remote_order_by_link({:patient => :reg_no} , :text => "Hospital No") %>   </th>
-    <th><%= remote_order_by_link({:patient => :id} , :text => "PVR No") %>  </th>
-    <th> <%= remote_order_by_link({:patient => :patient_name} , :text => "Patient Name") %></th>
-    <th> Test Prescribed</th>
+    <th> <%= remote_order_by_link({ :appointment => { :patient => :reg_no }} , :text => "Hospital No") %>   </th>
+    <th><%= remote_order_by_link({ :appointment => { :patient => :id }} , :text => "PVR No") %>  </th>
+    <th> <%= remote_order_by_link({ :appointment => { :patient => :patient_name }} , :text => "Patient Name") %></th>
+    <th><%= remote_order_by_link({ :prescribed_tests => {:lab_test =>:name }} , :text => "Test Prescribed") %> </th>
     <th> Patient Type(IP/OP)</th>
     <th> Status </th>
     <th>Test Report</th>
@@ -30,8 +30,8 @@
   <% end %>
 
   <tr class="table-footer">
-   <td colspan = 4><%= remote_per_page_select %></td>
-        <td colspan = 2>
+   <td colspan = 1><%= remote_per_page_select %></td>
+        <td colspan = 1>
          <% form_tag(prescriptions_url, :method => :get, :id => "goto") do %>
              <% fields_for @search do |f|%>
                  <%= f.text_field :page, :class => 'textbox-tiny' %></td>
@@ -40,7 +40,7 @@
 
 
         </td>
-         <td colspan = 4> <% unless @prescriptions.blank? %>
+         <td colspan = 6> <% unless @prescriptions .blank? %>
                              <div class="pagination">
                                 <%= remote_page_links %>
                              </div>

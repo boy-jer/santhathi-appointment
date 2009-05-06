@@ -42,7 +42,7 @@ class DeactivateSlotsController < ApplicationController
   # POST /deactivate_slots.xml
   def create
     @deactivate_slot = DeactivateSlot.new(params[:deactivate_slot])
-
+    @deactivate_slot.department_id = params[:departament][:id]
     respond_to do |format|
       if @deactivate_slot.save
         flash[:notice] = 'DeactivateSlot was successfully created.'

@@ -4,7 +4,7 @@ class DoctorPatientsController < ApplicationController
   # GET /doctor_appointments.xml
   def index
     @search = Appointment.new_search(params[:search])
-    @search.per_page ||= 5
+    @search.per_page ||= 15
     @appointments = @search.all
 
     respond_to do |format|

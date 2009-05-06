@@ -18,6 +18,9 @@ class VitalSignsController < ApplicationController
   	   @all_summaries = {}
        @all_summaries= RegistrationSummary.find(:all).map{|reg|  [reg.id , reg.name]  }
        @vital_signs = @patient.vital_signs
+       respond_to do |format|
+       format.js { render :layout => false }
+      end
   end
 
 

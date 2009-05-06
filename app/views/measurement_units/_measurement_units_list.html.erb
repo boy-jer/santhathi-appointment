@@ -1,0 +1,60 @@
+<h3>VOM List</h3>
+
+<table class="listing">
+  <tr>
+    <th><%= remote_order_by_link(:name,:text =>"Name") %></th>
+    <th><%= remote_order_by_link(:abbreviation,:text =>"Abbreviation") %></th>
+    <th><%= remote_order_by_link(:description,:text =>"Description") %></th>
+    <th>Show</th>
+    <th>Modify</th>
+    <th>Delete</th>
+  </tr>
+
+<% for measurement_unit in @measurement_units %>
+  <tr>
+    <td><%=h measurement_unit.name %></td>
+    <td><%=h measurement_unit.abbreviation %></td>
+    <td><%=h measurement_unit.description %></td>
+    <td><%= link_to 'Show', measurement_unit , :rel=> "facebox"%></td>
+    <td><%= link_to 'Modify', edit_measurement_unit_path(measurement_unit) %></td>
+    <td><%= link_to 'Delete', measurement_unit, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+<tr class="table-footer">
+  	<td colspan = 1><%= link_to "<span>New Measurement Unit</span>", new_measurement_unit_path(), :class=> "button" %></td>
+        <td colspan = 1><%= remote_per_page_select %></td>
+        <td colspan = 1>
+         <% form_tag(measurement_units_url, :method => :get, :id => "goto") do %>
+             <% fields_for @search do |f|%>
+                     <%= f.text_field :page, :class => 'textbox-tiny' %></td>
+             <%end%>
+         <%end%>
+
+
+        </td>
+         <td colspan = 3> <% unless @measurement_units.blank? %>
+                             <div class="pagination">
+                                <%= remote_page_links %>
+                             </div>
+                           <% end %>
+         </td>
+  </tr>
+
+
+
+<%= observe_form("goto", :frequency => 1,
+                 :before => "Element.show('spinner')",
+                 :success => "Element.hide('spinner')",
+                 :url => measurement_units_url, :method => :get) %>
+<%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner1",
+              :style =>"display: none;" ) %>
+
+
+
+
+</table>
+
+<br />

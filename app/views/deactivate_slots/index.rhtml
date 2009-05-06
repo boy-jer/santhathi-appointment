@@ -19,12 +19,12 @@
 
 <% for deactivate_slot in @deactivate_slots %>
   <tr>
-    <td><%=h deactivate_slot.department %></td>
-    <td><%=h deactivate_slot.doctor_name %></td>
+    <td><%=h Department.find(deactivate_slot.department_id).dept_name unless deactivate_slot.department_id.nil? %></td>
+    <td><%=h Doctor.find(deactivate_slot.doctor_id).name  unless deactivate_slot.doctor_id.nil? %></td>
     <td><%=h deactivate_slot.from_date %></td>
     <td><%=h deactivate_slot.to_date %></td>
-    <td><%=h deactivate_slot.time_from %></td>
-    <td><%=h deactivate_slot.time_to %></td>
+    <td><%=h deactivate_slot.time_from.to_time %></td>
+    <td><%=h deactivate_slot.time_to.to_time %></td>
     <td><%=h deactivate_slot.reason_for_absence %></td>
     <td><%= link_to 'Show', deactivate_slot, :rel=> "facebox" %></td>
     <td><%= link_to 'Modify', edit_deactivate_slot_path(deactivate_slot) %></td>
