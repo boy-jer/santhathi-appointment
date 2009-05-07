@@ -5,7 +5,7 @@ body {
       /*background: #00c9ee repeat-x ;*/
       /*background: #55ABD5;*/
       /*background: #F5FAFC;*/
-      background: #F6F8F4;
+      background: #fff;
       color: #4B4B4B;
       margin: 0;
       padding: 0;
@@ -26,12 +26,12 @@ body {
         background-color: #EBF3FD;
         width: 100%;
         margin: 0px;
-        border-bottom: #759CCF 1px solid;
+        border-bottom: #3B587D 1px double;
 
         }
 
 .content-panel  {
- background: #D3E5FA;
+ background: #EBF3FD;
  display: inline;
  color: #333;
  margin: 0px;
@@ -39,6 +39,7 @@ body {
  width: 86.3%;
  float: right;
  height: 100%;
+ padding-bottom: 10px;
 }
 
 
@@ -284,7 +285,7 @@ h3 span {
 	margin: 2px;
 	border: 1px solid #aaa;
 	text-decoration: none;
-	color: #666;
+	color: #2C5EBF;
         background-color: #fff;
 }
 .pagination a:hover, .pagination a:active {
@@ -300,7 +301,7 @@ h3 span {
 	background: #f6f7f8;
 	color: #434343;
 }
-.pagination span.disabled {
+.pagination span.disabled_page {
 	padding: 0px 5px 0px 5px;
 	margin: 2px;
 	border: 1px solid #eee;
@@ -603,14 +604,14 @@ h3 span {
 #menu li a {
 	display: block;
 	float: left;
-	margin:33px 3px 0px 0px;
+	margin:32px 3px 0px 0px;
 	padding: 5px 2px 0px 1px;
 	width:88px;height:17px;
 	text-transform: uppercase;
 	text-decoration: none;
 	font-size: 11px;
 	font-weight: bold;
-	color: #004E9C;
+	color: #fff;
 	text-align:center;
 	/*background-image: url('/images/nw-tab.gif');*/
 
@@ -619,7 +620,7 @@ h3 span {
 #menu li a:hover {
 	display: block;
 	float: left;
-	margin:33px 3px 0px 0px;
+	margin:32px 3px 0px 0px;
 	padding: 5px 2px 0px 1px;
 	text-transform: uppercase;
 	text-decoration: none;
@@ -809,7 +810,7 @@ a.button:hover {
 
 a.button:hover span {
     background-position: bottom left;
-    padding: 5px 0 5px 18px; /* push text down 1px */
+    padding: 5px 0 5px 17px; /* push text down 1px */
 }
 /*------------------------- links as buttons --------------*/
 
