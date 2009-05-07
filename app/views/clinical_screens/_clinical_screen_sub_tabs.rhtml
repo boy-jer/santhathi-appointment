@@ -27,7 +27,7 @@
              <% for test in @prescribed_tests %>
                <% unless test.lab_test.laboratory_report.blank? %>
                 <%=image_tag('arrow_right.png', :border => 0)  %> &nbsp;
-                <%= link_to "#{test.lab_test.name}", prescribed_test_laboratory_report_path(:prescribed_test_id=> test.id, :id => test.lab_test.laboratory_report.id) %>
+                <%= link_to "#{test.lab_test.name}", prescribed_test_laboratory_report_path(:prescribed_test_id=> test.id, :id => test.lab_test.laboratory_report.id) %><br/>
                 <%end%>
              <%end%>
            <% else %>
@@ -43,7 +43,7 @@
       <% for test in @last_visit_report %>
          <% unless test.lab_test.laboratory_report.blank? %>
              <%=image_tag('arrow_right.png', :border => 0)  %> &nbsp;
-             <%= link_to "#{test.lab_test.name}", prescribed_test_laboratory_report_path(:prescribed_test_id=> test.id, :id => test.lab_test.laboratory_report.id) %><br/>
+             <%= link_to "#{test.lab_test.name}", prescribed_test_laboratory_report_path(:prescribed_test_id=> test.id, :id => test.lab_test.laboratory_report.id) %><br/><br/>
          <%end%>
       <%end%>
     <% else %>
@@ -59,7 +59,7 @@
              <% for test in @prescribed_tests %>
                <% unless test.lab_test.laboratory_report.blank? %>
                 <%=image_tag('arrow_right.png', :border => 0)  %> &nbsp;
-         <%= link_to "#{test.lab_test.name}", prescribed_test_laboratory_report_path(:prescribed_test_id=> test.id, :id => test.lab_test.laboratory_report.id) %> <br/>
+         <%= link_to "#{test.lab_test.name}", prescribed_test_laboratory_report_path(:prescribed_test_id=> test.id, :id => test.lab_test.laboratory_report.id) %> <br/><br/>
                 <%end%>
              <%end%>
            <% else %>
@@ -73,6 +73,8 @@
        <%= link_to "Next Appointment Remark" , new_appointment_next_appointment_remark_path (@appointment) , :rel=> "facebox" %><br/><br/>
      <%=image_tag('arrow_right.png', :border => 0)  %> &nbsp;
     <%= link_to "Clinical Comment " , new_appointment_clinical_comment_path (@appointment)  %><br/><br/>
+     <%=image_tag('arrow_right.png', :border => 0)  %> &nbsp;
+      <%= link_to "Registration Summary " , new_vital_sign_path (:patient_id =>@appointment.patient) ,:rel =>'facebox'   %>
 
 
 

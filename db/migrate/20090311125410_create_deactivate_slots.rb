@@ -1,8 +1,8 @@
 class CreateDeactivateSlots < ActiveRecord::Migration
   def self.up
     create_table :deactivate_slots do |t|
-      t.string :department
-      t.string :doctor_name
+      t.integer :department_id
+      t.integer :doctor_id
       t.date :from_date
       t.date :to_date
       t.time :time_from

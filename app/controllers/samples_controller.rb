@@ -1,12 +1,18 @@
 class SamplesController < ApplicationController
    layout 'laboratory'
   def index
-    @samples = Sample.paginate :page => params[:page],:per_page => 10
 
+    @search = Sample.new_search(params[:search])
+    @search.per_page ||= 15
+    @samples  = @search.all
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @samples }
+                  format.html
+                  format.js { render :update do |page|
+                                page.replace_html 'sample_list', :partial => 'samples_list'
+                              end
+                            }
     end
+
   end
 
   # GET /samples/1

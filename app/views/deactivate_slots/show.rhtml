@@ -3,9 +3,9 @@
    <h3>Showing Deactivate slot</h3><br />
      <table class="form-table">
   <tr> <th>Department:</th><td>
-  <%=h @deactivate_slot.department %></td></tr>
+  <%=h Department.find(@deactivate_slot.department_id).dept_name unless @deactivate_slot.department_id.nil? %></td></tr>
 <tr> <th>Doctor name:</th><td>
-  <%=h @deactivate_slot.doctor_name %></td></tr>
+  <%=h Doctor.find(@deactivate_slot.doctor_id).name  unless @deactivate_slot.doctor_id.nil? %></td></tr>
 <tr><th>From date:</th><td>
   <%=h @deactivate_slot.from_date %></td></tr>
 <tr><th>To date:</th><td>

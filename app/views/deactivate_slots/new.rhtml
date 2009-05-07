@@ -1,5 +1,5 @@
 <div class='continer'>
-  <div class='continer-inner'>
+
 <h3>New Deactivate Slot</h3><br/>
 
 <% form_for(@deactivate_slot) do |f| %>
@@ -7,10 +7,14 @@
 
 <table cellpadding="5px" class="form-table">
   <tr><th>  <%= f.label :department %>:</th><td>
-    <%= f.text_field :department,:class=>"textbox" %></td></tr>
+    <%= select :departament, :id, [['Select department' , '']] + Department.departments_for_select_list %></td>
+              </td></tr>
   <tr><th>
-    <%= f.label :doctor_name %>:</th><td>
-    <%= f.text_field :doctor_name ,:class=>"textbox"%></td></tr>
+
+    <%= f.label :Doctor %>:</th><td>
+    <div id="doctors"><%=render :partial => 'doctors_list', :locals => {:f => f, :doctors => doctors_list} %></div>
+
+    </td></tr>
   <tr><th>
     <%= f.label :from_date %>:</th><td>
     <%= f.date_select :from_date,:class=>"textbox" %></td></tr>
@@ -19,10 +23,10 @@
     <%= f.date_select :to_date,:class=>"textbox" %></td></tr>
  <tr><th>
     <%= f.label :time_from %>:</th><td>
-    <%= f.datetime_select :time_from,:class=>"textbox" %></td></tr>
+    <%= f.time_select :time_from,:class=>"textbox" %></td></tr>
  <tr><th>
     <%= f.label :time_to %>:</th><td>
-    <%= f.datetime_select :time_to,:class=>"textbox" %></td></tr>
+    <%= f.time_select :time_to,:class=>"textbox" %></td></tr>
   <tr><th>
     <%= f.label :reason_for_absence %>:</th><td>
     <%= f.text_field :reason_for_absence,:class=>"textbox" %></td></tr>
@@ -30,7 +34,19 @@
       <%= image_submit_tag "create.gif" %>
 
 <% end %>
+<%= observe_field(:departament_id, :frequency => 1.5,
+                    :before => "Element.show('spinner1')",
+                    :success => "Element.hide('spinner1')",
+                    :url => update_doctors_list_appointments_url,
+                    :method => :get,
+                    :with => "'department_id=' + value"
+                   ) %>
+
+<%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner1",
+              :style =>"display: none;" ) %>
 
 
-</div>
 </div>

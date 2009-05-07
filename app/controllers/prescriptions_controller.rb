@@ -2,7 +2,7 @@ class PrescriptionsController < ApplicationController
   layout 'laboratory'
 
   def index
-     @search = Prescription.new_search()
+     @search = Prescription.new_search(params[:search])
      @search.per_page ||= 15
      @prescriptions = @search.all
      respond_to do |format|

@@ -1,15 +1,10 @@
 <div class='continer'>
-  <div class='continer-inner'>
+
 	 <%=render :partial=> 'search'%>
 	 <br />
 
 	<div id='parameters_list'>
     	<%=render :partial=> 'parameters_list'%>
-    </div><br/>
-	<table>
-	<tr><td>
-		<%= link_to "<span>New Parameter</span>", new_parameter_path(:type => params[:type]), :class=> "button" %>
-	</td></tr>
-	</table>
-  </div>
+    </div>
+
 </div>

@@ -4,9 +4,9 @@ class DoctorsController < ApplicationController
   # GET /doctors.xml
   def index
     @search = Doctor.new_search(params[:search])
-    @search.per_page = 20
+    @search.per_page ||= 15
 
-    @doctors,@doctor_count = @search.all,@search.count
+    @doctors = @search.all
 
     respond_to do |format|
               format.html
@@ -18,8 +18,9 @@ class DoctorsController < ApplicationController
               end
   end
 
-  # GET /doctors/1
-  # GET /doctors/1.xml
+
+
+
   def show
     @doctor = Doctor.find(params[:id])
 

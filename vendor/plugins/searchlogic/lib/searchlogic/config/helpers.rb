@@ -289,8 +289,8 @@ module Searchlogic
         # * <tt>Accepts:</tt> Array
         def per_page_select_choices
           return @per_page_select_choices if @per_page_select_choices
-          @per_page_select_choices = ["Records Per Page", nil]
-          [5, 15, 25, 35].each { |choice| @per_page_select_choices << ["#{choice} per page", choice] }
+          @per_page_select_choices = []
+          [5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100].each { |choice| @per_page_select_choices << ["#{choice} per page", choice] }
           @per_page_select_choices << ["Show all", nil]
         end
         attr_writer :per_page_select_choices

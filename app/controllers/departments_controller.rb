@@ -3,11 +3,16 @@ class DepartmentsController < ApplicationController
   # GET /departments
   # GET /departments.xml
   def index
-    @departments = Department.find(:all)
 
+    @search = Department.new_search(params[:search])
+    @search.per_page ||= 15
+    @departments  = @search.all
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @departments }
+                  format.html
+                  format.js { render :update do |page|
+                                page.replace_html 'department_list', :partial => 'departments_list'
+                              end
+                             }
     end
   end
 

@@ -1,13 +1,13 @@
-<% if @parameter_count > 0 %>
+
 
 <h3>Parameter Master List</h3><br/>
 
 <table class="listing">
   <tr>
-    <th>Parameter name</th>
-    <th>Value type</th>
-    <th>Measurement unit</th>
-    <th>Description</th>
+    <th><%= remote_order_by_link(:parameter_name,:text => "Parameter Name") %> </th>
+    <th><%= remote_order_by_link(:value_type,:text => "Value Type ") %></th>
+    <th><%= remote_order_by_link({:measurement_unit => :name } ,:text => "Measurement Unit  ") %></th>
+    <th><%= remote_order_by_link(:description,:text => "Description") %></th>
     <th>Show</th>
     <th>Modify</th>
     <th>Delete</th>
@@ -21,20 +21,48 @@
         <%else%>
            <%=h parameter.value_type %></td>
         <%end%>
-    <td><%=h 'ss' %></td>
+    <td><%=h parameter.measurement_unit.name %></td>
     <td><%=h parameter.description %></td>
     <td><%= link_to 'Show', parameter,:rel=> "facebox"%></td>
     <td><%= link_to 'Modify', edit_parameter_path(parameter) %></td>
     <td><%= link_to 'Delete', parameter, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
+<tr class="table-footer">
+  	<td colspan = 1><%= link_to "<span>New Parameter</span>", new_parameter_path(), :class=> "button" %></td>
+        <td colspan = 1><%= remote_per_page_select %></td>
+        <td colspan = 1>
+         <% form_tag(parameters_url, :method => :get, :id => "goto") do %>
+             <% fields_for @search do |f|%>
+                     <%= f.text_field :page, :class => 'textbox-tiny' %></td>
+             <%end%>
+         <%end%>
+
+
+        </td>
+         <td colspan = 4> <% unless @parameters.blank? %>
+                             <div class="pagination">
+                                <%= remote_page_links %>
+                             </div>
+                           <% end %>
+         </td>
+  </tr>
+
+
+
+<%= observe_form("goto", :frequency => 1,
+                 :before => "Element.show('spinner')",
+                 :success => "Element.hide('spinner')",
+                 :url => parameters_url, :method => :get) %>
+<%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner1",
+              :style =>"display: none;" ) %>
+
+
+
+
 </table>
 
-  <br />
-  <% if @parameter_count > 1 %>
-    <div class="pages">
-      <%= remote_page_links %>
-    </div>
-  <% end %>
-
-<%end%>
+<br />
