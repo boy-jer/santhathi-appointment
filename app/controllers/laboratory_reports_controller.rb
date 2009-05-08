@@ -13,7 +13,7 @@ class LaboratoryReportsController < ApplicationController
     @prescription, @lab_test = @prescribed_test.prescription, @prescribed_test.lab_test
     @appointment = @prescription.appointment
     @patient = @appointment.patient
-    #@specifications = @lab_test.parameter_specifications
+    @specifications = @lab_test.parameter_specifications
     @laboratory_report = LaboratoryReport.find(params[:id])
     @laboratory_test_results =  @laboratory_report.laboratory_test_results
     @results = {}
@@ -22,8 +22,7 @@ class LaboratoryReportsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @laboratory_test_results}
-
-        format.pdf {
+      format.pdf {
                                options = {:left_margin   => 20,
                                           :right_margin  => 20,
                                           :top_margin    => 20,
@@ -48,6 +47,11 @@ class LaboratoryReportsController < ApplicationController
   end
 
   def edit
+  	@prescribed_test = PrescribedTest.find(params[:prescribed_test_id])
+    @prescription, @lab_test = @prescribed_test.prescription, @prescribed_test.lab_test
+    @appointment = @prescription.appointment
+    @patient = @appointment.patient
+    @specifications = @lab_test.parameter_specifications
     @laboratory_report = LaboratoryReport.find(params[:id])
   end
 
@@ -71,8 +75,29 @@ class LaboratoryReportsController < ApplicationController
 
     respond_to do |format|
       if @laboratory_report.update_attributes(params[:laboratory_report])
+
+      specs = params[:specifications]
+      specs[:ids].each_pair{ |key, value|
+
+
+
+      laboratory_test_result = LaboratoryTestResult.find_by_parameter_specification_id_and_laboratory_report_id(key,@laboratory_report.id)
+      laboratory_test_result.update_attributes(:parameter_specification_id => key,
+                                               :result => value,
+                                               :remarks => specs[:remarks]["r_#{key}"],
+                                               :laboratory_report_id =>  @laboratory_report.id ) }
+
+
+
+
         flash[:notice] = 'LaboratoryReport was successfully updated.'
-        format.html { redirect_to(@laboratory_report) }
+
+
+
+
+
+
+        format.html {  redirect_to prescriptions_url }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

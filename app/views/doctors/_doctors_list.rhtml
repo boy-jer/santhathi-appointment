@@ -30,6 +30,9 @@
         <%= link_to 'Destroy', doctor_path(doctor), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
+</table>
+
+<table class='table-bottom'>
 <tr class="table-footer">
   	     <td colspan = 5><%= link_to "<span>New Doctor</span>", new_doctor_path, :class=> "button" %></td>
          <td colspan = 5> <% if @doctors.size > 1 %>

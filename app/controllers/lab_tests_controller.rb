@@ -2,6 +2,7 @@ class LabTestsController < ApplicationController
   layout 'laboratory'
 
   def index
+=begin
    @tests = LabTest.find(:all)
    @child_list = LabTest.find_all_by_parent_id(nil)
 
@@ -9,6 +10,21 @@ class LabTestsController < ApplicationController
       format.html # index.html.erb
       format.xml  { render :xml => @tests }
     end
+=end
+    @search = LabTest.new_search(params[:search])
+    #@search.per_page ||= 15
+    @tests = @search.all
+    @child_list = LabTest.find_all_by_parent_id(nil)
+
+    respond_to do |format|
+              format.html
+              format.js {
+                      render :update do |page|
+                        page.replace_html 'lab-test', :partial => 'lab_test_result'
+                      end
+                      }
+              end
+
   end
 
   def new

@@ -2,12 +2,16 @@ class ServicesController < ApplicationController
   layout 'cms'
   def index
     @departments = Department.find(:all)
-    @services = Service.find(:all)
-
+    @search = Service.new_search(params[:search])
+    @services = @search.all
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @services }
-    end
+          format.html
+          format.js {
+                      render :update do |page|
+                        page.replace_html 'service-list', :partial => 'service_result'
+                      end
+                    }
+              end
   end
 
   def new

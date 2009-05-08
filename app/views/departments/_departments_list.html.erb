@@ -18,7 +18,9 @@
     <td>&nbsp;&nbsp;<%= link_to image_tag('show.png', {:title => 'Show', :border => 0}), department_path(department) %> &nbsp; &nbsp;| &nbsp;&nbsp; <%= link_to image_tag('edit.png', {:title => 'Edit', :border => 0}), edit_department_path(department) %> &nbsp;&nbsp;|&nbsp;&nbsp; <%= link_to image_tag('delete.png', {:title => 'delete', :border => 0}), department_path(department), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
+</table>
 
+<table class='table-bottom'>
 <tr class="table-footer">
   	<td colspan = 1><%= link_to "<span>New department</span>", new_department_path, :class=> "button" %></td>
         <td colspan = 1><%= remote_per_page_select %></td>

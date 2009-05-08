@@ -118,7 +118,6 @@ class PatientsController < ApplicationController
     	patient2.address = @patient.address
       	patient2.save
 
-
         flash[:notice] = 'Patient was successfully updated.'
         format.html { redirect_to(patients_path) }
         format.xml  { head :ok }
@@ -129,8 +128,7 @@ class PatientsController < ApplicationController
     end
   end
 
-  # DELETE /patients/1
-  # DELETE /patients/1.xml
+
   def destroy
     @patient = Patient.find(params[:id])
     @patient.destroy

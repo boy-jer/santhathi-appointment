@@ -36,13 +36,17 @@
 
               <% if spec.parameter.value_type == 'Multiple' %>
                  <td><%= select "specifications[ids]", "#{spec.id}", spec.parameter.values.nil? ? [] : spec.parameter.values %></td>
-              <% else %>
-                 <td><%= text_field_tag "specifications[ids][#{spec.id}]", '', :class => 'textbox' %></td>
+              <% elsif spec.parameter.value_type == 'Numeric'%>
+                 <td><%= text_field_tag "specifications[ids][#{spec.id}]", '0.0', :class => 'textbox' %></td>
+               <%else%>
+                  <td><%= text_field_tag "specifications[ids][#{spec.id}]", '', :class => 'textbox' %></td>
               <%end%>
-              <td><%= text_area_tag "specifications[remarks][r_#{spec.id}]", '', :class => 'textbox' %></td>
+
+              <td><%= text_area_tag "specifications[remarks][r_#{spec.id}]", display_parameter_specification(@lab_test.id,spec.parameter_id), :class => 'textbox' %></td>
               <td><%= link_to 'Details', details_laboratory_test_results_url(:patient_id =>@patient.id,:specification_id => spec), :rel=> "facebox" %></td>
            </tr>
        <%else%>
+      <td> <%= link_to 'Details', details_laboratory_test_results_url(:patient_id =>@patient.id,:specification_id => spec), :rel=> "facebox" %></td>
            <tr class= 'header'><td  colspan=5><b><%= spec.parameter.parameter_name %></b></td> </tr>
        <%end%>
      <%end%>
