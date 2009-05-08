@@ -35,6 +35,8 @@
     <td>&nbsp;&nbsp; <%= link_to image_tag('show.png', {:title => 'Show', :border => 0}), patient_url(patient), :rel=> "facebox" %> &nbsp;&nbsp;| &nbsp;&nbsp; <%= link_to image_tag('edit.png', {:title => 'Edit', :border => 0}), edit_patient_path(patient) %> &nbsp;&nbsp;|&nbsp;&nbsp; <%= link_to image_tag('delete.png', {:title => 'delete', :border => 0}), patient_path(patient), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
+</table>
+<table class='table-bottom'>
   <tr class="table-footer">
       <td colspan = 3><%= link_to "<span>New patient</span>", new_patient_path, :class=> "button" %></td>
       <td colspan = 1>
@@ -44,9 +46,8 @@
       <%=submit_tag "new appointment" %>
       <%end%>
        </td>
-        <td colspan = 1>  Per page: <%= remote_per_page_select %></td>
-        <td colspan = 2> Go to page:
-                                      <% form_tag(patients_url, :method => :get, :id => "goto") do %>
+        <td colspan = 1> <%= remote_per_page_select %></td>
+        <td colspan = 2>  <% form_tag(patients_url, :method => :get, :id => "goto") do %>
                                         <% fields_for @search do |f|%>
                                           <%= f.text_field :page, :class => 'textbox-tiny' %>
 

@@ -1,7 +1,7 @@
 <div class='continer'>
-  <div class='continer-inner'>
-<h3>Deactivate Slot List</h3>
 <br/>
+<h3>Deactivate Slot List</h3>
+
 
 <table class="listing">
   <tr>
@@ -23,8 +23,9 @@
     <td><%=h Doctor.find(deactivate_slot.doctor_id).name  unless deactivate_slot.doctor_id.nil? %></td>
     <td><%=h deactivate_slot.from_date %></td>
     <td><%=h deactivate_slot.to_date %></td>
-    <td><%=h deactivate_slot.time_from.to_time %></td>
-    <td><%=h deactivate_slot.time_to.to_time %></td>
+    <td><%=h  Time.parse(deactivate_slot.time_from.to_s).strftime('%H:%M').to_s %></td>
+
+    <td><%=h Time.parse(deactivate_slot.time_to.to_s).strftime('%H:%M').to_s%></td>
     <td><%=h deactivate_slot.reason_for_absence %></td>
     <td><%= link_to 'Show', deactivate_slot, :rel=> "facebox" %></td>
     <td><%= link_to 'Modify', edit_deactivate_slot_path(deactivate_slot) %></td>
@@ -37,5 +38,5 @@
 <%= will_paginate @deactivate_slots %>
 <%= link_to "<span>New #{params[:type]}</span>", new_deactivate_slot_path(:type => params[:type]), :class=> "button" %>
 
-</div>
+
 </div>

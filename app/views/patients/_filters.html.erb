@@ -13,8 +13,8 @@
         <% f.fields_for @search.conditions do |p| %>
            <td><%= p.text_field :patient_name_like, :class => 'textbox' %></td>
            <td><%= p.text_field :reg_no_like, :class => 'textbox' %></td>
-           <td><%= p.text_field :contact_no_like, :class => 'textbox' %></td>
            <td><%= p.calendar_date_select :reg_date_like , :class =>'textbox' %></td>
+           <td><%= p.text_field :contact_no_like, :class => 'textbox' %></td>
            <td> <%= p.select :reg_no_is_nil , {'Register '=> false, 'Unregister'=> true},options ={:prompt => "  Select "} %>  </td>
 
         <%end%>

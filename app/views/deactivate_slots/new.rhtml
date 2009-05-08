@@ -7,12 +7,12 @@
 
 <table cellpadding="5px" class="form-table">
   <tr><th>  <%= f.label :department %>:</th><td>
-    <%= select :departament, :id, [['Select department' , '']] + Department.departments_for_select_list %></td>
+    <%= select :deactivate_slot, "department_id", [['Select department' , '']] + Department.departments_for_select_list %></td>
               </td></tr>
   <tr><th>
 
     <%= f.label :Doctor %>:</th><td>
-    <div id="doctors"><%=render :partial => 'doctors_list', :locals => {:f => f, :doctors => doctors_list} %></div>
+    <div id="doctors"> <%=render :partial => 'doctors_list', :locals => {:f => f, :doctors => doctors_list} %></div>
 
     </td></tr>
   <tr><th>
@@ -34,7 +34,7 @@
       <%= image_submit_tag "create.gif" %>
 
 <% end %>
-<%= observe_field(:departament_id, :frequency => 1.5,
+<%= observe_field(:deactivate_slot_department_id, :frequency => 1.5,
                     :before => "Element.show('spinner1')",
                     :success => "Element.hide('spinner1')",
                     :url => update_doctors_list_appointments_url,
