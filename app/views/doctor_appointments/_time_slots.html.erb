@@ -5,7 +5,7 @@
        <% dt1 = Time.parse(@doctor.working_from.to_s) %>
        <% appoitments_hash = appointments(@doctor, @date) %>
        <% iteration_count(@doctor).times do%>
-	   
+
          <% slot = "#{(dt1.strftime('%H:%M').to_s)}" %>
          <% if appoitments_hash.key?(slot) %>
            <tr class = <%=reason_class(appoitments_hash[slot].reason.name)  %>>
@@ -26,7 +26,7 @@
             <td class="available-new"> &nbsp; </td>
             </tr>
           <% end %>
-        
+
        <%end%>
      <%end%>
 </table>
