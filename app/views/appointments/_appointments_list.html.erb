@@ -1,12 +1,23 @@
-<br />
+
 <table class='table-top'><tr>
-           <td>Appointment List</td>
-           <td class='hide-for-print'> <%= link_to_function("Print this Page", "javascript:print()") %> </td>
-           <td class='hide-for-print'> <%= link_to("Export This Page to CSV", appointments_url(:format => "csv", :search => @params) )%> </td>
-           <td class='hide-for-print'> <%= link_to("Export This Page to PDF", appointments_url(:format => "pdf", :search => @params)) %> </td>
+           <td> <h3> Appointments List </h3> </td> 
+           <td class='hide-for-print'> 
+               <%= link_to(image_tag("printer.png", :border => '0'), "javascript:print()") %> &nbsp; 
+               <%= link_to_function("Print this Page", "javascript:print()") %> 
+           </td>
+
+           <td class='hide-for-print'> 
+               <%= link_to(image_tag('excel.png', :border => '0'), appointments_url(:format => "csv", :search => @params) )%> &nbsp; 
+               <%= link_to("Export This Page to CSV", appointments_url(:format => "csv", :search => @params) )%> 
+           </td>
+
+           <td class='hide-for-print'> 
+               <%= link_to(image_tag("acrobat.png", :border => '0'), appointments_url(:format => "pdf", :search => @params)) %> &nbsp; 
+               <%= link_to("Export This Page to PDF", appointments_url(:format => "pdf", :search => @params)) %> 
+            </td>
          </tr>
 </table>
-<br />
+
 <%= image_tag("spinner.gif",
               :align => "absmiddle",
               :border => 0,

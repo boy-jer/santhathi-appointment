@@ -6,11 +6,10 @@
 	/* NAVIGATION */
 	
 	.navPanel{
-		
-		padding-left:5px;
-                padding-right:5px;
-                padding-bottom:5px;
+                margin: 0 auto;
+                width: 99%;
 		height:100%;
+                padding-left: 3px;
 	}
 	
 	.navigation1{
