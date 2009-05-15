@@ -1,27 +1,34 @@
 
 <div class='continer'>
-  <div class='continer-inner'>   
+
     <% form_tag(doctor_appointments_url, :method => :get, :id => "search_form") do %>
-    
+
      <table class="search-table">
         <tr>
             <th><%=label_tag 'Doctor:'%></th> <th><%=label_tag 'Appointment date:'%></th>
             <th><%=label_tag 'Appointments:'%></th> <th><%=label_tag 'Time slots:'%></th>
+              <th rowspan='2'><input type="reset" value="Reset"> </th>
         </tr>
-        <tr><td><%= select :doctor, :id, [['Select doctor' , '']] + Doctor.doctors_list %></td>
-            <td><%= calendar_date_select_tag "date", Date.today , :class =>'textbox' %></td>
+        <tr>
+
+        <%fields_for @search do |f|%>
+           <% f.fields_for @search.conditions do |p| %>
+        <td><%= p.select :doctor_id_like,  [['Select doctor' , '']] + Doctor.doctors_list, :class =>'select-list' %></td>
+         <td><%= p.calendar_date_select :appointment_date_like,:class =>'textbox-small' %></td>
+           <%end%>
+         <%end%>
             <td><%= radio_button_tag ('filter', '1', checked = true) %></td>
             <td><%= radio_button_tag ('filter', '2', checked = false) %></td>
 	</tr>
      </table>
   <% end %><br />
-  <%= render :partial => 'reason_display' %>	 
-  <%= observe_form("search_form", :frequency => 1,
+  <%= render :partial => 'reason_display' %>
+  <%= observe_form("search_form", :frequency => 1.2,
                  :before => "Element.show('spinner')",
                  :success => "Element.hide('spinner')",
-                 :url => doctor_appointments_url, :method => :get) %> 
+                 :url => doctor_appointments_url, :method => :get) %>
 
-  
+
   <!-- Ajax search result indicator -->
   <%= image_tag("spinner.gif",
               :align => "absmiddle",
@@ -34,5 +41,5 @@
     </div>
     <br />
   </div>
-  </div>
+
 </div>

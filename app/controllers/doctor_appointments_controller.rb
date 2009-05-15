@@ -3,14 +3,24 @@ class DoctorAppointmentsController < ApplicationController
   # GET /doctor_appointments
   # GET /doctor_appointments.xml
   def index
-   doctor_id = (params[:doctor][:id] unless  params[:doctor].blank?) 
+=begin
+   doctor_id = (params[:doctor][:id] unless  params[:doctor].blank?)
    if doctor_id.blank?
      @doctor = Doctor.find(doctor_id) unless doctor_id.blank?
      @date = (Date.parse(params[:date]) unless params[:date].blank?) || Date.today
      @appointments =  @doctor.appointments.on_date(@date) unless @doctor.blank?
    else
      @appointments =  Appointment.find(:all)
-   end  
+   end
+=end
+
+
+
+   @search = Appointment.new_search(params[:search])
+   @search.per_page ||= 15
+   @appointments = @search.all
+    @doctor = Doctor.find(params[:search][:conditions][:doctor_id_like]) unless (params[:search].blank? || params[:search][:conditions][:doctor_id_like].blank?)
+   @date = (Date.parse(params[:search][:conditions][:appointment_date_like]) unless (params[:search].blank? || params[:search][:conditions][:appointment_date_like].blank?)) || Date.today
 
    respond_to do |format|
       format.html # show.html.erb
@@ -19,8 +29,8 @@ class DoctorAppointmentsController < ApplicationController
                         page.replace_html 'appointment_list', :partial => 'appointment_list'
                      else
                         page.replace_html 'appointment_list', :partial => 'time_slots'
-                     end  
-                   end 
+                     end
+                   end
                  }
     end
   end
