@@ -5,7 +5,7 @@ body {
       /*background: #00c9ee repeat-x ;*/
       /*background: #55ABD5;*/
       /*background: #F5FAFC;*/
-      background: #fff;
+      background: #ADCCF7;
       color: #4B4B4B;
       margin: 0;
       padding: 0;
@@ -23,7 +23,7 @@ body {
 	}
 
 .content-body {
-        background-color: #EFF5FF;
+        background-color: #fff;
         width: 99.1%;
         margin: 0 auto;
         border-left: #BDD0EA 5px solid;
@@ -50,7 +50,7 @@ body {
  width: 13.1%;
  display: inline;
  position: relative;
- background: #EFF5FF;
+ background: #fff;
 
 }
 
@@ -157,8 +157,8 @@ h3 span {
 #header h1 {
 	float: left;
 	font-weight: bold;
-	color: #FFFFFF;
-        font-size: 25px;
+	color: #fff;
+        font-size: 27px;
 	padding: 2px  0  0  5px ;
 	margin: 0px;
 }
@@ -168,9 +168,9 @@ h3 span {
 }
 #global_links {
 	float: right;
-	font-size: 0.8em;
+	font-size: 0.9em;
 	color: #fff;
-	padding: 5px 5px 0px 0px;
+	padding: 5px 10px 0px 0px;
 }
 #global_links a {
 	color: #fff;
@@ -584,7 +584,7 @@ url(/images/tab.png) repeat-x;
 
 
 
-.search-table th {background: #EEF2F5  url(/images/tab.png) repeat-x; color: #274776; padding: .3em .5em; border:1px solid #BDCFE1; text-align: left;  font-weight: normal; border-top:1px solid #fff;}
+.search-table th {background: #EEF2F5  /*url(/images/tab.png) repeat-x*/; color: #274776; padding: .3em .5em; border:1px solid #BDCFE1; text-align: left;  font-weight: normal; border-top:1px solid #fff;}
 
 .search-table td {background-color: #fff; padding: .1em .5em; border:1px solid #BDCFE1; text-align: left; border-top:1px solid #fff;}
 
@@ -614,7 +614,7 @@ url(/images/tab.png) repeat-x;
 	text-decoration: none;
 	font-size: 11px;
 	font-weight: bold;
-	color: #fff;
+	color: #3365AA;
 	text-align:center;
 	/*background-image: url('/images/nw-tab.gif');*/
 
