@@ -3,8 +3,8 @@ class Cms::PatientHistoriesController < ApplicationController
   before_filter :find_appointment ,:only =>[:discharge_summary ,:clinical_comment ,:prescription_and_reports ,:pharmacy_prescription]
 
   def index
-  	@patient = Patient.find(64)
-  	@appointment = Appointment.find(4)
+  	@patient = Patient.find(4)
+  	@appointment = Appointment.find(5)
   end
 
 

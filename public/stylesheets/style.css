@@ -1,10 +1,6 @@
-* 									{ margin: 0; padding: 0; }
-body								{ font: 14px Helvetica, Sans-Serif; } 
-#page-wrap							{ width: 800px; margin: 25px auto; } 
 a									{ text-decoration: none; }
 ul									{ list-style: none; }
-p                                   { margin: 15px 0; }
-
+#menu-wrap {margin: 0px auto; }
 /* 
 	LEVEL ONE
 */
@@ -12,7 +8,7 @@ ul.dropdown                         { position: relative; }
 ul.dropdown li                      { font-weight: bold; float: left; zoom: 1; background: #ccc; }
 ul.dropdown a:hover		            { color: #000; }
 ul.dropdown a:active                { color: #ffa500; }
-ul.dropdown li a                    { display: block; padding: 4px 8px; border-right: 1px solid #333;
+ul.dropdown li a                    { display: block; padding: 3px 8px; border-right: 1px solid #333;
 	 								  color: #222; }
 ul.dropdown li:last-child a         { border-right: none; } /* Doesn't work in IE */
 ul.dropdown li.hover,
