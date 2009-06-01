@@ -8,15 +8,15 @@
 
     <!--<%= javascript_include_merged :base %>-->
     <!--<%= stylesheet_link_merged :base %>-->
-    <%=javascript_include_tag :defaults, 'facebox', 'jquery-1', 'jquery_corner', 'jquery-ui-1.7.custom.min', 'menu'%>    
-    <%= stylesheet_link_tag 'calendar/option2- blue/style', 'facebox', 'menu' %>
+    <%=javascript_include_tag :defaults, 'facebox', 'jquery-1', 'jquery_corner', 'jquery-ui-1.7.custom.min', 'menu' ,'jquery.dropdown' ,'jquery-1.3.1.min' ,'hoverIntent'%>
+    <%= stylesheet_link_tag 'calendar/option2- blue/style', 'facebox', 'menu' ,'style' %>
     <%= calendar_date_select_includes %>
     <%= stylesheet_link_tag('default', :media => :screen) %>
     <%= stylesheet_link_tag('print', :media => :print) %>
     <script type="text/javascript">
         jQuery.noConflict();
     </script>
-	 
+
     <!--[if lte IE 6]>
 	<%= stylesheet_link_tag 'ie6.css', media="screen" %>
     <![endif]-->
@@ -25,31 +25,23 @@
 
  <body>
    <div id="wrapper">
-      <div id="header"> 
-           <div id="global_links"> 
-              <%= render :partial => 'shared/global_links' %> 
-           </div> 
-           <h1> Santhathi </h1>
-           <%= render :partial => 'shared/tabs' %> 
-      </div>	
-	
-      <div class="content" id="content">     
-           <div class= "content-body">
-                <div class="navigation">
-                     <div class="navPanel">
-                          <%= render :partial => 'shared/pms_sub_tabs' %>
-                          <div class="clear"> </div>
-                     </div>
-                 </div>
-                 
-
-                 <div class= "content-panel">
-                      <%= render :partial => 'shared/layout_body' %>
-                      <div class="clear"></div>
-                 </div>
-                <div class="clear"> </div>
+      <div id="header">
+           <div id="global_links">
+              <%= render :partial => 'shared/global_links' %>
            </div>
-      </div> <!-- End Content -->   
+
+           <h1> Santhathi </h1>
+           <%= render :partial => 'shared/tabs' %>
+           <%= render :partial => 'shared/pms_sub_tabs' %>
+
+      </div>
+
+          <%= render :partial => 'shared/layout_body' %>
+              <div class="clear"></div>
+
+              <div class="clear"> </div>
+
+
    </div>    <!-- End Wrapper -->
 
 </body>
