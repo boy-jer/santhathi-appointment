@@ -28,7 +28,8 @@ body {
         margin: 0 auto;
         border-left: #BDD0EA 5px solid;
         border-right: #BDD0EA 5px solid;
-        border-bottom: #BDD0EA 5px solid;        }
+        border-bottom: #BDD0EA 5px solid;
+        }
 
 .content-panel  {
  background: #fff;
@@ -523,11 +524,11 @@ url(/images/tab.png) repeat-x;
 /*.odd {background: #b8d3e0;}*/
 
 /*.listing tr:hover {background-color: #f2f7f9; color: #000;} not for IE*/
-.listing th {background: #EEF2F5;
+.listing th {background: #EBF3FD;
              color: #000;
              text-align: left;
              padding: 0.2em .5em;
-             border:1px solid #ccc;
+             border:1px solid #BDCFE1;
              font-weight: normal;
             
             
@@ -584,7 +585,7 @@ url(/images/tab.png) repeat-x;
 
 
 
-.search-table th {background: #EEF2F5  /*url(/images/tab.png) repeat-x*/; color: #274776; padding: .3em .5em; border:1px solid #BDCFE1; text-align: left;  font-weight: normal; border-top:1px solid #fff;}
+.search-table th {background: #EBF3FD /*url(/images/tab.png) repeat-x*/; color: #274776; padding: .3em .5em; border:1px solid #BDCFE1; text-align: left;  font-weight: normal; border-top:1px solid #fff;}
 
 .search-table td {background-color: #fff; padding: .1em .5em; border:1px solid #BDCFE1; text-align: left; border-top:1px solid #fff;}
 
@@ -607,14 +608,14 @@ url(/images/tab.png) repeat-x;
 #menu li a {
 	display: block;
 	float: left;
-	margin:37px 3px 0px 0px;
+	margin:38px 3px 0px 0px;
 	padding: 5px 2px 0px 1px;
 	width:88px;height:17px;
 	text-transform: uppercase;
 	text-decoration: none;
 	font-size: 11px;
 	font-weight: bold;
-	color: #3365AA;
+	color: #fff;
 	text-align:center;
 	/*background-image: url('/images/nw-tab.gif');*/
 
@@ -623,7 +624,7 @@ url(/images/tab.png) repeat-x;
 #menu li a:hover {
 	display: block;
 	float: left;
-	margin:37px 3px 0px 0px;
+	margin:38px 3px 0px 0px;
 	padding: 5px 2px 0px 1px;
 	text-transform: uppercase;
 	text-decoration: none;
