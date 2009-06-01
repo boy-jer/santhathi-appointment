@@ -8,14 +8,22 @@
 
     <!--<%= javascript_include_merged :base %>-->
     <!--<%= stylesheet_link_merged :base %>-->
-    <%=javascript_include_tag :defaults, 'facebox', 'jquery-1', 'jquery_corner', 'jquery-ui-1.7.custom.min', 'menu' ,'jquery.dropdown' ,'hoverIntent'%>
-    <%= stylesheet_link_tag 'calendar/option2- blue/style', 'facebox', 'menu' ,'style' %>
+    <%=javascript_include_tag :defaults, 'facebox', 'jquery-1', 'jquery_corner', 'jquery-ui-1.7.custom.min', 'menu' ,'jquery.droppy'%>
+    <%= stylesheet_link_tag 'calendar/option2- blue/style', 'facebox', 'menu' ,'droppy' %>
     <%= calendar_date_select_includes %>
     <%= stylesheet_link_tag('default', :media => :screen) %>
     <%= stylesheet_link_tag('print', :media => :print) %>
+
+
+
     <script type="text/javascript">
         jQuery.noConflict();
     </script>
+      <script type='text/javascript'>
+  jQuery(function() {
+    jQuery('#nav').droppy();
+  });
+</script>
 
     <!--[if lte IE 6]>
 	<%= stylesheet_link_tag 'ie6.css', media="screen" %>
@@ -25,21 +33,20 @@
 
  <body>
    <div id="wrapper">
-      <div id="header">
+      <div id="header"> <%= render :partial => 'shared/tabs' %>
            <div id="global_links">
               <%= render :partial => 'shared/global_links' %>
            </div>
-
            <h1> Santhathi </h1>
-           <%= render :partial => 'shared/tabs' %>
-           <%= render :partial => 'shared/pms_sub_tabs' %>
-
       </div>
 
+       </div>
+          <%= render :partial => 'shared/pms_sub_tabs' %>
           <%= render :partial => 'shared/layout_body' %>
               <div class="clear"></div>
 
               <div class="clear"> </div>
+
 
 
    </div>    <!-- End Wrapper -->
