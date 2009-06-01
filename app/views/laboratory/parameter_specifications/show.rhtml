@@ -1,0 +1,19 @@
+
+<div class='continer'>
+  <div class='continer-inner'>
+   <h3>Showing Parameter Specification</h3><br />
+      <table class="form-table">
+    <tr><th>Parameter name :</th><td>  <%=h @parameter_specification.parameter.parameter_name %></td></tr>
+   <tr><th>Age from :</th><td><%=h @parameter_specification.age_group_from %></td></tr>
+    <tr><th>Age to :</th><td><%=h @parameter_specification.age_group_to %></td></tr>
+     <tr><th>Gender :</th><td> <%=h @parameter_specification.gender %></td></tr>
+      <tr><th>Ideal value :</th><td><%=h @parameter_specification.ideal_value %></td></tr>
+       <tr><th>Min value :</th><td><%=h @parameter_specification.min_value %></td></tr>
+        <tr><th>Max value :</th><td><%=h @parameter_specification.max_value %></td></tr>
+        <tr><th>Special Condition :</th><td><%=h @parameter_specification.special_condition %></td></tr>
+  </table>
+
+<br/><br/>
+
+<%= link_to 'Edit', edit_laboratory_lab_test_parameter_specification_path(@lab_test,@parameter_specification) %> |
+<%= link_to 'Back', laboratory_lab_test_parameter_specifications_path(@lab_test) %>

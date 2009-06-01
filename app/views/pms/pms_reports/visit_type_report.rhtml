@@ -1,0 +1,21 @@
+<div class='continer'>
+
+   <%form_tag("visit_type_report") do -%>
+        <table cellpadding="5px" class="form-table">
+      <th><label> From :</label></th><td><%= calendar_date_select_tag "from_date" %>  </td> </tr>
+      <th><label> To :</label></th><td> <%= calendar_date_select_tag "to_date" %>   </td> </tr>
+      <tr>  <td>  <%= radio_button_tag :option, "day" ,true %> <label> DayWise </label> <%= radio_button_tag :option, "month" %><label> Monthwise</label></td></tr>
+   </table>
+<br/>
+  <%= submit_tag "go"%>
+
+   <% unless @first_visit_reports.blank? or @follow_up_reports.blank? -%>
+     <br/>
+      <%= render(:partial => "visit_type_report_display" ) %>
+   <%end%>
+
+    <%end%>
+
+
+
+</div>

@@ -1,0 +1,35 @@
+<% remote_form_for(:prescription , :url => laboratory_prescriptions_path() ,:html => { :method => :post }) do |f| %>
+  <%= f.error_messages %>
+    <table class = 'form-table'>
+
+    <tr> <td> <%= link_to "Back" , new_cms_appointment_clinical_screen_path(@appointment.id) %> &nbsp; | &nbsp;
+    <%= link_to "Patient List" ,  cms_doctor_patients_path %>  &nbsp; | &nbsp;
+    <%= link_to "Cancel" , new_cms_appointment_clinical_screen_path(@appointment.id) %> </td></tr>
+
+       <tr><th>Prescription To: </th> <td> <%= @department.dept_name %> </td>
+           <th>Prescribing Doctor:</th> <td> <%= @appointment.doctor.name %> </td></tr>
+       <tr><th>Prescription Date:</th> <td><%= calendar_date_select_tag "prescription[p_date]", Date.today , :class =>'textbox' %></td>
+           <th>Prescription Time:</th> <td><%= time_select("prescription", "p_time")  %></td></tr>
+       <tr>
+           <th>Service:</th>
+           <td> <div id='prescription'>
+                  <ul class='treeview'>
+                      <%= render :partial => 'child_list', :collection => [@lab_test], :as => :service %>
+                  </ul>
+               </div>
+           </td>
+       </tr>
+
+       <tr><th>Urgency:</th> <td> <%= f.select :urgency, ['High', 'Medium', 'Low'], :selected =>'High' %> </td>
+       <th>Follow up Before:</th> <td><%= calendar_date_select_tag "prescription[follow_up]", Date.today , :class =>'textbox' %></td></tr>
+       <tr><th>Other Remarks:</th> <td><%= f.text_field :remarks %></td>
+
+       <td><%= f.submit "Prescribe" %></td> </tr>
+    </table>
+    <input type="hidden" name="prescription[department_id]" value= <%= params[:department] %>>
+    <input type="hidden" name="prescription[appointment_id]" value= <%=  params[:appointment] %>>
+    <input type="hidden" name="test_id" value= <%=  params[:test_id] %>>
+<% end %>
+<br />
+<br/>
+<div id = 'prescription-list'> <%= render :partial => '/laboratory/prescriptions/prescreptions'%> </div>

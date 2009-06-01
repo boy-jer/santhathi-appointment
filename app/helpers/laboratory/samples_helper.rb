@@ -1,0 +1,2 @@
+module Laboratory::SamplesHelper
+end

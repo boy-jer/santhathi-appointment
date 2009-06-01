@@ -1,0 +1,38 @@
+<div class='continer-show'>
+  <div class='continer-show-inner'>
+     <h3>Patient Detail</h3>
+     <table class="form-table">
+       <tr><th><b>Reg date:</b></th><td><%=h @patient.reg_date %></td></tr>
+       <tr><th><b>Name:</b></th><td><%=h @patient.patient_name %></td></tr>
+       <tr><th><b>Age:</b></th><td><%=h calculate_age(@patient.dob) %></td></tr>
+       <tr><th><b>DOB:</b></th><td><%=h @patient.dob %></td></tr>
+       <tr><th><b>Gender:</b></th><td>
+        <%=h @patient.gender %></td></tr>
+
+
+       <tr><th><b>Spouse name:</b></th><td><%=h @patient.spouse_name %></td></tr>
+       <tr><th><b>Address:</b></th><td><%=h @patient.address %></td></tr>
+       <tr><th><b>Contact No:</b></th><td><%=h @patient.contact_no %></td></tr>
+    </table>
+    <% unless @patient.spouse.nil?%>
+        <% spouse = Patient.find(@patient.spouse) %>
+            <h3>Spouse Detail</h3>
+          <table class="form-table">
+             <tr><th><b>Reg date:</b></th><td><%=h spouse.reg_date %></td></tr>
+             <tr><th><b>Name:</b></th><td><%=h spouse.patient_name %></td></tr>
+             <tr><th><b>Age:</b></th><td><%=h calculate_age(spouse.dob) %></td></tr>
+             <tr><th><b>Gender:</b></th><td><%=h spouse.gender %></td></tr>
+             <tr><th><b>Contact No:</b></th><td><%=h spouse.contact_no%></td></tr>
+
+          </table>
+
+    <% end %>
+    <br/>
+<%= link_to "<span>New Appointment</span>", new_pms_appointment_url(:patient_id => @patient.id), :class=> "button" %>
+  </div>
+</div>
+
+<script type="text/javascript">
+  jQuery(".continer-show").corner("corner 5px")
+  jQuery(".continer-show-inner").corner("corner 5px")
+</script>

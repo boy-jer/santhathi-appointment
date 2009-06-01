@@ -1,0 +1,21 @@
+<div class='continer'>
+  <div class='continer-inner'>
+<h3>New sample</h3>
+
+<% form_for(:sample ,:url => laboratory_samples_url(),:html => { :method => :post }) do |f| %>
+  <%= f.error_messages %>
+
+<table cellpadding="5px" class="form-table">
+   <tr><th> <%= f.label :sample_name %>:</th>
+    <td><%= f.text_field :sample_name,:class=>"textbox" %></td></tr>
+ <tr><th><%= f.label :description %>:</th>
+  <td>    <%= f.text_field :description ,:class=>"address"%></td></tr>
+ <tr><th><%= f.label :used_in_diagnosis_of %>:</th><td>
+    <%= f.text_field :used_in_diagnosis_of,:class=>"address" %></td></tr>
+ </table><br/>
+ <%= image_submit_tag "create.gif" %>
+
+<% end %>
+ <%= link_to 'Back', laboratory_samples_path %>
+</div>
+</div>

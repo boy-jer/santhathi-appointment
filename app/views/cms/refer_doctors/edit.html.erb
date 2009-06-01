@@ -1,0 +1,41 @@
+<div class='continer'>
+<h3>Editing Refer Doctor</h3>
+
+<% form_for(:refer_doctor ,:url => cms_appointment_refer_doctor_path(:appointment_id => @appointment ,:id =>@refer_doctor) ,
+:html => { :method => :put } ) do |f| %>
+  <%= f.error_messages %>
+
+<table cellpadding="5px" class="form-table">
+  <tr><th> Reference Date: </th><td> <%= calendar_date_select_tag "refer_doctor[reference_date]" ,Date.today , :class =>"textbox" %></td> </tr>
+  <tr><th> Refer To Department: </th> <td> <%= select :departament, :id, [['Select department' , '']] + Department.departments_for_select_list %></td> <%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner1",
+              :style =>"display: none;" ) %></td> </tr>
+  <tr><th> Doctor:  </th> <td><div id="doctors"><%=render :partial => 'pms/appointments/doctors_list', :locals => {:f => f, :doctors => doctors_list} %></div></td> </tr> </td> </tr>
+  <tr><th> Remarks: </th> <td><%= f.text_area :remarks ,:class => "textbox" %> </td> </tr>
+
+
+
+  </table>
+<br/>
+
+<%= observe_field(:departament_id, :frequency => 0.5,
+                    :before => "Element.show('spinner1')",
+                    :success => "Element.hide('spinner1')",
+                    :url => update_doctors_list_pms_appointments_url,
+                    :method => :get,
+                    :with => "'department_id=' + value"
+                   ) %>
+
+
+
+  <br/><br/>
+    <%= f.submit 'Update' %>
+
+<% end %>
+
+
+<%= link_to 'Back', cms_appointment_refer_doctors_path(:appointment_id => @appointment) %>
+
+</div>

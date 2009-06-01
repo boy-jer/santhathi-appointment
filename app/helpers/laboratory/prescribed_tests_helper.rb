@@ -1,0 +1,2 @@
+module Laboratory::PrescribedTestsHelper
+end

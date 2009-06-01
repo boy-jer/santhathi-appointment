@@ -1,0 +1,55 @@
+<div class='continer'>
+  <div class='continer-inner'>
+  <h3>New Service</h3>
+
+  <% form_for(:service , :url => cms_services_path, :html => {:method =>'post',:id => 'main_form'}) do |f| %>
+  <%= f.error_messages %>
+
+  <table class="form-table">
+     <tr> <th><%= f.label :department %>:</th>
+     <td><%= f.select :department_id, [['Select department' , '']] + Department.departments_for_select_list %></td> <th COLSPAN=2>Service - Visit Type Mapping </th></tr>
+     <tr><th> <%= f.label :name %>:</th><td>
+     <%= f.text_field :name, {:class => 'textbox'} %></td>
+
+     <th> <%= f.label :first_visit %>:</th>
+     <td> <%= f.text_field :first_visit, {:class => 'textbox-small'} %> &nbsp; %</td>
+     </tr>
+
+     <tr><th> <%= f.label :description %>:</th><td>
+     <%= f.text_field :description, {:class => 'address'} %></td>
+
+     <th> <%= f.label :follow_up_visit %>:</th><td>
+     <%= f.text_field :follow_up_visit, {:class => 'textbox-small'} %> &nbsp; %</td>
+    </tr>
+
+     <tr><th> <%= f.label :cost %>:</th><td>
+     <%= f.text_field :cost, {:class => 'textbox-small'} %></td></tr>
+
+     <tr> <th> Parent Service: </th>
+          <td colspan=3>
+             <div id="sidetree"> <ul id='tree'><div id='child_list'> </div></ul> </div>
+             <%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner",
+              :style =>"display: none;" ) %>
+         </td>
+     </tr>
+  </table> <br/>
+
+  <input type="hidden" id = "service_parent_id", name="service[parent_id]" value="">
+  <%= image_submit_tag "create.gif" %>
+
+
+  <%= observe_field(:service_department_id, :frequency => 0.5,
+                    :before => "Element.show('spinner')",
+                    :success => "Element.hide('spinner')",
+                    :url => child_list_cms_services_url,
+                    :method => :get,
+                    :with => "'department=' + value"
+                   ) %>
+
+  <% end %>
+
+  </div>
+</div>

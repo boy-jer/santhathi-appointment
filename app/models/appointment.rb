@@ -16,6 +16,8 @@ class Appointment < ActiveRecord::Base
   has_one :discharge_summary
   has_one :next_appointment_remark
   has_one :clinical_comment
+  has_many :pharmacy_prescriptions
+  has_many :refer_doctors
 
   validates_presence_of :doctor_id, :reason_id,:mode_id
 

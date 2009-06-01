@@ -1,0 +1,19 @@
+<div class='continer'>
+  <div class='continer-inner'>
+<h3>New Pharmacy Course List</h3><br/>
+
+
+<% form_for(:pharmacy_course_list , :url => cms_pharmacy_course_lists_path ,:html => { :method => :post }) do |f| %>
+  <%= f.error_messages %>
+
+  <table cellpadding="5px" class="form-table">
+  <tr><th>  <%= f.label :course_type_name %>:</th><td>
+    <%= f.text_field :course_type_name,:class=>"textbox" %></td></tr>
+ </table><br/>
+      <%= image_submit_tag "create.gif" %>
+
+<% end %>
+<%= link_to 'Back', cms_pharmacy_course_lists_path %>
+
+</div>
+</div>

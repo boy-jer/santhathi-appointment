@@ -1,0 +1,27 @@
+<div class='continer'>
+
+<h3>Test Details</h3><br/>
+
+<% form_for(:lab_test ,:url => laboratory_lab_test_path(@lab_test) ,:html => { :method => :put }) do |f| %>
+  <%= f.error_messages %>
+
+<table cellpadding="5px" class="form-table">
+    <tr> <th><%= f.label :test_name %>:</th>
+     <td><%= f.text_field :name, {:class => 'textbox'} %></td> </tr>
+
+     <tr><th><label>Approximate Time For Test:</label></th> <td><%= time_select("lab_test", "duration")  %></td></tr>
+     <tr> <th><%= f.label :pre_requisites %>:</th>
+     <td><%= f.text_field :pre_requisites, {:class => 'address'} %></td> </tr>
+</table> <br />
+<table>
+  <tr><td><%= f.submit "Save" %> </td>
+      <td><%= link_to "<span>Sample Specfications</span>", laboratory_lab_test_sample_specfications_path(@lab_test), :class => :button %> </td>
+      <td><%= link_to "<span>Parameter Specfications</span>",  laboratory_lab_test_parameter_specifications_path(@lab_test), :class => :button %> </td>
+      <td><%= link_to "<span>Test List</span>",  laboratory_lab_tests_path , :class => :button %> </td>
+  </tr>
+</table>
+<% end %>
+
+
+
+</div>

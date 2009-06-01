@@ -1,0 +1,2 @@
+module Laboratory::PrescriptionsHelper
+end

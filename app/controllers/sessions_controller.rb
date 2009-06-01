@@ -5,13 +5,11 @@ class SessionsController < ApplicationController
   layout 'login'
 
   def new
-  	 	puts "xxxxxxxxxxxxxxxxxxxxxxxxx #{current_user}"
   	if 1 #current_user.has_role?(:admin)
   		puts "pppppppppppppppppppppp"
  	   redirect_to admin_dashboard_index_path, :method => :get if logged_in?
   	else
-  		puts "zzzzzzzzzzzzzzzz"
-    	redirect_to appointments_url, :method => :get if logged_in?
+    	redirect_to pms_appointments_url, :method => :get if logged_in?
    	end
   end
 
@@ -45,7 +43,7 @@ class SessionsController < ApplicationController
   def successful_login
     new_cookie_flag = (params[:remember_me] == "1")
     handle_remember_cookie! new_cookie_flag
-    redirect_to appointments_url
+    redirect_to pms_appointments_url
     flash[:notice] = "Logged in successfully"
   end
 

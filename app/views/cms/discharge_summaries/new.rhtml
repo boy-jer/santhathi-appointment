@@ -1,0 +1,35 @@
+<div class='continer'>
+
+<h3>New Discharge Summary</h3><br/>
+
+<% form_for(:discharge_summary ,:url=>cms_appointment_discharge_summary_path(:appointment_id => @appointment),:html=>{:method=>:post} ) do |f| %>
+   <%= f.error_messages %>
+
+<table cellpadding="5px" class="form-table">
+     <tr><th>  <%= f.label :Date_Of_Preparation %>:</th><td>
+    <%= f.calendar_date_select  :preparation ,:class =>'textbox'%></td></tr>
+   <tr><th>
+    <%= f.label :Complaints %>:</th><td>
+    <%= f.text_area :complaints,:class =>'textbox' %></td></tr>
+   <tr><th>
+    <%= f.label :Symptoms %>:</th><td>
+    <%= f.text_area :symptoms,:class =>'textbox' %></td></tr>
+   <tr><th>
+    <%= f.label :Line_Of_Treatment %>:</th><td>
+    <%= f.text_area :treatment ,:class =>'textbox'%></td></tr>
+   <tr><th>
+    <%= f.label :Treatment_result %>:</th><td>
+    <%= f.text_area :treatment_result,:class =>'textbox' %></td></tr>
+   <tr><th>
+    <%= f.label :remarks %>:</th><td>
+    <%= f.text_area :remarks,:class =>'textbox' %></td></tr>
+    </table>
+    <br/><br/>
+   <%= image_submit_tag "create.gif" %>
+<% end %>
+
+
+<%= link_to "Back", new_cms_appointment_clinical_screen_path(@appointment) %>
+
+
+</div>

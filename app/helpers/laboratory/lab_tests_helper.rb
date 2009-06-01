@@ -1,0 +1,2 @@
+module Laboratory::LabTestsHelper
+end

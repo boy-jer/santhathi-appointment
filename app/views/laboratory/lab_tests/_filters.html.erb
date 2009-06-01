@@ -1,0 +1,24 @@
+<% form_tag(laboratory_lab_tests_url, :method => :get, :id => "search_form") do %>
+   <table class="search-table">
+     <tr>
+       <th>Lab Test Name :</th>
+      <td>
+      <%fields_for @search do |f|%>
+         <% f.fields_for @search.conditions do |p| %>
+            <%= p.text_field :name_like ,:class =>'textbox' %></td>
+         <%end%>
+      <%end%>
+	 </tr>
+  </table>
+<% end %>
+
+<%= observe_form("search_form", :frequency => 1,
+                 :before => "Element.show('spinner')",
+                 :success => "Element.hide('spinner')",
+                 :url => laboratory_lab_tests_url, :method => :get) %>
+
+<%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner",
+              :style =>"display: none;" ) %>

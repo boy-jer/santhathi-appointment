@@ -1,0 +1,51 @@
+<div class='continer'>
+<h3>Editing Pharmacy Prescription</h3><br/>
+
+<% form_for(:pharmacy_prescription ,:url =>  cms_appointment_pharmacy_prescription_path( @appointment ,@pharmacy_prescription),:html => {:method => :put} ) do |f| %>
+  <%= f.error_messages %>
+
+  <table cellpadding="5px" class="form-table">
+     <tr><th> Prescribing Date: </th><td><%= f.calendar_date_select :prescribing_date , :class =>'textbox' %> </td> </tr>
+     <tr><th>Select Item:</th><td> <%= f.collection_select :pharamacy_item_information_id,PharamacyItemInformation.pharamacy_item_information_list, :id,:item_name, options ={:prompt => "-Select a Item"} %><%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner1",
+              :style =>"display: none;" ) %></td> </tr>
+     <tr><th>Frequency:</th><td>
+     <%= f.collection_select :pharmacy_dosage_list_id ,PharmacyDosageList.pharamacy_dosage_lists ,:id ,:dosage_type_name ,options ={:prompt => "-Select"}%>
+
+
+      </td> </tr>
+       <tr><th>Course Start Date:</th><td><%= f.calendar_date_select :course_start_date , :class =>'textbox' %> </td> </tr>
+     <tr><th>Course Duration:</th><td> <%= f.text_field :course_duration,:class =>'textbox' %></td> </tr>
+     <tr><th>Quantity </th><td> <%= f.text_field :quantity,:class =>'textbox' %></td> </tr>
+
+     <tr><th>Time Of Prescription:</th><td><%= f.time_select :time_of_prescription %> </td> </tr>
+     <tr><th>Route:</th><td> <%= f.collection_select :pharmacy_course_list_id, PharmacyCourseList.pharamacy_course_lists ,:id ,:course_type_name ,options = { :prompt =>"-Select" }%> </td> </tr>
+     <tr><th>Course End Date:</th><td><%= f.calendar_date_select :course_end_date , :class =>'textbox' %> </td> </tr>
+     <tr><th>Other Remarks:</th><td><%= f.text_area :other_remarks ,:class =>'textbox'%> </td> </tr>
+
+
+</table>
+
+    <%= f.submit 'Update' %>
+
+<% end %>
+ <%= observe_field(:pharmacy_prescription_pharamacy_item_information_id, :frequency =>0.6,
+                 :before => "Element.show('spinner1')",
+                 :success => "Element.hide('spinner1')",
+                 :url => { :action=>'pharamacy_item_detail' },
+                 :method => :get,
+                 :with => "'pharamacy_item_information_id=' + value") %>
+
+ <%= observe_field(:pharmacy_prescription_course_start_date, :frequency => 0.6,
+                    :before => "Element.show('spinner1')",
+                    :success => "Element.hide('spinner1')",
+                    :url => {:action => 'calculate_end_date' },
+                    :method => :get,
+                    :with => "'start_date=' + value+'&duration=' + $('pharmacy_prescription_course_duration').value"
+                   ) %>
+<%= link_to 'Show', cms_appointment_pharmacy_prescription_path(:appointment_id => @appointment,:id =>@pharmacy_prescription) %> |
+<%= link_to 'Back', cms_appointment_pharmacy_prescriptions_path(:appointment_id => @appointment) %>
+
+</div>

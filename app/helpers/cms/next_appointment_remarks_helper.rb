@@ -1,0 +1,2 @@
+module  Cms::NextAppointmentRemarksHelper
+end

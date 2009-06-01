@@ -1,0 +1,45 @@
+<div class='continer'>
+  <h3>Listing Refer Doctors </h3>
+<% unless @refer_doctors.blank? %>
+ <table class="listing">
+ <tr>
+     <th> </th>
+     <th>Date of Reference </th>
+     <th>Referred Dept. </th>
+     <th>Referred Doctor </th>
+     <th>Status </th>
+     <th>Edit | Delete </th>
+ </tr>
+
+<% @refer_doctors.each do |refer_doctor| %>
+  <tr>
+   <td> </td>
+  <td> <%=h refer_doctor.reference_date %></td>
+   <td><%= h refer_doctor.doctor.department.dept_name %> </td>
+   <td><%=h refer_doctor.doctor.name %> </td>
+   <td> <%=h refer_doctor.remarks %></td>
+
+
+    <td> <%= link_to 'Edit', edit_cms_appointment_refer_doctor_path(:appointment_id => @appointment,:id => refer_doctor) %> |
+        <%= link_to 'Destroy', cms_appointment_refer_doctor_path(:appointment_id => @appointment ,:id => refer_doctor), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<%else%>
+<table class="listing">
+ <tr>
+     <th> </th>
+     <th>Date of Reference </th>
+     <th>Referred Dept. </th>
+     <th>Referred Doctor </th>
+     <th>Status </th>
+     <th> Show | Edit | Delete </th>
+ </tr>
+ </table><br/>
+No Refer To Doctor Details For the Patient
+
+ <%end%>
+
+<br /><br/>
+
+<%= link_to '<span>New </span>', new_cms_appointment_refer_doctor_path(:appointment_id => @appointment) ,:class =>"button" %>

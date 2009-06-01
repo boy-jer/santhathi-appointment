@@ -1,0 +1,19 @@
+<div class='continer'>
+
+<h3>Editing Next Appointment Remark</h3><br/>
+
+<% form_for(:next_appointment_remark,:url=>cms_appointment_next_appointment_remark_path(@next_appointment_remark.appointment,:id=>@next_appointment_remark),:html=>{:method => :put }) do |f| %>
+
+  <%= f.error_messages %>
+<table cellpadding="5px" class="form-table">
+ <tr> <th>
+    <%= f.label :remarks %></th><td>
+    <%= f.text_field :remarks ,:class =>'textbox' %></td></tr>
+    </table><br/><br/>
+
+    <%= f.submit 'Update' %>
+
+<% end %>
+
+
+</div>

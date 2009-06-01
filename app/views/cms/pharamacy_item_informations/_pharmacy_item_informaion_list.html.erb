@@ -1,0 +1,54 @@
+<h3>Pharamacy Item Information</h3>
+
+<br/>
+
+<table class="listing">
+  <tr>
+    <th>Item name</th>
+    <th>Item code</th>
+    <th>Uom</th>
+    <th>Category name</th>
+    <th>User sku</th>
+    <th> View Detail </th>
+    <th>Show | Modify | Delete</th>
+  </tr>
+
+<% for pharamacy_item_information in @pharamacy_item_informations %>
+  <tr>
+    <td><%=h pharamacy_item_information.item_name %></td>
+    <td><%=h pharamacy_item_information.item_code %></td>
+    <td><%=h pharamacy_item_information.uom %></td>
+    <td><%=h pharamacy_item_information.category_name %></td>
+    <td><%=h pharamacy_item_information.user_sku %></td>
+
+    <td> <%= pharamacy_item_information.pharamacy_item_information_detail.blank? ? (link_to "New Detail" , new_cms_pharamacy_item_information_pharamacy_item_information_detail_path(:pharamacy_item_information_id => pharamacy_item_information.id) ): (link_to "Edit Detail" , edit_cms_pharamacy_item_information_pharamacy_item_information_detail_path(:pharamacy_item_information_id =>pharamacy_item_information.id ,:id =>pharamacy_item_information.pharamacy_item_information_detail.id ) )%></td>
+
+    <td><%= link_to 'Show', cms_pharamacy_item_information_path(pharamacy_item_information),:rel=> "facebox" %> | <%= link_to 'Modify', edit_cms_pharamacy_item_information_path(pharamacy_item_information) %> | <%= link_to 'Delete', cms_pharamacy_item_information_path(pharamacy_item_information), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<table class='table-bottom'>
+  <tr class="table-footer">
+      <td colspan = 3><%= link_to "<span>New </span>", new_cms_pharamacy_item_information_path(), :class=> "button" %></td>
+      <td colspan = 1> <%= remote_per_page_select %></td>
+      <td colspan = 2>  <% form_tag(cms_pharamacy_item_informations_url, :method => :get, :id => "goto") do %>
+                                        <% fields_for @search do |f|%>
+                                          <%= f.text_field :page, :class => 'textbox-tiny' %>
+
+                                       <%end -%>
+                                     <%end-%>
+
+
+        </td>
+      <td colspan = 5> <% if @pharamacy_item_informations.size > 1 %>
+                          <div class="pagination">
+                                <%= remote_page_links %>
+                          </div>
+  <% end %></td>
+  </tr>
+</table>
+<%= observe_form("goto", :frequency => 1,
+                 :before => "Element.show('spinner')",
+                 :success => "Element.hide('spinner')",
+                 :url => cms_pharamacy_item_informations_url, :method => :get) %>

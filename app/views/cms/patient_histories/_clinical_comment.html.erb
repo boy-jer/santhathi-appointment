@@ -1,0 +1,11 @@
+
+<br/><div>
+<b>&nbsp; &nbsp;  Showing Clinical Comment </b> <br/><br/>
+   <% unless @clinical_comment.blank? %>
+   <table class="form-table">
+
+   		<tr><th>Commet: </th><td> <%=h @clinical_comment.commet %> </td></tr>
+   </table>
+   <%else%>
+       No Information Available for Clinical Comment
+   <%end%>

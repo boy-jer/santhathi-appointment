@@ -1,0 +1,22 @@
+<div class='continer'>
+  <div class='continer-inner'>
+
+<h3>Editing measurement_unit</h3><br/>
+
+<% form_for(:measurement_unit,:url => laboratory_measurement_unit_path(@measurement_unit) ,:html => { :method => :put }) do |f| %>
+    <%= f.error_messages %>
+<table cellpadding="5px" class="form-table">
+ <tr><th><%= f.label :name %>:</th>
+     <td><%= f.text_field :name ,:class=>"textbox"%></td></tr>
+  <tr><th><%= f.label :abbreviation %>:</th>
+      <td><%= f.text_field :abbreviation,:class=>"textbox" %></td></tr>
+  <tr><th><%= f.label :description %>:</th>
+      <td><%= f.text_field :description ,:class=>"address"%></td></tr>
+</table><br /><br/>
+   &nbsp;   &nbsp;   &nbsp;   &nbsp; <%= f.submit "update" %>
+
+<% end %>
+<%= link_to 'Back', laboratory_measurement_units_path %>
+
+
+</div></div>

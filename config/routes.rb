@@ -1,35 +1,11 @@
-
-# See how all your routes lay out with "rake routes"
 ActionController::Routing::Routes.draw do |map|
 
-  map.resources :vital_signs
-
-  map.resources :pms_reports,:collection =>{:date_wise_reports=>:get ,:department_wise_report=>:get,  	:doctor_wise_report =>:get ,:update_doctors =>:get,:appointment_type_report=>:get,:visit_type_report=>:get}
-  map.resources :pharamacy_item_informations
-
-  map.resources :pharmacy_course_lists
-
-  map.resources :pharmacy_dosage_lists
-
-  map.resources :disease_lists
-
-  map.resources :registration_summaries
-
-  map.resources :deactivate_slots
-
-  map.resources :parameters
-
-  map.resources :samples
-
-  map.resources :measurement_units
-
-   map.resources :services, :collection=>{:child_list =>:get}
  # map.resources :roles
-   map.resources :prescribed_tests
+
 
   map.resources :user_roles
 
-  map.resources :laboratory_test_results, :collection=>{:details =>:get}
+
   # RESTful rewrites
 
   map.signup   '/signup',   :controller => 'users',    :action => 'new'
@@ -54,32 +30,50 @@ ActionController::Routing::Routes.draw do |map|
 
 
 
-
-
-  map.resources :patients ,:collection =>{:associate_spouse=>:post, :associate_couple=>:get}
-  map.resources :patients do |patient|
-    patient.resources :patient_appointments, :as => :pappointments
-  end
-
-  map.resources :lab_tests ,:has_many =>[:sample_specfications, :parameter_specifications]
-
-  map.resources :departments
-  map.resources :doctors
   map.root :controller => 'sessions', :action => 'new'
   map.resource :session
-  map.resources :pms
+
   # Profiles
   map.resources :profiles
-  map.resources :doctor_appointments
-  map.resources :doctor_patients, :collection => { :discharge => :post,:clinical_screen=>:get }
-  map.resources :cms
-  map.resources :prescribed_tests do |test|
-      test.resources :laboratory_reports
-  end
 
- map.resources :appointments, :member => {:confirm => :get},:collection=>{:update_doctors_list =>:get},:has_one =>[:clinical_screen,:discharge_summary,:next_appointment_remark,:clinical_comment]
-  map.resources :prescriptions
   # Administration
+
+
+
+   map.namespace(:laboratory) do |laboratory|
+   	 laboratory.root :controller => 'laboratory/prescriptions', :action => 'index'
+   	 laboratory.resources :prescriptions
+   	 laboratory.resources :parameters
+     laboratory.resources :samples
+     laboratory.resources :measurement_units
+     laboratory.resources :lab_tests ,:has_many =>[:sample_specfications, :parameter_specifications]
+     laboratory.resources :prescribed_tests , :has_many => :laboratory_reports
+     laboratory.resources :laboratory_test_results, :collection => { :details =>:get }
+   end
+
+
+   map.namespace(:cms) do |cms|
+   	 cms.root :controller => 'cms/doctor_patients', :action => 'index'
+   	 cms.resources :doctor_patients, :collection => { :discharge => :post,:clinical_screen=>:get }
+   	 cms.resources :doctor_appointments
+   	 cms.resources :services , :collection => { :child_list => :get }
+   	 cms.resources :deactivate_slots
+   	 cms.resources :disease_lists
+   	 cms.resources :doctors ,:has_one=>[:refer_doctor]
+     cms.resources :registration_summaries
+     cms.resources :pharamacy_item_informations,:has_one =>[:pharamacy_item_information_detail]
+  	 cms.resources :pharmacy_course_lists
+ 	   cms.resources :pharmacy_dosage_lists
+   	 cms.resources :appointments,:has_one => [:clinical_screen,:discharge_summary,:next_appointment_remark,:clinical_comment] ,
+   	                             :has_many => [:pharmacy_prescriptions,:refer_doctors ]
+     cms.resources :vital_signs
+   	 cms.resources :cms
+
+   	 cms.resources :patient_histories ,:collection => { :soap => :get ,:prescription_and_reports => :get , :pharmacy_prescription=> :get ,:transfer_history => :get ,:alerts => :get ,:discharge_summary => :get   ,:clinical_comment=> :get }
+   end
+
+
+
   map.namespace(:admin) do |admin|
     admin.root :controller => 'admin/dashboard', :action => 'index'
     admin.resources :settings
@@ -94,14 +88,34 @@ ActionController::Routing::Routes.draw do |map|
                                              :deleted   => :get }
     admin.resources :dashboard
     admin.resources :roles
-
   end
 
+
+
+  map.namespace(:pms) do |pms|
+  	pms.root :controller => 'pms/appointments', :action => 'index'
+    pms.resources :appointments, :member => {:confirm => :get} ,
+                                 :collection=>{:update_doctors_list =>:get}# ,
+                               #  :has_one =>[:clinical_screen,:discharge_summary,:next_appointment_remark,:clinical_comment]
+    pms.resources :pms
+    pms.resources :patients ,:collection =>{:associate_spouse=>:post, :associate_couple=>:get}
+    pms.resources :patients do |patient|
+                               patient.resources :patient_appointments, :as => :pappointments
+
+                            end
+    pms.resources :departments
+    pms.resources :doctors
+    pms.resources :select_options
+    pms.resources :pms_reports,:collection => { :date_wise_reports => :get  ,:department_wise_report => :get ,
+                                              	:doctor_wise_report => :get , :update_doctors => :get ,
+                                              	:appointment_type_report => :get , :visit_type_report => :get
+                                              }
+  end
 
   # Install the default routes as the lowest priority.
   #map.musics  ':section/:subsection/:id', :controller => 'select_options', :action => 'show'
   #map.connect ':section/:subsection/:id', :controller => 'select_options'
-  map.resources :select_options #TODO: Need to do it in better way
+  #map.resources :select_options #TODO: Need to do it in better way
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 

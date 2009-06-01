@@ -1,0 +1,28 @@
+Pharamacy Prescription
+
+<table class="search-table">
+<tr> <th>
+ 	Date</th><th>  	Time </th><th> 	Doctor  </th><th>	Item Name </th><th>	Frequency </th><th> 	Course Time</th><th>  	Duration </th><th> 	Start Date</th><th>  	End Date</th><th>  	Remarks</th><th></tr>
+<%unless @pharmacy_prescriptions.blank? %>
+ <% for ph in @pharmacy_prescriptions %>
+  <tr>
+    <td><%= ph.prescribing_date %></td>
+    <td><%= Time.parse(ph.time_of_prescription.to_s).strftime('%H:%M').to_s  %></td>
+    <td><%= ph.appointment.doctor.name %></td>
+    <td><%= ph.pharamacy_item_information.item_name %></td>
+    <td><%= ph.pharmacy_dosage_list.dosage_type_name %></td>
+    <td><%= ph.pharmacy_course_list.course_type_name %></td>
+    <td><%= ph.course_duration%></td>
+    <td><%= ph.course_start_date%></td>
+    <td><%= ph.course_end_date%></td>
+    <td><%= ph.other_remarks%></td>
+
+ <%end%>
+
+<%else%>
+	No Pharmacy Prescription Available.
+<%end%>
+
+
+
+ 	</table>

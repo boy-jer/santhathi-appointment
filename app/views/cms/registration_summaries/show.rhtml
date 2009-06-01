@@ -1,0 +1,15 @@
+<div class='continer'>
+  <div class='continer-inner'>
+  <h3>Showing Registration Summary</h3><br />
+  <table class="form-table">
+  <tr> <th>Registration summary:</th><td>
+  <%=h @registration_summary.name %></td></tr>
+ <tr> <th>Description:</th><td>
+  <%=h @registration_summary.description %></td></tr>
+</table>
+<br/><br/>
+
+
+<%= link_to 'Edit', edit_cms_registration_summary_path(@registration_summary) %> |
+<%= link_to 'Back', cms_registration_summaries_path %>
+</div></div>

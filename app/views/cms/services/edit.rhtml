@@ -1,0 +1,40 @@
+<div class='continer'>
+  <div class='continer-inner'>
+<h3>Editing Registration Summary</h3><br/>
+
+<% form_for(:service , :url => cms_service_path(@service) , :html =>{:method =>:put}) do |f| %>
+  <%= f.error_messages %>
+
+<table cellpadding="5px" class="form-table">
+
+      <tr><th> <%= f.label :name %>:</th><td>
+     <%= f.text_field :name, {:class => 'textbox'} %></td></tr>
+     <tr><th> <%= f.label :description %>:</th><td>
+     <%= f.text_field :description, {:class => 'address'} %></td></tr>
+  <tr>
+      <th> <%= f.label :first_visit %>:</th>
+     <td> <%= f.text_field :first_visit, {:class => 'textbox-small'} %> &nbsp; %</td>
+     </tr>
+    <tr>
+     <th> <%= f.label :follow_up_visit %>:</th><td>
+     <%= f.text_field :follow_up_visit, {:class => 'textbox-small'} %> &nbsp; %</td>
+    </tr>
+
+     <tr><th> <%= f.label :cost %>:</th><td>
+     <%= f.text_field :cost, {:class => 'textbox-small'} %></td></tr>
+
+
+  </table><br /><br/>
+   &nbsp;   &nbsp;   &nbsp;   &nbsp; <%= f.submit "update" %>
+   <br/><br/>
+<%= link_to "<span>Service List </span>", cms_services_path(), :class=> "button" %>
+
+<%= link_to "<span>Delete</span>",cms_service_path(@service), :confirm => 'Are you sure?', :method => :delete,:class =>'button'  %>
+
+
+<% end %>
+
+
+
+
+</div></div>

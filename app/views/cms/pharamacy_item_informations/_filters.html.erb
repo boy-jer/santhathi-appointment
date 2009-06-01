@@ -1,0 +1,28 @@
+<% form_tag(cms_pharamacy_item_informations_url, :method => :get, :id => "search_form") do %>
+   <table class="search-table">
+     <tr>
+       <th>Item Name </th> <th> Item Code</th> <th>Category name</th><th>  Reset </th>
+      </tr>
+      <tr>
+      <%fields_for @search do |f|%>
+         <% f.fields_for @search.conditions do |p| %>
+           <td> <%= p.text_field :item_name_like ,:class =>'textbox' %></td>
+           <td> <%= p.text_field :item_code_like ,:class =>'textbox' %></td>
+            <td><%= p.text_field :category_name_like ,:class =>'textbox' %></td>
+         <%end%>
+      <%end%>
+      <td><input type="reset" value="Reset"></td>
+	 </tr>
+  </table>
+<% end %>
+
+<%= observe_form("search_form", :frequency => 1,
+                 :before => "Element.show('spinner')",
+                 :success => "Element.hide('spinner')",
+                 :url => cms_pharamacy_item_informations_url, :method => :get) %>
+
+<%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner",
+              :style =>"display: none;" ) %>

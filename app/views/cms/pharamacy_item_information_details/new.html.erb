@@ -1,0 +1,21 @@
+<div class='continer'>
+<h3>New Pharamacy Item Information Detail</h3> <br/>
+
+<% form_for(:pharamacy_item_information_detail ,:url =>cms_pharamacy_item_information_pharamacy_item_information_detail_path(:pharamacy_item_information_id => @pharamacy_item_information), :html=>{:method => :post }) do |f| %>
+  <%= f.error_messages %>
+
+  <table cellpadding="5px" class="form-table">
+  <tr><th>Item Name : </th><td><label><%=h @pharamacy_item_information.item_name %> </label> </td> </tr>
+  <tr><th>Frequency :</th><td> <%= f.collection_select :pharmacy_dosage_list_id ,PharmacyDosageList.pharamacy_dosage_lists ,:id ,:dosage_type_name ,options ={:prompt => "-Select"}%> </td> </tr>
+  <tr><th>Quantity</th><td>  <%= f.text_field :quantity,:class =>'textbox' %></td> </td> </tr>
+  <tr><th>Course</th><td> <%= f.collection_select :pharmacy_course_list_id, PharmacyCourseList.pharamacy_course_lists ,:id ,:course_type_name ,options = { :prompt =>"-Select Course" }%> </td> </tr>
+  <tr><th>Course Douration</th><td><%= f.text_field :course_duration,:class =>'textbox' %>  </td> </tr>
+  <tr><th>Remarks</th><td><%= f.text_area :other_remarks ,:class =>'textbox'%>  </td> </tr>
+
+</table>
+    <%= f.submit 'Create' %>
+
+<% end %>
+
+<%= link_to 'Back', cms_pharamacy_item_informations_path %>
+</div>

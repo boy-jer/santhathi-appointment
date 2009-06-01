@@ -1,5 +1,6 @@
 class Doctor < ActiveRecord::Base
   has_many :appointments
+  has_one :refer_doctor
   belongs_to :department
   before_save :update_time
   validates_presence_of :department_id,:name,:designation

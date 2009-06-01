@@ -1,0 +1,12 @@
+   <h3 id='patient-search-header'> <img src="/images/search.gif" "border=0"> Patient Search:  <span>(Enter atleast one search parameter:)</span></h3>
+
+   <% form_remote_tag(:url =>{:action => :patient_search}, :html => {:id => 'search_form'}) do %>
+      <table>
+        <tr><td><%=label_tag 'Name:'%></td><td><%=label_tag 'Contact No:'%></td><td><%=label_tag 'Register No:'%></td></tr>
+        <tr><td><%= text_field_tag 'name', '', {:class => 'textbox'}%></td><td><%= text_field_tag 'number', '' , {:class => 'textbox'}%></td>
+		    <td><%= text_field_tag 'reg_num', '' , {:class => 'textbox'}%></td> <td><%=image_submit_tag('go.gif')%></td>
+		</tr>
+       </table>
+   <% end %>	  
+    			  	   
+   <div id='patient_search_results'> </div>	

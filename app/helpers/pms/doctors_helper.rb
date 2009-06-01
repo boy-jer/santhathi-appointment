@@ -1,0 +1,2 @@
+module Pms::DoctorsHelper
+end

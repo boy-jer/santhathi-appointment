@@ -1,0 +1,33 @@
+<%if params[:type] == 'Reason'%>
+<% form_tag(pms_select_options_url, :method => :get, :id => "search_form") do %>
+   <table class="search-table">
+
+     <tr>
+       <th>Reason Name:</th>
+     </tr>
+     <tr>
+      <%fields_for @search do |f|%>
+        <% f.fields_for @search.conditions do |p| %>
+            <td><%= p.text_field :name_like, :class => 'textbox' %>
+           <input id="search_conditions_type_is" name="search[conditions][type_is]" type="hidden" value="Reason"/>
+
+  <%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner",
+              :style =>"display: none;" ) %>
+            </td>
+         <%end%>
+      <%end%>
+
+    </tr>
+  </table>
+<% end %>
+
+
+<%= observe_form("search_form", :frequency => 1,
+                 :before => "Element.show('spinner')",
+                 :success => "Element.hide('spinner')",
+                 :url => pms_select_options_url, :method => :get) %>
+
+                 <%end%>

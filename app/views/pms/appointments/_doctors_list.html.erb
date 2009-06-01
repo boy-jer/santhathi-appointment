@@ -1,0 +1,3 @@
+<%fields_for :appointment do |f| %>
+  <%= f.select :doctor_id, [['Select doctor' , '']] + @doctors %>
+<%end%>  

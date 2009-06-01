@@ -1,0 +1,46 @@
+Prescription and Reports
+
+<table class="search-table">
+<tr> <th> Date </th>
+     <th> Time </th>
+     <th> Prescription To</th>
+     <th> Prescribed By</th>
+     <th> Service </th>
+     <th> Quantity </th>
+     <th> Follow up before </th>
+     <th> Status </th>
+     <th> Remarks </th>
+</tr>
+
+<tr>
+
+<% unless @prescription.blank? %>
+    <td> <%=h @prescription.p_date %></td>
+    <td><%=h  Time.parse(@prescription.p_time.to_s).strftime('%H:%M').to_s %></td>
+    <td><%=h  Department.find(@prescription.department_id).dept_name %></td>
+    <td><%=h  @appointment.doctor.name %></td>
+    <td> <%=h  1 %></td>
+    <td> <%=h @prescription.quantity %></td>
+    <td> <%=h @prescription.follow_up %></td>
+    <td> <%=h  1%></td>
+    <td> <%=h @prescription.remarks  %></td>
+    </tr>
+    <% unless @prescribed_tests.blank? %>
+   <% for test in @prescribed_tests %>
+    <td> <%=h test.created_at.to_date %></td>
+    <td><%=h Time.parse(test.created_at.to_s).strftime('%H:%M').to_s %></td>
+    <td><%=h  Department.find(@prescription.department_id).dept_name %></td>
+    <td><%=h  @appointment.doctor.name %></td>
+    <td> <%=h  test.lab_test.name %></td>
+    <td> <%=h @prescription.quantity %></td>
+    <td> <%=h @prescription.follow_up %></td>
+    <td> <%=h  1%></td>
+    <td> <%=h @prescription.remarks  %></td>
+    </tr>
+   <%end%>
+   <%end%>
+   <%else%>
+     No information for Prescription
+   <%end%>
+
+</table>

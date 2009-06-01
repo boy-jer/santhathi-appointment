@@ -1,0 +1,24 @@
+<div class='continer'>
+  <div class='continer-inner'>
+   <h3>Showing Deactivate slot</h3><br />
+     <table class="form-table">
+  <tr> <th>Department:</th><td>
+  <%=h Department.find(@deactivate_slot.department_id).dept_name unless @deactivate_slot.department_id.nil? %></td></tr>
+<tr> <th>Doctor name:</th><td>
+  <%=h Doctor.find(@deactivate_slot.doctor_id).name  unless @deactivate_slot.doctor_id.nil? %></td></tr>
+<tr><th>From date:</th><td>
+  <%=h @deactivate_slot.from_date %></td></tr>
+<tr><th>To date:</th><td>
+  <%=h @deactivate_slot.to_date %></td></tr>
+<tr><th>Time from:</th><td>
+  <%=h Time.parse(@deactivate_slot.time_from.to_s).strftime('%H:%M').to_s %></td></tr>
+<tr><th>Time to:</th><td>
+  <%=h Time.parse(@deactivate_slot.time_to.to_s).strftime('%H:%M').to_s %></td></tr>
+<tr><th>Reason for absence:</th><td>
+  <%=h @deactivate_slot.reason_for_absence %></td></tr>
+</table>
+
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<%= link_to 'Edit', edit_cms_deactivate_slot_path(@deactivate_slot) %> |
+<%= link_to 'Back', cms_deactivate_slots_path %>
+</div></div>

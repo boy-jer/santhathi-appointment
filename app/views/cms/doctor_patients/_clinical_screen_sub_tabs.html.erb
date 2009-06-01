@@ -1,0 +1,41 @@
+<ul id="collapse-section">
+   <li>
+      <a href="#"> Diagnosis & Prescription(Current Visit) <%=image_tag('arrow_down.png', :border => 0) %></a>
+      <ul>
+        <% for test in @lab_services %>
+           <li><%= link_to_remote("#{test.name} Prescription", 
+                                   :before => "Element.show('spinner')",
+                                   :success => "Element.hide('spinner')",
+                                   :url => { :controller => :prescriptions, :action => (@appointment.prescription.blank? ? 'new' : 'edit') },
+                                   :method => :get,
+                                   :with => "'department='+ #{@department.id} + '&test_id='+ #{test.id} + '&appointment=' + #{@appointment.id}") %></li>
+        <% end %>
+      </ul>
+   </li>
+
+   <li>
+       <a href="#"> Test Reports(Current Visit) <%=image_tag('arrow_down.png', :border => 0) %></a>
+       <ul>
+          <% unless @prescribed_tests.blank? %>
+             <% for test in @prescribed_tests %>
+                <li><%= link_to "#{test.lab_test.name}", prescribed_test_laboratory_report_path(:prescribed_test_id=> test.id, :id => test.lab_test.laboratory_report.id) unless test.lab_test.laboratory_report.blank? %> </li>
+             <%end%>
+           <% else %>
+             <br /><p> No report available yet.</p> <br />
+           <%end%>
+       </ul>	
+    </li>
+
+    <li>
+        <a href="#"> References <%=image_tag('arrow_down.png', :border => 0) %></a>
+	<ul>
+	    <li><%= link_to "BNF(British National Formulary)", departments_url %></li>
+	    <li><%= link_to "Alerts", departments_url %></li>
+	    <li><%= link_to "Registration Summary", departments_url %></li>
+	    <li><%= link_to "EMR(Patient History)", departments_url %></li>
+	    <li><%= link_to "EMR(Patient History)", departments_url %></li>
+	</ul>
+    </li>
+
+</ul>
+

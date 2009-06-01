@@ -1,0 +1,2 @@
+module Pms::PatientAppointmentsHelper
+end

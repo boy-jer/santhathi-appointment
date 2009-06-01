@@ -1,0 +1,24 @@
+<div class='continer'>
+<h3>Showing Pharmacy Prescription</h3><br/>
+  <table class="form-table">
+  <tr><th> Prescribing Date :</th> <td><%= @pharmacy_prescription.prescribing_date %></td> </tr>
+  <tr><th>Time of prescritpion : </th>  <td><%= Time.parse(@pharmacy_prescription.time_of_prescription.to_s).strftime('%H:%M').to_s  %></td></tr>
+  <tr><th> Doctor Name :</th>  <td><%= @pharmacy_prescription.appointment.doctor.name %></td></tr>
+  <tr><th> Item Name :</th>  <td><%= @pharmacy_prescription.pharamacy_item_information.item_name %></td></tr>
+  <tr><th>Dosage Type :</th>  <td><%= @pharmacy_prescription.pharmacy_dosage_list.dosage_type_name %></td></tr>
+  <tr><th> Course Type :</th>  <td><%= @pharmacy_prescription.pharmacy_course_list.course_type_name %></td></tr>
+  <tr><th>Course Duration :</th>  <td><%= @pharmacy_prescription.course_duration%></td></tr>
+  <tr><th>Course Start Date :</th>  <td><%= @pharmacy_prescription.course_start_date%></td></tr>
+  <tr><th> Course End Date :</th>  <td><%= @pharmacy_prescription.course_end_date%></td></tr>
+  <tr><th>Other Remarks :</th>  <td><%= @pharmacy_prescription.other_remarks%></td></tr>
+
+
+  </table>
+  <br/>
+
+
+
+<%= link_to 'Edit', edit_cms_appointment_pharmacy_prescription_path(:id =>@pharmacy_prescription,:appointment_id =>@appointment) %> |
+<%= link_to 'Back', cms_appointment_pharmacy_prescriptions_path(:appointment_id => @appointment) %>
+
+</div>

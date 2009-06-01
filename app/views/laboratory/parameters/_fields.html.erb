@@ -1,0 +1,39 @@
+<table class="form-table">
+      <tr><th><%= f.label :parameter_name %>:</th><td>
+      <%= f.text_field :parameter_name,:class=>"textbox" %></td></tr>
+
+      <tr><th><%= f.label :value_type %>:</th>
+      <td> <%= f.select :value_type, value_types, :class=>"textbox" %></td>
+      <%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner1",
+              :style =>"display: none;" ) %>
+      </tr>
+
+      <tr><th><%= f.label :measurement_unit %>:</th>
+      <td><%= f.select :measurement_unit_id, [['Select UOM', '']] + MeasurementUnit.mesurement_units %></td></tr>
+
+      <tr><th><%= f.label :description %>:</th>
+      <td><%= f.text_field :description,:class=>"address" %></td></tr>
+
+      <% unless @values.blank? %>
+            <tr><th><label> Multiple option saparated by ,</label>:</th> <td>
+            <%= f.text_field :values,:class=>"address" %></td></tr>
+
+      <%end%>
+</table>
+
+     <div id='multiple'>  </div>
+
+
+
+
+<%= observe_field(:parameter_value_type, :frequency => 1.5,
+                    :before => "Element.show('spinner1')",
+                    :success => "Element.hide('spinner1')",
+                    :url =>  { :controller => 'parameters', :action => 'multiple_section'  },
+                    :method => :post,
+                    :with => "'value_type=' + value"
+                  )
+%>

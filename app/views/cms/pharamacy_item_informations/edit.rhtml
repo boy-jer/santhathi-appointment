@@ -1,0 +1,33 @@
+
+<div class='continer'>
+  <div class='continer-inner'>
+<h3>Editing Pharamacy Item Information</h3><br/>
+
+
+
+<% form_for(:pharamacy_item_information , :url => cms_pharamacy_item_information_path(@pharamacy_item_information),:html =>{ :method => :put } ) do |f| %>
+  <%= f.error_messages %>
+<table cellpadding="5px" class="form-table">
+ <tr><th>
+    <%= f.label :item_name %>:</th><td>
+    <%= f.text_field :item_name ,:class=>"textbox"%></td></tr>
+   <tr><th>
+    <%= f.label :item_code %>:</th><td>
+    <%= f.text_field :item_code,:class=>"textbox" %></td></tr>
+  <tr><th>
+    <%= f.label :uom %>:</th><td>
+    <%= f.text_field :uom,:class=>"textbox" %></td></tr>
+  <tr><th>
+    <%= f.label :category_name %>:</th><td>
+    <%= f.text_field :category_name,:class=>"textbox" %></td></tr>
+  <tr><th>
+    <%= f.label :user_sku %>:</th><td>
+    <%= f.text_field :user_sku,:class=>"textbox" %></td></tr>
+ </table><br /><br/>
+   &nbsp;   &nbsp;   &nbsp;   &nbsp; <%= f.submit "update" %>
+
+<% end %>
+
+<%= link_to 'Back', cms_pharamacy_item_informations_path %>
+
+</div></div>

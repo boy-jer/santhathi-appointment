@@ -1,0 +1,20 @@
+<div class='continer'>
+    <label><h3>Appointment Type </h3></label>
+   <%form_tag("appointment_type_report") do -%>
+        <table cellpadding="5px" class="form-table">
+      <th><label> From :</label></th><td><%= calendar_date_select_tag "from_date" %>  </td> </tr>
+      <th><label> To :</label></th><td> <%= calendar_date_select_tag "to_date" %>   </td> </tr>
+      <tr>  <td>  <%= radio_button_tag :option, "day" ,true %> <label> DayWise </label> <%= radio_button_tag :option, "month" %><label> Monthwise</label></td></tr>
+   </table>
+
+  <%= submit_tag "go"%>
+
+   <% unless @reports.blank? -%>
+      <%= render(:partial => "mode_type_report_display") %>
+   <%end%>
+
+    <%end%>
+
+
+
+</div>

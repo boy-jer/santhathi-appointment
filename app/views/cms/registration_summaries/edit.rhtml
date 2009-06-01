@@ -1,0 +1,22 @@
+<div class='continer'>
+  <div class='continer-inner'>
+<h3>Editing Registration Summary</h3><br/>
+
+<% form_for(:registration_summary ,:url => cms_registration_summary_url(@registration_summary) ,:html =>{:method =>:put}) do |f| %>
+  <%= f.error_messages %>
+
+<table cellpadding="5px" class="form-table">
+  <tr><th>   <%= f.label :registration_summary %>:</th><td>
+   <%= f.text_field :name ,:class=>"textbox"%></td></tr>
+   <tr><th>
+    <%= f.label :description %>:</th><td>
+    <%= f.text_field :description,:class=>"textbox" %></td></tr>
+
+  </table><br /><br/>
+   &nbsp;   &nbsp;   &nbsp;   &nbsp; <%= f.submit "update" %>
+
+<% end %>
+
+<%= link_to 'Back', cms_registration_summaries_path %>
+
+</div></div>

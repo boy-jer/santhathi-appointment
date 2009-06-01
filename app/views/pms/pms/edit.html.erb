@@ -1,0 +1,12 @@
+<h1>Editing pms</h1>
+
+<% form_for(@pms) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @pms %> |
+<%= link_to 'Back', pms_path %>

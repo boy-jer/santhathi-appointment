@@ -1,0 +1,42 @@
+<div class='continer'>
+  <div class='continer-inner'>
+<p>
+  <b>Department:</b>
+  <%=h @doctor.department_id %>
+</p>
+
+<p>
+  <b>Doctor name:</b>
+  <%=h @doctor.name %>
+</p>
+
+<p>
+  <b>Designation:</b>
+  <%=h @doctor.designation %>
+</p>
+
+<p>
+  <b>Medical:</b>
+  <%=h @doctor.medical_id %>
+</p>
+
+<p>
+  <b>Working from:</b>
+  <%=h @doctor.working_from %>
+</p>
+
+<p>
+  <b>Working to:</b>
+  <%=h @doctor.working_to %>
+</p>
+
+<p>
+  <b>Comments:</b>
+  <%=h @doctor.comments %>
+</p>
+
+
+<%= link_to 'Edit', edit_pms_doctor_url(@doctor) %> |
+<%= link_to 'Back', pms_doctors_url %>
+</div>
+</div>

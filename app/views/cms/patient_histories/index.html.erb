@@ -1,0 +1,25 @@
+<div class='continer'>
+
+ <table class="search-table">
+  <tr><th> </th><th>  Visit Date </th> <th> PVR No(Patient Type)</th></tr>
+  <tr><td></td><td> <%= @appointment.appointment_date %></td><td><%= @appointment.patient.reg_no %></td></tr></table>
+
+
+
+<%= link_to_remote "SOAP" ,:url => {:action=>"soap", :controller=>"cms/patient_histories" ,:appointment_id => @appointment.id } %> |
+<%= link_to_remote "Prescription & Reports" ,:url => {:action=>"prescription_and_reports", :controller=>"cms/patient_histories" ,:appointment_id => @appointment.id } %> |
+<%= link_to_remote "Pharamacy Prescription" ,:url => {:action=>"pharmacy_prescription", :controller=>"cms/patient_histories" ,:appointment_id => @appointment.id } %> |
+<%= link_to_remote "Transfer History" ,:url => {:action=>"transfer_history", :controller=>"cms/patient_histories" ,:appointment_id => @appointment.id } %> |
+<%= link_to_remote "Discharge Summary" ,:url => {:action=>"discharge_summary", :controller=>"cms/patient_histories" ,:appointment_id => @appointment.id } %> | <%= link_to_remote "Clinical Comment" ,:url =>{:action=>"clinical_comment", :controller=>"cms/patient_histories" ,:appointment_id => @appointment.id } %>
+
+
+<div id= "patient-history">
+
+</div>
+<%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner1",
+              :style =>"display: none;" ) %>
+
+</div>

@@ -1,0 +1,11 @@
+<div class='continer'>
+     <% form_for :patient,:url=> pms_patients_url do |f| %>
+       <%= f.error_messages %>
+       <%= render :partial => @partial, :locals => {:f => f} %>
+       <p>
+         <%= f.submit "Create" %>
+       </p>
+     <% end %>
+
+     <%= link_to 'Back', pms_patients_url %>
+</div>

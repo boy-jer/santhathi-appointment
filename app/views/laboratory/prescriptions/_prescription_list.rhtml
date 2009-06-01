@@ -1,0 +1,64 @@
+  <h3>Prescription List</h3>
+
+
+<table class="listing">
+  <tr>
+    <th> <%= remote_order_by_link({ :appointment => { :patient => :reg_no }} , :text => "Hospital No") %>   </th>
+    <th><%= remote_order_by_link({ :appointment => { :patient => :id }} , :text => "PVR No") %>  </th>
+    <th> <%= remote_order_by_link({ :appointment => { :patient => :patient_name }} , :text => "Patient Name") %></th>
+    <th><%= remote_order_by_link({ :prescribed_tests => {:lab_test =>:name }} , :text => "Test Prescribed") %> </th>
+    <th> Patient Type(IP/OP)</th>
+    <th> Status </th>
+    <th>Test Report</th>
+    <th>View Report</th>
+   </tr>
+
+  <% for prescription in @prescriptions %>
+     <% for test in prescription.prescribed_tests %>
+        <tr class="<%= cycle('odd', 'even') %>" >
+          <% patient = prescription.appointment.patient %>
+          <td> <%=h patient.reg_no %>         </td>
+          <td> <%=h patient.id %>         </td>
+          <td> <%= patient.patient_name %>         </td>
+	     <td> <%= test.lab_test.name %> </td>
+          <td> OP </td>
+	  <td> completed </td>
+
+
+	  <td> <%= test.lab_test.laboratory_report.blank? ? (link_to "Create Test Report",new_laboratory_prescribed_test_laboratory_report_path(test)):(link_to "Edit Test Report",edit_laboratory_prescribed_test_laboratory_report_path(:prescribed_test_id => test,:id => test.lab_test.laboratory_report)) %></td>
+
+
+
+	  <td> <%= link_to "View Report", laboratory_prescribed_test_laboratory_report_path(:prescribed_test_id => test, :id => test.lab_test.laboratory_report) unless test.lab_test.laboratory_report.blank? %></td>
+	</tr>
+      <%end%>
+  <% end %>
+
+  <tr class="table-footer">
+   <td colspan = 1><%= remote_per_page_select %></td>
+        <td colspan = 1>
+          <% form_tag(laboratory_prescriptions_url, :method => :get, :id => "goto") do %>
+              <% fields_for @search do |f|%>
+                <%= f.text_field :page , :class => 'textbox-tiny' %></td>
+              <%end%>
+          <%end%>
+        </td>
+         <td colspan = 6> <% unless @prescriptions.blank? %>
+                             <div class="pagination">
+                                <%= remote_page_links %>
+                             </div>
+                           <% end %>
+         </td>
+  </tr>
+</table>
+<%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner1",
+              :style =>"display: none;" ) %>
+
+<%= observe_form("goto", :frequency => 1,
+                 :before => "Element.show('spinner')",
+                 :success => "Element.hide('spinner')",
+                 :url => laboratory_prescriptions_url, :method => :get) %>
+ </table>

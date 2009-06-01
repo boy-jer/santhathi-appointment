@@ -1,0 +1,29 @@
+<div class='continer'>
+<h2>Editing department</h2>
+<% form_for(:department, :url=> pms_department_url(@department),:html=>{:method=>:put}) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :dept_name %><br />
+    <%= f.text_field :dept_name %>
+  </p>
+  <p>
+    <%= f.label :abbrevation %><br />
+    <%= f.text_field :abbrevation %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :system_defined %><br />
+    <%= f.text_field :system_defined %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', pms_department_path(@department)%> |
+<%= link_to 'Back', pms_departments_path %>
+</div>

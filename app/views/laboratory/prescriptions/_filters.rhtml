@@ -1,0 +1,41 @@
+<% form_tag(laboratory_prescriptions_url, :method => :get, :id => "search_form") do %>
+   <table class="search-table">
+     <tr>
+       <th>PVR No</th><th>Hospital No</th> <th>Patient Name:</th><th>Prescribed Test </th>
+       <th rowspan='2'><input type="reset" value="Reset"> </th>
+     </tr>
+     <tr>
+      <% fields_for @search do |f|%>
+        <% f.fields_for @search.conditions do |p| %>
+            <% p.fields_for p.object.appointment do |appointment| %>
+                  <% appointment.fields_for appointment.object.patient do |patient| %>
+                     <td><%= patient.text_field :id_like, :class => 'textbox' %></td>
+                     <td><%= patient.text_field :reg_no_like, :class => 'textbox' %></td>
+                     <td><%= patient.text_field :patient_name_like, :class => 'textbox' %></td>
+                  <%end%>
+             <%end%>
+
+             <% p.fields_for p.object.prescribed_tests do |prescribed_tests| %>
+                   <% prescribed_tests.fields_for prescribed_tests.object.lab_test do |lab_test| %>
+                     <td><%= lab_test.text_field :name_like, :class => 'textbox' %></td>
+                   <%end%>
+             <%end%>
+
+         <%end%>
+       <%end%>
+
+       </tr>
+  </table>
+<% end %>
+
+
+<%= observe_form("search_form", :frequency => 1,
+                 :before => "Element.show('spinner')",
+                 :success => "Element.hide('spinner')",
+                 :url => laboratory_prescriptions_url, :method => :get) %>
+
+<%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner",
+              :style =>"display: none;" ) %>

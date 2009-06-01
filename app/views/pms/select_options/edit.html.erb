@@ -1,0 +1,25 @@
+<div class='continer'>
+
+     <h2>Editing <%= params[:type] %></h2>
+     <% form_for (:option, :url => pms_select_option_url(@option),:html => {:method =>:put }) do |f| %>
+     <%= f.error_messages %>
+
+     <p>
+       <%= f.label :name %><br />
+       <%= f.text_field :name, {:class => 'textbox'} %>
+     </p>
+     <p>
+       <%= f.label :abbrevation %><br />
+       <%= f.text_field :abbrevation, {:class => 'textbox'} %>
+     </p>
+     <p>
+       <%= f.label :description %><br />
+       <%= f.text_field :description, {:class => 'textbox'} %>
+
+       <table><tr><td><%= submit_tag "submit" %></td> </tr></table>
+     </p>
+
+   <% end %>
+<%= link_to 'Back', pms_select_options_url(:type =>@option.type) %>
+
+</div>

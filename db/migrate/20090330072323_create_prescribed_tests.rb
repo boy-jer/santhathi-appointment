@@ -4,6 +4,7 @@ class CreatePrescribedTests < ActiveRecord::Migration
       t.integer :prescription_id
       t.integer :lab_test_id
       t.string :result
+      t.timestamps
     end
   end
 
