@@ -2,7 +2,7 @@
 
  .droppy { display: block; margin: 0; padding: 0; position: relative; }
   .droppy li { display: block; list-style: none; margin: 0; padding: 0; float: left; position: relative; }
-  .droppy a { display: block; }
+  .droppy a { display: block; text-decoration: none;}
   .droppy ul { display: none; position: absolute; left: 0; margin: 0; padding: 0; }
   * html .droppy ul { line-height: 0; } /* IE6 "fix" */
   	.droppy ul a { zoom: 1; } /* IE6/7 fix */
@@ -16,12 +16,12 @@
 
 /* Everything else is theming */
 
-.droppy { background-color: #8DC3FA; height: 24px; }
+.droppy { background-color: #fff; height: 24px; }
 .droppy *:hover { background-color: none; }
 .droppy a { border-right: 1px solid white; color: white; font-size: 12px; padding: 6px; line-height: 1; }
-  .droppy li.hover a { background-color: black; }
+  .droppy li.hover a { background-color: #C6D2E3; }
   .droppy ul { top: 25px; }
-    .droppy ul li a { background-color: black; }
+    .droppy ul li a { background-color: #C6D2E3; }
       .droppy ul a.hover { background-color: #30A8C3; }
-   .droppy ul a { border-bottom: 1px solid white; border-right: none; opacity: 0.9; filter: alpha(opacity=90); }
+   .droppy ul a { border-bottom: 1px solid white; border-right: none; opacity: 1; filter: alpha(opacity=90); }
 /* .droppy ul a { border-bottom: none; } - I also needed this for IE6/7 */
