@@ -1,7 +1,0 @@
-
-<%unless @appointments.blank?%>
-<% for app in @appointments %>
-<li> <%= link_to app.appointment_date , cms_patient_history_path(1 ,:appointment_id => app.id),:rel => "facebox" %>  </li>
-<%end%>
-
-<%end%>
