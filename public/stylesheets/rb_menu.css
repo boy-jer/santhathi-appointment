@@ -1,0 +1,68 @@
+.menu {
+    font-family: arial, verdana, sans-serif;
+    position: relative;
+}
+
+.rb_toggle {
+    height: 25px;
+    line-height: 25px;
+    padding: 0 5px 0 0;
+}
+.rb_toggle span {
+    color: #999;
+    font-size: 11px;
+    font-weight: bold;
+    font-family: arial, verdana, sans-serif;
+    cursor: hand;
+    cursor: pointer;
+}
+.rb_toggle span.hover {
+    color: red;
+}
+
+.rb_menu {
+    position: absolute;
+    left: 50px;
+    top: 0;
+}
+
+.rb_menu ul,
+.rb_menu li {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.rb_menu li {
+    float: left;
+    height: 25px;
+    line-height: 25px;
+    padding: 0 10px 0 0;
+}
+.rb_menu a {
+    font-size: 16px;
+    font-weight: regular;
+    color: #f90;
+    text-decoration: none;
+}
+.rb_menu a:hover {
+    text-decoration: underline;
+}
+.rb_menu a.current {
+    color: #999;
+}
+
+
+.clearfix:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+
+.clearfix {display: inline-block;}
+
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
