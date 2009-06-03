@@ -5,8 +5,8 @@ body {
       /*background: #00c9ee repeat-x ;*/
       /*background: #55ABD5;*/
       /*background: #F5FAFC;*/
-      background: #D9E5F0;
-      color: #000;
+      background: #002960;
+      color: #4B4B4B;
       margin: 0;
       padding: 0;
       width: 100%;
@@ -14,24 +14,23 @@ body {
 
 #wrapper {
      margin: 0px auto;
-     width: 99.3%;
-     border-left: #9EB7CD 5px solid;
-        border-right: #9EB7CD 5px solid;
-          border-bottom: #9EB7CD 5px solid;
+     width: 100%;
 }
 
 .content{
 	margin: 0px;
         width: 100% ;
-        
+               padding-bottom: 25px;
 	}
 
 .content-body {
-        background-color: #fff;
+        background-color: #FAFAFA;
         width: 99.1%;
         margin: 0 auto;
-        
-        }
+        border-left: #BDD0EA 5px solid;
+        border-right: #BDD0EA 5px solid;
+        border-bottom: #BDD0EA 5px solid;
+        }
 
 .content-panel  {
  background: #fff;
@@ -42,7 +41,7 @@ body {
  width: 86.5%;
  float: right;
  height: 100%;
- border-left: #BDD0EA 1px solid;
+ border-left: #EEF4F9 1px solid;
 }
 
 
@@ -53,7 +52,7 @@ body {
  width: 13.1%;
  display: inline;
  position: relative;
- background: #fff;
+ background: #FAFAFA;
 
 }
 
@@ -139,8 +138,9 @@ line-height: 3px;
 
 h3 {
 font-size:14px;
-color: #3764A0;
-           margin-left: 5px;
+color: #3E5163;
+margin-left: 5px;
+
 }
 
 h3 span {
@@ -160,10 +160,11 @@ h3 span {
 #header h1 {
 	float: left;
 	font-weight: bold;
-	color: #B6C5DC;
+	color: #fff;
         font-size: 27px;
 	padding: 2px  0  0  5px ;
 	margin: 0px;
+
 }
 #header h1 span {
 	font-size: 0.4em;
@@ -361,7 +362,7 @@ h3 span {
            border-color: #ADC7F3;
            border-style: outset;*/
           /* border: 4px  #F6F6EE  solid;*/
-           min-height: 525px;
+           min-height: 470px;
            background: #fff; /* url(/images/tab.png) repeat-x;*/
            height: 100%;
            margin: 1px 0px;
@@ -526,17 +527,17 @@ url(/images/tab.png) repeat-x;
 /*.odd {background: #b8d3e0;}*/
 
 /*.listing tr:hover {background-color: #f2f7f9; color: #000;} not for IE*/
-.listing th {background: #EBF3FD;
+.listing th {background: #EEF2F5;
              color: #000;
              text-align: left;
-             padding: 0.2em .5em;
-             border:1px solid #BDCFE1;
+             padding: 0.1em .5em;
+             border:1px solid #D2DAE9;
              font-weight: normal;
             
             
 }
 
-.listing td { padding: 0.7em .5em .3em .5em; color: #000; border-bottom:1px solid #BDCFE1; background: #fafafc;}
+.listing td { padding: 0.5em .5em .3em .5em; color: #000; border-bottom:1px solid #BDCFE1;}
 
 
 .listing    { border-collapse: collapse;
@@ -545,14 +546,14 @@ url(/images/tab.png) repeat-x;
             border:1px solid #BDCFE1;
 }
 .listing a {
-	        color: #3764A0;
+	        color: #002F70;
 		text-decoration: none;
            }
 
 
 .table-header {background: url(/images/table_header.gif) repeat-x;}
 
-.table-bottom{ width: 100%; border:1px solid #ccc;  border-collapse: collapse;}
+.table-bottom{ width: 100%; border:1px solid #D2DAE9;  border-collapse: collapse;}
 .table-footer td {background: #EEF2F5; padding: 4px; }
 
 #patients tr:hover {background-color: #c7dfea; color: #ffffff;} /*not for IE*/
@@ -580,14 +581,14 @@ url(/images/tab.png) repeat-x;
 
 .form-table td {background-color: #ffffff; padding: 0.2em .8em; border:1px solid #e8ebec;}
 
-.form-table {border-collapse: collapse; width: 99%; border: 1px solid #e8ebec; margin-left: 5px;}
+.form-table {border-collapse: collapse; width: auto; border: 1px solid #e8ebec; margin-left: 5px;}
 
 .table-top td {background-color: #fff; padding: 0em }
 .table-top {border-collapse: collapse; width: 100%; }
 
 
 
-.search-table th {background: #EBF3FD /*url(/images/tab.png) repeat-x*/; color: #274776; padding: .3em .5em; border:1px solid #BDCFE1; text-align: left;  font-weight: normal; }
+.search-table th {background: #EEF2F5  /*url(/images/tab.png) repeat-x*/; color: #000; padding: .3em .5em; border:1px solid #BDCFE1; text-align: left;  font-weight: normal; }
 
 .search-table td {background-color: #fff; padding: .1em .5em; border:1px solid #BDCFE1; text-align: left; border-top:1px solid #fff;}
 
@@ -595,7 +596,7 @@ url(/images/tab.png) repeat-x;
 
 /* Menu */
 
-#menu { position: absolute; float: left; padding: 0; margin-left: 5px; list-style: none; }
+#menu { position: absolute; float: left; padding: 0; margin-left: 8px; list-style: none; }
 
 #menu ul{margin:0; padding:0px 0px 0px 0px; list-style:none; }
 
@@ -610,7 +611,6 @@ url(/images/tab.png) repeat-x;
 #menu li a {
 	display: block;
 	float: left;
-        background: #EDF2F3;
 	margin: 37px 3px 0px 0px;
 	padding: 5px 2px 0px 1px;
         border-left: #D7E3EF 1px solid;
@@ -630,7 +630,7 @@ url(/images/tab.png) repeat-x;
 #menu li a:hover {
 	display: block;
 	float: left;
-	margin:38px 3px 0px 0px;
+	margin:37px 3px 0px 0px;
 	padding: 5px 2px 0px 1px;
 	text-transform: uppercase;
 	text-decoration: none;
