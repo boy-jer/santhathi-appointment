@@ -1,27 +1,20 @@
-<ul id='menu1'>
-   	<li> <a href="#">Transact</a>
+<% unless @appointments.blank? %><ul id='menu1'>
+<% @appointments.each do |appointment| %>
+
+   	<li> <a href="#"><%=h  appointment.appointment_date  %>  <%=h appointment.id %></a>
  		 <ul>
-   			 <li><%= link_to "Appointments", pms_appointments_url%></li>
-   			 <li><%= link_to "Patient Records", pms_patients_url %></li>
-   			 <li><%= link_to "New Appointment", new_pms_appointment_url %></li>
-   			 <li><%= link_to "Registration For Couple",  new_pms_patient_url(:type=>1) %></li>
-   			 <li><%= link_to "Registration For Individual",  new_pms_patient_url(:type=>2) %></li>
-     	   <li><%= link_to "Associate Couple",   associate_couple_pms_patients_path() %></li>
+   		<li>	 <%= link_to_remote "Prescriptions" ,:url => { :action=>"prescription", :controller=>"cms/patient_histories" ,:appointment_id => appointment.id } %> </li><li>
+<%= link_to_remote "Reports" ,:url => {:action=>"reports", :controller=>"cms/patient_histories" ,:appointment_id => appointment.id } %></li><li>
+<%= link_to_remote "Pharamacy Prescription" ,:url => {:action=>"pharmacy_prescription", :controller=>"cms/patient_histories" ,:appointment_id => appointment.id } %> </li><li>
+
+<%= link_to_remote "Discharge Summary" ,:url => {:action=>"discharge_summary", :controller=>"cms/patient_histories" ,:appointment_id => appointment.id } %> </li><li> <%= link_to_remote "Clinical Comment" ,:url =>{:action=>"clinical_comment", :controller=>"cms/patient_histories" ,:appointment_id => appointment.id } %></li>
+
      </ul>
    	</li>
-   	<li><a href="#">Masters</a>
-  		<ul>
-  			 <li><%= link_to "Departments", pms_departments_url %></li>
-   			 <li><%= link_to "Doctors", pms_doctors_path %></li>
-   			 <li><%= link_to "Reasons", pms_select_options_url(:type => 'Reason') %></li>
-  			 <li><%= link_to "Visit type" ,pms_select_options_path(:type => 'VisitType') %></li>
-   		</ul>
-   	</li>
-   	<li><a href="#">Reports</a>
-  		<ul>
-   			 <li><%= link_to "Appointments reports" , pms_pms_reports_path(:type =>"Appointment")  %></li>
-   			 <li><%= link_to "Registration Reports" , pms_pms_reports_path(:type =>"Registration")  %></li>
-   			 <li><%= link_to "Visit Reports" , pms_pms_reports_path(:type =>"vist_report")  %></li>
-    		</ul>
-   	</li>
+
+
+<%end%>
 </ul>
+<%else%>
+  No  appointment Found For Patient <%= @patient %>
+<%end%>

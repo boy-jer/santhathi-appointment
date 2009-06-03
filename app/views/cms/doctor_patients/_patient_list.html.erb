@@ -4,12 +4,12 @@
       <thead>
       <tr>
         <th></th>
-        <th><%= remote_order_by_link ({:patient => :reg_no} , :text => "Hospital No.") %></th>
-        <th><%= remote_order_by_link ({:patient => :patient_name} , :text => "Patient Name") %></th>
-        <th><%= remote_order_by_link (:id , :text => "PVR No.") %></th>
+        <th><%= remote_order_by_link({:patient => :reg_no} , :text => "Hospital No.") %></th>
+        <th><%= remote_order_by_link({:patient => :patient_name} , :text => "Patient Name") %></th>
+        <th><%= remote_order_by_link(:id , :text => "PVR No.") %></th>
         <th><%= remote_order_by_link :doctor =>:name %></th>
-        <th><%= remote_order_by_link ({:department => :dept_name }, :text => "Department")%></th>
-        <th><%= remote_order_by_link ({:reason => :name }, :text => "Reason") %></th>
+        <th><%= remote_order_by_link({:department => :dept_name }, :text => "Department")%></th>
+        <th><%= remote_order_by_link({:reason => :name }, :text => "Reason") %></th>
         <th>History</th>
         <th>Clinical Screen</th>
         <th>Vitalsigns</th>
@@ -28,11 +28,9 @@
          <td><%= link_to 'Clinical screen', new_cms_appointment_clinical_screen_path(appointment)%></td>
          <td>
 
-<%=  appointment.patient.vital_signs.blank? ? (link_to 'Vitalsigns', new_cms_vital_sign_url(:patient_id => appointment.patient.id),:rel => "facebox") : (link_to 'Vitalsigns', edit_cms_vital_sign_path(:id => 1, :patient_id => appointment.patient.id),:rel => "facebox") %>
+         <%= link_to "Patient History" ,  {:action=>"show", :controller=>"cms/patient_histories",:id => appointment.patient.id } %>
 
-
-
-         </td>
+        </td>
        </tr>
      <%end%>
 <%end%>

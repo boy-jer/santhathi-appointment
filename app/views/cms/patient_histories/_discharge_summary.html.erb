@@ -1,6 +1,6 @@
 
 <br/><div>
-<b>&nbsp; &nbsp;  Showing Discharge Summary </b> <br/><br/>
+<h3> Discharge Summary </h3><br/>
   <% unless @discharge_summary.blank? %>
   <table class="form-table">
    <tr> <th>Preparation: </th><td><%=h @discharge_summary.preparation %> </td></tr>
@@ -11,7 +11,7 @@
    <tr><th>Remarks:</th><td> <%=h @discharge_summary.remarks %></td></tr>
 </table>
  <%else%>
-       No Information Available for Clinical Comment
+       No Information Available .
    <%end%>
 
 </div>

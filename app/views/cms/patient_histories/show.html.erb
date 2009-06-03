@@ -1,4 +1,23 @@
-<div class='continer'>
-  Full Patient History For :<b><%=@appointment.patient.patient_name %> </b>on Appointment Date :<b><%= @appointment.appointment_date %> </b>
+<table class="clinical-table">
+     <tr>
+       <th>Name:</th><td><%= @patient.patient_name %></td>
+       <th>Registration No:</th><td><%= @patient.reg_no %></td></tr>
+     <tr>
+       <th>Dob:</th><td><%= @patient.dob %></td>
+       <th>Age:</th><td><%= calculate_age(@patient.dob) %></td>
+       <th>Gender:</th><td><%= @patient.gender %></td>
+     </tr>
+
+    </table>
+
+   <br />
+
+
+<div id= "patient-history">
 
 </div>
+<%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner1",
+              :style =>"display: none;" ) %>

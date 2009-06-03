@@ -1,42 +1,35 @@
 class Cms::PatientHistoriesController < ApplicationController
   layout 'patient_history'
-  before_filter :find_appointment ,:only =>[:discharge_summary ,:clinical_comment ,:prescription_and_reports ,:pharmacy_prescription]
+  before_filter :find_appointment ,:except =>[:show,:index]
 
   def index
-  	@patient = Patient.find(2)
-  	@appointment = Appointment.find(37)
+  	@patient = Patient.find(65)
+  	@appointment = Appointment.find(6)
   end
 
 
 
 
   def show
-  	@appointment = Appointment.find(params[:appointment_id])
-  	@prescription = @appointment.prescription
-  	@prescribed_tests = @prescription.prescribed_tests
-  	@clinical_screen = @appointment.clinical_screen
-  	@laboratory_test_results = @appointment.laboratory_test_results
-
-  	render :layout =>false
+  	@patient = Patient.find(params[:id])
+  	@appointments = @patient.appointments
   end
 
-  def soap
-
-
-                     render :update do |page|
-                        page.replace_html 'patient-history', :partial => 'cms/patient_histories/soap'
-                      end
+  def prescription
+  	@prescription = @appointment.prescription
+ 		@prescribed_tests = @prescription.prescribed_tests
+    render :update do |page|
+      page.replace_html 'patient-history', :partial => 'cms/patient_histories/prescription'
+    end
 
  	end
 
 
- 	def prescription_and_reports
- 		@prescription = @appointment.prescription
- 		@prescribed_tests = @prescription.prescribed_tests
-
-                     render :update do |page|
-                        page.replace_html 'patient-history', :partial => 'cms/patient_histories/prescription_and_reports'
-                      end
+ 	def reports
+ 		@laboratory_reports = LaboratoryReport.find(:all,:conditions =>["appointment_id = ?", @appointment.id])
+ 		render :update do |page|
+                       page.replace_html 'patient-history', :partial => 'cms/patient_histories/reports'
+                  end
 
 	end
 
