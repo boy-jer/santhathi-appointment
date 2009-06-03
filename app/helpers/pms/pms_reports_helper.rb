@@ -19,4 +19,9 @@ module Pms::PmsReportsHelper
   	return count
   end
 
+  def month_print(month)
+  	month_name= ["nil","January"," February"," March"," April"," May"," June"," July"," August"," September"," October"," November"," December"]
+  	return month_name[month]
+ 	end
+
 end

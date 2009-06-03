@@ -16,7 +16,13 @@
              :url => { :controller => '/laboratory/prescriptions', :action => @appointment.prescription.blank? ? :new : :edit },
                                :with => "'department='+ #{@department.id} + '&test_id='+ #{test.id} + '&appointment=' + #{@appointment.id}") %></p>
         <% end %>
-        <%= link_to "Pharmacy Prescription" ,  cms_appointment_pharmacy_prescriptions_path(:appointment_id =>@appointment)%>
+        <%= link_to_remote "Pharmacy Prescription" ,
+                            :before => "Element.show('spinner')",
+                            :success => "Element.hide('spinner')",
+                            :url => { :controller =>'/cms/pharmacy_prescriptions' ,:action => :new } ,
+                            :method => :get,
+                            :with => "'appointment_id='+ #{@appointment.id}"
+                            %>
 
 	</div>
 

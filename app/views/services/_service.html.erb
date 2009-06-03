@@ -1,6 +1,0 @@
- <li>
-   <%= link_to h(service.name), edit_service_path(service) %>
-   <% unless service.children.empty? %>
-     <ul><%= render :partial => 'service', :collection => service.children %></ul>
-   <% end %>
- </li>

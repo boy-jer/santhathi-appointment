@@ -2,7 +2,7 @@ class Pms::PmsReportsController < ApplicationController
   layout 'pms'
 
   def index
-  	#@type = params[:type].nil? "Appointment" : params[:type]
+  	#@type = params[:type].nil? @type ="Appointment" : @type = params[:type]
   	 if params[:type].nil?
   	 	@type = "Appointment"
  	 else
@@ -11,20 +11,12 @@ class Pms::PmsReportsController < ApplicationController
   end
 
   def date_wise_reports
-  	if !params[:from_date].blank? and  !params[:to_date].blank? and  params[:option] == "day"
+  	unless params[:from_date].blank? and  params[:to_date].blank?
   	  @from_date = params[:from_date].to_date
   	  @to_date = params[:to_date].to_date
   	  @reports =  Appointment.date_wise_report(@from_date,@to_date,params[:option])
   	  @count =  Appointment.count_appointment(@from_date,@to_date)
-    elsif !params[:from_date].blank? and  !params[:to_date].blank? and  params[:option] == "month"
-    	params[:option] = "month"
-    	 @from_date = params[:from_date].to_date
-  	   @to_date = params[:to_date].to_date
-    	app = Appointment.find(:all, :conditions => ["appointment_date >= ? and appointment_date <= ?",@from_date,@to_date])
-    	@reports = {}
-      app_months = app.group_by { |t| t.appointment_date.beginning_of_month }
-      app_months.each_key { |key| @reports[key] = app_months[key].size  }
-  	else
+  	  params[:option] == "month" ? @option = "month" : @option = "day"
     end
   end
 
@@ -33,19 +25,35 @@ class Pms::PmsReportsController < ApplicationController
    unless params[:from_date].blank? and params[:to_date].blank?
      @from_date = params[:from_date].to_date
      @to_date = params[:to_date].to_date
-     @first_visit_reports = Appointment.visit_type(@from_date,@to_date,"yes")
-     @follow_up_reports =  Appointment.visit_type(@from_date,@to_date,"no")
+     @first_visit_reports = Appointment.visit_type(@from_date,@to_date,"yes",params[:option])
+     @follow_up_reports =  Appointment.visit_type(@from_date,@to_date,"no",params[:option])
      @count =  Appointment.count_appointment(@from_date,@to_date)
+     params[:option] == "month" ? @option = "month" : @option = "day"
  	 end
   end
 
+
+
   def department_wise_report
-  	unless params[:from_date].blank? and params[:to_date].blank?
+  	if !params[:from_date].blank? and !params[:to_date].blank? and params[:option] == "day"
+  		@option = "day"
   	  @from_date = params[:from_date].to_date
   	  @to_date = params[:to_date].to_date
   	  @reports = Appointment.departament_report(@from_date,@to_date,params[:department_id])
   	  @department_name = params[:department_id] == "All"? "All Departments" : Department.find(params[:department_id]).dept_name
   	  @count = Appointment.count_department_appointment(@from_date,@to_date,params[:department_id])
+    elsif !params[:from_date].blank? and !params[:to_date].blank? and params[:option] == "month"
+	  	@from_date = params[:from_date].to_date
+  	  @to_date = params[:to_date].to_date
+  	  condition = {}
+    	condition[:appointment_date] = @from_date..@to_date
+	  	@option = "month"
+ 	    @reports = {}
+    	app = Appointment.find(:all ,:conditions => condition)
+      app_months = app.group_by { |t| t.appointment_date.beginning_of_month }
+      app_months.each_key { |key| @reports[key] = app_months[key].size  }
+      @count =  Appointment.count_appointment(@from_date,@to_date)
+    else
  	  end
   end
 
@@ -68,7 +76,8 @@ class Pms::PmsReportsController < ApplicationController
   end
 
   def appointment_type_report
-    unless params[:from_date].blank? and params[:to_date].blank?
+    if !params[:from_date].blank? and !params[:to_date].blank? and params[:option] == "day"
+    	@option = "day"
     	@from_date = params[:from_date].to_date
   	  @to_date = params[:to_date].to_date
 		  @reports = {}
@@ -76,6 +85,20 @@ class Pms::PmsReportsController < ApplicationController
       @modes = Mode.modes_list
       @reports = Appointment.mode_report(@from_date,@to_date)
       @count  = Appointment.count_doctor_appointments(@from_date,@to_date,"All")
+    elsif !params[:from_date].blank? and !params[:to_date].blank? and params[:option] == "month"
+     @option = "month"
+     @modes = Mode.modes_list
+     @from_date = params[:from_date].to_date
+  	 @to_date = params[:to_date].to_date
+     @reports = {}
+  	 condition = {}
+  	 condition[:appointment_date] = @from_date..@to_date
+  	 temp_list = Appointment.find(:all, :select => "count('id') as count, appointment_date, mode_id", :order => 'appointment_date', :group =>"appointment_date, mode_id", :conditions => condition)
+     temp_list.map{|r| @reports[r.mode_id ] = {r.mode_id => r.count} }
+     @count  = Appointment.count_doctor_appointments(@from_date,@to_date,"All")
+    else
+
+
 	  end
   end
 

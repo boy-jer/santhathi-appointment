@@ -2,14 +2,50 @@
 <table class="listing">
 
  <tr><th>From Date: <%=h @from_date %></th><th>To Date :  <%=h @to_date%></th></tr>
- <tr><th> Date </th><th> First Visit</th><th>Follow up Visit</th></tr>
 
 
+<% if @option == "day" %>
+ <tr><th> Date </th><th> First Visit</th><th>Follow up Visit</th> <th> Total </th></tr>
+   <% cn = 0 %>
+   <% first_visit = 0 %>
+   <% follow_up = 0 %>
   <%for date in @from_date..@to_date %>
    <tr><td> <%=h date %> </td>
-       <td><%= count(@first_visit_reports,date) %> </td>
-       <td><%= count(@follow_up_reports,date) %></td>
+   <td><% value = count(@first_visit_reports,date) %> <%=h value %> <% first_visit+= value.to_i %> <% cn += value.to_i %> </td>
+   <td><% value = count(@follow_up_reports,date) %> <%=h value %> <% follow_up += value.to_i %> <% cn += value.to_i %> </td>
+   <td> <b><%= h cn %></td></b> <% cn = 0 %>
    </tr>
  <%end%>
- <tr><th>Total : </th> <td> <label><%=h @count %> </label> </td></tr>
+<tr> <th> Total </th> <td><b><%=h first_visit %></b> </td> <td><b> <%=h follow_up %></b></td><td><b> <%=h @count %> </b> </td> </tr>
+ <%end%>
+ <% if @option == "month" %>
+  <tr> <th> Month </th><th>First Visit</th> <th> Follow Up Visit </th> <th> Total </th></tr>
+      <% cn = 0 %>
+      <% first_visit = 0 %>
+      <% follow_up = 0%>
+      <% date = @from_date%>
+      <% while date <= @to_date %>
+       <tr> <th> <b><%=h month_print(date.strftime("%m").to_i) %>  - <%=h date.strftime("%Y") %> </b></th>
+          <% value = @first_visit_reports[date.beginning_of_month] %>
+          <% value.nil? ? cn : cn+=value%>
+          <% value.nil? ? first_visit : first_visit += value%>
+         <td><%=h value.nil? ? 0 : value %> </td>
+
+         <% value = @follow_up_reports[date.beginning_of_month] %>
+         <% value.nil? ? follow_up : follow_up += value%>
+         <td><%=h value.nil? ? 0 : value %> </td>
+
+         <% value.nil? ? cn : cn+=value%>
+         <td><b> <%=h cn.nil? ? 0 : cn %> </b></td>
+         <% cn = 0%>
+
+       </tr>
+        <% date = date.advance(:days => 31)%>
+      <%end%>
+     <tr> <th> Total </th> <td><b><%=h first_visit %></b> </td> <td><b> <%=h follow_up %></b></td><td><b> <%=h @count %> </b> </td> </tr>
+
+         </table>
+
+ <%end%>
+
  </table>

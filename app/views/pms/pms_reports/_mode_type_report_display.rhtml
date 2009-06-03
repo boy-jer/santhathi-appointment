@@ -1,30 +1,78 @@
 <br/>
 <table class="listing">
  <tr><th>From Date: <%=h @from_date %></th><th>To Date :  <%=h @to_date%></th> </tr>
-   <tr> <th> Date </th>
-   <%=@doctors_list%>
-        <% for mode in  @modes %>
 
-          <th> <%= mode[0] %> </th>
+ <%if @option == "day" %>
+  <tr> <th> Date </th>
+         <% for mode in  @modes %>
+
+          <th> <%= mode[0] %> </th><% mode[0] = 0 %>
         <%end%>
         <th> Total </th>
    </tr>
-
     <% for date in @from_date..@to_date %>
       <tr><td> <%=h date %></td>
+      <% cn = 0 %>
           <% for mode in  @modes %>
+
              <% key = "#{date}$#{mode[1]}" %>
              <%if !@reports[key].blank? && @reports[key].keys.include?(mode[1]) %>
-                 <td><%= @reports[key][mode[1]] %></td>
+                 <td><% value = @reports[key][mode[1]] %> <%= value %> <% cn += value.to_i %> <% mode[0] += value.to_i %> </td>
                <%else%>
                   <td> 0 </td>
                <%end%>
          <%end%>
-
-         <td><%=h count(@counts, date) %>  </td>
+         <td> <b> <%= cn %> </b>  </td>
 
       </tr>
     <%end%>
-    <tr><th>Total :</th><td><%=h @count %></td></tr>
+    <tr><th> Total : </th>
+    <% for mode in  @modes %>
+         <td> <b><%=h mode[0] %> </b> </td>
+    <%end%>
+    <td> <b> <%=h @count %> </b> </td></tr>
+    </table>
+    <%end%>
+<%if @option == "month" %>
+
+
+   <table class="listing">
+
+   <tr> <th> Month </th>
+         <% for mode in  @modes %>
+            <th> <%= mode[0] %> </th>
+            <% mode[0] = 0 %>
+        <%end%>
+        <th> Total </th>
+   </tr>
+
+      <% date = @from_date %>
+      <% while date <= @to_date %>
+       <tr> <th> <b><%=h month_print(date.strftime("%m").to_i) %>  - <%=h date.strftime("%Y") %> </b></th>
+				<% cn = 0 %>
+         <% for mode in  @modes %>
+
+             <% key = "#{mode[1]}" %>
+             <%if !@reports[key].blank? && @reports[key].keys.include?(mode[1]) %>
+                 <td><% value = @reports[key][mode[1]] %> <%= value %> <% cn += value.to_i %> <% mode[0] += value.to_i %> </td>
+               <%else%>
+                  <td> 0 </td>
+               <%end%>
+         <%end%>
+          <td> <b><%=h cn %></b></td> <% cn = 0%>
+
+
+       </tr>
+        <% date = date.advance(:days => 31)%>
+      <%end%>
+   <tr><th> Total : </th>
+    <% for mode in  @modes %>
+         <td> <b><%=h mode[0] %> </b> </td>
+    <%end%>
+    <td> <b> <%=h @count %> </b> </td></tr>
+    </table>
+
 
 </table>
+
+<%end%>

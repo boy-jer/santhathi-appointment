@@ -62,10 +62,17 @@ aasm_column :state
   end
 
   def self.date_wise_report(from,to,option)
-  	 condition = {}
-  	 condition[:appointment_date] = from..to
-  	 reports = Appointment.count(:conditions => condition , :group=>"appointment_date") if option == "day"
-    return reports
+  	 	condition = {}
+    	condition[:appointment_date] = from..to
+      if option == "day"
+    	  reports = Appointment.count(:conditions => condition , :group=>"appointment_date")
+    	else
+    		reports = {}
+    		app = Appointment.find(:all ,:conditions => condition)
+        app_months = app.group_by { |t| t.appointment_date.beginning_of_month }
+        app_months.each_key { |key| reports[key] = app_months[key].size  }
+  	  end
+  	  return reports
   end
 
   def self.count_appointment(from,to)
@@ -81,19 +88,25 @@ aasm_column :state
      	condition[:department_id] = department_ids
   	else
  	   condition[:appointment_date] = from..to
-       condition[:department_id] = department
-	end
-	 temp = Appointment.find(:all , :conditions => condition ).size
-  	 return temp
+     condition[:department_id] = department
+	  end
+	  temp = Appointment.find(:all , :conditions => condition ).size
+    return temp
   end
 
-  def self.visit_type(from,to,visit_type)
+  def self.visit_type(from,to,visit_type,option)
   	condition = {}
   	condition[:appointment_date] = from..to
   	condition[:visit_type] = visit_type
-  	reports = Appointment.count(:conditions => condition,:group=>"appointment_date")
+  	if option == "day"
+  	  reports = Appointment.count(:conditions => condition,:group=>"appointment_date")
+ 	  else
+      reports = {}
+    	app = Appointment.find(:all ,:conditions => condition)
+      app_months = app.group_by { |t| t.appointment_date.beginning_of_month }
+      app_months.each_key { |key| reports[key] = app_months[key].size  }
+	  end
   	return reports
-
   end
 
   def self.departament_report(from,to,department_id)

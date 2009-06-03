@@ -1,34 +1,41 @@
 <br/>
 <table class="listing">
-
  <tr><th>From Date: <%=h @from_date %></th><th>To Date :  <%=h @to_date%></th></tr>
     <% unless @department_name.blank?%>
     <tr><th>Department Name :</th><th>   <%=h @department_name %></th></tr></table>
     <%end%>
 <br/>
-<% if !params[:option] == "month" %>
+<% if @option == "day" %>
   <table class="listing">
-   <tr> <th> Date </th><th>CN</th> <th> Total </th></tr>
+   <tr> <th> Date </th><th>CN</th><th> Total</th></tr>
 
     <% for date in @from_date..@to_date %>
        <% value= count(@reports,date) %>
         <tr><td> <%=h date %></td>
             <td> <%=h value %></td>
-           <td><%=h value %></td>
+           <td><b><%=h value %> </b></td>
         </tr>
     <%end%>
-<tr> <th><label> Total : </th><td><%=h @count %> </label></td></tr>
+<tr> <th><label> Total : </th><td><b><%=h @count %></b> <td> <b><%=h @count %> </b></td></tr>
 </table>
 <%end%>
-<% if params[:option] == "month"%>
+<% if @option == "month" %>
    <table class="listing">
-   <tr> <th> Date </th><th>CN</th> <th> Total </th></tr>
+   <tr> <th> Month </th><th>CN</th> <th> Total </th></tr>
+
       <% date = @from_date%>
       <% while date <= @to_date %>
-       <tr> <th> <%=h date.strftime("%y-%j") %> </th>
-        <%=h date %>
+       <tr> <th> <b><%=h month_print(date.strftime("%m").to_i) %>  - <%=h date.strftime("%Y") %> </b></th>
+        <% value = @reports[date.beginning_of_month] %>
+         <td><%=h value.nil? ? 0 : value %> </td>
+         <td> <b><%=h value.nil? ? 0 : value %> <b></td>
+
+
+       </tr>
         <% date = date.advance(:days => 31)%>
       <%end%>
-   </table>
+    <tr> <th><label> Total : </th><td><b><%=h @count %></b> <td> <b><%=h @count %> </b></td></tr>
+
+         </table>
 
 <%end%>
