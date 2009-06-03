@@ -32,24 +32,16 @@
 </head>
 
  <body>
-   <div id="wrapper">
-      <div id="header"> <%= render :partial => 'shared/tabs' %>
-           <div id="global_links">
-              <%= render :partial => 'shared/global_links' %>
-           </div>
-           <h1> Santhathi </h1>
-      </div>
-
-     
-     <%= render :partial => 'shared/pms_sub_tabs' %>
-     <%= render :partial => 'shared/layout_body' %>
-     <div class="clear"></div>
-
-     <div class="clear"> </div>
-
-
-
-   </div>    <!-- End Wrapper -->
-
+            <div id="global_links"> <%= render :partial => 'shared/global_links' %> </div>
+	    <div id="header"> <%= render :partial => 'shared/tabs' %> </div>		
+ 	    <div class="clear"></div>
+            <div class="navigation">
+              <div class="navPanel">
+                <%= render :partial => 'shared/patient_sub_tabs' %>
+              </div>
+            </div>
+               <%= render :partial => 'shared/layout_body' %>
+            <div class="clear"></div>
 </body>
+
 </html>
