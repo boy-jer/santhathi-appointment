@@ -1,6 +1,6 @@
 class Cms::PatientHistoriesController < ApplicationController
   layout 'patient_history'
-  before_filter :find_appointment ,:except =>[:show,:index]
+  before_filter :find_appointment ,:except =>[:show,:index,:prescribed_tests]
 
   def index
   	@patient = Patient.find(65)
@@ -18,6 +18,8 @@ class Cms::PatientHistoriesController < ApplicationController
   def prescription
   	@prescription = @appointment.prescription
  		@prescribed_tests = @prescription.prescribed_tests
+
+
     render :update do |page|
       page.replace_html 'patient-history', :partial => 'cms/patient_histories/prescription'
     end
@@ -26,11 +28,11 @@ class Cms::PatientHistoriesController < ApplicationController
 
 
  	def reports
- 		@laboratory_reports = LaboratoryReport.find(:all,:conditions =>["appointment_id = ?", @appointment.id])
+ 		@prescription = @appointment.prescription
+ 		@prescribed_tests = @prescription.prescribed_tests
  		render :update do |page|
                        page.replace_html 'patient-history', :partial => 'cms/patient_histories/reports'
                   end
-
 	end
 
 	def pharmacy_prescription
@@ -73,6 +75,21 @@ class Cms::PatientHistoriesController < ApplicationController
          page.replace_html 'patient-history', :partial => 'cms/patient_histories/clinical_comment'
     end
 
+	end
+
+	def prescribed_tests
+		@prescribed_test = PrescribedTest.find(params[:prescribed_test_id])
+    @prescription, @lab_test = @prescribed_test.prescription, @prescribed_test.lab_test
+    @appointment = @prescription.appointment
+    @patient = @appointment.patient
+    @specifications = @lab_test.parameter_specifications
+    @laboratory_report = LaboratoryReport.find(params[:id])
+    @laboratory_test_results =  @laboratory_report.laboratory_test_results
+    @results = {}
+    @laboratory_test_results.map{|r|  @results[r.parameter_specification_id] = [r.result, r.remarks] }
+    render :update do |page|
+         page.replace_html 'prescribed_test', :partial => 'cms/patient_histories/prescribed_tests'
+    end
 	end
 
 	private

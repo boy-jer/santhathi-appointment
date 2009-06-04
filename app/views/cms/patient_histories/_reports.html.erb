@@ -1,35 +1,38 @@
-<h3> Reports </h3>
+<h3>Reports  </h3>
 
 <table class="search-table">
-<tr> <th> Parameter </th>
-     <th> Lab Test </th>
+<tr> <th> Date </th>
      <th> Time </th>
-     <th> Action Taken by</th>
-     <th> Authorized  By</th>
-     <th> Description </th>
-     <th> Result </th>
-     <th> Remarks </th>
+     <th> Prescription To</th>
+     <th> Prescribed By</th>
+     <th> Service </th>
+     <th> Follow up before </th>
+     <th> Status </th>
+     <th> Remarks </th><th> Report </th>
 </tr>
 
 
-<% unless @laboratory_reports.blank? %>
 
-  <% for lab_report in @laboratory_reports %>
-    <% for lab_test_result in lab_report.laboratory_test_results %>
-   <tr>
-       <td> <%=h ParameterSpecification.find(lab_test_result.parameter_specification_id).parameter.parameter_name %> </td>
-       <td> <%=h LabTest.find(lab_report.lab_test_id).name%> </td>
-       <td> <%=h lab_report.date_of_action %> - <%=h Time.parse(lab_report.time_of_action.to_s).strftime('%H:%M').to_s %> </td>
-       <td> <%=h Doctor.find(lab_report.action_taken_by_id).name %> </td>
-       <td> <%=h Doctor.find(lab_report.authorised_by_id).name %> </td>
-       <td> <%=h lab_report.description %> </td>
-       <td> <%=h lab_test_result.result %> </td>
-       <td> <%=h lab_test_result.remarks %> </td>
-
-
-   </tr>
+<% unless @prescription.blank? %>
+  <% unless @prescribed_tests.blank? %>
+    <% for test in @prescribed_tests %>
+ <tr><td> <%=h test.created_at.to_date %></td>
+     <td><%=h Time.parse(test.created_at.to_s).strftime('%H:%M').to_s %></td>
+     <td><%=h Department.find(@prescription.department_id).dept_name %></td>
+     <td><%=h @appointment.doctor.name %></td>
+     <td> <%=h  test.lab_test.name %></td>
+     <td> <%=h @prescription.follow_up %></td>
+     <td>  </td>
+     <td> <%=h @prescription.remarks  %></td>
+     <td>  <%= link_to_remote "PrescribedTest" ,:url =>{:action=>"prescribed_tests", :controller=>"cms/patient_histories" ,:prescribed_test_id => test,:id => test.lab_test.laboratory_report } %></li> </td>
+    </tr>
    <%end%>
-  <%end%>
-<%else%>
-   No Report yet.
-<%end%>
+   <%end%>
+   <%else%>
+       No Record Found Yet.
+   <%end%>
+
+</table>
+
+<div id='prescribed_test'>
+</div>
