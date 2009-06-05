@@ -160,7 +160,7 @@ h3 span {
 #header h1 {
 	float: left;
 	font-weight: bold;
-	color: #B6C5DC;
+	color: #6084B3;
         font-size: 27px;
 	padding: 2px  0  0  5px ;
 	margin: 0px;
@@ -172,11 +172,11 @@ h3 span {
 #global_links {
 	float: right;
 	font-size: 0.9em;
-	color: #fff;
+	color: #6084B3;
 	padding: 5px 10px 0px 0px;
 }
 #global_links a {
-	color: #fff;
+	color: #6084B3;
 }
 #global_links a:hover {
 	color: #00a8c6;
@@ -536,7 +536,7 @@ url(/images/tab.png) repeat-x;
             
 }
 
-.listing td { padding: 0.7em .5em .3em .5em; color: #000; border-bottom:1px solid #BDCFE1; background: #fafafc;}
+.listing td { padding: 0.7em .5em .3em .5em; color: #000; border-bottom:1px solid #BDCFE1; background: #fafcfe;}
 
 
 .listing    { border-collapse: collapse;
@@ -601,16 +601,15 @@ url(/images/tab.png) repeat-x;
 
 
 #menu li {
-	display:inline;
-      margin:0;
-      padding:0px;
-
-}
+	  display:inline;
+          margin:0;
+          padding:0px;
+         }
 
 #menu li a {
 	display: block;
 	float: left;
-        background: #EDF2F3;
+        background: #F6F8FB;
 	margin: 37px 3px 0px 0px;
 	padding: 5px 2px 0px 1px;
         border-left: #D7E3EF 1px solid;
