@@ -1,7 +1,7 @@
 <% unless @appointments.blank? %><ul id='menu1'>
 <% @appointments.each do |appointment| %>
 
-   	<li> <a href="#"><%=h  appointment.appointment_date  %>  <%=h appointment.id %></a>
+   	<li> <a href="#">Visit Date:<%=h appointment.appointment_date%> PvrNo :<%=h appointment.id %></a>
  		 <ul>
    		<li>	 <%= link_to_remote "Prescriptions" ,:url => { :action=>"prescription", :controller=>"cms/patient_histories" ,:appointment_id => appointment.id } %> </li><li>
 <%= link_to_remote "Reports" ,:url => {:action=>"reports", :controller=>"cms/patient_histories" ,:appointment_id => appointment.id } %></li><li>
