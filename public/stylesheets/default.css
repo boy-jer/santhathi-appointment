@@ -5,7 +5,7 @@ body {
       /*background: #00c9ee repeat-x ;*/
       /*background: #55ABD5;*/
       /*background: #F5FAFC;*/
-      background: #D9E5F0;
+      background: #A8C8E6;
       color: #000;
       margin: 0;
       padding: 0;
@@ -14,10 +14,11 @@ body {
 
 #wrapper {
      margin: 0px auto;
-     width: 99.3%;
-     border-left: #9EB7CD 5px solid;
-        border-right: #9EB7CD 5px solid;
-          border-bottom: #9EB7CD 5px solid;
+     width: 98%;
+     background: #fff;
+     padding: 5px 8px;
+     border-top: #A8C8E6 5px solid;
+   
 }
 
 .content{
@@ -536,7 +537,7 @@ url(/images/tab.png) repeat-x;
             
 }
 
-.listing td { padding: 0.7em .5em .3em .5em; color: #000; border-bottom:1px solid #BDCFE1; background: #fafcfe;}
+.listing td { padding: 0.7em .5em .3em .5em; color: #000; border-bottom:1px solid #BDCFE1; background: #FAFCFF;}
 
 
 .listing    { border-collapse: collapse;
@@ -609,12 +610,12 @@ url(/images/tab.png) repeat-x;
 #menu li a {
 	display: block;
 	float: left;
-        background: #F6F8FB;
-	margin: 37px 3px 0px 0px;
+        background: #EDF3F9;
+	margin: 36px 3px 0px 0px;
 	padding: 5px 2px 0px 1px;
-        border-left: #D7E3EF 1px solid;
-        border-top: #D7E3EF 1px solid;
-        border-right: #D7E3EF 1px solid;
+        border-left: #E4EBF6 2px solid;
+        border-top: #E4EBF6 2px solid;
+        border-right: #E4EBF6 2px solid;
 	width:88px;height:17px;
 	text-transform: uppercase;
 	text-decoration: none;
@@ -629,7 +630,7 @@ url(/images/tab.png) repeat-x;
 #menu li a:hover {
 	display: block;
 	float: left;
-	margin:38px 3px 0px 0px;
+	margin:36px 3px 0px 0px;
 	padding: 5px 2px 0px 1px;
 	text-transform: uppercase;
 	text-decoration: none;
