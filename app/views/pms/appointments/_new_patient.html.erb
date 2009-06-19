@@ -1,5 +1,5 @@
-<h3> New patient details: </h3>
 <table class="form-table">
+   <tr class= 'table-top'> <td colspan='2' ><lable>  New patient details:</label> </td> </tr>
    <tr><th> <%= patient.label :name %>: </th> <td> <%= patient.text_field :patient_name, {:class => 'textbox'} %></td></tr>
    <tr><th> <%= patient.label :dob %>: </th> <td>  <%= patient.date_select :dob,:start_year => 1950, :default => {:year => Time.now.year - 30}%> </td></tr>
    <tr><th> <%= patient.label :gender %>: </th> <td>

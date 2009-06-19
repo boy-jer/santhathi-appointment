@@ -5,7 +5,7 @@
        <th>Patient Name:</th>
         <th>Reg No:</th>
         <th> Phone No: </th>
-        <th rowspan='2'><input type="reset" value="Reset"> </th>
+        <th> Reset </th>
      </tr>
      <tr>
       <%fields_for @search do |f|%>
@@ -18,7 +18,7 @@
              <td><%= patient.text_field :reg_no_like, :class => 'textbox-small' %></td>
              <td><%= patient.text_field :contact_no_like, :class => 'textbox-small' %></td>
          <%end%>
-
+         <td> <input type="reset" value="Reset"> </td>
 
        <%end%>
        <%end%>

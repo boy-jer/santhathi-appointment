@@ -3,7 +3,9 @@
 </div>
 
 <div id="new-department">
+
   <table cellpadding="5px" class="form-table">
+     <tr class= 'table-top'> <td colspan='2' ><lable> Appointment Deatils:</label> </td> </tr>
      <tr> <th><%= f.label :department %>:</th>
      <td><%= select :departament, :id, [['Select department' , '']] + Department.departments_for_select_list %></td> <%= image_tag("spinner.gif",
               :align => "absmiddle",
@@ -11,24 +13,37 @@
               :id => "spinner1",
               :style =>"display: none;" ) %></tr>
 
-     <tr><th><label>Doctor:</label></th><td>
-     <div id="doctors"><%=render :partial => 'doctors_list', :locals => {:f => f, :doctors => doctors_list} %></div></td> </tr>
+     <tr>
+       <th><label>Doctor:</label></th>
+       <td>
+           <div id="doctors">
+              <%=render :partial => 'doctors_list', :locals => {:f => f, :doctors => doctors_list} %>
+           </div>
+       </td> 
+     </tr>
 
-     <tr><th> <%= f.label :appointment_time %>:</th>
-          <td><%= f.select :hour, hours, :selected => (@hour || 9) %> <%= f.select :minute, minutes, :selected => (@minute || 30) %></td></tr>
+     <tr>
+        <th> <%= f.label :appointment_time %>:</th>
+        <td>
+            <%= f.select :hour, hours, :selected => (@hour || 9) %> <%= f.select :minute, minutes, :selected => (@minute || 30) %>
+        </td>
+     </tr>
 
      <tr> <th><%= f.label :reason %>:</th> <td><%= f.select :reason_id, [['Select reason' , '']] + Reason.select_list %></td> </tr>
 
      <tr> <th><%= f.label :mode %>:</th> <td><%= f.select :mode_id, [['Select mode' , '']] + Mode.select_list %></td> </tr>
 
      <tr> <th><label> Visit Type</label></th>
-          <td><%= radio_button_tag ('appointment[visit_type]', 'yes', checked = params[:patient_id].blank?,
-                                                    options = {:onclick => "Element.show('new_patient'); Element.hide('patient_search');"}) %> first visit &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;              <%= radio_button_tag ('appointment[visit_type]', 'no', checked = !params[:patient_id].blank?,
-                                                   options = {:onclick => "Element.show('patient_search'); Element.hide('new_patient');"}) %> follow up visit        </td>
+          <td><%= radio_button_tag ('appointment[visit_type]', 
+                                    'yes', 
+                                    checked = params[:patient_id].blank?,
+                                    options = {:onclick => "Element.show('new_patient'); Element.hide('patient_search'); Element.hide('submit-button');"}) %> first visit &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <%= radio_button_tag ('appointment[visit_type]', 'no', checked = !params[:patient_id].blank?,
+                                                   options = {:onclick => "Element.show('patient_search'); Element.hide('new_patient'); Element.show('submit-button');"}) %> follow up visit        </td>
      </tr>
   </table>
-   <br />
-   <%=image_submit_tag('button.gif')%>
+  
+   <p id ="submit-button" style="display:none"> <%=image_submit_tag('button.gif')%> </p>
 
   <%= observe_field(:appointment_doctor_id, :frequency => 0.5,
                     :before => "Element.show('spinner')",
@@ -53,11 +68,14 @@
                     :method => :get,
                     :with => "'department_id=' + value"
                    ) %></div>
-
+<br />
 <div id='new_patient'>
    <% fields_for :patient do |patient| %>
       <%=render :partial => 'new_patient', :locals => {:patient => patient} %>
    <% end %>
+   <br />
+   <%=image_submit_tag('button.gif')%>
 </div>
 
 <input type="hidden" name="patient_id" value= '<%=params[:patient_id]%>'>
+
