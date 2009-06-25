@@ -53,8 +53,8 @@ aasm_column :state
   named_scope :patient_name, lambda { |name| {:joins => :patient, :conditions => ["patients.patient_name like ?", '%'+ name +'%'] }}
   named_scope :reg_no, lambda { |reg| {:joins => :patient, :conditions => ["patients.reg_no like ? ", reg +'%'] }}
 
-  named_scope :on_time,lambda { |time| { :conditions => ["appointment_time = ?", time] } }
-
+  named_scope :on_time, lambda { |time| { :conditions => ["appointment_time = ?", time] } }
+  named_scope :active, lambda { |time| { :conditions => ["state != ?", 'canceled'] } }
 
   def update_time
     time = "#{hour}:#{minute}" unless hour.blank?

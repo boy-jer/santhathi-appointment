@@ -1,8 +1,7 @@
 <div class='continer-show'>
-  <div class='continer-show-inner'>
-     <h3>Patient Detail</h3>
+     <h3 class='head'>Patient Detail</h3>
      <table class="form-table">
-       <tr><th><b>Reg date:</b></th><td><%=h @patient.reg_date %></td></tr>
+       <tr><th><b>Registration Date:</b></th><td><%=h @patient.reg_date %></td></tr>
        <tr><th><b>Name:</b></th><td><%=h @patient.patient_name %></td></tr>
        <tr><th><b>Age:</b></th><td><%=h calculate_age(@patient.dob) %></td></tr>
        <tr><th><b>DOB:</b></th><td><%=h @patient.dob %></td></tr>
@@ -29,7 +28,6 @@
     <% end %>
     <br/>
 <%= link_to "<span>New Appointment</span>", new_pms_appointment_url(:patient_id => @patient.id), :class=> "button" %>
-  </div>
 </div>
 
 <script type="text/javascript">

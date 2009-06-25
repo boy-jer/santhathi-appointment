@@ -1,20 +1,20 @@
 
 <h3> Registration for couple</h3>
-<div>
 
- <%fields_for :patient do |f| %>
+<div id='left'>
+  <%fields_for :patient do |f| %>
   <table class="form-table">
 
-   <tr><th colspan='2'>Patient detail</th></tr>
+   <tr class= 'table-top'><td colspan='2'><lable> Patient detail </label></td></tr>
 
-   <tr><th><%= f.label :reg_date %></th>
+   <tr><th><%= f.label :registration_date %></th>
        <td><%= f.date_select :reg_date,:disabled =>true %></td>
    </tr>
    <tr><th><%= f.label :name %></th>
        <td><%= f.text_field :patient_name, {:class => 'textbox'} %></td>
    </tr>
 
-   <tr><th><%= f.label :dob %></th>
+   <tr><th><lable> DOB </label></th>
       <td><%= f.date_select :dob,:start_year => 1950, :default => {:year => Time.now.year - 30}%></td>
    </tr>
    <tr><th><%= f.label :gender %></th>
@@ -42,12 +42,12 @@
    </tr>
   </table>
   <%end%>
+</div>
 
- <br/>
-
+<div id='right'>
    <%fields_for :patient1 do |p| %>
      <table class="form-table">
-        <tr><th colspan='2'>Spouse detail</th></tr>
+        <tr class= 'table-top'><td colspan='2'>Spouse detail</td></tr>
         <tr><th><%= p.label :spouse_name %></th>
             <td><%= p.text_field :patient_name, {:class => 'textbox'} %></td>
         </tr>

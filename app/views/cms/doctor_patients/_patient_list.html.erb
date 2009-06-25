@@ -5,30 +5,30 @@
       <tr>
         <th></th>
         <th><%= remote_order_by_link({:patient => :reg_no} , :text => "Hospital No.") %></th>
-        <th><%= remote_order_by_link({:patient => :patient_name} , :text => "Patient Name") %></th>
         <th><%= remote_order_by_link(:id , :text => "PVR No.") %></th>
+        <th><%= remote_order_by_link({:patient => :patient_name} , :text => "Patient Name") %></th>
         <th><%= remote_order_by_link :doctor =>:name %></th>
-        <th><%= remote_order_by_link({:department => :dept_name }, :text => "Department")%></th>
+        <th> Date </th>
         <th><%= remote_order_by_link({:reason => :name }, :text => "Reason") %></th>
-        <th>History</th>
+        <th>App History</th>
         <th>Clinical Screen</th>
-        <th>Vitalsigns</th>
+        <th>History</th>
       </tr>
 
     <%for appointment in @appointments %>
      <tr>
          <td  id = <%=row_class(appointment.state) %>><%= check_box_tag("appointment[]", appointment.id, false,:id=>appointment.id)%></td>
          <td><%=h appointment.patient.reg_no %></td>
-         <td><%=h appointment.patient.patient_name%></td>
          <td><%=h appointment.id%></td>
+         <td><%=h appointment.patient.patient_name%></td>
          <td><%=h appointment.doctor.name %></td>
-         <td><%=h appointment.doctor.department.dept_name%></td>
+         <td><%=h Time.parse(appointment.appointment_date.to_s).strftime("%d-%m-%y") %></td>
          <td><%=h appointment.reason.name%></td>
          <td><%= link_to 'Appointments', pms_patient_patient_appointments_url(appointment.patient), :rel=> "facebox" %></td>
          <td><%= link_to 'Clinical screen', new_cms_appointment_clinical_screen_path(appointment)%></td>
          <td>
 
-         <%= link_to "Patient History" ,  {:action=>"show", :controller=>"cms/patient_histories",:id => appointment.patient.id } %>
+         <%= link_to "History" ,  {:action=>"show", :controller=>"cms/patient_histories",:id => appointment.patient.id } %>
 
         </td>
        </tr>

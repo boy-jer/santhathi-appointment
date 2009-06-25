@@ -26,17 +26,17 @@
 	text-decoration: none;
 	padding: .4em 1.7em;
 	color: #2e6e9e;
-	background: #D3E5FA url(/images/tab1.png) 0 50% repeat-x;
+	background: #D3E5FA url(/images/table-header.jpg) 0 50% repeat-x;
 }
 .ui-tabs-nav li a:hover {
-	background: #d0e5f5 url(/tab_images/images/d0e5f5_40x100_textures_02_glass_75.png) 0 50% repeat-x;
+	background: #d0e5f5 ;
 	color: #1d5987;
 }
 .ui-tabs-nav li.ui-tabs-selected {
 	border-bottom-color: #f5f8f9;
 }
 .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs-nav li.ui-tabs-selected a:hover {
-	background: #f5f8f9 url(/tab_images/images/f5f8f9_40x100_textures_06_inset_hard_100.png) 0 50% repeat-x;
+	background: #f5f8f9 ;
 	color: #2e6e9e;
 }
 .ui-tabs-panel {
@@ -44,7 +44,7 @@
 	font-family: Lucida Grande, Lucida Sans, Arial, sans-serif;
 	clear:left;
 	border: 1px solid #c5dbec;
-	background: #fcfdfd url(/tab_images/images/fcfdfd_40x100_textures_06_inset_hard_100.png) 0 bottom repeat-x;
+	background: #fcfdfd ;
 	color: #222222;
 	padding: .5em 1em;
 	font-size: 1em;

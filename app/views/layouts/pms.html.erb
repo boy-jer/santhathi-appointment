@@ -14,8 +14,6 @@
     <%= stylesheet_link_tag('default', :media => :screen) %>
     <%= stylesheet_link_tag('print', :media => :print) %>
 
-
-
     <script type="text/javascript">
         jQuery.noConflict();
     </script>
@@ -32,29 +30,24 @@
 
 </head>
 
- <body>
-  
-      <div id="header"> <%= render :partial => 'shared/tabs' %>
-           <div id="global_links">
-              <%= render :partial => 'shared/global_links' %>
-           </div>
-           <h1> Santhathi </h1>
-      </div>
-      <div id="wrapper">
-          <%= render :partial => 'shared/pms_sub_tabs' %>
-          <%= render :partial => 'shared/layout_body' %>
-              <div class="clear"></div>
-
-              <div class="clear"> </div>
-
-      </div>    <!-- End Wrapper -->
-
-        <div id="footer">
-         <div id="footer-inner">
-            Powered by iSiri Tecnologies Pvt Ltd
+<body> 
+    <div id="header">
+        <h1> Santhathi </h1>
+        <div id="global_links">
+            <%= render :partial => 'shared/global_links' %>
         </div>
-       </div>
+        <%= render :partial => 'shared/tabs' %>
+    </div>
+    <div id="wrapper">
+        <%= render :partial => 'shared/pms_sub_tabs' %>
 
-    
+        <%= render :partial => 'shared/layout_body' %>
+            <div class="clear"></div>
+            <div class="clear"> </div>
+    </div>    <!-- End Wrapper -->
+    <div id="footer">
+         Powered by iSiri Tecnologies Pvt Ltd
+    </div>   
 </body>
+
 </html>

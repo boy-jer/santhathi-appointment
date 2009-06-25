@@ -2,10 +2,13 @@
      <% form_for :patient,:url=> pms_patients_url do |f| %>
        <%= f.error_messages %>
        <%= render :partial => @partial, :locals => {:f => f} %>
+       <div class = 'clear'> </div>
        <p>
-         <%= f.submit "Create" %>
+         <br />
+         <tabel><tr> <td><a class="button" onclick="$(this).up('form').submit(); return false;"><span> Create </span></a>
+                     </td> <td><%= link_to 'Cancel', pms_patients_url %></td></tr></table>
        </p>
      <% end %>
 
-     <%= link_to 'Back', pms_patients_url %>
+     
 </div>

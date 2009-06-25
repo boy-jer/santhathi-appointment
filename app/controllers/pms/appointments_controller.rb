@@ -7,6 +7,9 @@ class Pms::AppointmentsController < ApplicationController
     @search = Appointment.new_search(params[:search])
     @params = params[:search]
     @search.per_page ||= 15
+    @search.order_as ||= "DESC"
+    @search.order_by ||= "appointment_date"
+
     @appointments = @search.all
     respond_to do |format|
       format.html

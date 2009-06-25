@@ -1,7 +1,7 @@
 <table class="form-table">
    <tr class= 'table-top'> <td colspan='2' ><lable>  New patient details:</label> </td> </tr>
    <tr><th> <%= patient.label :name %>: </th> <td> <%= patient.text_field :patient_name, {:class => 'textbox'} %></td></tr>
-   <tr><th> <%= patient.label :dob %>: </th> <td>  <%= patient.date_select :dob,:start_year => 1950, :default => {:year => Time.now.year - 30}%> </td></tr>
+   <tr><th> <label> DOB </label>: </th> <td>  <%= patient.date_select :dob,:start_year => 1950, :default => {:year => Time.now.year - 30}%> </td></tr>
    <tr><th> <%= patient.label :gender %>: </th> <td>
 
 
@@ -9,5 +9,5 @@
 
 </td></tr>
 
-   <tr><th> <%= patient.label :contact_no %>:&nbsp; &nbsp;</th> <td> <%= patient.text_field :contact_no, {:class => 'textbox'} %></td></tr>
+   <tr><th> <label> Contact No </label> :&nbsp; &nbsp;</th> <td> <%= patient.text_field :contact_no, {:class => 'textbox'} %></td></tr>
 </table>

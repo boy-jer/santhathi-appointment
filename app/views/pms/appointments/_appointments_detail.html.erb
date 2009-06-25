@@ -6,6 +6,7 @@
               :style =>"display: none;" ) %>
 
 <table class="time-slots" cellspacing="1">
+     <tr><th><b>Slot</b>&nbsp; </th><th><b>Name</b> </th> <th><b>Register No</b></th></tr>
      <%unless @doctor.blank? %>
        <% dt1 = Time.parse(@doctor.working_from.to_s) %>
        <% appoitments_hash = appointments(@doctor, @date) %>

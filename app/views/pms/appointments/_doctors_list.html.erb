@@ -1,3 +1,11 @@
 <%fields_for :appointment do |f| %>
   <%= f.select :doctor_id, [['Select doctor' , '']] + @doctors %>
-<%end%>  
+<%end%> 
+
+<%= observe_field(:appointment_doctor_id, :frequency => 0.5,
+                    :before => "Element.show('spinner')",
+                    :success => "Element.hide('spinner')",
+                    :url => pms_appointments_url,
+                    :method => :get,
+                    :with => "'doctor=' + value+'&date=' + $('date').value"
+                   ) %> 

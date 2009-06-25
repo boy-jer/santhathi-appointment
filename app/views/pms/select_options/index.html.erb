@@ -1,6 +1,7 @@
 <div class='continer'>
     <%=render :partial=> 'filters'%>
-     <div id='select_option_list'>
-    <%=render :partial=> 'select_option_list'%>
-  </div>
+    <div id='select_option_list'>
+        <h3 class = 'head'> Listing All <%= params[:type].pluralize%> </h3>
+        <%=render :partial=> 'select_option_list'%>
+    </div>
 </div>

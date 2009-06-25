@@ -50,7 +50,7 @@ label {
 	background-color: #fff;
 	margin: 0 auto;
 	width: 36em;
-	border: 8px solid #ccc;
+	
 }
 #left .head {
 	color: #204ca0;
@@ -129,7 +129,4 @@ div.progressBar div.background {
 	height: 18px;
 	width: 0%;
 }
-/** Footer */
-#footer {
-	display: none;
-}
+

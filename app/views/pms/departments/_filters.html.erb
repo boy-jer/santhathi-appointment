@@ -2,7 +2,7 @@
    <table class="search-table">
      <tr>
        <th>Department Name:</th> <th>Abbrevation</th>
-       <th rowspan='2'><input type="reset" value="Reset"> </th>
+       <th>Reset </th>
      </tr>
      <tr>
        <%fields_for @search do |f|%>
@@ -11,7 +11,7 @@
               <td><%= p.text_field :abbrevation_like, :class => 'textbox' %></td>
           <%end%>
        <%end%>
-
+       <td> <input type="reset" value="Reset"> </td>
        </tr>
   </table>
 <% end %>

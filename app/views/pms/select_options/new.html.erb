@@ -9,18 +9,14 @@
        <%= f.text_field :name, {:class => 'textbox'} %>
      </p>
      <p>
-       <%= f.label :abbrevation %><br />
-       <%= f.text_field :abbrevation, {:class => 'textbox'} %>
-     </p>
-     <p>
        <%= f.label :description %><br />
        <%= f.text_field :description, {:class => 'textbox'} %>
      </p>
        <%= f.hidden_field :type, {:value=> params[:type]} %>
      <p>
-       <table><tr><td><%= image_submit_tag "create.gif" %></td>
+       <table><tr><td><%= submit_tag "create" %></td>
 
-       <td><%= link_to "<span>Cancel</span>", pms_select_options_path(:type =>  params[:type]), :class=> "button" %></td></tr></table>
+       <td><%= link_to 'Cancel', pms_select_options_path(:type =>  params[:type]) %></td></tr></table>
      </p>
    <% end %>
 

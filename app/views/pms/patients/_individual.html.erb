@@ -1,6 +1,7 @@
 <h3>  Registration for individual</h3>
 <table class="form-table">
-   <tr><th><%= f.label :reg_date %></th>
+   <tr class= 'table-top'><td colspan='2'><lable> Patient detail </label></td></tr>
+   <tr><th><%= f.label :registration_date %></th>
        <td><%= f.date_select :reg_date,:disabled =>true %></td>
    </tr>
 
@@ -8,7 +9,7 @@
        <td><%= f.text_field :patient_name, {:class => 'textbox'} %></td>
    </tr>
 
-   <tr><th><%= f.label :dob %></th>
+   <tr><th><label> DOB</label></th>
       <td><%= f.date_select :dob, :start_year => 1950, :default => {:year => Time.now.year - 30} %></td>
    </tr>
 

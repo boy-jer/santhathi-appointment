@@ -13,7 +13,7 @@ class Patient < ActiveRecord::Base
 
   #before_save :generate_reg_no
 
-  named_scope :name_filter, lambda{|name| {:conditions => ["patient_name like ?", name]}}
+  named_scope :name_filter, lambda{|name| {:conditions => ["patient_name like ?", "%#{name}%"]}}
   named_scope :todays, {:select => 'count(id) as tot_count', :conditions => ["created_at > ?", Time.now - 1.day]}
 
 

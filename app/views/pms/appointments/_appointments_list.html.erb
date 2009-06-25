@@ -1,4 +1,3 @@
-
 <%= image_tag("spinner.gif",
               :align => "absmiddle",
               :border => 0,
@@ -6,9 +5,7 @@
               :style =>"display: none;" ) %>
 
 <table class="listing">
-
   <tr>
-    <th></th>
     <th><%= remote_order_by_link(:id,:text =>"NO") %></th>
     <th><%= remote_order_by_link(:appointment_date, :text => "Date") %></th>
     <th><%= remote_order_by_link(:appointment_time, :text => "Time") %></th>
@@ -18,14 +15,13 @@
 
     <th><%= remote_order_by_link :state %></th>
     <th><%= remote_order_by_link ({:patient => :reg_no}, :text => "Reg.No" )%></th>
-    <!--<th>Details</th>-->
-    <th NOWRAP = NOWRAP class='hide-for-print'><%="#{image_tag('show.png')} | #{image_tag('edit.png')} | #{image_tag('delete.png')}"%></th>
+    <th>Appointments</th>
+    <th NOWRAP = NOWRAP class='hide-for-print'>Actions</th>
   </tr>
 <% for appointment in @appointments %>
   <tr valign="top" class="<%= cycle('odd', 'even') %>">
-  	<td class='radio-column'> <%=radio_button_tag ('appointment', appointment.id, checked = false, options = {:onclick => "$('main_form').appointment_id.value=#{appointment.id};"})%></td>
     <td><%=h appointment.id %></td>
-    <td><%=h appointment.appointment_date %></td>
+    <td><%=h Time.parse(appointment.appointment_date.to_s).strftime('%d-%m-%y') %></td>
     <td><%=h Time.parse(appointment.appointment_time.to_s).strftime('%H:%M').to_s %></td>
     <td><%=h appointment.doctor.name%></td>
     <td><%= link_to appointment.patient.patient_name, pms_patient_url(appointment.patient), :rel=> "facebox" %></td>
@@ -36,8 +32,9 @@
 
     <td><%= appointment.patient.reg_no.blank? ? link_to('Register', edit_pms_patient_url(appointment.patient)) : appointment.patient.reg_no%> </td>
 
+    <td><%= link_to 'Appointments', pms_patient_patient_appointments_url(appointment.patient), :rel=> "facebox" %></td>
 
-    <td NOWRAP = NOWRAP class='hide-for-print'><%= link_to image_tag('show.png', {:title => 'Show', :border => 0}), pms_appointment_url(appointment), :rel=> "facebox" %> &nbsp;|&nbsp; <%= link_to image_tag('edit.png', {:title => 'Edit', :border => 0}), edit_pms_appointment_path(appointment) %> &nbsp;|&nbsp; <%= link_to image_tag('delete.png', {:title => 'cancel appointment', :border => 0}), pms_appointment_path(appointment), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td NOWRAP = NOWRAP class='hide-for-print'><%= link_to image_tag('show.png', {:title => 'Show', :border => 0}), pms_appointment_url(appointment), :rel=> "facebox" %> &nbsp;|&nbsp; <%= link_to image_tag('edit.png', {:title => 'Edit', :border => 0}), edit_pms_appointment_path(appointment) %> &nbsp; <% unless appointment.state == 'visited' %>|&nbsp; <%= link_to image_tag('delete.png', {:title => 'cancel appointment', :border => 0}), pms_appointment_path(appointment), :confirm => 'Are you sure?', :method => :delete %> <%end %></td>
 
   </tr>
 <% end %>

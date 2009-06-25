@@ -7,11 +7,12 @@
   <table cellpadding="5px" class="form-table">
      <tr class= 'table-top'> <td colspan='2' ><lable> Appointment Deatils:</label> </td> </tr>
      <tr> <th><%= f.label :department %>:</th>
-     <td><%= select :departament, :id, [['Select department' , '']] + Department.departments_for_select_list %></td> <%= image_tag("spinner.gif",
+          <td><%= select :departament, :id, [['Select department' , '']] + Department.departments_for_select_list %> <%= image_tag("spinner.gif",
               :align => "absmiddle",
               :border => 0,
               :id => "spinner1",
-              :style =>"display: none;" ) %></tr>
+              :style =>"display: none;" ) %></td> 
+     </tr>
 
      <tr>
        <th><label>Doctor:</label></th>
@@ -43,15 +44,7 @@
      </tr>
   </table>
   
-   <p id ="submit-button" style="display:none"> <%=image_submit_tag('button.gif')%> </p>
-
-  <%= observe_field(:appointment_doctor_id, :frequency => 0.5,
-                    :before => "Element.show('spinner')",
-                    :success => "Element.hide('spinner')",
-                    :url => pms_appointments_url,
-                    :method => :get,
-                    :with => "'doctor=' + value+'&date=' + $('date').value"
-                   ) %>
+   <p id ="submit-button" style="display:none"> <a class="button" onclick="$(this).up('form').submit(); return false;"><span>Create Appointment</span></a> </p>
 
  <%= observe_field(:date, :frequency => 0.5,
                     :before => "Element.show('spinner')",
@@ -74,7 +67,7 @@
       <%=render :partial => 'new_patient', :locals => {:patient => patient} %>
    <% end %>
    <br />
-   <%=image_submit_tag('button.gif')%>
+   <a class="button" onclick="$(this).up('form').submit(); return false;"><span>Create Appointment</span></a>
 </div>
 
 <input type="hidden" name="patient_id" value= '<%=params[:patient_id]%>'>

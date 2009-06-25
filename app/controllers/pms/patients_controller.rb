@@ -2,9 +2,12 @@ class Pms::PatientsController < ApplicationController
   layout 'pms'
 
   def index
-  	@search = Patient.new_search(params[:search])
+    @search = Patient.new_search(params[:search])
     @search.per_page ||= 5
     @patients = @search.all
+    @search.order_as ||= "DESC"
+    @search.order_by ||= "reg_no"
+
     respond_to do |format|
       format.html
        format.js {
@@ -56,16 +59,14 @@ class Pms::PatientsController < ApplicationController
    	  else
    	    @patient2.gender = "male"
    	  end
-     	@patient1.spouse = @patient2.id
-     	@patient2.spouse = @patient1.id
-     	@patient1.spouse_name = @patient2.patient_name
-      @patient2.spouse_name = @patient1.patient_name
+     @patient1.spouse,@patient2.spouse  = @patient2.id, @patient1.id
+     @patient1.spouse_name, @patient2.spouse_name = @patient2.patient_name, @patient1.patient_name
       @patient2.address = @patient1.address
       @patient2.reg_date = Date.today
       @patient1.save
-    	@patient2.save
+      @patient2.save
       flash[:notice] = 'Patient was successfully created.'
-      redirect_to(patients_path)
+       redirect_to pms_patients_url
     else
       render :action => "new"
     end
@@ -91,8 +92,9 @@ class Pms::PatientsController < ApplicationController
     	patient2.address = @patient.address
       patient2.save
       flash[:notice] = 'Patient was successfully updated.'
-      redirect_to(patients_path)
+      redirect_to pms_patients_url
     else
+
       render :action => "edit"
     end
   end

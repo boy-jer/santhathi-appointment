@@ -15,7 +15,7 @@
         </tr>
      </table>
    <%end%>
-   </div><br/>
+   </div>
 
    <%= observe_form("search_form", :frequency => 1,
                  :before => "Element.show('spinner')",
@@ -30,10 +30,10 @@
               :id => "spinner",
               :style =>"display: none;" ) %>
 
-
-    <div id='appointment-list'>
+  <h3 class = 'head'> Listing Patients </h3>
+  <div id='appointment-list'>
      <%=render :partial=> 'patient_list'%>
-   </div>
-    <br />
+  </div>
+  <br />
 
 </div>
