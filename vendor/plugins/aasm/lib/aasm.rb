@@ -4,7 +4,14 @@ require File.join(File.dirname(__FILE__), 'state_machine')
 require File.join(File.dirname(__FILE__), 'persistence')
 
 module AASM
-  class InvalidTransition < Exception
+  def self.Version
+    '2.0.5'
+  end
+
+  class InvalidTransition < RuntimeError
+  end
+
+  class UndefinedState < RuntimeError
   end
   
   def self.included(base) #:nodoc:
@@ -14,15 +21,14 @@ module AASM
     base.extend AASM::ClassMethods
     AASM::Persistence.set_persistence(base)
     AASM::StateMachine[base] = AASM::StateMachine.new('')
-
-    base.class_eval do
-      def base.inherited(klass)
-        AASM::StateMachine[klass] = AASM::StateMachine[self].dup
-      end
-    end
   end
 
   module ClassMethods
+    def inherited(klass)
+      AASM::StateMachine[klass] = AASM::StateMachine[self].clone
+      super
+    end
+
     def aasm_initial_state(set_state=nil)
       if set_state
         AASM::StateMachine[self].initial_state = set_state
@@ -96,11 +102,14 @@ module AASM
   end
 
   private
-  def aasm_current_state_with_persistence=(state)
+  def set_aasm_current_state_with_persistence(state)
+    save_success = true
     if self.respond_to?(:aasm_write_state) || self.private_methods.include?('aasm_write_state')
-      aasm_write_state(state)
+      save_success = aasm_write_state(state)
     end
-    self.aasm_current_state = state
+    self.aasm_current_state = state if save_success
+
+    save_success
   end
 
   def aasm_current_state=(state)
@@ -111,7 +120,9 @@ module AASM
   end
 
   def aasm_state_object_for_state(name)
-    self.class.aasm_states.find {|s| s == name}
+    obj = self.class.aasm_states.find {|s| s == name}
+    raise AASM::UndefinedState, "State :#{name} doesn't exist" if obj.nil?
+    obj
   end
 
   def aasm_fire_event(name, persist, *args)
@@ -122,18 +133,21 @@ module AASM
     unless new_state.nil?
       aasm_state_object_for_state(new_state).call_action(:enter, self)
       
-      if self.respond_to?(:aasm_event_fired)
-        self.aasm_event_fired(self.aasm_current_state, new_state)
-      end
-
+      persist_successful = true
       if persist
-        self.aasm_current_state_with_persistence = new_state
-        self.send(self.class.aasm_events[name].success) if self.class.aasm_events[name].success
+        persist_successful = set_aasm_current_state_with_persistence(new_state)
+        self.class.aasm_events[name].execute_success_callback(self) if persist_successful
       else
         self.aasm_current_state = new_state
       end
 
-      true
+      if persist_successful 
+        self.aasm_event_fired(self.aasm_current_state, new_state) if self.respond_to?(:aasm_event_fired)
+      else
+        self.aasm_event_failed(name) if self.respond_to?(:aasm_event_failed)
+      end
+
+      persist_successful
     else
       if self.respond_to?(:aasm_event_failed)
         self.aasm_event_failed(name)
