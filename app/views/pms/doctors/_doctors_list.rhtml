@@ -8,8 +8,8 @@
 
 <table class="listing">
   <tr>
-    <th><%= remote_order_by_link( {:department =>:dept_name } ,:text => "Department" ) %></th>
-    <th><%= remote_order_by_link :name %></th>
+    <th> Department </th>
+    <th><%= remote_order_by_link ({:doctor_profile => :name} , :text => "Doctor Name") %></th>
     <th>Designation</th>
     <th>Medical</th>
     <th>Working from</th>
@@ -19,12 +19,12 @@
 
 <% for doctor in @doctors %>
   <tr>
-    <td><%=h doctor.department.dept_name %></td>
-    <td><%=h doctor.name %></td>
-    <td><%=h doctor.designation %></td>
-    <td><%=h doctor.medical_id %></td>
-    <td><%=h Time.parse(doctor.working_from.to_s).strftime('%H:%M').to_s %></td>
-    <td><%=h Time.parse(doctor.working_to.to_s).strftime('%H:%M').to_s %></td>
+    <td><%=h Department.find(doctor.doctor_profile.department_id).dept_name %></td>
+    <td><%=h doctor.doctor_profile.name %></td>
+    <td><%=h doctor.doctor_profile.designation %></td>
+    <td><%=h doctor.doctor_profile.medical_id %></td>
+    <td><%=h Time.parse(doctor.doctor_profile.working_from.to_s).strftime('%H:%M').to_s %></td>
+    <td><%=h Time.parse(doctor.doctor_profile.working_to.to_s).strftime('%H:%M').to_s %></td>
     <td><%= link_to 'Show', pms_doctor_url(doctor) %> |
         <%= link_to 'Edit',  edit_pms_doctor_url(doctor) %> |
         <%= link_to 'Destroy', pms_doctor_url(doctor), :confirm => 'Are you sure?', :method => :delete %></td>
@@ -34,7 +34,7 @@
 
 <table class='table-bottom'>
 <tr class="table-footer">
-  	     <td colspan = 5><%= link_to "<span>Create New Doctor Record</span>", new_pms_doctor_url, :class=> "button" %></td>
+  	     <td colspan = 5><%= link_to "<span>New Doctor Record</span>", new_pms_doctor_url, :class=> "button" %></td>
          <td colspan = 5> <% if @doctors.size > 1 %>
                              <div class="pagination">
                                 <%= remote_page_links %>

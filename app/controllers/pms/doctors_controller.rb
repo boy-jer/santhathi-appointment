@@ -21,6 +21,7 @@ class Pms::DoctorsController < ApplicationController
 
   def new
     @doctor = Doctor.new
+    @doctor.build_doctor_profile
   end
 
   def edit
@@ -31,6 +32,11 @@ class Pms::DoctorsController < ApplicationController
     @doctor = Doctor.new(params[:doctor])
     if @doctor.save
       flash[:notice] = 'Doctor was successfully created.'
+    # @doctor.doctorrofile.create(params[:doctor][:doctor_profile])
+       @doctor.register!
+       @doctor.activate!
+      @doctor.roles << Role.find_by_name('doctor')
+
       redirect_to(pms_doctors_url)
     else
       render :action => "new"
@@ -49,7 +55,15 @@ class Pms::DoctorsController < ApplicationController
 
   def destroy
     @doctor = Doctor.find(params[:id])
+    @doctor.doctor_profile.destroy
     @doctor.destroy
     redirect_to(pms_doctors_url)
   end
+
+  def activate
+    @doctor = Doctor.find(params[:id])
+    @doctor.activate!
+    redirect_to pms_doctos_path
+  end
+
 end

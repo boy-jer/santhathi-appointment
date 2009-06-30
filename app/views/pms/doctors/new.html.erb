@@ -2,28 +2,39 @@
   <div class='continer-inner'>
 <h2>New doctor</h2>
 
-<% form_for :doctor,:url=>pms_doctors_url do |f| %>
-  <%= f.error_messages %>
-  <table>
-    <tr><td> <%= f.label :department_id %></td></tr>
-    <tr><td> <%= f.select :department_id, [['Select department' , '']] + Department.departments_for_select_list %></td></tr>
 
-    <tr><td><%= f.label :name %></td></tr>
-    <tr><td><%= f.text_field :name, {:class => 'textbox'} %></td></tr>
+<% form_for([:pms, @doctor],:doctor, :url => pms_doctors_url )do |f| %>
+<%= error_messages_for :doctor %>
+  <table class ="form-table">
 
-    <tr><td> <%= f.label :designation %></td></tr>
-    <tr><td><%= f.text_field :designation,  {:class => 'textbox'} %></td></tr>
+           <tr> <th> Login : </th> <td> <%= f.text_field :login ,:class => 'textbox' %> </td></tr>
+         <tr> <th> Email : </th> <td> <%= f.text_field :email ,:class => 'textbox'%>  </td></tr>
 
-    <tr><td><%= f.label :medical_id %></td></tr>
-    <tr><td><%= f.text_field :medical_id,  {:class => 'textbox'} %></td></tr>
+         <tr> <th>Password : </th> <td> <%= f.password_field :password ,:class => 'textbox'%> </td></tr>
 
-    <tr><td><%= f.label :working_from %></td> <td>&nbsp;</td> <td><%= f.label :working_to %> </td> </tr>
-    <tr><td><%= f.select :hour, hours, :selected => 9 %> <%= f.select :minute, minutes, :selected => 30 %></td>
-        <td>&nbsp;</td>
-        <td><%= f.select :hour_to, hours, :selected => 9 %> <%= f.select :minute_to, minutes, :selected => 30 %></td> </tr>
+         <tr> <th> Confirm Password : </th> <td> <%= f.password_field :password_confirmation ,:class => 'textbox'%></td></tr>
 
-    <tr><td><%= f.label :comments %></td> </tr>
-    <tr><td>  <%= f.text_field :comments, {:class => 'textbox'} %></td> </tr>
+
+    <% f.fields_for :doctor_profile do |doctor_profile_form| %>
+
+    <tr><th> <%= doctor_profile_form.label :department_id %></th>
+     <td> <%= doctor_profile_form.select :department_id, [['Select department' , '']] + Department.departments_for_select_list %></td></tr>
+
+    <tr><th><%= doctor_profile_form.label :name %></th><td><%= doctor_profile_form.text_field :name, {:class => 'textbox'} %></td></tr>
+
+    <tr><th> <%= doctor_profile_form.label :designation %></th> <td><%= doctor_profile_form.text_field :designation,  {:class => 'textbox'} %></td></tr>
+
+    <tr><th><%= doctor_profile_form.label :medical_id %></th> <td><%= doctor_profile_form.text_field :medical_id,  {:class => 'textbox'} %></td></tr>
+
+    <tr><th><%= doctor_profile_form.label :working_from %></th> <td><%= doctor_profile_form.select :hour, hours, :selected => 9 %> <%= doctor_profile_form.select :minute, minutes, :selected => 30 %></td> </tr>
+
+
+     <tr><th><%= doctor_profile_form.label :working_to %> </th> <td>
+
+        <%= doctor_profile_form.select :hour_to, hours, :selected => 9 %> <%= doctor_profile_form.select :minute_to, minutes, :selected => 30 %></td> </tr>
+
+    <tr><th><%= doctor_profile_form.label :comments %></th> <td>  <%= doctor_profile_form.text_field :comments, {:class => 'textbox'} %></td> </tr>
+    <%end%>
   </table>
   <p>
     <%= f.submit "Create" %>

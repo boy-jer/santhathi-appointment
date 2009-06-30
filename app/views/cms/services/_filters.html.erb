@@ -1,11 +1,10 @@
 <% form_tag(cms_services_url, :method => :get, :id => "search_form") do %>
    <table class="search-table">
-     <tr>
-       <th>Service Name :</th>
-      <td>
+     <tr><th>Service Name :</th>
+
       <%fields_for @search do |f|%>
          <% f.fields_for @search.conditions do |p| %>
-            <%= p.text_field :name_like ,:class =>'textbox' %></td>
+            <td> <%= p.text_field :name_like ,:class =>'textbox' %></td>
          <%end%>
       <%end%>
 	 </tr>

@@ -1,15 +1,19 @@
 <% form_tag(pms_doctors_url, :method => :get, :id => "search_form") do %>
    <table class="search-table">
      <tr>
-       <th>Doctor Name :</th> <th>Designation :</th>
+       <th>Doctor Name </th> <th>Designation </th> <th> Reset</th>
      </tr>
      <tr>
       <%fields_for @search do |f|%>
         <% f.fields_for @search.conditions do |p| %>
-           <td><%= p.text_field :name_like ,:class =>'textbox' %></td>
-           <td><%= p.text_field :designation_like, :class => 'textbox' %></td>
+         <% p.fields_for p.object.doctor_profile do |profile| %>
+
+           <td><%= profile.text_field :name_like ,:class =>'textbox' %></td>
+           <td><%= profile.text_field :designation_like, :class => 'textbox' %></td>
+           <%end%>
         <%end%>
       <%end%>
+       <td><input type="reset" value="Reset"></td>
 	 </tr>
   </table>
 <% end %>

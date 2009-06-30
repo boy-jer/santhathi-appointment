@@ -20,7 +20,7 @@ class Pms::SelectOptionsController < ApplicationController
 
   def show
   	@option = SelectOption.find(params[:id])
-  	render :layout => "false"
+  	render :layout => false
  	end
 
   def edit
