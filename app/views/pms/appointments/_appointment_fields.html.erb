@@ -67,7 +67,9 @@
       <%=render :partial => 'new_patient', :locals => {:patient => patient} %>
    <% end %>
    <br />
+    
    <a class="button" onclick="$(this).up('form').submit(); return false;"><span>Create Appointment</span></a>
+   <br /> <br />
 </div>
 
 <input type="hidden" name="patient_id" value= '<%=params[:patient_id]%>'>

@@ -15,9 +15,9 @@ body {
 
 #wrapper {
      margin: 0px auto;
-     width: 98.4%;
+     width: 98.6%;
      background: #fff;
-     border: #2C74A7 8px solid;
+     border: #0062A8 8px solid;
      padding-top: 1px;
 }
 
@@ -164,7 +164,7 @@ h3 span {color: #003A66;
 #header h1 {
 	float: left;
 	font-weight: bold;
-	color: #005188;
+	color: #615100;
         font-size: 28px;
 	padding: 0px;
 	margin: 0px;
@@ -190,13 +190,15 @@ h3 span {color: #003A66;
 
 
 .head {
-	color: #00407A;
-	font-weight: bold;
-	background-color: #FAFBFC;
-	margin: 15px 0px 15px 0px;
-	font-size: 1.1em;
-        padding: 3px 5px 3px 8px;
-        border: #F1F3F6 1px solid;
+	color: #204F85;
+	font-weight: normal;
+	background-color: #FFF;
+	padding: 0.4em .5em 0.4em;
+	margin: 2px 0px 10px 0px ;
+	font-size: 14px;
+        font-weight: bold;
+	text-align: left;
+        border: #E3E3D8 1px solid;
       
 }
 
@@ -349,11 +351,11 @@ h3 span {color: #003A66;
  color: #333;
  width: 32%;
  float: right;
- padding: 0px 5px 0px 5px;
+ padding: 2px 5px 0px 5px;
  background-color: #fff;
- height: 520px;
+ height: 479px;
  background: #fff;
-
+ border: #ddd 1px solid;
 }
 
 #main-schedules .head{
@@ -361,13 +363,11 @@ h3 span {color: #003A66;
 	font-weight: normal;
 	background-color: #E0EAF4;
 	padding: 0.3em 1em 0.3em;
-	margin-bottom: 5px;
 	font-size: 14px;
         font-weight: bold;
 	text-align: left;
+        margin: 0;
         border: #BDCFE1 1px solid;
-
-
 }
 
 #new-booking {
@@ -409,10 +409,10 @@ h3 span {color: #003A66;
            border-style: outset;*/
           /* border: 4px  #F6F6EE  solid;*/
            min-height: 525px;
-           background: #F3F3ED; /* url(/images/tab.png) repeat-x;*/
+           background: #F3F3E7; /* url(/images/tab.png) repeat-x;*/
            height: 100%;
            margin: 0px;
-           padding: 10px;
+           padding: 12px;
            margin-top: 0px;
            }
 
@@ -635,7 +635,7 @@ h3 span {color: #003A66;
 .table-top {width: 100% }
 
 
-.search-table th {background: #F2F3F7 /*url(/images/tab.png) repeat-x*/; color: #002E4F; padding: .3em .5em; border:1px solid #BDCFE1; text-align: left;  font-weight: normal; }
+.search-table th {background: #F3F3F3 /*url(/images/tab.png) repeat-x*/; color: #002E4F; padding: .3em .5em; border:1px solid #BDCFE1; text-align: left;  font-weight: normal; }
 
 .search-table td {background-color: #FAFBFC; padding: .3em .5em; border:1px solid #BDCFE1; text-align: left; border-top:1px solid #fff;}
 

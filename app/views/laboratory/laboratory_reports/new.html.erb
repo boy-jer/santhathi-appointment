@@ -1,5 +1,5 @@
 <div class='continer'>
-<% form_for([@prescribed_test, @laboratory_report]) do |f| %>
+<% form_for(:laboratory_report, :url => new_laboratory_prescribed_test_laboratory_report_path(@prescribed_test, @laboratory_report)) do |f| %>
 
   <%= f.error_messages %>
   <h3> Patient Details </h3>
@@ -46,7 +46,7 @@
               <td><%= link_to 'Details', details_laboratory_laboratory_test_results_url(:patient_id =>@patient.id,:specification_id => spec), :rel=> "facebox" %></td>
            </tr>
        <%else%>
-      <td> <%= link_to 'Details', details_laboratory_laboratory_laboratory_test_results_url(:patient_id =>@patient.id,:specification_id => spec), :rel=> "facebox" %></td>
+      <td> <%= link_to 'Details', details_laboratory_laboratory_test_results_url(:patient_id =>@patient.id,:specification_id => spec), :rel=> "facebox" %></td>
            <tr class= 'header'><td  colspan=5><b><%= spec.parameter.parameter_name %></b></td> </tr>
        <%end%>
      <%end%>
