@@ -29,11 +29,11 @@ class Pms::AppointmentsController < ApplicationController
                     csv << ['Appointment No', 'Appointment Date', 'Appointment Time', 'Doctor Name', 'Patient Name', 'Reason', 'Status', 'Reg No']
                     #Data
                     @appointments.each do |app|
-                      csv << [app.id, app.appointment_date, app.appointment_time.strftime('%H:%M'), app.doctor.name, app.patient.patient_name, app.reason.name, app.state, app.patient.reg_no ]
+                      csv << [app.id, app.appointment_date, app.appointment_time.strftime('%H:%M'), app.doctor.doctor_profile.name, app.patient.patient_name, app.reason.name, app.state, app.patient.reg_no ]
                     end
                  end
                  #sending the file to the browser
-                 send_data(csv_file, :filename => 'credit_desk_users_list.csv', :type => 'text/csv', :disposition => 'attachment')
+                 send_data(csv_file, :filename => 'appointments_list.csv', :type => 'text/csv', :disposition => 'attachment')
                 }
      format.pdf {
                   options = { :left_margin   => 20,
@@ -141,9 +141,10 @@ class Pms::AppointmentsController < ApplicationController
   def update_doctors_list
     dept_id = params[:department_id]
     if dept_id.blank?
-      @doctors = Doctor.find(:all).collect{|x| [x.name, x.id]}
+      @doctors = Doctor.find(:all).collect{|x| [x.doctor_profile.name, x.id]}
     else
-      @doctors = Department.find(dept_id).doctors.collect{|x| [x.name, x.id]}
+     # @doctors = Department.find(dept_id).doctors.collect{|x| [x.name, x.id]}
+     @doctors = DoctorProfile.find(:all,:conditions =>["department_id = ? ", dept_id]).map {|ob| [ob.name ,ob.doctor.id]}
     end
 
     render :update do |page|

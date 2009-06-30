@@ -1,7 +1,7 @@
 <table class="clinical-table">
      <tr>
        <th>Name:</th><td><%= @patient.patient_name %></td>
-       <th>Registration No:</th><td><%= @patient.reg_no %></td></tr>
+       <th>Registration No:</th><td colspan="3"><%= @patient.reg_no %></td></tr>
      <tr>
        <th>Dob:</th><td><%= @patient.dob %></td>
        <th>Age:</th><td><%= calculate_age(@patient.dob) %></td>
@@ -16,6 +16,8 @@
 <div id= "patient-history">
 
 </div>
+<br />
+<br />
 <%= image_tag("spinner.gif",
               :align => "absmiddle",
               :border => 0,

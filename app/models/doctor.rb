@@ -3,6 +3,7 @@ class Doctor < User
 	has_one :refer_doctor
   belongs_to :department
   has_one :doctor_profile
+  #has_one :departament , :through => :doctor_profiles
 
   aasm_state :inactive
 
@@ -20,12 +21,10 @@ class Doctor < User
 
 
   def self.doctors_list
-    self.find(:all).collect{|doc| [doc.login, doc.id] }
+    self.find(:all).collect{|doc| [doc.doctor_profile.name, doc.id] }
   end
 
-  def self.laboratory_docator_list
-  	self.find(:all,:include => [:department],:conditions => ["departments.dept_name = ?","Laboratory"]).collect{|doc| [doc.name, doc.id]}
-  end
+
 
 
 

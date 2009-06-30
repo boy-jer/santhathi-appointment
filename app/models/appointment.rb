@@ -40,7 +40,7 @@ class Appointment < ActiveRecord::Base
   aasm_event :recommend_for_discharge do
    transitions :to => :recommend_for_discharge,:from => [:visited]
   end
-aasm_column :state
+
 
   validates_presence_of :doctor_id, :appointment_date, :minute, :hour
 
@@ -159,8 +159,8 @@ aasm_column :state
      else
  	    condition[:appointment_date] = from..to
       	condition[:doctor_id] = doctor
- 	end
- 	 temp = Appointment.find(:all, :conditions => condition ).size
+ 	   end
+ 	   temp = Appointment.find(:all, :conditions => condition ).size
   	 return temp
   end
 

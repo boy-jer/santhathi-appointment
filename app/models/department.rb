@@ -2,6 +2,8 @@ class Department < ActiveRecord::Base
   has_many :doctors
   has_many :appointments
   has_many :services
+ # has_many :doctors , :through => :doctor_profiles
+  #has_many :doctor_profiles
 
   validates_presence_of :dept_name, :description
   validates_uniqueness_of :dept_name

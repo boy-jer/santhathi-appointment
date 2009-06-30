@@ -103,12 +103,12 @@ class Pms::PatientsController < ApplicationController
   def destroy
     @patient = Patient.find(params[:id])
     @patient.destroy
-    redirect_to(patients_url)
+    redirect_to(pms_patients_url)
   end
 
 
   def patient_search
-    @patients = Patient.name_filter(params[:name]) unless params[:name].blank?
+    @patients = Patient.find(:all ,:conditions => { :patient_name => params[:name] ,:spouse_is_nil => true }) unless params[:name].blank?
     render :update do |page|
       if params[:partial_form] == "left"
         page.replace_html params[:partial_form]+"_patient_search_results", :partial => "patient_search_results", :object => @patients
@@ -133,11 +133,11 @@ class Pms::PatientsController < ApplicationController
       spouse.spouse = patient.id
       patient.save
       spouse.save
-      flash[:notice] = 'Patient and Spouse Associated.'
-      redirect_to (associate_couple_patients_path())
+      flash[:notice] = 'Patient and Spouse Associated Successfuly .'
+      redirect_to ( associate_couple_pms_patients_path() )
    else
      	flash[:notice] = 'Plaese Select  Patient and Spouse'
-     	redirect_to (associate_couple_patients_path())
+     	redirect_to ( associate_couple_pms_patients_path() )
    end
   end
 

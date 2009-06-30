@@ -1,15 +1,15 @@
 <div class='continer-show'>
   <h3>Showing Appointment</h3>
   <table class="form-table">
-    <tr><th><b>Doctor:</b></th><td><%=h @appointment.doctor.name %></td></tr>
-    <tr><th><b>Patient Name:</b></th><td><%=h @appointment.patient.patient_name %></td></tr>
-    <tr><th><b>Appointment date:</b></th><td><%=h @appointment.appointment_date %></td></tr>
-    <tr><th><b>Appointment time:</b></th><td><%=h @appointment.appointment_time.strftime('%H:%M').to_s %></td></tr>
-    <tr><th><b>Reg no:</b></th><td><%=h @appointment.patient.reg_no %></td></tr>
-    <tr><th><b>Age:</b></th><td><%=h calculate_age(@appointment.patient.dob) %></td></tr>
+    <tr><th><b>Doctor:</b></th><td><%=h @appointment.doctor.doctor_profile.name %></td></tr>
+    <tr><th><b>Patient Name:</b></th><td> <%=h @appointment.patient.patient_name %></td></tr>
+    <tr><th><b>Appointment date:</b></th><td> <%=h @appointment.appointment_date %></td></tr>
+    <tr><th><b>Appointment time:</b></th><td> <%=h @appointment.appointment_time.strftime('%H:%M').to_s %></td></tr>
+    <tr><th><b>Reg no:</b></th><td> <%=h @appointment.patient.reg_no %></td></tr>
+    <tr><th><b>Age:</b></th><td> <%=h calculate_age(@appointment.patient.dob) %></td></tr>
     <tr><th><b>Gender:</b></th><td><%=h @appointment.patient.gender %></td></tr>
     <tr><th><b>Contact no:</b></th><td><%=h @appointment.patient.contact_no %></td></tr>
-    <tr><th><b>Department:</b></th><td><%=h @appointment.doctor.department.dept_name %></td></tr>
+    <tr><th><b>Department:</b></th><td> <%=h @appointment.doctor.doctor_profile.name %> </td></tr>
   </table>
 
 <% if @appointment.patient.reg_no.blank? %>
@@ -28,4 +28,3 @@
 <% end %>
 
 </div>
-

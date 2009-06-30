@@ -15,7 +15,7 @@
      <tr>
           <td> <%=h @lab_test.name %> </td>
           <td> <%=h @patient.patient_name %> </td>
-          <td> <%=h @patient.age %> </td>
+          <td> <%=h calculate_age(@patient.dob) %> </td>
           <td> <%= @patient.gender %> </td>
           <td> <%= @patient.reg_no%> </td>
           <td><%=h @appointment.patient.id%> </td>
@@ -31,19 +31,19 @@
           <th> Details </th>
      </tr>
      <% for spec in @specifications %>
-       <% unless spec.parameter.value_type == 'Header' %>
+         <% unless spec.parameter.value_type == 'Header' %>
            <tr><td><b><%= spec.parameter.parameter_name %></b></td>
               <td><%= spec.parameter.measurement_unit.name %></td>
-
+               <% lab_test_result = display_laboratory_test_result(@laboratory_report.id ,spec.id ) %>
               <% if spec.parameter.value_type == 'Multiple' %>
                  <td><%= select "specifications[ids]", "#{spec.id}", spec.parameter.values.nil? ? [] : spec.parameter.values %></td>
               <% elsif spec.parameter.value_type == 'Numeric'%>
-                 <td><%= text_field_tag "specifications[ids][#{spec.id}]", '0.0', :class => 'textbox' %></td>
+                 <td><%= text_field_tag "specifications[ids][#{spec.id}]", lab_test_result.result.blank?? '0.0' : lab_test_result.result , :class => 'textbox' %></td>
                <%else%>
                   <td><%= text_field_tag "specifications[ids][#{spec.id}]", '', :class => 'textbox' %></td>
               <%end%>
 
-              <td><%= text_area_tag "specifications[remarks][r_#{spec.id}]", display_parameter_specification(@lab_test.id,spec.parameter_id), :class => 'textbox' %></td>
+              <td><%= text_area_tag "specifications[remarks][r_#{spec.id}]", lab_test_result.remarks.blank?? '  ' : lab_test_result.remarks, :class => 'textbox' %></td>
               <td><%= link_to 'Details', details_laboratory_laboratory_test_results_url(:patient_id =>@patient.id,:specification_id => spec), :rel=> "facebox" %></td>
            </tr>
        <%else%>
@@ -58,10 +58,10 @@
     <table cellpadding="5px" class="form-table">
       <tr> <th> Date of Action  :</th> <td><%= calendar_date_select_tag "laboratory_report[date_of_action]", Date.today , :class =>'textbox' %></td></tr>
       <tr> <th> Time of Action  :</th> <td><%= f.time_select  :time_of_action%></td></tr>
-      <tr> <th> Action Taken By : </th> <td>
-       <%= select :laboratory_report,"action_taken_by_id",[['Select Doctor' , '']] + Doctor.laboratory_docator_list %> </td> </tr>
+      <tr> <th> Action Taken By : <% laboratory_doctors = laboratory_docator_list() %> </th> <td>
+       <%= select :laboratory_report,"action_taken_by_id",[['Select Doctor' , '']] + laboratory_doctors  %> </td> </tr>
       <tr> <th> Authorised By : </th> <td>
-       <%= select :laboratory_report,"authorised_by_id",[['Select Doctor' , '']] + Doctor.laboratory_docator_list %>
+       <%= select :laboratory_report,"authorised_by_id",[['Select Doctor' , '']] + laboratory_doctors   %>
        </td> </tr>
       <tr> <th> Desscription :</th> <td> <%= f.text_field :description ,:class => 'address' %> </td> </tr>
     </table>

@@ -4,11 +4,7 @@
 
       <tr><th><%= f.label :value_type %>:</th>
       <td> <%= f.select :value_type, value_types, :class=>"textbox" %></td>
-      <%= image_tag("spinner.gif",
-              :align => "absmiddle",
-              :border => 0,
-              :id => "spinner1",
-              :style =>"display: none;" ) %>
+
       </tr>
 
       <tr><th><%= f.label :measurement_unit %>:</th>
@@ -24,7 +20,13 @@
       <%end%>
 </table>
 
-     <div id='multiple'>  </div>
+     <div id='multiple'>
+<!--
+       <% if  @parameter.value_type == 'Multiple' %>
+           <%= render :partial => 'multiple_section' %>
+       <% end %>
+-->
+     </div>
 
 
 
@@ -37,3 +39,8 @@
                     :with => "'value_type=' + value"
                   )
 %>
+<%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner1",
+              :style =>"display: none;" ) %>

@@ -4,4 +4,5 @@ class Prescription < ActiveRecord::Base
   has_many :prescribed_tests
   has_many :lab_tests, :through => :prescribed_tests
   has_many :laboratory_test_results
+  has_many :laboratory_reports
 end

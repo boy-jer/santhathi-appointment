@@ -1,13 +1,13 @@
 <%unless @appointments.blank?%>
-<%form_tag cms_doctor_patient_path(1), :method => :put do%>
-<table class="listing">
+  <%form_tag cms_doctor_patient_path(1), :method => :put do %>
+  <table class="listing">
       <thead>
       <tr>
         <th></th>
         <th><%= remote_order_by_link({:patient => :reg_no} , :text => "Hospital No.") %></th>
         <th><%= remote_order_by_link(:id , :text => "PVR No.") %></th>
         <th><%= remote_order_by_link({:patient => :patient_name} , :text => "Patient Name") %></th>
-        <th><%= remote_order_by_link :doctor =>:name %></th>
+        <th><%= remote_order_by_link ({:doctor => {:doctor_profile => :name}} , :text => "Doctor Name") %></th>
         <th> Date </th>
         <th><%= remote_order_by_link({:reason => :name }, :text => "Reason") %></th>
         <th>App History</th>
@@ -21,7 +21,7 @@
          <td><%=h appointment.patient.reg_no %></td>
          <td><%=h appointment.id%></td>
          <td><%=h appointment.patient.patient_name%></td>
-         <td><%=h appointment.doctor.name %></td>
+         <td><%=h appointment.doctor.doctor_profile.name %></td>
          <td><%=h Time.parse(appointment.appointment_date.to_s).strftime("%d-%m-%y") %></td>
          <td><%=h appointment.reason.name%></td>
          <td><%= link_to 'Appointments', pms_patient_patient_appointments_url(appointment.patient), :rel=> "facebox" %></td>
@@ -54,15 +54,17 @@
                                 <%= remote_page_links %>
                           </div>
                           <%end%>
-                          </td>
+         </td>
      </tr>
 
 
     </table>
-    <%= observe_form("goto", :frequency => 1,
+
+   <br/>
+<%else%>
+ No Records Found.
+ <%end%>
+     <%= observe_form("goto", :frequency => 1,
                  :before => "Element.show('spinner')",
                  :success => "Element.hide('spinner')",
                  :url => cms_doctor_patients_url, :method => :get) %>
-   <br/>
-
- <%end%>

@@ -18,9 +18,9 @@
      <tr>
           <td> <%=h @lab_test.name %> </td>
           <td> <%=h @patient.patient_name %> </td>
-          <td> <%=h @patient.age %> </td>
-          <td> <%=  @patient.gender %> </td>
-          <td> <%=  @patient.reg_no%> </td>
+          <td> <%=h calculate_age(@patient.dob) %> </td>
+          <td> <%=h  @patient.gender %> </td>
+          <td> <%=h  @patient.reg_no%> </td>
           <td> <%=h @appointment.patient.id %> </td>
      </tr>
 

@@ -3,19 +3,12 @@
 <% form_for(:department, :url=> pms_department_url(@department),:html=>{:method=>:put}) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :department_name %><br />
-    <%= f.text_field :dept_name %>
-  </p>
-
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </p>
-  <p>
-    <%= f.label :system_defined %><br />
-    <%= f.text_field :system_defined %>
-  </p>
+  <table class="form-table">
+    <tr> <th><%= f.label :department_name %> </th><td> <%= f.text_field :dept_name, {:class => 'textbox'} %> </td></tr>
+     <tr> <th><%= f.label :abbrevation %></th><td> <%= f.text_field :abbrevation, {:class => 'textbox'} %> </td></tr>
+    <tr> <th><%= f.label :description %></th><td> <%= f.text_field :description, {:class => 'textbox'} %> </td></tr>
+    <tr> <th><%= f.label :system_defined %></th><td><%= f.text_field :system_defined, {:class => 'textbox'} %></td></tr>
+   </table>
   <p>
     <%= f.submit "Update" %>
   </p>

@@ -16,7 +16,7 @@
          <tr>
            <td><%=h patient.reg_date %></td>
            <td><%=h patient.patient_name %></td>
-           <td><%=h patient.age %></td>
+           <td><%=h calculate_age(patient.dob) %></td>
            <td><%=h patient.spouse_name %></td>
            <td><%=h patient.contact_no %></td>
 	   <td><%= radio_button_tag ('patient', patient.id, checked = false, options = {:onclick => "$('main_form').patient_id.value=#{patient.id};"})%></td>

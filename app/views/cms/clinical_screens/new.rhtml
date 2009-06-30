@@ -15,8 +15,8 @@
        <th>Gender:</th><td><%= @patient.gender %></td>
      </tr>
      <tr>
-       <th>Dept:</th><td><%= @doctor.department.dept_name %></td>
-       <th>Doctor/Unit:</th><td><%= @doctor.name %></td>
+       <th>Dept:</th><td><%= Department.find(@doctor.doctor_profile.department_id).dept_name %></td>
+       <th>Doctor/Unit:</th><td><%= @doctor.doctor_profile.name %></td>
        <th></th><td></td></td>
      </tr>
     </table>

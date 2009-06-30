@@ -1,7 +1,6 @@
 <br/>
 
 
-  </table><br/>
   <h3> Test Report For : <%=@lab_test.name %> </h3>
   <table class="listing">
      <tr> <th> Parameter Name </th>
@@ -31,5 +30,7 @@
               <tr class= 'header'><td  colspan=5><b><%= spec.parameter.parameter_name %></b></td> </tr>
            <%end%>
         <%end%>
+        <%else%>
+          No report Found Yet
       <%end%>
     </table> <br/>

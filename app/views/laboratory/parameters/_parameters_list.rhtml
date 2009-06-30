@@ -17,7 +17,7 @@
   <tr>
     <td><%=h parameter.parameter_name %></td>
     <td><% if parameter.value_type =="Multiple" %>
-             <%= link_to "Multiple", "parameters/muliple_display/#{parameter.id}", :rel=> "facebox" %>
+             <%= link_to "Multiple", "/laboratory/parameters/muliple_display/#{parameter.id}", :rel=> "facebox" %>
         <%else%>
            <%=h parameter.value_type %></td>
         <%end%>

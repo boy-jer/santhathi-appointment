@@ -8,12 +8,16 @@
 
 <h3 id='patient-search-header'>  Associate Couple:  <span>(Enter atleast one search parameter:)</span></h3>
   <div class='left-box'>
-      
+
   <% form_remote_tag(:url =>{ :action => :patient_search}, :html => {:id => 'left_form'}) do %>
       <table>
-        <tr><td><%=label_tag 'Name:'%></td><td><%=label_tag 'Contact No:'%></td><td><%=label_tag 'Register No:'%></td></tr>
+
+    <!--    <tr><td><%=label_tag 'Name:'%></td><td><%=label_tag 'Contact No:'%></td><td><%=label_tag 'Register No:'%></td></tr>
         <tr><td><%= text_field_tag 'name', '', {:class => 'textbox'}%></td><td><%= text_field_tag 'number', '' , {:class => 'textbox'}%></td>
 	    <td><%= text_field_tag 'reg_num', '' , {:class => 'textbox'}%></td> <td><%=image_submit_tag('go.gif')%></td>
+	    -->
+	     <tr><td><%=label_tag 'Name:'%></td> </tr>
+        <tr><td><%= text_field_tag 'name', '', {:class => 'textbox'}%></td>  <td><%=image_submit_tag('go.gif')%></td>
 	    <input id="partial_form" name="partial_form" type="hidden" value="left" />
 	</tr>
        </table>
@@ -26,9 +30,13 @@
   <div class='right-box'>
    <% form_remote_tag(:url =>{ :action => :patient_search}, :html => {:id => 'right_form'}) do %>
       <table>
+      <!--
         <tr><td><%=label_tag 'Name:'%></td><td><%=label_tag 'Contact No:'%></td><td><%=label_tag 'Register No:'%></td></tr>
         <tr><td><%= text_field_tag 'name', '', {:class => 'textbox'}%></td><td><%= text_field_tag 'number', '' , {:class => 'textbox'}%></td>
 		    <td><%= text_field_tag 'reg_num', '' , {:class => 'textbox'}%></td> <td><%=image_submit_tag('go.gif')%></td>
+		  -->
+		  <tr><td><%=label_tag 'Name:'%></td> </tr>
+        <tr><td><%= text_field_tag 'name', '', {:class => 'textbox'}%></td>  <td><%=image_submit_tag('go.gif')%></td>
 		  <input id="partial_form" name="partial_form" type="hidden" value="right" />
 		</tr>
        </table>

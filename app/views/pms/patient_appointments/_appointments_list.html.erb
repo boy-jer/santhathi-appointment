@@ -22,7 +22,7 @@
     <td><%=h appointment.id %></td>
     <td><%=h appointment.appointment_date %></td>
     <td><%=h Time.parse(appointment.appointment_time.to_s).strftime('%H:%M').to_s %></td>
-    <td><%=h appointment.doctor.name%></td>
+    <td><%=h appointment.doctor.doctor_profile.name%></td>
     <td><%=h appointment.reason.name %></td>
     <td><%=h appointment.state %></td>
 

@@ -2,17 +2,17 @@
   <%= f.error_messages %>
 
     <table class = 'form-table'>
-      <tr> <td> <label><%= link_to "Back" , new_cms_appointment_clinical_screen_path(@prescription.appointment.id) %> &nbsp; | &nbsp;
+      <tr> <td colspan ="4"> <label><%= link_to "Back" , new_cms_appointment_clinical_screen_path(@prescription.appointment.id) %> &nbsp; | &nbsp;
     <%= link_to "Patient List" ,  cms_doctor_patients_path %>  &nbsp; | &nbsp;
     <%= link_to "Cancel" , new_cms_appointment_clinical_screen_path(@prescription.appointment.id) %> </label></td></tr>
 
        <tr><th>Prescription To: </th> <td> <%= @department.dept_name %> </td>
-           <th>Prescribing Doctor:</th> <td> <%= @appointment.doctor.name %> </td></tr>
+           <th>Prescribing Doctor:</th> <td> <%= @appointment.doctor.doctor_profile.name %> </td></tr>
        <tr><th>Prescription Date:</th> <td><%= calendar_date_select_tag "prescription[p_date]", @prescription.p_date, :class =>'textbox' %></td>
            <th>Prescription Time:</th> <td><%= time_select("prescription", "p_time")  %></td></tr>
        <tr>
            <th>Service:</th>
-           <td> <div id='prescription'>
+           <td colspan ="3"> <div id='prescription'>
                   <ul class='treeview'>
                       <%= render :partial => 'child_list', :collection => [@lab_test], :as => :service %>
                   </ul>
@@ -22,9 +22,9 @@
 
        <tr><th>Urgency:</th> <td> <%= f.select :urgency, ['High', 'Medium', 'Low'], :selected =>'High' %> </td>
        <th>Follow up Before:</th> <td><%= calendar_date_select_tag "prescription[follow_up]", @prescription.follow_up, :class =>'textbox' %></td></tr>
-       <tr><th>Other Remarks:</th> <td><%= f.text_field :remarks %></td>
+       <tr><th>Other Remarks:</th> <td><%= f.text_field :remarks ,:class => "textbox"%></td>
 
-       <td><%= f.submit "Update Prescription" %></td> </tr>
+       <td colspan ="2"><%= f.submit "Update Prescription" %></td> </tr>
     </table>
     <input type="hidden" name="prescription[department_id]" value= <%= params[:department] %>>
     <input type="hidden" name="prescription[appointment_id]" value= <%=  params[:appointment] %>>

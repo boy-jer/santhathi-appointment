@@ -1,5 +1,6 @@
 class DoctorProfile < ActiveRecord::Base
 	belongs_to :doctor
+#	belongs_to :departament
 	before_save :update_time
 	validates_presence_of :department_id, :name ,:designation
 

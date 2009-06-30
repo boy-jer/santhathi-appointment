@@ -9,7 +9,7 @@
   </tr>
  <% unless @prescribed_tests.blank? %>
   <% for test in @prescribed_tests %>
-        <tr><td> <%= @appointment.doctor.name %> </td>
+        <tr><td> <%= @appointment.doctor.doctor_profile.name %> </td>
             <td> <%= @prescription.p_date %> </td>
             <td> <%= test.lab_test.name %> </td>
             <td> <%= @prescription.quantity %> </td>

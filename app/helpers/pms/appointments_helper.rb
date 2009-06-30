@@ -7,9 +7,9 @@ module  Pms::AppointmentsHelper
 
   def doctors_list(dept_id = nil)
     if dept_id.nil?
-      @doctors = Doctor.find(:all).collect{|x| [x.name, x.id]}
+      @doctors = Doctor.find(:all).collect{|x| [x.doctor_profile.name, x.id]}
     else
-      @doctors = Department.find(dept_id).doctors.collect{|x| [x.name, x.id]}
+      @doctors = Department.find(dept_id).doctors.collect{|x| [x.doctor_profile.name, x.id]}
     end
     return @doctors
   end

@@ -3,7 +3,7 @@ class Cms::DoctorPatientsController < ApplicationController
 
   def index
     @search = Appointment.new_search(params[:search])
-    @search.conditions.state_is ="visited"
+    @search.conditions.state = 'visited'
     @search.order_as ||= "DESC"
     @search.order_by ||= "created_at"
     @search.per_page ||= 15
@@ -12,7 +12,7 @@ class Cms::DoctorPatientsController < ApplicationController
       format.html
       format.js  {
                     render :update do |page|
-                      page.replace_html 'appointment-list', :partial => 'patient_list'
+                      page.replace_html 'appointment-list', :partial => '/cms/doctor_patients/patient_list'
                     end
                   }
     end

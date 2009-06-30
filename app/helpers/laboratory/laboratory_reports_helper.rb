@@ -13,9 +13,19 @@ module Laboratory::LaboratoryReportsHelper
 	   end
     end
 
+    def display_laboratory_test_result(report_id,spec_id)
+    	 spec_value = LaboratoryTestResult.find_by_laboratory_report_id_and_parameter_specification_id(report_id,spec_id)
+    	 return spec_value
+   	end
+
     def find_parameter_specification(lab_test_id,parameter_id)
       para_spec = ParameterSpecification.find_by_lab_test_id_and_parameter_id(lab_test_id,parameter_id)
       return para_spec
    	end
+
+   	def laboratory_docator_list()
+   		id = Department.find_by_dept_name('laboratory').id
+   		DoctorProfile.find(:all,:conditions => ["department_id = ? ", id]).map { |ob| [ob.name,ob.doctor.id] }
+  	end
 
 end

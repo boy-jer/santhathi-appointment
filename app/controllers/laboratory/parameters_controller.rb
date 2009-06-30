@@ -25,7 +25,7 @@ class Laboratory::ParametersController < ApplicationController
 
   def edit
     @parameter = Parameter.find(params[:id])
-    @values = @parameter.values if @parameter.value_type =="Multiple"
+    @values = @parameter.values if @parameter.value_type == "Multiple"
   end
 
   def create

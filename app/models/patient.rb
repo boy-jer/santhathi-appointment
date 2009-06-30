@@ -14,11 +14,11 @@ class Patient < ActiveRecord::Base
   #before_save :generate_reg_no
 
   named_scope :name_filter, lambda{|name| {:conditions => ["patient_name like ?", "%#{name}%"]}}
-  named_scope :todays, {:select => 'count(id) as tot_count', :conditions => ["created_at > ?", Time.now - 1.day]}
+  named_scope :todays, {:order => 'reg_no DESC', :select => 'reg_no', :conditions => ["created_at > ?", (Time.now - 1.day).to_date]}
 
 
   def generate_reg_no
-    count = "%04d" % (Patient.todays.first.tot_count.to_i + 1).to_s
-    self.write_attribute(:reg_no, "#{Date.today.year.to_s.last(2)}#{"%02d" % Date.today.month}#{"%02d" % Date.today.day}#{count}")
+    count = "%04d" % (Patient.todays.first.reg_no.last(4).to_i + 1).to_s
+    self.write_attribute(:reg_no, Time.now.strftime('%y%m%d').to_s + count)
   end
 end
