@@ -27,7 +27,7 @@
 
 	  <td> <%= prescription.laboratory_reports.blank? ?
 	      (link_to "Create Test Report",new_laboratory_prescribed_test_laboratory_report_path(test)):
-	      (link_to "Edit Test Report",edit_laboratory_prescribed_test_laboratory_report_path(:prescribed_test_id => test,:id => test.lab_test.laboratory_report)) %>
+	      (link_to "Edit Test Report",edit_laboratory_prescribed_test_laboratory_report_path(:prescribed_test_id => test.id, :id => test.lab_test.laboratory_report)) %>
 	  </td>
 
 

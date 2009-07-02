@@ -17,7 +17,7 @@ body {
      margin: 0px auto;
      width: 98.6%;
      background: #fff;
-     border: #0062A8 8px solid;
+     border: #fff 8px solid;
      padding-top: 1px;
 }
 
@@ -165,7 +165,7 @@ h3 span {color: #003A66;
 	float: left;
 	font-weight: bold;
 	color: #615100;
-        font-size: 28px;
+        font-size: 22px;
 	padding: 0px;
 	margin: 0px;
         position: absolute; 
@@ -409,7 +409,7 @@ h3 span {color: #003A66;
            border-style: outset;*/
           /* border: 4px  #F6F6EE  solid;*/
            min-height: 525px;
-           background: #F3F3E7; /* url(/images/tab.png) repeat-x;*/
+           background: #fff; /* url(/images/tab.png) repeat-x;*/
            height: 100%;
            margin: 0px;
            padding: 12px;
@@ -591,6 +591,10 @@ h3 span {color: #003A66;
 		text-decoration: none;
            }
 
+
+.listing .header {
+	        background: #F2F3F7;
+		           }
 
 .listing-top td {background: #fff; text-align: center; color: #3764A0;}
 
