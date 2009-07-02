@@ -13,12 +13,15 @@ class Patient < ActiveRecord::Base
 
   #before_save :generate_reg_no
 
-  named_scope :name_filter, lambda{|name| {:conditions => ["patient_name like ?", "%#{name}%"]}}
-  named_scope :todays, {:order => 'reg_no DESC', :select => 'reg_no', :conditions => ["created_at > ?", (Time.now - 1.day).to_date]}
+  named_scope :name_filter, lambda{|name| {:conditions => ["patient_name like ? AND spouse is null ", "%#{name}%"] } }
+  named_scope :contact_filter, lambda{|contact| {:conditions => ["contact_no = ? AND spouse is null ", "#{contact}"] } }
+  named_scope :reg_no_filter, lambda{|reg_no| {:conditions => ["reg_no = ? AND spouse is null ", "#{reg_no}"] } }
+
+  named_scope :todays, { :conditions => ["created_at > ? and reg_no is not null", (Time.now - 1.day).to_date]}
 
 
   def generate_reg_no
-    count = "%04d" % (Patient.todays.first.reg_no.last(4).to_i + 1).to_s
+    count = "%04d" % (Patient.todays.count.to_i + 1).to_s
     self.write_attribute(:reg_no, Time.now.strftime('%y%m%d').to_s + count)
   end
 end

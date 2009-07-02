@@ -2,7 +2,7 @@
 <table class="time-slots" cellspacing="1">
      <tr><th>Slot</th> <th>Patient name </th> <th>Registration No</th> <th>Appointment No </th> <th>Appointment Given by </th> <th>Reason </th></tr>
      <%unless @doctor.blank? %>
-       <% dt1 = Time.parse(@doctor.working_from.to_s) %>
+       <% dt1 = Time.parse(@doctor.doctor_profile.working_from.to_s) %>
        <% appoitments_hash = appointments(@doctor, @date) %>
        <% iteration_count(@doctor).times do%>
 

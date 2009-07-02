@@ -22,9 +22,9 @@
         <td><%=h appointment.appointment_date %></td>
         <td><%=h Time.parse(appointment.appointment_time.to_s).strftime('%H:%M').to_s %></td>
         <td><%=h appointment.patient.patient_name %></td>
-        <td><%=h appointment.doctor.department.dept_name%></td>
+        <td><%=h Department.find(appointment.doctor.doctor_profile.department_id).dept_name%></td>
         <td><%=h appointment.doctor.name%></td>
-        <td><%=h appointment.patient.age %></td>
+        <td><%=h calculate_age(appointment.patient.dob) %></td>
         <td><%=h appointment.patient.gender %></td>
         <td><%=h appointment.patient.contact_no %></td>
         <td>&nbsp;&nbsp; <%= link_to image_tag('show.png', {:title => 'Show', :border => 0}), pms_appointment_url(appointment), :rel=> "facebox" %> &nbsp;&nbsp;| &nbsp;&nbsp; <%= link_to image_tag('edit.png', {:title => 'Edit', :border => 0}), edit_pms_appointment_path(appointment) %> &nbsp;&nbsp;|&nbsp;&nbsp; <%= link_to image_tag('delete.png', {:title => 'delete', :border => 0}), pms_appointment_path(appointment), :confirm => 'Are you sure?', :method => :delete %></td>

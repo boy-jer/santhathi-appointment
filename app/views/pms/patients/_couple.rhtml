@@ -4,7 +4,7 @@
 <div id='left'>
   <%fields_for :patient do |f| %>
   <table class="form-table">
-
+    <input type="hidden" id="partial" name="partial" value="couple" />
    <tr class= 'table-top'><td colspan='2'><lable> Patient detail </label></td></tr>
 
    <tr><th><%= f.label :registration_date %></th>

@@ -1,7 +1,8 @@
 module  Pms::AppointmentsHelper
+
   def iteration_count(doctor)
-    dt1 = Time.parse(doctor.working_from.to_s)
-    dt2 = Time.parse(doctor.working_to.to_s)
+    dt1 = Time.parse(doctor.doctor_profile.working_from.to_s)
+    dt2 = Time.parse(doctor.doctor_profile.working_to.to_s)
     return ((((dt2 - dt1)/60)/60)* 12).to_i
   end
 

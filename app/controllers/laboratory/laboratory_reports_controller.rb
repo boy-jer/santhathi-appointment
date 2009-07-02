@@ -11,7 +11,7 @@ class Laboratory::LaboratoryReportsController < ApplicationController
     @prescription, @lab_test = @prescribed_test.prescription, @prescribed_test.lab_test
     @appointment = @prescription.appointment
     @patient = @appointment.patient
-    @specifications = @lab_test.parameter_specifications
+    @specifications = @lab_test.parameter_specifications.gender_filter(@patient.gender)
     @laboratory_report = LaboratoryReport.find(params[:id])
     @laboratory_test_results =  @laboratory_report.laboratory_test_results
     @results = {}
@@ -39,7 +39,7 @@ class Laboratory::LaboratoryReportsController < ApplicationController
     @prescription, @lab_test = @prescribed_test.prescription, @prescribed_test.lab_test
     @appointment = @prescription.appointment
     @patient = @appointment.patient
-    @specifications = @lab_test.parameter_specifications
+    @specifications = @lab_test.parameter_specifications.gender_filter(@patient.gender)
     @laboratory_report = LaboratoryReport.new
   end
 
@@ -48,7 +48,8 @@ class Laboratory::LaboratoryReportsController < ApplicationController
     @prescription, @lab_test = @prescribed_test.prescription, @prescribed_test.lab_test
     @appointment = @prescription.appointment
     @patient = @appointment.patient
-    @specifications = @lab_test.parameter_specifications
+    @specifications = @lab_test.parameter_specifications.gender_filter(@patient.gender)
+
     @laboratory_report = LaboratoryReport.find(params[:id])
   end
 

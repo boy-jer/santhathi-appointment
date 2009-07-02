@@ -1,10 +1,11 @@
 <h3>  Registration for individual</h3>
 <table class="form-table">
+
    <tr class= 'table-top'><td colspan='2'><lable> Patient detail </label></td></tr>
    <tr><th><%= f.label :registration_date %></th>
        <td><%= f.date_select :reg_date,:disabled =>true %></td>
    </tr>
-
+<input type="hidden" id="partial" name="partial" value="individual" />
    <tr><th><%= f.label :patient_name %></th>
        <td><%= f.text_field :patient_name, {:class => 'textbox'} %></td>
    </tr>

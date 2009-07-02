@@ -1,30 +1,25 @@
 <div class='continer-show'>
      <h3 class='head'>Patient Detail</h3>
      <table class="form-table">
-       <tr><th><b>Registration Date:</b></th><td><%=h @patient.reg_date %></td></tr>
-       <tr><th><b>Name:</b></th><td><%=h @patient.patient_name %></td></tr>
-       <tr><th><b>Age:</b></th><td><%=h calculate_age(@patient.dob) %></td></tr>
-       <tr><th><b>DOB:</b></th><td><%=h @patient.dob %></td></tr>
-       <tr><th><b>Gender:</b></th><td>
-        <%=h @patient.gender %></td></tr>
-
-
-       <tr><th><b>Spouse name:</b></th><td><%=h @patient.spouse_name %></td></tr>
-       <tr><th><b>Address:</b></th><td><%=h @patient.address %></td></tr>
-       <tr><th><b>Contact No:</b></th><td><%=h @patient.contact_no %></td></tr>
+       <tr><th>Registration Date:</th><td><%=h @patient.reg_date %></td></tr>
+       <tr><th>Name:</th><td><%=h @patient.patient_name %></td></tr>
+       <tr><th>Age:</th><td><%=h calculate_age(@patient.dob) %></td></tr>
+       <tr><th>DOB:</th><td><%=h @patient.dob %></td></tr>
+       <tr><th>Gender:</th><td> <%=h @patient.gender %></td></tr>
+       <tr><th>Spouse name:</th><td><%=h @patient.spouse_name %></td></tr>
+       <tr><th>Address:</th><td><%=h @patient.address %></td></tr>
+       <tr><th>Contact No:</th><td><%=h @patient.contact_no %></td></tr>
     </table>
     <% unless @patient.spouse.nil?%>
         <% spouse = Patient.find(@patient.spouse) %>
-            <h3>Spouse Detail</h3>
+            <h3 class='head'> Spouse Detail </h3>
           <table class="form-table">
-             <tr><th><b>Reg date:</b></th><td><%=h spouse.reg_date %></td></tr>
-             <tr><th><b>Name:</b></th><td><%=h spouse.patient_name %></td></tr>
-             <tr><th><b>Age:</b></th><td><%=h calculate_age(spouse.dob) %></td></tr>
-             <tr><th><b>Gender:</b></th><td><%=h spouse.gender %></td></tr>
-             <tr><th><b>Contact No:</b></th><td><%=h spouse.contact_no%></td></tr>
-
+             <tr><th>Reg date:</th><td><%=h spouse.reg_date %></td></tr>
+             <tr><th>Name:</th><td><%=h spouse.patient_name %></td></tr>
+             <tr><th>Age:</th><td><%=h calculate_age(spouse.dob) %></td></tr>
+             <tr><th>Gender:</th><td><%=h spouse.gender %></td></tr>
+             <tr><th>Contact No:</th><td><%=h spouse.contact_no%></td></tr>
           </table>
-
     <% end %>
     <br/>
 <%= link_to "<span>New Appointment</span>", new_pms_appointment_url(:patient_id => @patient.id), :class=> "button" %>
