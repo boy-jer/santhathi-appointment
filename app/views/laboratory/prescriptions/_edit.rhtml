@@ -2,9 +2,13 @@
   <%= f.error_messages %>
 
     <table class = 'form-table'>
-      <tr> <td colspan ="4"> <label><%= link_to "Back" , new_cms_appointment_clinical_screen_path(@prescription.appointment.id) %> &nbsp; | &nbsp;
-    <%= link_to "Patient List" ,  cms_doctor_patients_path %>  &nbsp; | &nbsp;
-    <%= link_to "Cancel" , new_cms_appointment_clinical_screen_path(@prescription.appointment.id) %> </label></td></tr>
+      <tr> <td colspan ="4"> 
+	  <label>
+	     <%= link_to "Back to Clinical Screen" , new_cms_appointment_clinical_screen_path(@prescription.appointment.id) %> &nbsp; | &nbsp;
+         <%= link_to "Patient List" ,  cms_doctor_patients_path %>  &nbsp; | &nbsp;
+         <%= link_to "Cancel" , new_cms_appointment_clinical_screen_path(@prescription.appointment.id) %> 
+	  </label>
+	  </td></tr>
 
        <tr><th>Prescription To: </th> <td> <%= @department.dept_name %> </td>
            <th>Prescribing Doctor:</th> <td> <%= @appointment.doctor.doctor_profile.name %> </td></tr>
@@ -24,7 +28,7 @@
        <th>Follow up Before:</th> <td><%= calendar_date_select_tag "prescription[follow_up]", @prescription.follow_up, :class =>'textbox' %></td></tr>
        <tr><th>Other Remarks:</th> <td><%= f.text_field :remarks ,:class => "textbox"%></td>
 
-       <td colspan ="2"><%= f.submit "Update Prescription" %></td> </tr>
+       <td colspan ="2"><%= f.submit "Prescribe" %></td> </tr>
     </table>
     <input type="hidden" name="prescription[department_id]" value= <%= params[:department] %>>
     <input type="hidden" name="prescription[appointment_id]" value= <%=  params[:appointment] %>>

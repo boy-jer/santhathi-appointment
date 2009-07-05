@@ -1,10 +1,8 @@
 <div class='continer'>
-<%form_for(:laboratory_report,:url => laboratory_prescribed_test_laboratory_report_path(@prescribed_test,@laboratory_report),  :html => { :method => :put }) do |f|%>
-
+<%form_for([:laboratory, @prescribed_test,  @laboratory_report],  :html => { :method => :put }) do |f| -%>
 
   <%= f.error_messages %>
-  <h3> Patient Details </h3>
-  <table class="listing">
+    <table class="clinical-table">
      <tr> <th>Test Name : </th>
           <th>Patient Name :</th>
           <th> Patient Age :</th>
@@ -22,40 +20,42 @@
      </tr>
 
   </table><br/>
-  <h3> Test Parameters </h3>
-  <table class="listing">
+  
+  <table class="report-create">
      <tr> <th>  Parameter Name </th>
           <th> UOM </th>
           <th> Result </th>
           <th> Remarks </th>
           <th> Details </th>
-     </tr>  <%= @laboratory_report.id %>
+     </tr> 
+	 <tr><td colspan=5></td></tr>
      <% for spec in @specifications %>
          <% unless spec.parameter.value_type == 'Header' %>
-           <tr><td><b><%= spec.parameter.parameter_name %></b></td> <%= spec.id %>
-              <td><%= spec.parameter.measurement_unit.name %></td>
-               <% lab_test_result = display_laboratory_test_result(@laboratory_report.id ,spec.id ) %>
-              <% if spec.parameter.value_type == 'Multiple' %>
-                 <td><%= select "specifications[ids]", "#{spec.id}", spec.parameter.values.nil? ? [] : spec.parameter.values ,:selected =>lab_test_result.result %></td>
-              <% elsif spec.parameter.value_type == 'Numeric'%>
-                 <td><%= text_field_tag "specifications[ids][#{spec.id}]", lab_test_result.result.blank?? '0.0' : lab_test_result.result , :class => 'textbox' %></td>
+           <tr class="<%= cycle('odd', 'even')%>">
+           	  <%parameter = spec.parameter%>
+           	  <td><b><%= parameter.parameter_name %></b></td> <%= spec.id %>
+              <td><%= parameter.measurement_unit.name %></td>
+               <% test_result = laboratory_test_result(@laboratory_report.id, spec.id ) %>
+              <% if parameter.value_type == 'Multiple' %>
+                 <td><%= select "specifications[ids]", "#{spec.id}", parameter.values.nil? ? [] : parameter.values, :selected => test_result.result %></td>
+              <% elsif parameter.value_type == 'Numeric'%>
+                 <td><%= text_field_tag "specifications[ids][#{spec.id}]", test_result.result.blank?? '0.0' : test_result.result , :class => 'textbox' %></td>
                <%else%>
-                  <td><%= text_field_tag "specifications[ids][#{spec.id}]", lab_test_result.result.blank?? ' ' : lab_test_result.result , :class => 'textbox' %></td>
+                  <td><%= text_field_tag "specifications[ids][#{spec.id}]", test_result.result.blank?? ' ' : test_result.result , :class => 'textbox' %></td>
               <%end%>
 
-              <td><%= text_area_tag "specifications[remarks][r_#{spec.id}]", lab_test_result.remarks.blank?? ' ' : lab_test_result.remarks, :class => 'textbox' %></td>
+              <td><%= text_area_tag "specifications[remarks][r_#{spec.id}]", test_result.remarks.blank?? ' ' : test_result.remarks, :class => 'textbox' %></td>
               <td><%= link_to 'Details', details_laboratory_laboratory_test_results_url(:patient_id =>@patient.id,:specification_id => spec), :rel=> "facebox" %></td>
            </tr>
        <%else%>
-      <td> <%= link_to 'Details', details_laboratory_laboratory_test_results_url(:patient_id =>@patient.id,:specification_id => spec), :rel=> "facebox" %></td>
            <tr class= 'header'><td  colspan=5><b><%= spec.parameter.parameter_name %></b></td> </tr>
        <%end%>
      <%end%>
 
-    </table> <br/>
+    </table> <br/><br/><br/>
 
-    <h3> Prescription Action Details </h3><br/>
     <table cellpadding="5px" class="form-table">
+      <tr  class='table-top'><td colspan =2>Prescription Action Details </td>
       <tr> <th> Date of Action  :</th> <td><%= calendar_date_select_tag "laboratory_report[date_of_action]", Date.today , :class =>'textbox' %></td></tr>
       <tr> <th> Time of Action  :</th> <td><%= f.time_select  :time_of_action%></td></tr>
       <tr> <th> Action Taken By : <% laboratory_doctors = laboratory_docator_list() %> </th> <td>

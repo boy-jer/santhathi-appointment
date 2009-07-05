@@ -30,7 +30,7 @@ class Laboratory::ParametersController < ApplicationController
 
   def create
     @parameter = Parameter.create(params[:parameter])
-    @parameter.values = params[:values].split(',') unless params[:values].blank?
+    @parameter.values = params[:values].strip.split(',') unless params[:values].blank?
     if @parameter.save
       flash[:notice] = 'Parameter was successfully created.'
       redirect_to(laboratory_parameters_url)

@@ -5,12 +5,11 @@ class SessionsController < ApplicationController
   layout 'login'
 
   def new
-  	if 1 #current_user.has_role?(:admin)
-
- 	   redirect_to admin_dashboard_index_path, :method => :get if logged_in?
-  	else
+  	#if admin?
+ 	   #redirect_to admin_dashboard_index_path, :method => :get if logged_in?
+  	#else
     	redirect_to pms_appointments_url, :method => :get if logged_in?
-   	end
+   	#end
   end
 
   def create

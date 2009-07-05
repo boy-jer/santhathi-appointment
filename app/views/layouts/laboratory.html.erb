@@ -38,27 +38,39 @@
   	  jQuery('#nav').droppy();
  	 });
 </script>
+<script type='text/javascript'>
+	function FadeEffect(element){
+       new Effect.Fade(element, 
+       { duration:1});
+   }
+
+function ShowEffect(element){
+       new Effect.Appear(element, 
+       {duration:1, from:1.0, to:1.0});
+   }
+</script>
+
 </head>
 
 <body>
 
-  <div id="header"> <%= render :partial => 'shared/tabs' %>
-           <div id="global_links">
-              <%= render :partial => 'shared/global_links' %>
-           </div>
-           <h1> Santhathi </h1>
-      </div>
-         <div id="wrapper">
-
-          <%= render :partial => 'shared/laboratory_sub_tabs' %>
-          <%= render :partial => 'shared/layout_body' %>
-              <div class="clear"></div>
-
-              <div class="clear"> </div>
-
-
-
-   </div>    <!-- End Wrapper -->
+  <div id="header"> 
+     <h1> Santhathi </h1>
+	 <div id="global_links">
+        <%= render :partial => 'shared/global_links' %>
+     </div>
+     <%= render :partial => 'shared/tabs' %>
+  </div>
+         
+  <div id="wrapper">
+     <%= render :partial => 'shared/laboratory_sub_tabs' %>
+     <%= render :partial => 'shared/layout_body' %>
+     <div class="clear"></div>
+	 <div id="footer">
+         Powered by iSiri Tecnologies Pvt Ltd
+    </div>  
+  </div>    <!-- End Wrapper -->
+   
 </body>
 
 </html>

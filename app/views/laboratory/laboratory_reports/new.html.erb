@@ -2,8 +2,8 @@
 <% form_for([:laboratory, @prescribed_test,  @laboratory_report]) do |f| %>
 
   <%= f.error_messages %>
-  <h3> Patient Details </h3>
-  <table class="listing">
+  <br />
+  <table class="clinical-table">
      <tr> <th>Test Name : </th>
           <th>Patient Name :</th>
           <th> Patient Age :</th>
@@ -19,23 +19,25 @@
           <td> <%= @patient.reg_no%> </td>
           <td><%=h @appointment.patient.id%> </td>
      </tr>
-
-  </table><br/>
-  <h3> Test Parameters </h3>
-  <table class="listing">
+  </table>
+  
+  <table class="report-create">
      <tr> <th>  Parameter Name </th>
           <th> UOM </th>
           <th> Result </th>
           <th> Remarks </th>
           <th> Details </th>
      </tr>
+	 <tr><td colspan=5></td></tr>
      <% for spec in @specifications %>
        <% unless spec.parameter.value_type == 'Header' %>
-           <tr><td><b><%= spec.parameter.parameter_name %></b></td>
+	       
+           <tr class="<%= cycle('odd', 'even') %>">
+           	  <td><b><%= spec.parameter.parameter_name %></b></td>
               <td><%= spec.parameter.measurement_unit.name %></td>
 
               <% if spec.parameter.value_type == 'Multiple' %>
-                 <td><%= select "specifications[ids]", "#{spec.id}", spec.parameter.values.nil? ? [] : spec.parameter.values %></td>
+                 <td ><%= select "specifications[ids]", "#{spec.id}", spec.parameter.values.nil? ? [] : spec.parameter.values %></td>
               <% elsif spec.parameter.value_type == 'Numeric'%>
                  <td><%= text_field_tag "specifications[ids][#{spec.id}]", '0.0', :class => 'textbox' %></td>
                <%else%>
@@ -45,15 +47,16 @@
               <td><%= text_area_tag "specifications[remarks][r_#{spec.id}]", display_parameter_specification(@lab_test.id,spec.parameter_id), :class => 'textbox' %></td>
               <td><%= link_to 'Details', details_laboratory_laboratory_test_results_url(:patient_id =>@patient.id,:specification_id => spec), :rel=> "facebox" %></td>
            </tr>
+
        <%else%>
            <tr><td  colspan=5 class= 'header'><b><%= spec.parameter.parameter_name %></b></td> </tr>
        <%end%>
      <%end%>
 
-    </table> <br/>
+    </table> <br/><br/><br/>
 
-    <h3> Prescription Action Details </h3><br/>
     <table cellpadding="5px" class="form-table">
+      <tr  class='table-top'><td colspan =2>Prescription Action Details </td>
       <tr> <th> Date of Action  :</th> <td><%= calendar_date_select_tag "laboratory_report[date_of_action]", Date.today , :class =>'textbox' %></td></tr>
       <tr> <th> Time of Action  :</th> <td><%= f.time_select  :time_of_action%></td></tr>
       <tr> <th> Action Taken By : </th> <td>

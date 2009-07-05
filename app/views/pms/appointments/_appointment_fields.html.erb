@@ -5,7 +5,7 @@
 <div id="new-department">
 
   <table cellpadding="5px" class="form-table">
-     <tr class= 'table-top'> <td colspan='2' ><lable> Appointment Deatils:</label> </td> </tr>
+     <tr class= 'table-top'> <td colspan='2' >Appointment Deatils:</td> </tr>
      <tr> <th><%= f.label :department %>:</th>
           <td><%= select :departament, :id, [['Select department' , '']] + Department.departments_for_select_list %> <%= image_tag("spinner.gif",
               :align => "absmiddle",

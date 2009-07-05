@@ -5,7 +5,8 @@ class CreateLaboratoryTestResults < ActiveRecord::Migration
       t.string  :remarks
       t.integer :laboratory_report_id   
       t.integer :parameter_specification_id
-
+      t.integer :position
+      
       t.timestamps
     end
   end

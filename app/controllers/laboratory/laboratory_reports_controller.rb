@@ -5,7 +5,6 @@ class Laboratory::LaboratoryReportsController < ApplicationController
 
   end
 
-
   def show
     @prescribed_test = PrescribedTest.find(params[:prescribed_test_id])
     @prescription, @lab_test = @prescribed_test.prescription, @prescribed_test.lab_test
@@ -42,18 +41,7 @@ class Laboratory::LaboratoryReportsController < ApplicationController
     @specifications = @lab_test.parameter_specifications.gender_filter(@patient.gender)
     @laboratory_report = LaboratoryReport.new
   end
-
-  def edit
-  	@prescribed_test = PrescribedTest.find(params[:prescribed_test_id])
-    @prescription, @lab_test = @prescribed_test.prescription, @prescribed_test.lab_test
-    @appointment = @prescription.appointment
-    @patient = @appointment.patient
-    @specifications = @lab_test.parameter_specifications.gender_filter(@patient.gender)
-
-    @laboratory_report = LaboratoryReport.find(params[:id])
-  end
-
-
+  
   def create
     @laboratory_report = LaboratoryReport.new(params[:laboratory_report])
     @laboratory_report.save
@@ -65,7 +53,16 @@ class Laboratory::LaboratoryReportsController < ApplicationController
     flash[:notice] = 'Report was successfully created.'
     redirect_to laboratory_prescriptions_url
   end
+  
+  def edit
+  	@prescribed_test = PrescribedTest.find(params[:prescribed_test_id])
+    @prescription, @lab_test = @prescribed_test.prescription, @prescribed_test.lab_test
+    @appointment = @prescription.appointment
+    @patient = @appointment.patient
+    @specifications = @lab_test.parameter_specifications.gender_filter(@patient.gender)
 
+    @laboratory_report = LaboratoryReport.find(params[:id])
+  end
 
   def update
     @laboratory_report = LaboratoryReport.find(params[:id])

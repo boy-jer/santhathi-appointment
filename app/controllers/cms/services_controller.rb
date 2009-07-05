@@ -49,9 +49,11 @@ class Cms::ServicesController < ApplicationController
   end
 
   def child_list
-    @child_list = Department.find(params[:department]).services.find_all_by_parent_id(nil)
-    render :update do |page|
+    unless department.blank?
+      @child_list = Department.find(params[:department]).services.find_all_by_parent_id(nil)
+      render :update do |page|
        	page.replace_html 'child_list', :partial => 'child_list', :collection =>@child_list, :as => :service
+      end
     end
   end
 

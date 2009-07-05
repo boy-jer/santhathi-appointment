@@ -1,5 +1,7 @@
 <div class='continer'>
-
+  <h3 class = 'head'> 
+     <div class = 'head-inner'> Listing Patients </div>
+  </h3>
   <%=render :partial=> '/cms/doctor_patients/filters'%>
   <br/>
 
@@ -30,8 +32,7 @@
               :id => "spinner",
               :style =>"display: none;" ) %>
 
-  <h3 class = 'head'> Listing Patients </h3>
-
+ 
   <div id='appointment-list'>
      <%=render :partial=> 'patient_list'%>
   </div>

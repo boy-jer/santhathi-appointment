@@ -13,9 +13,8 @@ module Laboratory::LaboratoryReportsHelper
 	   end
     end
 
-    def display_laboratory_test_result(report_id,spec_id)
-    	 spec_value = LaboratoryTestResult.find_by_laboratory_report_id_and_parameter_specification_id(report_id,spec_id)
-    	 return spec_value
+    def laboratory_test_result(report_id, spec_id)
+      LaboratoryTestResult.find_by_laboratory_report_id_and_parameter_specification_id(report_id, spec_id)
    	end
 
     def find_parameter_specification(lab_test_id,parameter_id)

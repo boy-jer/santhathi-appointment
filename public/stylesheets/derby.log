@@ -1,5 +1,5 @@
 Server is ready to accept connections on port 1527.
-2009-05-04 17:11:56.168 GMT Thread[Worker-7,5,main] Cleanup action starting
+2009-06-02 03:48:56.390 GMT Thread[Worker-3,5,main] Cleanup action starting
 ERROR XBM0J: Directory C:\Documents and Settings\VIJJU\Desktop\santhathi\santhathi\public\stylesheets\aptanaDB already exists.
 	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
 	at org.apache.derby.impl.services.monitor.PersistentServiceImpl$8.run(Unknown Source)
@@ -29,7 +29,7 @@ ERROR XBM0J: Directory C:\Documents and Settings\VIJJU\Desktop\santhathi\santhat
 	at org.eclipse.ui.internal.Workbench$21.run(Workbench.java:1775)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:58)
 Cleanup action completed
-2009-05-04 17:11:56.215 GMT Thread[Worker-7,5,main] Cleanup action starting
+2009-06-02 03:48:56.421 GMT Thread[Worker-3,5,main] Cleanup action starting
 ERROR XBM0J: Directory C:\Documents and Settings\VIJJU\Desktop\santhathi\santhathi\public\stylesheets\aptanaDB already exists.
 	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
 	at org.apache.derby.impl.services.monitor.PersistentServiceImpl$8.run(Unknown Source)

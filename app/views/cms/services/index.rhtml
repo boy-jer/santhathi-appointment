@@ -1,10 +1,11 @@
-<%=render :partial=> 'filters'%>
+<h3 class = 'head'>Services</h3>
+<div class='continer'>
+<%=render :partial=> 'filters'%> <br /> 
 <div id='service-list'>
-  <h3>Services</h3>
-
+    <%= link_to "<span>Create New Service</span>", new_cms_service_path, :method => :get , :class=> "button"%> <br /><br /><br />
     <div id="sidetree">
        <table><tr><td><div id="sidetreecontrol"><a href="?#">Collapse All</a> | <a href="?#">Expand All</a> </div></td>
-            <td> <%= link_to "<span>New Service</span>", new_cms_service_path, :method => :get , :class=> "button"%></td></tr>
+            </tr>
        </table>
        <br />
 
@@ -19,5 +20,5 @@
 
         </ul>
      </div>
-
-    </div>
+   </div>
+</div>

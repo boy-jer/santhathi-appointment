@@ -14,7 +14,8 @@
                                :before => "Element.show('spinner')",
                                :success => "Element.hide('spinner')",
              :url => { :controller => '/laboratory/prescriptions', :action => @appointment.prescription.blank? ? :new : :edit },
-                               :with => "'department='+ #{@department.id} + '&test_id='+ #{test.id} + '&appointment=' + #{@appointment.id}") %></p>
+                               :with => "'department='+ #{@department.id} + '&test_id='+ #{test.id} + '&appointment=' + #{@appointment.id}") %>
+		 </p> <br />
         <% end %>
         <%= link_to_remote "Pharmacy Prescription" ,
                             :before => "Element.show('spinner')",
@@ -47,8 +48,8 @@
 	<div id="last_visit_tab">
 	<ul> <li><a href="#current_visit_tab"> Current Visit </a></li>
 	        <li><a href="#last_visit_tab"> Last Visit </a></li></ul><br/><br/>
-    <% unless @last_visit_report.blank? %>
-      <% for test in @last_visit_report %>
+    <% unless @last_visit_reports.blank? %>
+      <% for test in @last_visit_reports %>
          <% unless test.lab_test.laboratory_report.blank? %>
              <%=image_tag('arrow_right.png', :border => 0)  %> &nbsp;
              <%= link_to "#{test.lab_test.name}", laboratory_prescribed_test_laboratory_report_path(:prescribed_test_id=> test.id, :id => test.lab_test.laboratory_report.id) %><br/><br/>
@@ -63,11 +64,11 @@
      <ul> <li><a href="#current_visit_tab"> Current Visit </a></li>
 	        <li><a href="#last_visit_tab"> Last Visit </a></li></ul>
 	        <br/><br/>
-    <% unless @prescribed_tests.blank? %>
+       <% unless @prescribed_tests.blank? %>
              <% for test in @prescribed_tests %>
                <% unless test.lab_test.laboratory_report.blank? %>
                 <%=image_tag('arrow_right.png', :border => 0)  %> &nbsp;
-         <%= link_to "#{test.lab_test.name}", laboratory_prescribed_test_laboratory_report_path(:prescribed_test_id=> test.id, :id => test.lab_test.laboratory_report.id) %> <br/><br/>
+                <%= link_to "#{test.lab_test.name}", laboratory_prescribed_test_laboratory_report_path(:prescribed_test_id=> test.id, :id => test.lab_test.laboratory_report.id) %> <br/><br/>
                 <%end%>
              <%end%>
            <% else %>

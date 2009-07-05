@@ -1,5 +1,5 @@
 
-
+<div class='continer'>
 <table class='form-table'><tr>
            <td> </td>
            <td> <%= link_to_function("Print this Page", "javascript:print()") %> </td>
@@ -19,14 +19,14 @@
           <td> <%=h @lab_test.name %> </td>
           <td> <%=h @patient.patient_name %> </td>
           <td> <%=h calculate_age(@patient.dob) %> </td>
-          <td> <%=h  @patient.gender %> </td>
-          <td> <%=h  @patient.reg_no%> </td>
+          <td> <%=h @patient.gender %> </td>
+          <td> <%=h @patient.reg_no%> </td>
           <td> <%=h @appointment.patient.id %> </td>
      </tr>
 
   </table><br/>
   <h3> Test Name: <%=@lab_test.name %> </h3>
-  <table class="listing">
+  <table class="report">
      <tr> <th> Parameter Name </th>
           <th> UOM </th>
           <th> Result </th>
@@ -38,23 +38,23 @@
      </tr>
      <% unless @specifications.blank? %>
         <% for spec in @specifications %>
-
-           <% unless spec.parameter.value_type == 'Header' %>
-              <tr><td><b><%= spec.parameter.parameter_name %></b></td>
-                <td><%= spec.parameter.measurement_unit.name %></td>
+           <%parameter = spec.parameter%>
+           <% unless parameter.value_type == 'Header' %>
+              <tr><td><%= parameter.parameter_name %></td>
+                <td><%= parameter.measurement_unit.name %></td>
 
                 <td><%= @results[spec.id][0] unless @results[spec.id].blank?%></td>
                 <td><%= @results[spec.id][1] unless @results[spec.id].blank? %></td>
-                 <% test = find_parameter_specification(@lab_test.id,spec.parameter_id) %>
+                 <% test = find_parameter_specification(@lab_test.id, spec.parameter_id) %>
                 <td> <%=h test.ideal_value %> </td>
                 <td> <%=h test.min_value %></td>
                 <td> <%=h test.max_value %> </td>
                </tr>
            <%else%>
-              <tr class= 'header'><td  colspan=5><b><%= spec.parameter.parameter_name %></b></td> </tr>
+              <tr class='header'><td  colspan=7><b><%= parameter.parameter_name %></b></td> </tr>
            <%end%>
         <%end%>
       <%end%>
     </table> <br/>
 
-<%= link_to "Back" , laboratory_prescriptions_url %>
+</div>

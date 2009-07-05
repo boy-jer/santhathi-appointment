@@ -17,4 +17,8 @@ class Department < ActiveRecord::Base
     all_departments += Department.find(:all).collect{|model| [model.dept_name, model.id]}
   end
 
+  def self.departments_for_select_list_without_lab
+    all_departments = [["Select Department",  ""]]
+    all_departments += Department.find(:all, :select => ["dept_name, id"]).collect{|dept| [dept.dept_name, dept.id] unless dept.dept_name.upcase =~ /LAB/}
+  end  
 end
