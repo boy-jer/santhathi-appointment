@@ -49,7 +49,12 @@
            </tr>
 
        <%else%>
-           <tr><td  colspan=5 class= 'header'><b><%= spec.parameter.parameter_name %></b></td> </tr>
+           <tr>
+           	   <td  colspan=5 class= 'header'>
+           	   	  <b><%= spec.parameter.parameter_name %></b>
+				  <%= hidden_field_tag "specifications[ids][#{spec.id}]" %>
+			   </td> 
+		   </tr>
        <%end%>
      <%end%>
 

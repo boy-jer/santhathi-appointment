@@ -1,9 +1,6 @@
 <div class='continer'>
-  <h3 class = 'head'> 
-     <div class = 'head-inner'> Listing Patients </div>
-  </h3>
+  <h3 class = 'head'> Listing Patients  </h3>
   <%=render :partial=> '/cms/doctor_patients/filters'%>
-  <br/>
 
   <div>
    <%form_tag (discharge_cms_doctor_patients_path, :method=>:post )do %>

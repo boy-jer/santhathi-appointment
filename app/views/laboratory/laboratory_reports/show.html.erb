@@ -1,13 +1,14 @@
-
 <div class='continer'>
-<table class='form-table'><tr>
+<h3 class = 'head'> <%=@lab_test.name %> Test Report </h3>
+
+  <table class='form-table'><tr>
            <td> </td>
            <td> <%= link_to_function("Print this Page", "javascript:print()") %> </td>
            <td> <%= link_to("Export This Page to PDF", formatted_laboratory_prescribed_test_laboratory_report_url(:prescribed_test_id => '56', :id => '6',:format =>'pdf' )) %> </td>
          </tr>
-</table>
-   <h3> Test Report </h3>
-    <table class="listing">
+  </table>
+   
+  <table class="listing">
        <tr> <th>Test Name : </th>
            <th>Patient Name :</th>
            <th> Patient Age :</th>
@@ -15,32 +16,36 @@
            <th>Hospital No :</th>
            <th> PVR No :</th>
        </tr>
-     <tr>
+	   
+       <tr>
           <td> <%=h @lab_test.name %> </td>
           <td> <%=h @patient.patient_name %> </td>
           <td> <%=h calculate_age(@patient.dob) %> </td>
           <td> <%=h @patient.gender %> </td>
           <td> <%=h @patient.reg_no%> </td>
           <td> <%=h @appointment.patient.id %> </td>
-     </tr>
-
+       </tr>
   </table><br/>
-  <h3> Test Name: <%=@lab_test.name %> </h3>
-  <table class="report">
-     <tr> <th> Parameter Name </th>
+  
+
+  <table class="report" style="cursor: move;">
+  	<thead>
+       <tr> 
+	      <th> Parameter Name </th>
           <th> UOM </th>
           <th> Result </th>
           <th> Remarks </th>
           <th>Ideal Value</th>
           <th> Min Limit </th>
           <th>	Max Limit </th>
-
-     </tr>
-     <% unless @specifications.blank? %>
-        <% for spec in @specifications %>
+       </tr>
+	 </thead>
+	 <tbody id = "report-results">
+       <% unless @specifications.blank? %>
+         <% for spec in @specifications %>
            <%parameter = spec.parameter%>
            <% unless parameter.value_type == 'Header' %>
-              <tr><td><%= parameter.parameter_name %></td>
+              <tr id = "spec_<%= spec.position %>"><td><%= parameter.parameter_name %></td>
                 <td><%= parameter.measurement_unit.name %></td>
 
                 <td><%= @results[spec.id][0] unless @results[spec.id].blank?%></td>
@@ -51,10 +56,16 @@
                 <td> <%=h test.max_value %> </td>
                </tr>
            <%else%>
-              <tr class='header'><td  colspan=7><b><%= parameter.parameter_name %></b></td> </tr>
+              <tr class='header' id = "spec_<%= spec.position %>"><td  colspan=7><b><%= parameter.parameter_name %></b></td> </tr>
            <%end%>
         <%end%>
-      <%end%>
-    </table> <br/>
-
+       <%end%>
+	  </tbody>
+    </table>
+	<%= sortable_element 'report-results',
+     :url => { :action => 'sort_results', :id => @laboratory_report },
+     :complete => visual_effect(:highlight, 'report-results'),
+     :tag => 'tr'
+     %>
+	 <br/>
 </div>
