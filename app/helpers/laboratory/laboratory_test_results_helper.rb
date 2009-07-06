@@ -3,9 +3,9 @@ module Laboratory::LaboratoryTestResultsHelper
 	def find_age_group(gender)
 		if gender == 'm'
 		  parameter_spec = @lab_test.parameter_specifications.find_by_gender("male")
-	    else
+	  else
 	      parameter_spec = @lab_test.parameter_specifications.find_by_gender("female")
-        end
+    end
 
 	    if parameter_spec.nil?
 	       parameter_spec = @lab_test.parameter_specifications.find_by_gender("both")

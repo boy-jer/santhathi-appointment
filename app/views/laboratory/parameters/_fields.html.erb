@@ -15,17 +15,13 @@
 
       <% unless @values.blank? %>
             <tr><th><label> Multiple option saparated by ,</label>:</th> <td>
-            <%= f.text_field :values,:class=>"address" %></td></tr>
+            <%=  text_field_tag 'values',@values,:class=>"address" %></td></tr>
 
       <%end%>
 </table>
 
      <div id='multiple'>
-<!--
-       <% if  @parameter.value_type == 'Multiple' %>
-           <%= render :partial => 'multiple_section' %>
-       <% end %>
--->
+
      </div>
 
 

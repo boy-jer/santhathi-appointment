@@ -6,13 +6,20 @@
   <%= f.error_messages %>
   <table cellpadding="5px" class="form-table">
 
-   <%=render :partial => check(@parameter_specification.parameter.value_type) %>
+   <%=render :partial => check(@parameter_specification.parameter_id) %>
    </table><br/>
+
     <%= f.submit "Update" %>
 <% end %>
 
+
+
+
 <%= link_to 'Show',   laboratory_lab_test_parameter_specification_path(@lab_test,@parameter_specification) %> |
 <%= link_to 'Back', laboratory_lab_test_parameter_specifications_path(@lab_test) %>
+
+
+
 
 </div>
 </div>

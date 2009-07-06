@@ -1,9 +1,11 @@
 <div class='continer'>
 
-  <h3>New Parameter Specification</h3>
+  <h3>New Parameter Specification</h3> <br />
 
 <% form_for(:parameter_specification , :url => laboratory_lab_test_parameter_specifications_url(@lab_test) , :html => { :method => :post }) do |f| %>
   <%= f.error_messages %>
+  <div id='parameter_fields'>
+
   <table cellpadding="5px" class="form-table">
   <tr>
     <th><%= f.label :parameter %>:</th>
@@ -15,7 +17,8 @@
               :style =>"display: none;" ) %></td>
       </tr>
    </table>
-    <div id='parameter_fields'> </div>
+
+   </div>
 
 
 

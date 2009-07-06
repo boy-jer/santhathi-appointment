@@ -23,9 +23,9 @@ class Laboratory::ParameterSpecificationsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.js { parameter = Parameter.find(params[:parameter_id])
-                 partial_name = case parameter.value_type
-                      when 'Text' then 'text_fields'
+      format.js { @parameter = Parameter.find(params[:parameter_id])
+                 partial_name = case @parameter.value_type
+                      when 'Text','Header' then 'text_fields'
                       when 'Numeric' then 'numeric_fields'
                       when 'Multiple' then 'multiple_fields'
                    end

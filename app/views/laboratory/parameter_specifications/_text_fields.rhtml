@@ -1,5 +1,15 @@
+<br />
 <% fields_for(:parameter_specification) do |f| %>
 <table class="form-table">
+<tr>
+    <th><%= f.label :parameter %>:</th>
+    <td><%= f.select :parameter_id, [['Select parameter' , '']] + Parameter.parameter_list ,:selected =>@parameter.id %>
+     <%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner1",
+              :style =>"display: none;" ) %></td>
+      </tr>
    <tr><th> <label>Age Group</label></th><td><label>From: </label>
      <%= f.text_field :age_group_from,:class =>'textbox-small' %><label> To:</label>
     <%= f.text_field :age_group_to,:class=>'textbox-small' %></td></tr>
@@ -27,3 +37,11 @@
 
 </table>
 <%end%>
+<%= observe_field(:parameter_specification_parameter_id, :frequency => 1,
+                    :before => "Element.show('spinner1')",
+                    :success => "Element.hide('spinner1')",
+                    :url => {:controller => 'parameter_specifications', :action => 'new'},
+                    :method => :get,
+                    :with => "'parameter_id=' + value"
+                   ) %>
+                   <br/>  <br/>
