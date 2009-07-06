@@ -49,8 +49,8 @@ class Laboratory::LaboratoryReportsController < ApplicationController
     specs[:ids].each_pair{ |key, value| LaboratoryTestResult.create(:parameter_specification_id => key,
                                                                     :result => value,
                                                                     :remarks => specs[:remarks]["r_#{key}"],
-                                                                    :laboratory_report_id =>  @laboratory_report.id,
-                                                                     ) }
+                                                                    :laboratory_report_id =>  @laboratory_report.id)
+                                                                      }
     flash[:notice] = 'Report was successfully created.'
     redirect_to laboratory_prescriptions_url
   end

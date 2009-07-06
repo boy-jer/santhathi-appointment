@@ -16,8 +16,8 @@
       </tr>
 
     <%for appointment in @appointments %>
-     <tr>
-         <td  id = <%=row_class(appointment.state) %>><%= check_box_tag("appointment[]", appointment.id, false,:id=>appointment.id)%></td>
+     <tr id = <%=row_class(appointment.state)%> >
+         <td><%= check_box_tag("appointment[]", appointment.id, false,:id=>appointment.id)%></td>
          <td><%=h appointment.patient.reg_no %></td>
          <td><%=h appointment.id%></td>
          <td><%=h appointment.patient.patient_name%></td>

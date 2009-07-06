@@ -38,19 +38,19 @@ class Laboratory::PrescriptionsController < ApplicationController
     @lab_test = LabTest.find(params[:test_id])
     @department = Department.find(params[:prescription][:department_id])
     @appointment = Appointment.find(params[:prescription][:appointment_id])
-    
-      if @prescription.save
-        params[:services].map{|service| PrescribedTest.create(:prescription_id => @prescription.id, :lab_test_id => service)}
-        @prescribed_tests = @prescription.prescribed_tests
-        @services = @prescribed_tests.map{|p| p.lab_test.id}
-        respond_to do |format|  
-          format.html
-          format.js { render :update do |page|
+    @appointment.prescribe!
+    if @prescription.save
+      params[:services].map{|service| PrescribedTest.create(:prescription_id => @prescription.id, :lab_test_id => service)}
+      @prescribed_tests = @prescription.prescribed_tests
+      @services = @prescribed_tests.map{|p| p.lab_test.id}
+      respond_to do |format|  
+        format.html
+        format.js { render :update do |page|
                       page.replace_html 'clinical-screen', :partial => '/laboratory/prescriptions/edit'
                     end
-                    }
-         end           
-      end
+                   }
+       end           
+     end
   end
 
   def edit
@@ -83,9 +83,9 @@ class Laboratory::PrescriptionsController < ApplicationController
         respond_to do |format|
           format.html
           format.js { render :update do |page|
-                      page.replace_html 'clinical-screen', :partial => '/laboratory/prescriptions/edit'
-                      page.visual_effect(:highlight, 'clinical-screen', :duration => 0.5)
-                    end
+                        page.replace_html 'clinical-screen', :partial => '/laboratory/prescriptions/edit'
+                        page.visual_effect(:highlight, 'clinical-screen', :duration => 0.5)
+                      end
                   }
         end
     end

@@ -34,7 +34,7 @@ module  Pms::AppointmentsHelper
   def status(original_state)
     show_state = case original_state
                  when 'new_appointment' then 'New'
-                 when 'recommend_for_discharge' then 'Discharge recommonded'
+                 when 'recommend_for_discharge' then 'Discharge Rec.'
                  else original_state.camelize
      end
   end

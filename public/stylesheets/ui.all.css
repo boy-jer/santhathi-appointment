@@ -19,18 +19,18 @@
 	border-right: none;
 }
 .ui-tabs-nav li a {
-	/*resets*/margin: 0; padding: 0; border-top: 1px solid #6990AD; border-right: 1px solid #6990AD; border-left: 1px solid #6990AD; outline: 0; line-height: 1.1; text-decoration: none; font-size: 100%; list-style: none;
+	/*resets*/margin: 0; padding: 0; border-top: 1px solid #C4D2DC; border-right: 1px solid #C4D2DC; border-left: 1px solid #C4D2DC; outline: 0; line-height: 1.1; text-decoration: none; font-size: 100%; list-style: none;
 	float: left;
 	font-size: 1em;
 	font-weight: bold;
 	text-decoration: none;
 	padding: .3em 1.7em;
 
-	color: #2e6e9e;
-	background: #D3E5FA url(/images/table-header.jpg) 0 50% repeat-x;
+	color: #004476;
+	background: #D3E5FA url(/images/tab.png) 0 50% repeat-x;
 }
 .ui-tabs-nav li a:hover {
-	background: #d0e5f5 ;
+	background: #fff ;
 	color: #1d5987;
 }
 .ui-tabs-nav li.ui-tabs-selected {
@@ -38,7 +38,7 @@
 }
 .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs-nav li.ui-tabs-selected a:hover {
 	background: #fff ;
-	color: #2e6e9e;
+	color: #004476;
 }
 .ui-tabs-panel {
 	/*resets*/margin: 0; padding: 0; border: 0; outline: 0; line-height: 1.3; text-decoration: none; font-size: 100%; list-style: none;

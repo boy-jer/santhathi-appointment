@@ -81,7 +81,7 @@ class Pms::AppointmentsController < ApplicationController
         @appointment.created_by_id = @current_user.id
         @appointment.updated_by_id = @current_user.id
         @appointment.save
-        flash[:notice] = 'Appointment was successfully created.'
+        flash[:notice] = 'Appointment is successfully created.'
         redirect_to pms_appointments_url
       else
         render :action => "new"
@@ -97,7 +97,7 @@ class Pms::AppointmentsController < ApplicationController
     @appointment.update_attribute('updated_by_id',@current_user.id)
 
     if @appointment.update_attributes(params[:appointment])
-      flash[:notice] = 'Appointment was successfully updated.'
+      flash[:notice] = 'Appointment is successfully updated.'
       redirect_to(pms_appointments_url)
     else
       render :action => "edit"

@@ -19,7 +19,7 @@ class Appointment < ActiveRecord::Base
   has_many :pharmacy_prescriptions
   has_many :refer_doctors
 
-  validates_presence_of :doctor_id, :reason_id,:mode_id
+  validates_presence_of :doctor_id, :reason_id, :mode_id, :appointment_date
 
   aasm_column :state
   aasm_initial_state :new_appointment
@@ -28,6 +28,7 @@ class Appointment < ActiveRecord::Base
   aasm_state :visited
   aasm_state :canceled
   aasm_state :recommend_for_discharge
+  aasm_state :prescribed
 
   aasm_event :mark_visited do
     transitions :to => :visited, :from => [:new_appointment]
@@ -40,9 +41,11 @@ class Appointment < ActiveRecord::Base
   aasm_event :recommend_for_discharge do
    transitions :to => :recommend_for_discharge,:from => [:visited]
   end
+  
+  aasm_event :prescribe do
+   transitions :to => :prescribed,:from => [:visited]
+  end
 
-
-  validates_presence_of :doctor_id, :appointment_date, :minute, :hour
 
   named_scope :on_date, lambda { |date| { :conditions => ["appointment_date = ?", date ] } }
   named_scope :status, lambda { |state|{ :include => ['patient', 'reason', 'doctor'], :conditions => ["state = ?", state] } }
@@ -76,21 +79,21 @@ class Appointment < ActiveRecord::Base
   end
 
   def self.count_appointment(from,to)
-  	temp =  Appointment.find(:all,:conditions => ["appointment_date BETWEEN ? AND ?",from,to]).size
-  	return temp
+    temp =  Appointment.find(:all,:conditions => ["appointment_date BETWEEN ? AND ?",from,to]).size
+    return temp
   end
 
   def self.count_department_appointment(from,to,department)
-  	 condition = {}
-  	 if department =="All"
-  	 	department_ids = Department.find(:all).map{ |department| department.id }
-  	 	condition[:appointment_date] = from..to
-     	condition[:department_id] = department_ids
-  	else
- 	   condition[:appointment_date] = from..to
-     condition[:department_id] = department
-	  end
-	  temp = Appointment.find(:all , :conditions => condition ).size
+    condition = {}
+    if department =="All"
+      department_ids = Department.find(:all).map{ |department| department.id }
+      condition[:appointment_date] = from..to
+      condition[:department_id] = department_ids
+    else
+      condition[:appointment_date] = from..to
+      condition[:department_id] = department
+    end
+      temp = Appointment.find(:all , :conditions => condition ).size
     return temp
   end
 

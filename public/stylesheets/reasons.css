@@ -1,5 +1,6 @@
 /*---------------------------CMS-reasons----------------*/
-#reason-display {border:1px solid #e8ebec;}
+#reason-display {border:1px solid #e8ebec; }
+#reason-display td {padding: 0px;}
 
 .reason{
     width :100%;
@@ -10,46 +11,46 @@
 #color1{
   background-color :#eed4b5;
   width :15px;
-  height :15px;
+  height :10px;
 }
 #color2{
-  background-color :#e2cdee;
+  background-color :#FFFEE7;
   width :15px;
-  height :15px;
+  height :10px;
 }
 #color3{
-  background-color :#cdeecd;
+  background-color :#F8FFEA;
   width :15px;
-  height :15px;
+  height :5px;
 }
 #color4{
   background-color :#ebadb0;
   width :15px;
-  height :15px;
+  height :10px;
 }
 #color5{
-  background-color :#d8e9f3;
+  background-color :#F3F9FF;
   width :15px;
-  height :15px;
+  height :5px;
 }
 #color6{
   background-color :#e5ff88;
   width :15px;
-  height :15px;
+  height :10px;
 }
 #color7{
   background-color :#f6adcf;
   width :15px;
-  height :15px;
+  height :10px;
 }
 #color8{
   background-color :#d2d2d2;
   width :15px;
-  height :15px;
+  height :10px;
 }
 #color9{
   background-color :#b3e5fd;
   width :15px;
-  height :15px;
+  height :10px;
 }
 

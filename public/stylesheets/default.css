@@ -102,7 +102,7 @@ body {
 }
 
 a:link, a:visited {
-	color: #002E4F;
+	color: #0065AE;
 }
 a:hover {
 	color: #87CEFA;
@@ -116,8 +116,8 @@ input.textbox{
 	background:#ffffff url(/images/field-top.gif) repeat-x top;
 	padding:2px 2px;
 
-	width:150px;
-        height: 15px;
+	width:180px;
+        height: 16px;
 }
 
 textarea.textbox{
@@ -235,22 +235,16 @@ h3 span {color: #003A66;
 
 .head {
 	color: #204F85;
-	background: #fff /*url(/images/heading.png) repeat-x */;
-	padding: 0 .3em 0 .3em;
+	background: #fff /*url(/images/heading.png) repeat-x*/ ;
+	padding: .1em .3em .1em .3em;
 	margin: 0px 0px 10px 0px ;
          
 }
-.head .head-inner {
-	color: #204F85;
-	padding: .2em .2em .2em .5em;
-	background: #fff /*url(/images/heading.png) repeat-x */;
-	font-size: 13px;
-    font-weight: bold;     
-}
+
 /** Main body */
 #main {
 	margin: 0 auto;
-	height: 100%;
+	height: 100%;ECF4FC
 	clear:both;
 }
 
@@ -621,7 +615,7 @@ h3 span {color: #003A66;
 			 font-size: 13px;      
 }
 
-.listing td { padding: .8em .5em .8em .5em; color: #000; border-bottom:1px solid #A8B8C7; background: #FFFFFF; }
+.listing td { padding: .8em .5em .8em .5em; color: #000; border-bottom:1px solid #90A5B8;  }
 
 .listing .even {background: #FFFFFF;}
 .listing .odd { background: #FFFFFF;}
@@ -630,7 +624,7 @@ h3 span {color: #003A66;
             width: 100%;
             color: #000;
             border:1px solid #A8B8C7;
-			margin-top: 2.5em;
+			margin-top: 2em;
 }
 .listing a {
 	        color: #00416F;
@@ -674,20 +668,19 @@ h3 span {color: #003A66;
 }
 
 
-.form-table th {background-color: #ffffff; color: #667987; padding: 0.1em .8em; border:1px solid #B1C4D2; text-align: left;}
+.form-table th {background-color: #ffffff; padding: 0.1em .8em ; border:1px solid #B1C4D2; text-align: left;}
 
-.form-table td {background-color: #ffffff; padding: 0.4em .8em; border:1px solid #B1C4D2;}
+.form-table td {background-color: #ffffff; padding: 0.3em .8em 0.3em; border:1px solid #B1C4D2; }
 
-.form-table {border-collapse: collapse; width: 100%; border: #B1C4D2 1px solid; margin: 0px 5px 0px 5px;}
+.form-table {border-collapse: collapse; width: 100%; border: #B1C4D2 1px solid; margin: 0px 5px 0px 5px; color: #000;}
 
-.table-top td {background: #E0EAF4;  color: #002E4F; font-size: 13px; font-weight: bold;  border: #BDCFE1 1px solid;}
-
-.table-top {width: 100% }
+.form-table .table-top td {background: #E4F3FF;  color: #002E4F; font-size: 13px; font-weight: bold;  border: #BDCFE1 1px solid;}
 
 
-.search-table th {background: #EFF4F9 /*url(/images/tab.png) repeat-x*/; color: #000; padding: .3em .5em; border:1px solid #A8B8C7; text-align: left;  font-weight: normal; }
 
-.search-table td {background-color: #E4EDF6; padding: .3em .5em; border:1px solid #A8B8C7; text-align: left; border-top:1px solid #fff;}
+.search-table th {background: #F8F9FA /*url(/images/tab.png) repeat-x*/; color: #000; padding: .3em .5em; border:1px solid #A8B8C7; text-align: left;  font-weight: normal; }
+
+.search-table td {background-color: #ECF4FC; padding: .3em .5em; border:1px solid #A8B8C7; text-align: left; border-top:1px solid #fff;}
 
 .search-table {border-collapse: collapse; width: 100%; }
 
@@ -943,7 +936,7 @@ a.button:hover span {
 
 .clinical-table td {padding: 0.4em .8em; border: 1px solid #B1C4D2;}
 
-.clinical-table{border-collapse: collapse; background-color: #E0ECFF; color: #000; width: 100%; border: 1px solid #B1C4D2; margin: 4px; }
+.clinical-table{border-collapse: collapse; background-color: #f3f5f7; color: #000; width: 100%; border: 1px solid #B1C4D2; margin: 4px; }
 /*--------------------------clinical-screen----------------*/
 
 #prescription {
@@ -967,28 +960,29 @@ a.button:hover span {
 
 
 
-.report-create th {background: #f0edf2;
+.report-create th {background: #E4F3FF;
              text-align: left;
-             padding: 0.2em .5em .2em .5em;
-             border-bottom:1px solid #B1C4D2;  
+             padding: 0.3em .5em .3em .5em;
+             border-bottom:1px solid #ABBFCF;  
 			 font-size: 12px;     
 			 font-weight: bold; 
+             color: #002E4F;
 }
 
-.report-create td { padding: .2em .5em .2em .5em; color: #000;   }
+.report-create td { padding: .2em .5em .2em .5em; color: #000;  vertical-align: middle; }
 
-.report-create tr.even {background: #EFEFEF; }
-.report-create tr.odd { background: #FFFFFF; }
+.report-create tr.even {background: #F0F2F4; border:1px solid #ABBFCF; }
+.report-create tr.odd { background: #FFFFFE; border:1px solid #ABBFCF;}
 
 .report-create { border-collapse: collapse;
             width: 100%;
             color: #000;
-            border:1px solid #9BB6D0;
+            border:1px solid #ABBFCF;
 			margin-top: 2em;
 			font-size: 11px;
 }
 
-.report-create .header {background: #B9C2EE; padding: .2em .5em .2em .5em; border: 1px solid #B1C4D2;}
+.report-create .header {background: #B9C2EE; padding: .2em .5em .2em .5em; border: 1px solid #ABBFCF;}
 
 .report-create a {
 	        color: #00416F;
@@ -999,7 +993,7 @@ a.button:hover span {
 
 /* Report show */
  .report th {
- 	         background: #f0edf2;
+ 	     background: #f0edf2;
              text-align: left;
              padding: 0.3em .5em .3em .5em;
              border: 1px #383838 solid; 

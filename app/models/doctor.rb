@@ -1,6 +1,6 @@
 class Doctor < User
   has_many :appointments
-	has_one :refer_doctor
+  has_one :refer_doctor
   belongs_to :department
   has_one :doctor_profile
   #has_one :departament , :through => :doctor_profiles
