@@ -1,8 +1,9 @@
 module Laboratory::ParameterSpecificationsHelper
 
-	def check(value_type)
-		 partial_name = case value_type
-                      when 'Text' then 'text_fields'
+	def check(id)
+		 @parameter = Parameter.find(id)
+		 partial_name = case @parameter.value_type
+                     when 'Text','Header' then 'text_fields'
                       when 'Numeric' then 'numeric_fields'
                       when 'Multiple' then 'multiple_fields'
                    end

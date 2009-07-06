@@ -16,6 +16,7 @@ class Laboratory::ParametersController < ApplicationController
 
   def show
     @parameter = Parameter.find(params[:id])
+    @values = @parameter.parameter_values.map { |ob| ob.value }.join(',') if @parameter.value_type == "Multiple"
     render :layout => false
   end
 
@@ -25,13 +26,22 @@ class Laboratory::ParametersController < ApplicationController
 
   def edit
     @parameter = Parameter.find(params[:id])
-    @values = @parameter.values if @parameter.value_type == "Multiple"
+    @type = @parameter.value_type
+    @values = @parameter.parameter_values.map { |ob| ob.value }.join(',') if @parameter.value_type == "Multiple"
   end
 
   def create
     @parameter = Parameter.create(params[:parameter])
-    @parameter.values = params[:values].strip.split(',') unless params[:values].blank?
+   # @parameter.values = params[:values].strip.split(',') unless params[:values].blank?
     if @parameter.save
+    	unless params[:values].blank?
+    		 value = params[:values].strip.split(',')
+    		 ParameterValue.transaction do
+    		 	 value.each do |q|
+              ParameterValue.create({:parameter_id => @parameter.id ,:value => q})
+           end
+         end
+  		end
       flash[:notice] = 'Parameter was successfully created.'
       redirect_to(laboratory_parameters_url)
     else
@@ -42,8 +52,17 @@ class Laboratory::ParametersController < ApplicationController
   def update
     @parameter = Parameter.find(params[:id])
     if @parameter.update_attributes(params[:parameter])
-      @parameter.values = params[:values].split(',') unless params[:values].blank?
-      @parameter.save
+    #  @parameter.values = params[:values].split(',') unless params[:values].blank?
+      #@parameter.save
+      unless params[:values].blank?
+      	 @parameter.parameter_values.map { |ob| ob.destroy }
+    		 value = params[:values].strip.split(',')
+    		 ParameterValue.transaction do
+    		 	 value.each do |q|
+              ParameterValue.create({:parameter_id => @parameter.id ,:value => q})
+           end
+         end
+  		end
       flash[:notice] = 'Parameter was successfully updated.'
       redirect_to(laboratory_parameters_url)
     else
@@ -58,9 +77,11 @@ class Laboratory::ParametersController < ApplicationController
   end
 
   def muliple_display
-  	@values = Parameter.find(params[:id]).values
+  	@values = Parameter.find(params[:id]).parameter_values
   	render :layout => false
  	end
+
+
 
   def multiple_section
     respond_to do |format|
