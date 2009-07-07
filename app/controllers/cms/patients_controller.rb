@@ -5,7 +5,7 @@ class Cms::PatientsController < ApplicationController
     @search = Appointment.new_search(params[:search])
     @search.conditions.state = ['visited', 'prescribed', 'recommend_for_discharge']
     #@search.conditions.or_state = 'visited'
-    @search.conditions.doctor_id =  18  unless params[:doctor_id].blank?
+    @search.conditions.doctor_id =  current_user.id unless admin?
     @search.order_as ||= "DESC"
     @search.order_by ||= "created_at"
     @search.per_page ||= 15

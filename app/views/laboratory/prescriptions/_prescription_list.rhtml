@@ -9,8 +9,8 @@
     <th><%= remote_order_by_link({ :prescribed_tests => {:lab_test =>:name }} , :text => "Test Prescribed") %> </th>
     <th> Patient Type(IP/OP)</th>
     <th> Status </th>
-    <th>Test Report</th>
-    <th>View Report</th>
+    <th> Test Report </th>
+    <th> Presc. Details </th>
    </tr>
 
   <% for test in @prescribed_tests %>
@@ -20,10 +20,12 @@
           <td> <%=h patient.reg_no %>         </td>
           <td> <%=h patient.id %>         </td>
           <td> <%= patient.patient_name %>         </td>
-	      <td> <%= test.lab_test.name %> </td>
+	  <td> <%= test.lab_test.name %> </td>
           <td> OP </td>
-	      <td> completed </td>
-
+	  <td> completed </td>
+	  <td> <%= prescription.laboratory_reports.blank? ? (link_to "Create Report", new_laboratory_prescribed_test_laboratory_report_path(test)) : (link_to "View Report", laboratory_prescribed_test_laboratory_report_path(:prescribed_test_id => test, :id => test.lab_test.laboratory_report)) %>
+	  </td>
+          <td> </td>
 	</tr>
   <% end %>
 

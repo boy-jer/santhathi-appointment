@@ -620,17 +620,18 @@ h3 span {color: #003A66;
 .listing td { padding: .8em .5em .8em .5em; color: #000; border-bottom:1px solid #90A5B8;  }
 
 .listing .even {background: #FFFFFF;}
-.listing .odd { background: #FFFFFF;}
+.listing .odd {background: #FFFFFF;}
 
-.listing    { border-collapse: collapse;
+.listing { border-collapse: collapse;
             width: 100%;
             color: #000;
-            border:1px solid #A8B8C7;
-			margin-top: 2em;
-}
-.listing a {
-	        color: #00416F;
-		text-decoration: none;
+	    margin-top: 2em;
+            border: 1px #90A5B8 solid;
+
+         }
+
+.listing a { color: #00416F;
+	     text-decoration: none;
            }
 
 
@@ -670,13 +671,13 @@ h3 span {color: #003A66;
 }
 
 
-.form-table th {background-color: #ffffff; padding: 0.1em .8em ; border:1px solid #B1C4D2; text-align: left;}
+.form-table th {background-color: #fff; padding: 0.1em .8em ; border:1px solid #B1C4D2; text-align: right;}
 
-.form-table td {background-color: #ffffff; padding: 0.3em .8em 0.3em; border:1px solid #B1C4D2; }
+.form-table td {background-color: #fff; padding: 0.3em .8em 0.3em; border:1px solid #B1C4D2; }
 
-.form-table {border-collapse: collapse; width: 100%; border: #B1C4D2 1px solid; margin: 0px 5px 0px 5px; color: #000;}
+.form-table {border-collapse: collapse; width: 100%; border: #B1C4D2 1px solid; margin: 0px 5px 0px 5px; color: #000; }
 
-.form-table .table-top td {background: #d9dfe7;  color: #002E4F; font-size: 13px; font-weight: bold;  border: #BDCFE1 1px solid;}
+.form-table .table-top td {background: #E0E8F2;  color: #002E4F; font-size: 13px; font-weight: bold;  border: #BDCFE1 1px solid;}
 
 
 
@@ -688,7 +689,7 @@ h3 span {color: #003A66;
 
 /* Menu */
 
-#menu { width: 385px;  padding: 0; margin: 0 auto; list-style: none; }
+#menu { width: 410px;  padding: 0; margin: 0 auto; list-style: none; }
 
 #menu ul{margin:0; padding: 0px 0px 0px 0px; list-style:none; }
 

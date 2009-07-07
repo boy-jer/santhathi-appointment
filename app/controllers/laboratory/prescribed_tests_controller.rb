@@ -1,10 +1,10 @@
 class Laboratory::PrescribedTestsController < ApplicationController
 
-	def destroy
-	  @prescribe_test = PrescribedTest.find(params[:id])
-	  @appointment = @prescribe_test.prescription.appointment
+  def destroy
+    @prescribe_test = PrescribedTest.find(params[:id])
+    @appointment = @prescribe_test.prescription.appointment
     @prescribe_test.destroy
-    redirect_to new_appointment_clinical_screen_path(@appointment)
+    redirect_to new_cms_appointment_clinical_screen_path(@appointment)
   end
 
 =begin

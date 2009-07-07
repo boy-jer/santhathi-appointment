@@ -2,15 +2,9 @@
    <ul>
         <li><%= tab_to "PMS", [{:controller => "pms/appointments" , :action => "index"}] %></li>
 
-	           <% if admin? -%>
-	             <li> <%= tab_to "CMS", [{:controller => "cms/patients" , :action => "index"}] %>
-	           <% end %> </li>
-
-	              <% if doctor? -%>
-	            <li>  <%= tab_to "CMS",  [{:controller => "cms/doctors/#{current_user.id}/patients" , :action => "index"}]  %>  </li>
-	             <% end %>
-
-
+	           <% if doctor? or admin? -%>
+	              <li>  <%= link_to "CMS",  cms_doctor_patients_url(current_user.id)  %>  </li>
+	           <% end %>
 
 
         <li><%= tab_to "Laboratory",[{:controller => "laboratory/prescriptions" ,:action =>"index"}] %></li>
