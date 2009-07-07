@@ -102,7 +102,7 @@ body {
 }
 
 a:link, a:visited {
-	color: #0065AE;
+	/*color: #0065AE;*/
 }
 a:hover {
 	color: #87CEFA;
@@ -149,11 +149,13 @@ input.address{
 	width:200px;
 }
 
-input:focus, textarea:focus{
-	background:#fff url(/images/field-top.gif) repeat-x top;
+input.textbox:focus, textarea:focus{
 	border:#34718e 1px solid;
 }
 
+input.textbox-small:focus, textarea:focus{
+	border:#34718e 1px solid;
+}
 label {
 	font-weight: bold;
         color: #3F4C6B;
@@ -674,13 +676,13 @@ h3 span {color: #003A66;
 
 .form-table {border-collapse: collapse; width: 100%; border: #B1C4D2 1px solid; margin: 0px 5px 0px 5px; color: #000;}
 
-.form-table .table-top td {background: #E4F3FF;  color: #002E4F; font-size: 13px; font-weight: bold;  border: #BDCFE1 1px solid;}
+.form-table .table-top td {background: #d9dfe7;  color: #002E4F; font-size: 13px; font-weight: bold;  border: #BDCFE1 1px solid;}
 
 
 
 .search-table th {background: #F8F9FA /*url(/images/tab.png) repeat-x*/; color: #000; padding: .3em .5em; border:1px solid #A8B8C7; text-align: left;  font-weight: normal; }
 
-.search-table td {background-color: #ECF4FC; padding: .3em .5em; border:1px solid #A8B8C7; text-align: left; border-top:1px solid #fff;}
+.search-table td {background-color: #e8eaed; padding: .3em .5em; border:1px solid #A8B8C7; text-align: left; border-top:1px solid #fff;}
 
 .search-table {border-collapse: collapse; width: 100%; }
 
@@ -960,7 +962,7 @@ a.button:hover span {
 
 
 
-.report-create th {background: #E4F3FF;
+.report-create th {background: #ecf0f4;
              text-align: left;
              padding: 0.3em .5em .3em .5em;
              border-bottom:1px solid #ABBFCF;  

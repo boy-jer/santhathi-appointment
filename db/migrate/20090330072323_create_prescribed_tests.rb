@@ -3,7 +3,7 @@ class CreatePrescribedTests < ActiveRecord::Migration
     create_table :prescribed_tests do |t|
       t.integer :prescription_id
       t.integer :lab_test_id
-      t.string :result
+
       t.timestamps
     end
   end

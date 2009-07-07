@@ -29,26 +29,27 @@
           <th> Details </th>
      </tr> 
 	 <tr><td colspan=5></td></tr>
-     <% for spec in @specifications %>
+       <% for spec in @specifications %>
          <% unless spec.parameter.value_type == 'Header' %>
            <tr class="<%= cycle('odd', 'even')%>">
-           	  <%parameter = spec.parameter%>
-           	  <td><b><%= parameter.parameter_name %></b></td> <%= spec.id %>
+           	  <% parameter = spec.parameter %>
+           	  <td><b><%= parameter.parameter_name %></b></td>
               <td><%= parameter.measurement_unit.name %></td>
                <% test_result = laboratory_test_result(@laboratory_report.id, spec.id ) %>
-              <% if parameter.value_type == 'Multiple' %>
-                 <td><%= select "specifications[ids]", "#{spec.id}", parameter.values.nil? ? [] : parameter.values, :selected => test_result.result %></td>
-              <% elsif parameter.value_type == 'Numeric'%>
-                 <td><%= text_field_tag "specifications[ids][#{spec.id}]", test_result.result.blank?? '0.0' : test_result.result , :class => 'textbox' %></td>
-               <%else%>
-                  <td><%= text_field_tag "specifications[ids][#{spec.id}]", test_result.result.blank?? ' ' : test_result.result , :class => 'textbox' %></td>
-              <%end%>
+               <% result = test_result.result unless test_result.blank? %>
 
-              <td><%= text_area_tag "specifications[remarks][r_#{spec.id}]", test_result.remarks.blank?? ' ' : test_result.remarks, :class => 'textbox' %></td>
-              <td><%= link_to 'Details', details_laboratory_laboratory_test_results_url(:patient_id =>@patient.id,:specification_id => spec), :rel=> "facebox" %></td>
-           </tr>
+              <% if parameter.value_type == 'Multiple' %>
+                 <td><%= select "specifications[ids]", "#{spec.id}", parameter.values.nil? ? [] : parameter.values, :selected => result %></td>
+              <% elsif parameter.value_type == 'Numeric'%>
+                 <td><%= text_field_tag "specifications[ids][#{spec.id}]", result.blank? ? '0.0' : result, :class => 'textbox' %></td>
+               <%else%>
+                 <td><%= text_field_tag "specifications[ids][#{spec.id}]", result.blank? ? ' ' : result, :class => 'textbox' %></td>
+               <%end%>
+                 <td><%= text_area_tag "specifications[remarks][r_#{spec.id}]", test_result.blank? ? ' ' : test_result.remarks, :class => 'textbox' %></td>
+                 <td><%= link_to 'Details', details_laboratory_laboratory_test_results_url(:patient_id => @patient.id, :specification_id => spec), :rel=> "facebox" %></td>
+            </tr>
        <%else%>
-           <tr class= 'header'><td  colspan=5><b><%= spec.parameter.parameter_name %></b></td> </tr>
+            <tr class='header'><td  colspan=5><b><%= spec.parameter.parameter_name %></b></td> </tr>
        <%end%>
      <%end%>
 

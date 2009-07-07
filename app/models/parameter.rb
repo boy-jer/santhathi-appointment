@@ -3,7 +3,7 @@ class Parameter < ActiveRecord::Base
   belongs_to :measurement_unit
   has_many :parameter_specifications
   has_many :parameter_values
-
+  
   def self.parameter_list
      self.find(:all).collect{|para| [para.parameter_name, para.id]}
   end

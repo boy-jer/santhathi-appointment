@@ -13,6 +13,7 @@ class Laboratory::LaboratoryReportsController < ApplicationController
     @specifications = @lab_test.parameter_specifications.gender_filter(@patient.gender)
     @laboratory_report = LaboratoryReport.find(params[:id])
     @laboratory_test_results =  @laboratory_report.laboratory_test_results
+
     @results = {}
     @laboratory_test_results.map{|r|  @results[r.parameter_specification_id] = [r.result, r.remarks] }
 
@@ -46,12 +47,15 @@ class Laboratory::LaboratoryReportsController < ApplicationController
     @laboratory_report = LaboratoryReport.new(params[:laboratory_report])
     @laboratory_report.save
     specs = params[:specifications]
+  
     specs[:ids].each_pair{ |key, value| LaboratoryTestResult.create(:parameter_specification_id => key,
                                                                     :result => value,
                                                                     :remarks => specs[:remarks]["r_#{key}"],
-                                                                    :laboratory_report_id =>  @laboratory_report.id)
-                                                                      }
-    flash[:notice] = 'Report was successfully created.'
+                                                                    :laboratory_report_id =>  @laboratory_report.id,
+                                                                    :position => ParameterSpecification.find(key).position
+                                                                    )
+                                                                 }
+    flash[:notice] = 'Report is successfully created.'
     redirect_to laboratory_prescriptions_url
   end
   
@@ -77,7 +81,7 @@ class Laboratory::LaboratoryReportsController < ApplicationController
                                                :remarks => specs[:remarks]["r_#{key}"],
                                                :laboratory_report_id =>  @laboratory_report.id ) }
 
-      flash[:notice] = 'LaboratoryReport was successfully updated.'
+      flash[:notice] = 'Laboratory Report is successfully updated.'
       redirect_to laboratory_prescriptions_url
     else
       render :action => "edit"
@@ -91,9 +95,9 @@ class Laboratory::LaboratoryReportsController < ApplicationController
   end
   
   def sort_results
-    lab_report = LaboratoryReport.find(params[:id])
-    results = lab_report.laboratory_test_results
-    puts "ppppppppppppppppppppppppppppppppppp #{results.map{|r| r.position}}"
+    params[:results].map{|r| 
+                              test_result = ParameterSpecification.find(r).laboratory_test_result
+                              test_result.update_attribute('position', params[:results].index(r) + 1) unless test_result.blank? }               
   end  
 
 end

@@ -9,12 +9,12 @@
   </table>
    
   <table class="listing">
-       <tr> <th>Test Name : </th>
-           <th>Patient Name :</th>
-           <th> Patient Age :</th>
-           <th> Patient Gender :</th>
-           <th>Hospital No :</th>
-           <th> PVR No :</th>
+       <tr> <th> Test Name : </th>
+            <th> Patient Name :</th>
+            <th> Patient Age :</th>
+            <th> Patient Gender :</th>
+            <th> Hospital No :</th>
+            <th> PVR No :</th>
        </tr>
 	   
        <tr>
@@ -40,12 +40,12 @@
           <th>	Max Limit </th>
        </tr>
 	 </thead>
-	 <tbody id = "report-results">
+	 <tbody id = "results">
        <% unless @specifications.blank? %>
          <% for spec in @specifications %>
            <%parameter = spec.parameter%>
            <% unless parameter.value_type == 'Header' %>
-              <tr id = "spec_<%= spec.position %>"><td><%= parameter.parameter_name %></td>
+              <tr id = "spec_<%= "#{spec.id}" %>"><td><%= parameter.parameter_name %></td>
                 <td><%= parameter.measurement_unit.name %></td>
 
                 <td><%= @results[spec.id][0] unless @results[spec.id].blank?%></td>
@@ -56,15 +56,15 @@
                 <td> <%=h test.max_value %> </td>
                </tr>
            <%else%>
-              <tr class='header' id = "spec_<%= spec.position %>"><td  colspan=7><b><%= parameter.parameter_name %></b></td> </tr>
+              <tr class='header' id = "spec_<%= "#{spec.id}" %>"><td  colspan=7><b><%= parameter.parameter_name %></b></td> </tr>
            <%end%>
         <%end%>
        <%end%>
 	  </tbody>
     </table>
-	<%= sortable_element 'report-results',
-     :url => { :action => 'sort_results', :id => @laboratory_report },
-     :complete => visual_effect(:highlight, 'report-results'),
+	<%= sortable_element 'results',
+     :url => { :action => 'sort_results' },
+     :complete => visual_effect(:highlight, 'results'),
      :tag => 'tr'
      %>
 	 <br/>

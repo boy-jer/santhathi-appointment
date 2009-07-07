@@ -27,4 +27,9 @@ module Laboratory::LaboratoryReportsHelper
    		DoctorProfile.find(:all,:conditions => ["department_id = ? ", id]).map { |ob| [ob.name,ob.doctor.id] }
   	end
 
+   def multivalues(parameter)
+     vals = parameter.parameter_values
+     vals.nil? ? [] : vals.map{|v| v.value}
+   end
+
 end

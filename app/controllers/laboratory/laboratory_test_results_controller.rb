@@ -36,13 +36,13 @@ class Laboratory::LaboratoryTestResultsController < ApplicationController
   def create
     specs = params[:specifications]
     specs[:ids].each_pair{ |key, value|
-                          @laboratory_test_result = LaboratoryTestResult.new(params[:laboratory_test_result])
-                          @laboratory_test_result.parameter_specification_id = key
-                          @laboratory_test_result.result = value
-                          @laboratory_test_result.remarks = specs[:remarks]["r_#{key}"]
-                          @laboratory_test_result.save
-                         }
-                          flash[:notice] = 'LaboratoryTestResult was successfully created.'
+                           @laboratory_test_result = LaboratoryTestResult.new(params[:laboratory_test_result])
+                           @laboratory_test_result.parameter_specification_id = key
+                           @laboratory_test_result.result = value
+                           @laboratory_test_result.remarks = specs[:remarks]["r_#{key}"]
+                           @laboratory_test_result.save
+                          }
+                          flash[:notice] = 'Laboratory Test Report is successfully created.'
                           redirect_to(:controller => 'laboratory_prescriptions', :action =>'index')
   end
 

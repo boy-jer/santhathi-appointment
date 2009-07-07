@@ -3,7 +3,6 @@ class CreateSelectOptions < ActiveRecord::Migration
     create_table :select_options do |t|
       t.string :name
       t.string :type
-      t.string :abbrevation
       t.integer :position
       t.string :description
 
