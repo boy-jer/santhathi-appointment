@@ -3,8 +3,10 @@ class Cms::AppointmentsController < ApplicationController
 
   def index
     @search = Appointment.new_search(params[:search])
+    @search.conditions.doctor_id =  current_user.id unless admin?
     @search.per_page ||= 15
     @appointments = @search.all
+    @doctor = current_user unless admin?
     @doctor = Doctor.find(params[:search][:conditions][:doctor_id_like]) unless (params[:search].blank? || params[:search][:conditions][:doctor_id_like].blank?)
     @date = (Date.parse(params[:search][:conditions][:appointment_date_like]) unless (params[:search].blank? || params[:search][:conditions][:appointment_date_like].blank?)) || Date.today
    respond_to do |format|

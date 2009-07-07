@@ -12,7 +12,7 @@ class Cms::ClinicalScreensController < ApplicationController
       @last_visit_reports = last_visit_report(@appointment.id, @patient)
     else
       flash[:notice]=" Please select at least one appointment."
-      redirect_to doctor_patients_path
+       redirect_to cms_doctor_patients_path(current_user.id)
     end
   end
 

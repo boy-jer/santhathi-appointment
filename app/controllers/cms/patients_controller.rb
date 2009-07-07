@@ -14,7 +14,7 @@ class Cms::PatientsController < ApplicationController
       format.html
       format.js  {
                     render :update do |page|
-                      page.replace_html 'appointment-list', :partial => '/cms/doctor_patients/patient_list'
+                      page.replace_html 'appointment-list', :partial => '/cms/patients/patient_list'
                     end
                   }
     end
@@ -24,17 +24,17 @@ class Cms::PatientsController < ApplicationController
     date = (Date.parse(params[:date]) unless params[:date].blank?) || Date.today
     appointments = Appointment.on_date(date).status('visited')
     appointments.map {|appointment| appointment.discharge!}
-    redirect_to cms_doctor_patients_path
+    redirect_to cms_doctor_patients_path(current_user.id)
   end
 
   def update
     unless params[:appointment].blank?
       params[:appointment].map{ |id| appointment = Appointment.find(id)
                                 appointment.recommend_for_discharge! unless (appointment.blank? && appointment.visited?)}
-      redirect_to cms_doctor_patients_path
+      redirect_to cms_doctor_patients_path(current_user.id)
     else
       flash[:notice]=" Please select at least one appointment."
-      redirect_to cms_doctor_patients_path
+      redirect_to cms_doctor_patients_path(current_user.id)
     end
   end
 
@@ -48,7 +48,7 @@ class Cms::PatientsController < ApplicationController
       @prescribed_tests = @appointment.prescription.prescribed_tests unless @appointment.prescription.blank?
     else
       flash[:notice]=" Please select at least one appointment."
-      redirect_to cms_doctor_patients_path
+      redirect_to cms_doctor_patients_path(current_user.id)
     end
   end
 

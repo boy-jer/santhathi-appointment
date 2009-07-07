@@ -18,7 +18,7 @@ class  Cms::VitalSignsController < ApplicationController
   		             @patient.vital_signs.create(:registration_summary_id=>"#{key}",:value=>"#{value}")
                               }
     flash[:notice] = 'VitalSign was successfully created.'
-    redirect_to(cms_doctor_patients_url)
+    redirect_to cms_doctor_patients_path(current_user.id)
   end
 
   def update
@@ -28,7 +28,7 @@ class  Cms::VitalSignsController < ApplicationController
                   patient.vital_signs.create(:registration_summary_id=>"#{key}",:value=>"#{value}")
                              }
     flash[:notice] = 'VitalSign was successfully updated.'
-    redirect_to(cms_doctor_patients_url())
+     redirect_to cms_doctor_patients_path(current_user.id)
   end
 
   private

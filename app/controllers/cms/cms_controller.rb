@@ -3,7 +3,7 @@ class Cms::CmsController < ApplicationController
 
   def index
     @cms = Cms.find(:all)
-    redirect_to doctor_patients_url
+    redirect_to cms_doctor_patients_path(current_user.id)
   end
 
   def show

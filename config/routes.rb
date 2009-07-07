@@ -54,12 +54,18 @@ ActionController::Routing::Routes.draw do |map|
 
    map.namespace(:cms) do |cms|
    	 cms.root :controller => 'cms/patients', :action => 'index'
-   	 cms.resources :patients, :collection => { :discharge => :post,:clinical_screen=>:get }
+   	 cms.resources :patients #, :collection => { :discharge => :post,:clinical_screen=>:get }
    	 cms.resources :appointments
    	 cms.resources :services , :collection => { :child_list => :get }
    	 cms.resources :deactivate_slots
    	 cms.resources :disease_lists
-   	 cms.resources :doctors ,:has_one=>[:refer_doctor] ,:has_many=>[:patients , :appointments]
+
+   	  cms.resources :doctors do  |doctor|
+   	 	  doctor.resource :refer_doctor
+   	 	  doctor.resources :patients ,  :collection => { :discharge => :post,:clinical_screen =>:get }
+   	 	  doctor.resources :appointments
+ 	 	 end
+
      cms.resources :registration_summaries
      cms.resources :pharamacy_item_informations,:has_one =>[:pharamacy_item_information_detail]
   	 cms.resources :pharmacy_course_lists

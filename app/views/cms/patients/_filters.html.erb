@@ -1,14 +1,19 @@
 <% form_tag(cms_patients_url, :method => :get, :id => "search_form") do %>
    <table class="search-table">
      <tr>
-       <th><%=label_tag 'Doctor:'%></th> <th><%=label_tag 'Appointment date:'%> </th>
+       <% if admin? %>
+         <th><%=label_tag 'Doctor:'%></th>
+       <% end %>
+        <th><%=label_tag 'Appointment date:'%> </th>
        <th><%=label_tag 'Patient name:'%></th> <th><%=label_tag 'Registration No:'%></th>
        <th> Reset </th>
      </tr>
      <tr>
         <% fields_for @search do |f|%>
           <% f.fields_for @search.conditions do |p| %>
-     				<td><%=  p.select :doctor_id ,  [['Select doctor' , '']] + Doctor.doctors_list, :class =>'select-list' %></td>
+     				<% if admin? %>
+     			  	<td><%=  p.select :doctor_id ,  [['Select doctor' , '']] + Doctor.doctors_list, :class =>'select-list' %></td>
+     			   <% end %>
        		  <td><%= p.calendar_date_select :appointment_date_like, :class =>'textbox-small' %> </td>
         		   <% p.fields_for p.object.patient do |patient| %>
                 <td> <%= patient.text_field :patient_name_like, :class => 'textbox-small' %></td>

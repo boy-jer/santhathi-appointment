@@ -5,7 +5,8 @@
 
   <br />
   <div>
-   <%form_tag (discharge_cms_patients_path, :method=>:post )do %>
+ <% unless admin? %>
+   <%form_tag (discharge_cms_doctor_patients_path(current_user.id), :method=>:post )do %>
     <table id='reason-display'>
      <tr>
        <td>Discharge patients visited on:&nbsp;&nbsp;</td>
@@ -16,6 +17,7 @@
         </tr>
      </table>
    <%end%>
+ <% end %>
    </div>
    <%= observe_form("search_form", :frequency => 1,
                  :before => "Element.show('spinner')",

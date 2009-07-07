@@ -4,7 +4,9 @@
 
    <table cellpadding="5px" class="form-table">
       <tr> <td colspan="2"> <%= link_to "Back" , new_cms_appointment_clinical_screen_path(@appointment.id) %> &nbsp; | &nbsp;
-    <%= link_to "Patient List" ,  cms_doctor_patients_path %>  &nbsp; | &nbsp;
+          <% if doctor? or admin? -%>
+	             <%= link_to "Patient List",  cms_doctor_patients_url(current_user.id)  %> &nbsp; | &nbsp;
+	        <% end %>
     <%= link_to "Cancel" , new_cms_appointment_clinical_screen_path(@appointment.id) %> </td></tr>
 
 

@@ -2,11 +2,13 @@
   <%= f.error_messages %>
 
     <table class = 'form-table'>
-      <tr> <td colspan ="4"> 
+      <tr> <td colspan ="4">
 	  <label>
 	     <%= link_to "Back to Clinical Screen" , new_cms_appointment_clinical_screen_path(@prescription.appointment.id) %> &nbsp; | &nbsp;
-         <%= link_to "Patient List" ,  cms_doctor_patients_path %>  &nbsp; | &nbsp;
-         <%= link_to "Cancel" , new_cms_appointment_clinical_screen_path(@prescription.appointment.id) %> 
+        <% if doctor? or admin? -%>
+	             <%= link_to "Patient List",  cms_doctor_patients_url(current_user.id)  %> &nbsp; | &nbsp;
+	        <% end %>
+         <%= link_to "Cancel" , new_cms_appointment_clinical_screen_path(@prescription.appointment.id) %>
 	  </label>
 	  </td></tr>
 
