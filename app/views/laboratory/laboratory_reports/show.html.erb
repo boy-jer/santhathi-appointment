@@ -1,14 +1,14 @@
 <div class='continer'>
-<h3 class = 'head'> <%=@lab_test.name %> Test Report </h3>
-
-  <table class='form-table'><tr>
-           <td> </td>
-           <td> <%= link_to_function("Print this Page", "javascript:print()") %> </td>
-           <td> <%= link_to("Export This Page to PDF", formatted_laboratory_prescribed_test_laboratory_report_url(:prescribed_test_id => '56', :id => '6',:format =>'pdf' )) %> </td>
+  <center> <h3 class = 'head'> <%=@lab_test.name %> Test Report </h3></center> 
+  <div class = 'hide-for-print'>
+    <table><tr>
+           <td  style="padding: 0 10px 0px 10px;"> <%= link_to_function("Print Report", "javascript:print()") %> </td>
+           <td  style="padding: 0 10px 0px 10px;"> <%= link_to("Export Report to PDF", formatted_laboratory_prescribed_test_laboratory_report_url(:prescribed_test_id => '56', :id => '6',:format =>'pdf' )) %> </td>
          </tr>
-  </table>
-   
-  <table class="listing">
+    </table>
+    <br />
+
+    <table class="clinical-table">
        <tr> <th> Test Name : </th>
             <th> Patient Name :</th>
             <th> Patient Age :</th>
@@ -25,13 +25,24 @@
           <td> <%=h @patient.reg_no%> </td>
           <td> <%=h @appointment.patient.id %> </td>
        </tr>
-  </table><br/>
+    </table><br/>
+  </div>
   
+  <div class ='only-for-print' >
+    <table class="clinical-table">
+       <tr> <th> <b> Name: </b> </th> <td> <%=h @patient.patient_name %> </td>
+            <th> <b> Age: </b></th> <td> <%=h calculate_age(@patient.dob) %> </td>
+            <th> <b> Hospital: </b> No </th> <td> <%=h @patient.reg_no%> </td>
+            <th> <b> Date: </b></th>  <td> <%=h Time.now.strftime('%d/%m/%Y') %> </td>
+       </tr>
+	   
+    </table>
+  </div>
 
   <table class="report" style="cursor: move;">
   	<thead>
        <tr> 
-	      <th> Parameter Name </th>
+	  <th> Parameter Name </th>
           <th> UOM </th>
           <th> Result </th>
           <th> Remarks </th>

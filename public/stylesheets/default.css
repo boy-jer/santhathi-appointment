@@ -198,7 +198,7 @@ h3 span {color: #003A66;
 
 /** Header */
 #header {
-	margin: 0px 1px 0px 1px;
+	margin: 1px 1px 0px 1px;
     padding: 5px 10px 0px 10px;
 	/*position: absolute;*/
 	background: url(/images/top-bar-12.png) repeat-x;
@@ -238,9 +238,8 @@ h3 span {color: #003A66;
 .head {
 	color: #204F85;
 	background: #fff /*url(/images/heading.png) repeat-x*/ ;
-	padding: .1em .3em .1em .3em;
+	padding: .2em .3em .2em .3em;
 	margin: 0px 0px 10px 0px ;
-         
 }
 
 /** Main body */
@@ -248,6 +247,7 @@ h3 span {color: #003A66;
 	margin: 0 auto;
 	height: 100%;ECF4FC
 	clear:both;
+
 }
 
 /** Left column */
@@ -390,7 +390,7 @@ h3 span {color: #003A66;
 /*------------------------For appointment booking page\------------------*/
 #main-schedules {
  color: #333;
- width: 32%;
+ width: 32%;F6F6F0
  float: right;
  padding: 2px 5px 0px 5px;
  background-color: #fff;
@@ -455,6 +455,7 @@ h3 span {color: #003A66;
            margin: 0px;
            padding: 12px;
            margin-top: 0px;
+
            }
 
 
@@ -478,7 +479,7 @@ h3 span {color: #003A66;
            overflow: auto;
            
            /*border: 1px solid #778899;*/
-          }
+          }F6F6F0
 #patients_list{
            height: 95px;
            overflow: auto;
@@ -614,13 +615,14 @@ h3 span {color: #003A66;
              text-align: left;
              padding: 0.2em .5em .2em .5em;
              border:1px solid #A8B8C7;  
-			 font-size: 13px;      
+	     font-size: 13px;      
+
 }
 
 .listing td { padding: .8em .5em .8em .5em; color: #000; border-bottom:1px solid #90A5B8;  }
 
-.listing .even {background: #FFFFFF;}
-.listing .odd {background: #FFFFFF;}
+.listing .even {background: #FdFdFd;}
+.listing .odd {background: #FdFdFd;}
 
 .listing { border-collapse: collapse;
             width: 100%;
@@ -647,7 +649,7 @@ h3 span {color: #003A66;
 
 .table-bottom { width: 100%; border:1px solid #ACBDCD;  border-collapse: collapse;}
 
-.table-footer td {background: #EEF2F5; padding: 4px; }
+.table-footer td {background: #E0E9EF; padding: 4px; }
 
 #patients tr:hover {background-color: #c7dfea; color: #ffffff;} /*not for IE*/
 
@@ -683,7 +685,7 @@ h3 span {color: #003A66;
 
 .search-table th {background: #F8F9FA /*url(/images/tab.png) repeat-x*/; color: #000; padding: .3em .5em; border:1px solid #A8B8C7; text-align: left;  font-weight: normal; }
 
-.search-table td {background-color: #e8eaed; padding: .3em .5em; border:1px solid #A8B8C7; text-align: left; border-top:1px solid #fff;}
+.search-table td {background-color: #E0E9EF; padding: .3em .5em; border:1px solid #A8B8C7; text-align: left; border-top:1px solid #fff;}
 
 .search-table {border-collapse: collapse; width: 100%; }
 
@@ -939,7 +941,7 @@ a.button:hover span {
 
 .clinical-table td {padding: 0.4em .8em; border: 1px solid #B1C4D2;}
 
-.clinical-table{border-collapse: collapse; background-color: #f3f5f7; color: #000; width: 100%; border: 1px solid #B1C4D2; margin: 4px; }
+.clinical-table{border-collapse: collapse; background-color: #fbfbfb; color: #000; width: 100%; border: 1px solid #B1C4D2; margin: 4px; }
 /*--------------------------clinical-screen----------------*/
 
 #prescription {
@@ -963,7 +965,7 @@ a.button:hover span {
 
 
 
-.report-create th {background: #ecf0f4;
+.report-create th {background: #D4D8E3;
              text-align: left;
              padding: 0.3em .5em .3em .5em;
              border-bottom:1px solid #ABBFCF;  
@@ -996,22 +998,24 @@ a.button:hover span {
 
 /* Report show */
  .report th {
- 	     background: #f0edf2;
+ 	     background: #DEE2EB;
              text-align: left;
              padding: 0.3em .5em .3em .5em;
-             border: 1px #383838 solid; 
+             border: 1px #808080 solid; 
 			 font-size: 12px;     
 			 font-weight: bold; }
 			 
-.report td { padding: .3em .5em .3em .5em; color: #383838; border: 1px #383838 solid;  }
+.report td { padding: .3em .5em .3em .5em; color: #383838; border: 1px #808080 solid;  }
 
 .report { border-collapse: collapse;
             width: 100%;
             color: #000;
-            border:1px solid #383838;
+            border:1px solid #808080;
 			margin-top: 2em;
 			font-size: 11px;
 }
-.report .header {background: #B9C2EE; padding: .3em .5em .3em .5em; border: 1px solid #B1C4D2;}
+.report .header {background: #B9C2EE; padding: .3em .5em .3em .5em; border: 1px solid #B1C4D2; font-weight: bold;}
 
 #report-results td { padding: .3em .5em .3em .5em; color: #383838; border: 1px #383838 solid;  }
+
+.only-for-print {display: none;}

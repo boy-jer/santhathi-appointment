@@ -21,7 +21,19 @@ a:hover {
   display: none;
 }
 
+#nav{
+display: none;
+}
+
+#header h1 {
+  display: none;
+}
+
 .hide-for-print{
+  display: none;
+}
+
+#footer{
   display: none;
 }
 
@@ -58,3 +70,27 @@ a:hover {
              
             font-size: 12px;
 }
+
+
+/* Report show */
+ .report th {
+ 	     background: #000;
+             text-align: left;
+             padding: 0.3em .5em .3em .5em;
+             font-weight: bold; }
+			 
+.report td { padding: .3em .5em .3em .5em; color: #383838;  }
+
+.report { border-collapse: collapse;
+            width: 100%;
+            color: #000;
+            margin-top: 1.5em;
+  }
+.report .header {background: #B9C2EE; padding: .3em .5em .3em .5em; }
+
+
+clinical-table th { padding: 0em;  text-align: left;}
+
+.clinical-table td {padding: 0em ; }
+
+.clinical-table{border-collapse: collapse; background-color: #fff; color: #000; width: 100%;   }
