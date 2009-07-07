@@ -17,6 +17,13 @@ class ApplicationController < ActionController::Base
     #logged_in? && @current_user.has_role?(:admin)
   end
 
+  def admin?
+    logged_in? && current_user.has_role?(:admin)
+  end
+
+  def doctor?
+    logged_in? && current_user.has_role?(:doctor)
+  end
   helper_method :s
 
   # See ActionController::RequestForgeryProtection for details

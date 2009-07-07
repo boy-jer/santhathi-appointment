@@ -23,11 +23,7 @@
 	      <td> <%= test.lab_test.name %> </td>
           <td> OP </td>
 	      <td> completed </td>
-	      <td> <%= prescription.laboratory_reports.blank? ?
-	        (link_to "Create Report", new_laboratory_prescribed_test_laboratory_report_path(test)):
-	        (link_to "Edit Report", edit_laboratory_prescribed_test_laboratory_report_path(:prescribed_test_id => test.id, :id => test.lab_test.laboratory_report)) %>
-	      </td>
-	      <td> <%= link_to "View Report", laboratory_prescribed_test_laboratory_report_path(:prescribed_test_id => test, :id => test.lab_test.laboratory_report) unless prescription.laboratory_reports.blank? %></td>
+
 	</tr>
   <% end %>
 

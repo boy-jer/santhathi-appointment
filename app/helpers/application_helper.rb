@@ -45,6 +45,10 @@ module ApplicationHelper
     logged_in? && current_user.has_role?(:admin)
   end
 
+  def doctor?
+    logged_in? && current_user.has_role?(:doctor)
+  end
+
   # Write a secure email adress
   def secure_mail_to(email)
     mail_to email, nil, :encode => 'javascript'

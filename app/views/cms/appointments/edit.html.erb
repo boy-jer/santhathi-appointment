@@ -1,0 +1,12 @@
+<h1>Editing doctor_appointment</h1>
+
+<% form_for(@doctor_appointment) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @doctor_appointment %> |
+<%= link_to 'Back', cms_appointments_path %>

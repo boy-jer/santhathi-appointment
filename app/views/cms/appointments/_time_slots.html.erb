@@ -1,0 +1,32 @@
+<br />
+<table class="time-slots" cellspacing="1">
+     <tr><th>Slot</th> <th>Patient name </th> <th>Registration No</th> <th>Appointment No </th> <th>Appointment Given by </th> <th>Reason </th></tr>
+     <%unless @doctor.blank? %>
+       <% dt1 = Time.parse(@doctor.doctor_profile.working_from.to_s) %>
+       <% appoitments_hash = appointments(@doctor, @date) %>
+       <% iteration_count(@doctor).times do%>
+
+         <% slot = "#{(dt1.strftime('%H:%M').to_s)}" %>
+         <% if appoitments_hash.key?(slot) %>
+           <tr class = <%=reason_class(appoitments_hash[slot].reason.name)  %>>
+            <td>
+               <%= link_to "#{(dt1.strftime('%H:%M').to_s)} - #{(dt1 = dt1 + 5.minutes).strftime('%H:%M').to_s}", pms_appointment_url(appoitments_hash[slot]), :rel=> "facebox" %>
+               <td><%= link_to appoitments_hash[slot].patient.patient_name, confirm_pms_appointment_url(appoitments_hash[slot]), :method => :post, :confirm => "This action will confirm the appointment. Are you sure?" %> </td>
+               <td><%= appoitments_hash[slot].patient.reg_no %> </td>
+               <td><td>
+               <td><%= appoitments_hash[slot].reason.name %> </td>
+            </tr>
+         <% else %>
+            <tr><td class="available">
+                <%= "#{(dt1.strftime('%H:%M').to_s)} - #{(dt1 = dt1 + 5.minutes).strftime('%H:%M').to_s}" %></td>
+            <td class="available-new"> &nbsp; </td>
+            <td class="available-new"> &nbsp; </td>
+            <td class="available-new"> &nbsp; </td>
+            <td class="available-new"> &nbsp; </td>
+            <td class="available-new"> &nbsp; </td>
+            </tr>
+          <% end %>
+
+       <%end%>
+     <%end%>
+</table>

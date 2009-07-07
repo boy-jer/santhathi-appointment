@@ -53,13 +53,13 @@ ActionController::Routing::Routes.draw do |map|
 
 
    map.namespace(:cms) do |cms|
-   	 cms.root :controller => 'cms/doctor_patients', :action => 'index'
-   	 cms.resources :doctor_patients, :collection => { :discharge => :post,:clinical_screen=>:get }
-   	 cms.resources :doctor_appointments
+   	 cms.root :controller => 'cms/patients', :action => 'index'
+   	 cms.resources :patients, :collection => { :discharge => :post,:clinical_screen=>:get }
+   	 cms.resources :appointments
    	 cms.resources :services , :collection => { :child_list => :get }
    	 cms.resources :deactivate_slots
    	 cms.resources :disease_lists
-   	 cms.resources :doctors ,:has_one=>[:refer_doctor]
+   	 cms.resources :doctors ,:has_one=>[:refer_doctor] ,:has_many=>[:patients , :appointments]
      cms.resources :registration_summaries
      cms.resources :pharamacy_item_informations,:has_one =>[:pharamacy_item_information_detail]
   	 cms.resources :pharmacy_course_lists
@@ -69,7 +69,7 @@ ActionController::Routing::Routes.draw do |map|
      cms.resources :vital_signs
    	 cms.resources :cms
 
-   	 cms.resources :patient_histories ,:collection => { :prescription => :get ,:reports => :get , :pharmacy_prescription=> :get ,:transfer_history => :get ,:alerts => :get ,:discharge_summary => :get   ,:clinical_comment=> :get }
+   	 cms.resources :patient_histories ,:collection => { :prescription => :get ,:reports => :get , :pharmacy_prescription=> :get ,:transfer_history => :get ,:alerts => :get ,:discharge_summary => :get , :clinical_comment=> :get }
    end
 
 
