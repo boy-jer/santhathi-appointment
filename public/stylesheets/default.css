@@ -102,7 +102,7 @@ body {
 }
 
 a:link, a:visited {
-	/*color: #0065AE;*/
+	color: #00243D;
 }
 a:hover {
 	color: #87CEFA;
@@ -237,9 +237,9 @@ h3 span {color: #003A66;
 
 .head {
 	color: #204F85;
-	background: #fff /*url(/images/heading.png) repeat-x*/ ;
-	padding: .2em .3em .2em .3em;
-	margin: 0px 0px 10px 0px ;
+	background: #E2EDF4 /*url(/images/heading.png) repeat-x*/ ;
+	padding: .3em .3em .2em .5em;
+	margin: 0px 0px 15px 0px ;
 }
 
 /** Main body */
@@ -328,10 +328,12 @@ h3 span {color: #003A66;
 #footer {
         color: #00538F;
 	clear: both;
-    width: 97.9%;
+    width: 100%;
 	padding: 5px 3px 5px 3px;
 	margin: 0 auto;
-	background: #fff;
+	background: #fff;border: #549DD2 2px solid;
+	margin: 30px 3px 0px 3px;
+	padding: 4px 15px 0px 15px;
     border-top: #00538F 5px solid; 
     text-align: center;
 }
@@ -448,7 +450,7 @@ h3 span {color: #003A66;
            /*border-width: 4px;
            border-color: #ADC7F3;
            border-style: outset;*/
-          /* border: 4px  #F6F6EE  solid;*/
+         
            min-height: 525px;
            background: #fff; /* url(/images/tab.png) repeat-x;*/
            height: 100%;
@@ -614,21 +616,21 @@ h3 span {color: #003A66;
              color: #000;
              text-align: left;
              padding: 0.2em .5em .2em .5em;
-             border:1px solid #A8B8C7;  
+             border:1px solid #899BA8;  
 	     font-size: 13px;      
 
 }
 
-.listing td { padding: .8em .5em .8em .5em; color: #000; border-bottom:1px solid #90A5B8;  }
+.listing td { padding: .8em .5em .8em .5em; color: #000; border-bottom:1px solid #899BA8;  }
 
-.listing .even {background: #FdFdFd;}
-.listing .odd {background: #FdFdFd;}
+.listing .even {background: #FFF;}
+.listing .odd {background: #FFF;}
 
 .listing { border-collapse: collapse;
             width: 100%;
             color: #000;
 	    margin-top: 2em;
-            border: 1px #90A5B8 solid;
+            border: 1px #899BA8 solid;
 
          }
 
@@ -685,7 +687,7 @@ h3 span {color: #003A66;
 
 .search-table th {background: #F8F9FA /*url(/images/tab.png) repeat-x*/; color: #000; padding: .3em .5em; border:1px solid #A8B8C7; text-align: left;  font-weight: normal; }
 
-.search-table td {background-color: #E0E9EF; padding: .3em .5em; border:1px solid #A8B8C7; text-align: left; border-top:1px solid #fff;}
+.search-table td {background-color: #F5F4EE; padding: .3em .5em; border:1px solid #A8B8C7; text-align: left; border-top:1px solid #fff;}
 
 .search-table {border-collapse: collapse; width: 100%; }
 
@@ -705,9 +707,9 @@ h3 span {color: #003A66;
 #menu li a {
 	display: block;
 	float: left;
-        /*border: #549DD2 1px solid;*/
-	margin: 30px 3px 0px 25px;
-	padding: 5px 2px 0px 1px;
+        border: #549DD2 2px solid;
+	margin: 30px 3px 0px 3px;
+	padding: 4px 15px 0px 15px;
         
 	height:17px;
 	text-transform: uppercase;
@@ -723,8 +725,8 @@ h3 span {color: #003A66;
 #menu li a:hover {
 	display: block;
 	float: left;
-	margin:30px 3px 0px 25px;
-	padding: 5px 2px 0px 1px;
+        margin: 30px 3px 0px 3px;
+	padding: 4px 15px 0px 15px;
 	text-transform: uppercase;
 	text-decoration: none;
 	font-size: 11px;
@@ -937,11 +939,11 @@ a.button:hover span {
 /*------------------------- links as buttons --------------*/
 
 /*--------------------------clinical-screen----------------*/
-.clinical-table th { padding: 0.4em .8em; border:1px solid #B1C4D2; text-align: left;}
+.clinical-table th { padding: 0.4em .8em; border:1px solid #808080; text-align: left;}
 
-.clinical-table td {padding: 0.4em .8em; border: 1px solid #B1C4D2;}
+.clinical-table td {padding: 0.4em .8em; border: 1px solid #808080;}
 
-.clinical-table{border-collapse: collapse; background-color: #fbfbfb; color: #000; width: 100%; border: 1px solid #B1C4D2; margin: 4px; }
+.clinical-table{border-collapse: collapse; background-color: #fbfbfb; color: #000; width: 100%; border: 1px solid #808080; margin: 4px; }
 /*--------------------------clinical-screen----------------*/
 
 #prescription {
@@ -998,7 +1000,7 @@ a.button:hover span {
 
 /* Report show */
  .report th {
- 	     background: #DEE2EB;
+ 	     background: #EAEAEA;
              text-align: left;
              padding: 0.3em .5em .3em .5em;
              border: 1px #808080 solid; 

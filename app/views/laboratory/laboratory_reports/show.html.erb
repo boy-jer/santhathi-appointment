@@ -1,12 +1,13 @@
 <div class='continer'>
-  <center> <h3 class = 'head'> <%=@lab_test.name %> Test Report </h3></center> 
+  <center> 
+     <h3 class = 'head'> <%=@lab_test.name %> Test Report &nbsp; &nbsp;
+          <%= link_to_function("Print", "javascript:print()") %> &nbsp; &nbsp;  
+          <%= link_to_function("Preview", "javascript:print()") %> 
+     </h3> 
+  </center> 
+
   <div class = 'hide-for-print'>
-    <table><tr>
-           <td  style="padding: 0 10px 0px 10px;"> <%= link_to_function("Print Report", "javascript:print()") %> </td>
-           <td  style="padding: 0 10px 0px 10px;"> <%= link_to("Export Report to PDF", formatted_laboratory_prescribed_test_laboratory_report_url(:prescribed_test_id => '56', :id => '6',:format =>'pdf' )) %> </td>
-         </tr>
-    </table>
-    <br />
+   <br />
 
     <table class="clinical-table">
        <tr> <th> Test Name : </th>
