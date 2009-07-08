@@ -65,5 +65,8 @@ class Pms::DoctorsController < ApplicationController
     @doctor.activate!
     redirect_to pms_doctos_path
   end
-
+ 
+  def working_slots
+    strt_hr, strt_mnt, end_hr, end_mint = params[:sth], params[:stm], params[:eth], params[:etm]
+  end
 end
