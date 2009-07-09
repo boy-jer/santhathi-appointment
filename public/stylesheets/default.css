@@ -237,9 +237,19 @@ h3 span {color: #003A66;
 
 .head {
 	color: #204F85;
-	background: #E2EDF4 /*url(/images/heading.png) repeat-x*/ ;
-	padding: .3em .3em .2em .5em;
+	background: #fff /*url(/images/heading.png) repeat-x*/ ;
+	padding: .0em .3em .0em .5em;
 	margin: 0px 0px 15px 0px ;
+
+}
+
+.head a{
+	color: #204F85;
+	background: #fff /*url(/images/heading.png) repeat-x*/ ;
+	padding: .0em .3em .0em .5em;
+    font-size: 13px;
+
+
 }
 
 /** Main body */
@@ -326,27 +336,19 @@ h3 span {color: #003A66;
 
 /** Footer */
 #footer {
-        color: #00538F;
+    color: #00538F;
 	clear: both;
-    width: 100%;
-	padding: 5px 3px 5px 3px;
+    width: 97%;
+	padding: 5px 0px 5px 0px;
 	margin: 0 auto;
-	background: #fff;border: #549DD2 2px solid;
+	background: #fff; 
 	margin: 30px 3px 0px 3px;
 	padding: 4px 15px 0px 15px;
     border-top: #00538F 5px solid; 
     text-align: center;
 }
 
-#footer-inner {
-	clear: both;
-        width: 250px;
-        margin: 0 auto;
-	padding: 0px 10px 0px 10px;
-	color: #00528B;
-	font-size: 0.9em;
 
-}
 
 /* Pagination */
 .pagination {
@@ -392,7 +394,7 @@ h3 span {color: #003A66;
 /*------------------------For appointment booking page\------------------*/
 #main-schedules {
  color: #333;
- width: 32%;F6F6F0
+ width: 32%;
  float: right;
  padding: 2px 5px 0px 5px;
  background-color: #fff;
@@ -402,15 +404,15 @@ h3 span {color: #003A66;
 }
 
 #main-schedules .head{
-        color: #204F85;
+    color: #204F85;
 	font-weight: normal;
 	background-color: #E0EAF4;
 	padding: 0.3em 1em 0.3em;
 	font-size: 14px;
-        font-weight: bold;
+    font-weight: bold;
 	text-align: left;
-        margin: 0;
-        border: #BDCFE1 1px solid;
+    margin: 0;
+    border: #BDCFE1 1px solid;
 }
 
 #new-booking {
@@ -616,12 +618,12 @@ h3 span {color: #003A66;
              color: #000;
              text-align: left;
              padding: 0.2em .5em .2em .5em;
-             border:1px solid #899BA8;  
+             border:1px solid #B1C4D2;  
 	     font-size: 13px;      
 
 }
 
-.listing td { padding: .8em .5em .8em .5em; color: #000; border-bottom:1px solid #899BA8;  }
+.listing td { padding: .8em .5em .8em .5em; color: #000; border-bottom:1px solid #B1C4D2;  }
 
 .listing .even {background: #FFF;}
 .listing .odd {background: #FFF;}
@@ -630,7 +632,7 @@ h3 span {color: #003A66;
             width: 100%;
             color: #000;
 	    margin-top: 2em;
-            border: 1px #899BA8 solid;
+            border: 1px #B1C4D2 solid;
 
          }
 
@@ -667,9 +669,9 @@ h3 span {color: #003A66;
 #patients td {padding: 0.1em 1em;
               border:1px solid #d6dcde;
               font-size: 11px;
-               background-color: #fff;}
+              background-color: #fff;}
 #patients{
-	    border-collapse: collapse;
+	        border-collapse: collapse;
             /*width: auto;*/
             border: 1px solid #d6dcde;
 }
@@ -677,7 +679,7 @@ h3 span {color: #003A66;
 
 .form-table th {background-color: #fff; padding: 0.1em .8em ; border:1px solid #B1C4D2; text-align: right;}
 
-.form-table td {background-color: #fff; padding: 0.3em .8em 0.3em; border:1px solid #B1C4D2; }
+.form-table td {background-color: #fff; padding: 0.3em .8em 0.3em ; border:1px solid #B1C4D2; }
 
 .form-table {border-collapse: collapse; width: 100%; border: #B1C4D2 1px solid; margin: 0px 5px 0px 5px; color: #000; }
 
@@ -707,7 +709,6 @@ h3 span {color: #003A66;
 #menu li a {
 	display: block;
 	float: left;
-        border: #549DD2 2px solid;
 	margin: 30px 3px 0px 3px;
 	padding: 4px 15px 0px 15px;
         

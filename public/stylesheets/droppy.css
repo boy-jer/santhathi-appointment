@@ -2,7 +2,7 @@
 
  .droppy { display: block; margin: 0; padding: 0; position: relative; }
   .droppy li { display: block; list-style: none; margin: 0; padding: 0; float: left; position: relative; }
-  .droppy a { display: block; text-decoration: none; background-color: #F3F2EC; color: #fff;}
+  .droppy a { display: block; text-decoration: none; background-color: #F3F2EC; color: #fff; }
   .droppy ul { display: none; position: absolute; left: 0; margin: 0; padding: 0; }
   * html .droppy ul { line-height: 0; } /* IE6 "fix" */
   	.droppy ul a { zoom: 1; } /* IE6/7 fix */
@@ -16,9 +16,9 @@
 
 /* Everything else is theming */
 
-.droppy { background-color: #F5F4EE; height: 23px; margin: 5px;  border:1px solid #ddd; }
+.droppy { background-color: #F5F4EE; height: 24px; margin: 5px;  border:1px solid #ddd; }
 
-.droppy a { border-right: 1px solid #ACBDCD; color: #000; font-size: 12px; padding: 3px 30px 4px 30px; line-height: 1; }
+.droppy a { border-right: 1px solid #ACBDCD; color: #000; font-size: 12px; padding: 3px 30px 3px 30px; line-height: 1; }
   .droppy li.hover a { background-color: #F3F2EC; color: #000;}
   .droppy ul { top: 25px; }
     .droppy ul li a { background-color: #F3F2EC; }

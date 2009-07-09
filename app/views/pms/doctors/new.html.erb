@@ -38,7 +38,7 @@
              <%= doctor_profile_form.select :minute_to, minutes, :selected => 30 %>
              &nbsp; &nbsp; <%= link_to_remote 'Configure Time Slots', :url => {:action => 'working_slots'}, 
              :with => "'sth='+ $('doctor_doctor_profile_attributes_hour').value + '&stm='+ $('doctor_doctor_profile_attributes_minute').value + '&eth=' + $('doctor_doctor_profile_attributes_hour_to').value + '&eth=' + $('doctor_doctor_profile_attributes_minute_to').value" %></td> </tr>
-
+    <tr><td></td></tr>
     <tr><th><%= doctor_profile_form.label :comments %></th> <td>  <%= doctor_profile_form.text_field :comments, {:class => 'textbox'} %></td> </tr>
     <%end%>
   </table>

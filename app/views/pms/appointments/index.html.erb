@@ -1,7 +1,8 @@
 <div class='continer'>
-   <h3 class = 'head'> Listing Appointments </h3>
+  <h3 class = 'head'> Listing Appointments <%= link_to "Create New Appointment", new_pms_appointment_path %></h3>
+  
   <%=render :partial=> 'filters'%>
-
+ 
   <div id='appointment-list'>
      <%=render :partial=> 'appointments_list'%>
   </div>
