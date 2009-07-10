@@ -3,6 +3,8 @@ class Doctor < User
   has_one :refer_doctor
   belongs_to :department
   has_one :doctor_profile
+  has_many:doctor_working_slots
+  has_many :deactivate_slots
   #has_one :departament , :through => :doctor_profiles
 
   aasm_state :inactive

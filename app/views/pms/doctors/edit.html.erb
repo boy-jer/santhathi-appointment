@@ -15,15 +15,45 @@
           <tr><th> Designation :</th><td><%= doctor_profile_form.text_field :designation,  {:class => 'textbox'} %></td></tr>
           <tr><th> Medical : </th><td><%= doctor_profile_form.text_field :medical_id,  {:class => 'textbox'} %></td></tr>
           <tr><th>Working From :</th>
-             <td><%= doctor_profile_form.select :hour, hours, :selected => (Time.parse(@doctor.doctor_profile.working_from.to_s).strftime('%H:%M').to_s.split(":").first).to_i  %>
-           <%= doctor_profile_form.select :minute, minutes, :selected =>(Time.parse(@doctor.doctor_profile.working_from.to_s).strftime('%H:%M').to_s.split(":").last).to_i %></td> </tr>
+            <td><%= doctor_profile_form.select :hour, hours, :selected => (Time.parse(@doctor.doctor_profile.working_from.to_s).strftime('%H:%M').to_s.split(":").first).to_i  %>
+           <%= doctor_profile_form.select :minute, minutes, :selected =>(Time.parse(@doctor.doctor_profile.working_from.to_s).strftime('%H:%M').to_s.split(":").last).to_i %> </td> </tr>
 
-          <tr><th> Working To : </th> <td><%= doctor_profile_form.select :hour_to, hours, :selected => (Time.parse(@doctor.doctor_profile.working_to.to_s).strftime('%H:%M').to_s.split(":").first).to_i%> <%= doctor_profile_form.select :minute_to, minutes, :selected => (Time.parse(@doctor.doctor_profile.working_to.to_s).strftime('%H:%M').to_s.split(":").last).to_i %></td> </tr>
+          <tr><th> Working To : </th> <td><%= doctor_profile_form.select :hour_to, hours, :selected => (Time.parse(@doctor.doctor_profile.working_to.to_s).strftime('%H:%M').to_s.split(":").first).to_i%> <%= doctor_profile_form.select :minute_to, minutes, :selected => (Time.parse(@doctor.doctor_profile.working_to.to_s).strftime('%H:%M').to_s.split(":").last).to_i %>
+           &nbsp; &nbsp; <%= link_to_remote 'Configure Time Slots', :url => {:action => 'working_slots'},
+             :with => "'sth='+ $('doctor_doctor_profile_attributes_hour').value + '&stm='+ $('doctor_doctor_profile_attributes_minute').value + '&eth=' + $('doctor_doctor_profile_attributes_hour_to').value + '&etm=' + $('doctor_doctor_profile_attributes_minute_to').value" %>
+          </td> </tr>
 
           <tr><th> Comments : </th><td><%= doctor_profile_form.text_field :comments, {:class => 'textbox'} %></td> </tr>
           <%end%>
   </table>
    <br/>
+<div id ="working_slot">
+   <table class="time-slots" cellspacing="1">
+   <tr><th> <b>Time Slot (24 Hrs)</b> </th>
+      <th> <b> Time Slot (12 Hrs)</b> </th>
+      <th> <b> Select </b> </th>
+   </tr>
+
+
+   <% @timing_slot.each do |slot| %>
+      <tr>
+          <td class = "available">
+    	       <%=h slot %>
+    	    </td>
+          <td class = "available">
+    	       <%=h slot.split("-").map{|ti| Time.parse(ti.to_s).strftime("%I:%M%p")}.join("-")  %>
+    	    </td>
+    	    <td>
+    	   <%= check_box_tag("time_slots[]", "#{slot}", @working_slots.include?(slot.split(" ").first.to_s
+))  %>
+    	    </td>
+    	 </tr>
+   <%	end %>
+</table>
+</div>
+
+   <br />
+
     <%= f.submit "Update" %>
 
 <% end %>

@@ -26,23 +26,28 @@
 
     <tr><th><%= doctor_profile_form.label :medical_id %></th> <td><%= doctor_profile_form.text_field :medical_id,  {:class => 'textbox'} %></td></tr>
 
-    <tr><th><%= doctor_profile_form.label :working_from %></th> 
-        <td><%= doctor_profile_form.select :hour, hours, :selected => 9 %> 
+    <tr><th><%= doctor_profile_form.label :working_from %></th>
+        <td><%= doctor_profile_form.select :hour, hours, :selected => 9 %>
             <%= doctor_profile_form.select :minute, minutes, :selected => 30 %>
-        </td> 
+        </td>
     </tr>
 
 
-    <tr><th><%= doctor_profile_form.label :working_to %> </th> 
-        <td> <%= doctor_profile_form.select :hour_to, hours, :selected => 9 %> 
+    <tr><th><%= doctor_profile_form.label :working_to %> </th>
+        <td> <%= doctor_profile_form.select :hour_to, hours, :selected => 9 %>
              <%= doctor_profile_form.select :minute_to, minutes, :selected => 30 %>
-             &nbsp; &nbsp; <%= link_to_remote 'Configure Time Slots', :url => {:action => 'working_slots'}, 
-             :with => "'sth='+ $('doctor_doctor_profile_attributes_hour').value + '&stm='+ $('doctor_doctor_profile_attributes_minute').value + '&eth=' + $('doctor_doctor_profile_attributes_hour_to').value + '&eth=' + $('doctor_doctor_profile_attributes_minute_to').value" %></td> </tr>
-    <tr><td></td></tr>
+             &nbsp; &nbsp; <%= link_to_remote 'Configure Time Slots', :url => {:action => 'working_slots'},
+             :with => "'sth='+ $('doctor_doctor_profile_attributes_hour').value + '&stm='+ $('doctor_doctor_profile_attributes_minute').value + '&eth=' + $('doctor_doctor_profile_attributes_hour_to').value + '&etm=' + $('doctor_doctor_profile_attributes_minute_to').value" %></td> </tr>
+    <tr>
+ </tr>
+
     <tr><th><%= doctor_profile_form.label :comments %></th> <td>  <%= doctor_profile_form.text_field :comments, {:class => 'textbox'} %></td> </tr>
     <%end%>
   </table>
   <br />
+  <div id="working_slot">
+    </div>
+<br />
   <p>
     <table> <tr><td><%= f.submit "Create Doctor Record" %></td> <td> <%= link_to 'Cancel', pms_doctors_url %> </td> </tr> </table>
   </p>

@@ -7,7 +7,11 @@
 
 <table cellpadding="5px" class="form-table">
   <tr><th>  <%= f.label :department %>:</th><td>
-    <%= select :deactivate_slot, "department_id", [['Select department' , '']] + Department.departments_for_select_list %></td>
+    <%= select :deactivate_slot, "department_id", [['Select department' , '']] + Department.departments_for_select_list %><%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner1",
+              :style =>"display: none;" ) %> </td>
               </td></tr>
   <tr><th>
 
@@ -21,16 +25,22 @@
   <tr><th>
     <%= f.label :to_date %>:</th><td>
     <%= f.date_select :to_date,:class=>"textbox" %></td></tr>
- <tr><th>
+<!-- <tr><th>
     <%= f.label :time_from %>:</th><td>
     <%= f.time_select :time_from,:class=>"textbox" %></td></tr>
  <tr><th>
     <%= f.label :time_to %>:</th><td>
     <%= f.time_select :time_to,:class=>"textbox" %></td></tr>
-  <tr><th>
+
+--><tr><th>
     <%= f.label :reason_for_absence %>:</th><td>
     <%= f.text_field :reason_for_absence,:class=>"textbox" %></td></tr>
 </table><br/>
+  <div id="working_slot">
+
+  </div>
+
+
       <%= image_submit_tag "create.gif" %>
 
 <% end %>
@@ -42,11 +52,7 @@
                     :with => "'department_id=' + value"
                    ) %>
 
-<%= image_tag("spinner.gif",
-              :align => "absmiddle",
-              :border => 0,
-              :id => "spinner1",
-              :style =>"display: none;" ) %>
+
 
 
 </div>
