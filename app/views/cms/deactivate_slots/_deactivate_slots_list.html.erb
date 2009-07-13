@@ -1,0 +1,49 @@
+<table class="listing">
+  <tr>
+    <th>Department</th>
+    <th><%= remote_order_by_link({:doctor => { :doctor_profile => :name } }, :text => "Doctor name") %></th>
+    <th><%= remote_order_by_link(:from_date, :text => "Date") %> </th>
+    <th>Time</th>
+    <th>Reason for absence</th>
+    <th>Show</th>
+    <th>Modify</th>
+    <th>Delete</th>
+  </tr>
+
+<% for deactivate_slot in @deactivate_slots %>
+  <tr>
+    <td><%=h Department.find(deactivate_slot.doctor.doctor_profile.department_id).dept_name  %></td>
+    <td><%=h deactivate_slot.doctor.doctor_profile.name  %></td>
+    <td><%=h deactivate_slot.from_date %></td>
+    <td><%=h  Time.parse(deactivate_slot.time_from.to_s).strftime('%H:%M').to_s %></td>
+    <td><%=h deactivate_slot.reason_for_absence %></td>
+    <td><%= link_to 'Show', cms_deactivate_slot_path(deactivate_slot), :rel=> "facebox" %></td>
+    <td><%= link_to 'Modify', edit_cms_deactivate_slot_path(deactivate_slot) %></td>
+    <td><%= link_to 'Delete', cms_deactivate_slot_path(deactivate_slot), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<table class='table-bottom'>
+    <tr class="table-footer">
+     <td colspan = 2> <%= link_to "<span>New #{params[:type]}</span>", new_cms_deactivate_slot_path(:type => params[:type]), :class=> "button" %> </td>
+       <td colspan = 2> <%= remote_per_page_select %></td>
+        <td colspan = 2> <% form_tag(cms_deactivate_slots_path, :method => :get, :id => "goto") do %>
+                              <% fields_for @search do |f|%>
+                                    <%= f.text_field :page, :class => 'textbox-tiny' %>
+                              <%end -%>
+                         <%end-%>
+
+
+        </td>
+       <td colspan=6> <% if @deactivate_slots.size > 1 %>
+                          <div class="pagination">
+                                <%= remote_page_links %>
+                          </div>
+                          <%end%>
+         </td>
+     </tr>
+
+
+    </table>
+
+   <br/>

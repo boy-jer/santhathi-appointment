@@ -1,0 +1,27 @@
+<% form_tag(cms_deactivate_slots_path, :method => :get) do %>
+   <table class="search-table">
+     <tr>
+       <% if admin? %>
+         <th> <%=label_tag 'Doctor:'%> </th>
+       <% end %>
+        <th><%=label_tag 'Date:'%> </th>
+        <th> <input type="reset" value="Reset">  </th>
+     </tr>
+     <tr>
+        <% fields_for @search do |f|%>
+          <% f.fields_for @search.conditions do |p| %>
+     				<% if admin? %>
+     				   <% p.fields_for p.object.doctor do |doctor| %>
+     			    	<td> <%=  doctor.select :id ,  [['Select doctor' , '']] + Doctor.doctors_list, :class =>'select-list' %></td>
+     			  	<%end%>
+     			  <% end %>
+       		  <td> <%= p.calendar_date_select :from_date_like , :class =>'textbox-small' %> </td>
+
+
+
+       	 <% end %>
+       <% end %>
+         <td> <%= submit_tag "Search" %>  </td>
+	 </tr>
+  </table>
+<% end %>
