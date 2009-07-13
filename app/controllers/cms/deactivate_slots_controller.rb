@@ -26,18 +26,17 @@ class Cms::DeactivateSlotsController < ApplicationController
     doctor = Doctor.find(params[:appointment][:doctor_id])
   	dt1 = Time.parse(doctor.doctor_profile.working_from.to_s)
     dt2 = Time.parse(doctor.doctor_profile.working_to.to_s)
-    slots = calculate_time_slots(dt1 ,dt2) # this is to find out doctor working slots (previously stroed in doctor_working_slot)
+    slots = calculate_time_slots(dt1 , dt2) # this is to find out doctor working slots (previously stroed in doctor_working_slot)
     free_slots = []
     slots.each do |slot|
     	unless params[:time_slots].include?(slot)
     		free_slots << slot  # this is to find out free slot (uncheck slot)
-
     	end
    	end
 
    for date in  start_date..end_date # for from start_date to end_date
    	 free_slots.each do |free_slot|  # for each slot in free_slots
-   	    DeactivateSlot.create(:doctor_id => doctor.id ,:from_date => date, :time_from => free_slot, :reason_for_absence => params[:deactivate_slot][:reason_for_absence] )
+   	    DeactivateSlot.create( :doctor_id => doctor.id , :from_date => date, :time_from => free_slot, :reason_for_absence => params[:deactivate_slot][:reason_for_absence] )
   	 end
    end
    flash[:notice] = 'DeactivateSlot was successfully created.'
