@@ -57,7 +57,7 @@ ActionController::Routing::Routes.draw do |map|
    	 cms.resources :patients #, :collection => { :discharge => :post,:clinical_screen=>:get }
    	 cms.resources :appointments
    	 cms.resources :services , :collection => { :child_list => :get }
-   	 cms.resources :deactivate_slots ,:collection =>{:time_slot => :get ,:update_doctors_list =>:get}
+   	 cms.resources :deactivate_slots ,:collection =>{:time_slot => :get ,:update_doctors_list =>:get }
    	 cms.resources :disease_lists
 
    	  cms.resources :doctors do  |doctor|
