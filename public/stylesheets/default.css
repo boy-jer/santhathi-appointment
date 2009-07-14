@@ -202,7 +202,7 @@ h3 span {color: #003A66;
     padding: 5px 10px 0px 10px;
 	/*position: absolute;*/
 	background: url(/images/top-bar-12.png) repeat-x;
-	height: 63px;
+	height: 60px;
     border-left: #D0DEF0 1px solid;
     border-right: #D0DEF0 1px solid;
        
@@ -238,9 +238,9 @@ h3 span {color: #003A66;
 .head {
 	color: #1B74B0;
 	background: #fff /*url(/images/heading.png) repeat-x*/ ;
-	padding: .1em .3em .1em .5em;
+	padding: .2em .3em .2em .5em;
 	margin: 0px 0px 15px 0px ;
-        
+        border: #f0f1f2 1px solid;
 }
 
 
@@ -396,7 +396,7 @@ h3 span {color: #003A66;
  color: #333;
  width: 32%;
  float: right;
- padding: 2px 5px 0px 5px;
+ padding:5px;
  background-color: #fff;
  height: 452px;
  background: #fff;
@@ -406,12 +406,13 @@ h3 span {color: #003A66;
 #main-schedules .head{
     color: #005893;
 	font-weight: normal;
-	background-color: #E2EDF4;
+	
 	padding: 0.2em 1em 0.2em;
 	font-size: 14px;
     font-weight: bold;
 	text-align: left;
     margin: 0;
+     border: 1px solid #fff;
 }
 
 #new-booking {
@@ -419,7 +420,7 @@ h3 span {color: #003A66;
  width: 65%;
  display: inline;
  margin: 0px 0px 5px 5px;
- padding:0px 4px 0px 4px;
+ padding:5px;
  background-color:#fff;
  border: #ddd 1px solid;
  height: 100%;
@@ -429,13 +430,13 @@ h3 span {color: #003A66;
 #new-booking .head{
         color: #005893;
 	font-weight: normal;
-	background-color: #E2EDF4;
+	
 	padding: 0.2em 1em 0.2em;
 	margin: 2px 0px 5px 0px ;
 	font-size: 14px;
         font-weight: bold;
 	text-align: left;
-
+        border: 1px solid #fff;
 
 
 }
@@ -447,18 +448,18 @@ h3 span {color: #003A66;
  	   background: #000;
 }
 
-.continer {96ABBB
+.continer {
            /*border-width: 4px;
            border-color: #ADC7F3;
            border-style: outset;*/
          
            min-height: 525px;
-           background: #fff; /* url(/images/tab.png) repeat-x;*/
+           background: #F8F8F3 /*url(/images/table-header.jpg) repeat-x*/;
            height: 100%;
            margin: 0px;
            padding: 12px;
-           margin-top: 0px;
-
+           margin: 5px 7px;
+           border: 1px #E0E8F0 solid;
            }
 
 
@@ -617,13 +618,13 @@ h3 span {color: #003A66;
              color: #003D66;
              text-align: left;
              padding: 0.2em .5em .2em .5em;
-             border:1px solid #96ABBB;  
-	     font-size: 13px;  
+             border:1px solid #96ABBB;    
              font-weight: bold;    
 
 }
 
-.listing td { padding: .8em .5em .8em .5em; color: #000; border-bottom:1px solid #96ABBB;  }
+.listing td { padding: .8em .5em .8em .5em; color: #000; border-bottom:1px solid #96ABBB; }
+.listing tr{background: #FfFfFf; }
 
 .listing .even {background: #FFF;}
 .listing .odd {background: #FFF;}
@@ -631,7 +632,7 @@ h3 span {color: #003A66;
 .listing { border-collapse: collapse;
             width: 100%;
             color: #000;
-	    margin-top: 2.5em;
+	    margin-top: 2em;
             border: 1px #96ABBB solid;
 
          }
@@ -653,7 +654,7 @@ h3 span {color: #003A66;
 
 .table-bottom { width: 100%; border:1px solid #96ABBB;  border-collapse: collapse;}
 
-.table-footer td {background: #F5F4EE; padding: 0px; vertical-align: middle; }
+.table-footer td {background: #D9E6F7; padding: 3px; vertical-align: middle; }
 
 #patients tr:hover {background-color: #c7dfea; color: #ffffff;} /*not for IE*/
 
@@ -683,13 +684,13 @@ h3 span {color: #003A66;
 
 .form-table {border-collapse: collapse; width: 100%; border: #B1C4D2 1px solid; margin: 0px 5px 0px 5px; color: #000; }
 
-.form-table .table-top td {background: #E2EDF4;  color: #1B74B0; font-size: 13px; font-weight: bold;  border: #BDCFE1 1px solid;}
+.form-table .table-top td {background: #D9E6F7;  color: #1B74B0; font-size: 13px; font-weight: bold;  border: #BDCFE1 1px solid;}
 
 
 
-.search-table th {background: #F8F9FA /*url(/images/tab.png) repeat-x*/; color: #003D66; padding: .3em .5em; border:1px solid #A8B8C7; text-align: left;  font-weight: bold; }
+.search-table th {background: #F8F8F8 /*url(/images/table-header.jpg) repeat-x*/; color: #003D66; padding: .3em .3em; border:1px solid #A8B8C7; text-align: left;  font-weight: bold; }
 
-.search-table td {background-color: #F5F4EE; padding: .3em .5em; border:1px solid #A8B8C7; text-align: left; border-top:1px solid #fff;}
+.search-table td {background-color: #D9E6F7; padding: .3em .3em; border:1px solid #A8B8C7; text-align: left; border-top:1px solid #fff;}
 
 .search-table {border-collapse: collapse; width: 100%; }
 
