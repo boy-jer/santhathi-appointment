@@ -1,4 +1,4 @@
-<%fields_for :appointment do |f| %>
+<%fields_for :deactivate_slot do |f| %>
   <%= f.select :doctor_id, [['Select doctor' , '']] + @doctors %>
   <%= image_tag("spinner.gif",
               :align => "absmiddle",
@@ -7,7 +7,7 @@
               :style =>"display: none;" ) %>
 <%end%>
 
-<%= observe_field(:appointment_doctor_id, :frequency => 0.8,
+<%= observe_field(:deactivate_slot_doctor_id, :frequency => 0.8,
                     :before => "Element.show('spinner1')",
                     :success => "Element.hide('spinner1')",
                     :url => time_slot_cms_deactivate_slots_url,

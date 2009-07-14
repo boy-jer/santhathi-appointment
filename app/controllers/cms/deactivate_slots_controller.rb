@@ -34,7 +34,7 @@ class Cms::DeactivateSlotsController < ApplicationController
     start_date =  Date.parse("#{params[:deactivate_slot]['from_date(1i)']}/#{params[:deactivate_slot]['from_date(2i)']}/#{params[:deactivate_slot]['from_date(3i)']}")
    end_date =  Date.parse("#{params[:deactivate_slot]['to_date(1i)']}/#{params[:deactivate_slot]['to_date(2i)']}/#{params[:deactivate_slot]['to_date(3i)']}") # strat_end and end_date (leave from - to )
 
-    doctor = Doctor.find(params[:appointment][:doctor_id])
+    doctor = Doctor.find(params[:deactivate_slot][:doctor_id])
   	dt1 = Time.parse(doctor.doctor_profile.working_from.to_s)
     dt2 = Time.parse(doctor.doctor_profile.working_to.to_s)
     slots = calculate_time_slots(dt1 , dt2) # this is to find out doctor working slots (previously stroed in doctor_working_slot)
