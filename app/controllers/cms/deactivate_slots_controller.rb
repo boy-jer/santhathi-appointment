@@ -32,24 +32,24 @@ class Cms::DeactivateSlotsController < ApplicationController
   def create
 
     start_date =  Date.parse("#{params[:deactivate_slot]['from_date(1i)']}/#{params[:deactivate_slot]['from_date(2i)']}/#{params[:deactivate_slot]['from_date(3i)']}")
-   end_date =  Date.parse("#{params[:deactivate_slot]['to_date(1i)']}/#{params[:deactivate_slot]['to_date(2i)']}/#{params[:deactivate_slot]['to_date(3i)']}") # strat_end and end_date (leave from - to )
+    end_date =  Date.parse("#{params[:deactivate_slot]['to_date(1i)']}/#{params[:deactivate_slot]['to_date(2i)']}/#{params[:deactivate_slot]['to_date(3i)']}") # strat_end and end_date (leave from - to )
 
     doctor = Doctor.find(params[:deactivate_slot][:doctor_id])
-  	dt1 = Time.parse(doctor.doctor_profile.working_from.to_s)
+   	dt1 = Time.parse(doctor.doctor_profile.working_from.to_s)
     dt2 = Time.parse(doctor.doctor_profile.working_to.to_s)
     slots = calculate_time_slots(dt1 , dt2) # this is to find out doctor working slots (previously stroed in doctor_working_slot)
     free_slots = []
     slots.each do |slot|
-    	unless params[:time_slots].include?(slot)
-    		free_slots << slot  # this is to find out free slot (uncheck slot)
-    	end
-   	end
+    unless params[:time_slots].include?(slot)
+      free_slots << slot  # this is to find out free slot (uncheck slot)
+    end
+    end
+    for date in  start_date..end_date # for from start_date to end_date
+    	 free_slots.each do |free_slot|  # for each slot in free_slots
+    	    DeactivateSlot.create( :doctor_id => doctor.id , :from_date => date, :time_from => free_slot, :reason_for_absence => params[:deactivate_slot][:reason_for_absence] )
+  	   end
+    end
 
-   for date in  start_date..end_date # for from start_date to end_date
-   	 free_slots.each do |free_slot|  # for each slot in free_slots
-   	    DeactivateSlot.create( :doctor_id => doctor.id , :from_date => date, :time_from => free_slot, :reason_for_absence => params[:deactivate_slot][:reason_for_absence] )
-  	 end
-   end
    flash[:notice] = 'DeactivateSlot was successfully created.'
    redirect_to(cms_deactivate_slots_url())
 
@@ -73,7 +73,7 @@ class Cms::DeactivateSlotsController < ApplicationController
     @timing_slot = calculate_time_slots(dt1 ,dt2)
     @working_slots = doctor.doctor_working_slots.map {|ob| Time.parse(ob.slot.to_s).strftime("%H:%M") }
     render :update do |page|
-      page.replace_html 'working_slot', :partial => 'cms/deactivate_slots/timing_slots'
+      page.replace_html 'working_slot', :partial => 'pms/doctors/edit_working_slots'
     end
  	end
 
@@ -104,10 +104,10 @@ class Cms::DeactivateSlotsController < ApplicationController
   	slot = []
   	count = ((((dt2 - dt1))/60)/60).to_i
     count.times do
-       slot << "#{(dt1.strftime('%H:%M').to_s)} - #{(dt1 = dt1 + 60.minutes).strftime('%H:%M').to_s}"
+       slot << "#{(dt1.strftime('%H:%M').to_s)}-#{(dt1 = dt1 + 60.minutes).strftime('%H:%M').to_s}"
     end
     remain_min =  ((dt2 - dt1)/60)
-    slot << "#{(dt1.strftime('%H:%M').to_s)} - #{(dt1 = dt1 + remain_min.minutes).strftime('%H:%M').to_s}"
+    slot << "#{(dt1.strftime('%H:%M').to_s)}-#{(dt1 = dt1 + remain_min.minutes).strftime('%H:%M').to_s}"
     return slot
 
  	end

@@ -1,4 +1,4 @@
- <table class="time-slots" cellspacing="1">
+<table class="time-slots" style = "width:auto;">
    <tr><th> <b>Time Slot (24 Hrs)</b> </th>
       <th> <b> Time Slot (12 Hrs)</b> </th>
       <th> <b> Select </b> </th>
@@ -7,18 +7,16 @@
 
    <% @timing_slot.each do |slot| %>
       <tr>
-          <td class = "available">
+          <td>
     	       <%=h slot %>
     	    </td>
-          <td class = "available">
+          <td>
     	       <%=h slot.split("-").map{|ti| Time.parse(ti.to_s).strftime("%I:%M%p")}.join("-")  %>
     	    </td>
     	    <td>
-    	   <%= check_box_tag("time_slots[]", "#{slot}", @working_slots.include?(slot.split(" ").first.to_s
+    	   <%= check_box_tag("time_slots[]", "#{slot}", @working_slots.include?(slot.split("-").first.to_s
 ))  %>
     	    </td>
     	 </tr>
    <%	end %>
 </table>
-<br />
-<br />

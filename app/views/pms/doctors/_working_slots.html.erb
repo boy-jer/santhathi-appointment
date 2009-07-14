@@ -3,7 +3,8 @@
       <th> <b> Time Slot (12 Hrs)</b> </th>
       <th> <b> Select </b> </th>
    </tr>
-   <% @working_slot.each do |slot| %>
+
+   <% @timing_slot.each do |slot| %>
       <tr>
           <td>
     	       <%=h slot %>
@@ -12,7 +13,7 @@
     	       <%=h slot.split("-").map{|ti| Time.parse(ti.to_s).strftime("%I:%M%p")}.join("-")  %>
     	    </td>
     	    <td>
-    	      <%= check_box_tag("time_slots[]", "#{slot}", true)%>
+    	   <%= check_box_tag("time_slots[]", "#{slot}", true ) %>
     	    </td>
     	 </tr>
    <%	end %>

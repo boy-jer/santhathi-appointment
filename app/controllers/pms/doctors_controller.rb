@@ -89,7 +89,8 @@ class Pms::DoctorsController < ApplicationController
     strt_hr, strt_mnt, end_hr, end_mint = params[:sth].to_i, params[:stm].to_i, params[:eth].to_i, params[:etm].to_i
     dt1 = Time.parse("#{strt_hr}:#{strt_mnt}:00")
     dt2 = Time.parse("#{end_hr}:#{end_mint}:00")
-    @working_slot = calculate_time_slots(dt1 ,dt2)
+    @timing_slot  = calculate_time_slots(dt1 ,dt2)
+
     render :update do |page|
       page.replace_html 'working_slot', :partial => 'pms/doctors/working_slots'
     end
@@ -101,10 +102,10 @@ class Pms::DoctorsController < ApplicationController
   	slot = []
   	count = ((((dt2 - dt1))/60)/60).to_i
     count.times do
-       slot << "#{(dt1.strftime('%H:%M').to_s)} - #{(dt1 = dt1 + 60.minutes).strftime('%H:%M').to_s}"
+       slot << "#{(dt1.strftime('%H:%M').to_s)}-#{(dt1 = dt1 + 60.minutes).strftime('%H:%M').to_s}"
     end
     remain_min =  ((dt2 - dt1)/60)
-    slot << "#{(dt1.strftime('%H:%M').to_s)} - #{(dt1 = dt1 + remain_min.minutes).strftime('%H:%M').to_s}"
+    slot << "#{(dt1.strftime('%H:%M').to_s)}-#{(dt1 = dt1 + remain_min.minutes).strftime('%H:%M').to_s}"
     return slot
 
  	end
