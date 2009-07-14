@@ -4,6 +4,7 @@
       <th> <b> Select </b> </th>
    </tr>
 
+
    <% @timing_slot.each do |slot| %>
       <tr>
           <td>
@@ -13,7 +14,8 @@
     	       <%=h slot.split("-").map{|ti| Time.parse(ti.to_s).strftime("%I:%M%p")}.join("-")  %>
     	    </td>
     	    <td>
-    	   <%= check_box_tag("time_slots[]", "#{slot}", true ) %>
+    	   <%= check_box_tag("time_slots[]", "#{slot}", @working_slots.include?(slot.split("-").first.to_s
+))  %>
     	    </td>
     	 </tr>
    <%	end %>

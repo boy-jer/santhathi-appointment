@@ -7,7 +7,7 @@
 
 <table cellpadding="5px" class="form-table">
   <tr><th>  <%= f.label :department %>:</th><td>
-    <%= select :deactivate_slot, "department_id", [['Select department' , '']] + Department.departments_for_select_list %>
+    <%= select_tag "department_id",options_for_select( [['Select department' , '']] + Department.departments_for_select_list) %>
     <%= image_tag("spinner.gif",
               :align => "absmiddle",
               :border => 0,
@@ -39,10 +39,11 @@
   <div id="working_slot">
 
   </div>
+  <br />
       <%= image_submit_tag "create.gif" %>
 
 <% end %>
-<%= observe_field(:deactivate_slot_department_id, :frequency => 1.5,
+<%= observe_field(:department_id, :frequency => 1.5,
                     :before => "Element.show('spinner1')",
                     :success => "Element.hide('spinner1')",
                     :url => update_doctors_list_cms_deactivate_slots_url,
