@@ -2,6 +2,7 @@
   <%= calendar_date_select_tag "date", Date.today, :embedded => true, :year_range => 100 %>
 </div>
 
+
 <div id="new-department">
 
   <table cellpadding="5px" class="form-table">
@@ -62,6 +63,7 @@
                     :with => "'department_id=' + value"
                    ) %></div>
 <br />
+
 <div id='new_patient'>
    <% fields_for :patient do |patient| %>
       <%=render :partial => 'new_patient', :locals => {:patient => patient} %>

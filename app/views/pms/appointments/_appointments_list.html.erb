@@ -42,21 +42,20 @@
 
 <table class='table-bottom'>
   <tr class="table-footer">
-  	<td><%= link_to "<span>Create Appointment</span>", new_pms_appointment_path, :class=> "button" %></td>
+  	<td><%= link_to "<span>Create Appointment</span>", new_pms_appointment_path, :class=> "button" -%></td>
 
-        <td><%= remote_per_page_select %></td>
+        <td><%= remote_per_page_select -%></td>
         <td>
-         <% form_tag( pms_appointments_url, :method => :get, :id => "goto") do %>
-             <% fields_for @search do |f|%>
-                     <%= f.text_field :page, :class => 'textbox-tiny' %></td>
-             <%end%>
-         <%end%>
-
-
+         <% form_tag( pms_appointments_url, :method => :get, :id => "goto") do -%>
+             <% fields_for @search do |f| -%>
+                     <%= f.text_field :page, :class => 'textbox-tiny' -%>
+             <%end -%>
+         <%end -%>
         </td>
-         <td> <% unless @appointments.blank? %>
+
+         <td> <% unless @appointments.blank? -%>
                              <div class="pagination">
-                                <%= remote_page_links %>
+                                <%= remote_page_links -%>
                              </div>
                            <% end %>
          </td>
