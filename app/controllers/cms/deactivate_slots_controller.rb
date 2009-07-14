@@ -3,18 +3,16 @@ class Cms::DeactivateSlotsController < ApplicationController
 
   def index
   	@search = DeactivateSlot.new_search(params[:search])
-  	 @search.per_page ||= 15
+  	@search.per_page ||= 15
   	@deactivate_slots = @search.all
-  #  @deactivate_slots = DeactivateSlot.paginate :page => params[:page],:per_page => 10
-
-    #@doctors = @search.all
+    # @deactivate_slots = DeactivateSlot.paginate :page => params[:page],:per_page => 10
     respond_to do |format|
-              format.html
-              format.js {
-                      render :update do |page|
+        format.html
+        format.js {
+                     render :update do |page|
                         page.replace_html 'deactivate_slot', :partial => '/cms/deactivate_slots/deactivate_slots_list'
-                      end
-                      }
+                     end
+                  }
               end
   end
 
