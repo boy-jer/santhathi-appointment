@@ -45,7 +45,7 @@
 <%= observe_field(:deactivate_slot_department_id, :frequency => 1.5,
                     :before => "Element.show('spinner1')",
                     :success => "Element.hide('spinner1')",
-                    :url => update_doctors_list_pms_appointments_url,
+                    :url => update_doctors_list_cms_deactivate_slots_url,
                     :method => :get,
                     :with => "'department_id=' + value"
                    ) %>

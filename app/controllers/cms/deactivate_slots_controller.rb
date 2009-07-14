@@ -83,6 +83,21 @@ class Cms::DeactivateSlotsController < ApplicationController
     redirect_to(cms_deactivate_slots_url())
   end
 
+   def update_doctors_list
+    dept_id = params[:department_id]
+    if dept_id.blank?
+      @doctors = Doctor.find(:all).collect{|x| [x.doctor_profile.name, x.id]}
+    else
+     # @doctors = Department.find(dept_id).doctors.collect{|x| [x.name, x.id]}
+     @doctors = DoctorProfile.find(:all,:conditions =>["department_id = ? ", dept_id]).map {|ob| [ob.name ,ob.doctor.id]}
+    end
+
+    render :update do |page|
+      page.replace_html 'doctors', :partial => 'doctors_list', :object => @doctors
+    end
+
+  end
+
   private
 
   def calculate_time_slots(dt1 ,dt2)
