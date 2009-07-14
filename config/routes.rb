@@ -62,7 +62,7 @@ ActionController::Routing::Routes.draw do |map|
 
    	  cms.resources :doctors do  |doctor|
    	 	  doctor.resource :refer_doctor
-   	 	  doctor.resources :patients ,  :collection => { :discharge => :post,:clinical_screen =>:get }
+   	 	  doctor.resources :patients ,  :collection => { :discharge => :post , :clinical_screen =>:get }
    	 	  doctor.resources :appointments
  	 	 end
 
