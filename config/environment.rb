@@ -11,6 +11,7 @@
 require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
+  TIMING_SLOT = 5
   # Gems
   #config.gem "capistrano-ext", :lib => "capistrano"
   config.gem "configatron"

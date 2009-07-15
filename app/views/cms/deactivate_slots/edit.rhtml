@@ -6,6 +6,7 @@
   <%= f.error_messages %>
 
 <table cellpadding="5px" class="form-table">
+   <% unless doctor? %>       
    <tr><th> <%= f.label :department %>:</th><td>
    <%= select :departament, :id, [['Select department' , '']] + Department.departments_for_select_list %></td>
               </td></tr>
@@ -16,6 +17,7 @@
 
 
     </td></tr>
+    <% end %>
 <tr><th><%= f.label :from_date %>:</th><td>
     <%= f.date_select :from_date,:class =>"textbox" %></td></tr>
 <tr><th><%= f.label :to_date %>:</th><td>
