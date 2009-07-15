@@ -47,8 +47,8 @@ class Appointment < ActiveRecord::Base
   end
 
 
-  named_scope :on_date, lambda { |date| { :conditions => ["appointment_date = ?", date ] } }
-  named_scope :status, lambda { |state|{ :include => ['patient', 'reason', 'doctor'], :conditions => ["state = ?", state] } }
+  named_scope :on_date, lambda { |date| {:conditions => ["appointment_date = ?", date ] } }
+  named_scope :status, lambda { |state| {:include => ['patient', 'reason', 'doctor'], :conditions => ["state = ?", state] } }
 
   named_scope :visited_and_discharge_recomonded, lambda { |state1, state2|{ :include => ['patient', 'reason', 'doctor'], :conditions => ["state = ? or state = ?",state1,state2] } }
 

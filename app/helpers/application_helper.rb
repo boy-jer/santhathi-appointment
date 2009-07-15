@@ -80,7 +80,7 @@ module ApplicationHelper
   end
 
  def appointments(doctor, date = nil)
-    #All appointments for the day
+   #All appointments for the day
    date = date.nil? ? Date.today : date
    app_list = {}
    appointments1 = (doctor.appointments.on_date(date).active)
@@ -89,13 +89,18 @@ module ApplicationHelper
    return app_list
  end
 
-  def calculate_age(dob)
-     today = Date.today
-     year = today.year - dob.year
-     if today.month < dob.month || (today.month == dob.month && dob.day >= today.day)
-       year = year - 1
-     end
-     return year
+ def working_slots(doctor)
+   slots = doctor.doctor_working_slots
+   slots.blank? ? {} : slots.map{|sl| sl.slot.strftime('%H:%M').to_s}
+ end
+
+ def calculate_age(dob)
+   today = Date.today
+   year = today.year - dob.year
+   if today.month < dob.month || (today.month == dob.month && dob.day >= today.day)
+     year = year - 1
+   end
+   return year
   end
 
   def submit_button(name)

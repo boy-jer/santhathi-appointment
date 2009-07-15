@@ -529,6 +529,10 @@ h3 span {color: #003A66;
 	 color: #3c4e6f;
 }
 
+.time-slots tr td.not-working {
+	 background-color: #fffd87;
+}
+
 .time-slots tr td.available a:hover {
 	 color:#6481b5;
 }
