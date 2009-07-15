@@ -1,30 +1,43 @@
-<%if !logged_in? %>
 <% content_for :header do -%>
-<%= configatron.site_name %> Login
+	My <%= configatron.site_name %>
 <% end -%>
 
-<% form_tag session_path do -%>
-	&nbsp;
-	<fieldset>
-		<legend>Or Your <%= configatron.site_name %> Account</legend>
-		
-		<p><label for="login">Login</label><br/>
-		<%= text_field_tag 'login' %></p>
-
-		<p><label for="password">Password</label><br/>
-		<%= password_field_tag 'password' %></p>
-
-		<p><label for="remember_me">Remember me:</label>
-		<%= check_box_tag 'remember_me' %></p>
-	</fieldset>
+<% content_for :sidebar do -%>
+	<h2>Sidebar</h2>
 	
-<ul>
-	<li><%= link_to "Sign up for an account now", signup_url %></li>
-	<li><%= link_to "Having trouble logging in?", user_troubleshooting_url %></li>
-</ul>
+	<ul>
+		<li><a href="#">Link to someplace</a></li>
+		<li><a href="#">Link to someplace</a></li>
+		<li><a href="#">Link to someplace</a></li>
+		<li><a href="#">Link to someplace</a></li>
+	</ul>
+		
+	<ul>
+		<li><a href="#">Link to someplace</a></li>
+	</ul>
+		
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+	</p>
+<% end -%>
 
-<div id="submitbutton">
-	<p><%= submit_tag 'Log in &raquo;' %></p>
-</div>
-<% end -%>
-<% end -%>
+<p>
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+
+<p>
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+
+<table class="index">
+	<tr>
+		<th>Column 1</th>
+		<th>Column 2</th>
+		<th>Column 3</th>
+	</tr>
+	<tr>
+		<td class="text">Data</td>
+		<td class="number">3</td>
+		<td class="currency">€ 100,00</td>
+	</tr>	
+</table>

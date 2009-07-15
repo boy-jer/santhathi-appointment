@@ -19,7 +19,7 @@ class Doctor < User
   	attr_accessor :hour, :minute, :hour_to, :minute_to
 
   #has_many :time_slots
- accepts_nested_attributes_for :doctor_profile
+   accepts_nested_attributes_for :doctor_profile 
 
 
   def self.doctors_list
