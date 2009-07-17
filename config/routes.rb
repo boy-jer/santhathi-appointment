@@ -30,8 +30,7 @@ ActionController::Routing::Routes.draw do |map|
 
 
 
-  map.root :controller => 'sessions', :action => 'new'
-  map.resource :session
+  
 
   # Profiles
   map.resources :profiles
@@ -117,6 +116,8 @@ ActionController::Routing::Routes.draw do |map|
                                               	:appointment_type_report => :get , :visit_type_report => :get
                                               }
   end
+  map.root :controller => 'sessions', :action => 'new'
+  map.resource :session
 
   # Install the default routes as the lowest priority.
   #map.musics  ':section/:subsection/:id', :controller => 'select_options', :action => 'show'

@@ -27,7 +27,12 @@ class UsersController < ApplicationController
   def forgot_login    
     if request.put?
       begin
-        @user = User.find_by_email(params[:email], :conditions => ['NOT state = ?', 'deleted'])       
+        @user = User.find_by_email(params[:email], :conditions => ['NOT state = ?', 'deleted'])
+        
+        if ! @user.not_using_openid?
+          flash[:notice] = "You cannot help you, you're using OpenID!"
+          redirect_to :back
+        end
       rescue
         @user = nil
       end
@@ -51,7 +56,12 @@ class UsersController < ApplicationController
       if @user.nil?
         flash.now[:error] = 'No account was found by that login or email address.'
       else
-        @user.forgot_password if @user.active?
+        if ! @user.not_using_openid?
+          flash[:notice] = "You cannot reset your password here. You are using OpenID!"
+          redirect_to :back
+        else
+          @user.forgot_password if @user.active?
+        end
       end
     else
       # Render forgot_password.html.erb
@@ -76,7 +86,18 @@ class UsersController < ApplicationController
 
   def create
     logout_keeping_session!
-    create_new_user(params[:user])
+    if using_open_id?
+      authenticate_with_open_id(params[:open_id_url], :return_to => open_id_create_url,
+        :required => [:nickname, :email]) do |result, identity_url, registration|
+        if result.successful?
+          create_new_user(:identity_url => identity_url, :login => identity_url, :email => registration['email'])
+        else
+          failed_creation(result.message || "Sorry, something went wrong")
+        end
+      end
+    else
+      create_new_user(params[:user])
+    end
   end
 
   def activate
@@ -96,15 +117,25 @@ class UsersController < ApplicationController
     end
   end
   
-  def edit_password    
+  def edit_password
+    if ! @user.not_using_openid?
+      flash[:notice] = "You cannot update your password. You are using OpenID!"
+      redirect_to :back
+    end
+    
     # render edit_password.html.erb
   end
   
-  def update_password        
+  def update_password    
+    if ! @user.not_using_openid?
+      flash[:notice] = "You cannot update your password. You are using OpenID!"
+      redirect_to :back
+    end
+    
     if current_user == @user
       current_password, new_password, new_password_confirmation = params[:current_password], params[:new_password], params[:new_password_confirmation]
       
-      if User.encrypt(current_password, @user.salt) == @user.crypted_password
+      if @user.encrypt(current_password) == @user.crypted_password
         if new_password == new_password_confirmation
           if new_password.blank? || new_password_confirmation.blank?
             flash[:error] = "You cannot set a blank password."
@@ -130,11 +161,21 @@ class UsersController < ApplicationController
     end
   end
   
-  def edit_email    
+  def edit_email
+    if ! @user.not_using_openid?
+      flash[:notice] = "You cannot update your email address. You are using OpenID!"
+      redirect_to :back
+    end
+    
     # render edit_email.html.erb
   end
   
-  def update_email    
+  def update_email
+    if ! @user.not_using_openid?
+      flash[:notice] = "You cannot update your email address. You are using OpenID!"
+      redirect_to :back
+    end
+    
     if current_user == @user
       if @user.update_attributes(:email => params[:email])
         flash[:notice] = "Your email address has been updated."
@@ -149,6 +190,17 @@ class UsersController < ApplicationController
     end
   end  
   
+  # DELETE /users/1
+  # DELETE /users/1.xml
+  def destroy
+    current_user.delete!
+    
+    logout_killing_session!
+    
+    flash[:notice] = "Your account has been removed."
+    redirect_back_or_default(root_path)
+  end  
+  
   protected
 
   def find_user
@@ -158,7 +210,11 @@ class UsersController < ApplicationController
   def create_new_user(attributes)
     @user = User.new(attributes)
     if @user && @user.valid?
-      @user.register!
+      if @user.not_using_openid?
+        @user.register!
+      else
+        @user.register_openid!
+      end
     end
     
     if @user.errors.empty?
@@ -171,7 +227,8 @@ class UsersController < ApplicationController
   def successful_creation(user)
     redirect_back_or_default(root_path)
     flash[:notice] = "Thanks for signing up!"
-    flash[:notice] << " We're sending you an email with your activation code." 
+    flash[:notice] << " We're sending you an email with your activation code." if @user.not_using_openid?
+    flash[:notice] << " You can now login with your OpenID." if ! @user.not_using_openid?
   end
   
   def failed_creation(message = 'Sorry, there was an error creating your account')

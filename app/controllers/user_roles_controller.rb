@@ -5,7 +5,7 @@ class UserRolesController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    @roles = @user.roles.map{|role| role.name}
+    @roles = @user.roles.map{ |role| role.name }
   end
 
 

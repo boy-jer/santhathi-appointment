@@ -32,12 +32,12 @@
 <% end -%>
 
 <table class="overview">
-	<%= cell "Login", h(@user.login) %>
+	<%= cell "Login", "#{in_place_editor_field :user, 'login'}" %>
 	<%= cell "User ID", h(@user.id) %>
 
 	<%= cell_separator %>
 	
-	<%= cell "Email", h(@user.email) %>
+	<%= cell "Email", "#{in_place_editor_field :user, 'email'}" %>
 	<%= cell "Password", "#{"*"*8} <small>#{link_to_if !@user.deleted?, "send new password", reset_password_admin_user_url(@user), :method => :put}</small>" %>
 	
 	<%= cell_separator %>

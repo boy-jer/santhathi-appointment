@@ -36,14 +36,17 @@ class Pms::DoctorsController < ApplicationController
   def create
     @doctor = Doctor.new(params[:doctor])
     if @doctor.save
-      # @doctor.doctorrofile.create(params[:doctor][:doctor_profile])
+     #@doctor.doctor_profile.create(params[:doctor][:doctor_profile])
       @doctor.register!
-      @doctor.activate!
+      @doctor.active!
       @doctor.roles << Role.find_by_name('doctor')
       unless params[:time_slots].blank?
     		 DoctorWorkingSlot.transaction do
-    		 	 params[:time_slots].each do |slot|
-              DoctorWorkingSlot.create({:doctor_id => @doctor.id ,:slot => slot})
+    		 	 params[:time_slots].each do |time_slot|
+    		 	   dt1 = Time.parse("#{time_slot.split("-").first}:00")
+    		 	   dt2 = Time.parse("#{time_slot.split("-").last}:00")
+    		 	   slots = calculate_slots(dt1 , dt2)
+             DoctorWorkingSlot.create({:doctor_id => @doctor.id ,:start_time => time_slot ,:slots => slots })
            end
          end
   		end
@@ -58,14 +61,17 @@ class Pms::DoctorsController < ApplicationController
     @doctor = Doctor.find(params[:id])
     if @doctor.update_attributes(params[:doctor])
       flash[:notice] = 'Doctor was successfully updated.'
-       unless params[:time_slots].blank?
-         @doctor.doctor_working_slots.map {|ob| ob.destroy }
-    	 DoctorWorkingSlot.transaction do
-    	   params[:time_slots].each do |slot|
-             DoctorWorkingSlot.create({:doctor_id => @doctor.id, :slot => slot})
+      unless params[:time_slots].blank?
+         @doctor.doctor_working_slots.map { |ob| ob.destroy }
+    		 DoctorWorkingSlot.transaction do
+    		 	 params[:time_slots].each do |time_slot|
+    		 	   dt1 = Time.parse("#{time_slot.split("-").first}:00")
+    		 	   dt2 = Time.parse("#{time_slot.split("-").last}:00")
+    		 	   slots = calculate_slots(dt1 , dt2)
+             DoctorWorkingSlot.create({:doctor_id => @doctor.id ,:start_time => time_slot ,:slots => slots })
            end
          end
-       end
+  		end
      redirect_to(pms_doctors_url)
      else
         render :action => "edit"
@@ -97,7 +103,16 @@ class Pms::DoctorsController < ApplicationController
   end
 
   private
-
+  
+  def calculate_slots(dt1 ,dt2)
+    slots = []
+    while(dt1< dt2) 
+      slots << "#{dt1.strftime('%H:%M').to_s}"
+      dt1 += TIMING_SLOT.minutes 
+    end
+    return slots
+  end
+  
   def calculate_time_slots(dt1 ,dt2)
   	slot = []
   	count = ((((dt2 - dt1))/60)/60).to_i
@@ -105,7 +120,9 @@ class Pms::DoctorsController < ApplicationController
       slot << "#{(dt1.strftime('%H:%M').to_s)}-#{(dt1 = dt1 + 60.minutes).strftime('%H:%M').to_s}"
     end
     remain_min =  ((dt2 - dt1)/60)
-    slot << "#{(dt1.strftime('%H:%M').to_s)}-#{(dt1 = dt1 + remain_min.minutes).strftime('%H:%M').to_s}"
+    if remain_min != 0.0
+      slot << "#{(dt1.strftime('%H:%M').to_s)}-#{(dt1 = dt1 + remain_min.minutes).strftime('%H:%M').to_s}"
+    end  
     return slot
 
  	end

@@ -28,7 +28,21 @@
 	<td><%=h user.email %></td>
 	<td><%=h user.state %></td>
     <td class="actions">
-		<%= link_to 'Show', admin_user_url(user) %>
+		<% if user.pending? %>
+			<%= link_to 'activate', activate_admin_user_url(user), :method => :put %>
+			<%= link_to 'suspend', suspend_admin_user_url(user), :method => :put %>
+			<%= link_to 'delete', admin_user_url(user), :method => :delete, :confirm => "Are you sure?" %>
+		<% elsif user.passive? %>
+			<%= link_to 'activate', activate_admin_user_url(user), :method => :put %>
+			<%= link_to 'suspend', suspend_admin_user_url(user), :method => :put %>
+			<%= link_to 'delete', admin_user_url(user), :method => :delete, :confirm => "Are you sure?" %>
+		<% elsif user.active? %>
+			<%= link_to 'suspend', suspend_admin_user_url(user), :method => :put %>
+			<%= link_to 'delete', admin_user_url(user), :method => :delete, :confirm => "Are you sure?" %>
+		<% elsif user.suspended? %>
+			<%= link_to 'unsuspend', unsuspend_admin_user_url(user), :method => :put %>
+			<%= link_to 'delete', admin_user_url(user), :method => :delete, :confirm => "Are you sure?" %>		
+		<% end %>
 	</td>
   </tr>
 <% end %>

@@ -58,12 +58,6 @@ module Synthesis
         source_names.uniq
       end
 
-      def lint_all
-        @@asset_packages_yml.keys.each do |asset_type|
-          @@asset_packages_yml[asset_type].each { |p| self.new(asset_type, p).lint }
-        end
-      end
-
       def build_all
         @@asset_packages_yml.keys.each do |asset_type|
           @@asset_packages_yml[asset_type].each { |p| self.new(asset_type, p).build }
@@ -131,16 +125,6 @@ module Synthesis
     def delete_previous_build
       File.delete(@full_path) if File.exists?(@full_path)
     end
-    
-    def lint
-      yui_path = "#{RAILS_ROOT}/vendor/plugins/asset_packager/lib"
-      if @asset_type == "javascripts"
-        (@sources - %w(prototype effects dragdrop controls)).each do |s|
-          puts "==================== #{s}.#{@extension} ========================"
-          system("java -jar #{yui_path}/yuicompressor-2.4.2.jar --type js -v #{full_asset_path(s)} >/dev/null")
-        end
-      end
-    end
 
     private
       def create_new_build
@@ -152,15 +136,11 @@ module Synthesis
           log "Created #{new_build_path}"
         end
       end
-      
-      def full_asset_path(source)
-        "#{@asset_path}/#{source}.#{@extension}"
-      end
 
       def merged_file
         merged_file = ""
         @sources.each {|s| 
-          File.open(full_asset_path(s), "r") { |f| 
+          File.open("#{@asset_path}/#{s}.#{@extension}", "r") { |f| 
             merged_file += f.read + "\n" 
           }
         }
@@ -176,55 +156,33 @@ module Synthesis
 
       def compress_js(source)
         jsmin_path = "#{RAILS_ROOT}/vendor/plugins/asset_packager/lib"
+        tmp_path = "#{RAILS_ROOT}/tmp/#{@target}_packaged"
+      
+        # write out to a temp file
+        File.open("#{tmp_path}_uncompressed.js", "w") {|f| f.write(source) }
+      
+        # compress file with JSMin library
+        `ruby #{jsmin_path}/jsmin.rb <#{tmp_path}_uncompressed.js >#{tmp_path}_compressed.js \n`
+
+        # read it back in and trim it
         result = ""
-        begin
-          # attempt to use YUI compressor
-          IO.popen "java -jar #{jsmin_path}/yuicompressor-2.4.2.jar --type js 2>/dev/null", "r+" do |f|
-            f.write source
-            f.close_write
-            result = f.read
-          end
-          return result if $?.success?
-        rescue
-          # fallback to included ruby compressor
-          tmp_path = "#{RAILS_ROOT}/tmp/#{@target}_packaged"
+        File.open("#{tmp_path}_compressed.js", "r") { |f| result += f.read.strip }
+  
+        # delete temp files if they exist
+        File.delete("#{tmp_path}_uncompressed.js") if File.exists?("#{tmp_path}_uncompressed.js")
+        File.delete("#{tmp_path}_compressed.js") if File.exists?("#{tmp_path}_compressed.js")
 
-          # write out to a temp file
-          File.open("#{tmp_path}_uncompressed.js", "w") {|f| f.write(source) }
-          `ruby #{jsmin_path}/jsmin.rb <#{tmp_path}_uncompressed.js >#{tmp_path}_compressed.js \n`
-
-          # read it back in and trim it
-          result = ""
-          File.open("#{tmp_path}_compressed.js", "r") { |f| result += f.read.strip }
-
-          # delete temp files if they exist
-          File.delete("#{tmp_path}_uncompressed.js") if File.exists?("#{tmp_path}_uncompressed.js")
-          File.delete("#{tmp_path}_compressed.js") if File.exists?("#{tmp_path}_compressed.js")
-
-          return result
-        end
+        result
       end
   
       def compress_css(source)
-        yui_path = "#{RAILS_ROOT}/vendor/plugins/asset_packager/lib"
-        result = ""
-        begin
-          # attempt to use YUI compressor
-          IO.popen "java -jar #{yui_path}/yuicompressor-2.4.2.jar --type css 2>/dev/null", "r+" do |f|
-            f.write source
-            f.close_write
-            result = f.read
-          end
-          return result if $?.success?
-        rescue
-          source.gsub!(/\/\*(.*?)\*\//m, "") # remove comments - caution, might want to remove this if using css hacks
-          source.gsub!(/\s+/, " ")           # collapse space
-          source.gsub!(/\} /, "}\n")         # add line breaks
-          source.gsub!(/\n$/, "")            # remove last break
-          source.gsub!(/ \{ /, " {")         # trim inside brackets
-          source.gsub!(/; \}/, "}")          # trim inside brackets
-          source
-        end
+        source.gsub!(/\s+/, " ")           # collapse space
+        source.gsub!(/\/\*(.*?)\*\/ /, "") # remove comments - caution, might want to remove this if using css hacks
+        source.gsub!(/\} /, "}\n")         # add line breaks
+        source.gsub!(/\n$/, "")            # remove last break
+        source.gsub!(/ \{ /, " {")         # trim inside brackets
+        source.gsub!(/; \}/, "}")          # trim inside brackets
+        source
       end
 
       def get_extension
