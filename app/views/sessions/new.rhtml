@@ -2,14 +2,14 @@
      <div class ='head'> Santhathi Login </div>
      <div id= 'login-logo'>  <%= image_tag("Logo.jpeg") %></div>
      <div id= 'login-box'>
-	 <p><%=image_tag('lock.png', :border => 0) %> <label for="login">Login Here</label></p>
+	 <p><%=image_tag('lock.png', :border => 0) %> <label for="login">Login Here</label></p><br/>
 	 <p><label for="login">Login</label><br/>
 	 <%= text_field_tag 'login', '', :class => 'textbox' %></p>
  
          <p><label for="password">Password</label><br/>
 	 <%= password_field_tag 'password', '', :class => 'textbox' %></p>
 
-	 <p><label for="remember_me">Remember me:</label>
+	 <br/><p><label for="remember_me">Remember me:</label><br/>
 	 <%= check_box_tag 'remember_me' %></p>
          <div id="submitbutton">
 	    <%= image_submit_tag('login_but.gif') %>
@@ -19,5 +19,5 @@
 
 <% end -%>
 <script type="text/javascript">
-  jQuery("#login-box").corner("corner 15px") 
+  jQuery("#login-box").corner("corner 10px") 
 </script>

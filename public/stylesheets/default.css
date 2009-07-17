@@ -203,15 +203,14 @@ h3 span {color: #003A66;
 	/*position: absolute;*/
 	background: url(/images/top-bar-12.png) repeat-x;
 	height: 60px;
-    border-left: #D0DEF0 1px solid;
-    border-right: #D0DEF0 1px solid;
+
        
 }
 #header h1 {
 	float: left;
 	font-weight: bold;
-	color: #003A61;
-        font-size: 22px;
+	color: #1C79B3;
+        font-size: 25px;
 	padding: 0px;
 	margin: 0px;
         position: absolute; 
@@ -237,17 +236,18 @@ h3 span {color: #003A66;
 
 .head {
 	color: #1B74B0;
-	background: #fff /*url(/images/heading.png) repeat-x*/ ;
-	padding: .2em .3em .2em .5em;
+	/*background: #fff url(/images/heading.png) repeat-x; */ 
+	padding: .2em .3em .2em 0em;
 	margin: 0px 0px 15px 0px ;
-        border: #f0f1f2 1px solid;
+        border: #f0f1f2 0px solid;
+        font-size: 19px;
 }
 
 
 
 .head a{
 	color: #1B74B0;
-        font-size: 14px;
+        font-size: 15px;
 
 
 }
@@ -280,7 +280,7 @@ h3 span {color: #003A66;
 	color: #2B3A16;
 	padding: 0.3em 1em;
 	margin: .5em .1em .5em;
-	background-color: #D6DFC6;
+	background-color: #E0F8B7;
 	font-weight: bold;
         border: 1px solid #BDCFE1;
 }
@@ -335,19 +335,18 @@ h3 span {color: #003A66;
 
 
 /** Footer */
+
 #footer {
     color: #00538F;
-	clear: both;
+    clear: both;
     width: 97%;
-	padding: 5px 0px 5px 0px;
-	margin: 0 auto;
-	background: #fff; 
-	margin: 30px 3px 0px 3px;
-	padding: 4px 15px 0px 15px;
-    border-top: #00538F 5px solid; 
+    margin: 0 auto;
+    background: #fff; 
+    margin: 20px 3px 0px 3px;
+    padding: 10px 15px 0px 15px;
+    border-top: #00538F 0px solid; 
     text-align: center;
 }
-
 
 
 /* Pagination */
@@ -458,7 +457,7 @@ h3 span {color: #003A66;
            height: 100%;
            margin: 0px;
            padding: 12px;
-           margin: 5px 7px;
+           margin: 10px 7px;
            border: 1px #E0E8F0 solid;
            }
 
@@ -621,7 +620,7 @@ h3 span {color: #003A66;
 .listing th {background: #F2F3F7 url(/images/table-header.jpg) repeat-x;
              color: #003D66;
              text-align: left;
-             padding: 0.2em .5em .2em .5em;
+             padding: 0.3em .5em .3em .5em;
              border:1px solid #96ABBB;    
              font-weight: bold;    
 
@@ -816,10 +815,10 @@ margin: 20px;
 #left-login .head {
 	color: #204F85;
 	font-weight: normal;
-	background-color: #DFEBFA;
+        border: #fff 1px solid;
 	padding: 0.3em 1em 0.3em;
 	margin: 0;
-	font-size: 1.6em;
+	font-size: 1.8em;
 	text-align: center;
 }
 
@@ -828,13 +827,12 @@ margin: 20px;
   background: #ACCBEA;
   width: 300px;
   height: 100%;
-  padding: 0px 0px 10px 40px;
+  padding: 25px 25px 15px 25px;
 }
 
 #login-logo {
   margin: 0 auto;
   width: 300px;
-
   padding: 0px 0px 10px 40px;
 }
 
