@@ -1,4 +1,5 @@
 <div class='continer'>
+ <div class='continer-inner'>
 <h3>Editing Pharamacy Item Information Detail</h3>
 
 <% form_for(:pharamacy_item_information_detail ,:url =>  cms_pharamacy_item_information_pharamacy_item_information_detail_path(:pharamacy_item_information_id =>@pharamacy_item_information ,:id => @pharamacy_item_information_detail),:html => { :method => :put }) do |f| %>
@@ -21,4 +22,5 @@
 
 <%= link_to 'Back', cms_pharamacy_item_informations_path %>
 
+</div>
 </div>

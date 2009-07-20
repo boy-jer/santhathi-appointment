@@ -1,19 +1,15 @@
 <div class='continer'>
-  <div class='continer-inner'>
-     <h2>New <%= params[:type] %></h2>
+  <div class='continer-inner'><br />
+     <h2>New <%= params[:type] %></h2> <br /><br />
      <% form_for :option, :url => pms_select_options_url(:type => params[:type]) do |f| %>
      <%= f.error_messages %>
 
-     <p>
-       <%= f.label :name %><br />
-       <%= f.text_field :name, {:class => 'textbox'} %>
-     </p>
-     <p>
-       <%= f.label :description %><br />
-       <%= f.text_field :description, {:class => 'textbox'} %>
-     </p>
+      <table class ="form-table">
+       <tr> <th> <%= f.label :name %> :  </th> <td> <%= f.text_field :name, {:class => 'textbox'} %> </td></tr>
+       <tr> <th> <%= f.label :description %> : </th> <td> <%= f.text_field :description, {:class => 'textbox'} %></td></tr>
+      
        <%= f.hidden_field :type, {:value=> params[:type]} %>
-     <p>
+     </table><br />
        <table><tr><td><%= submit_tag "create" %></td>
 
        <td><%= link_to 'Cancel', pms_select_options_path(:type =>  params[:type]) %></td></tr></table>

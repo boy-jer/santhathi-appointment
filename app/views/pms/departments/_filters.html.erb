@@ -8,7 +8,7 @@
        <%fields_for @search do |f|%>
           <% f.fields_for @search.conditions do |p| %>
               <td><%= p.text_field :dept_name_like, :class => 'textbox' %></td>
-              <td><%= p.text_field :abbrevation_like, :class => 'textbox' %></td>
+            
           <%end%>
        <%end%>
        <td> <input type="reset" value="Reset"> </td>
