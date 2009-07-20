@@ -209,7 +209,7 @@ h3 span {color: #003A66;
 #header h1 {
 	float: left;
 	font-weight: bold;
-	color: #1C79B3;
+	color: #3AA900;
         font-size: 25px;
 	padding: 0px;
 	margin: 0px;
@@ -240,7 +240,7 @@ h3 span {color: #003A66;
 	padding: .2em .3em .2em 0em;
 	margin: 0px 0px 15px 0px ;
         border: #f0f1f2 0px solid;
-        font-size: 19px;
+        font-size: 20px;
 }
 
 
@@ -453,12 +453,12 @@ h3 span {color: #003A66;
            border-style: outset;*/
          
            min-height: 525px;
-           background: #F8F8F3 /*url(/images/table-header.jpg) repeat-x*/;
+           background: #FFFDF3 /*url(/images/table-header.jpg) repeat-x*/;
            height: 100%;
            margin: 0px;
            padding: 12px;
            margin: 10px 7px;
-           border: 1px #E0E8F0 solid;
+           border: 1px #ddd solid;
            }
 
 
@@ -479,10 +479,8 @@ h3 span {color: #003A66;
 
 #schedule {
            height: 400px;
-           overflow: auto;
-           
-           /*border: 1px solid #778899;*/
-          }F6F6F0
+        
+          }
 #patients_list{
            height: 95px;
            overflow: auto;
@@ -492,12 +490,12 @@ h3 span {color: #003A66;
 
 /* ---------------------tables --------------------*/
 .time-slots{
-	    border-collapse: collapse;
+	    
             width: 100%;
             border: 1px solid #c6c8c9;
 }
 
-.time-slots td {
+.time-slots tr td {
 	border: 1px solid #ced8dc;
 	padding: 0.2em 1ex 0.2em 2em;
 	color: black;
@@ -699,7 +697,7 @@ h3 span {color: #003A66;
 
 /* Menu */
 
-#menu { width: 410px;  padding: 0; margin: 0 auto; list-style: none; }
+#menu { width: 500px;  padding: 0; margin: 0 auto; list-style: none; }
 
 #menu ul{margin:0; padding: 0px 0px 0px 0px; list-style:none; }
 
@@ -713,25 +711,25 @@ h3 span {color: #003A66;
 #menu li a {
 	display: block;
 	float: left;
-	margin: 32px 3px 0px 3px;
-	padding: 4px 15px 0px 15px;
-        
+	margin: 34px 3px 0px 3px;
+	padding: 5px 15px 0px 15px;
+        width: 75px;
 	height:17px;
 	text-transform: uppercase;
 	text-decoration: none;
 	font-size: 11px;
 	font-weight: bold;
-	color: #fff;
+	color: #006DB6;
 	text-align:center;
-	/*background-image: url('/images/nw-tab.gif');*/
+	background-image: url('/images/nw-tab.gif');
 
 }
 
 #menu li a:hover {
 	display: block;
 	float: left;
-        margin: 32px 3px 0px 3px;
-	padding: 4px 15px 0px 15px;
+        margin: 34px 3px 0px 3px;
+	padding: 5px 15px 0px 15px;
 	text-transform: uppercase;
 	text-decoration: none;
 	font-size: 11px;

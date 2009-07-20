@@ -19,7 +19,7 @@ class Pms::AppointmentsController < ApplicationController
                     else
                       @doctor = Doctor.find(params[:doctor]) unless params[:doctor].blank?
                       @date = Date.parse(params[:date])
-                      page.replace_html 'schedule', :partial => 'appointments_detail', :locals => {:doctor => @doctor, :date =>@date}
+                      page.replace_html 'schedule', :partial => 'schedules', :locals => {:doctor => @doctor, :date =>@date}
                     end
                   end
                 }
