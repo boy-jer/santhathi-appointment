@@ -27,7 +27,7 @@ class Pms::DoctorsController < ApplicationController
   def edit
     @doctor = Doctor.find(params[:id])
     @timing_slot = []
-    @working_slots = @doctor.doctor_working_slots.map {|ob| Time.parse(ob.slot.to_s).strftime("%H:%M") }
+    @working_slots = @doctor.doctor_working_slots.map {|ob| Time.parse(ob.start_time.to_s).strftime("%H:%M") }
     dt1 = Time.parse(@doctor.doctor_profile.working_from.to_s)
     dt2 = Time.parse(@doctor.doctor_profile.working_to.to_s)
     @timing_slot = calculate_time_slots(dt1 ,dt2)

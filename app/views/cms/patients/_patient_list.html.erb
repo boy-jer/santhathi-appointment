@@ -39,11 +39,11 @@
     <tr class="table-footer">
 
        <td colspan = 2> <%= remote_per_page_select %></td>
-        <td colspan = 2> <% form_tag(cms_patients_url, :method => :get, :id => "goto") do %>
+        <td colspan = 2> <% form_tag(cms_patients_url, :method => :get ) do %>
                                         <% fields_for @search do |f|%>
                                           <%= f.text_field :page, :class => 'textbox-tiny' %>
-
-
+                                              
+                                          <%= submit_tag "go"%>
                                        <%end -%>
                                      <%end-%>
 
@@ -64,7 +64,4 @@
 <%else%>
  No Records Found.
  <%end%>
-     <%= observe_form("goto", :frequency => 1,
-                 :before => "Element.show('spinner')",
-                 :success => "Element.hide('spinner')",
-                 :url => cms_patients_url, :method => :get) %>
+    
