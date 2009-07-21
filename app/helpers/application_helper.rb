@@ -90,8 +90,10 @@ module ApplicationHelper
  end
 
  def working_slots(doctor)
-   slots = doctor.doctor_working_slots
-   slots.blank? ? {} : slots.map{|sl| sl.slot.strftime('%H:%M').to_s}
+   slots = []
+   working_hrs = doctor.doctor_working_slots
+   working_hrs.blank? ? {} : working_hrs.map{|sl| slots = slots + sl.slots }
+   return slots
  end
 
  def calculate_age(dob)

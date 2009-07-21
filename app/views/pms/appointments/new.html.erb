@@ -3,8 +3,8 @@
      <%= error_messages_for 'appointment', 'patient' %>
      <div id="new-booking">
 
-     	<div class='head'>New Appointment</div>
-        <br />
+     	<div class='head'>Enter Appointment Details</div>
+        <hr />
         <%=render :partial => 'appointment_fields', :locals => {:f => f} %>
 <% end %>
 
@@ -15,8 +15,8 @@
      </div> <!--new booking-->
      
      <div id="main-schedules">
-         <div class='head'>Existing appointments</div>
-         <br />
+         <div class='head'>Doctor's Schedules</div>
+         <hr />
          <%= render :partial => 'schedules' %>
      </div>
   </div>

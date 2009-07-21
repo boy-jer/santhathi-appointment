@@ -209,8 +209,8 @@ h3 span {color: #003A66;
 #header h1 {
 	float: left;
 	font-weight: bold;
-	color: #3AA900;
-        font-size: 25px;
+	color: #1B74B0;
+        font-size: 26px;
 	padding: 0px;
 	margin: 0px;
         position: absolute; 
@@ -240,7 +240,7 @@ h3 span {color: #003A66;
 	padding: .2em .3em .2em 0em;
 	margin: 0px 0px 15px 0px ;
         border: #f0f1f2 0px solid;
-        font-size: 20px;
+        font-size: 22px;
 }
 
 
@@ -393,9 +393,9 @@ h3 span {color: #003A66;
 /*------------------------For appointment booking page\------------------*/
 #main-schedules {
  color: #333;
- width: 32%;
+ width: 31%;
  float: right;
- padding:5px;
+ padding:10px;
  background-color: #fff;
  height: 452px;
  background: #fff;
@@ -403,23 +403,22 @@ h3 span {color: #003A66;
 }
 
 #main-schedules .head{
-    color: #005893;
+        color: #005893;
 	font-weight: normal;
-	
-	padding: 0.2em 1em 0.2em;
-	font-size: 14px;
-    font-weight: bold;
+	padding: 0em 1em 0em;
+	font-size: 15px;
+        font-weight: bold;
 	text-align: left;
-    margin: 0;
-     border: 1px solid #fff;
+        margin: 0;
+        border: 1px solid #fff;
 }
 
 #new-booking {
  float: left;
- width: 65%;
+ width: 64.5%;
  display: inline;
  margin: 0px 0px 5px 5px;
- padding:5px;
+ padding: 10px;
  background-color:#fff;
  border: #ddd 1px solid;
  height: 100%;
@@ -429,12 +428,11 @@ h3 span {color: #003A66;
 #new-booking .head{
         color: #005893;
 	font-weight: normal;
-	
-	padding: 0.2em 1em 0.2em;
-	margin: 2px 0px 5px 0px ;
-	font-size: 14px;
+	padding: 0em 1em 0em;
+	font-size: 15px;
         font-weight: bold;
 	text-align: left;
+        margin: 0;
         border: 1px solid #fff;
 
 
@@ -453,12 +451,12 @@ h3 span {color: #003A66;
            border-style: outset;*/
          
            min-height: 525px;
-           background: #FFFDF3 /*url(/images/table-header.jpg) repeat-x*/;
+           background: #FFFCF5 /*url(/images/table-header.jpg) repeat-x*/;
            height: 100%;
            margin: 0px;
            padding: 12px;
            margin: 10px 7px;
-           border: 1px #ddd solid;
+           border: 1px #ccc solid;
            }
 
 
@@ -490,24 +488,31 @@ h3 span {color: #003A66;
 
 /* ---------------------tables --------------------*/
 .time-slots{
-	    
+	    border-right: 1px solid #ced8dc;
             width: 100%;
-            border: 1px solid #c6c8c9;
+          
 }
 
 .time-slots tr td {
-	border: 1px solid #ced8dc;
-	padding: 0.2em 1ex 0.2em 2em;
+	border-left: 1px solid #ced8dc;
+        border-bottom: 1px solid #ced8dc;
+	padding: 2px 1px 2px 2px;
 	color: black;
 	font-size: 11px;
+        text-align: center;
+}
+
+.time-slots tr td a{
+	text-decoration: none;
 }
 
 .time-slots th {
-	padding: 0.2em 1.2em;
-        background-color: #E0EAF4;
+	padding: 2px 1px 2px 2px;
+        background-color: #f1f3f5;
         color: #204F85;
-        font-size: 11px;
+        font-size: 12px;
         border: 1px solid #BFD0E1;
+        text-align: center;
 }
 
 .time-slots tr.d0 td {
@@ -518,16 +523,18 @@ h3 span {color: #003A66;
 	background-color: #c6ffed;
         margin:0px;
 	width:100px;
-        padding: 1px 0px 1px 1px;
+        padding: 2px 1px 2px 2px;
         line-height: normal;
 }
 
 .time-slots tr td.available a {
 	 color: #3c4e6f;
+         text-decoration: none;
 }
 
 .time-slots tr td.not-working {
-	 background-color: #fffd87;
+	 background-color: #f7f7f7;
+         padding: 2px 1px 2px 2px;
 }
 
 .time-slots tr td.available a:hover {
@@ -537,13 +544,13 @@ h3 span {color: #003A66;
 .time-slots tr.appointment1 td {
 	background-color: #eed4b5;
         margin:0px;
-        padding: 1px 0px 1px 0px;
+        padding: 2px 0px 2px 0px;
         line-height: normal;
 }
 .time-slots tr.appointment2 td {
 	background-color: #e2cdee;
         margin:0px;
-        padding: 1px 0px 1px 0px;
+        padding: 2px 0px 2px 0px;
         line-height: normal;
 }
 .time-slots tr.appointment3 td {
@@ -601,9 +608,9 @@ h3 span {color: #003A66;
 
 
 .time-slots tr.appointment td {
-	background-color: #fffdea;
+	background-color: #FFF9BD;
         margin:0px;
-        padding: 1px 0px 1px 0px;
+        padding: 2px 1px 2px 2px;
         line-height: normal;
 }
 
@@ -685,7 +692,7 @@ h3 span {color: #003A66;
 
 .form-table {border-collapse: collapse; width: 100%; border: #B1C4D2 1px solid; margin: 0px 5px 0px 5px; color: #000; }
 
-.form-table .table-top td {background: #D9E6F7;  color: #1B74B0; font-size: 13px; font-weight: bold;  border: #BDCFE1 1px solid;}
+.form-table .table-top td {background: #F1F3F5;  color: #006CB3; font-size: 13px; font-weight: bold;  border: #BDCFE1 1px solid;}
 
 
 
@@ -798,53 +805,15 @@ h3 span {color: #003A66;
 	font-weight: normal;
 }
 
-#main_login {
-margin: 20px;
 
-}
-/*round corner */
-#left-login {
-   background: #FFFFFF;
-   height: 450px;
-   margin: 0 auto;
-   width: 60% ;
-}
 
-#left-login .head {
-	color: #204F85;
-	font-weight: normal;
-        border: #fff 1px solid;
-	padding: 0.3em 1em 0.3em;
-	margin: 0;
-	font-size: 1.8em;
-	text-align: center;
-}
 
-#login-box {
-  margin: 0 auto;
-  background: #ACCBEA;
-  width: 300px;
-  height: 100%;
-  padding: 25px 25px 15px 25px;
-}
-
-#login-logo {
-  margin: 0 auto;
-  width: 300px;
-  padding: 0px 0px 10px 40px;
-}
-
-#login-box label {
-	font-weight: bold;
-        color: #ffffff;
-}
-/*
 hr {
   border: 0;
-  width: 98%;
-  background-color: #c7dfea;
+  width: 100%;
+  background-color: #ddd;
   height: 1px;
-}*/
+}
 
 #calendar-display {
 	float: left;

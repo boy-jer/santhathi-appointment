@@ -44,7 +44,7 @@
                                                    options = {:onclick => "Element.show('patient_search'); Element.hide('new_patient'); Element.show('submit-button');"}) %> follow up visit        </td>
      </tr>
   </table>
-  
+  <br />
    <p id ="submit-button" style="display:none"> <a class="button" onclick="$(this).up('form').submit(); return false;"><span>Create Appointment</span></a> </p>
 
  <%= observe_field(:date, :frequency => 0.5,
@@ -62,7 +62,7 @@
                     :method => :get,
                     :with => "'department_id=' + value"
                    ) %></div>
-<br />
+<br /><br />
 
 <div id='new_patient'>
    <% fields_for :patient do |patient| %>

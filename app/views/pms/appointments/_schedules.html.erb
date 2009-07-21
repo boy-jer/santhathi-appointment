@@ -5,7 +5,7 @@
               :id => "spinner",
               :style =>"display: none;" ) %>
 
-<table class="time-slots" cellspacing="1">
+<table class="time-slots" cellspacing="0">
     <thead><tr>
               <th><b>Slot</b>&nbsp; </th><th><b>Name</b> </th> <th><b>Register No</b></th>
            </tr>
@@ -15,9 +15,7 @@
        <% dt1 = Time.parse(@doctor.doctor_profile.working_from.to_s) %>
        <% appoitments_hash = appointments(@doctor, @date) %>
        <% iteration_count(@doctor).times do%>
-
          <% slot = "#{(dt1.strftime('%H:%M').to_s)}" %>
-
          <% if appoitments_hash.key?(slot) %>
             <tr class="appointment">
                <td>
