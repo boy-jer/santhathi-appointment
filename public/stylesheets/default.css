@@ -280,7 +280,7 @@ h3 span {color: #003A66;
 	color: #2B3A16;
 	padding: 0.3em 1em;
 	margin: .5em .1em .5em;
-	background-color: #E0F8B7;
+	background-color: #E3F1CB;
 	font-weight: bold;
         border: 1px solid #BDCFE1;
 }
@@ -451,7 +451,7 @@ h3 span {color: #003A66;
            border-style: outset;*/
          
            min-height: 525px;
-           background: #FFFCF5 /*url(/images/table-header.jpg) repeat-x*/;
+           background: #F8F8F3/*url(/images/table-header.jpg) repeat-x*/;
            height: 100%;
            margin: 0px;
            padding: 12px;
