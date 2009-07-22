@@ -1,6 +1,6 @@
 <div class='continer'>
   <div class='continer-inner'>
-    <h1>Editing doctor</h1>
+    <h3 class= 'head'>Editing doctor record</h3>
 
      <% form_for ([:pms, @doctor],:url=>pms_doctor_url(@doctor),:html=>{:method=>:put}) do |f| %>
 
@@ -28,6 +28,7 @@
   </table>
    <br/>
 <div id="working_slot">
+   <h3 class= 'head'>Time slots doctor would be working.</h3>
    <%= render :partial => 'edit_working_slots' %>
 </div>
 

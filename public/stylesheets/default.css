@@ -210,7 +210,7 @@ h3 span {color: #003A66;
 	float: left;
 	font-weight: bold;
 	color: #1B74B0;
-        font-size: 26px;
+        font-size: 23px;
 	padding: 0px;
 	margin: 0px;
         position: absolute; 
@@ -240,7 +240,7 @@ h3 span {color: #003A66;
 	padding: .2em .3em .2em 0em;
 	margin: 0px 0px 15px 0px ;
         border: #f0f1f2 0px solid;
-        font-size: 22px;
+        font-size: 20px;
 }
 
 
@@ -489,21 +489,25 @@ h3 span {color: #003A66;
 /* ---------------------tables --------------------*/
 .time-slots{
 	    border-right: 1px solid #ced8dc;
-            width: 100%;
+        width: 100%;
           
 }
 
 .time-slots tr td {
 	border-left: 1px solid #ced8dc;
-        border-bottom: 1px solid #ced8dc;
+    border-bottom: 1px solid #ced8dc;
 	padding: 2px 1px 2px 2px;
 	color: black;
 	font-size: 11px;
-        text-align: center;
+    text-align: center;
 }
 
 .time-slots tr td a{
 	text-decoration: none;
+}
+
+.time-slots tr{
+	background-color: #ffffff;
 }
 
 .time-slots th {
@@ -528,8 +532,8 @@ h3 span {color: #003A66;
 }
 
 .time-slots tr td.available a {
-	 color: #3c4e6f;
-         text-decoration: none;
+	 color: #000;
+     text-decoration: none;
 }
 
 .time-slots tr td.not-working {
@@ -718,24 +722,24 @@ h3 span {color: #003A66;
 #menu li a {
 	display: block;
 	float: left;
-	margin: 34px 3px 0px 3px;
+	margin: 32px 3px 0px 3px;
 	padding: 5px 15px 0px 15px;
-        width: 75px;
+        /*width: 75px;*/
 	height:17px;
 	text-transform: uppercase;
 	text-decoration: none;
 	font-size: 11px;
 	font-weight: bold;
-	color: #006DB6;
+	color: #fff;
 	text-align:center;
-	background-image: url('/images/nw-tab.gif');
+	/*background-image: url('/images/nw-tab.gif');*/
 
 }
 
 #menu li a:hover {
 	display: block;
 	float: left;
-        margin: 34px 3px 0px 3px;
+        margin: 32px 3px 0px 3px;
 	padding: 5px 15px 0px 15px;
 	text-transform: uppercase;
 	text-decoration: none;

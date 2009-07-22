@@ -1,12 +1,13 @@
 <div class='continer'>
 
-<h3>New Deactivate Slot</h3><br/>
+<h3 class= 'head'>Deactivating time slots</h3>
 
 <% form_for(:deactivate_slot ,:url => cms_deactivate_slots_url ,:html =>{ :method =>:post} ) do |f| %>
   <%= f.error_messages %>
 
 <table cellpadding="5px" class="form-table">
-    <% if current_user.has_role?('admin') %>
+  <tr class='table-top'> <td colspan = '2'> Enter the details of deactivating time slots </td></tr> 
+  <% if current_user.has_role?('admin') %>
   <tr><th>  <%= f.label :department %>:</th><td>
     <%= select_tag "department_id",options_for_select( [['Select department' , '']] + Department.departments_for_select_list) %>
     <%= image_tag("spinner.gif",
@@ -38,6 +39,8 @@
     <%= f.label :reason_for_absence %>:</th><td>
     <%= f.text_field :reason_for_absence,:class=>"textbox" %></td></tr>
 </table><br/>
+
+  <h3 class= 'head'>Select the time slots doctor would not be working</h3>
   <div id="working_slot">
 
   </div>
