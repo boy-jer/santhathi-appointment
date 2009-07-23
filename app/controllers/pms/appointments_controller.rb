@@ -41,7 +41,7 @@ class Pms::AppointmentsController < ApplicationController
                               :top_margin    => 20,
                               :bottom_margin => 20
     				                }
-                  prawnto :inline=>true, :prawn=> options, :filename => "appointments.pdf"
+                  prawnto :inline => true, :prawn => options, :filename => "appointments.pdf"
                   render :layout => false
                 }
     end

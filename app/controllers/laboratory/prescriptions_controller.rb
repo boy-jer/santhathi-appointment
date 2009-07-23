@@ -7,6 +7,8 @@ class Laboratory::PrescriptionsController < ApplicationController
     #@prescriptions ,@count = @search.all, @search.count
     @search = PrescribedTest.new_search(params[:search])
     @search.per_page ||= 15
+    @search.order_as ||= "DESC"
+    @search.order_by ||= "created_at"
     @prescribed_tests, @count = @search.all(:include => {:prescriptions_tests => :prescriptions}), @search.count
     respond_to do |format|
       format.html

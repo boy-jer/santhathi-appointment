@@ -19,18 +19,7 @@
    <%end%>
 
    </div>
-   <%= observe_form("search_form", :frequency => 1,
-                 :before => "Element.show('spinner')",
-                 :success => "Element.hide('spinner')",
-                 :url => pms_appointments_url, :method => :get) %>
-
-
-  <!-- Ajax search result indicator -->
-  <%= image_tag("spinner.gif",
-              :align => "absmiddle",
-              :border => 0,
-              :id => "spinner",
-              :style =>"display: none;" ) %>
+  
 
 
   <div id='appointment-list'>
