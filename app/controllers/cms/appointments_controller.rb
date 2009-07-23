@@ -5,17 +5,23 @@ class Cms::AppointmentsController < ApplicationController
     @search = Appointment.new_search(params[:search])
     @search.conditions.doctor_id =  current_user.id unless admin?
     @search.per_page ||= 15
+    @search.order_as ||= "DESC"
+    @search.order_by ||= "appointment_date"
     @appointments = @search.all
     @doctor = current_user unless admin?
-    @doctor = Doctor.find(params[:search][:conditions][:doctor_id_like]) unless (params[:search].blank? || params[:search][:conditions][:doctor_id_like].blank?)
-    @date = (Date.parse(params[:search][:conditions][:appointment_date_like]) unless (params[:search].blank? || params[:search][:conditions][:appointment_date_like].blank?)) || Date.today
+    @doctor = Doctor.find(params[:search][:conditions][:doctor_id_like]) unless (params[:search].blank? || params[:search][:conditions].blank? || params[:search][:conditions][:doctor_id_like].blank?)
+    @date = (Date.parse(params[:search][:conditions][:appointment_date_like]) unless (params[:search].blank? || params[:search][:conditions].blank? || params[:search][:conditions][:appointment_date_like].blank?)) || Date.today
    respond_to do |format|
      format.html # show.html.erb
      format.js  { render :update do |page|
-                     if params[:filter] == '1'
-                        page.replace_html 'appointment_list', :partial => 'appointment_list'
+                        
+                     if params[:filter] == '2'
+                       page.replace_html 'appointment_list', :partial => 'time_slots'
+                         
+                         
                      else
-                        page.replace_html 'appointment_list', :partial => 'time_slots'
+                        
+                        page.replace_html 'appointment_list', :partial => 'appointment_list'
                      end
                    end
                  }

@@ -6,9 +6,10 @@ class Cms::PatientsController < ApplicationController
     @search.conditions.state = ['visited', 'prescribed', 'recommend_for_discharge']
     #@search.conditions.or_state = 'visited'
     @search.conditions.doctor_id =  current_user.id unless admin?
-    @search.order_as ||= "DESC"
-    @search.order_by ||= "created_at"
     @search.per_page ||= 15
+    @search.order_as ||= "DESC"
+    @search.order_by ||= "appointment_date"
+
     @appointments = @search.all
     respond_to do |format|
       format.html
@@ -23,7 +24,7 @@ class Cms::PatientsController < ApplicationController
   def discharge
     date = (Date.parse(params[:date]) unless params[:date].blank?) || Date.today
     appointments = Appointment.on_date(date).status('visited')
-    appointments.map {|appointment| appointment.discharge!}
+    appointments.map {|appointment| appointment.recommend_for_discharge! }
     redirect_to cms_doctor_patients_path(current_user.id)
   end
 

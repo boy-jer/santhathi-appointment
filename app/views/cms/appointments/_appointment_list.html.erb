@@ -1,14 +1,15 @@
   <br />
+ 
   <%unless @appointments.blank? %>
     <table class="listing">
       <thead>
       <tr>
-       <th>App No </th>
-       <th>Date</th>
-       <th>Time</th>
-       <th>Patient name</th>
-       <th>Department</th>
-       <th>Doctor</th>
+       <th> <%= remote_order_by_link(:id,:text =>"App No") %>  </th>
+       <th> <%= remote_order_by_link(:appointment_date, :text => "Date") %> </th>
+       <th> <%= remote_order_by_link(:appointment_time, :text => "Time") %> </th>
+       <th> <%= remote_order_by_link({:patient => :patient_name }, :text => " Patient name") %> </th>
+       <th> Department </th>
+       <th><%= remote_order_by_link({:doctor => :name}, :text => "Doctor") %></th>
        <th>Age</th>
        <th>Gender</th>
        <th>Contact no</th>

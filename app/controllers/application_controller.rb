@@ -3,6 +3,7 @@
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
   include RoleRequirementSystem
+ #include ExceptionNotifiable
  # include FaceboxRender
 
   helper :all # include all helpers, all the time
