@@ -10,7 +10,7 @@
     <table>
      <tr>
        <td>Discharge patients visited on:&nbsp;&nbsp;</td>
-       <td><%= calendar_date_select_tag "date", Date.today , :class =>'textbox' %></td>
+       <td><%= calendar_date_select_tag "date", Date.today , :class =>'textbox-small' %></td>
        <td><%= submit_tag"Discharge" %></td> <td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>
             <td>Prescribed:  &nbsp;</td><td style="width: 15px; border: #ddd 1px solid; background: #ECF7FF"> </td> <td> &nbsp; </td>
             <td>Discharge Recommended:  &nbsp; </td><td style="width: 15px; border: #ddd 1px solid; background: #F1FED7"></td> <td> &nbsp;  &nbsp; &nbsp; </td>
@@ -19,10 +19,6 @@
    <%end%>
 
    </div>
-   <%= observe_form("search_form", :frequency => 1,
-                 :before => "Element.show('spinner')",
-                 :success => "Element.hide('spinner')",
-                 :url => pms_appointments_url, :method => :get) %>
 
 
   <!-- Ajax search result indicator -->
