@@ -2,11 +2,17 @@ class Cms::DeactivateSlotsController < ApplicationController
   layout 'cms'
 
   def index
-  	@search = DeactivateSlot.new_search(params[:search])
+   	@search = DeactivateSlot.new_search(params[:search])
   	@search.conditions.doctor_id = current_user.id unless current_user.has_role?('admin')
   	@search.per_page ||= 15
+    @search.order_as ||= "DESC"
+    @search.order_by ||= "created_at"
   	@deactivate_slots = @search.all
-    # @deactivate_slots = DeactivateSlot.paginate :page => params[:page],:per_page => 10
+  	    
+    unless session[:ids].blank?
+      @appointments = Appointment.find(:all ,:conditions => ["id IN (?)", session[:ids] ])
+    end
+    session[:ids] = []
     respond_to do |format|
         format.html
         format.js {
@@ -31,25 +37,41 @@ class Cms::DeactivateSlotsController < ApplicationController
   end
 
   def create
-
+    unless params[:deactivate_slot][:doctor_id].blank?
+    deactivated_slots = []
+    session[:ids] = []
+    doctor = Doctor.find(params[:deactivate_slot][:doctor_id])
     start_date =  Date.parse("#{params[:deactivate_slot]['from_date(1i)']}/#{params[:deactivate_slot]['from_date(2i)']}/#{params[:deactivate_slot]['from_date(3i)']}")
     end_date =  Date.parse("#{params[:deactivate_slot]['to_date(1i)']}/#{params[:deactivate_slot]['to_date(2i)']}/#{params[:deactivate_slot]['to_date(3i)']}") # strat_end and end_date (leave from - to )
-
-    doctor = Doctor.find(params[:deactivate_slot][:doctor_id])
-   	dt1 = Time.parse(doctor.doctor_profile.working_from.to_s)
-    dt2 = Time.parse(doctor.doctor_profile.working_to.to_s)
+    
     for date in  start_date..end_date # for from start_date to end_date
-    	 params[:time_slots].each do |free_slot|  # for each slot in free_slots
-    	    dt1 = Time.parse("#{free_slot.split("-").first}:00")
-    		 	dt2 = Time.parse("#{free_slot.split("-").last}:00")
-    		 	slots = calculate_slots(dt1 , dt2)
-    	    DeactivateSlot.create( :doctor_id => doctor.id , :from_date => date, :time_from => free_slot, :reason_for_absence => params[:deactivate_slot][:reason_for_absence] ,:slots => slots )
-  	   end
+       params[:time_slots].each do |free_slot|  # for each slot in free_slots
+        dt1 = Time.parse("#{free_slot.split("-").first}:00")
+        dt2 = Time.parse("#{free_slot.split("-").last}:00")
+        slots = calculate_slots(dt1 , dt2)
+        DeactivateSlot.create( :doctor_id => doctor.id, :from_date => date, :time_from => free_slot, :reason_for_absence => params[:deactivate_slot][:reason_for_absence] ,:slots => slots )
+        deactivated_slots = deactivated_slots + slots
+      end
+    end   
+    
+  
+    for date in  start_date..end_date
+      appointments = doctor.appointments.on_date(date) 
+      unless appointments.blank?
+        appointments.each do |appointment|
+          if deactivated_slots.include?(appointment.appointment_time.strftime("%H:%M")) 
+              session[:ids] << appointment.id
+          end
+        end
+      end   
     end
-
+    
    flash[:notice] = 'Deactivate slot is successfully created.'
-   redirect_to(cms_deactivate_slots_url())
-
+   redirect_to(cms_deactivate_slots_url)
+  else  
+   flash[:notice] = 'Please Select A Doctor'
+    render :action => "new"
+  end
   end
 
 

@@ -1,7 +1,7 @@
 <%unless @appointments.blank?%>
   <%form_tag cms_patient_path(1), :method => :put do %>
   <table class="listing">
-      <thead>
+      
       <tr>
         <th></th>
         <th><%= remote_order_by_link({:patient => :reg_no} , :text => "Hospital No.") %></th>
@@ -26,24 +26,21 @@
          <td><%=h appointment.reason.name%></td>
          <td><%= link_to 'Appointments', pms_patient_patient_appointments_url(appointment.patient), :rel=> "facebox" %></td>
          <td><%= link_to 'Clinical screen', new_cms_appointment_clinical_screen_path(appointment)%></td>
-         <td>
-
-         <%= link_to "History" ,  {:action=>"show", :controller=>"cms/patient_histories",:id => appointment.patient.id } %>
-
-        </td>
+         <td><%= link_to "History" ,  {:action=>"show", :controller=>"cms/patient_histories",:id => appointment.patient.id } %>
+             </td>
        </tr>
      <%end%>
+     </table>
 <%end%>
-</table>
-<table class='table-bottom'>
+
+<table class="table-bottom">
     <tr class="table-footer">
 
        <td colspan = 2> <%= remote_per_page_select %></td>
         <td colspan = 2> <% form_tag(cms_patients_url, :method => :get ) do %>
                                         <% fields_for @search do |f|%>
                                           <%= f.text_field :page, :class => 'textbox-tiny' %>
-                                              
-                                          <%= submit_tag "go"%>
+                                          <%= submit_tag "go" %>
                                        <%end -%>
                                      <%end-%>
 
@@ -60,8 +57,10 @@
 
     </table>
 
-   <br/>
+   
 <%else%>
- No Records Found.
+ <br/>
+  No Records Found.
  <%end%>
+ <br/>
     

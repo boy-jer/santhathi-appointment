@@ -2,7 +2,25 @@
   <h3 class= 'head'>Deactivated time slots &nbsp; &nbsp; <%= link_to image_tag('add.png'), new_cms_deactivate_slot_path %> <%= link_to "Create New", new_cms_deactivate_slot_path %></h3>
   <br/>
   <%= render :partial => 'filters' %>
- 
+  <br />
+  <% unless @appointments.blank? %>
+    <font color ="red" > <b> Attention:  There is/are appointment already booked for the deactivated time slots. </b> </font>
+    <table class="listing">
+     <% i = 0 %> <tr>
+     <% for appointment in @appointments %>
+        
+        <% if i == 10 %>
+          </tr> <tr> <td> <%= link_to  "{appointment.id : Time.parse(appointment.appointment_time.to_s).strftime(%H:%M)}", pms_appointment_url(appointment), :rel=> "facebox" %> </td> 
+          <% i = 0 %>
+        <% else %>
+          <% i += 1 %> 
+          <td> <%= link_to  "#{appointment.id} : #{Time.parse(appointment.appointment_time.to_s).strftime('%H:%M') }", pms_appointment_url(appointment), :rel=> "facebox" %>  </td>
+        <% end %>
+     
+     <%end%>
+     </tr>
+    </table>
+  <%end%>
  <div id='deactivate_slot'>
     <%=render :partial=> 'deactivate_slots_list' %>
   </div>
