@@ -2,8 +2,8 @@
   <%= f.error_messages %>
     <table class = 'form-table'>
 
-    <tr> <td colspan="4">  <label> <%= link_to "Back to Clinical Screen" , new_cms_appointment_clinical_screen_path(@appointment.id), :class => 'blue' %>  </label> &nbsp; | &nbsp;
-         <label>  <%= link_to "Back to Patient List",  cms_doctor_patients_url(current_user.id), :class => 'blue'  %>  </label>&nbsp; &nbsp;
+    <tr> <td colspan="4">  <label> <%= link_to "Back to clinical screen" , new_cms_appointment_clinical_screen_path(@appointment.id), :class => 'blue' %>  </label> &nbsp; | &nbsp;
+         <label>  <%= link_to "Back to patient list",  cms_doctor_patients_url(current_user.id), :class => 'blue'  %>  </label>&nbsp; &nbsp;
 	 </td></tr>
        
        <tr><th>Prescription To: </th> <td> <%= @department.dept_name %> </td>

@@ -28,15 +28,15 @@ fieldset div.js_option {
 	font-size: 87%;
 }
 input[type="text"], input[type="password"] {
-	font-size: 1.4em;
+	font-size: 1.2em;
 	width: 92%;
 	margin: 0.4em;
 }
 input[type="submit"] {
-	font-size:  1.2em;
+	font-size:  1.1em;
 }
 label {
-	font-size: 1.2em;
+	font-size: 1.1em;
 }
 #submitbutton {
 	margin: 0.8em;
@@ -143,7 +143,7 @@ margin: 20px;
 #left-login .head {
 	color: #204F85;
 	font-weight: bold;
-	padding: 0.3em 1em 0.3em;
+	padding: 0.1em 1em 0.1em;
 	margin: 0;
 	font-size: 2em;
 	text-align: center;

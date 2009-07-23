@@ -14,9 +14,9 @@
                                :success => "Element.hide('spinner')",
              :url => { :controller => '/laboratory/prescriptions', :action => @appointment.prescription.blank? ? :new : :edit },
                                :with => "'department='+ #{@department.id} + '&test_id='+ #{test.id} + '&appointment=' + #{@appointment.id}") %>
-		 </p> <br /><br />
+		 </p>
         <% end %>
-        <p><%=image_tag('pointer.gif', :border => 0) %> &nbsp; <%= link_to_remote "PHARMACY PRESCRIPTION" ,
+        <br /><p><%=image_tag('pointer.gif', :border => 0) %> &nbsp; <%= link_to_remote "PHARMACY PRESCRIPTION" ,
                             :before => "Element.show('spinner')",
                             :success => "Element.hide('spinner')",
                             :url => { :controller =>'/cms/pharmacy_prescriptions' ,:action => :new } ,

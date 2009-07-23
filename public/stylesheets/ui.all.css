@@ -13,7 +13,7 @@
 	/*resets*/margin: 0; padding: 0; border: 0; outline: 0; line-height: 1.1; text-decoration: none; font-size: 100%; list-style: none; 
 }
 .ui-tabs-nav li {
-	/*resets*/margin: 0;  padding: 0; border: 0; outline: 0; line-height: 1.1; text-decoration: none; font-size: 100%; list-style: none;
+	/*resets*/margin: 0; margin-right: 8px; padding: 0; border: 0; outline: 0; line-height: 1.1; text-decoration: none; font-size: 100%; list-style: none;
 	float: left;
 	border-right: none;
 }
