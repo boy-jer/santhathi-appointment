@@ -1,14 +1,15 @@
 <% form_tag(laboratory_lab_tests_url, :method => :get, :id => "search_form") do %>
-   <table class="search-table">
+   <table>
      <tr>
-       <th>Lab Test Name :</th>
-      <td>
+       <th  style = "vertical-align: middle;">Search laboratory test:</th>
+      <td  style = "vertical-align: middle;">
       <%fields_for @search do |f|%>
          <% f.fields_for @search.conditions do |p| %>
-            <%= p.text_field :name_like ,:class =>'textbox' %></td>
+            <%= p.text_field :name_like ,:class =>'textbox' %>
          <%end%>
       <%end%>
-	 </tr>
+      </td>
+    </tr>
   </table>
 <% end %>
 

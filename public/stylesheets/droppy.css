@@ -2,7 +2,7 @@
 
  .droppy { display: block; margin: 0; padding: 0; position: relative; }
   .droppy li { display: block; list-style: none; margin: 0; padding: 0; float: left; position: relative; }
-  .droppy a { display: block; text-decoration: none; background-color: #F3F3EF; color: #fff; }
+  .droppy a { display: block; text-decoration: none; background-color: #EEEFF3; color: #fff; }
   .droppy ul { display: none; position: absolute; left: 0; margin: 0; padding: 0; }
   * html .droppy ul { line-height: 0; } /* IE6 "fix" */
   	.droppy ul a { zoom: 1; } /* IE6/7 fix */
@@ -11,17 +11,17 @@
 
 /* Essentials - configure this */
 
-.droppy ul { width: 240px; border-left: #7694A9 1px solid; border-right: #7694A9 1px solid; border-bottom: #7694A9 1px solid;}
+.droppy ul { width: 240px;  border-right: #7694A9 1px solid; border-bottom: #7694A9 1px solid;}
 .droppy ul ul { left: 201px; }
 
 /* Everything else is theming */
 
-.droppy { background-color: #F8F8F3; height: 24px; margin: 5px 8px 5px 8px;  border:1px solid #ccc; }
+.droppy { background-color: #EAEBF0; height: 26px; margin: 5px 8px 5px 8px;  border:1px solid #fff; }
 
-.droppy a { border-right: 1px solid #ACBDCD; color: #000; font-size: 12px; padding: 4px 30px 3px 30px; line-height: 1; }
-  .droppy li.hover a { background-color: #F3F3EF; color: #000;}
+.droppy a { border: 1px solid #ACBDCD; color: #000; font-size: 12px; padding: 3px 30px 5px 30px; line-height: 1; }
+  .droppy li.hover a { background-color: #EEEFF3; color: #000;}
   .droppy ul { top: 25px; }
-    .droppy ul li a { background-color: #F3F3EF; }
+    .droppy ul li a { background-color: #EEEFF3; }
       .droppy ul a.hover { background-color: #005087; color: #fff;}
-   .droppy ul a { border-bottom: #7694A9 1px solid; border-right: none; opacity: 1; filter: alpha(opacity=90); }
+   .droppy ul a { border-bottom: #fff 1px solid; border-right: none; opacity: 1; filter: alpha(opacity=90); }
 /* .droppy ul a { border-bottom: none; } - I also needed this for IE6/7 */

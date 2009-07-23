@@ -10,7 +10,7 @@
     <table>
      <tr>
        <td>Discharge patients visited on:&nbsp;&nbsp;</td>
-       <td><%= calendar_date_select_tag "date", Date.today , :class =>'textbox' %></td>
+       <td><%= calendar_date_select_tag "date", Date.today , :class =>'textbox-small' %></td>
        <td><%= submit_tag"Discharge" %></td> <td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>
             <td>Prescribed:  &nbsp;</td><td style="width: 15px; border: #ddd 1px solid; background: #ECF7FF"> </td> <td> &nbsp; </td>
             <td>Discharge Recommended:  &nbsp; </td><td style="width: 15px; border: #ddd 1px solid; background: #F1FED7"></td> <td> &nbsp;  &nbsp; &nbsp; </td>
@@ -19,7 +19,16 @@
    <%end%>
 
    </div>
- 
+
+
+  <!-- Ajax search result indicator -->
+  <%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner",
+              :style =>"display: none;" ) %>
+
+
 
 
   <div id='appointment-list'>

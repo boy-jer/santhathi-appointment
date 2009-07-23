@@ -50,7 +50,7 @@ body {
       /*background: #00c9ee repeat-x ;*/
       /*background: #55ABD5;*/
       /*background: #F5FAFC;*/
-      background: #fff;
+      background: #F1F3F3;
       color: #000;
       margin: 0;
       padding: 0;
@@ -60,7 +60,7 @@ body {
 #wrapper {
 	 width: 100%;
      margin: 0;
-     background: #fff;
+     background: #F1F3F3;
      padding: 0px ;
 }
 
@@ -237,7 +237,7 @@ h3 span {color: #003A66;
 .head {
 	color: #1B74B0;
 	/*background: #fff url(/images/heading.png) repeat-x; */ 
-	padding: .2em .3em .2em 0em;
+	padding: 0em .3em 0em 0em;
 	margin: 0px 0px 15px 0px ;
         border: #f0f1f2 0px solid;
         font-size: 20px;
@@ -405,7 +405,7 @@ h3 span {color: #003A66;
 #main-schedules .head{
         color: #005893;
 	font-weight: normal;
-	padding: 0em 1em 0em;
+	padding: 0em 0.5em 0em;
 	font-size: 15px;
         font-weight: bold;
 	text-align: left;
@@ -428,7 +428,7 @@ h3 span {color: #003A66;
 #new-booking .head{
         color: #005893;
 	font-weight: normal;
-	padding: 0em 1em 0em;
+	padding: 0em 0.5em 0em;
 	font-size: 15px;
         font-weight: bold;
 	text-align: left;
@@ -451,12 +451,12 @@ h3 span {color: #003A66;
            border-style: outset;*/
          
            min-height: 525px;
-           background: #F8F8F1/*url(/images/table-header.jpg) repeat-x*/;
+           background: #FFF/*url(/images/table-header.jpg) repeat-x*/;
            height: 100%;
            margin: 0px;
-           padding: 12px;
-           margin: 10px 7px;
-           border: 1px #ccc solid;
+           padding: 15px;
+           margin: 10px;
+           border: 1px #BBC9D3 solid;
            }
 
 
@@ -632,12 +632,12 @@ h3 span {color: #003A66;
              padding: 0.3em .5em .3em .5em;
              border:1px solid #96ABBB;    
              font-weight: bold;    
-
+             vertical-align: middle;
 }
 
 .listing td { padding: .8em .5em .8em .5em; color: #000; border-bottom:1px solid #96ABBB; }
 .listing tr{background: #FfFfFf; }
-
+search-table
 .listing .even {background: #FFF;}
 .listing .odd {background: #FFF;}
 
@@ -702,7 +702,7 @@ h3 span {color: #003A66;
 
 .search-table th {background: #F8F8F8 /*url(/images/table-header.jpg) repeat-x*/; color: #003D66; padding: .3em .3em; border:1px solid #A8B8C7; text-align: left;  font-weight: bold; }
 
-.search-table td {background-color: #D9E6F7; padding: .3em .3em; border:1px solid #A8B8C7; text-align: left; border-top:1px solid #fff;}
+.search-table td {background-color: #D9E6F7; padding: .3em .3em; border:1px solid #A8B8C7; text-align: left; vertical-align: middle;}
 
 .search-table {border-collapse: collapse; width: 100%; }
 
@@ -916,7 +916,7 @@ a.button:hover span {
 /*------------------------- links as buttons --------------*/
 
 /*--------------------------clinical-screen----------------*/
-.clinical-table th { padding: 0.4em .8em; border:1px solid #808080; text-align: left;}
+.clinical-table th { padding: 0.4em .8em; border:1px solid #808080; text-align: left; font-weight: bold; color: #616161;}
 
 .clinical-table td {padding: 0.4em .8em; border: 1px solid #808080;}
 

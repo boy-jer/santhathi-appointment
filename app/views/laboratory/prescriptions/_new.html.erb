@@ -2,12 +2,10 @@
   <%= f.error_messages %>
     <table class = 'form-table'>
 
-    <tr> <td colspan="4">  <label> <%= link_to "Clinical Screen" , new_cms_appointment_clinical_screen_path(@appointment.id) %>  </label> &nbsp; | &nbsp;
-         <% if doctor? or admin? -%>
-	            <label>  <%= link_to "Patient List",  cms_doctor_patients_url(current_user.id)  %>  </label>&nbsp; | &nbsp;
-	        <% end %> <label>
-     <%= link_to "Cancel" , new_cms_appointment_clinical_screen_path(@appointment.id) %>  </label></td></tr>
-
+    <tr> <td colspan="4">  <label> <%= link_to "Back to Clinical Screen" , new_cms_appointment_clinical_screen_path(@appointment.id), :class => 'blue' %>  </label> &nbsp; | &nbsp;
+         <label>  <%= link_to "Back to Patient List",  cms_doctor_patients_url(current_user.id), :class => 'blue'  %>  </label>&nbsp; &nbsp;
+	 </td></tr>
+       
        <tr><th>Prescription To: </th> <td> <%= @department.dept_name %> </td>
            <th>Prescribing Doctor:</th> <td> <%= @appointment.doctor.doctor_profile.name %> </td></tr>
        <tr><th>Prescription Date:</th> <td><%= calendar_date_select_tag "prescription[p_date]", Date.today , :class =>'textbox' %></td>
@@ -33,5 +31,5 @@
     <input type="hidden" name="test_id" value= <%=  params[:test_id] %>>
 <% end %>
 <br />
-<br/>
+
 <div id = 'prescription-list'> <%= render :partial => '/laboratory/prescriptions/prescreptions'%> </div>

@@ -1,13 +1,10 @@
-<h3>Prescription List</h3>
-
-
 <table class="listing">
   <tr>
     <th> <%= remote_order_by_link({:prescription => { :appointment => { :patient => :reg_no }}} , :text => "Hospital No") %>   </th>
     <th> <%= remote_order_by_link({:prescription =>  { :appointment => { :patient => :id }} } , :text => "PVR No") %>  </th>
     <th> <%= remote_order_by_link({:prescription => { :appointment => { :patient => :patient_name }}} , :text => "Patient Name") %></th>
-    <th> <%= remote_order_by_link( {:lab_test =>:name }  , :text => "Test Prescribed") %> </th>
-    <th> Patient Type(IP/OP)</th>
+    <th><%= remote_order_by_link( {:lab_test =>:name }  , :text => "Test Prescribed") %> </th>
+
     <th> Status </th>
     <th> Test Report </th>
     <th> Presc. Details </th>
@@ -21,7 +18,6 @@
           <td> <%=h patient.id %>         </td>
           <td> <%= patient.patient_name %>         </td>
 	  <td> <%= test.lab_test.name %> </td>
-          <td> OP </td>
 	  <td> completed </td>
 	  <td> <%= lab_report_for_prescribed_test(test).blank? ? (link_to "Create Report", new_laboratory_prescribed_test_laboratory_report_path(test)) : (link_to "View Report", laboratory_prescribed_test_laboratory_report_path(:prescribed_test_id => test, :id => test.lab_test.laboratory_report)) %>
 	  </td>

@@ -1,8 +1,4 @@
-<div class='continer'>
   <% unless @tests.blank? %>
-
-  <h3>Showing Lab Test </h3><br />
-
   <table class="listing">
   <tr><th>Name </th><th> Duration </th><th> Description  </th></tr>
 
@@ -24,8 +20,6 @@
   <br/>
    <label> Lab Test with specified Name Not Found. </label><br/><br/>
     <br/>
-    <%= link_to "Back", laboratory_lab_tests_path() %> </td>
+    <%= link_to "Back to lab test list", laboratory_lab_tests_path() %> </td>
   <%end%>
 
-
-</div>

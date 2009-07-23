@@ -1,6 +1,6 @@
 <div class='continer'>
 
-<h3>Test Details</h3><br/>
+ <h3 class = 'head'>Editing laboratory test</h3>
 
 <% form_for(:lab_test ,:url => laboratory_lab_test_path(@lab_test) ,:html => { :method => :put }) do |f| %>
   <%= f.error_messages %>
@@ -13,11 +13,13 @@
      <tr> <th><%= f.label :pre_requisites %>:</th>
      <td><%= f.text_field :pre_requisites, {:class => 'address'} %></td> </tr>
 </table> <br />
-<table>
-  <tr><td><%= f.submit "Save" %> </td>
-      <td><%= link_to "<span>Sample Specfications</span>", laboratory_lab_test_sample_specfications_path(@lab_test), :class => :button %> </td>
-      <td><%= link_to "<span>Parameter Specfications</span>",  laboratory_lab_test_parameter_specifications_path(@lab_test), :class => :button %> </td>
-      <td><%= link_to "<span>Test List</span>",  laboratory_lab_tests_path , :class => :button %> </td>
+
+<table >
+  <tr><td><%= f.submit "Save" %> &nbsp;</td>
+      <td  style ='vertical-align: middle;'><%= link_to "<span>Parameter Specfications</span>",  laboratory_lab_test_parameter_specifications_path(@lab_test), :class => :button %> </td>
+      <td  style ='vertical-align: middle;'><%= link_to "<span>Sample Specfications</span>", laboratory_lab_test_sample_specfications_path(@lab_test), :class => :button %> </td>
+
+      <td  style ='vertical-align: middle;'><%= link_to "<span>Back to  lab test list</span>",  laboratory_lab_tests_path , :class => :button %> </td>
   </tr>
 </table>
 <% end %>
