@@ -451,7 +451,7 @@ h3 span {color: #003A66;
            border-style: outset;*/
          
            min-height: 525px;
-           background: #F8F8F3/*url(/images/table-header.jpg) repeat-x*/;
+           background: #F8F8F1/*url(/images/table-header.jpg) repeat-x*/;
            height: 100%;
            margin: 0px;
            padding: 12px;
@@ -524,7 +524,7 @@ h3 span {color: #003A66;
 
 }
 .time-slots tr td.available {
-	background-color: #c6ffed;
+	background-color: #D7F6C6;
         margin:0px;
 	width:100px;
         padding: 2px 1px 2px 2px;
@@ -724,7 +724,7 @@ h3 span {color: #003A66;
 	float: left;
 	margin: 32px 3px 0px 3px;
 	padding: 5px 15px 0px 15px;
-        /*width: 75px;*/
+        width: 75px;
 	height:17px;
 	text-transform: uppercase;
 	text-decoration: none;
@@ -732,7 +732,7 @@ h3 span {color: #003A66;
 	font-weight: bold;
 	color: #fff;
 	text-align:center;
-	/*background-image: url('/images/nw-tab.gif');*/
+	background-image: url('/images/nw-tab.gif');
 
 }
 
@@ -817,6 +817,7 @@ hr {
   width: 100%;
   background-color: #ddd;
   height: 1px;
+  margin-bottom: 10px;
 }
 
 #calendar-display {

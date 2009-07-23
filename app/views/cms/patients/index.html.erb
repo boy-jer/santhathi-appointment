@@ -5,9 +5,9 @@
 
   <br />
   <div>
- <% unless admin? %>
-   <%form_tag (discharge_cms_doctor_patients_path(current_user.id), :method=>:post )do %>
-    <table id='reason-display'>
+
+   <%form_tag (discharge_cms_doctor_patients_path(current_user.id), :method =>:post )do %>
+    <table>
      <tr>
        <td>Discharge patients visited on:&nbsp;&nbsp;</td>
        <td><%= calendar_date_select_tag "date", Date.today , :class =>'textbox' %></td>
@@ -17,7 +17,7 @@
         </tr>
      </table>
    <%end%>
- <% end %>
+
    </div>
    <%= observe_form("search_form", :frequency => 1,
                  :before => "Element.show('spinner')",
