@@ -3,6 +3,7 @@
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
   include RoleRequirementSystem
+ #include ExceptionNotifiable
  # include FaceboxRender
   
   before_filter :login_require

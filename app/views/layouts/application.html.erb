@@ -28,7 +28,17 @@
   <div id="main">
 
     <div id="left">
-	  <%= flash_message %>
+	    <% if flash[:notice] %>
+       <div id="notice"><%= flash[:notice] %></div>
+     <% end %>
+
+     <% if flash[:warning] %>
+       <div id="warning"><%= flash[:warning] %></div>
+     <% end %>
+
+     <% if flash[:error] %>
+       <div id="error"><%= flash[:error] %></div>
+     <% end %>
 
       <h2 class="head"><%= yield_or_default yield(:header), "Use 'content_for :header do; end' in your view to set this title" %></h2>
 
