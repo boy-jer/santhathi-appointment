@@ -15,7 +15,8 @@
      </div> <!--new booking-->
      
      <div id="main-schedules">
-         <div class='head'>Doctor's Schedules</div>
+         <div class='head'>Doctor's Schedules &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= link_to_remote "Getit" ,:url => {:controller => "/pms/appointments/" ,:action =>:index ,:doctor => 2,:date => "2009/07/24" } %> </div> 
+      <!--  <%= link_to_remote "Getit" ,:url => pms_appointments_path(:doctor => 2,:date => "2009/07/24" ) %> -->
          <hr />
          <%= render :partial => 'schedules' %>
      </div>

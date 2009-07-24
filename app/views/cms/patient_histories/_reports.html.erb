@@ -19,12 +19,12 @@
  <tr><td> <%=h test.created_at.to_date %></td>
      <td><%=h Time.parse(test.created_at.to_s).strftime('%H:%M').to_s %></td>
      <td><%=h Department.find(@prescription.department_id).dept_name %></td>
-     <td><%=h @appointment.doctor.doctor_profile.name %></td>
-     <td> <%=h  test.lab_test.name %></td>
-     <td> <%=h @prescription.follow_up %></td>
+     <td><%=h @appointment.doctor.doctor_profile.name %> </td>
+     <td> <%=h  test.lab_test.name %> </td>
+     <td> <%=h @prescription.follow_up %> </td>
      <td>  </td>
-     <td> <%=h @prescription.remarks  %></td>
-     <td>  <%= link_to_remote "PrescribedTest" ,:url =>{:action=>"prescribed_tests", :controller=>"cms/patient_histories" ,:prescribed_test_id => test,:id => test.lab_test.laboratory_report } %></li> </td>
+     <td> <%=h @prescription.remarks  %> </td>
+     <td> <%= link_to_remote "PrescribedTest" ,:url =>{:action=>"prescribed_tests", :controller=>"cms/patient_histories" ,:prescribed_test_id => test,:id => test.lab_test.laboratory_report } unless lab_report_for_prescribed_test(test).blank? %></li> </td>
     </tr>
    <%end%>
    <%end%>

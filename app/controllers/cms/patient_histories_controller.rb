@@ -17,7 +17,7 @@ class Cms::PatientHistoriesController < ApplicationController
 
   def prescription
   	@prescription = @appointment.prescription
- 		@prescribed_tests = @prescription.prescribed_tests
+ 		@prescribed_tests = @prescription.prescribed_tests unless @prescription.blank?
 
 
     render :update do |page|
@@ -29,7 +29,7 @@ class Cms::PatientHistoriesController < ApplicationController
 
  	def reports
  		@prescription = @appointment.prescription
- 		@prescribed_tests = @prescription.prescribed_tests
+ 		@prescribed_tests = @prescription.prescribed_tests unless @prescription.blank?
  		render :update do |page|
                        page.replace_html 'patient-history', :partial => 'cms/patient_histories/reports'
                   end
@@ -82,8 +82,8 @@ class Cms::PatientHistoriesController < ApplicationController
     @prescription, @lab_test = @prescribed_test.prescription, @prescribed_test.lab_test
     @appointment = @prescription.appointment
     @patient = @appointment.patient
-    @specifications = @lab_test.parameter_specifications
-    @laboratory_report = LaboratoryReport.find(params[:id])
+    @specifications = @lab_test.parameter_specifications.gender_filter(@patient.gender)
+    @laboratory_report = LaboratoryReport.find(params[:id]) 
     @laboratory_test_results =  @laboratory_report.laboratory_test_results
     @results = {}
     @laboratory_test_results.map{|r|  @results[r.parameter_specification_id] = [r.result, r.remarks] }

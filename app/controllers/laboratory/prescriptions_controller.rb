@@ -76,6 +76,11 @@ class Laboratory::PrescriptionsController < ApplicationController
                 }
     end
   end
+  
+  def show
+    @prescription = Prescription.find(params[:id])
+    render :layout => false
+  end
 
    def update
    	 @prescription = Prescription.find(params[:id])

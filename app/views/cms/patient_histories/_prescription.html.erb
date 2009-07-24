@@ -12,26 +12,27 @@
      <th> Remarks </th>
 </tr>
 
-<tr>
 
-<% unless @prescription.blank? %>
+
+ <% unless @prescription.blank? %>
     <% unless @prescribed_tests.blank? %>
-    <% for test in @prescribed_tests %>
-
-    <td> <%=h test.created_at.to_date %></td>
-    <td><%=h Time.parse(test.created_at.to_s).strftime('%H:%M').to_s %></td>
-    <td><%=h Department.find(@prescription.department_id).dept_name %></td>
-    <td><%=h @appointment.doctor.doctor_profile.name %></td>
-    <td> <%=h  test.lab_test.name %></td>
-    <td> <%=h @prescription.quantity %></td>
-    <td> <%=h @prescription.follow_up %></td>
-    <td>  </td>
-    <td> <%=h @prescription.remarks  %></td>
-    </tr>
-   <%end%>
-   <%end%>
+      <% for test in @prescribed_tests %>
+       <tr> <td> <%=h test.created_at.to_date %></td>
+            <td><%=h Time.parse(test.created_at.to_s).strftime('%H:%M').to_s %></td>
+            <td><%=h Department.find(@prescription.department_id).dept_name %></td>
+            <td><%=h @appointment.doctor.doctor_profile.name %></td>
+            <td> <%=h  test.lab_test.name %></td>
+            <td> <%=h @prescription.quantity %></td>
+            <td> <%=h @prescription.follow_up %></td>
+            <td>  </td>
+            <td> <%=h @prescription.remarks  %></td>
+      </tr>
+      <%end%>
+        No prescribed_tests .
+   <% else %>
+   <% end %>
    <%else%>
-       No Record Found Yet.
+       No Prescription Yet.
    <%end%>
 
 </table>
