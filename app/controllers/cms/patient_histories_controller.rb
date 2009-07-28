@@ -3,8 +3,8 @@ class Cms::PatientHistoriesController < ApplicationController
   before_filter :find_appointment ,:except =>[:show,:index,:prescribed_tests]
 
   def index
-  	@patient = Patient.find(65)
-  	@appointment = Appointment.find(6)
+  	#@patient = Patient.find(params[:id])
+  	#@appointment = Appointment.find(6)
   end
 
 
@@ -18,8 +18,6 @@ class Cms::PatientHistoriesController < ApplicationController
   def prescription
   	@prescription = @appointment.prescription
  		@prescribed_tests = @prescription.prescribed_tests unless @prescription.blank?
-
-
     render :update do |page|
       page.replace_html 'patient-history', :partial => 'cms/patient_histories/prescription'
     end
@@ -52,20 +50,18 @@ class Cms::PatientHistoriesController < ApplicationController
 	end
 
 	def alerts
-		     render :update do |page|
-                        page.replace_html 'patient-history', :partial => 'cms/patient_histories/alerts'
-                      end
+		 render :update do |page|
+       page.replace_html 'patient-history', :partial => 'cms/patient_histories/alerts'
+     end
 
 	end
 
 	def discharge_summary
 
     @discharge_summary = @appointment.discharge_summary
-
-                     render :update do |page|
-
-                        page.replace_html 'patient-history', :partial => 'cms/patient_histories/discharge_summary'
-                      end
+    render :update do |page|
+       page.replace_html 'patient-history', :partial => 'cms/patient_histories/discharge_summary'
+    end
 
 	end
 
@@ -79,7 +75,7 @@ class Cms::PatientHistoriesController < ApplicationController
 
 	def prescribed_tests
 		@prescribed_test = PrescribedTest.find(params[:prescribed_test_id])
-    @prescription, @lab_test = @prescribed_test.prescription, @prescribed_test.lab_test
+    @prescription , @lab_test = @prescribed_test.prescription, @prescribed_test.lab_test
     @appointment = @prescription.appointment
     @patient = @appointment.patient
     @specifications = @lab_test.parameter_specifications.gender_filter(@patient.gender)

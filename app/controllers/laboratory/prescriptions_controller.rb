@@ -43,9 +43,9 @@ class Laboratory::PrescriptionsController < ApplicationController
 
     @appointment.prescribe!
     if @prescription.save
-      params[:services].map{|service| PrescribedTest.create(:prescription_id => @prescription.id, :lab_test_id => service)}
+      params[:services].map{ |service| PrescribedTest.create(:prescription_id => @prescription.id, :lab_test_id => service ) }
       @prescribed_tests = @prescription.prescribed_tests
-      @services = @prescribed_tests.map{|p| p.lab_test.id}
+      @services = @prescribed_tests.map{|p| p.lab_test.id }
       respond_to do |format|  
         format.html
         format.js { render :update do |page|

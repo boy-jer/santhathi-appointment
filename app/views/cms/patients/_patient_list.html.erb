@@ -34,25 +34,24 @@
      <%end%>
      </table>
 <%end%>
-
+ 
 <table class="table-bottom">
     <tr class="table-footer">
-
        <td colspan = 2> <%= remote_per_page_select %></td>
         <td colspan = 2> <% form_tag(cms_patients_url, :method => :get ) do %>
-                                        <% fields_for @search do |f|%>
-                                          <%= f.text_field :page, :class => 'textbox-tiny' %>
-                                          <%= submit_tag "go" %>
-                                       <%end -%>
-                                     <%end-%>
+                               <% fields_for @search do |f|%>
+                                   <%= f.text_field :page, :class => 'textbox-tiny' %>
+                                   <%= submit_tag "go" %>
+                               <%end -%>
+                          <%end-%>
 
 
         </td>
        <td colspan=6> <% if @appointments.size > 1 %>
-                          <div class="pagination">
+                             <div class="pagination">
                                 <%= remote_page_links %>
-                          </div>
-                          <%end%>
+                             </div>
+                         <% end %>
          </td>
      </tr>
 

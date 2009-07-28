@@ -1,6 +1,6 @@
 class UserRolesController < ApplicationController
- require_role :admin
- #layout 'admin'
+  require_role :admin
+  layout 'admin'
 
 
   def edit

@@ -43,13 +43,15 @@ class Admin::UsersController < ApplicationController
   def suspend
     @user = User.find(params[:id])
     @user.suspend! 
-    redirect_to admin_user_path(@user)
+   # redirect_to admin_user_path(@user)
+    redirect_to admin_users_path
   end
 
   def unsuspend
     @user = User.find(params[:id])
     @user.unsuspend! 
-    redirect_to admin_user_path(@user)
+    redirect_to admin_users_path
+    #redirect_to admin_user_path(@user)
   end
 
   def purge

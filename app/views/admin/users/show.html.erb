@@ -30,21 +30,24 @@
     -->
 </ul>	
 <% end -%>
+ <br /><br />
+<table class="form-table">
+	<tr><th> Login : </th> <td> <%= "#{in_place_editor_field :user, 'login'}" %> </td> </tr>
+	<tr><th> User ID : </th> <td> <%=  h(@user.id) %> </td> </tr>
 
-<table class="overview">
-	<%= cell "Login", "#{in_place_editor_field :user, 'login'}" %>
-	<%= cell "User ID", h(@user.id) %>
-
-	<%= cell_separator %>
+	<tr> <td colspan="2"> </td> </tr> 
+	<tr> <th> Email : </th><td> <%= "#{in_place_editor_field :user, 'email'}" %> </td></tr>
+	<tr> <th> Password : </th><td><%= "#{"*"*8} <small>#{link_to_if !@user.deleted?, "send new password", reset_password_admin_user_url(@user), :method => :put}</small>" %>
+	  </td> </tr>
 	
-	<%= cell "Email", "#{in_place_editor_field :user, 'email'}" %>
-	<%= cell "Password", "#{"*"*8} <small>#{link_to_if !@user.deleted?, "send new password", reset_password_admin_user_url(@user), :method => :put}</small>" %>
 	
-	<%= cell_separator %>
+	<tr> <td colspan="2"> </td> </tr> 
+	<tr> <th> Account created </th> <td> <%= @user.created_at.to_s(:long) %> </td> </tr>
+	<tr> <th> Last updated </th> <td> <%= @user.updated_at.to_s(:long) %> </td> </tr>
 	
-	<%= cell "Account created", @user.created_at.to_s(:long) %>
-	<%= cell "Last updated", @user.updated_at.to_s(:long) %>
+	
+	
 </table>
-
+ <br /><br />
 <%= link_to 'Edit', edit_admin_user_path(@user) %> |
 <%= link_to 'Back', admin_users_path %>
