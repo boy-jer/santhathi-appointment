@@ -1,0 +1,21 @@
+<table class="listing">
+  <tr><th>Presc. Doctor</th>
+      <th>Presc. Date</th>
+      <th>Service </th>
+      <th>Qty </th>
+      <th>Follow-up Date </th>
+      <th>Remarks </th>
+      <th>Cencel</th>
+  </tr>
+ <% unless @prescribed_tests.blank? %>
+  <% for test in @prescribed_tests %>
+        <tr><td> <%= @appointment.doctor.doctor_profile.name %> </td>
+            <td> <%= @prescription.p_date %> </td>
+            <td> <%= test.lab_test.name %> </td>
+            <td> <%= @prescription.quantity %> </td>
+            <td> <%= @prescription.follow_up %> </td>
+            <td> <%= @prescription.remarks %> </td>
+            <td> <%= link_to "Cencel",laboratory_prescribed_test_path(test.id), :confirm => 'Are you sure?', :method => :delete%>  </td>
+        </tr>
+  <%end%>
+ <%end%>

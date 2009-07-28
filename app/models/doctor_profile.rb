@@ -7,6 +7,7 @@ class DoctorProfile < ActiveRecord::Base
 
 	attr_accessor :hour, :minute, :hour_to, :minute_to
 	#attr_accessible :name ,:department_id ,:medical_id,:designation ,:comments
+	named_scope :by_doctor_id, lambda { |id| { :conditions => ["doctor_id = ?",id] } }
 
   def update_time
     time1 = "#{hour}:#{minute}"
@@ -17,3 +18,4 @@ class DoctorProfile < ActiveRecord::Base
 
 
 end
+
