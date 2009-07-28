@@ -15,7 +15,7 @@
      </div> <!--new booking-->
      
      <div id="main-schedules">
-         <div class='head'>Doctor's Schedules   </div> 
+         <div class='head'>Doctor's Schedules  <%= link_to_remote  "Getit" ,  :url => pms_appointments_url,:method => :get,:with => "'date=' + $('date').value+'&doctor=' + $('appointment_doctor_id').value"  %> </div> 
       
          <hr />
          <%= render :partial => 'schedules' %>
