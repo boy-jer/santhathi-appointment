@@ -1,17 +1,17 @@
 <br />
-<h3>Account details</h3> <br />
-<table class="overview">
-	<%= cell "Login", h(@user.login) %>		
-	<%= cell_separator %>
+ 
+<table class="form-table">
+	  <tr><th> Login : </th> <td> <%= "#{in_place_editor_field :user, 'login'}" %> </td> </tr>
+	  <tr><th> User ID : </th> <td> <%=  h(@user.id) %> </td> </tr>
+
+	  <tr> <td colspan="2"> </td> </tr> 
+	  <tr> <th> Email : </th><td> <%= "#{in_place_editor_field :user, 'email'}" %> </td></tr>
+	  <tr> <th> Password : </th><td><%= "#{"*"*8} <small>#{link_to_if !@user.deleted?, "send new password", reset_password_admin_user_url(@user), :method => :put}</small>" %>
+	  </td> </tr>
 	
-	<% change_email_text = " <small>#{link_to "change", edit_email_user_url(@user)}</small>"%>
 	
-	<%= cell "Email", "#{h(@user.email)}#{change_email_text}" %>
-	<%= cell "Password", "#{"*"*8} <small>#{link_to "change", edit_password_user_url(@user)}</small>" %>
-	
-	<%= cell_separator %>
-	
-	<%= cell "Account created", @user.created_at.to_s(:long) %>
-	<%= cell "Last updated", @user.updated_at.to_s(:long) %>
-</table>
+	  <tr> <td colspan="2"> </td> </tr> 
+	  <tr> <th> Account created </th> <td> <%= @user.created_at.to_s(:long) %> </td> </tr>
+	  <tr> <th> Last updated </th> <td> <%= @user.updated_at.to_s(:long) %> </td> </tr>
+ </table>
 <br />
