@@ -50,7 +50,7 @@ body {
       /*background: #00c9ee repeat-x ;*/
       /*background: #55ABD5;*/
       /*background: #F5FAFC;*/
-      background: #F1F3F3;
+      background: #fff;
       color: #000;
       margin: 0;
       padding: 0;
@@ -60,7 +60,7 @@ body {
 #wrapper {
 	 width: 100%;
      margin: 0;
-     background: #F1F3F3;
+     background: #fff;
      padding: 0px ;
 }
 
@@ -125,7 +125,7 @@ textarea.textbox{
 	background:#ffffff url(/images/field-top.gif) repeat-x top;
 	padding:2px 2px;
 
-	width:220px;
+	width:200px;
 }
 
 input.textbox-small{
@@ -145,7 +145,7 @@ input.address{
 	border:#7D99B2 1px solid;
 	background:#ffffff url(/images/field-top.gif) repeat-x top;
 	padding:2px 2px;
-        height: 44px;
+    height: 44px;
 	width:200px;
 }
 
@@ -202,15 +202,15 @@ h3 span {color: #003A66;
     padding: 5px 10px 0px 10px;
 	/*position: absolute;*/
 	background: url(/images/top-bar-12.png) repeat-x;
-	height: 60px;
+	height: 90px;
 
        
 }
 #header h1 {
 	float: left;
 	font-weight: bold;
-	color: #1B74B0;
-        font-size: 23px;
+	color: #e00000;
+        font-size: 30px;
 	padding: 0px;
 	margin: 0px;
         position: absolute; 
@@ -237,10 +237,10 @@ h3 span {color: #003A66;
 .head {
 	color: #1B74B0;
 	/*background: #fff url(/images/heading.png) repeat-x; */ 
-	padding: 0em .3em 0em 0em;
+	padding: .2em .3em .2em 0em;
 	margin: 0px 0px 15px 0px ;
         border: #f0f1f2 0px solid;
-        font-size: 20px;
+        font-size: 19px;
 }
 
 
@@ -280,7 +280,7 @@ h3 span {color: #003A66;
 	color: #2B3A16;
 	padding: 0.3em 1em;
 	margin: .5em .1em .5em;
-	background-color: #E3F1CB;
+	background-color: #E0F8B7;
 	font-weight: bold;
         border: 1px solid #BDCFE1;
 }
@@ -393,9 +393,9 @@ h3 span {color: #003A66;
 /*------------------------For appointment booking page\------------------*/
 #main-schedules {
  color: #333;
- width: 31%;
+ width: 32%;
  float: right;
- padding:10px;
+ padding:5px;
  background-color: #fff;
  height: 452px;
  background: #fff;
@@ -403,22 +403,23 @@ h3 span {color: #003A66;
 }
 
 #main-schedules .head{
-        color: #005893;
+    color: #005893;
 	font-weight: normal;
-	padding: 0em 0.5em 0em;
-	font-size: 15px;
-        font-weight: bold;
+	
+	padding: 0.2em 1em 0.2em;
+	font-size: 14px;
+    font-weight: bold;
 	text-align: left;
-        margin: 0;
-        border: 1px solid #fff;
+    margin: 0;
+     border: 1px solid #fff;
 }
 
 #new-booking {
  float: left;
- width: 64.5%;
+ width: 65%;
  display: inline;
  margin: 0px 0px 5px 5px;
- padding: 10px;
+ padding:5px;
  background-color:#fff;
  border: #ddd 1px solid;
  height: 100%;
@@ -428,11 +429,12 @@ h3 span {color: #003A66;
 #new-booking .head{
         color: #005893;
 	font-weight: normal;
-	padding: 0em 0.5em 0em;
-	font-size: 15px;
+	
+	padding: 0.2em 1em 0.2em;
+	margin: 2px 0px 5px 0px ;
+	font-size: 14px;
         font-weight: bold;
 	text-align: left;
-        margin: 0;
         border: 1px solid #fff;
 
 
@@ -451,12 +453,12 @@ h3 span {color: #003A66;
            border-style: outset;*/
          
            min-height: 525px;
-           background: #FFF/*url(/images/table-header.jpg) repeat-x*/;
+           background: #F8F8F3 /*url(/images/table-header.jpg) repeat-x*/;
            height: 100%;
            margin: 0px;
-           padding: 15px;
-           margin: 10px;
-           border: 1px #BBC9D3 solid;
+           padding: 12px;
+           margin: 10px 7px;
+           border: 1px #E0E8F0 solid;
            }
 
 
@@ -476,9 +478,11 @@ h3 span {color: #003A66;
 }
 
 #schedule {
-           height: 400px;.form-table th {background-color: #fff; padding: 0.1em .8em ; border:1px solid #ABBFCF; text-align: right;}
-        
-          }
+           height: 400px;
+           overflow: auto;
+           
+           /*border: 1px solid #778899;*/
+          }F6F6F0
 #patients_list{
            height: 95px;
            overflow: auto;
@@ -488,35 +492,24 @@ h3 span {color: #003A66;
 
 /* ---------------------tables --------------------*/
 .time-slots{
-	    border-right: 1px solid #ced8dc;
-        width: 100%;
-          
+	    border-collapse: collapse;
+            width: 100%;
+            border: 1px solid #c6c8c9;
 }
 
-.time-slots tr td {
-	border-left: 1px solid #ced8dc;
-    border-bottom: 1px solid #ced8dc;
-	padding: 2px 1px 2px 2px;
+.time-slots td {
+	border: 1px solid #ced8dc;
+	padding: 0.2em 1ex 0.2em 2em;
 	color: black;
 	font-size: 11px;
-    text-align: center;
-}
-
-.time-slots tr td a{
-	text-decoration: none;
-}
-
-.time-slots tr{
-	background-color: #ffffff;
 }
 
 .time-slots th {
-	padding: 2px 1px 2px 2px;
-        background-color: #f1f3f5;
+	padding: 0.2em 1.2em;
+        background-color: #E0EAF4;
         color: #204F85;
-        font-size: 12px;
+        font-size: 11px;
         border: 1px solid #BFD0E1;
-        text-align: center;
 }
 
 .time-slots tr.d0 td {
@@ -524,21 +517,19 @@ h3 span {color: #003A66;
 
 }
 .time-slots tr td.available {
-	background-color: #D7F6C6;
+	background-color: #c6ffed;
         margin:0px;
 	width:100px;
-        padding: 2px 1px 2px 2px;
+        padding: 1px 0px 1px 1px;
         line-height: normal;
 }
 
 .time-slots tr td.available a {
-	 color: #000;
-     text-decoration: none;
+	 color: #3c4e6f;
 }
 
 .time-slots tr td.not-working {
-	 background-color: #f7f7f7;
-         padding: 2px 1px 2px 2px;
+	 background-color: #fffd87;
 }
 
 .time-slots tr td.available a:hover {
@@ -548,13 +539,13 @@ h3 span {color: #003A66;
 .time-slots tr.appointment1 td {
 	background-color: #eed4b5;
         margin:0px;
-        padding: 2px 0px 2px 0px;
+        padding: 1px 0px 1px 0px;
         line-height: normal;
 }
 .time-slots tr.appointment2 td {
 	background-color: #e2cdee;
         margin:0px;
-        padding: 2px 0px 2px 0px;
+        padding: 1px 0px 1px 0px;
         line-height: normal;
 }
 .time-slots tr.appointment3 td {
@@ -612,9 +603,9 @@ h3 span {color: #003A66;
 
 
 .time-slots tr.appointment td {
-	background-color: #FFF9BD;
+	background-color: #fffdea;
         margin:0px;
-        padding: 2px 1px 2px 2px;
+        padding: 1px 0px 1px 0px;
         line-height: normal;
 }
 
@@ -632,7 +623,7 @@ h3 span {color: #003A66;
              padding: 0.3em .5em .3em .5em;
              border:1px solid #96ABBB;    
              font-weight: bold;    
-             vertical-align: middle;
+
 }
 
 .listing td { padding: .8em .5em .8em .5em; color: #000; border-bottom:1px solid #96ABBB; }
@@ -690,34 +681,41 @@ h3 span {color: #003A66;
 }
 
 
-.form-table th {background-color: #fff; padding: 0.1em .8em ; border:1px solid #ABBFCF; text-align: right;}
+.form-table th {background-color: #fff; padding: 0.1em .8em ; border:1px solid #B1C4D2; text-align: right;}
 
-.form-table td {background-color: #fff; padding: 0.3em .8em 0.3em ; border:1px solid #ABBFCF; }
+.form-table td {background-color: #fff; padding: 0.3em .8em 0.3em ; border:1px solid #B1C4D2; }
 
-.form-table {border-collapse: collapse; width: 100%; border: #ABBFCF 1px solid; margin: 0px 5px 0px 5px; color: #000; }
+.form-table {border-collapse: collapse; width: 100%; border: #B1C4D2 1px solid; margin: 0px 5px 0px 5px; color: #000; }
 
-.form-table a {color: #0077C3;}
-
-.form-table .table-top td {background: #F1F3F5;  color: #006CB3; font-size: 13px; font-weight: bold;  border: #ABBFCF 1px solid;}
+.form-table .table-top td {background: #D9E6F7;  color: #1B74B0; font-size: 13px; font-weight: bold;  border: #BDCFE1 1px solid;}
 
 
 
 .search-table th {background: #F8F8F8 /*url(/images/table-header.jpg) repeat-x*/; color: #003D66; padding: .3em .3em; border:1px solid #A8B8C7; text-align: left;  font-weight: bold; }
 
-.search-table td {background-color: #D9E6F7; padding: .3em .3em; border:1px solid #A8B8C7; text-align: left; vertical-align: middle;}
+.search-table td {background-color: #D9E6F7; padding: .3em .3em; border:1px solid #A8B8C7; text-align: left; border-top:1px solid #fff;}
 
 .search-table {border-collapse: collapse; width: 100%; }
 
 /* Menu */
-#menu { width: 500px;  padding: 0; margin: 0 auto; list-style: none; }
+
+#menu { padding: 0; margin: 0;   list-style: none; }
+
 #menu ul{margin:0; padding: 0px 0px 0px 0px; list-style:none; }
-#menu li { display:inline; margin:0; padding-left: 0px; }
+
+
+#menu li {
+	  display:inline;
+          margin:0;
+          padding-left: 0px;
+         }
+
 #menu li a {
 	display: block;
 	float: left;
-	margin: 32px 3px 0px 3px;
-	padding: 5px 15px 0px 15px;
-        width: 75px;
+	margin: 43px 3px 0px 3px;
+	padding: 4px 15px 0px 15px;
+        background: #2685c6;
 	height:17px;
 	text-transform: uppercase;
 	text-decoration: none;
@@ -725,15 +723,13 @@ h3 span {color: #003A66;
 	font-weight: bold;
 	color: #fff;
 	text-align:center;
-	background-image: url('/images/nw-tab.gif');
+	/*background-image: url('/images/nw-tab.gif');*/
 
 }
 
 #menu li a:hover {
 	display: block;
 	float: left;
-        margin: 32px 3px 0px 3px;
-	padding: 5px 15px 0px 15px;
 	text-transform: uppercase;
 	text-decoration: none;
 	font-size: 11px;
@@ -762,7 +758,7 @@ h3 span {color: #003A66;
 }
 
 
-#sub-menu li {vertical-align: middle;
+#sub-menu li {
 	display:inline;
       	margin:0;
       	padding:0;
@@ -802,16 +798,53 @@ h3 span {color: #003A66;
 	font-weight: normal;
 }
 
+#main_login {
+margin: 20px;
 
+}
+/*round corner */
+#left-login {
+   background: #FFFFFF;
+   height: 450px;
+   margin: 0 auto;
+   width: 60% ;
+}
 
+#left-login .head {
+	color: #204F85;
+	font-weight: normal;
+        border: #fff 1px solid;
+	padding: 0.3em 1em 0.3em;
+	margin: 0;
+	font-size: 1.8em;
+	text-align: center;
+}
 
+#login-box {
+  margin: 0 auto;
+  background: #ACCBEA;
+  width: 300px;
+  height: 100%;
+  padding: 25px 25px 15px 25px;
+}
+
+#login-logo {
+  margin: 0 auto;
+  width: 300px;
+  padding: 0px 0px 10px 40px;
+}
+
+#login-box label {
+	font-weight: bold;
+        color: #ffffff;
+}
+/*
 hr {
   border: 0;
-  width: 100%;
-  background-color: #ddd;
+  width: 98%;
+  background-color: #c7dfea;
   height: 1px;
-  margin-bottom: 10px;
-}
+}*/
 
 #calendar-display {
 	float: left;
@@ -909,7 +942,7 @@ a.button:hover span {
 /*------------------------- links as buttons --------------*/
 
 /*--------------------------clinical-screen----------------*/
-.clinical-table th { padding: 0.4em .8em; border:1px solid #808080; text-align: left; font-weight: bold; color: #616161;}
+.clinical-table th { padding: 0.4em .8em; border:1px solid #808080; text-align: left;}
 
 .clinical-table td {padding: 0.4em .8em; border: 1px solid #808080;}
 
@@ -937,7 +970,7 @@ a.button:hover span {
 
 
 
-.report-create th {background: #F1F3F5;
+.report-create th {background: #D4D8E3;
              text-align: left;
              padding: 0.3em .5em .3em .5em;
              border-bottom:1px solid #ABBFCF;  
@@ -991,5 +1024,3 @@ a.button:hover span {
 #report-results td { padding: .3em .5em .3em .5em; color: #383838; border: 1px #383838 solid;  }
 
 .only-for-print {display: none;}
-
-.button-table td {padding: 0em 0.8em 0em 0.8em; vertical-align: middle;}

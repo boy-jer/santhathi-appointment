@@ -1,15 +1,14 @@
 <%unless @appointments.blank?%>
   <%form_tag cms_patient_path(1), :method => :put do %>
   <table class="listing">
-      
+      <thead>
       <tr>
         <th></th>
         <th><%= remote_order_by_link({:patient => :reg_no} , :text => "Hospital No.") %></th>
         <th><%= remote_order_by_link(:id , :text => "PVR No.") %></th>
-        <th><%= remote_order_by_link(:appointment_date, :text => "Date") %></th>
         <th><%= remote_order_by_link({:patient => :patient_name} , :text => "Patient Name") %></th>
         <th><%= remote_order_by_link ({:doctor => {:doctor_profile => :name}} , :text => "Doctor Name") %></th>
-        
+        <th> Date </th>
         <th><%= remote_order_by_link({:reason => :name }, :text => "Reason") %></th>
         <th>App History</th>
         <th>Clinical Screen</th>
@@ -21,47 +20,51 @@
          <td><%= check_box_tag("appointment[]", appointment.id, false,:id=>appointment.id)%></td>
          <td><%=h appointment.patient.reg_no %></td>
          <td><%=h appointment.id%></td>
-         <td><%=h Time.parse(appointment.appointment_date.to_s).strftime("%d-%m-%y") %></td>
          <td><%=h appointment.patient.patient_name%></td>
          <td><%=h appointment.doctor.doctor_profile.name %></td>
-       
+         <td><%=h Time.parse(appointment.appointment_date.to_s).strftime("%d-%m-%y") %></td>
          <td><%=h appointment.reason.name%></td>
          <td><%= link_to 'Appointments', pms_patient_patient_appointments_url(appointment.patient), :rel=> "facebox" %></td>
          <td><%= link_to 'Clinical screen', new_cms_appointment_clinical_screen_path(appointment)%></td>
-         <td><%= link_to "History" ,  {:action=>"show", :controller=>"cms/patient_histories",:id => appointment.patient.id } %>
-             </td>
+         <td>
+
+         <%= link_to "History" ,  {:action=>"show", :controller=>"cms/patient_histories",:id => appointment.patient.id } %>
+
+        </td>
        </tr>
      <%end%>
-     </table>
 <%end%>
- 
-<table class="table-bottom">
+</table>
+<table class='table-bottom'>
     <tr class="table-footer">
+
        <td colspan = 2> <%= remote_per_page_select %></td>
-        <td colspan = 2> <% form_tag(cms_patients_url, :method => :get ) do %>
-                               <% fields_for @search do |f|%>
-                                   <%= f.text_field :page, :class => 'textbox-tiny' %>
-                                   <%= submit_tag "go" %>
-                               <%end -%>
-                          <%end-%>
+        <td colspan = 2> <% form_tag(cms_patients_url, :method => :get, :id => "goto") do %>
+                                        <% fields_for @search do |f|%>
+                                          <%= f.text_field :page, :class => 'textbox-tiny' %>
+
+
+                                       <%end -%>
+                                     <%end-%>
 
 
         </td>
        <td colspan=6> <% if @appointments.size > 1 %>
-                             <div class="pagination">
+                          <div class="pagination">
                                 <%= remote_page_links %>
-                             </div>
-                         <% end %>
+                          </div>
+                          <%end%>
          </td>
      </tr>
 
 
     </table>
 
-   
+   <br/>
 <%else%>
- <br/>
-  No Records Found.
+ No Records Found.
  <%end%>
- <br/>
-    
+     <%= observe_form("goto", :frequency => 1,
+                 :before => "Element.show('spinner')",
+                 :success => "Element.hide('spinner')",
+                 :url => cms_patients_url, :method => :get) %>

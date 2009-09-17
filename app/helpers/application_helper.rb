@@ -89,17 +89,9 @@ module ApplicationHelper
    return app_list
  end
 
- def working_slots(doctor, date = nil)
-   slots, deactivated_hrs = [], []
-   date = date.nil? ? Date.today : date
-
-   working_hrs = doctor.doctor_working_slots
-   deactivation_records = doctor.deactivate_slots.on_date(date)
-   deactivated_hrs = deactivation_records.map{|d| d.time_from} unless  deactivation_records.blank?
-
-   #exclude deactiavted slots from the working slots, if any
-   working_hrs.blank? ? {} : working_hrs.map{|sl| (slots = slots + sl.slots unless deactivated_hrs.include?(sl.start_time)) } 
-   return slots
+ def working_slots(doctor)
+   slots = doctor.doctor_working_slots
+   slots.blank? ? {} : slots.map{|sl| sl.slot.strftime('%H:%M').to_s}
  end
 
  def calculate_age(dob)

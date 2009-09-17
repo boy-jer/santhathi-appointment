@@ -1,18 +1,3 @@
-<div class='continer-show'>
-  <div class='continer-show'>
-    <h3>Showing Prescription</h3> <br />
-    <% unless @prescription.blank? %>
-     <table class="form-table">
-       <tr> <th> Prescribed Date : </th> <td> <%= @prescription.p_date %> </td> </tr>
-       <tr> <th> Prescribed Time : </th> <td> <%= Time.parse(@prescription.p_time.to_s).strftime('%H:%M') %> </td> </tr>
-       <tr> <th> Quantity : </th> <td> <%= @prescription.quantity %>  </td> </tr>
-       <tr> <th> Urgency : </th> <td> <%= @prescription.urgency %>  </td> </tr>
-       <tr> <th> Follow Up : </th> <td> <%= @prescription.follow_up %> </td> </tr>
-       <tr> <th> Remark : </th> <td> <%= @prescription.remarks %> </td> </tr>
-       <tr> <th> Department : </th> <td> <%= Department.find(@prescription.department_id).dept_name %>  </td> </tr>
-     </table>
-    <%else%>
-       No Record Found.
-    <%end%>
-  </div>
-</div>
+
+<%= link_to 'Edit', edit_cms_path(@cms) %> |
+<%= link_to 'Back', cms_path %>

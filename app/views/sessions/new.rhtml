@@ -1,8 +1,12 @@
+<% content_for :header do -%>
+<%= configatron.site_name %> Login
+<% end -%>
+
 <% form_tag session_path do -%>
      <div class ='head'> Santhathi Login </div>
-     <div id= 'login-logo'> <%= image_tag("Logo.jpeg") %></div>
+     <div id= 'login-logo'>  <%= image_tag("Logo.jpeg") %></div>
      <div id= 'login-box'>
-	 <p><%=image_tag('lock.png', :border => 0) %> <label for="login">Login Here</label></p>
+	 <p><%=image_tag('lock.png', :border => 0) %> <label for="login">Login Here</label></p><br/>
 	 <p><label for="login">Login</label><br/>
 	 <%= text_field_tag 'login', '', :class => 'textbox' %></p>
  
@@ -13,17 +17,17 @@
 	 <%= check_box_tag 'remember_me' %></p>
 	</fieldset>
 	
-	<%= link_to "Sign up for an account now", signup_url %><br />
-	<%= link_to "Having trouble logging in?", user_troubleshooting_url %>
-
+<ul>
+	<li><%= link_to "Sign up for an account now", signup_url %></li>
+	<li><%= link_to "Having trouble logging in?", user_troubleshooting_url %></li>
+</ul>
 
 <div id="submitbutton">
-    <p><%= submit_tag 'Log in &raquo;' %></p>
-</div>
-
+	<p><%= submit_tag 'Log in &raquo;' %></p>
 </div>
 <% end -%>
 
 <script type="text/javascript">
   jQuery("#login-box").corner("corner 10px") 
 </script>
+

@@ -1,30 +1,29 @@
 
  <div id="tabs">
    <ul>
-	 <li><a href="#first_tab">Diagnosis & Prescription</a></li>
-	 <li><a href="#second_tab">Test Reports</a></li>
+	 <li><a href="#first_tab">Diagnosis & Prescription(Current Visit)</a></li>
+	 <li><a href="#second_tab">Test Reports(Current Visit)</a></li>
 	 <li><a href="#third_tab"> General Section </a></li>
    </ul>
-   <div id="first_tab">
-      <% for test in @lab_services %>
-         <br />
-         <p><%=image_tag('pointer.gif', :border => 0) %> &nbsp;
-            <%= link_to_remote ( "#{test.name} PRESCRIPTION",
+
+	<div id="first_tab">
+
+	   <% for test in @lab_services %>
+         <p><%=image_tag('arrow_right.png', :border => 0) %> &nbsp;
+            <%= link_to_remote ( "#{test.name} Prescription",
                                :before => "Element.show('spinner')",
                                :success => "Element.hide('spinner')",
              :url => { :controller => '/laboratory/prescriptions', :action => @appointment.prescription.blank? ? :new : :edit },
                                :with => "'department='+ #{@department.id} + '&test_id='+ #{test.id} + '&appointment=' + #{@appointment.id}") %>
-		 </p>
+		 </p> <br />
         <% end %>
-        <br /><p><%=image_tag('pointer.gif', :border => 0) %> &nbsp; <%= link_to_remote "PHARMACY PRESCRIPTION" ,
+        <%= link_to_remote "Pharmacy Prescription" ,
                             :before => "Element.show('spinner')",
                             :success => "Element.hide('spinner')",
                             :url => { :controller =>'/cms/pharmacy_prescriptions' ,:action => :new } ,
                             :method => :get,
                             :with => "'appointment_id='+ #{@appointment.id}"
-                            %> </p> <br />
-     
-      
+                            %>
 
 	</div>
 

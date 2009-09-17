@@ -3,8 +3,8 @@
      <%= error_messages_for 'appointment', 'patient' %>
      <div id="new-booking">
 
-     	<div class='head'>Enter Appointment Details</div>
-        <hr />
+     	<div class='head'>New Appointment</div>
+        <br />
         <%=render :partial => 'appointment_fields', :locals => {:f => f} %>
 <% end %>
 
@@ -15,11 +15,8 @@
      </div> <!--new booking-->
      
      <div id="main-schedules">
-         <div class='head'>Doctor's Schedules  <%= link_to_remote  "Getit" ,  :url => pms_appointments_url,:method => :get,:with => "'date=' + $('date').value+'&doctor=' + $('appointment_doctor_id').value"  %> </div> 
-      
-         <hr />
+         <div class='head'>Existing appointments</div>
+         <br />
          <%= render :partial => 'schedules' %>
      </div>
   </div>
-
-

@@ -21,7 +21,7 @@
         <%else%>
            <%=h parameter.value_type %></td>
         <%end%>
-    <td><%=h parameter.measurement_unit.name unless parameter.measurement_unit_id.blank? %></td>
+    <td><%=h parameter.measurement_unit.name %></td>
     <td><%=h parameter.description %></td>
     <td><%= link_to 'Show', laboratory_parameter_path(parameter),:rel=> "facebox"%></td>
     <td><%= link_to 'Modify', edit_laboratory_parameter_path(parameter) %></td>

@@ -7,8 +7,6 @@ class Laboratory::PrescriptionsController < ApplicationController
     #@prescriptions ,@count = @search.all, @search.count
     @search = PrescribedTest.new_search(params[:search])
     @search.per_page ||= 15
-    @search.order_as ||= "DESC"
-    @search.order_by ||= "created_at"
     @prescribed_tests, @count = @search.all(:include => {:prescriptions_tests => :prescriptions}), @search.count
     respond_to do |format|
       format.html
@@ -43,9 +41,9 @@ class Laboratory::PrescriptionsController < ApplicationController
 
     @appointment.prescribe!
     if @prescription.save
-      params[:services].map{ |service| PrescribedTest.create(:prescription_id => @prescription.id, :lab_test_id => service ) }
+      params[:services].map{|service| PrescribedTest.create(:prescription_id => @prescription.id, :lab_test_id => service)}
       @prescribed_tests = @prescription.prescribed_tests
-      @services = @prescribed_tests.map{|p| p.lab_test.id }
+      @services = @prescribed_tests.map{|p| p.lab_test.id}
       respond_to do |format|  
         format.html
         format.js { render :update do |page|
@@ -75,11 +73,6 @@ class Laboratory::PrescriptionsController < ApplicationController
                   end
                 }
     end
-  end
-  
-  def show
-    @prescription = Prescription.find(params[:id])
-    render :layout => false
   end
 
    def update

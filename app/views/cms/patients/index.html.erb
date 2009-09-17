@@ -1,24 +1,28 @@
 <div class='continer'>
 
-  <h3 class = 'head'> Listing patients  </h3>
+  <h3 class = 'head'> Listing Patients  </h3>
   <%=render :partial=> '/cms/patients/filters'%>
 
   <br />
   <div>
-
-   <%form_tag (discharge_cms_doctor_patients_path(current_user.id), :method =>:post )do %>
-    <table>
+ <% unless admin? %>
+   <%form_tag (discharge_cms_doctor_patients_path(current_user.id), :method=>:post )do %>
+    <table id='reason-display'>
      <tr>
        <td>Discharge patients visited on:&nbsp;&nbsp;</td>
-       <td><%= calendar_date_select_tag "date", Date.today , :class =>'textbox-small' %></td>
+       <td><%= calendar_date_select_tag "date", Date.today , :class =>'textbox' %></td>
        <td><%= submit_tag"Discharge" %></td> <td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>
             <td>Prescribed:  &nbsp;</td><td style="width: 15px; border: #ddd 1px solid; background: #ECF7FF"> </td> <td> &nbsp; </td>
             <td>Discharge Recommended:  &nbsp; </td><td style="width: 15px; border: #ddd 1px solid; background: #F1FED7"></td> <td> &nbsp;  &nbsp; &nbsp; </td>
         </tr>
      </table>
    <%end%>
-
+ <% end %>
    </div>
+   <%= observe_form("search_form", :frequency => 1,
+                 :before => "Element.show('spinner')",
+                 :success => "Element.hide('spinner')",
+                 :url => pms_appointments_url, :method => :get) %>
 
 
   <!-- Ajax search result indicator -->
@@ -27,8 +31,6 @@
               :border => 0,
               :id => "spinner",
               :style =>"display: none;" ) %>
-
-
 
 
   <div id='appointment-list'>

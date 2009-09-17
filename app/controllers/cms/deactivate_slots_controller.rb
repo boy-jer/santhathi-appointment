@@ -2,17 +2,11 @@ class Cms::DeactivateSlotsController < ApplicationController
   layout 'cms'
 
   def index
-   	@search = DeactivateSlot.new_search(params[:search])
+  	@search = DeactivateSlot.new_search(params[:search])
   	@search.conditions.doctor_id = current_user.id unless current_user.has_role?('admin')
   	@search.per_page ||= 15
-    @search.order_as ||= "DESC"
-    @search.order_by ||= "created_at"
   	@deactivate_slots = @search.all
-  	    
-    unless session[:ids].blank?
-      @appointments = Appointment.find(:all ,:conditions => ["id IN (?)", session[:ids] ])
-    end
-    session[:ids] = []
+    # @deactivate_slots = DeactivateSlot.paginate :page => params[:page],:per_page => 10
     respond_to do |format|
         format.html
         format.js {
@@ -37,41 +31,25 @@ class Cms::DeactivateSlotsController < ApplicationController
   end
 
   def create
-    unless params[:deactivate_slot][:doctor_id].blank?
-    deactivated_slots = []
-    session[:ids] = []
-    doctor = Doctor.find(params[:deactivate_slot][:doctor_id])
+
     start_date =  Date.parse("#{params[:deactivate_slot]['from_date(1i)']}/#{params[:deactivate_slot]['from_date(2i)']}/#{params[:deactivate_slot]['from_date(3i)']}")
     end_date =  Date.parse("#{params[:deactivate_slot]['to_date(1i)']}/#{params[:deactivate_slot]['to_date(2i)']}/#{params[:deactivate_slot]['to_date(3i)']}") # strat_end and end_date (leave from - to )
-    
+
+    doctor = Doctor.find(params[:deactivate_slot][:doctor_id])
+   	dt1 = Time.parse(doctor.doctor_profile.working_from.to_s)
+    dt2 = Time.parse(doctor.doctor_profile.working_to.to_s)
     for date in  start_date..end_date # for from start_date to end_date
-       params[:time_slots].each do |free_slot|  # for each slot in free_slots
-        dt1 = Time.parse("#{free_slot.split("-").first}:00")
-        dt2 = Time.parse("#{free_slot.split("-").last}:00")
-        slots = calculate_slots(dt1 , dt2)
-        DeactivateSlot.create( :doctor_id => doctor.id, :from_date => date, :time_from => free_slot, :reason_for_absence => params[:deactivate_slot][:reason_for_absence] ,:slots => slots )
-        deactivated_slots = deactivated_slots + slots
-      end
-    end   
-    
-  
-    for date in  start_date..end_date
-      appointments = doctor.appointments.on_date(date) 
-      unless appointments.blank?
-        appointments.each do |appointment|
-          if deactivated_slots.include?(appointment.appointment_time.strftime("%H:%M")) 
-              session[:ids] << appointment.id
-          end
-        end
-      end   
+    	 params[:time_slots].each do |free_slot|  # for each slot in free_slots
+    	    dt1 = Time.parse("#{free_slot.split("-").first}:00")
+    		 	dt2 = Time.parse("#{free_slot.split("-").last}:00")
+    		 	slots = calculate_slots(dt1 , dt2)
+    	    DeactivateSlot.create( :doctor_id => doctor.id , :from_date => date, :time_from => free_slot, :reason_for_absence => params[:deactivate_slot][:reason_for_absence] ,:slots => slots )
+  	   end
     end
-    
-   flash[:notice] = 'Deactivate slot is successfully created.'
-   redirect_to(cms_deactivate_slots_url)
-  else  
-   flash[:notice] = 'Please Select A Doctor'
-    render :action => "new"
-  end
+
+   flash[:notice] = 'DeactivateSlot was successfully created.'
+   redirect_to(cms_deactivate_slots_url())
+
   end
 
 
@@ -90,7 +68,7 @@ class Cms::DeactivateSlotsController < ApplicationController
   	dt1 = Time.parse(doctor.doctor_profile.working_from.to_s)
     dt2 = Time.parse(doctor.doctor_profile.working_to.to_s)
     @timing_slot = calculate_time_slots(dt1 ,dt2)
-    @working_slots = doctor.doctor_working_slots.map {|ob| Time.parse(ob.start_time.to_s).strftime("%H:%M") }
+    @working_slots = doctor.doctor_working_slots.map {|ob| Time.parse(ob.slot.to_s).strftime("%H:%M") }
     render :update do |page|
       page.replace_html 'working_slot', :partial => 'pms/doctors/edit_working_slots'
     end
@@ -132,11 +110,11 @@ class Cms::DeactivateSlotsController < ApplicationController
   	slot = []
   	count = ((((dt2 - dt1))/60)/60).to_i
     count.times do
-       slot << "#{(dt1.strftime('%H:%M').to_s)} - #{(dt1 = dt1 + 60.minutes).strftime('%H:%M').to_s}"
+       slot << "#{(dt1.strftime('%H:%M').to_s)}-#{(dt1 = dt1 + 60.minutes).strftime('%H:%M').to_s}"
     end
     remain_min =  ((dt2 - dt1)/60)
     if remain_min != 0.0
-      slot << "#{(dt1.strftime('%H:%M').to_s)} - #{(dt1 = dt1 + remain_min.minutes).strftime('%H:%M').to_s}"
+      slot << "#{(dt1.strftime('%H:%M').to_s)}-#{(dt1 = dt1 + remain_min.minutes).strftime('%H:%M').to_s}"
     end  
     return slot
 

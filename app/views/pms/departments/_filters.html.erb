@@ -1,14 +1,14 @@
 <% form_tag(pms_departments_url, :method => :get, :id => "search_form") do %>
    <table class="search-table">
      <tr>
-       <th>Department Name:</th>  
+       <th>Department Name:</th> <th>Abbrevation</th>
        <th>Reset </th>
      </tr>
      <tr>
        <%fields_for @search do |f|%>
           <% f.fields_for @search.conditions do |p| %>
               <td><%= p.text_field :dept_name_like, :class => 'textbox' %></td>
-            
+              <td><%= p.text_field :abbrevation_like, :class => 'textbox' %></td>
           <%end%>
        <%end%>
        <td> <input type="reset" value="Reset"> </td>

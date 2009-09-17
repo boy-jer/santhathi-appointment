@@ -7,9 +7,9 @@
 
 	<title><%= configatron.site_name %></title>
 
-	<%=javascript_include_tag :defaults,  'jquery-1', 'jquery_corner', 'facebox', 'jquery.treeview.min','jquery-ui-1.6.custom.min' ,'jquery.droppy'%>
+	<%=javascript_include_tag :defaults, 'facebox', 'jquery-1', 'jquery_corner',  'menu', 'jquery.cookie', 'jquery.treeview.min','jquery-ui-1.6.custom.min' ,'jquery.droppy'%>
         <%= calendar_date_select_includes %>
-        <%= stylesheet_link_tag 'default', 'facebox', 'reasons', 'jquery.treeview', 'ui.all.css' ,'droppy' %>
+        <%= stylesheet_link_tag 'default', 'calendar/option2- blue/style', 'facebox', 'menu', 'reasons', 'jquery.treeview', 'ui.all.css' ,'droppy' %>
 
 	<!--[if lte IE 6]>
 		<%= stylesheet_link_tag 'ie6.css', media="screen" %>
@@ -24,12 +24,6 @@
                 jQuery('#tabs').tabs();
 			});
 	</script>
-	<script type='text/javascript'>
-      jQuery(function() {
-        jQuery('#nav').droppy();
-        jQuery('a[rel*=facebox]').facebox()
-      });
-    </script>
 
         <script type="text/javascript">
 		jQuery(function() {

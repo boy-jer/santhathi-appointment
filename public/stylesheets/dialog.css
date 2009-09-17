@@ -1,14 +1,14 @@
 body {
-	font: 12px Verdana, Arial, Sans-Serif;
+	font-family: "Lucida Grande", verdana, arial, helvetica, sans-serif;
 	color: #000;
-	background-color: #FFFCF5;
+	background-color: #d4d4d4;
 	margin: 0;
 	padding: 0;
+	font-size: 0.8em;
 	min-width: 900px;
 }
 a:link, a:visited {
-	color: #fff;
-        text-decoration: none;
+	color: #0054ff;
 }
 a:hover {
 	background-color: #0054ff;
@@ -28,15 +28,15 @@ fieldset div.js_option {
 	font-size: 87%;
 }
 input[type="text"], input[type="password"] {
-	font-size: 1.2em;
+	font-size: 1.4em;
 	width: 92%;
 	margin: 0.4em;
 }
 input[type="submit"] {
-	font-size:  1.1em;
+	font-size:  1.4em;
 }
 label {
-	font-size: 1.1em;
+	font-size: 1.4em;
 }
 #submitbutton {
 	margin: 0.8em;
@@ -46,22 +46,6 @@ label {
 #main {
 	margin: 7em auto 0 auto;
 }
-
-
-#global_links {
-	float: right;
-	font-size: 0.9em;
-	color: #6084B3;
-	padding: 5px 10px 0px 0px;
-}
-#global_links a {
-	color: #00608D;
-}
-#global_links a:hover {
-	color: #00a8c6;
-	background-color: #e3fdff;
-}
-
 #left {
 	background-color: #fff;
 	margin: 0 auto;
@@ -129,59 +113,20 @@ label {
 	font-size: 12px;
 	list-style: square;
 }
-
-#main_login {
-margin: 20px;
-
+div.uploadStatus {
+	margin: 5px;
+}
+div.progressBar {
+	margin: 5px;
+}
+div.progressBar div.border {
+	background-color: #fff;
+	border: 1px solid grey;
+	width: 100%;
+}
+div.progressBar div.background {
+	background-color: #333;
+	height: 18px;
+	width: 0%;
 }
 
-/*round corner */
-#left-login {
-   margin: 0 auto;
-}
-
-#left-login .head {
-	color: #204F85;
-	font-weight: bold;
-	padding: 0.1em 1em 0.1em;
-	margin: 0;
-	font-size: 2em;
-	text-align: center;
-}
-
-#login-box {
-  background: #2685C6;
-  margin: 0 auto;
-  width: 300px;
-  height: 100%;
-  padding: 25px 25px 15px 25px;
-}
-
-
-#login-logo {
-  margin: 0 auto;
-  width: 160px;
-  padding: 0px 0px 10px 40px;
-}
-
-#login-box label {
-	font-weight: bold;
-        color: #ffffff;
-}
-
-#footer {
-    color: #00538F;
-    clear: both;
-    width: 97%;
-    margin: 0 auto;
-    background: #fff; 
-    margin: 20px 3px 0px 3px;
-    padding: 10px 15px 0px 15px;
-    border-top: #00538F 0px solid; 
-    text-align: center;
-}
-
-#footer a{
-    color: #D7000A;
-}
-.clear { clear: both; background: none; }

@@ -1,8 +1,8 @@
 <div class='continer'>
-<h3 class = 'head'> Creating <%=@lab_test.name %> Test Report  </h3> 
 <% form_for([:laboratory, @prescribed_test,  @laboratory_report]) do |f| %>
 
   <%= f.error_messages %>
+  <br />
   <table class="clinical-table">
      <tr> <th>Test Name : </th>
           <th>Patient Name :</th>
@@ -78,10 +78,10 @@
 <%= f.hidden_field :prescription_id , :value =>  @prescription.id %>
 <%= f.hidden_field :lab_test_id , :value =>  @lab_test.id %>
 
-<table class = 'button-table'> <tr><td><%= image_submit_tag "create.gif" %></td> <td><%= link_to 'Cancel and back to Prescriptions List', :controller =>'laboratory/prescriptions', :action =>'index'%></td> </tr> </table>
+<%= image_submit_tag "create.gif" %>
 
 <% end %>
 
-
+<%= link_to 'Back', :controller =>:laboratory_prescriptions ,:action =>'index'%>
 
 </div>

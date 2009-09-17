@@ -7,7 +7,7 @@
 
 	<title><%= configatron.site_name %></title>
 
-	<%= stylesheet_link_tag 'dialog', 'calendar/option2- blue/style', 'facebox' %>
+	<%= stylesheet_link_tag 'default', 'calendar/option2- blue/style', 'facebox' %>
 
 	<%=javascript_include_tag :defaults ,'jquery-1', 'jquery_corner' %>
         <script type="text/javascript">
@@ -16,6 +16,14 @@
 </head>
 
 <body>
+
+  <div id="header">
+    <div id="global_links">
+      <%= render :partial => 'shared/global_links' %>
+    </div>
+      <h1><%= configatron.site_name %></h1>
+  </div>
+
   <div id="main_login">
     <div id="left-login">
 
@@ -35,7 +43,7 @@
   
     </div>
   </div>
-  <div class = 'clear'> </div>
+
   <div id="footer">
       Copyright © <%= configatron.company_name %> &nbsp; &nbsp; | &nbsp; &nbsp;  Powered by <%= link_to "isiri Technologies Pvt. Ltd.", "http://isiritech.com" , {:target => "_blank" }%>
   </div>

@@ -11,7 +11,6 @@
 <% for department in @departments %>
   <tr>
     <td><%=h department.dept_name %></td>
-    
     <td><%=h department.description %></td>
     <td><%=h department.system_defined %></td>
     <td>&nbsp;&nbsp;<%= link_to image_tag('show.png', {:title => 'Show', :border => 0}), pms_department_url(department) %> &nbsp; &nbsp;| &nbsp;&nbsp; <%= link_to image_tag('edit.png', {:title => 'Edit', :border => 0}), edit_pms_department_url(department) %> &nbsp;&nbsp;|&nbsp;&nbsp; <%= link_to image_tag('delete.png', {:title => 'delete', :border => 0}), pms_department_url(department), :confirm => 'Are you sure?', :method => :delete %></td>

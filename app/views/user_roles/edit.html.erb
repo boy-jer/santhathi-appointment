@@ -1,22 +1,15 @@
-<div class='continer'>
-  <h3 class = 'head'>  Edit Roles for User : <%=h @user.login %> </h3>
- 
-
-
 
 <% form_tag(user_role_path(@user),  :method =>:put ) do  %>
-  <table class="form-table">
-    <tr> <th> Admin : </th> <td> <%= check_box_tag "roles[admin]", "1", @roles.include?('admin') %> </td> </tr>
-    <tr> <th> Doctor : </th> <td> <%= check_box_tag "roles[doctor]", "1", @roles.include?('doctor') %> </td> </tr>
-    <tr> <th> Reception : </th> <td>  <%= check_box_tag "roles[reception]", "1", @roles.include?('reception') %> </td> </tr>
-   </table> <br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;
 
-    <%= submit_tag 'Save Roles' %>
+    Admin<%= check_box_tag "roles[admin]", "1", @roles.include?('admin') %>
+    Doctor<%= check_box_tag "roles[doctor]", "1", @roles.include?('doctor') %>
+    Reception<%= check_box_tag "roles[reception]", "1", @roles.include?('reception') %>
+
+   <br><br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<%= submit_tag 'Save Roles' %>
+
 
 <%end%>
-<br />
-<%= link_to "Cancel" ,admin_roles_path() %>
-</div>
-
-

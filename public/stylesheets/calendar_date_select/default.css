@@ -5,6 +5,7 @@
   width:175px;
   z-index: 1000;
   font: Verdana; 
+
 }
 /* this is a fun ie6 hack to get drop downs to stay behind the popup window.  This should always be just underneath .calendar_date_select */
 iframe.ie6_blocker {
@@ -16,41 +17,33 @@ iframe.ie6_blocker {
   font-weight:bold;
   font-size:11px;
   background-color: #E2EDF4;
-  text-align:center;
-  border-bottom:1px solid #B1C4D2;
+ 
+  border-bottom:1px solid #abccdc;
   color: white !important;
 }
 
 .calendar_date_select .cds_buttons {
   text-align:center;
-  padding:0px 0px 1px 0px;
-  background-color: #fff;
+  padding:0px 0px;
+  background-color: #FBFBFB;
   color: #000;
-}
-
-.calendar_date_select .cds_buttons a{
-  text-decoration: none;
- 
 }
 
 .calendar_date_select .cds_footer {
   background-color: #E2EDF4;
   padding:1px;
-  font-size:11px;
+  font-size:12px;
   text-align:center;
-  border-top: #B1C4D2 1px solid;
-  color: #006CB3;
 }
 
 .calendar_date_select table {
   margin: 0px;
   padding: 0px;
-  border-collapse: collapse;
 }
 
 
 .calendar_date_select .cds_header {
-  background-color: #F1F3F5;
+  background-color: #efefef;
   border-bottom: 1px solid #8295A3;
   text-align:center;
 }
@@ -106,12 +99,14 @@ iframe.ie6_blocker {
 .calendar_date_select td {
   font-size:12px;
   font: Verdana;
-  border: 1px solid #CED8DC;
-  width: 10px;
-  height: 18px;
+
+  width: 9px;
+  height: 17px;
   text-align:center;
   vertical-align: middle;
-  background-color: #ffffff;  
+  background-color: #ffffff;
+  border-left:1px solid #8295A3;
+  
 }
 
 
@@ -122,18 +117,19 @@ iframe.ie6_blocker {
   color: #ccc;
 }
 .calendar_date_select td.selected div {
-  color: #006CB3;
+  color: white;
 }
 
 .calendar_date_select tbody td {
-  border-bottom: 1px solid #CED8DC;
+  border-bottom: 1px solid #8295A3;
 }
 .calendar_date_select td.selected {
+  background-color:#E2EDF4;
   color: #1B74B0;
 }
 
 .calendar_date_select td:hover {
-  background-color:#ddd;
+  background-color:#ccc;
 }
 
 .calendar_date_select td.today {

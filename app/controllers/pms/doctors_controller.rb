@@ -27,7 +27,7 @@ class Pms::DoctorsController < ApplicationController
   def edit
     @doctor = Doctor.find(params[:id])
     @timing_slot = []
-    @working_slots = @doctor.doctor_working_slots.map {|ob| Time.parse(ob.start_time.to_s).strftime("%H:%M") }
+    @working_slots = @doctor.doctor_working_slots.map {|ob| Time.parse(ob.slot.to_s).strftime("%H:%M") }
     dt1 = Time.parse(@doctor.doctor_profile.working_from.to_s)
     dt2 = Time.parse(@doctor.doctor_profile.working_to.to_s)
     @timing_slot = calculate_time_slots(dt1 ,dt2)
@@ -117,11 +117,11 @@ class Pms::DoctorsController < ApplicationController
   	slot = []
   	count = ((((dt2 - dt1))/60)/60).to_i
     count.times do
-      slot << "#{(dt1.strftime('%H:%M').to_s)} - #{(dt1 = dt1 + 60.minutes).strftime('%H:%M').to_s}"
+      slot << "#{(dt1.strftime('%H:%M').to_s)}-#{(dt1 = dt1 + 60.minutes).strftime('%H:%M').to_s}"
     end
     remain_min =  ((dt2 - dt1)/60)
     if remain_min != 0.0
-      slot << "#{(dt1.strftime('%H:%M').to_s)} - #{(dt1 = dt1 + remain_min.minutes).strftime('%H:%M').to_s}"
+      slot << "#{(dt1.strftime('%H:%M').to_s)}-#{(dt1 = dt1 + remain_min.minutes).strftime('%H:%M').to_s}"
     end  
     return slot
 
