@@ -1,0 +1,17 @@
+<% form_for(:prescription,:url =>laboratory_prescription_path(@prescription) , :html => { :method => :put }) do |f| %>
+  <%= f.error_messages %>
+    <br />
+    <table class = 'form-table'>
+       <tr><th>Prescription To: </th> <td> <%= @department.dept_name %> </td></tr>
+       <tr><th>Prescribing Doctor:</th> <td> <%= @appointment.doctor.name %> </td></tr>
+       <tr><th>Prescription Date:</th> <td><%= calendar_date_select_tag "prescription[p_date]", '' , :class =>'textbox' %></td></tr>
+       <tr><th>Prescription Time:</th> <td><%= time_select("prescription", "p_time")  %></td></tr>
+       <tr><th>Service:</th> <td> <ul id='tree'><%= render :partial => 'child_list', :collection => @child_list, :as => :service %> </ul> </td></tr>
+       <tr><th>Urgency:</th> <td> <%= f.select :urgency, ['High', 'Medium', 'Low'], :selected =>'High' %> </td></tr>
+       <tr><th>Follow up Before:</th> <td><%= calendar_date_select_tag "prescription[follow_up]", '' , :class =>'textbox' %></td></tr>
+       <tr><th>Other Remarks:</th> <td><%= f.text_field :remarks, {:class => 'address'} %></td> </tr>
+    </table>
+  <p>
+    <%= f.submit "update" %>
+  </p>
+<% end %>

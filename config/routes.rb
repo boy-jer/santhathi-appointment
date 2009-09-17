@@ -40,7 +40,7 @@ ActionController::Routing::Routes.draw do |map|
 
 
    map.namespace(:laboratory) do |laboratory|
-   	 laboratory.root :controller => 'laboratory/prescriptions', :action => 'index'
+   	 laboratory.root :controller => 'laboratory/prescribed_tests', :action => 'index'
    	 laboratory.resources :prescriptions
    	 laboratory.resources :parameters
      laboratory.resources :samples

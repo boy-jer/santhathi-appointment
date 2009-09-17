@@ -3,6 +3,7 @@
 
 <table class="listing">
   <tr>
+<<<<<<< HEAD:app/views/laboratory/prescriptions/_prescription_list.rhtml
     <th> <%= remote_order_by_link({:prescription => { :appointment => { :patient => :reg_no }}} , :text => "Hospital No") %>   </th>
     <th><%= remote_order_by_link({:prescription =>  { :appointment => { :patient => :id }} } , :text => "PVR No") %>  </th>
     <th> <%= remote_order_by_link({:prescription => { :appointment => { :patient => :patient_name }}} , :text => "Patient Name") %></th>
@@ -27,6 +28,37 @@
 	  </td>
           <td> </td>
 	</tr>
+=======
+     <th> <%= remote_order_by_link(:p_date , :text => "Prescribed Date") %>   </th>
+     <th> Prescription Time</th>
+     <th> Quantity </th>
+     <th> Urgency </th>
+     <th> Follow Up </th>
+     <th> Department </th>
+    <th> <%= remote_order_by_link( { :appointment => { :patient => :reg_no }}  , :text => "Hospital No") %>   </th>
+    <th> <%= remote_order_by_link(  { :appointment => { :patient => :id }}   , :text => "PVR No") %>  </th>
+     <th> <%= remote_order_by_link( { :appointment => { :patient => :patient_name }} , :text => "Patient Name") %> </th>
+     <th> Doctor </th>
+  </tr>   
+    
+<% unless  @prescreptions.blank? %>
+  <% for prescription in @prescreptions %>
+     <tr class="<%= cycle('odd', 'even') %>" >
+       <td> <%=h prescription.p_date %> </td>
+       <td> <%=h Time.parse(prescription.p_time.to_s).strftime('%H:%M') %></td>
+       <td> <%=h prescription.quantity %></td>
+       <td> <%=h prescription.urgency %></td>
+       <td> <%=h prescription.follow_up %> </td>
+       <td> <%=h Department.find(prescription.department_id).dept_name unless prescription.department_id.blank? %></td>
+       
+       <td> <%=h prescription.appointment.patient.reg_no %>  </td>
+        <td> <%=h prescription.appointment.patient.id %>  </td>
+       <td> <%=h prescription.appointment.patient.patient_name %></td>
+       <td> <%=h DoctorProfile.by_doctor_id(prescription.appointment.doctor_id).first.name %></td>
+       <td> </td>
+           
+	   </tr>
+>>>>>>> e689f7fba8e182acb53899c72b1be87d769253a8:app/views/laboratory/prescriptions/_prescription_list.rhtml
   <% end %>
 
   <tr class="table-footer">
@@ -38,13 +70,14 @@
               <%end%>
           <%end%>
         </td>
-         <td colspan = 6> <% unless @prescriptions.blank? %>
+         <td colspan = 9> <% unless @prescriptions.blank? %>
                              <div class="pagination">
                                 <%= remote_page_links %>
                              </div>
                            <% end %>
          </td>
   </tr>
+<%end%>  
 </table>
 <%= image_tag("spinner.gif",
               :align => "absmiddle",
