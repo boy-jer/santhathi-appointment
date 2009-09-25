@@ -1,13 +1,15 @@
-<div id="calendar-display">
-  <%= calendar_date_select_tag "date", Date.today, :embedded => true, :year_range => 100 %>
+<div id="calendar_display">
+  <div id="datepicker"></div>
+  <br />
+  
+  <%= text_field_tag 'date' %>
+   
 </div>
 
-
-<div id="new-department">
+<div id="app_details">
 
   <table cellpadding="5px" class="form-table">
-     <tr class= 'table-top'> <td colspan='2' >Appointment Deatils:</td> </tr>
-     <tr> <th><%= f.label :department %>:</th>
+     <tr> <th><%= f.label :department %></th>
           <td><%= select :departament, :id, [['Select department' , '']] + Department.departments_for_select_list %> <%= image_tag("spinner.gif",
               :align => "absmiddle",
               :border => 0,
@@ -15,64 +17,72 @@
               :style =>"display: none;" ) %></td> 
      </tr>
 
-     <tr>
-       <th><label>Doctor:</label></th>
+     <tr id ='doctor-list'>
+       <th><label>Doctor</label></th>
        <td>
            <div id="doctors">
               <%=render :partial => 'doctors_list', :locals => {:f => f, :doctors => doctors_list} %>
            </div>
        </td> 
      </tr>
+      <tr><th><label>Appointment time </label></th>
+          <td> <%= f.select :hour, hours, :selected => (@hour || 9) %> <%= f.select :minute, minutes, :selected => (@minute || 30) %> </td> </tr>
 
-     <tr>
-        <th> <%= f.label :appointment_time %>:</th>
-        <td>
-            <%= f.select :hour, hours, :selected => (@hour || 9) %> <%= f.select :minute, minutes, :selected => (@minute || 30) %>
-        </td>
-     </tr>
+     <tr> <th><%= f.label :reason %></th> <td><%= f.select :reason_id, [['Select reason' , '']] + Reason.select_list %></td> </tr>
 
-     <tr> <th><%= f.label :reason %>:</th> <td><%= f.select :reason_id, [['Select reason' , '']] + Reason.select_list %></td> </tr>
+     <tr> <th><%= f.label :mode %></th> <td><%= f.select :mode_id, [['Select mode' , '']] + Mode.select_list %></td> </tr>
 
-     <tr> <th><%= f.label :mode %>:</th> <td><%= f.select :mode_id, [['Select mode' , '']] + Mode.select_list %></td> </tr>
-
-     <tr> <th><label> Visit Type</label></th>
-          <td><%= radio_button_tag ('appointment[visit_type]', 
-                                    'yes', 
-                                    checked = params[:patient_id].blank?,
-                                    options = {:onclick => "Element.show('new_patient'); Element.hide('patient_search'); Element.hide('submit-button');"}) %> first visit &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <tr> <th><label> Visit type</label></th>
+          <td><%= radio_button_tag ('appointment[visit_type]', 'yes', checked = params[:patient_id].blank?,
+                    options ={:onclick => "jQuery('#new_patient').show(); jQuery('#new_patient').highlight(); jQuery('#patient_search').hide(); "})%> First visit &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <%= radio_button_tag ('appointment[visit_type]', 'no', checked = !params[:patient_id].blank?,
-                                                   options = {:onclick => "Element.show('patient_search'); Element.hide('new_patient'); Element.show('submit-button');"}) %> follow up visit        </td>
+                    options ={:onclick => "jQuery('#patient_search').show(); jQuery('#new_patient').hide(); jQuery('#patient_search').highlight();"})%> Follow up visit        
+          </td>
      </tr>
   </table>
   
-   <p id ="submit-button" style="display:none"> <a class="button" onclick="$(this).up('form').submit(); return false;"><span>Create Appointment</span></a> </p>
-
- <%= observe_field(:date, :frequency => 0.5,
-                    :before => "Element.show('spinner')",
-                    :success => "Element.hide('spinner')",
-                    :url => pms_appointments_url,
-                    :method => :get,
-                    :with => "'date=' + value+'&doctor=' + $('appointment_doctor_id').value"
-                   ) %>
-
- <%= observe_field(:departament_id, :frequency => 0.5,
-                    :before => "Element.show('spinner1')",
-                    :success => "Element.hide('spinner1')",
-                    :url => update_doctors_list_pms_appointments_url,
-                    :method => :get,
-                    :with => "'department_id=' + value"
-                   ) %></div>
 <br />
+<br />
+<br />
+
 
 <div id='new_patient'>
    <% fields_for :patient do |patient| %>
       <%=render :partial => 'new_patient', :locals => {:patient => patient} %>
    <% end %>
    <br />
-    
-   <a class="button" onclick="$(this).up('form').submit(); return false;"><span>Create Appointment</span></a>
-   <br /> <br />
 </div>
+
+<div id='patient_search' style="display:none">
+   <%=render :partial => 'patient_search'%>
+</div>
+
 
 <input type="hidden" name="patient_id" value= '<%=params[:patient_id]%>'>
 
+
+
+<%= observe_field(:date, :frequency => 0.5,
+                    :before => "jQuery('#spinner').show();",
+                    :success => "jQuery('#spinner').hide();",
+                    :url => pms_appointments_url,
+                    :method => :get,
+                    :with => "'date=' + value+'&doctor=' + jQuery('#appointment_doctor_id').val()"
+                  ) %>
+
+ <%= observe_field(:departament_id, :frequency => 0.5,
+                    :before => "jQuery('#spinner1').show()",
+                    :success => "jQuery('#spinner1').hide(); jQuery('#doctor-list').highlight();",
+                    :url => update_doctors_list_pms_appointments_url,
+                    :method => :get,
+                    :with => "'department_id=' + value"
+                  )%>
+
+<%= observe_field(:appointment_doctor_id, :frequency => 0.5,
+                    :before => "jQuery('#spinner').show();",
+                    :success => "jQuery('#spinner').hide();",
+                    :url => pms_appointments_url,
+                    :method => :get,
+                    :with => "'doctor=' + value +'&date=' + jQuery('#date').val()"
+                  ) %> 
+</div>

@@ -38,4 +38,8 @@ module  Pms::AppointmentsHelper
                  else original_state.camelize
      end
   end
+
+  def appointment_date(date)
+    "#{Time.parse(date.to_s).strftime('%b %d, %Y')} : #{Date::DAYNAMES[date.to_date.wday]}"
+  end
 end

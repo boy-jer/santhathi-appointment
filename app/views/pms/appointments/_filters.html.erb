@@ -1,35 +1,43 @@
-<% form_tag( pms_appointments_url, :method => :get, :id => "search_form") do %>
-   <table class="search-table">
-     <tr>
-       <th>Doctor Name:</th> <th>Appointment Date:</th>
-       <th>Patient Name:</th>
-        <th>Reg No:</th>
-        <th> Phone No: </th>
-        <th> Reset </th>
-     </tr>
-     <tr>
+<% content_for :sidebar do -%>
+  <% form_tag( pms_appointments_url, :method => :get, :id => "search_form") do %>
+    <div class="search1">
       <%fields_for @search do |f|%>
         <% f.fields_for @search.conditions do |p| %>
-        <td> <% unless Doctor.doctors_list.blank? %>
-             <%= p.select :doctor_id_like,  [['Select doctor' , '']] + Doctor.doctors_list, :class =>'select-list' %>
-             <%end%>
-             </td>
-         <td><%= p.calendar_date_select :appointment_date_like, :class =>'textbox-small' %></td>
-
-            <% p.fields_for p.object.patient do |patient| %>
-              <td><%= patient.text_field :patient_name_like, :class => 'textbox-small' %></td>
-             <td><%= patient.text_field :reg_no_like, :class => 'textbox-small' %></td>
-             <td><%= patient.text_field :contact_no_like, :class => 'textbox-small' %></td>
+        <p>
+         <% unless Doctor.doctors_list.blank? %>
+            <%= p.select :doctor_id_like,  [['Select doctor', '']] + Doctor.doctors_list, :class =>'select-list' %>
          <%end%>
-         <td> <input type="reset" value="Reset"> </td>
+        </p>
+        <p><label>Appointment Date:</label>
+           <%= p.calendar_date_select :appointment_date_like, :class =>'textbox-small' %>
+        </p>
+
+        <% p.fields_for p.object.patient do |patient| %>
+           <p>
+            <label>Patient Name:</label>
+            <%= patient.text_field :patient_name_like, :class => 'textbox-small' %>
+           </p>
+
+           <p>
+             <label>Registration No: </label>
+             <%= patient.text_field :reg_no_like, :class => 'textbox-small' %>
+           </p>
+
+           <p>
+             <label> Phone No: </label>
+             <%= patient.text_field :contact_no_like, :class => 'textbox-small' %>
+           </p>
+
+         <%end%>
+         <p><input type="reset" value="Reset"></p>
 
        <%end%>
        <%end%>
-       </tr>
-  </table>
-<% end %>
+  <% end %>
 
-<%= observe_form("search_form", :frequency => 1,
-                 :before => "Element.show('spinner')",
-                 :success => "Element.hide('spinner')",
+  <%= observe_form("search_form", :frequency => 1,
+                 :before => "jQuery('#spinner').show()",
+                 :success => "jQuery('#spinner').hide()",
                  :url => pms_appointments_url, :method => :get) %>
+ <% end %>
+

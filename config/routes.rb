@@ -100,7 +100,7 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace(:pms) do |pms|
   	pms.root :controller => 'pms/appointments', :action => 'index'
     pms.resources :appointments, :member => {:confirm => :get} ,
-                                 :collection=>{:update_doctors_list =>:get}# ,
+                                 :collection=>{:update_doctors_list =>:get, :patient_search => :get}# ,
                                #  :has_one =>[:clinical_screen,:discharge_summary,:next_appointment_remark,:clinical_comment]
     pms.resources :pms
     pms.resources :patients ,:collection =>{:associate_spouse=>:post, :associate_couple=>:get}

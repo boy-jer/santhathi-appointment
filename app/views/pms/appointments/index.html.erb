@@ -1,10 +1,14 @@
-<div class='continer'>
-  <h3 class = 'head'> Listing Appointments &nbsp; &nbsp; <%= link_to image_tag('add.png'), new_pms_appointment_path %> <%= link_to "Create New", new_pms_appointment_path %></h3>
-  
+
+<% content_for :left_header do -%>
+   Listing appointments &nbsp; &nbsp; <%= link_to image_tag('add.png'), new_pms_appointment_path %> <%= link_to "Create new", new_pms_appointment_path %>
+<%end-%>
+
   <%=render :partial=> 'filters'%>
- 
+
+  <%= link_to "#{image_tag('/images/img/list_view.png')} Show appointments as list", '#' %>  &nbsp; or &nbsp; <%= link_to "#{image_tag('/images/img/tablular_view.png')} Show appointments in table", '#' %>
+  <br />
+
   <div id='appointment-list'>
      <%=render :partial=> 'appointments_list'%>
   </div>
 
-</div>

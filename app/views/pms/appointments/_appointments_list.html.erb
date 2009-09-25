@@ -1,54 +1,62 @@
+<br />
 <%= image_tag("spinner.gif",
               :align => "absmiddle",
               :border => 0,
               :id => "spinner",
               :style =>"display: none;" ) %>
 
-<table class="listing">
-  <tr>
-    <th><%= remote_order_by_link(:id,:text =>"NO") %></th>
-    <th><%= remote_order_by_link(:appointment_date, :text => "Date") %></th>
-    <th><%= remote_order_by_link(:appointment_time, :text => "Time") %></th>
-    <th><%= remote_order_by_link({:doctor => :name}, :text => "Doctor") %></th>
-    <th><%= remote_order_by_link({:patient => :patient_name} , :text => "Patient") %></th>
-    <th>Reason</th>
-
-    <th><%= remote_order_by_link :status %></th>
-    <th><%= remote_order_by_link ({:patient => :reg_no}, :text => "Reg.No" )%></th>
-    <th>Appointments</th>
-    <th NOWRAP = NOWRAP class='hide-for-print'>Actions</th>
-  </tr>
+<% appointment_dates = Hash.new %>
 <% for appointment in @appointments %>
-  <tr valign="top" class="<%= cycle('odd', 'even') %>">
-    <td><%=h appointment.id %></td>
-    <td><%=h Time.parse(appointment.appointment_date.to_s).strftime('%d-%m-%y') %></td>
-    <td><%=h Time.parse(appointment.appointment_time.to_s).strftime('%H:%M').to_s %></td>
-    <td>  <%=h appointment.doctor.doctor_profile.name%></td>
-    <td><%= link_to appointment.patient.patient_name, pms_patient_url(appointment.patient), :rel=> "facebox" %></td>
-    <td><%=h appointment.reason.name %></td>
+    
+    <%if appointment_dates[appointment.appointment_date].blank? %>
+      <div class = 'appointment_date' >
+         <%=appointment_date(appointment.appointment_date)%>
+      </div> 
+    <% end -%>
 
+   <div class='appointment'>
 
-    <td><%= appointment.state == 'new_appointment'? link_to('Confirm', confirm_pms_appointment_url(appointment, :page => params[:page]), :method => :get, :confirm => 'This action will mark this appointment as patient visited. are you sure?') : status(appointment.state) %></td>
+    <div class='appointment_details left'> 
 
-    <td><%= appointment.patient.reg_no.blank? ? link_to('Register', edit_pms_patient_url(appointment.patient)) : appointment.patient.reg_no%> </td>
+      <div class = 'appointment_time'><%=h Time.parse(appointment.appointment_time.to_s).strftime('%I:%M %p').to_s %></div>
 
-    <td><%= link_to 'Appointments', pms_patient_patient_appointments_url(appointment.patient), :rel=> "facebox" %></td>
+      <div class = 'other_details left'>
+        <div class='more_appointment_details'>
+           Appointment #<b><%=h appointment.id %></b> for doctor <b><%=h appointment.doctor.doctor_profile.name%>.</b>
+        </div>
+      
+        <div class='more_appointment_details'>
+          Appointment reason is <b><%=h appointment.reason.name %></b> and is in status <b><%= status(appointment.state) %>.</b>
+          <%= link_to('Confirm now.', confirm_pms_appointment_url(appointment, :page => params[:page]), :method => :get, :confirm => 'This action will mark this appointment as patient visited. are you sure?', :class => 'yellow-link') if appointment.state == 'new_appointment'%>
+        </div>
+    
+        <div class='more_appointment_details'>
+           Patient name is <%= link_to appointment.patient.patient_name, pms_patient_url(appointment.patient), :rel=> "facebox", :class => 'blue-link'%> and
+           hospital number is <%= appointment.patient.reg_no.blank? ? 'Not yet registred' : appointment.patient.reg_no%>. <%= link_to('Register now.', edit_pms_patient_url(appointment.patient), :class => 'yellow-link') if appointment.patient.reg_no.blank? %>
+      
+        </div>  
+      </div>
+    </div>
+    <div class = 'actions right'>
+      <%= link_to 'Prev appointments', pms_patient_patient_appointments_url(appointment.patient), :rel=> "facebox" %> |
 
-    <td NOWRAP = NOWRAP class='hide-for-print'><%= link_to image_tag('show.png', {:title => 'Show', :border => 0}), pms_appointment_url(appointment), :rel=> "facebox" %> &nbsp;|&nbsp; <%= link_to image_tag('edit.png', {:title => 'Edit', :border => 0}), edit_pms_appointment_path(appointment) %> &nbsp; |<% unless appointment.state == 'visited' %>&nbsp; <%= link_to image_tag('delete.png', {:title => 'cancel appointment', :border => 0}), pms_appointment_path(appointment), :confirm => 'Are you sure?', :method => :delete %> <%end %></td>
+      <%= link_to image_tag('show.png', {:title => 'Show', :border => 0}), pms_appointment_url(appointment), :rel=> "facebox" %> &nbsp;|&nbsp; <%= link_to image_tag('edit.png', {:title => 'Edit', :border => 0}), edit_pms_appointment_path(appointment) %> &nbsp; |&nbsp; <%= appointment.state != 'new' ? image_tag('delete.png', {:title => 'Already visited. Not possible to cancel.', :border => 0}) : link_to(image_tag('delete.png', {:title => 'cancel appointment', :border => 0}), pms_appointment_path(appointment), :confirm => 'Are you sure?', :method => :delete) %>
+    </div>
+   
+  </div>
 
-  </tr>
+  <% appointment_dates[appointment.appointment_date] = 1 %>
 <% end %>
-</table>
+
+
 
 <table class='table-bottom'>
   <tr class="table-footer">
-  	<td><%= link_to "<span>Create Appointment</span>", new_pms_appointment_path, :class=> "button" -%></td>
-
-        <td><%= remote_per_page_select -%></td>
+  	<td><%= remote_per_page_select -%></td>
         <td>
          <% form_tag( pms_appointments_url, :method => :get, :id => "goto") do -%>
              <% fields_for @search do |f| -%>
-                     <%= f.text_field :page, :class => 'textbox-tiny' -%>
+                     Go to page: &nbsp; <%= f.text_field :page, :class => 'textbox-tiny' -%>
              <%end -%>
          <%end -%>
         </td>
@@ -61,6 +69,8 @@
          </td>
   </tr>
 </table>
+
+
 <%= observe_form("goto", :frequency => 1,
                  :before => "Element.show('spinner')",
                  :success => "Element.hide('spinner')",

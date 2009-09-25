@@ -1,45 +1,43 @@
-
 <%= image_tag("spinner.gif",
               :align => "absmiddle",
               :border => 0,
               :id => "spinner",
-              :style =>"display: none;" ) %>
+              :style =>"display: none;" ) -%>
 
-<table class="time-slots" cellspacing="1">
+<table class="time-slots">
      <tr><th><b>Slot</b>&nbsp; </th><th><b>Name</b> </th> <th><b>Register No</b></th></tr>
-     <%unless @doctor.blank? %>
-       <% dt1 = Time.parse(@doctor.doctor_profile.working_from.to_s) %>
-       <% appoitments_hash = appointments(@doctor, @date) %>
-       <% iteration_count(@doctor).times do%>
+       <% unless @doctor.blank? %>
+         <% dt1 = Time.parse(@doctor.doctor_profile.working_from.to_s) %>
+         <% iteration_count(@doctor).times do %> <!-- function in appointment_helper -->
 
-         <% slot = "#{(dt1.strftime('%H:%M').to_s)}" %>
+            <% slot = "#{(dt1.strftime('%H:%M').to_s)}" -%>
 
-         <% if appoitments_hash.key?(slot) %>
-            <tr class="appointment">
-               <td>
-                 <%= link_to "#{(dt1.strftime('%H:%M').to_s)} - #{(dt1 = dt1 + 5.minutes).strftime('%H:%M').to_s}", pms_appointment_url(appoitments_hash[slot]), :rel=> "facebox" %>
-               </td>
-               <td><%= link_to appoitments_hash[slot].patient.patient_name, pms_patient_url(appoitments_hash[slot].patient), :rel=> "facebox" %> </td>
-               <td> <%= appoitments_hash[slot].patient.reg_no %> </td>
-            </tr>
-         <% elsif working_slots(@doctor).include?(slot) -%>
-            <tr>
-               <td class="available">
-                   <%= link_to_function("#{(dt1.strftime('%H:%M').to_s)} - #{(dt1 = dt1 + 5.minutes).strftime('%H:%M').to_s}", "setTime('#{slot}')") %> </td>
-            <td class="available-new"> &nbsp; </td>
-            <td class="available-new"> &nbsp; </td>
-            </tr>
-        <% else %>
-           <tr>
-            <td  class="not-working">
-              <%= "#{(dt1.strftime('%H:%M').to_s)} - #{(dt1 = dt1 + 5.minutes).strftime('%H:%M').to_s}" %>
-            </td>
-            <td class="available-new"> &nbsp; </td>
-            <td class="available-new"> &nbsp; </td>
-            </tr>
-          <% end %>
-
-       <%end%>
+            <% if @appointments.key?(slot) -%>
+               <tr class="appointment">
+                  <td>
+                    <%= link_to "#{slot} - #{(dt1 = dt1 + 5.minutes).strftime('%H:%M').to_s}", pms_appointment_url(@appointments[slot]), :rel=> "facebox" -%>
+                  </td>
+                  <td><%= link_to @appointments[slot].patient.patient_name, pms_patient_url(@appointments[slot].patient), :rel=> "facebox" %> </td>
+                  <td> <%= @appointments[slot].patient.reg_no -%> </td>
+               </tr>
+            <% elsif working_slots(@doctor).include?(slot) -%> <!-- No appointment exists. Now check whether doctor works for this slot -->
+               <tr>
+                  <td class="available">
+                      <%= link_to_function("#{slot} - #{(dt1 = dt1 + 5.minutes).strftime('%H:%M').to_s}", "setTime('#{slot}')") %> 
+                  </td>
+                  <td class="available-new"> &nbsp; </td>
+                  <td class="available-new"> &nbsp; </td>
+               </tr>
+           <% else %>
+              <tr>
+                <td class="not-working">
+                   <%= "#{slot} - #{(dt1 = dt1 + 5.minutes).strftime('%H:%M').to_s}" -%>
+                </td>
+               <td class="available-new"> &nbsp; </td>
+               <td class="available-new"> &nbsp; </td>
+               </tr>
+           <% end %>
+         <% end %>
      <%end%>
 </table>
 

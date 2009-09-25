@@ -1,28 +1,39 @@
 class Pms::AppointmentsController < ApplicationController
-  layout 'pms'
+  layout proc{ |c| ['show','new', 'create'].include?(c.action_name)? 'pms_single_column' : 'pms'}
   require 'fastercsv'
   require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
 
   def index
-    @search = Appointment.new_search(params[:search])
-    @params = params[:search]
-    @search.per_page ||= 15
-    @search.order_as ||= "DESC"
-    @search.order_by ||= "appointment_date"
+    unless params.has_key?(:date) # IF it is a ajax request to update doctor's schedule don't do search TODO: move it to separate action
+      @search = Appointment.new_search(params[:search])
+      @params = params[:search]
+      @search.per_page ||= 15
+      @search.order_as ||= "DESC"
+      @search.order_by ||= "appointment_date"
 
-    @appointments = @search.all
+      @appointments = @search.all 
+    end
+
     respond_to do |format|
       format.html
       format.js { render :update do |page|
-                    unless params.has_key?(:date) #Search request via ajax call
+                    unless params.has_key?(:date) #If date doesn't exist, it is a ajax search request.
                       page.replace_html 'appointment-list', :partial => 'appointments_list'
                     else
                       @doctor = Doctor.find(params[:doctor]) unless params[:doctor].blank?
                       @date = Date.parse(params[:date])
-                      page.replace_html 'schedule', :partial => 'appointments_detail', :locals => {:doctor => @doctor, :date =>@date}
+                      @date ||= Date.today
+                      unless @doctor.blank?
+                        @appointments = {}
+                        #collect all appointments for this doctor and put it in a hash. time slot being key
+                        @doctor.appointments.on_date(@date).active.collect {|a| app_list[a.appointment_time.strftime('%H:%M').to_s]= a}
+                        page.replace_html 'schedule', :partial => 'appointments_detail', :locals => {:doctor => @doctor, :date =>@date, :appointments => @appointments}
+                        page.visual_effect(:highlight, "schedule", :duration => 1)
+                      end 
                     end
                   end
                 }
+
      format.csv {
                   csv_file = FasterCSV.generate do |csv|
                     #Headers

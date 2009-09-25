@@ -1,0 +1,52 @@
+<%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner",
+              :style =>"display: none;" ) -%>
+
+<table class="time-slots">
+     <tr><th><b>Slot</b>&nbsp; </th><th><b>Name</b> </th> <th><b>Register No</b></th></tr>
+       <% unless @doctor.blank? %>
+         <% dt1 = Time.parse(@doctor.doctor_profile.working_from.to_s) %>
+         <% iteration_count(@doctor).times do %> <!-- function in appointment_helper -->
+
+            <% slot = "#{(dt1.strftime('%H:%M').to_s)}" -%>
+
+            <% if @appointments.key?(slot) -%>
+               <tr class="appointment">
+                  <td>
+                    <%= link_to "#{slot} - #{(dt1 = dt1 + 5.minutes).strftime('%H:%M').to_s}", pms_appointment_url(@appointments[slot]), :rel=> "facebox" -%>
+                  </td>
+                  <td><%= link_to @appointments[slot].patient.patient_name, pms_patient_url(@appointments[slot].patient), :rel=> "facebox" %> </td>
+                  <td> <%= @appointments[slot].patient.reg_no -%> </td>
+               </tr>
+            <% elsif working_slots(@doctor).include?(slot) -%> <!-- No appointment exists. Now check whether doctor works for this slot -->
+               <tr>
+                  <td class="available">
+                      <%= link_to_function("#{slot} - #{(dt1 = dt1 + 5.minutes).strftime('%H:%M').to_s}", "setTime('#{slot}')") %> 
+                  </td>
+                  <td class="available-new"> &nbsp; </td>
+                  <td class="available-new"> &nbsp; </td>
+               </tr>
+           <% else %>
+              <tr>
+                <td class="not-working">
+                   <%= "#{(dt1.strftime('%H:%M').to_s)} - #{(dt1 = dt1 + 5.minutes).strftime('%H:%M').to_s}" -%>
+                </td>
+               <td class="available-new"> &nbsp; </td>
+               <td class="available-new"> &nbsp; </td>
+               </tr>
+           <% end %>
+         <% end %>
+     <%end%>
+</table>
+
+<script type="text/javascript">
+  function setTime(time){
+      hour = time.substring(0,2)
+	  minute = time.substr(3,2)
+	  $("appointment_hour").value = parseInt(hour * 1)
+	  $("appointment_minute").value = parseInt(minute * 1)
+    }
+  var facebox = new Facebox();
+</script>

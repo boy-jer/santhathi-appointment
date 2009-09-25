@@ -78,7 +78,7 @@ module ApplicationHelper
   def value_types
      return [['Select value type', ''], 'Numeric', 'Text', 'Boolean(+, -)', 'Multiple', 'Header', 'Comments']
   end
-
+=begin
  def appointments(doctor, date = nil)
    #All appointments for the day
    date = date.nil? ? Date.today : date
@@ -88,10 +88,11 @@ module ApplicationHelper
 
    return app_list
  end
+=end
 
  def working_slots(doctor)
    slots = doctor.doctor_working_slots
-   slots.blank? ? {} : slots.map{|sl| sl.slot.strftime('%H:%M').to_s}
+   slots.blank? ? {} : slots.map{|sl| sl.slots.strftime('%H:%M').to_s}
  end
 
  def calculate_age(dob)
