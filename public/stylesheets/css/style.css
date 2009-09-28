@@ -100,7 +100,7 @@ STRUCTURE					 */
 #profile_info p{background:none;}
 #avatar{float:left;margin:0px 10px;}
 #postedit{background:#f1f1f1;width:940px;padding:10px;-moz-border-radius:3px;}
-#dashboard{width:75%;background:#fff;padding:10px;border-top:1px solid #ddd;border-bottom:1px solid #ddd;}
+#dashboard{width:74%;background:#fff;padding:10px;border-top:1px solid #ddd;border-bottom:1px solid #ddd;}
 #sidebar{width:21%;background:#fff;padding:10px;border-top:1px solid #ddd;border-bottom:1px solid #ddd;-moz-border-radius:3px;}
 #footer{background:#f1f1f1;width:98.5%;padding:10px;-moz-border-radius:3px;margin-top:10px;}
 #footer p{background:none;padding:0px;margin:0px}
@@ -354,7 +354,7 @@ input.textbox-small:focus, textarea:focus{
 
 #app_details {
 	float: left;
- 	width: 35%;
+ 	width: 38%;
  	padding: 0px 0px 0px 0px;
 	margin: 0px;
 
