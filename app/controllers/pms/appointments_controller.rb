@@ -17,10 +17,12 @@ class Pms::AppointmentsController < ApplicationController
     respond_to do |format|
       format.html
       format.js { render :update do |page|
-                    unless params.has_key?(:date) #If date doesn't exist, it is a ajax search request.
+                    if params.has_key?(:date) #If date doesn't exist, it is a ajax search request.
                       page.replace_html 'appointment-list', :partial => 'appointments_list'
-                    else
-                      
+                    elsif params[:tab]
+                      page.replace_html 'appointment-list', :partial => 'appointments_list_table'
+                    else  
+                      page.replace_html 'appointment-list', :partial => 'appointments_list'
                     end
                   end
                 }

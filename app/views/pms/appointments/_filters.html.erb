@@ -1,18 +1,18 @@
 <% content_for :sidebar do -%>
-  <% form_tag( pms_appointments_url, :method => :get, :id => "search_form") do %>
+
+  <% form_remote_tag(:url => pms_appointments_url, :method => :get, :id => "search_form") do %>
     <div class="search1">
       <%fields_for @search do |f|%>
         <% f.fields_for @search.conditions do |p| %>
-        <p>
-         <% unless Doctor.doctors_list.blank? %>
-            <%= p.select :doctor_id_like,  [['Select doctor', '']] + Doctor.doctors_list, :class =>'select-list' %>
-         <%end%>
-        </p>
-        <p><label>Appointment Date:</label>
+         <p>
+          <% unless Doctor.doctors_list.blank? %>
+             <%= p.select :doctor_id_like,  [['Select doctor', '']] + Doctor.doctors_list, :class =>'select-list' %>
+          <%end%>
+         </p>
+         <p><label>Appointment Date:</label>
            <%= p.calendar_date_select :appointment_date_like, :class =>'textbox-small' %>
-        </p>
-
-        <% p.fields_for p.object.patient do |patient| %>
+         </p>
+         <% p.fields_for p.object.patient do |patient| %>
            <p>
             <label>Patient Name:</label>
             <%= patient.text_field :patient_name_like, :class => 'textbox-small' %>
@@ -27,17 +27,10 @@
              <label> Phone No: </label>
              <%= patient.text_field :contact_no_like, :class => 'textbox-small' %>
            </p>
-
          <%end%>
-         <p><input type="reset" value="Reset"></p>
-
-       <%end%>
-       <%end%>
+        <%end%>
+      <%end%>
+      <p><input type="reset" value="Reset">&nbsp;&nbsp;  <%= submit_tag "Search" %> </p>
   <% end %>
-
-  <%= observe_form("search_form", :frequency => 1,
-                 :before => "jQuery('#spinner').show()",
-                 :success => "jQuery('#spinner').hide()",
-                 :url => pms_appointments_url, :method => :get) %>
- <% end %>
+<% end %>
 

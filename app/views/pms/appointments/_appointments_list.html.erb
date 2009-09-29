@@ -52,7 +52,7 @@
 
 <table class='table-bottom'>
   <tr class="table-footer">
-  	<td><%= remote_per_page_select -%></td>
+      	<td><%= remote_per_page_select -%></td>
         <td>
          <% form_tag( pms_appointments_url, :method => :get, :id => "goto") do -%>
              <% fields_for @search do |f| -%>

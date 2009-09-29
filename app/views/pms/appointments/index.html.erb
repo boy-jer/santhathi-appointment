@@ -5,7 +5,8 @@
 
   <%=render :partial=> 'filters'%>
 
-  <%= link_to "#{image_tag('/images/img/list_view.png')} Show appointments as list", '#' %>  &nbsp; or &nbsp; <%= link_to "#{image_tag('/images/img/tablular_view.png')} Show appointments in table", '#' %>
+  <%= link_to_remote "#{image_tag('/images/img/list_view.png')} Show appointments as list", :url =>{ :controller => "/pms/appointments" ,:action =>"index" ,:tab => false },:method =>:get %>  &nbsp; or &nbsp; 
+  <%= link_to_remote "#{image_tag('/images/img/tablular_view.png')} Show appointments in table",:url =>{ :controller => "/pms/appointments" ,:action =>"index" ,:tab => true },:method =>:get %>
   <br />
 
   <div id='appointment-list'>
