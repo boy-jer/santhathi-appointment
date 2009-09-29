@@ -49,7 +49,6 @@
     minute = time.substr(3,2);
     $("#appointment_hour").val(parseInt(hour * 1));
     $("#appointment_minute").val(parseInt(minute * 1));
-    $("#appointment_time").visual_effect(:highlight);
     }
   var facebox = new Facebox();
 </script>

@@ -330,8 +330,8 @@ input.textbox-small:focus, textarea:focus{
 
 .appointment{clear: both;}
 .appointment_details{background: none; margin: 15px 0 10px 0;}
-.appointment_date {clear: both; font-weight: bold; background: url(/images/img/date-bg.gif) no-repeat; padding: 6px 5px 2px 7px; border-bottom: 2px #c6d6e3 solid; margin-top: 10px; color: #353d44;}
-.appointment_time{background: url(/images/img/time-bg.gif) no-repeat; padding: 5px 4px 4px 4px; color: #384434; float: left; margin-top: 23px;}
+.appointment_date {clear: both; font-weight: bold; background: url(/images/img/date-bg.gif) no-repeat; padding: 6px 5px 2px 7px; border-bottom: 2px #c6d6e3 solid; margin-top: 10px; color: #fff;}
+.appointment_time{background: url(/images/img/time-bg.gif) no-repeat; padding: 5px 4px 4px 4px; color: #3a5368; float: left; margin-top: 23px;}
 .more_appointment_details{margin: 5px 0 5px 13px;}
 
 .yellow-link{color: #a08000; font-weight: bold;}
@@ -389,8 +389,8 @@ table.form-table .table-top td {color: #1B74B0; font-size: 15px; font-weight: bo
 }
 
 .time-slots td {
-	border: 1px solid #ced8dc;
-	padding: 0.2em 1ex 0.2em 2em;
+	border: 1px solid #fff;
+	padding: 0.3em 0em 0.3em 1em;
 	color: black;
 	font-size: 11px;
 }
@@ -403,15 +403,16 @@ table.form-table .table-top td {color: #1B74B0; font-size: 15px; font-weight: bo
         border: 1px solid #BFD0E1;
 }
 
-.time-slots tr.d0 td {
-	background-color: #FCF6CF;
-
-}
-.time-slots tr td.available {
-	background-color: #c6ffed;
+.time-slots tr.appointment td {
+	background-color: #fffdea;
         margin:0px;
+        padding: 1px 0px 1px 0px;
+        line-height: normal;
+}
+
+.time-slots tr td.available {
+	background-color: #a0ec96;
 	width:100px;
-        padding: 1px 0px 1px 1px;
         line-height: normal;
 }
 
@@ -420,8 +421,9 @@ table.form-table .table-top td {color: #1B74B0; font-size: 15px; font-weight: bo
 }
 
 .time-slots tr td.not-working {
-	 background-color: #fffd87;
+	 background-color: #eee;
 }
+
 
 .time-slots tr td.available a:hover {
 	 color:#6481b5;
@@ -488,14 +490,6 @@ table.form-table .table-top td {color: #1B74B0; font-size: 15px; font-weight: bo
 	background-color:#fff;
         margin:0px;
 	width:120px;
-        padding: 1px 0px 1px 0px;
-        line-height: normal;
-}
-
-
-.time-slots tr.appointment td {
-	background-color: #fffdea;
-        margin:0px;
         padding: 1px 0px 1px 0px;
         line-height: normal;
 }
