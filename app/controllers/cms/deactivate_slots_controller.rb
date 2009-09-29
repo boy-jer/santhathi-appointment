@@ -68,7 +68,7 @@ class Cms::DeactivateSlotsController < ApplicationController
   	dt1 = Time.parse(doctor.doctor_profile.working_from.to_s)
     dt2 = Time.parse(doctor.doctor_profile.working_to.to_s)
     @timing_slot = calculate_time_slots(dt1 ,dt2)
-    @working_slots = doctor.doctor_working_slots.map {|ob| Time.parse(ob.slot.to_s).strftime("%H:%M") }
+    @working_slots = doctor.doctor_working_slots.map {|ob| Time.parse(ob.start_time.to_s).strftime("%H:%M") }
     render :update do |page|
       page.replace_html 'working_slot', :partial => 'pms/doctors/edit_working_slots'
     end
