@@ -328,7 +328,7 @@ input.textbox-small:focus, textarea:focus{
 /******************************Appointment listing section***********************/
 .clear{ clear:both;}
 
-.appointment{clear: both;}
+.appointment{clear: both; margin-top: 5px;}
 .appointment_details{background: none; margin: 15px 0 10px 0;}
 .appointment_date {clear: both; font-weight: bold; background: url(/images/img/date-bg.gif) no-repeat; padding: 6px 5px 2px 7px; border-bottom: 2px #c6d6e3 solid; margin-top: 10px; color: #353d44;}
 .appointment_time{background: url(/images/img/time-bg.gif) no-repeat; padding: 5px 4px 4px 4px; color: #384434; float: left; margin-top: 23px;}

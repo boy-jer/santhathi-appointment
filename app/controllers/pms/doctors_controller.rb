@@ -27,7 +27,7 @@ class Pms::DoctorsController < ApplicationController
   def edit
     @doctor = Doctor.find(params[:id])
     @timing_slot = []
-    @working_slots = @doctor.doctor_working_slots.map {|ob| Time.parse(ob.slot.to_s).strftime("%H:%M") }
+    @working_slots = @doctor.doctor_working_slots.map {|ob| Time.parse(ob.start_time.to_s).strftime("%H:%M") }
     dt1 = Time.parse(@doctor.doctor_profile.working_from.to_s)
     dt2 = Time.parse(@doctor.doctor_profile.working_to.to_s)
     @timing_slot = calculate_time_slots(dt1 ,dt2)
@@ -41,17 +41,17 @@ class Pms::DoctorsController < ApplicationController
       @doctor.active!
       @doctor.roles << Role.find_by_name('doctor')
       unless params[:time_slots].blank?
-    		 DoctorWorkingSlot.transaction do
-    		 	 params[:time_slots].each do |time_slot|
-    		 	   dt1 = Time.parse("#{time_slot.split("-").first}:00")
-    		 	   dt2 = Time.parse("#{time_slot.split("-").last}:00")
-    		 	   slots = calculate_slots(dt1 , dt2)
-             DoctorWorkingSlot.create({:doctor_id => @doctor.id ,:start_time => time_slot ,:slots => slots })
-           end
+    	DoctorWorkingSlot.transaction do
+    	  params[:time_slots].each do |time_slot|
+    	    dt1 = Time.parse("#{time_slot.split("-").first}:00")
+    	    dt2 = Time.parse("#{time_slot.split("-").last}:00")
+    	    slots = calculate_slots(dt1 , dt2)
+            DoctorWorkingSlot.create({:doctor_id => @doctor.id ,:start_time => time_slot ,:slots => slots })
+          end
          end
-  		end
-  		flash[:notice] = 'Doctor was successfully created.'
-      redirect_to(pms_doctors_url)
+       end
+       flash[:notice] = 'Doctor record is successfully created.'
+       redirect_to(pms_doctors_url)
     else
       render :action => "new"
     end

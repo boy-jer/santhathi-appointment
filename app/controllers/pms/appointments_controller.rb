@@ -28,7 +28,6 @@ class Pms::AppointmentsController < ApplicationController
                         #collect all appointments for this doctor and put it in a hash. time slot being key
                         @doctor.appointments.on_date(@date).active.collect {|a| app_list[a.appointment_time.strftime('%H:%M').to_s]= a}
                         page.replace_html 'schedule', :partial => 'appointments_detail', :locals => {:doctor => @doctor, :date =>@date, :appointments => @appointments}
-                        page.visual_effect(:highlight, "schedule", :duration => 1)
                       end 
                     end
                   end
