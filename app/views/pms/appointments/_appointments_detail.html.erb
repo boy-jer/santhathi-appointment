@@ -45,10 +45,10 @@
 
 <script type="text/javascript">
   function setTime(time){
-      hour = time.substring(0,2)
-	  minute = time.substr(3,2)
-	  $("appointment_hour").value = parseInt(hour * 1)
-	  $("appointment_minute").value = parseInt(minute * 1)
+    hour = time.substring(0,2);
+    minute = time.substr(3,2);
+    $("#appointment_hour").val(parseInt(hour * 1));
+    $("#appointment_minute").val(parseInt(minute * 1));
     }
   var facebox = new Facebox();
 </script>

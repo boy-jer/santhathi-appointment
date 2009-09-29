@@ -65,7 +65,7 @@
 <%= observe_field(:date, :frequency => 0.5,
                     :before => "jQuery('#spinner').show();",
                     :success => "jQuery('#spinner').hide();",
-                    :url => new_pms_appointment_url,
+                    :url => pms_appointments_url,
                     :method => :get,
                     :with => "'date=' + value+'&doctor=' + jQuery('#appointment_doctor_id').val()"
                   ) %>
@@ -81,7 +81,7 @@
 <%= observe_field(:appointment_doctor_id, :frequency => 0.5,
                     :before => "jQuery('#spinner').show();",
                     :success => "jQuery('#spinner').hide();",
-                    :url => new_pms_appointment_url,
+                    :url => pms_appointments_url,
                     :method => :get,
                     :with => "'doctor=' + value +'&date=' + jQuery('#date').val()"
                   ) %> 
