@@ -10,7 +10,7 @@
           <%end%>
          </p>
          <p><label>Appointment Date:</label>
-           <%= p.calendar_date_select :appointment_date_like, :class =>'textbox-small' %>
+           <%= p.text_field :appointment_date_like, :class =>'textbox-small' ,:id => "datepicker" %>
          </p>
          <% p.fields_for p.object.patient do |patient| %>
            <p>
