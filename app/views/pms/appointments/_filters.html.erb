@@ -1,7 +1,9 @@
-<% content_for :sidebar do -%>
+<%content_for :sidebar do -%>
+      <div class="search1">
+    <p> <%= remote_per_page_select -%>   </p>
+ 
+  <%form_remote_tag(:url => pms_appointments_url, :method => :get, :id => "search_form") do -%>
 
-  <% form_remote_tag(:url => pms_appointments_url, :method => :get, :id => "search_form") do %>
-    <div class="search1">
       <%fields_for @search do |f|%>
         <% f.fields_for @search.conditions do |p| %>
          <p>
@@ -15,7 +17,7 @@
          <% p.fields_for p.object.patient do |patient| %>
            <p>
             <label>Patient Name:</label>
-            <%= patient.text_field :patient_name_like, :class => 'textbox-small' %>
+            <%= patient.text_field :patient_name_like, :class => 'textbox' %>
            </p>
 
            <p>
@@ -30,7 +32,9 @@
          <%end%>
         <%end%>
       <%end%>
-      <p><input type="reset" value="Reset">&nbsp;&nbsp;  <%= submit_tag "Search" %> </p>
-  <% end %>
-<% end %>
+      <input type="reset" value="Reset"> &nbsp; &nbsp;  <%= submit_tag "Search" %> 
+
+  <%end-%>
+       </div>
+<%end-%>
 

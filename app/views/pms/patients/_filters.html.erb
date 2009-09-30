@@ -5,9 +5,9 @@
       <%fields_for @search do |f|%>
         <% f.fields_for @search.conditions do |p| %>
          <p> <label> Patient name: </label> <%= p.text_field :patient_name_like, :class => 'textbox' %> </p>
-         <p> <label> Registration No:</label><%= p.text_field :reg_no_like, :class => 'textbox' %></p>
-         <p> <label> Registration Date:</label><%= p.text_field :reg_date_like , :class =>'textbox',:id => "datepicker" %></p>
-         <p> <label> Phone No:</label><%= p.text_field :contact_no_like, :class => 'textbox' %></p>
+         <p> <label> Registration No:</label><%= p.text_field :reg_no_like, 'textbox-small' %></p>
+         <p> <label> Registration Date:</label><%= p.text_field :reg_date_like , 'textbox-small',:id => "datepicker" %></p>
+         <p> <label> Phone No:</label><%= p.text_field :contact_no_like, 'textbox-small' %></p>
          <p> <label>  Registered? </label><%= p.select :reg_no_is_nil , {'Registered'=> false, 'Unregistered'=> true}, options ={:prompt => "  All "} %> </p>
            
         <%end%>
@@ -16,6 +16,7 @@
 
  
    <p><input type="reset" value="Reset">&nbsp;&nbsp;  <%= submit_tag "Search" %> </p>
+   
 <% end %>
 
 <%end%>
