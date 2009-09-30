@@ -22,7 +22,7 @@
 
       <div class = 'other_details left'>
         <div class='more_appointment_details'>
-           Appointment #<b><%=h appointment.id %></b> for doctor <b><%=h appointment.doctor.doctor_profile.name%>.</b>
+         #<b><%=h appointment.id %></b> for doctor <b><%=h appointment.doctor.doctor_profile.name%>.</b>
         </div>
       
         <div class='more_appointment_details'>
@@ -38,7 +38,7 @@
       </div>
     </div>
     <div class = 'actions right'>
-      <%= link_to 'Prev appointments', pms_patient_patient_appointments_url(appointment.patient), :rel=> "facebox" %> |
+      <%= link_to 'Prev appointments', pms_patient_patient_appointments_url(appointment.patient), :rel=> "facebox", :class => 'blue-link' %> |
 
       <%= link_to image_tag('show.png', {:title => 'Show', :border => 0}), pms_appointment_url(appointment), :rel=> "facebox" %> &nbsp;|&nbsp; <%= link_to image_tag('edit.png', {:title => 'Edit', :border => 0}), edit_pms_appointment_path(appointment) %> &nbsp; |&nbsp; <%= appointment.state != 'new' ? image_tag('delete.png', {:title => 'Already visited. Not possible to cancel.', :border => 0}) : link_to(image_tag('delete.png', {:title => 'cancel appointment', :border => 0}), pms_appointment_path(appointment), :confirm => 'Are you sure?', :method => :delete) %>
     </div>
