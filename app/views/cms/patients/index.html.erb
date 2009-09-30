@@ -1,8 +1,7 @@
 <% content_for :header do -%>
   Patient list
 <% end %>
-
-
+ <% render :partial => 'filters'%>
 <div>
  <% unless admin? %>
    <%form_tag (discharge_cms_doctor_patients_path(current_user.id), :method=>:post )do %>

@@ -147,11 +147,15 @@ class Pms::AppointmentsController < ApplicationController
 
   def confirm
     @appointment = Appointment.find(params[:id])
-    if @appointment.new_appointment?
-       @appointment.mark_visited!
-       page = params[:page].blank? ? 1: params[:page]
-       redirect_to(pms_appointments_url(:page => page))
+    if @appointment.patient.reg_no.blank? 
+      flash[:notice] = "Patient is Not Registered, Please Register"
+    else  
+       if @appointment.new_appointment?
+        @appointment.mark_visited!
+        page = params[:page].blank? ? 1 : params[:page]
+       end
     end
+    redirect_to(pms_appointments_url(:page => page)) 
   end
 
 

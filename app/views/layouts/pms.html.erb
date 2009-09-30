@@ -6,7 +6,7 @@
 
 <body>
 <div class="container" id="container">
-   <div  id="header">
+   <div id="header">
      <%= render :partial => 'shared/header' %>
    </div>
 
@@ -17,22 +17,22 @@
 		
      <div id="content_main" class="clearfix">
         <div id="dashboard" class="left">
-	   <h2 class="ico_mug"><%= yield :left_header %> </h2>
-	   <div class="clearfix">
-	      <%= render :partial => 'shared/layout_body' %>
-	   </div>
+	        <h2 class="ico_mug"> <%= yield :left_header %> </h2>
+	        <div class="clearfix">
+	          <%= render :partial => 'shared/layout_body' %>
+	        </div>
         </div><!-- end #dashboard -->
 
 	 
-	 <div id="sidebar" class="right">
-	    <h2 class="ico_mug">Sidebar</h2>
+	      <div id="sidebar" class="right">
+	        <h2 class="ico_mug"> Sidebar </h2>
             <%= yield :sidebar %>
-	  </div><!-- end #sidebar -->
+	      </div><!-- end #sidebar -->
 
      </div><!-- end #content_main -->	
-    </div><!-- end #content -->
+   </div><!-- end #content -->
 		   
-    <div  id="footer" class="clearfix">
+    <div id="footer" class="clearfix">
        <%= render :partial => 'shared/footer' %>
     </div>
 </div><!-- end container -->
