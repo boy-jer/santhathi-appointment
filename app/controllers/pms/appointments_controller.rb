@@ -17,12 +17,10 @@ class Pms::AppointmentsController < ApplicationController
     respond_to do |format|
       format.html
       format.js { render :update do |page|
-                    if params.has_key?(:date) #If date doesn't exist, it is a ajax search request.
+                    unless params[:tab]
                       page.replace_html 'appointment-list', :partial => 'appointments_list'
-                    elsif params[:tab]
-                      page.replace_html 'appointment-list', :partial => 'appointments_list_table'
                     else  
-                      page.replace_html 'appointment-list', :partial => 'appointments_list'
+                      page.replace_html 'appointment-list', :partial => 'appointments_list_table'
                     end
                   end
                 }
@@ -68,7 +66,7 @@ class Pms::AppointmentsController < ApplicationController
                     unless @doctor.blank?
                       @appointments = {}
                       #collect all appointments for this doctor and put it in a hash. time slot being key
-                      @doctor.appointments.on_date(@date).active.collect {|a| app_list[a.appointment_time.strftime('%H:%M').to_s]= a}
+                      @doctor.appointments.on_date(@date).active.collect {|a| @appointments[a.appointment_time.strftime('%H:%M').to_s]= a}
                       page.replace_html 'schedule', :partial => 'appointments_detail', :locals => {:doctor => @doctor, :date =>@date, :appointments => @appointments}
                       page.visual_effect(:highlight, "main_schedules", :duration => 2)
                     end

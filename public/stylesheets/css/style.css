@@ -115,7 +115,7 @@ STRUCTURE					 */
 #form_middle_cont{width:940px}
 /* ------------------------------------------------------------------------------------
 ICONS				 */
-.ico_mug{background:url(/images/img/ico_mug.jpg) no-repeat 5px center #f1f1f1; padding-left:40px;margin-bottom:20px; }
+.ico_mug{background:url(/images/img/ico_mug.jpg) no-repeat 5px center #f5f4ee; padding-left:40px;margin-bottom:20px; }
 .ico_posts{background:url(/images/img/ico_posts.jpg) no-repeat 5px center #f1f1f1; padding-left:30px;}
 .ico_page{background:url(/images/img/ico_page.jpg) no-repeat 5px center #f1f1f1; padding-left:30px;}
 .ico_settings{background:url(/images/img/ico_settings.jpg) no-repeat 5px center #f1f1f1; padding-left:30px;}
@@ -330,12 +330,12 @@ input.textbox-small:focus, textarea:focus{
 
 .appointment{clear: both;}
 .appointment_details{background: none; margin: 15px 0 10px 0;}
-.appointment_date {clear: both; font-weight: bold; background: url(/images/img/date-bg.gif) no-repeat; padding: 6px 5px 2px 7px; border-bottom: 2px #c6d6e3 solid; margin-top: 10px; color: #fff;}
+.appointment_date {clear: both; font-weight: bold; background: url(/images/img/date-bg.gif) no-repeat; padding: 6px 5px 2px 7px; border-bottom: 1px #ccc solid; margin-top: 10px; color: #293c4d;}
 .appointment_time{background: url(/images/img/time-bg.gif) no-repeat; padding: 5px 4px 4px 4px; color: #3a5368; float: left; margin-top: 23px;}
 .more_appointment_details{margin: 5px 0 5px 13px;}
 
-.yellow-link{color: #a08000; font-weight: bold;}
-.blue-link{color: #406dab;font-weight: bold;}
+.yellow-link{color: #a08000; }
+.blue-link{color: #406dab; font-weight: bold;}
 
 .actions{margin: 15px 0 10px 0;}
 /******************************Appointment create***********************/
@@ -348,13 +348,13 @@ input.textbox-small:focus, textarea:focus{
 
 #calendar_display {
 	float: left;
- 	width: 21%;
+ 	width: 23%;
         margin: 0 15px 0 15px;
 }
 
 #app_details {
 	float: left;
- 	width: 38%;
+ 	width: 47%;
  	padding: 0px 0px 0px 0px;
 	margin: 0px;
 
@@ -363,10 +363,11 @@ input.textbox-small:focus, textarea:focus{
 
 #main_schedules{
        float: right;
- 	width: 35%;
- 	padding: 0px 0px 0px 0px;
+ 	width: 25%;
+ 	padding: 0px 5px 0px 5px;
 	margin: 0px;
 }
+
 
 table.form-table {border-collapse: collapse; width: 100%; border: #B1C4D2 1px solid; margin: 0px 5px 0px 5px; }
 table.form-table th {padding: 0.1em .8em ; border:1px solid #B1C4D2; text-align: right;}
@@ -377,43 +378,48 @@ table.form-table .table-top td {color: #1B74B0; font-size: 15px; font-weight: bo
 
 /* ---------------------schedule(time slots) --------------------*/
 
+
+
 #schedule {
+           width: 265px;
            height: 380px;
            overflow: auto;
+           border-left: 1px solid #eee;
           }
 
 .time-slots{
 	    border-collapse: collapse;
-            width: 100%;
+            width: 250px;
             border: 1px solid #c6c8c9;
-}
-
-.time-slots td {
-	border: 1px solid #fff;
-	padding: 0.3em 0em 0.3em 1em;
-	color: black;
-	font-size: 11px;
 }
 
 .time-slots th {
 	padding: 0.2em 1.2em;
         background-color: #E0EAF4;
         color: #204F85;
-        font-size: 11px;
+        font-size: 12px;
         border: 1px solid #BFD0E1;
 }
 
+
+.time-slots td {
+        border: 1px solid #BFD0E1;
+	padding: 0.3em 0em 0.3em 1em;
+	color: black;
+	font-size: 12px;
+}
+
+.time-slots td.slot {
+	width: 100px;
+        border-bottom: 1px solid #fff;
+}
+
 .time-slots tr.appointment td {
-	background-color: #fffdea;
-        margin:0px;
-        padding: 1px 0px 1px 0px;
-        line-height: normal;
+	background-color: #ece8ad;
 }
 
 .time-slots tr td.available {
-	background-color: #a0ec96;
-	width:100px;
-        line-height: normal;
+	background-color: #b4ecad;
 }
 
 .time-slots tr td.available a {
@@ -424,74 +430,42 @@ table.form-table .table-top td {color: #1B74B0; font-size: 15px; font-weight: bo
 	 background-color: #eee;
 }
 
-
 .time-slots tr td.available a:hover {
 	 color:#6481b5;
 }
 
 .time-slots tr.appointment1 td {
 	background-color: #eed4b5;
-        margin:0px;
-        padding: 1px 0px 1px 0px;
-        line-height: normal;
 }
 .time-slots tr.appointment2 td {
 	background-color: #e2cdee;
-        margin:0px;
-        padding: 1px 0px 1px 0px;
-        line-height: normal;
 }
 .time-slots tr.appointment3 td {
 	background-color: #cdeecd;
-        margin:0px;
-        padding: 1px 0px 1px 0px;
-        line-height: normal;
 }
 .time-slots tr.appointment4 td {
 	background-color: #ebadb0;
-        margin:0px;
-        padding: 1px 0px 1px 0px;
-        line-height: normal;
 }
 .time-slots tr.appointment5 td {
 	background-color: #d8e9f3;
-        margin:0px;
-        padding: 1px 0px 1px 0px;
-        line-height: normal;
 }
 .time-slots tr.appointment6 td {
 	background-color: #e5ff88;
-        margin:0px;
-        padding: 1px 0px 1px 0px;
-        line-height: normal;
 }
 .time-slots tr.appointment7 td {
 	background-color: #f6adcf;
-        margin:0px;
-        padding: 1px 0px 1px 0px;
-        line-height: normal;
 }
 .time-slots tr.appointment8 td {
 	background-color: #d2d2d2;
-        margin:0px;
-        padding: 1px 0px 1px 0px;
-        line-height: normal;
 }
 
 .time-slots tr.appointment9 td {
 	background-color: #b3e5fd;
-        margin:0px;
-        padding: 1px 0px 1px 0px;
-        line-height: normal;
 }
 
 
 .time-slots tr td.available-new {
 	background-color:#fff;
-        margin:0px;
-	width:120px;
-        padding: 1px 0px 1px 0px;
-        line-height: normal;
 }
 
 

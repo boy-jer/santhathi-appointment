@@ -5,7 +5,7 @@
               :style =>"display: none;" ) -%>
 
 <table class="time-slots">
-     <tr><th><b>Slot</b>&nbsp; </th><th><b>Name</b> </th> <th><b>Register No</b></th></tr>
+     <tr><th><b>Slot</b>&nbsp; </th><th><b>Details</b> </th> </tr>
        <% unless @doctor.blank? %>
          <% dt1 = Time.parse(@doctor.doctor_profile.working_from.to_s) %>
          <% working_slots = working_slots(@doctor) %>
@@ -15,27 +15,24 @@
             <% slot = "#{(dt1.strftime('%H:%M').to_s)}" -%>
 
             <% if @appointments.key?(slot) -%>
-               <tr class="appointment">
+               <tr class="appointment slot">
                   <td>
                     <%= link_to "#{slot} - #{(dt1 = dt1 + 5.minutes).strftime('%H:%M').to_s}", pms_appointment_url(@appointments[slot]), :rel=> "facebox" -%>
                   </td>
                   <td><%= link_to @appointments[slot].patient.patient_name, pms_patient_url(@appointments[slot].patient), :rel=> "facebox" %> </td>
-                  <td> <%= @appointments[slot].patient.reg_no -%> </td>
                </tr>
             <% elsif working_slots.include?(slot) -%> <!-- No appointment exists. Now check whether doctor works for this slot -->
                <tr>
-                  <td class="available">
+                  <td class="available slot">
                       <%= link_to_function("#{slot} - #{(dt1 = dt1 + 5.minutes).strftime('%H:%M').to_s}", "setTime('#{slot}')") %> 
                   </td>
-                  <td class="available-new"> &nbsp; </td>
-                  <td class="available-new"> &nbsp; </td>
+                  <td class="available-new"> <%= link_to_function("Book this time", "setTime('#{slot}')") %></td>
                </tr>
            <% else %>
               <tr>
-                <td class="not-working">
+                <td class="not-working slot">
                    <%= "#{slot} - #{(dt1 = dt1 + 5.minutes).strftime('%H:%M').to_s}" -%>
                 </td>
-               <td class="available-new"> &nbsp; </td>
                <td class="available-new"> &nbsp; </td>
                </tr>
            <% end %>
@@ -51,5 +48,4 @@
     $("#appointment_minute").val(parseInt(minute * 1));
     $("#appointment_time").highlight();
     }
-  var facebox = new Facebox();
 </script>

@@ -32,7 +32,7 @@
     
         <div class='more_appointment_details'>
            Patient name is <%= link_to appointment.patient.patient_name, pms_patient_url(appointment.patient), :rel=> "facebox", :class => 'blue-link'%> and
-           hospital number is <%= appointment.patient.reg_no.blank? ? 'Not yet registred' : appointment.patient.reg_no%>. <%= link_to('Register now.', edit_pms_patient_url(appointment.patient), :class => 'yellow-link') if appointment.patient.reg_no.blank? %>
+           <%= appointment.patient.reg_no.blank? ? 'not yet registred' : "hospital number is <b>#{appointment.patient.reg_no}</b>"%>. <%= link_to('Register now.', edit_pms_patient_url(appointment.patient), :class => 'yellow-link') if appointment.patient.reg_no.blank? %>
       
         </div>  
       </div>

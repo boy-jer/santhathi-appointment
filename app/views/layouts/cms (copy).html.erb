@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title><%= configatron.site_name %></title>
+
+	<%=javascript_include_tag :defaults, 'facebox', 'jquery-1', 'jquery_corner',  'menu', 'jquery.cookie', 'jquery.treeview.min','jquery-ui-1.6.custom.min' ,'jquery.droppy'%>
+        <%= calendar_date_select_includes %>
+        <%= stylesheet_link_tag 'default', 'calendar/option2- blue/style', 'facebox', 'menu', 'reasons', 'jquery.treeview', 'ui.all.css' ,'droppy' %>
+
+	<!--[if lte IE 6]>
+		<%= stylesheet_link_tag 'ie6.css', media="screen" %>
+	<![endif]-->
+
+	<script type="text/javascript">
+       jQuery.noConflict();
+    </script>
+
+    <script type="text/javascript">
+			jQuery(function(){
+                jQuery('#tabs').tabs();
+			});
+	</script>
+
+        <script type="text/javascript">
+		jQuery(function() {
+			jQuery("#tree").treeview({
+				collapsed: false,
+				animated: "medium",
+				control:"#sidetreecontrol",
+				persist: "location"
+			});
+		})
+
+	</script>
+	  <script type='text/javascript'>
+ 		 jQuery(function() {
+  	  jQuery('#nav').droppy();
+ 	 });
+</script>
+</head>
+
+<body>
+   <div id="header">
+	 <h1> Santhathi </h1>
+	 <div id="global_links">
+         <%= render :partial => 'shared/global_links' %>
+     </div>
+     <%= render :partial => 'shared/tabs' %>
+    </div>
+    <div id="wrapper">
+
+          <%= render :partial => 'shared/cms_sub_tabs' %>
+
+          <%= render :partial => 'shared/layout_body' %>
+              <div class="clear"></div>
+
+              <div class="clear"> </div>
+     </div>    <!-- End Wrapper -->
+
+</body>
+
+</html>

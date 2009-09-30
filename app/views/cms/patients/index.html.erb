@@ -1,10 +1,9 @@
-<div class='continer'>
+<% content_for :header do -%>
+  Patient list
+<% end %>
 
-  <h3 class = 'head'> Listing Patients  </h3>
-  <%=render :partial=> '/cms/patients/filters'%>
 
-  <br />
-  <div>
+<div>
  <% unless admin? %>
    <%form_tag (discharge_cms_doctor_patients_path(current_user.id), :method=>:post )do %>
     <table id='reason-display'>
@@ -38,4 +37,3 @@
   </div>
   <br />
 
-</div>

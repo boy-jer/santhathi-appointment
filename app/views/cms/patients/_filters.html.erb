@@ -1,3 +1,5 @@
+<% content_for :sidebar do %>
+
 <% form_tag(cms_patients_url, :method => :get, :id => "search_form") do %>
    <table class="search-table">
      <tr>
@@ -22,12 +24,13 @@
           <input class="textbox-small" id="search_conditions_state_is" name="search[conditions][state_is]"  value="visited" type="hidden">
        		  <td> <input type="reset" value="Reset"> </td>
        	 <% end %>
-       <% end %>
+               <% end %>
 	 </tr>
   </table>
 <% end %>
-
+ 
 <%= observe_form("search_form", :frequency => 1,
                  :before => "Element.show('spinner')",
                  :success => "Element.hide('spinner')",
                  :url => cms_patients_url, :method => :get) %>
+ <% end %>
