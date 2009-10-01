@@ -1,25 +1,17 @@
-<% form_tag(pms_doctors_url, :method => :get, :id => "search_form") do %>
-   <table class="search-table">
-     <tr>
-       <th>Doctor Name </th> <th>Designation </th> <th> Reset</th>
-     </tr>
-     <tr>
+<% content_for :sidebar do -%>
+  <div class="search1">
+    <% form_remote_tag(:url => pms_doctors_url, :method => :get) do %>
       <%fields_for @search do |f|%>
         <% f.fields_for @search.conditions do |p| %>
-         <% p.fields_for p.object.doctor_profile do |profile| %>
-
-           <td><%= profile.text_field :name_like ,:class =>'textbox' %></td>
-           <td><%= profile.text_field :designation_like, :class => 'textbox' %></td>
-           <%end%>
+          <% p.fields_for p.object.doctor_profile do |profile| %>  
+            <p> <label> Doctor Name: </label> <%= profile.text_field :name_like ,:class =>'textbox' %> </p>
+            <p> <label> Designation: </label> <%= profile.text_field :designation_like, :class => 'textbox-small' %> </p>
+          <%end%>
         <%end%>
       <%end%>
-       <td><input type="reset" value="Reset"></td>
-	 </tr>
-  </table>
-<% end %>
+      <input type="reset" value="Reset">  &nbsp;&nbsp; <%= submit_tag "Search" %> 
+    <% end %>
+  </div>  
+<%end-%>
 
 
-<%= observe_form("search_form", :frequency => 1,
-                 :before => "Element.show('spinner')",
-                 :success => "Element.hide('spinner')",
-                 :url => pms_doctors_url, :method => :get) %>

@@ -4,7 +4,7 @@
      <%unless @doctor.blank? %>
        <% dt1 = Time.parse(@doctor.doctor_profile.working_from.to_s) %>
        <% appoitments_hash = appointments(@doctor, @date) %>
-       <% iteration_count(@doctor).times do%>
+       <% iteration_count(@doctor).times do %>
 
          <% slot = "#{(dt1.strftime('%H:%M').to_s)}" %>
          <% if appoitments_hash.key?(slot) %>

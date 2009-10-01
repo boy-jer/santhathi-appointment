@@ -1,0 +1,19 @@
+<% content_for :sidebar do -%> 
+    <div class="search1">
+    <% form_remote_tag(:url => cms_appointments_url, :method => :get) do %>
+      <%fields_for @search do |f|%>
+           <% f.fields_for @search.conditions do |p| %>
+    
+             <% if admin? %>
+               <p> <%= p.select :doctor_id_like,  [['Select doctor' , '']] + Doctor.doctors_list, :class =>'select-list' %> </p>
+             <% end %>
+            <p><label>Appointment date:</label> <%= p.text_field :appointment_date_like,:class =>'textbox-small' ,:id => 'datepicker'%> </p> 
+            <p><label>Appointments: <label> <%= radio_button_tag ('filter', '1', checked = true) %> </p>
+            <p><label> Time slots: </label> <%= radio_button_tag ('filter', '2', checked = false) %> </p>
+             
+           <%end%>
+         <%end%>
+         <input type="reset" value="Reset">  &nbsp;&nbsp; <%= submit_tag "Search" %>    
+    <% end %>
+    </div>
+<% end -%>  

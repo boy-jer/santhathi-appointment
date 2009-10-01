@@ -1,39 +1,9 @@
 
 <div class='continer'>
 
-    <% form_tag(cms_appointments_url, :method => :get, :id => "search_form") do %>
-
-     <table class="search-table">
-        <tr>
-             <% if admin? %>
-               <th><%=label_tag 'Doctor:'%></th>
-             <% end %>
-            <th><%=label_tag 'Appointment date:'%></th>
-            <th><%=label_tag 'Appointments:'%></th> <th><%=label_tag 'Time slots:'%></th>
-              <th rowspan='2'><input type="reset" value="Reset"> </th>
-        </tr>
-        <tr>
-
-        <%fields_for @search do |f|%>
-           <% f.fields_for @search.conditions do |p| %>
-
-        <% if admin? %>
-           <td><%= p.select :doctor_id_like,  [['Select doctor' , '']] + Doctor.doctors_list, :class =>'select-list' %></td>
-         <% end %>
-         <td><%= p.calendar_date_select :appointment_date_like,:class =>'textbox-small' %></td>
-           <%end%>
-         <%end%>
-            <td><%= radio_button_tag ('filter', '1', checked = true) %></td>
-            <td><%= radio_button_tag ('filter', '2', checked = false) %></td>
-	</tr>
-     </table>
-  <% end %><br />
+  <%= render :partial => 'filters' %> 
   <%= render :partial => 'reason_display' %>
-  <%= observe_form("search_form", :frequency => 1.2,
-                 :before => "Element.show('spinner')",
-                 :success => "Element.hide('spinner')",
-                 :url => cms_doctor_appointments_url, :method => :get) %>
-
+ 
 
   <!-- Ajax search result indicator -->
   <%= image_tag("spinner.gif",
