@@ -18,7 +18,7 @@
 
     <div class='appointment_details left'> 
 
-      <div class = 'appointment_time'><%=h Time.parse(appointment.appointment_time.to_s).strftime('%I:%M %p').to_s %></div>
+      <div class = 'appointment_time'><%=link_to(Time.parse(appointment.appointment_time.to_s).strftime('%I:%M %p').to_s, '#', :class => 'blue-link') %></div>
 
       <div class = 'other_details left'>
         <div class='more_appointment_details'>
