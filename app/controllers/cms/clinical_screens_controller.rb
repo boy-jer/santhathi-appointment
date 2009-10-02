@@ -1,5 +1,5 @@
 class Cms::ClinicalScreensController < ApplicationController
-  layout 'cms'
+  layout 'cms_single_column'
 
   def new
     unless params[:appointment_id].blank?

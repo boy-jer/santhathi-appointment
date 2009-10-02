@@ -7,13 +7,13 @@ class Laboratory::PrescriptionsController < ApplicationController
     #@prescriptions ,@count = @search.all, @search.count
     @search = Prescription.new_search(params[:search])
     @search.per_page ||= 15
-<<<<<<< HEAD:app/controllers/laboratory/prescriptions_controller.rb
-    @prescribed_tests, @count = @search.all(:include => {:prescriptions_tests => :prescriptions}), @search.count
-=======
+
+    #@prescribed_tests, @count = @search.all(:include => {:prescriptions_tests => :prescriptions}), @search.count
+
     @search.order_as ||= "DESC"
     @search.order_by ||= [:p_date ,:p_time]
     @prescreptions = @search.all 
->>>>>>> e689f7fba8e182acb53899c72b1be87d769253a8:app/controllers/laboratory/prescriptions_controller.rb
+
     respond_to do |format|
       format.html
       format.js { render :update do |page|

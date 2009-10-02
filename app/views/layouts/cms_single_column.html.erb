@@ -3,7 +3,6 @@
 <head>
   <%= render :partial => 'shared/head' %>
   <%=javascript_include_tag 'jquery.cookie', 'jquery.treeview.min' %>
-  <%= stylesheet_link_tag 'jquery.treeview' %>
   <script type="text/javascript">
 			jQuery(function(){
                 jQuery('#tabs').tabs();
@@ -35,19 +34,12 @@
      </div>
 		
      <div id="content_main" class="clearfix">
-        <div id="dashboard" class="left">
+        <div id="content_wrapper">
 	   <h2 class="ico_mug"><%= yield :header %> </h2>
 	   <div class="clearfix">
 	      <%= render :partial => 'shared/layout_body' %>
 	   </div>
-        </div><!-- end #dashboard -->
-
-	 
-	 <div id="sidebar" class="right">
-	    <h2 class="ico_mug">Sidebar</h2>
-            <%= yield :sidebar %>
-	  </div><!-- end #sidebar -->
-
+        </div>
      </div><!-- end #content_main -->	
     </div><!-- end #content -->
 		   
