@@ -1,4 +1,7 @@
-<div class='continer'>
+<% content_for :header do %>
+  Creating test report for: <%= @lab_test.name%>
+<% end %>
+
 <% form_for([:laboratory, @prescribed_test,  @laboratory_report]) do |f| %>
 
   <%= f.error_messages %>
@@ -62,14 +65,14 @@
 
     <table class="form-table">
       <tr  class='table-top'><td colspan =2>Prescription Action Details </td>
-      <tr> <th> Date of Action  :</th> <td><%= calendar_date_select_tag "laboratory_report[date_of_action]", Date.today , :class =>'textbox' %></td></tr>
-      <tr> <th> Time of Action  :</th> <td><%= f.time_select  :time_of_action%></td></tr>
-      <tr> <th> Action Taken By : </th> <td>
+      <tr> <th> Date of Action</th> <td><%= calendar_date_select_tag "laboratory_report[date_of_action]", Date.today , :class =>'textbox' %></td></tr>
+      <tr> <th> Time of Action</th> <td><%= f.time_select  :time_of_action%></td></tr>
+      <tr> <th> Action Taken By</th> <td>
        <%= select :laboratory_report,"action_taken_by_id",[['Select Doctor' , '']] + Doctor.doctors_list %> </td> </tr>
-      <tr> <th> Authorised By : </th> <td>
+      <tr> <th> Authorised By </th> <td>
        <%= select :laboratory_report,"authorised_by_id",[['Select Doctor' , '']] + Doctor.doctors_list %>
        </td> </tr>
-      <tr> <th> Desscription :</th> <td> <%= f.text_field :description ,:class => 'address' %> </td> </tr>
+      <tr> <th> Description</th> <td> <%= f.text_field :description ,:class => 'address' %> </td> </tr>
     </table>
 
 <br/><br/>
@@ -77,11 +80,7 @@
 <%= f.hidden_field :appointment_id , :value =>  @appointment.id %>
 <%= f.hidden_field :prescription_id , :value =>  @prescription.id %>
 <%= f.hidden_field :lab_test_id , :value =>  @lab_test.id %>
-
-<%= image_submit_tag "create.gif" %>
+<hr />
+<button> Create report </button> or <%= link_to 'Cancel', :controller =>:laboratory_prescriptions, :action =>'index'%>
 
 <% end %>
-
-<%= link_to 'Back', :controller =>:laboratory_prescriptions ,:action =>'index'%>
-
-</div>

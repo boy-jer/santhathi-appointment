@@ -42,12 +42,13 @@
 	   </div>
         </div><!-- end #dashboard -->
 
-	 
-	 <div id="sidebar" class="right">
-	    <h2 class="ico_mug">Sidebar</h2>
-            <%= yield :sidebar %>
-	  </div><!-- end #sidebar -->
-
+	 <% s = yield(:sidebar) %>
+         <%unless s.blank? %>
+	    <div id="sidebar" class="right">
+	      <h2 class="ico_mug">Sidebar</h2>
+              <%= s %>
+	    </div><!-- end #sidebar -->
+         <% end %>
      </div><!-- end #content_main -->	
     </div><!-- end #content -->
 		   

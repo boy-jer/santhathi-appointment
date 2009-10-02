@@ -92,7 +92,7 @@ a:hover#passwordrecoverylink{color:#000;}
 /* ------------------------------------------------------------------------------------
 STRUCTURE					 */
 #container{	overflow:hidden;   width:100%; margin:0 auto; } /*background:url(/images/img/overlay.jpg) no-repeat;*/
-#header{}
+#header{height: 70px;}
 #footer{clear:both; }
 #content_main{background:#f1f1f1; padding:10px;-moz-border-radius:3px;}
 #top_menu{background:url(/images/img/menutop.jpg) no-repeat top center;width:960px;margin-top:15px; height:35px;}
@@ -205,7 +205,7 @@ input#post_title{width:925px;margin:0px;border-left:1px solid #a8a8a8;border-top
 }
 
 
-#header h1{color:#fff;padding:0px;margin-left:10px;margin-top:13px;padding-left:0px;}
+#header h1{color:#fff;padding:0px;margin-left:10px;margin-top:10px;padding-left:0px;}
 #header h1 span{color:#fff;padding:0px;margin-left:10px;margin-top:12px;padding-left:0px; font-size: 13px;}
 /*****************************added latter**************************************/
 
@@ -329,10 +329,10 @@ input.textbox-small:focus, textarea:focus{
 /******************************Appointment listing section***********************/
 .clear{ clear:both;}
 
-.appointment{clear: both; border-bottom: 1px solid #eee;}
-.appointment_details{background: none; margin: 15px 0 10px 0;}
-.appointment_date {clear: both; font-weight: bold; background: url(/images/img/date-bg.gif) no-repeat; padding: 6px 5px 2px 7px; border-bottom: 1px #ccc solid; margin-top: 10px; color: #293c4d;}
-.appointment_time{background: url(/images1/img/time-bg.gif) no-repeat; padding: 5px 4px 4px 4px; color: #3a5368; float: left; margin-top: 23px;}
+.appointment{clear: both; border-bottom: 1px solid #eee; }
+.appointment_details{margin: 15px 0 10px 0;}
+.appointment_date {clear: both; font-weight: bold; background: url(/images/img/date-bg.gif) no-repeat ; padding: 6px 5px 2px 7px; border-bottom: 1px #ccc solid; margin-top: 10px; color: #293c4d;}
+.appointment_time{background-image: url(/images1/img/time-bg.gif) no-repeat; padding: 5px 4px 4px 4px; color: #3a5368; float: left; margin-top: 23px;}
 .more_appointment_details{margin: 5px 0 5px 13px;}
 
 .yellow-link{color: #a08000; }
@@ -376,7 +376,7 @@ table.form-table th {padding: 0.1em .8em ; border:1px solid #B1C4D2; text-align:
 table.form-table th.left-label {text-align: left;}
 table.form-table td { padding: 0.3em .8em 0.3em ; border-bottom:1px solid #B1C4D2; }
 
-table.form-table .table-top td {color: #1B74B0; font-size: 15px; font-weight: bold;  }
+table.form-table .table-top td {color: #304d66; font-size: 15px; font-weight: bold;  }
 
 /* ---------------------schedule(time slots) --------------------*/
 
@@ -478,5 +478,16 @@ table.form-table .table-top td {color: #1B74B0; font-size: 15px; font-weight: bo
 
 .clinical-table{border-collapse: collapse; background-color: #fbfbfb; color: #000; width: 100%; border: 1px solid #808080; margin: 4px; }
 
+/*--------------------------Lab test reports ------------------*/
+.report-create th {background: #eee; text-align: left; padding: 0.3em .5em .3em .5em; border-bottom:1px solid #ABBFCF; font-size: 12px; font-weight: bold;}
 
+.report-create td { padding: .2em .5em .2em .5em; color: #000;  vertical-align: middle; }
 
+.report-create tr.even {background: #F0F2F4; border:1px solid #ABBFCF; }
+.report-create tr.odd { background: #FFFFFE; border:1px solid #ABBFCF;}
+
+.report-create { border-collapse: collapse; width: 100%; color: #000; border:1px solid #ABBFCF; margin-top: 2em; font-size: 11px; }
+
+.report-create .header {background: #B9C2EE; padding: .2em .5em .2em .5em; border: 1px solid #ABBFCF;}
+
+.report-create a {color: #00416F; text-decoration: none; }
