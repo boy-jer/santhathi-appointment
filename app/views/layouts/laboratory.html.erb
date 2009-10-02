@@ -1,27 +1,16 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <%= render :partial => 'shared/head' %>
+  <%=javascript_include_tag 'jquery.cookie', 'jquery.treeview.min' %>
+  <%= stylesheet_link_tag 'jquery.treeview' %>
+  <script type="text/javascript">
+			jQuery(function(){
+                jQuery('#tabs').tabs();
+			});
+   </script>
 
-	<title><%= configatron.site_name %></title>
-
-    <%=javascript_include_tag :defaults, 'facebox', 'jquery-1', 'jquery_corner', 'jquery-ui-1.7.custom.min', 'menu', 'jquery.cookie', 'jquery.treeview.min', 'jquery.tablednd','jquery.droppy' %>
-
-        <%= stylesheet_link_tag 'calendar/option2- blue/style', 'facebox', 'menu', 'reasons', 'jquery.treeview','droppy' %>
-         <%= calendar_date_select_includes %>
-          <%= stylesheet_link_tag('default', :media => :screen) %>
-    <%= stylesheet_link_tag('print', :media => :print) %>
-
-	<!--[if lte IE 6]>
-		<%= stylesheet_link_tag 'ie6.css', media="screen" %>
-	<![endif]-->
-        <script type="text/javascript">
-                jQuery.noConflict();
-        </script>
-
-        <script type="text/javascript">
+   <script type="text/javascript">
 		jQuery(function() {
 			jQuery("#tree").treeview({
 				collapsed: false,
@@ -31,35 +20,41 @@
 			});
 		})
 
-	</script>
-
-	 <script type='text/javascript'>
- 		 jQuery(function() {
-  	  jQuery('#nav').droppy();
- 	 });
-</script>
-
+   </script>
 </head>
 
 <body>
+<div class="container" id="container">
+   <div  id="header">
+     <%= render :partial => 'shared/header' %>
+   </div>
 
-  <div id="header"> 
-     <h1> Santhathi </h1>
-	 <div id="global_links">
-        <%= render :partial => 'shared/global_links' %>
+   <div id="content">
+     <div id="top_menu" class="clearfix">
+        <%= render :partial => 'shared/laboratory_sub_tabs' %>
      </div>
-     <%= render :partial => 'shared/tabs' %>
-  </div>
-         
-  <div id="wrapper">
-     <%= render :partial => 'shared/laboratory_sub_tabs' %>
-     <%= render :partial => 'shared/layout_body' %>
-     <div class="clear"></div>
-	 <div id="footer">
-         Powered by isiri Technologies Pvt. Ltd.
-    </div>  
-  </div>    <!-- End Wrapper -->
-   
-</body>
+		
+     <div id="content_main" class="clearfix">
+        <div id="dashboard" class="left">
+	   <h2 class="ico_mug"><%= yield :header %> </h2>
+	   <div class="clearfix">
+	      <%= render :partial => 'shared/layout_body' %>
+	   </div>
+        </div><!-- end #dashboard -->
 
+	 
+	 <div id="sidebar" class="right">
+	    <h2 class="ico_mug">Sidebar</h2>
+            <%= yield :sidebar %>
+	  </div><!-- end #sidebar -->
+
+     </div><!-- end #content_main -->	
+    </div><!-- end #content -->
+		   
+    <div  id="footer" class="clearfix">
+       <%= render :partial => 'shared/footer' %>
+    </div>
+</div><!-- end container -->
+
+</body>
 </html>

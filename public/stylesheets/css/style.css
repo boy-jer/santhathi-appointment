@@ -30,7 +30,7 @@ html, body, div, span, applet, object, iframe, p, blockquote, pre,	a, abbr, acro
 /*---------------------------------------------------------------------------------------
 --- BASICS
 ---------------------------------------------------------------------------------------*/
-body{ font-size:13px;font-family: Arial, Helvetica, sans-serif; color:#000;background:url(/images/img/bg.jpg) repeat-x #4780ae;line-height:16px;}
+body{ font-size:13px; font-family: Verdana, Helvetica, Arial, Sans-Serif; color:#000;background:url(/images/img/bg.jpg) repeat-x #4780ae;line-height:16px;}
 a{color:#162635;text-decoration:none;}
 a:hover{text-decoration:underline;}
 a:active{	}
@@ -321,7 +321,7 @@ input.textbox-small:focus, textarea:focus{
 	font-size: 12px;
 	font-weight: bold;
 	color: #fff;
-        width: 100px;
+        width: 90px;
 	text-align:center;
 	background:  url('/images/img/menu-bg.gif') no-repeat;
 
@@ -336,7 +336,8 @@ input.textbox-small:focus, textarea:focus{
 .more_appointment_details{margin: 5px 0 5px 13px;}
 
 .yellow-link{color: #a08000; }
-.blue-link{color: #406dab; font-weight: bold;}
+.blue-link{color: #1c60a0; font-weight: bold;}
+.green-link{color: #419100; }
 .green-row{background: #cddecb;}
 .actions{margin: 15px 0 10px 0;}
 /******************************Appointment create***********************/
@@ -385,7 +386,7 @@ table.form-table .table-top td {color: #1B74B0; font-size: 15px; font-weight: bo
            width: 265px;
            height: 380px;
            overflow: auto;
-           border-left: 1px solid #eee;
+           border: 1px solid #eee;
           }
 
 .time-slots{

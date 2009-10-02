@@ -27,12 +27,12 @@
       
         <div class='more_appointment_details'>
           Appointment reason is <b><%=h appointment.reason.name %></b> and is in status <b><%= status(appointment.state) %>.</b>
-          <%= link_to('Confirm now.', confirm_pms_appointment_url(appointment, :page => params[:page]), :method => :get, :confirm => 'This action will mark this appointment as patient visited. are you sure?', :class => 'yellow-link') if appointment.state == 'new_appointment'%>
+          <%= link_to('Confirm now.', confirm_pms_appointment_url(appointment, :page => params[:page]), :method => :get, :confirm => 'This action will mark this appointment as patient visited. are you sure?', :class => 'green-link') if appointment.state == 'new_appointment'%>
         </div>
     
         <div class='more_appointment_details'>
            Patient name is <%= link_to appointment.patient.patient_name, pms_patient_url(appointment.patient), :rel=> "facebox", :class => 'blue-link'%> and
-           <%= appointment.patient.reg_no.blank? ? 'not yet registred' : "hospital number is <b>#{appointment.patient.reg_no}</b>"%>. <%= link_to('Register now.', edit_pms_patient_url(appointment.patient), :class => 'yellow-link') if appointment.patient.reg_no.blank? %>
+           <%= appointment.patient.reg_no.blank? ? 'not yet registred' : "hospital number is <b>#{appointment.patient.reg_no}</b>"%>. <%= link_to('Register now.', edit_pms_patient_url(appointment.patient), :class => 'green-link') if appointment.patient.reg_no.blank? %>
       
         </div>  
       </div>
