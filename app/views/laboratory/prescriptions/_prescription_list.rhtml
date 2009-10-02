@@ -3,7 +3,7 @@
 
 <table class="listing">
   <tr>
-<<<<<<< HEAD:app/views/laboratory/prescriptions/_prescription_list.rhtml
+
     <th> <%= remote_order_by_link({:prescription => { :appointment => { :patient => :reg_no }}} , :text => "Hospital No") %>   </th>
     <th><%= remote_order_by_link({:prescription =>  { :appointment => { :patient => :id }} } , :text => "PVR No") %>  </th>
     <th> <%= remote_order_by_link({:prescription => { :appointment => { :patient => :patient_name }}} , :text => "Patient Name") %></th>
@@ -28,7 +28,7 @@
 	  </td>
           <td> </td>
 	</tr>
-=======
+
      <th> <%= remote_order_by_link(:p_date , :text => "Prescribed Date") %>   </th>
      <th> Prescription Time</th>
      <th> Quantity </th>
@@ -58,7 +58,7 @@
        <td> </td>
            
 	   </tr>
->>>>>>> e689f7fba8e182acb53899c72b1be87d769253a8:app/views/laboratory/prescriptions/_prescription_list.rhtml
+
   <% end %>
 
   <tr class="table-footer">
