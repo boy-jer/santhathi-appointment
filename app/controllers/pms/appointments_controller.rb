@@ -138,7 +138,7 @@ class Pms::AppointmentsController < ApplicationController
   end
 
   def patient_search
-    @patients = Patient.name_filter(params[:name]) unless params[:name].blank?
+    @patients = Patient.all(:conditions =>{:patient_name_like => params[:name] ,:contact_no_like => params[:number] ,:reg_no_like => params[:reg_num],:spouse_is_null => true})
     render :update do |page|
       page.replace_html 'patient_search_results', :partial => 'patient_search_results', :object => @patients
     end

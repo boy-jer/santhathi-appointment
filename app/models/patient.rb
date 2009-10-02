@@ -17,6 +17,11 @@ class Patient < ActiveRecord::Base
   named_scope :contact_filter, lambda{|contact| {:conditions => ["contact_no = ? AND spouse is null ", "#{contact}"] } }
   named_scope :reg_no_filter, lambda{|reg_no| {:conditions => ["reg_no = ? AND spouse is null ", "#{reg_no}"] } }
 
+  
+  
+  
+  
+  
   named_scope :todays, { :conditions => ["created_at > ? and reg_no is not null", (Time.now - 1.day).to_date]}
 
 
