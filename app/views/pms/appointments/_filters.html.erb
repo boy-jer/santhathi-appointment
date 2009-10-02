@@ -2,7 +2,7 @@
       <div class="search1">
     <p> <%= remote_per_page_select -%>   </p>
  
-  <%form_remote_tag(:url => pms_appointments_url, :method => :get, :id => "search_form") do -%>
+  <%form_remote_tag(:url => pms_appointments_url, :method => :get) do -%>
 
       <%fields_for @search do |f|%>
         <% f.fields_for @search.conditions do |p| %>
@@ -12,7 +12,7 @@
           <%end%>
          </p>
          <p><label>Appointment Date:</label>
-           <%= p.text_field :appointment_date_like, :class =>'textbox-small' ,:id => "datepicker" %>
+           <%= p.text_field :appointment_date_like, :class =>'textbox-small' ,:id => "date" %>
          </p>
          <% p.fields_for p.object.patient do |patient| %>
            <p>
