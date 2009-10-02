@@ -115,7 +115,7 @@ STRUCTURE					 */
 #form_middle_cont{width:940px}
 /* ------------------------------------------------------------------------------------
 ICONS				 */
-.ico_mug{background:url(/images/img/ico_mug.jpg) no-repeat 5px center #f1f3f6; padding-left:40px;margin-bottom:20px; }
+.ico_mug{background:url(/images/img/ico_mug.jpg) no-repeat 5px center #f1f3f6; padding-left:40px;margin-bottom:20px; font-size: 18px; }
 .ico_posts{background:url(/images/img/ico_posts.jpg) no-repeat 5px center #f1f1f1; padding-left:30px;}
 .ico_page{background:url(/images/img/ico_page.jpg) no-repeat 5px center #f1f1f1; padding-left:30px;}
 .ico_settings{background:url(/images/img/ico_settings.jpg) no-repeat 5px center #f1f1f1; padding-left:30px;}
@@ -125,7 +125,7 @@ ICONS				 */
 .ico_error{padding-left:20px;background:url(/images/img/ico_error.jpg) no-repeat left center}
 .ico_pending{padding-left:20px;background:url(/images/img/ico_hourglass.jpg) no-repeat left center}
 .ico_chart{padding-left:20px;background:url(/images/img/ico_chart_bar.jpg) no-repeat left center}
-/* ------------------------------------------------------------------------------------
+/* ----------------value--------------------------------------------------------------------
 LOGO				 */
 div#logo h1{padding:0px;margin:0px;}
 div#logo h1 a{display:block;text-indent:-9999px;width:367px;height:20px;background:url(/images/img/logo.jpg) no-repeat;}
@@ -331,8 +331,9 @@ input.textbox-small:focus, textarea:focus{
 
 .appointment{clear: both; border-bottom: 1px solid #eee; }
 .appointment_details{margin: 15px 0 10px 0;}
-.appointment_date {clear: both; font-weight: bold; background: url(/images/img/date-bg.gif) no-repeat ; padding: 6px 5px 2px 7px; border-bottom: 1px #ccc solid; margin-top: 10px; color: #293c4d;}
-.appointment_time{background-image: url(/images1/img/time-bg.gif) no-repeat; padding: 5px 4px 4px 4px; color: #3a5368; float: left; margin-top: 23px;}
+.appointment_date {clear: both; font-weight: bold; background: url(/images/img/date-bg.gif) no-repeat ; padding: 6px 5px 2px 7px; border-bottom: 1px #bcc8d9 solid; margin-top: 10px; color: #293c4d;}
+.appointment_time{background-image: url(/images/img/time-bg.gif) no-repeat ; padding: 5px 4px 4px 4px; color: #3a5368; float: left; margin-top: 23px;}
+.appointment_time a{ color: #163c70; font-weight: bold;}
 .more_appointment_details{margin: 5px 0 5px 13px;}
 
 .yellow-link{color: #a08000; }
@@ -491,3 +492,25 @@ table.form-table .table-top td {color: #304d66; font-size: 15px; font-weight: bo
 .report-create .header {background: #B9C2EE; padding: .2em .5em .2em .5em; border: 1px solid #ABBFCF;}
 
 .report-create a {color: #00416F; text-decoration: none; }
+
+/* Report show */
+ .report th {
+ 	     background: #EAEAEA;
+             text-align: left;
+             padding: 0.3em .5em .3em .5em;
+             border: 1px #808080 solid; 
+			 font-size: 12px;     
+			 font-weight: bold; }
+			 
+.report td { padding: .3em .5em .3em .5em; color: #383838; border: 1px #808080 solid;  }
+
+.report { border-collapse: collapse;
+            width: 100%;
+            color: #000;
+            border:1px solid #808080;
+			margin-top: 2em;
+			font-size: 11px;
+}
+.report .header {background: #B9C2EE; padding: .3em .5em .3em .5em; border: 1px solid #B1C4D2; font-weight: bold;}
+
+#report-results td { padding: .3em .5em .3em .5em; color: #383838; border: 1px #383838 solid;  }
