@@ -8,7 +8,7 @@
         <th>Age</th>
         <th>Spouse name</th>
         <th>Contact no</th>
-	<th>Select</th>
+	    <th>Select</th>
       </tr>
     </thead>
     <% for patient in @patients %>
@@ -19,7 +19,7 @@
            <td>  <%=h calculate_age(patient.dob) %>               </td>
            <td><%=h patient.spouse_name %></td>
            <td><%=h patient.contact_no %></td>
-	   <td><%=radio_button_tag ('patient', patient.id, checked = false, options = {:onclick => "$('main_form').patient_id.value=#{patient.id};"})%></td>
+	   <td> <%=radio_button_tag ('patient', patient.id, checked = false, options = {:onclick => "jQuery('#main_form').patient_id.value=#{patient.id};"})%></td>
           </tr>
        <tbody>
     <% end %>
