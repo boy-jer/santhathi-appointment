@@ -1,13 +1,6 @@
-<div id="calendar_display">
-  <div id="datepicker"></div>
-  <br />
-  
-  <%= text_field_tag 'date' %>
-   
-</div>
-
 <div id="app_details">
-
+  <h4 class='heading'> Enter appointment details <h4>
+  <hr />
   <table cellpadding="5px" class="form-table">
      <tr> <th><%= f.label :department %></th>
           <td><%= select :departament, :id, [['Select department' , '']] + Department.departments_for_select_list %> <%= image_tag("spinner.gif",
@@ -45,7 +38,8 @@
 <br />
 
 
-
+<h4 class='heading'> Patient details <h4>
+<hr />
 <div id='new_patient'>
    <% fields_for :patient do |patient| %>
       <%=render :partial => 'new_patient', :locals => {:patient => patient} %>

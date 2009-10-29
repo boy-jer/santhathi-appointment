@@ -1,7 +1,7 @@
 <% content_for :header do -%>
    Clinical screen for  <%= @patient.patient_name %>
 <%end-%>
- <h3> Patient and appointment detail </h3>
+ <h3 class = 'heading'> Patient and appointment detail </h3>
  <table class="clinical-table">
      <tr><th>Visit Date:</th><td> <%= Date.today %></td>
          <th>Visit Type:</th><td></td>
@@ -24,8 +24,11 @@
   </table>
   <br />
 
-  <h3> Prescriptions & reports </h3>
-  <div id='clinical-screen'>  <%= render :partial => 'clinical_screen_sub_tabs' %>  </div>
+  
+  <div id='clinical-screen'>
+     <h3 class = 'heading'> Prescriptions & reports </h3>  
+     <%= render :partial => 'clinical_screen_sub_tabs' %>  
+  </div>
 
   <%= image_tag("spinner.gif",
               :align => "absmiddle",

@@ -13,9 +13,9 @@
     });
 </script>
 
-<div class='continer'>
-
-<h3>Listing parameter specifications</h3>
+<% content_for :header do -%>
+   Listing Parameter Specifications of <%= @lab_test.name %>
+<%end-%>
 
 <div id= 'specifications-list'> <%= render :partial => 'specifications' %> </div>
 
@@ -24,4 +24,4 @@
 
 <%= link_to "<span>New Parameter Specfication</span>",  new_laboratory_lab_test_parameter_specification_path(@lab_test), :class=> "button" %>
 <%= link_to "Back" , edit_laboratory_lab_test_path(@lab_test)%>
-</div>
+

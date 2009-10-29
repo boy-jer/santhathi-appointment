@@ -5,9 +5,22 @@
 
    <% form_for :appointment, :url => pms_appointments_path, :html => {:id => 'main_form'} do |f| %>
       <%= error_messages_for 'appointment', 'patient' %>
-      <%=render :partial => 'appointment_fields', :locals => {:f => f} %>
+      <div id = 'apointment_left' class = 'left'>
+        <%=render :partial => 'appointment_fields', :locals => {:f => f} %>
+      
+        <div id="calendar_display">
+           <h4 class='heading'> Select appointment date <h4>
+           <hr />
+           <div id="datepicker"></div>
+           <br />
+           <%= text_field_tag 'date' %>
+        </div>
+        <div class = 'clear'> </div>
+      </div>
 
-      <div id="main_schedules">
+      <div id="main_schedules" class = 'right'>
+         <h4 class='heading'> Schedules of the selected doctor <h4>
+         <hr />
          <%= render :partial => 'schedules' %>
      </div>
      <div class = 'clear'> </div>
@@ -16,4 +29,7 @@
    <% end %>
  
    
+
+   
+
 

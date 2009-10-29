@@ -2,7 +2,7 @@
   <%= f.error_messages %>
     <table class = 'form-table'>
 
-    <tr class = 'green-row'> <td colspan="4">  
+    <tr> <td colspan="4"  class = 'blue-row'>  
           <label> 
               <%= link_to "Cancel & return to Clinical Screen" , new_cms_appointment_clinical_screen_path(@appointment.id), :class => 'blue-link'%> 
           </label> &nbsp; | &nbsp;
@@ -28,7 +28,7 @@
        <th>Follow up Before:</th> <td><%= calendar_date_select_tag "prescription[follow_up]", Date.today , :class =>'textbox' %></td></tr>
        <tr><th>Other Remarks:</th> <td colspan="2"><%= f.text_field :remarks ,:class => "textbox" %></td>
 
-       <td><%= f.submit "Prescribe" %></td> </tr>
+       <td><button>Prescribe</button></td> </tr>
     </table>
     <input type="hidden" name="prescription[department_id]" value= <%= params[:department] %>>
     <input type="hidden" name="prescription[appointment_id]" value= <%=  params[:appointment] %>>

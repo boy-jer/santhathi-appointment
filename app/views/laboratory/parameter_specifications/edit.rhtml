@@ -1,25 +1,18 @@
-<div class='continer'>
+<% content_for :header do -%>
+   Updating Parameter Specification for the test <%= @lab_test.name %>
+<%end-%>
+
   <div class='continer-inner'>
-<h3>Editing parameter_specification</h3><br/>
-<%form_for(:parameter_specification,:url => laboratory_lab_test_parameter_specification_path(@lab_test,@parameter_specification),  :html => { :method => :put }) do |f|%>
+      <% form_for(:parameter_specification,:url => laboratory_lab_test_parameter_specification_path(@lab_test,@parameter_specification),  :html => { :method => :put }) do |f|%>
 
-  <%= f.error_messages %>
-  <table cellpadding="5px" class="form-table">
+      <%= f.error_messages %>
+      <table cellpadding="5px" class="form-table">
 
-   <%=render :partial => check(@parameter_specification.parameter_id) %>
-   </table><br/>
+      <%=render :partial => check(@parameter_specification.parameter_id) %>
+      </table><br/>
 
-    <%= f.submit "Update" %>
-<% end %>
-
-
-
-
-<%= link_to 'Show',   laboratory_lab_test_parameter_specification_path(@lab_test,@parameter_specification) %> |
-<%= link_to 'Back', laboratory_lab_test_parameter_specifications_path(@lab_test) %>
-
-
-
+    <button>Update Parameter Specification </button> or <%= link_to 'Cancel', laboratory_lab_test_parameter_specifications_path(@lab_test) %>
+   <% end %>
 
 </div>
-</div>
+

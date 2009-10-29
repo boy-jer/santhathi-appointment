@@ -1,8 +1,7 @@
-<br />
 <% fields_for :parameter_specification do |f| %>
-  <table class="form-table">
+  <table class="form-table form-table-small">
   <tr>
-    <th><%= f.label :parameter %>:</th>
+    <th><%= f.label :parameter_name %></th>
     <td><%= f.select :parameter_id, [['Select parameter' , '']] + Parameter.parameter_list ,:selected =>@parameter.id %>
      <%= image_tag("spinner.gif",
               :align => "absmiddle",
@@ -10,43 +9,31 @@
               :id => "spinner1",
               :style =>"display: none;" ) %></td>
       </tr>
-   <tr><th> <label>Age Group</label></th><td><label>From: </label>
-     <%= f.text_field :age_group_from,:class =>'textbox-small' %><label> To:</label>
-    <%= f.text_field :age_group_to,:class =>'textbox-small' %></td></tr>
-     <tr><th><label>Sex:</label> </th><td>
-      <% if @parameter_specification[:gender] == "male" %>
-          <%= f.radio_button :gender, "male", :checked => true %>
-       <%else%>
-          <%= f.radio_button :gender, "male", :checked => false %>
-       <%end%><label>Male</label>
+     <tr><th> <label>Age Group</label></th>
+        <td>From:<%= f.text_field :age_group_from, :class =>'textbox-small' %>
+           To:  <%= f.text_field :age_group_to, :class =>'textbox-small' %>
+        </td>
+     </tr>
+     <tr><th><label>Sex:</label> </th>
+         <td>
+            <%= f.radio_button :gender, "male", :checked => @parameter_specification[:gender] == "male" %> Male
+            &nbsp;&nbsp;&nbsp; <%= f.radio_button :gender, "female", :checked => @parameter_specification[:gender] == "female" %>  Female 
+            &nbsp;&nbsp;&nbsp; <%= f.radio_button :gender, "both", :checked => @parameter_specification[:gender] == "both" %> Both(Male/Female)
+         </td>
+     </tr>
 
-        <% if @parameter_specification[:gender] == "female" %>
-           <%= f.radio_button :gender, "female", :checked => true %>
-        <%else%>
-           <%= f.radio_button :gender, "female", :checked => false %>
-        <%end%><label>Female</label>
-
-        <% if @parameter_specification[:gender] == "both" %>
-           <%= f.radio_button :gender, "both", :checked => true %>
-        <%else%>
-          <%= f.radio_button :gender, "both", :checked => false %>
-        <%end%><label>Both(Male/Female)</label>
-
-     </td></tr>
-
-     <tr><th><label>Ideal Value : </label></th><td><%= f.text_field :ideal_value,:class=>'textbox'%></td></tr>
-     <tr><th><label>Max Value : </label></th><td><%= f.text_field :max_value,:class=>'textbox'%></td></tr>
-     <tr><th><label>Min Value :</label> </th><td><%= f.text_field :min_value,:class=>'textbox'%></td></tr>
+     <tr><th><label>Ideal Value : </label></th><td><%= f.text_field :ideal_value, :class =>'textbox-small' %></td></tr>
+     <tr><th><label>Max Value : </label></th><td><%= f.text_field :max_value, :class =>'textbox-small'%></td></tr>
+     <tr><th><label>Min Value :</label> </th><td><%= f.text_field :min_value, :class =>'textbox-small'%></td></tr>
 
      <tr><th><label>Special conditions:</label> </th><td><%= f.text_field :special_condition,:class=>'textbox' %></td></tr>
 
    </table>
 <%end%>
 <%= observe_field(:parameter_specification_parameter_id, :frequency => 1,
-                    :before => "Element.show('spinner1')",
-                    :success => "Element.hide('spinner1')",
+                    :before => "jQuery('#spinner').show();",
+                    :success => "jQuery('#spinner').hide();",
                     :url => {:controller => 'parameter_specifications', :action => 'new'},
                     :method => :get,
                     :with => "'parameter_id=' + value"
                    ) %>
-                   <br/>  <br/>
