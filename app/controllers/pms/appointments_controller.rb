@@ -147,7 +147,7 @@ class Pms::AppointmentsController < ApplicationController
 
   def confirm
     @appointment = Appointment.find(params[:id])
-    if @appointment.patient.reg_no.blank? 
+	if @appointment.patient.reg_no.blank? 
       flash[:notice] = "Patient is Not Registered, Please Register"
     else  
        if @appointment.new_appointment?

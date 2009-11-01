@@ -22,11 +22,11 @@
 
       <div class = 'other_details left'>
         <div class='more_appointment_details'>
-         #<b><%=h appointment.id %></b> for doctor <b><%=h appointment.doctor.doctor_profile.name%>.</b>
+         Appointment #<b><%=h appointment.id %></b> for doctor <b><%=h appointment.doctor.doctor_profile.name%>.</b>
         </div>
       
         <div class='more_appointment_details'>
-          Appointment reason is <b><%=h appointment.reason.name %></b> and is in status <b><%= status(appointment.state) %>.</b>
+          The reason is <b><%=h appointment.reason.name %></b> and is in status <b><%= status(appointment.state) %>.</b>
           <%= link_to('Confirm now.', confirm_pms_appointment_url(appointment, :page => params[:page]), :method => :get, :confirm => 'This action will mark this appointment as patient visited. are you sure?', :class => 'green-link') if appointment.state == 'new_appointment'%>
         </div>
     

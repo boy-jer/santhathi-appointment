@@ -7,40 +7,16 @@ Description:
 /*---------------------------------------------------------------------------------------
 --- RESETS
 ---------------------------------------------------------------------------------------*/
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
-margin : 0;
-padding : 0;
-border : 0;
-outline : 0;
-vertical-align : baseline;
-}
- 
-:focus {
-outline : 0;
-}
- 
-ol, ul {
-list-style : none;
-}
- 
-table {
-border-collapse : separate;
-border-spacing : 0;
-}
- 
-caption, th, td {
-text-align : left;
-font-weight : normal;
-}
- 
-blockquote:before, blockquote:after, q:before, q:after {
-content : "";
-}
- 
-blockquote, q {
-quotes : "" "";
-}
-
+html, body, div, span, applet, object, iframe, p, blockquote, pre,	a, abbr, acronym, address, big, cite, code,	del, dfn, em, font, img, ins, kbd, q, s, samp,	small, strike, strong, sub, sup, tt, var,	b, u, i, center,	dl, dt, dd, ol, ul, li,	fieldset, form, label, legend,	table, caption, tbody, tfoot, thead, tr, th, td {margin: 0;	padding: 0;	border: 0;	outline: 0;	font-size: 100%;	vertical-align: baseline;background: transparent;}
+	body {line-height: 1;}
+	ol, ul {list-style: none;}
+	blockquote, q {quotes: none;}
+	blockquote:before, blockquote:after,
+	q:before, q:after {content: '';content: none;}
+	:focus {outline: 0;}
+	ins {text-decoration: none;}
+	del {text-decoration: line-through;}
+	table {border-collapse: collapse;border-spacing: 0;}
 .clearfix:after {
     content: ".";
     display: block;
@@ -54,7 +30,7 @@ quotes : "" "";
 /*---------------------------------------------------------------------------------------
 --- BASICS
 ---------------------------------------------------------------------------------------*/
-body{ font-size:14px;font-family: Arial, Helvetica, sans-serif;color:#000;background:url(/images/img/bg.jpg) repeat-x #4780ae;line-height:16px;}
+body{ font-size:13px; font-family: Verdana, Helvetica, Arial, Sans-Serif; color:#000;background:url(/images/img/bg.jpg) repeat-x #4780ae;line-height:16px;}
 a{color:#162635;text-decoration:none;}
 a:hover{text-decoration:underline;}
 a:active{	}
@@ -120,11 +96,11 @@ a:hover#passwordrecoverylink{color:#000;}
 /* ------------------------------------------------------------------------------------
 STRUCTURE					 */
 #container{	overflow:hidden;   width:100%; margin:0 auto; } /*background:url(/images/img/overlay.jpg) no-repeat;*/
-#header{height: auto;}
+#header{height: 40px;}
 #footer{clear:both; }
-#content_main{background:#ddd; padding:10px;-moz-border-radius:3px;}
+#content_main{background:#f1f1f1; padding:10px;-moz-border-radius:3px;}
 #top_menu{background:url(/images/img/menutop.jpg) no-repeat top center;width:960px;margin-top:10px; height:35px;}
-#profile_info{background:url(/images/img/loginbox.jpg) no-repeat top center;width:231px;height:59px;padding:4px;float:right;margin-top:0px;font-size:12px;color:#fff;line-height:10px;}
+#profile_info{background:url(/images/img/loginbox.jpg) no-repeat top center;width:231px;height:59px;padding:4px;float:right;margin-top:10px;font-size:12px;color:#fff;line-height:10px;}
 #profile_info p{background:none;}
 #avatar{float:left;margin:0px 10px;}
 #postedit{background:#f1f1f1;width:940px;padding:10px;-moz-border-radius:3px;}
@@ -144,7 +120,7 @@ STRUCTURE					 */
 #form_middle_cont{width:940px}
 /* ------------------------------------------------------------------------------------
 ICONS				 */
-.ico_mug{background:url(/images/img/ico_mug.jpg) no-repeat 5px center #f1f1f1; padding-left:40px;margin-bottom:10px; font-size: 15px; border-bottom: 2px solid #ccc; color: #000; font: 2em Georgia, "Times New Roman", Times, serif; padding: 0px 5px 3px 50px;}
+.ico_mug{background:url(/images/img/ico_mug.jpg) no-repeat 5px center #f1f1f1; padding-left:40px;margin-bottom:10px; font-size: 17px; border-bottom: 2px solid #ccc; color: #000; font: 2em Georgia, "Times New Roman", Times, serif; padding: 0px 5px 3px 50px;}
 .ico_posts{background:url(/images/img/ico_posts.jpg) no-repeat 5px center #f1f1f1; padding-left:30px;}
 .ico_page{background:url(/images/img/ico_page.jpg) no-repeat 5px center #f1f1f1; padding-left:30px;}
 .ico_settings{background:url(/images/img/ico_settings.jpg) no-repeat 5px center #f1f1f1; padding-left:30px;}
@@ -172,12 +148,9 @@ CUSTOM				 */
 .form_sidebar ul{margin:0px;padding:0px;list-style:none;}
 .form_sidebar ul li ul{margin:0px 10px;padding:0px;list-style:none;}
 
-span.date{display:block;padding-left:20px; font-style:italic;font-family:10px;}
-
-a#visit{display:block;color:#fff;background:#4780ae;border-left:1px solid #084577;border:1px solid #7ab7e8;padding:4px;margin:5px 15px 0px 0px;-moz-border-radius:3px;}
+span.date{display:block;padding-left:20px; font-style:italic;font-family:10px;} a#visit{display:block;color:#fff;background:#4780ae;border-left:1px solid #084577;border:1px solid #7ab7e8;padding:4px;margin:5px 15px 0px 0px;-moz-border-radius:3px;}
 a.add{display:block;width:80px;text-align:center;color:#fff;background:#4780ae;border:1px solid #4780ae;padding:4px;margin:10px 15px 0px 0px;-moz-border-radius:3px;text-transform:uppercase;}
-
-#profile_info p{font-size:11px;padding-top:1px;padding-bottom:4px;}
+#profile_info p{font-size:11px;padding-top:2px;padding-bottom:4px;}
 #profile_info p a{font-size:11px;color:#f9d71c;}
 #profile_info p a:hover{font-size:11px;color:#f7d202;text-decoration:underline;}
 #profile_info p.last_login{font-size:10px;padding-top:5px;color:#dfdfdf}
@@ -188,6 +161,13 @@ a.add{display:block;width:80px;text-align:center;color:#fff;background:#4780ae;b
 .quickview ul li{padding:3px;font-size:12px;}
 .quickview ul li span.number{font-family:Georgia;font-size:13px;color:#629fa8}
 
+#shortcuts{width:640px;}
+#shortcuts ul {margin:0px;padding:0px;list-style:none;margin-top:20px;}
+#shortcuts ul li{float:left}
+#shortcuts ul li.first_li a{margin-left:0px;}
+#shortcuts ul li a{border:1px solid #999;-moz-border-radius:3px;display:block;padding:5px;margin:5px;width:70px;text-align:center;}
+#shortcuts ul li a span{font-size:10px;margin-top:5px;display:block;background:#eee;padding:2px;}
+#shortcuts ul li a:hover{border:1px solid #ececec;text-decoration:none;}
 
 .photo ul{margin:0px;padding:0px;list-style:none;}
 .photo ul li{float:left; border:1px solid #999;-moz-border-radius:3px;padding:3px;margin:3px 1px;position:relative;}
@@ -229,9 +209,11 @@ input#post_title{width:925px;margin:0px;border-left:1px solid #a8a8a8;border-top
 }
 
 
+
+/*****************************added latter**************************************/
 #header h1{color:#fff;padding:0px;margin-left:10px;margin-top:10px;padding-left:0px;}
 #header h1 span{color:#fff;padding:0px;margin-left:10px;margin-top:12px;padding-left:0px; font-size: 13px;}
-/*****************************added latter**************************************/
+
 
 /*.listing tr:hover {background-color: #f2f7f9; color: #000;} not for IE*/
 .listing th {background: #F2F3F7 url(/images/table-header.jpg) repeat-x;
@@ -363,7 +345,7 @@ input.textbox-small:focus, textarea:focus{
 .yellow-link{color: #a08000; }
 .blue-link{color: #1c60a0; font-weight: bold;}
 .green-link{color: #419100; }
-.actions{margin: 38px 5px 0px 0; font-size: 12px;}
+.actions{margin: 38px 5px 0px 0;}
 /******************************Appointment create***********************/
 #content_wrapper {
  background: #f3f4f5;
@@ -372,12 +354,12 @@ input.textbox-small:focus, textarea:focus{
  height: 100%;
 }
 
-.heading{color: #377242; font-size: 16px;  margin-bottom: 15px;}
+.heading{color: #377242; font-size: 16px;  line-height: 1px; margin-bottom: 15px;}
 
-#apointment_left{ width: 71%;  border: 5px #c5d6e5 solid;   background: #fff;}
+#apointment_left{ width: 72%;  border: 5px #c5d6e5 solid;   background: #fff;}
 
 #main_schedules{
- 	width: 25%;
+ 	width: 24%;
  	padding: 0px 5px 0px 5px;
 	margin: 0px;
          border: 5px #c5d6e5 solid;
@@ -389,24 +371,26 @@ input.textbox-small:focus, textarea:focus{
 
 #app_details {
 	float: left;
- 	width: 60%;
+ 	width: 62%;
  	padding: 15px 10px 0px 5px;
 	margin: 0px;
 }
 
 #calendar_display {
 	float: right;
- 	width: 32%;
+ 	width: 33%;
         margin: 0 10px 0 10px;
         padding: 15px 0px 10px 0px;
 }
+
+
 
 #app_details hr{ margin: 5px 0px 15px 0px;}
 #main_schedules hr{ margin: 5px 0px 15px 0px;}
 #calendar_display hr{ margin: 5px 0px 15px 0px;}
 
 table.form-table {border-collapse: collapse; width: 100%; border: #B1C4D2 1px solid; margin: 0px 5px 0px 5px; }
-table.form-table th {padding: 0.1em .8em ;  border:1px solid #B1C4D2; text-align: right; background: #fff;}
+table.form-table th {padding: 0.1em .8em ; border:1px solid #B1C4D2; text-align: right; background: #fff;}
 table.form-table th.left-label {text-align: left;}
 table.form-table td { padding: 0.3em .8em 0.3em ; border-bottom:1px solid #B1C4D2; background: #fff; }
 
@@ -421,7 +405,7 @@ table.form-table-small{width: 60%;}
 
 
 #schedule {
-           width:  98%;
+           width: 265px;
            height: 405px;
            overflow: auto;
            border: 1px solid #eee;
@@ -619,3 +603,4 @@ a.buttonAdd:hover span {
            border: 1px solid #e6f6fd;
            margin-top: 10px;
           }
+
