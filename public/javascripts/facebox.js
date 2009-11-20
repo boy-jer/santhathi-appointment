@@ -77,7 +77,7 @@
 
   $.extend($.facebox, {
     settings: {
-      opacity      : 0,
+      opacity      : 0.4,
       overlay      : true,
       loadingImage : '/images/loading.gif',
       closeImage   : '/images/closelabel.gif',
@@ -187,7 +187,7 @@
     $.facebox.settings.imageTypesRegexp = new RegExp('\.' + imageTypes + '$', 'i')
 
     if (settings) $.extend($.facebox.settings, settings)
-    $('body').append($.facebox.settings.faceboxHtml)
+    $('form').append($.facebox.settings.faceboxHtml)
 
     var preload = [ new Image(), new Image() ]
     preload[0].src = $.facebox.settings.closeImage

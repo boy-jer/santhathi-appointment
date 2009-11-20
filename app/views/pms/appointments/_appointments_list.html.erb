@@ -1,4 +1,3 @@
-<br />
 <%= image_tag("spinner.gif",
               :align => "absmiddle",
               :border => 0,
@@ -22,25 +21,25 @@
 
       <div class = 'other_details left'>
         <div class='more_appointment_details'>
-         Appointment #<b><%=h appointment.id %></b> for doctor <b><%=h appointment.doctor.doctor_profile.name%>.</b>
+           Patient name: <%= link_to appointment.patient.patient_name, pms_patient_url(appointment.patient), :rel=> "facebox", :class => 'blue-link'%> /
+           Hospital No: <%= appointment.patient.reg_no.blank? ? link_to('Register now.', edit_pms_patient_url(appointment.patient), :class => 'green-link') : "<b>#{appointment.patient.reg_no}</b>" %>.
+        </div>  
+
+        <div class='more_appointment_details'>
+           Appointment #<b><%=h appointment.id %></b> for doctor <b><%=h appointment.doctor.doctor_profile.name%>.</b>
         </div>
       
         <div class='more_appointment_details'>
-          The reason is <b><%=h appointment.reason.name %></b> and is in status <b><%= status(appointment.state) %>.</b>
+          Reason: <b><%=h appointment.reason.name %></b> / Status: <b><%= status(appointment.state) %>.</b>
           <%= link_to('Confirm now.', confirm_pms_appointment_url(appointment, :page => params[:page]), :method => :get, :confirm => 'This action will mark this appointment as patient visited. are you sure?', :class => 'green-link') if appointment.state == 'new_appointment'%>
         </div>
-    
-        <div class='more_appointment_details'>
-           Patient name is <%= link_to appointment.patient.patient_name, pms_patient_url(appointment.patient), :rel=> "facebox", :class => 'blue-link'%> and
-           <%= appointment.patient.reg_no.blank? ? 'not yet registred' : "hospital number is <b>#{appointment.patient.reg_no}</b>"%>. <%= link_to('Register now.', edit_pms_patient_url(appointment.patient), :class => 'green-link') if appointment.patient.reg_no.blank? %>
-      
-        </div>  
+
       </div>
      </div>
     <div class = 'actions right'>
-      <%= link_to 'Prev appointments', pms_patient_patient_appointments_url(appointment.patient), :rel=> "facebox", :class => 'blue-link' %> |
-
-      <%= link_to image_tag('show.png', {:title => 'Show', :border => 0}), pms_appointment_url(appointment), :rel=> "facebox" %> &nbsp;|&nbsp; <%= link_to image_tag('edit.png', {:title => 'Edit', :border => 0}), edit_pms_appointment_path(appointment) %> &nbsp; |&nbsp; <%= appointment.state != 'new' ? image_tag('delete.png', {:title => 'Already visited. Not possible to cancel.', :border => 0}) : link_to(image_tag('delete.png', {:title => 'cancel appointment', :border => 0}), pms_appointment_path(appointment), :confirm => 'Are you sure?', :method => :delete) %>
+      <%= link_to 'History', pms_patient_patient_appointments_url(appointment.patient), :rel=> "facebox", :class => 'blue-link' %> |
+      <%= link_to 'Edit', edit_pms_appointment_path(appointment), :class => 'blue-link' %> |  
+      <%= appointment.state != 'new_appointment' ? 'Delete' : link_to('Delete', pms_appointment_path(appointment), :confirm => 'Are you sure?', :method => :delete, :class => 'blue-link') %>
     </div>
     <div class = 'clear'></div>
  </div>

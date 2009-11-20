@@ -14,8 +14,11 @@
                                :url => { :controller => '/laboratory/prescriptions', :action => @appointment.prescription.blank? ? :new : :edit },
                                :with => "'department='+ #{@department.id} + '&test_id='+ #{test.id} + '&appointment=' + #{@appointment.id}") %>
          </p> 
+         <div id = 'test_<%= test.id %>'> </div>
       <% end %>
 
+       <div id = 'prescription-list'><%= render :partial => '/laboratory/prescriptions/prescreptions' %> </div>
+       
         <p><%=image_tag('pointer.gif', :border => 0) %> &nbsp;
            <%= link_to_remote("Pharmacy Prescription" ,
                             :before => "jQuery('#spinner').show()",

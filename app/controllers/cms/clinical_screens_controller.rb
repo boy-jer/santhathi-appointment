@@ -4,16 +4,21 @@ class Cms::ClinicalScreensController < ApplicationController
   def new
     unless params[:appointment_id].blank?
       @appointment = Appointment.find(params[:appointment_id])
+      @prescription = @appointment.prescription
       @patient = @appointment.patient
       @doctor = @appointment.doctor
       @lab_services = LabTest.find_all_by_parent_id(nil)
       @department = Department.find_by_dept_name("laboratory")
-      @prescribed_tests = @appointment.prescription.prescribed_tests unless @appointment.prescription.blank?
+      @prescribed_tests = @prescription.prescribed_tests unless @appointment.prescription.blank?
       @last_visit_reports = last_visit_report(@appointment.id, @patient)
     else
       flash[:notice]=" Please select at least one appointment."
        redirect_to cms_doctor_patients_path(current_user.id)
     end
+  end
+  
+  def tt
+    
   end
 
   private

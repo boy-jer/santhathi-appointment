@@ -84,7 +84,11 @@ fieldset{border:1px solid #ddd;padding:10px;background:#fff;margin:10px 0px;}
 legend{border:1px solid #ddd;padding:5px;background:#fff;}
 label{display:block;}
 label input{margin-left:30px;}
-hr { border: 1px #ddd solid; width: 100%; }
+hr { color: #f1f1f1;
+      height: 1px;
+      border-top: #ddd 1px solid;
+
+}
 button {text-transform:uppercase;font-size:13px;padding:3px;color:#fff;background:#4780ae;border-left:1px solid #084577;border-top:1px solid #084577;border-right:1px solid #7ab7e8;border-bottom:1px solid #7ab7e8;-moz-border-radius:3px;margin:3px;margin-top:5px;}
 button:hover { background-color: #ff6600;}
 
@@ -122,15 +126,15 @@ STRUCTURE					 */
 #container{	overflow:hidden;   width:100%; margin:0 auto; } /*background:url(/images/img/overlay.jpg) no-repeat;*/
 #header{height: auto;}
 #footer{clear:both; }
-#content_main{background:#ddd; padding:10px;-moz-border-radius:3px;}
+#content_main{background:#f1f1f1; padding:12px;-moz-border-radius:3px;}
 #top_menu{background:url(/images/img/menutop.jpg) no-repeat top center;width:960px;margin-top:10px; height:35px;}
 #profile_info{background:url(/images/img/loginbox.jpg) no-repeat top center;width:231px;height:59px;padding:4px;float:right;margin-top:0px;font-size:12px;color:#fff;line-height:10px;}
 #profile_info p{background:none;}
 #avatar{float:left;margin:0px 10px;}
 #postedit{background:#f1f1f1;width:940px;padding:10px;-moz-border-radius:3px;}
-#dashboard{width:75%; background:#fff;padding:0px; }
-.inner_wrapper{padding:10px 5px 10px 15px;}
-#sidebar{width:24%;padding:0px;background:#fff; border-bottom:1px solid #ddd;-moz-border-radius:3px;}
+#dashboard{width:75%; background:#fff;padding:0px; border: 1px solid #d0d2d5;-moz-border-radius:4px; }
+.inner_wrapper{padding:10px 5px 10px 30px;}
+#sidebar{width:24%;padding:0px;background:#f1f1f1; border: 1px solid #d0d2d5;-moz-border-radius:4px;}
 #footer{background:#f1f1f1;width:98.5%;padding:10px;-moz-border-radius:3px;margin-top:10px;}
 #footer p{background:none;padding:0px;margin:0px}
 .panel{min-height:285px;}
@@ -144,7 +148,7 @@ STRUCTURE					 */
 #form_middle_cont{width:940px}
 /* ------------------------------------------------------------------------------------
 ICONS				 */
-.ico_mug{background:url(/images/img/ico_mug.jpg) no-repeat 5px center #f1f1f1; padding-left:40px;margin-bottom:10px; font-size: 15px; border-bottom: 2px solid #ccc; color: #000; font: 2em Georgia, "Times New Roman", Times, serif; padding: 0px 5px 3px 50px;}
+.ico_mug{background:url(/images/img/sort-nav-bg.gif) #eef1f4; padding-left:40px;margin-bottom:10px; font-size: 15px; border-bottom: 2px solid #dbdfe3; color: #484b4a; font-size: 23px; padding: 10px 5px 10px 50px; -moz-border-radius:3px; border-top: 2px solid #fff;}
 .ico_posts{background:url(/images/img/ico_posts.jpg) no-repeat 5px center #f1f1f1; padding-left:30px;}
 .ico_page{background:url(/images/img/ico_page.jpg) no-repeat 5px center #f1f1f1; padding-left:30px;}
 .ico_settings{background:url(/images/img/ico_settings.jpg) no-repeat 5px center #f1f1f1; padding-left:30px;}
@@ -154,7 +158,7 @@ ICONS				 */
 .ico_error{padding-left:20px;background:url(/images/img/ico_error.jpg) no-repeat left center}
 .ico_pending{padding-left:20px;background:url(/images/img/ico_hourglass.jpg) no-repeat left center}
 .ico_chart{padding-left:20px;background:url(/images/img/ico_chart_bar.jpg) no-repeat left center}
-/* ----------------value--------------------------------------------------------------------
+/* ----------------value------------dbdfe3--------------------------------------------------------
 LOGO				 */
 div#logo h1{padding:0px;margin:0px;}
 div#logo h1 a{display:block;text-indent:-9999px;width:367px;height:20px;background:url(/images/img/logo.jpg) no-repeat;}
@@ -297,7 +301,7 @@ input.textbox-small{
 	border:#7D99B2 1px solid;
 	background:#ffffff url(/images/field-top.gif) repeat-x top;
 	padding: 2px 2px;
-	width: 90px;
+	width: 125px;
 }
 input.textbox-tiny{
 	border:#7D99B2 1px solid;
@@ -353,34 +357,33 @@ input.textbox-small:focus, textarea:focus{
 /******************************Appointment listing section***********************/
 .clear{ clear:both;}
 
-.appointment{clear: both; margin-bottom: 5px; background: #fbfbfb; border-bottom: 1px dotted #bcc8d9; }
-.appointment_details{margin: 15px 0 10px 0;}
-.appointment_date {clear: both; font-weight: bold; background: url(/images/img/date-bg.gif) no-repeat ; padding: 6px 5px 2px 7px; border-bottom: 1px #bcc8d9 solid; margin-top: 20px; color: #293c4d;}
-.appointment_time{background-image: url(/images/img/time-bg.gif) no-repeat ;  padding: 5px 4px 4px 4px; color: #3a5368; float: left; margin: 23px 0px 0px 5px;}
+.appointment{clear: both; margin-bottom: 5px; background: #fff; }
+.appointment_details{margin: 10px 0 10px 0;}
+.appointment_date {clear: both; font-weight: bold; background: url(/images/img/date-bg.gif) no-repeat ; padding: 6px 5px 2px 7px; border-bottom: 1px #ddd solid; margin-top: 20px; color: #293c4d;}
+.appointment_time{background-image: url(/images/img/time-bg.gif) no-repeat ;  padding: 5px 4px 4px 4px; color: #3a5368; float: left; margin: 23px 0px 0px 20px;}
 .appointment_time a{ color: #163c70; font-weight: bold;}
 .more_appointment_details{margin: 5px 0 5px 13px;}
 
 .yellow-link{color: #a08000; }
-.blue-link{color: #1c60a0; font-weight: bold;}
-.green-link{color: #419100; }
-.actions{margin: 38px 5px 0px 0; font-size: 12px;}
+.blue-link{color: #1c60a0; font-weight: bold; }
+.green-link{color: #419100; font-weight: bold;}
+.actions{margin: 38px 5px 0px 0; font-size: 13px; color: #bdbdbd;}
 /******************************Appointment create***********************/
 #content_wrapper {
- background: #f3f4f5;
- margin: 0px 0px 5px 5px;
- padding:5px;
+ background: #fff;
+ padding:0px;
  height: 100%;
 }
 
-.heading{color: #377242; font-size: 16px;  margin-bottom: 15px;}
+.heading{color: #377242; font-size: 16px;  margin-bottom: 0px;}
 
-#apointment_left{ width: 71%;  border: 5px #c5d6e5 solid;   background: #fff;}
+#apointment_left{ width: 71%;  background: #fff;}
 
 #main_schedules{
  	width: 25%;
  	padding: 0px 5px 0px 5px;
 	margin: 0px;
-         border: 5px #c5d6e5 solid;
+
         padding: 15px 0px 10px 10px;
           background: #fff;
 }
@@ -422,14 +425,14 @@ table.form-table-small{width: 60%;}
 
 #schedule {
            width:  98%;
-           height: 405px;
+           height: 425px;
            overflow: auto;
            border: 1px solid #eee;
           }
 
 .time-slots{
 	    border-collapse: collapse;
-            width: 250px;
+            width: 99%;
             border: 1px solid #c6c8c9;
 }
 
@@ -555,7 +558,7 @@ table.form-table-small{width: 60%;}
 /*---------------------------top links---------------------------*/
 #top-links{margin: 0px 0px 5px 0px;}
 #listing_links {padding-top: 7px;}
-#listing_links a{font-weight: bold; color: #1c60a0; font-size: 15px; } 
+#listing_links a{font-weight: bold; color: #1c60a0; font-size: 17px; } 
 
 /* ---------------------------Add button------------------------- */
 a.buttonAdd {

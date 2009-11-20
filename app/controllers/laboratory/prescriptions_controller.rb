@@ -32,7 +32,7 @@ class Laboratory::PrescriptionsController < ApplicationController
     respond_to do |format|
       format.html
       format.js { render :update do |page|
-                    page.replace_html 'clinical-screen', :partial => '/laboratory/prescriptions/new'
+                    page.replace_html "test_#{@lab_test.id}", :partial => '/laboratory/prescriptions/new'
                   end
                 }
     end
@@ -75,14 +75,14 @@ class Laboratory::PrescriptionsController < ApplicationController
     respond_to do |format|
       format.html
       format.js { render :update do |page|
-                    page.replace_html 'clinical-screen', :partial => '/laboratory/prescriptions/edit'
+                    page.replace_html "test_#{@lab_test.id}", :partial => '/laboratory/prescriptions/edit'
                   end
                 }
     end
   end
 
    def update
-   	 @prescription = Prescription.find(params[:id])
+     @prescription = Prescription.find(params[:id])
      @lab_test = LabTest.find(params[:test_id])
      @department = Department.find(params[:prescription][:department_id])
      @appointment = Appointment.find(params[:prescription][:appointment_id])
@@ -94,7 +94,8 @@ class Laboratory::PrescriptionsController < ApplicationController
         respond_to do |format|
           format.html
           format.js { render :update do |page|
-                        page.replace_html 'clinical-screen', :partial => '/laboratory/prescriptions/edit'
+                        page.replace_html "test_#{@lab_test.id}", :partial => '/laboratory/prescriptions/edit'
+                        page.replace_html "prescription-list", :partial => '/laboratory/prescriptions/prescreptions'
                         page.visual_effect(:highlight, 'clinical-screen', :duration => 0.5)
                       end
                   }

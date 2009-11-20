@@ -24,7 +24,14 @@
   </table>
   <br />
 
-  
+   <table class = 'form-table'>
+      <tr> <td colspan ="4"  class = 'blue-row'>
+	  <label>
+	     <%= link_to "Patient List",  cms_doctor_patients_url(current_user.id), :class => 'blue-link' %>
+	  </label>
+	  </td></tr>
+    </table>
+
   <div id='clinical-screen'>
      <h3 class = 'heading'> Prescriptions & reports </h3>  
      <%= render :partial => 'clinical_screen_sub_tabs' %>  

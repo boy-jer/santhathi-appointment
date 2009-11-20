@@ -1,35 +1,18 @@
-<% remote_form_for(:prescription,:url =>laboratory_prescription_path(@prescription) , :html => { :method => :put }) do |f| %>
+<div class = 'presc_list'>
+  <% remote_form_for(:prescription,:url =>laboratory_prescription_path(@prescription) , :html => { :method => :put }) do |f| %>
   <%= f.error_messages %>
-
     <table class = 'form-table'>
-      <tr> <td colspan ="4"  class = 'blue-row'>
-	  <label>
-	     <%= link_to "Cancel & return to Clinical Screen" , new_cms_appointment_clinical_screen_path(@prescription.appointment.id), :class => 'blue-link'%> &nbsp; | &nbsp;
-	     <%= link_to "Patient List",  cms_doctor_patients_url(current_user.id), :class => 'blue-link' %>
-	  </label>
-	  </td></tr>
-    </table>
-    <br />
-    <table class = 'form-table'>
-       <tr><th>Prescription To: </th> <td> <%= @department.dept_name %> </td>
-           <th>Prescribing Doctor:</th> <td> <%= @appointment.doctor.doctor_profile.name %> </td></tr>
-       <tr><th>Prescription Date:</th> <td><%= calendar_date_select_tag "prescription[p_date]", @prescription.p_date, :class =>'textbox' %></td>
-           <th>Prescription Time:</th> <td><%= time_select("prescription", "p_time")  %></td></tr>
        <tr>
-           <th>Service:</th>
-           <td colspan ="3"> <div id='prescription'>
+           <td> 
+               <div id='prescription'>
                   <ul class='treeview'>
                       <%= render :partial => 'child_list', :collection => [@lab_test], :as => :service %>
                   </ul>
                </div>
            </td>
+           <td>Remarks: <br /> <%= f.text_field :remarks ,:class => "textbox"%> <br />
+           <button>Prescribe</button> | <%= link_to_function "Cancel", "jQuery('.presc_list').hide(); return false;"%> </td> 
        </tr>
-
-       <tr><th>Urgency:</th> <td> <%= f.select :urgency, ['High', 'Medium', 'Low'], :selected =>'High' %> </td>
-       <th>Follow up Before:</th> <td><%= calendar_date_select_tag "prescription[follow_up]", @prescription.follow_up, :class =>'textbox' %></td></tr>
-       <tr><th>Other Remarks:</th> <td><%= f.text_field :remarks ,:class => "textbox"%></td>
-
-       <td colspan ="2"><button>Prescribe</button></td> </tr>
     </table>
     <input type="hidden" name="prescription[department_id]" value= <%= params[:department] %>>
     <input type="hidden" name="prescription[appointment_id]" value= <%=  params[:appointment] %>>
@@ -37,4 +20,6 @@
 <% end %>
 <br />
 <br />
-<div id = 'prescription-list'><%= render :partial => '/laboratory/prescriptions/prescreptions' %> </div>
+</div>
+
+

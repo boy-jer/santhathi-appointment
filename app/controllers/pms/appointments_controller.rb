@@ -10,7 +10,7 @@ class Pms::AppointmentsController < ApplicationController
       @search.per_page ||= 15
       @search.order_as ||= "DESC"
       @search.order_by ||= "appointment_date"
-
+      
       @appointments = @search.all 
     end
 
