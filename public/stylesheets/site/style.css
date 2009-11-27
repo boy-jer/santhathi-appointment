@@ -11,7 +11,7 @@ body {
 	color: #000;
 	margin:2px;
 	padding:0px;
-	background:url(images/bg.jpg) repeat-x;
+	background:url(/images/site/bg.jpg) repeat-x;
 }
 
 /*..............................header .............................*/
@@ -100,7 +100,7 @@ input.textbox{
 }*/
 
 .login_form table tr td.btn input{
-	background:url(images/site/login_btn.gif) no-repeat;
+	background:url(/images/site/login_btn.gif) no-repeat;
 	border:none;
 	height:22px;
 	width:55px;
@@ -114,7 +114,7 @@ input.textbox{
 }
 
 .btn input:hover{
-	background:url(images/site/btn_hr.gif) repeat-x;
+	background:url(/images/site/btn_hr.gif) repeat-x;
 	
 }
 
@@ -128,7 +128,7 @@ input.textbox{
 #inner_image{
 	height:230px;
 	margin:10px;
-	background:url(images/site/Header.jpg) no-repeat ;	
+	background:url(/images/site/Header.jpg) no-repeat ;	
 }
 
 #global_links {
@@ -168,7 +168,7 @@ input.textbox{
 	width:280px;
 	height:450px;
 	margin:0px 0px 0px 10px;
-	background:url(images/site/bg_side.gif) no-repeat left;
+	background:url(/images/site/bg_side.gif) no-repeat left;
 	float:left;
 	padding:8px 18px 8px 25px;
 }
@@ -193,7 +193,7 @@ input.textbox{
 	width:250px;
 	height:450px;
 	margin:0px 0px 0px 0px;
-	background:url(images/site/bg_side.gif) no-repeat left;
+	background:url(/images/site/bg_side.gif) no-repeat left;
 	float:left;
 	padding:8px 8px 8px 25px;
 }
@@ -239,7 +239,7 @@ p span{
 	width:270px;
 	height:450px;
 	margin:0px 0px 0px 0px;
-	background:url(images/site/bg_side.gif) no-repeat left;
+	background:url(/images/site/bg_side.gif) no-repeat left;
 	float:left;
 	padding:8px 8px 8px 25px;
 }
@@ -308,7 +308,7 @@ p span{
 	width:670px;
 	height:550px;
 	margin:0px 0px 0px 10px;
-	background:url(images/site/bg_side.gif) no-repeat left;
+	background:url(/images/site/bg_side.gif) no-repeat left;
 	float:left;
 	padding:8px 8px 8px 25px;
 }
@@ -389,11 +389,11 @@ p span{
 	height:35px;
 	border:#a2bec8 solid 1px;
 	border-bottom:none;
-	background:#d6d8d9 url(images/site/tab.gif) repeat-x;
+	background:#d6d8d9 url(/images/site/tab.gif) repeat-x;
 }
 
 .stripNav ul li:hover {
-	background:#d6d8d9 url(images/site/tab.gif) repeat-x;
+	background:#d6d8d9 url(/images/site/tab.gif) repeat-x;
 }
 
 
