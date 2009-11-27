@@ -1,7 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-
- # map.resources :roles
-
+  map.resources :messages
 
   map.resources :user_roles
 
@@ -93,6 +91,7 @@ ActionController::Routing::Routes.draw do |map|
                                              :deleted   => :get }
     admin.resources :dashboard
     admin.resources :roles
+    admin.resources :messages
   end
 
 
@@ -116,7 +115,7 @@ ActionController::Routing::Routes.draw do |map|
                                               	:appointment_type_report => :get , :visit_type_report => :get
                                               }
   end
-  map.root :controller => 'sessions', :action => 'new'
+  map.root :controller => 'dashboard', :action => 'index'
   map.resource :session
 
   # Install the default routes as the lowest priority.
