@@ -1,0 +1,27 @@
+<% form_for(@message) do |f| %>
+  <%= f.error_messages %>
+     <div class="left" >
+         <p><b>Enter mobile number </b><br /><%= f.text_field :number%></p>
+      
+         <p><b>Message content <br /><br /></b>
+          <%= f.select :id, ['', 'Test'], options={:prompt => 'SELECT SAVED MESSAGE'}%>
+          <%= image_tag("spinner.gif",
+              	    :align => "absmiddle",
+               	    :border => 0,
+                    :id => "spinner",
+                    :style =>"display: none;" ) %> </p> 
+     
+         <p><%= f.text_area :message_body, :class => 'textbox' %> </p>
+         <p><span id="counter"></span> characters left to complete one message.</p>
+     </div>     
+
+     <%= observe_field("sms_id", :frequency => 1,
+                  :before => "jQuery('#spinner').show();",
+                  :success => "jQuery('#spinner').hide();",
+                  :url => {:action=>'render_message_template'}, :method => :get,
+                  :with => "'sms_id=' + value")%>
+  <p>
+    <div class = 'clear'> </div>
+    <%= f.submit 'Send SMS' %>
+  </p>
+<% end %>

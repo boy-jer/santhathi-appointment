@@ -1,7 +1,7 @@
 class DashboardController < ApplicationController
   # GET /
   # The default dashboard
-  layout 'default'
+  layout 'home'
   def index
   end
 end

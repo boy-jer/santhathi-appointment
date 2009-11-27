@@ -1,5 +1,5 @@
-<% content_for :header do -%>
-	<%= configatron.site_name %> Users
+<% content_for :left_header do -%>
+	Managing users
 <% end -%>
 
 <% content_for :sidebar do -%>
@@ -12,12 +12,13 @@
 	</ul>
 <% end -%>
 
-<table class="index">
+<table class="listing">
   <tr>
 	<th>ID</th>
 	<th>Login</th>
 	<th>Email</th>
 	<th>Status</th>
+        <th>Actions</th>
   </tr>
 
 <% # TODO: (base_app) Add some sort of search feature to easily find users %>

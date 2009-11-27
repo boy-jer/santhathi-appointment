@@ -1,6 +1,7 @@
-<div class='continer'>
-
-<table class="index">
+<% content_for :left_header do -%>
+   Managing user roles
+<%end-%>
+<table class="listing">
   <br></br>
   <tr>
 	<th>ID</th>
@@ -32,5 +33,3 @@
 	<%= link_to 'New user', new_admin_user_path %>
 </p>
 
-
-</div>

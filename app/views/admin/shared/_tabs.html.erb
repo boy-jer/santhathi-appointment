@@ -1,11 +1,14 @@
 <div id="menu">
 <ul>
-	<% if Setting.count > 0 %>
+     <% if Setting.count > 0 %>
 	<li style="float: right;"><%= tab_to "Settings", [{:controller => "admin/settings"}] %></li>
-	<% end %>
+     <% end %>
 
-	<li><%= tab_to "Dashboard", [{:controller => "admin/dashboard"}] %></li>
-	<li><%= tab_to "<span>Users</span>", [{:controller => "admin/users"}] %></li>
-    <li><%=tab_to  "<span>Roles</span>", [{:controller => "admin/roles"}]  %></li>
+     <li><%= tab_to "Dashboard", [{:controller => "admin/dashboard"}] %></li>
+     <li><%= tab_to "<span>Users</span>", [{:controller => "admin/users"}] %></li>
+     <li><%=tab_to  "<span>Roles</span>", [{:controller => "admin/roles"}]  %></li>
+     <li><%= link_to 'SMS', new_admin_message_url %></li>
+
 </ul>
+<div class = 'clear'> </div>
 </div>

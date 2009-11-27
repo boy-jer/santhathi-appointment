@@ -3,68 +3,45 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
-	<title><%= configatron.site_name %></title>
-
-	<%=javascript_include_tag :defaults, 'facebox', 'jquery-1', 'jquery_corner', 'interface', 'dropdown' %>
-        <%= calendar_date_select_includes %>
-        <%= stylesheet_link_tag 'default','calendar/option2- blue/style', 'facebox', 'dropdown' %>
-
-	<!--[if lte IE 6]>
-		<%= stylesheet_link_tag 'ie6.css', media="screen" %>
-	<![endif]-->
-        <script type="text/javascript">
-           jQuery.noConflict();
-        </script>
+  <%= render :partial => 'shared/head' %>
 </head>
 
 <body>
-
-  <div id="header">
-    <div id="global_links">
-      <%= render :partial => 'shared/global_links' %>
-    </div>
-
-	<!--<h1><%= configatron.site_name %></h1>-->
-	<div id="menu"> <%= render :partial => 'admin/shared/tabs' %> </div>
-
-  </div>
-
-  <div id="main">
-    <div id="left">
-
-     <% if flash[:notice] %>
-       <div id="notice"><%= flash[:notice] %></div>
-     <% end %>
-
-     <% if flash[:warning] %>
-       <div id="warning"><%= flash[:warning] %></div>
-     <% end %>
-
-     <% if flash[:error] %>
-       <div id="error"><%= flash[:error] %></div>
-     <% end %>
-
-      <div id="screen">
-        <%= yield %>
+<div class="container" id="container">
+   <div id="header">
+     <div id="global_links">
+        <%= render :partial => 'shared/global_links' %>
       </div>
+      <%= render :partial => 'admin/shared/header' %>
 
+   </div>
+
+   <div id="content">
+
+       <%= render :partial => 'admin/shared/tabs' %>
+
+		
+     <div id="content_main" class="clearfix">
+        <div id="dashboard" class="left">
+	   <h2 class="ico_mug"> <%= yield :left_header %> </h2>
+	   <div class="clearfix">
+	      <div class="inner_wrapper"><%= render :partial => 'shared/layout_body' %></div>
+	   </div>
+        </div><!-- end #dashboard -->
+
+	 
+	<div id="sidebar" class="right">
+	   <h2 class="ico_mug"> Searchbar </h2>
+           <div class="inner_wrapper"> <%= yield :sidebar %></div>
+	</div><!-- end #sidebar -->
+
+     </div><!-- end #content_main -->	
+   </div><!-- end #content -->
+		   
+    <div id="footer" class="clearfix">
+       <%= render :partial => 'shared/footer' %>
     </div>
-  </div>
-<!--
-  <div id="footer">
-    <div id="footer-inner">
-      Powered by iSiri Tecnologies Pvt Ltd
-    </div>
-  </div>
- -->
-  <!--border -->
-  <script type="text/javascript">
-    jQuery(".continer").corner("corner 10px")
-    jQuery(".continer-inner").corner("corner 10px")
-    jQuery("#footer").corner("corner 5px")
-    jQuery("#footer-inner").corner("corner 5px")
-  </script>
+</div><!-- end container -->
+
 </body>
 </html>
