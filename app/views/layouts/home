@@ -21,17 +21,22 @@
         <div id="site_heading"> <h1>Santhathi <span>Centre for reproductive medicine</span></h1></div>
         <% unless logged_in? %>
 	   <div class="login_form">
-		<table width="70%">
-		   <tr>
-		      <td><label for="login">Login</label></td>
-		      <td><input class="textbox" id="login" name="login" value="" type="text" /></td> 
-		   </tr>
-		   <tr>
-		      <td><label for="password">Password</label></td>
-		      <td><input class="textbox" id="password" name="password" value="" type="password"></td>
-		      <td rowspan="2" class="btn"><input name="commit" value="Log in" type="submit"></td>	
-		   </tr>
-		</table>
+		
+		  <form action="/session" method="post">
+                     <table width="70%">
+			<tr>
+				<td><label for="login">Login</label></td>
+				<td class="login"><input class="textbox" id="login" name="login" value="" type="text" /></td> 
+			</tr>
+			<tr>
+				<td><label for="password">Password</label></td>
+				<td class="login"><input class="textbox" id="password" name="password" value="" type="password"></td>
+				<td rowspan="2" class="btn"><input name="commit" value="Log in" type="submit"></td> 
+				
+			</tr>
+                      </table>
+		  </form>
+		
 	   </div>
         <% else %>
            <div id="global_links"><%= link_to "Goto application", pms_appointments_url %></div>

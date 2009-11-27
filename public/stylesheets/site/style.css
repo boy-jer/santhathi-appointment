@@ -11,16 +11,14 @@ body {
 	color: #000;
 	margin:2px;
 	padding:0px;
-	background:url(/images/site/bg.jpg) repeat-x;
+	background:url(images/bg.jpg) repeat-x;
 }
-
-
 
 /*..............................header .............................*/
 
 #header{
 	width:950px;
-	height:100px;
+	height:85px;
 	margin:0 auto;
 }
 
@@ -52,7 +50,7 @@ body {
 
 .login_form{
 	width:390px;
-	margin:10px 10px 0px 5px;
+	margin:8px 10px 0px 5px;
 	text-align:right;
 	float:right;
 }
@@ -61,22 +59,62 @@ body {
 	float:right;
 }
 
+.login_form table tr td{
+	text-align:right;
+}
+
 .login_form table label{
 	font-size:12px;
 	color:#13566f;
 }
 
-.login_form table input{
-	border:1px solid #aaafb0;
+.login_form table tr td input{
+	border:1px solid #d6dade;
+	background-color:#fff;
+	margin:0px 2px 1px 2px;
+	padding:2px 0px 2px 0px;
+	background:url(/images/site/input_bg.gif) repeat-x;
 }
 
-.btn input {
-	background:url(/images/site/btn.gif) repeat-x;
+.login_form table tr td input:focus{
 	
+	background:#fff url(/images/site/input_bg_hr.gif) repeat-x;
 }
 
-.btn input:hover {
-	background:url(/images/site/btn_hr.gif) repeat-x;
+/*.login_form table tr td input{
+	border:none;
+	width:110px;
+	height:22px;
+	padding-right:10px;
+	background:url(images/input.gif) no-repeat;
+}
+input.textbox{
+	background:none;
+ 	border:none;
+ 	width:120px;
+	height:10px;
+ 	margin:0;
+	padding: 2px 7px 0px 7px;
+ 	font-family:Verdana, Arial, Helvetica, sans-serif;
+ 	font-size:12px
+}*/
+
+.login_form table tr td.btn input{
+	background:url(images/site/login_btn.gif) no-repeat;
+	border:none;
+	height:22px;
+	width:55px;
+	color:#fff;
+	font-weight:bold;
+	font-size:12px;
+}
+.login_form table tr td.btn input:hover{
+	color:#000;
+	border:none;
+}
+
+.btn input:hover{
+	background:url(images/site/btn_hr.gif) repeat-x;
 	
 }
 
@@ -90,24 +128,23 @@ body {
 #inner_image{
 	height:230px;
 	margin:10px;
-	background:url(/images/site/Header.jpg) no-repeat ;	
+	background:url(images/site/Header.jpg) no-repeat ;	
 }
 
 #global_links {
 	float: right;
 	font-size: 0.9em;
 	color: #6084B3;
-	padding: 0px 10px 0px 0px;
+	padding: 5px 10px 0px 0px;
 }
 #global_links a {
-	color: #044180;
-        text-decoration: none;
+	color: #014e96;
 }
 #global_links a:hover {
 	color: #00a8c6;
 	background-color: #e3fdff;
 }
-/*.....................................Layout.........................*/
+/*.............................Layout.........................*/
 
 .container{
 	width:900px;
@@ -131,7 +168,7 @@ body {
 	width:280px;
 	height:450px;
 	margin:0px 0px 0px 10px;
-	background:url(/images/site/bg_side.gif) no-repeat left;
+	background:url(images/site/bg_side.gif) no-repeat left;
 	float:left;
 	padding:8px 18px 8px 25px;
 }
@@ -150,13 +187,13 @@ body {
 	color:#549826;
 }
 
-/*..................middle content box........*/
+/*..........................middle content box........*/
 
 .mid_box{
 	width:250px;
 	height:450px;
 	margin:0px 0px 0px 0px;
-	background:url(/images/site/bg_side.gif) no-repeat left;
+	background:url(images/site/bg_side.gif) no-repeat left;
 	float:left;
 	padding:8px 8px 8px 25px;
 }
@@ -202,7 +239,7 @@ p span{
 	width:270px;
 	height:450px;
 	margin:0px 0px 0px 0px;
-	background:url(/images/site/bg_side.gif) no-repeat left;
+	background:url(images/site/bg_side.gif) no-repeat left;
 	float:left;
 	padding:8px 8px 8px 25px;
 }
@@ -271,7 +308,7 @@ p span{
 	width:670px;
 	height:550px;
 	margin:0px 0px 0px 10px;
-	background:url(/images/site/bg_side.gif) no-repeat left;
+	background:url(images/site/bg_side.gif) no-repeat left;
 	float:left;
 	padding:8px 8px 8px 25px;
 }
@@ -352,11 +389,11 @@ p span{
 	height:35px;
 	border:#a2bec8 solid 1px;
 	border-bottom:none;
-	background:#d6d8d9 url(/images/site/tab.gif) repeat-x;
+	background:#d6d8d9 url(images/site/tab.gif) repeat-x;
 }
 
 .stripNav ul li:hover {
-	background:#d6d8d9 url(/images/site/tab.gif) repeat-x;
+	background:#d6d8d9 url(images/site/tab.gif) repeat-x;
 }
 
 
