@@ -1,0 +1,22 @@
+<h1>Listing account_sub_groups</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Under</th>
+  </tr>
+
+<% @account_sub_groups.each do |account_sub_group| %>
+  <tr>
+    <td><%=h account_sub_group.name %></td>
+    <td><%=h account_sub_group.account_main_group.name %></td>
+    <td><%= link_to 'Show', account_sub_group %></td>
+    <td><%= link_to 'Edit', edit_account_sub_group_path(account_sub_group) %></td>
+    <td><%= link_to 'Destroy', account_sub_group, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New account_sub_group', new_account_sub_group_path %>

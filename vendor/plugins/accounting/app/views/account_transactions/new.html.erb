@@ -1,0 +1,37 @@
+<h1>New account_transaction</h1>
+
+<% form_for(@account_transaction) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :transaction_no %><br />
+    <%= f.text_field :transaction_no %>
+  </p>
+  <p>
+    <%= f.label :transaction_date, 'Transaction for' %><br />
+    <%= current_day.for_date %>
+  </p>
+  <p>
+    <%= f.label :narrations %><br />
+    <%= f.text_field :narrations %>
+  </p>
+  <p>
+    <table>  
+      <% f.fields_for :account_transaction_items do |ati| %>
+        <tr>
+          <td><%= ati.label :account_id %><br />
+              <%= ati.select :account_id, account_options_array %></td>
+          <td><%= ati.label :account_id %><br />
+              <%= ati.select :category, [['Debit'],['Credit']] %></td>              
+          <td><%= ati.label :amount %><br />
+              <%= ati.text_field :amount %></td>
+        </tr>
+      <% end %>
+    </table>
+  </p>      
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', account_transactions_path %>

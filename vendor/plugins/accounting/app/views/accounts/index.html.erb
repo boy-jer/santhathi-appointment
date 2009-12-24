@@ -1,0 +1,26 @@
+<div>
+  <div style='text-align:right;'>
+    <%= button_to 'Add a new account', new_account_path, :method => :get %>
+  </div>
+  <div>
+    <table style='width:100%;'>
+    <% @accounts.each do |account| %>
+      <tr>
+        <td>
+           <span style='font-size:18px;'><%=h account.name %></span><br />
+           <span style='font-size:13px;'>
+              <%=h account.account_group.name %> /
+              Current balance is <%=h number_to_currency(account.cumulative_current_balance, :unit => 'Rs.') %>
+           </span>
+        </td>
+        <td><%= link_to 'Ledger', ledger_path(account) %></td>
+        <td><%= link_to 'Edit', edit_account_path(account) %>
+        </td>
+     </tr>
+     <tr>
+        <td colspan='3'><hr /></td>
+     </tr>
+    <% end %>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%=h @accounting_period.name %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%=h @accounting_period.start_date %>
+</p>
+
+<p>
+  <b>End date:</b>
+  <%=h @accounting_period.end_date %>
+</p>
+
+
+<%= link_to 'Edit', edit_accounting_period_path(@accounting_period) %> |
+<%= link_to 'Back', accounting_periods_path %>

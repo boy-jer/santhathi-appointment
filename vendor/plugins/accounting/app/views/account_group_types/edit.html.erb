@@ -1,0 +1,18 @@
+<h1>Editing account_group_type</h1>
+
+<% form_for(@account_group_type) do |f| %>
+  <%= f.error_messages %>
+  <p>Name <br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    Description <br />
+    <%= f.text_area :description, :rows => 5, :cols => 30 %>    
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @account_group_type %> |
+<%= link_to 'Back', account_group_types_path %>

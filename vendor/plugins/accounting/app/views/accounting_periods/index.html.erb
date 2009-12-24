@@ -1,0 +1,24 @@
+<h1>Listing accounting_periods</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Start date</th>
+    <th>End date</th>
+  </tr>
+
+<% @accounting_periods.each do |accounting_period| %>
+  <tr>
+    <td><%=h accounting_period.name %></td>
+    <td><%=h accounting_period.start_date %></td>
+    <td><%=h accounting_period.end_date %></td>
+    <td><%= link_to 'Show', accounting_period %></td>
+    <td><%= link_to 'Edit', edit_accounting_period_path(accounting_period) %></td>
+    <td><%= link_to 'Destroy', accounting_period, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New accounting_period', new_accounting_period_path %>

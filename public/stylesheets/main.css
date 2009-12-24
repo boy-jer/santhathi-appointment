@@ -1,0 +1,32 @@
+/* Class for clearing floats */
+.clear {clear:both;}
+
+.left{
+	float:left;
+}
+
+.right{
+	float:right;
+}
+
+.centera{
+	text-align:center;
+}
+
+.righta{
+	text-align:right;
+}
+
+input[type=text]:focus {
+  background: #E7E1DC;
+}
+
+.amount {
+  text-align:right;
+}
+
+table tr th.account_heading {
+  padding: 5px;
+  border-bottom:1px solid black;
+  border-top:1px solid black;
+}

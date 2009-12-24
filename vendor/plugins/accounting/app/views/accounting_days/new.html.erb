@@ -1,0 +1,30 @@
+<div style='font-size:16px;padding:10px;'>
+  <h2>Please set the Current Day before continuing</h2>
+  <fieldset>
+    <legend><b>Open a new day</b></legend>
+    <% form_for(@accounting_day) do |f| %>
+      <%= f.error_messages %>
+      <p>
+        <%= f.label :for_date, 'Opening Date' %><br />
+        <%= f.date_select :for_date %>
+      </p>
+      <p>
+        <%= f.submit 'Open this date' %>
+      </p>
+    <% end %>
+  </fieldset>
+  <% unless @last_closed_day.blank? -%>
+    <br />
+    <fieldset>
+      <legend><b>Re-Open last closed day</b></legend>
+      <% form_tag re_open_accounting_days_path, :method => :put do %> 
+        <p>
+          Day was last closed for <%= @last_closed_day.for_date -%>
+        </p>
+        <p>
+          <%= submit_tag 'Re-Open this date' %>
+        </p>
+      <% end -%>
+    </fieldset>
+  <% end -%>
+</div>

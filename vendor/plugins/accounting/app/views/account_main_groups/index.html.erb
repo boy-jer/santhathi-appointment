@@ -1,0 +1,26 @@
+<h1>Listing account_main_groups</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Is p and l acct</th>
+    <th>Account group type</th>
+  </tr>
+
+<% @account_main_groups.each do |account_main_group| %>
+  <tr>
+    <td><%=h account_main_group.name %></td>
+    <td><%=h account_main_group.description %></td>
+    <td><%=h account_main_group.is_p_and_l_acct %></td>
+    <td><%=h account_main_group.account_group_type_id %></td>
+    <td><%= link_to 'Show', account_main_group %></td>
+    <td><%= link_to 'Edit', edit_account_main_group_path(account_main_group) %></td>
+    <td><%= link_to 'Destroy', account_main_group, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New account_main_group', new_account_main_group_path %>

@@ -1,0 +1,36 @@
+<h1>Editing account_transaction</h1>
+
+<% form_for(@account_transaction) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :transaction_no %><br />
+    <%= f.text_field :transaction_no %>
+  </p>
+  <p>
+    <%= f.label :transaction_date %><br />
+    <%= f.date_select :transaction_date %>
+  </p>
+  <p>
+    <%= f.label :narrations %><br />
+    <%= f.text_field :narrations %>
+  </p>
+  <p>
+    <table>  
+      <% f.fields_for :account_transaction_items do |ati| %>
+        <tr>
+          <td><%= ati.label :account_id %><br />
+              <%= ati.text_field :account_id %></td>
+          <td><%= ati.label :amount %><br />
+              <%= ati.text_field :amount %></td>
+        </tr>
+      <% end %>
+    </table>
+  </p>        
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @account_transaction %> |
+<%= link_to 'Back', account_transactions_path %>
