@@ -6,6 +6,8 @@ class AccountingPeriod < ActiveRecord::Base
   has_many :account_days
   has_many :accounting_period_account_balances
 
+  has_many :inventory_transactions
+
   belongs_to :company
   belongs_to :branch
     

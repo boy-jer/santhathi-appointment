@@ -136,5 +136,13 @@ module ApplicationHelper
   def filter_credit_transactions_items(transaction_items)
     transaction_items.map{|m| m unless m.category == 'Debit'}.compact    
   end
+
+  def inventory_groups_options_array
+    user_default_branch.inventory_groups.all.map{|m| [m.name, m.id]}
+  end
+
+  def inventory_unit_of_measurements_options_array
+    user_default_branch.inventory_unit_of_measurements.all.map{|m| [m.unit_name, m.id]}
+  end
   #################
 end

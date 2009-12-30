@@ -4,6 +4,8 @@ class AccountingDay < ActiveRecord::Base
   belongs_to :accounting_period
   has_many :account_balances
 
+  has_many :inventory_transactions
+
   attr_accessible :for_date
 
   aasm_column :state

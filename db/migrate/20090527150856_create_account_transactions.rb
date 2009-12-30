@@ -5,11 +5,12 @@ class CreateAccountTransactions < ActiveRecord::Migration
       t.date :transaction_date
       t.string :narrations, :limit => 5000
       t.references :accounting_period
+      t.references :accounting_day
       t.references :branch
       t.string :type
       t.string :account_transactionable_on
-	  t.string :account_transactionable_type
-	  t.integer :account_transactionable_id 	
+      t.string :account_transactionable_type
+      t.integer :account_transactionable_id 	
       t.timestamps
     end
     

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091223070853) do
+ActiveRecord::Schema.define(:version => 20091229090553) do
 
   create_table "account_balances", :force => true do |t|
     t.integer  "account_id"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20091223070853) do
 
   create_table "account_transaction_items", :force => true do |t|
     t.integer  "accounting_period_id"
+    t.integer  "accounting_day_id"
     t.integer  "account_transaction_id"
     t.integer  "account_id"
     t.string   "category"
@@ -82,6 +83,7 @@ ActiveRecord::Schema.define(:version => 20091223070853) do
     t.date     "transaction_date"
     t.string   "narrations",                   :limit => 5000
     t.integer  "accounting_period_id"
+    t.integer  "accounting_day_id"
     t.integer  "branch_id"
     t.string   "type"
     t.string   "account_transactionable_on"
@@ -111,6 +113,18 @@ ActiveRecord::Schema.define(:version => 20091223070853) do
     t.integer  "branch_id"
     t.decimal  "opening_balance",      :precision => 11, :scale => 2
     t.decimal  "closing_balance",      :precision => 11, :scale => 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "accounting_period_inventory_stocks", :force => true do |t|
+    t.integer  "inventory_item_id"
+    t.integer  "accounting_period_id"
+    t.integer  "branch_id"
+    t.integer  "opening_stock"
+    t.integer  "closing_stock"
+    t.decimal  "opening_stock_value",  :precision => 8, :scale => 2
+    t.decimal  "closing_stock_value",  :precision => 8, :scale => 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -250,6 +264,89 @@ ActiveRecord::Schema.define(:version => 20091223070853) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slots"
+  end
+
+  create_table "inventory_groups", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "branch_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "inventory_items", :force => true do |t|
+    t.integer  "branch_id"
+    t.string   "name"
+    t.decimal  "unit_buy_price",                   :precision => 11, :scale => 2
+    t.decimal  "unit_sale_price",                  :precision => 11, :scale => 2
+    t.decimal  "sub_unit_sale_price",              :precision => 11, :scale => 2
+    t.integer  "inventory_group_id"
+    t.boolean  "consumable"
+    t.boolean  "discount_allowed"
+    t.integer  "inventory_unit_of_measurement_id"
+    t.integer  "current_quantity",                                                :default => 0
+    t.integer  "opening_quantity"
+    t.string   "shelf_no"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "inventory_items", ["branch_id"], :name => "index_inventory_items_on_branch_id"
+  add_index "inventory_items", ["inventory_group_id"], :name => "index_inventory_items_on_inventory_group_id"
+
+  create_table "inventory_stocks", :force => true do |t|
+    t.integer  "inventory_item_id"
+    t.integer  "accounting_period_id"
+    t.integer  "accounting_day_id"
+    t.integer  "branch_id"
+    t.integer  "opening_stock"
+    t.integer  "closing_stock"
+    t.decimal  "opening_stock_value",  :precision => 8, :scale => 2
+    t.decimal  "closing_stock_value",  :precision => 8, :scale => 2
+    t.date     "for_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "inventory_transaction_items", :force => true do |t|
+    t.integer  "inventory_item_id"
+    t.integer  "inventory_transaction_id"
+    t.string   "unit_type"
+    t.integer  "quantity"
+    t.integer  "price",                                   :limit => 10, :precision => 10, :scale => 0
+    t.decimal  "total_price",                                           :precision => 11, :scale => 2
+    t.integer  "inventory_opening_stock_quantity",        :limit => 10, :precision => 10, :scale => 0
+    t.integer  "inventory_closing_stock_quantity",        :limit => 10, :precision => 10, :scale => 0
+    t.integer  "current_quantity"
+    t.decimal  "inventory_item_buy_price",                              :precision => 11, :scale => 2
+    t.integer  "purchased_inventory_transaction_item_id"
+    t.decimal  "total_vat_price",                                       :precision => 11, :scale => 2
+    t.decimal  "total_item_price",                                      :precision => 11, :scale => 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "inventory_transactions", :force => true do |t|
+    t.integer  "branch_id"
+    t.integer  "accounting_day_id"
+    t.integer  "accounting_period_id"
+    t.integer  "account_transaction_id"
+    t.string   "category"
+    t.string   "narration",              :limit => 1000
+    t.date     "transaction_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "inventory_unit_of_measurements", :force => true do |t|
+    t.integer  "branch_id"
+    t.string   "unit_name"
+    t.string   "unit_symbol"
+    t.string   "sub_unit_name"
+    t.string   "sub_unit_symbol"
+    t.integer  "unit_value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "lab_tests", :force => true do |t|

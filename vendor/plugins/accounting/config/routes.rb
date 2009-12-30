@@ -30,6 +30,10 @@ ActionController::Routing::Routes.draw do |map|
   # The priority is based upon order of creation: first created -> highest priority.
 
   map.resources :account_group_types
+
+  map.resources :inventory_items 
+  map.resources :inventory_groups 
+  map.resources :inventory_unit_of_measurements
   
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
   # map.root :controller => "welcome"

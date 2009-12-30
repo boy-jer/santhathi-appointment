@@ -1,6 +1,7 @@
 class AccountTransactionItem < ActiveRecord::Base
   attr_accessor :account_name
   belongs_to :accounting_period
+  belongs_to :accounting_day
   belongs_to :account_transaction
   belongs_to :account
   belongs_to :branch
@@ -95,10 +96,11 @@ class AccountTransactionItem < ActiveRecord::Base
   end
 
   def set_transaction_date_and_type
-    write_attribute(:transaction_date, account_transaction.transaction_date)
+    self.accounting_day_id = account_transaction.accounting_day_id
+    self.transaction_date = account_transaction.transaction_date
     t_type = 'G'
     t_type = 'C' if account.account_group.name == 'Cash-in Hand' 
-    write_attribute(:transaction_type, t_type)
+    self.transaction_type = t_type
   end
   
   def update_current_balance_in_accounts  

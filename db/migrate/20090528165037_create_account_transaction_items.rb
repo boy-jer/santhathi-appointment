@@ -2,6 +2,7 @@ class CreateAccountTransactionItems < ActiveRecord::Migration
   def self.up
     create_table :account_transaction_items do |t|
       t.references :accounting_period
+      t.references :accounting_day
       t.references :account_transaction
       t.references :account
       t.string     :category            

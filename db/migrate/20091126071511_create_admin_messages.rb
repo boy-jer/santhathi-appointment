@@ -11,6 +11,6 @@ class CreateAdminMessages < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :admin_messages
+    drop_table :messages
   end
 end

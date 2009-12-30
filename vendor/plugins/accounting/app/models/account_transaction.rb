@@ -1,6 +1,7 @@
 class AccountTransaction < ActiveRecord::Base
   belongs_to :account_transactionable, :polymorphic => true
   belongs_to :accounting_period
+  belongs_to :accounting_day
   belongs_to :branch 
   has_many :account_transaction_items, :dependent => :destroy do
     def credits
@@ -13,7 +14,7 @@ class AccountTransaction < ActiveRecord::Base
   
   attr_accessible :transaction_no, :narrations, :account_transaction_items_attributes
   validates_presence_of :transaction_date, :accounting_period_id, :account_transaction_items
-  validates_presence_of :branch_id
+  validates_presence_of :branch_id, :accounting_day_id
   validate :credit_and_debit_match
   validate :uniqueness_of_credit_or_debit
   validate :uniqueness_of_account_id
@@ -28,6 +29,7 @@ class AccountTransaction < ActiveRecord::Base
   end
 
   def set_transaction_date
+    self.accounting_day_id = branch.default_current_open_day.id
     self.transaction_date = branch.default_current_open_day.for_date
   end
   
