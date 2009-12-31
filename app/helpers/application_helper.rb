@@ -133,6 +133,12 @@ module ApplicationHelper
     end
   end
 
+  def setup_inventory(inventory_transaction)
+    returning(inventory_transaction) do |it|
+      it.inventory_transaction_items.build([{},{},{},{},{},{},{},{},{},{}]) if it.inventory_transaction_items.blank?
+    end
+  end
+
   def filter_credit_transactions_items(transaction_items)
     transaction_items.map{|m| m unless m.category == 'Debit'}.compact    
   end

@@ -4,6 +4,7 @@ class PurchaseVoucherEntriesController < ApplicationController
   def new
     @purchase_accounts = user_default_branch.accounts.purchase_accounts
     @all_accounts = user_default_branch.accounts.non_purchase_accounts
+    @all_inventory_items = user_default_branch.inventory_items
     @purchase_voucher_entry = user_default_branch.purchase_voucher_entries.build
   end
 
@@ -14,6 +15,7 @@ class PurchaseVoucherEntriesController < ApplicationController
     else
       @purchase_accounts = user_default_branch.accounts.purchase_accounts
       @all_accounts = user_default_branch.accounts.non_purchase_accounts
+      @all_inventory_items = user_default_branch.inventory_items
       render :action => 'new'
     end
   end

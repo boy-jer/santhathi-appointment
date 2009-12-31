@@ -1,23 +1,27 @@
 <h3>Purchase voucher</h3>
-<% form_for(setup_particulars(@purchase_voucher_entry)) do |f| %>
+<% form_for(setup_inventory(@purchase_voucher_entry)) do |f| %>
 <div>
   <%= f.error_messages %>
 </div>
 <div>
-    Purchase A/C: <%= f.select :purchase_account_id, @purchase_accounts.map{|m| [m.name, m.id.to_s]} %> [Debit]<br /><br />
+    <p>Purchase A/C: <%= f.select :purchase_account_id, @purchase_accounts.map{|m| [m.name, m.id.to_s]} %> [Debit]</p>
+    <p>Credit To: <%= f.select :purchase_effected_account_id, @all_accounts.map{|m| [m.name, m.id.to_s]} -%>[Credit]</p>
     <table style='width:100%;height:100%;border:1px solid black;' cellspacing='0' cellpadding='0'>
       <tr>
         <th style='border:1px solid black;'>Particulars</th>
+        <th style='border:1px solid black;'>Quantity</th>
         <th style='border:1px solid black;'>Amount</th>
-        <th style='border:1px solid black;'></th>
+        <th style='border:1px solid black;'>Total</th>
       </tr>
       <% i = 0 -%>
-      <% f.fields_for :account_transaction_items do |transaction_form| %>
-        <%= transaction_form.hidden_field :category, :value => 'Credit' %>
+      <% f.fields_for :inventory_transaction_items do |transaction_form| %>
+        <%= transaction_form.hidden_field :category, :value => 'Purchase' %>
+        <%= transaction_form.hidden_field :unit_type, :value => 'Main' %>
         <tr>
-          <td><%= transaction_form.text_field :account_name, :style => 'border:0px;', :class => 'auto_complete_field', :onblur => "display_category_in_voucher(this, #{i}, 'Credit')" %></td>
-          <td><%= transaction_form.text_field :amount, :style => 'border:0px;' %></td>
-          <td id="tr_category_<%= i -%>"></td>
+          <td><%= transaction_form.text_field :inventory_item_name, :style => 'border:0px;', :class => 'inventory_auto_complete_field' %></td>
+          <td><%= transaction_form.text_field :quantity, :style => 'border:0px;', :size => 19, :class => 'inventory_quantity_field' %></td>
+          <td><%= transaction_form.text_field :price, :style => 'border:0px;', :size => 19, :class => 'inventory_price_field' %></td>
+          <td><%= transaction_form.text_field :total_price, :style => 'border:0px;', :size => 19 %></td>
           <% i += 1 -%>
         </tr>
       <% end %>
@@ -34,7 +38,18 @@
 
   var particular_index;
   var accounts_arr = ['<%= @all_accounts.map{|m| m.name}.join("', '") -%>'];
-  $(".auto_complete_field").autocomplete(accounts_arr, {
+  var inventory_items_arr = [<%= @all_inventory_items.map{|m| "['#{m.name}','#{m.unit_buy_price}']"}.join(", ") -%>];
+  $(".accounts_auto_complete_field").autocomplete(accounts_arr, {
+		minChars: 0,
+		width: 310,
+		matchContains: true,
+		highlightItem: false,		
+		formatResult: function(row) {
+			return row.to;
+		}
+  });
+
+  $(".inventory_auto_complete_field").autocomplete(inventory_items_arr, {
 		minChars: 0,
 		width: 310,
 		matchContains: true,

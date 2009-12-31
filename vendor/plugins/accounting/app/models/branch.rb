@@ -21,7 +21,7 @@ class Branch < ActiveRecord::Base
   has_many :inventory_unit_of_measurements
   has_many :inventory_groups
   has_many :inventory_items
-  has_many :inventory_transactions
+  has_many :inventory_transaction_items
   
   has_many :closed_accounting_days, :class_name => 'AccountingDay', :conditions => "state = 'Closed'"
   has_many :closed_accounting_periods, :class_name => 'AccountingPeriod', :conditions => "state = 'Closed'"

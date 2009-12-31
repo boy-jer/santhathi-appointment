@@ -309,31 +309,22 @@ ActiveRecord::Schema.define(:version => 20091229090553) do
   end
 
   create_table "inventory_transaction_items", :force => true do |t|
-    t.integer  "inventory_item_id"
-    t.integer  "inventory_transaction_id"
-    t.string   "unit_type"
-    t.integer  "quantity"
-    t.integer  "price",                                   :limit => 10, :precision => 10, :scale => 0
-    t.decimal  "total_price",                                           :precision => 11, :scale => 2
-    t.integer  "inventory_opening_stock_quantity",        :limit => 10, :precision => 10, :scale => 0
-    t.integer  "inventory_closing_stock_quantity",        :limit => 10, :precision => 10, :scale => 0
-    t.integer  "current_quantity"
-    t.decimal  "inventory_item_buy_price",                              :precision => 11, :scale => 2
-    t.integer  "purchased_inventory_transaction_item_id"
-    t.decimal  "total_vat_price",                                       :precision => 11, :scale => 2
-    t.decimal  "total_item_price",                                      :precision => 11, :scale => 2
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "inventory_transactions", :force => true do |t|
     t.integer  "branch_id"
     t.integer  "accounting_day_id"
     t.integer  "accounting_period_id"
-    t.integer  "account_transaction_id"
-    t.string   "category"
-    t.string   "narration",              :limit => 1000
+    t.integer  "inventory_item_id"
     t.date     "transaction_date"
+    t.string   "narration",                               :limit => 1000
+    t.string   "unit_type"
+    t.integer  "quantity"
+    t.integer  "price",                                   :limit => 10,   :precision => 10, :scale => 0
+    t.decimal  "total_price",                                             :precision => 11, :scale => 2
+    t.integer  "inventory_opening_stock_quantity",        :limit => 10,   :precision => 10, :scale => 0
+    t.integer  "inventory_closing_stock_quantity",        :limit => 10,   :precision => 10, :scale => 0
+    t.integer  "current_quantity"
+    t.integer  "purchased_inventory_transaction_item_id"
+    t.decimal  "total_vat_price",                                         :precision => 11, :scale => 2
+    t.decimal  "total_item_price",                                        :precision => 11, :scale => 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end

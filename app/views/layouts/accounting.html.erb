@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <%= render :partial => 'shared/head' %>
-  <%= javascript_include_tag 'jquery.autocomplete' -%>
+  <%= javascript_include_tag 'jquery.autocomplete', 'accounting' -%>
   <%= stylesheet_link_tag 'main', 'jquery.autocomplete'  %>
 </head>
 
@@ -69,6 +69,5 @@
        <%= render :partial => 'shared/footer' %>
     </div>
 </div><!-- end container -->
-
 </body>
 </html>

@@ -4,7 +4,7 @@ class AccountingDay < ActiveRecord::Base
   belongs_to :accounting_period
   has_many :account_balances
 
-  has_many :inventory_transactions
+  has_many :inventory_transaction_items
 
   attr_accessible :for_date
 

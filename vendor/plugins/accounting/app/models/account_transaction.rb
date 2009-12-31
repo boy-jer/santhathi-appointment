@@ -8,11 +8,14 @@ class AccountTransaction < ActiveRecord::Base
       find :all, :conditions => {:category => 'Credit'}
     end
   end
+  has_many :inventory_transaction_items
   
   before_validation :set_transaction_date, :set_accounting_period, :set_account_transaction_items_columns
+  before_validation :set_inventory_transaction_items_columns
   after_create :set_accounting_items_parent_id
   
   attr_accessible :transaction_no, :narrations, :account_transaction_items_attributes
+  attr_accessible :inventory_transaction_items_attributes
   validates_presence_of :transaction_date, :accounting_period_id, :account_transaction_items
   validates_presence_of :branch_id, :accounting_day_id
   validate :credit_and_debit_match
@@ -20,6 +23,7 @@ class AccountTransaction < ActiveRecord::Base
   validate :uniqueness_of_account_id
   
   accepts_nested_attributes_for :account_transaction_items, :reject_if => proc { |attributes| ( attributes['account_id'].blank? and attributes['account_name'].blank? ) }
+  accepts_nested_attributes_for :inventory_transaction_items, :reject_if => proc { |attributes| ( attributes['inventory_item_id'].blank? and attributes['inventory_item_name'].blank? ) }
   
   protected
   
@@ -40,6 +44,13 @@ class AccountTransaction < ActiveRecord::Base
     end
   end
   
+  def set_inventory_transaction_items_columns
+    inventory_transaction_items.each do |iti|
+      iti.branch = branch
+      iti.accounting_period = accounting_period 
+    end
+  end
+
   def set_accounting_items_parent_id
     if account_transaction_items.length == 2
       account_transaction_items[0].update_attribute(:parent_id, account_transaction_items[1].id)
