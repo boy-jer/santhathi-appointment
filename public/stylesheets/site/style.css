@@ -9,120 +9,68 @@ blockquote, q {quotes : "" ""}
 body {
 	font-family : "arial", helvetica, sans-serif;
 	color: #000;
-	margin:2px;
+	margin:0px;
 	padding:0px;
-	background:url(/images/site/bg.jpg) repeat-x;
+	background-color:#2c2b2b;
+	
 }
 
 /*..............................header .............................*/
 
 #header{
 	width:950px;
-	height:85px;
+	background-color:#000;
 	margin:0 auto;
+	height:105px;        
 }
 
 #logo{
 	width:65px;
-	margin:0px 0px 0px 50px;
-	float:left;
-	
+	margin:10px 0px 0px 50px;
+	float:left;	
 }
 
 #site_heading {
-	width:410px;
-	margin:0px 0px 0px 0px;
+	width:415px;
 	float:left;
 	
 }
-
 #site_heading h1{
 	font-family : "arial", helvetica, sans-serif;
-	color:#32a7d0;
-	padding:10px 0px 25px 0px;
+	color:#fff;
+	margin:30px 0px 25px 10px;
 }
 
 #site_heading h1 span{
-	color:#ffa500;
+	color:#fff;
 	font-size:13px;
 	letter-spacing:.8px;
 }
 
 .login_form{
-	width:390px;
-	margin:8px 10px 0px 5px;
+	width:300px;
+	margin:10px 30px 0px 5px;
 	text-align:right;
 	float:right;
 }
 
-.login_form table{
-	float:right;
+.login_form a{
+       color:#fff;
+       font-size:12px;
+       text-decoration:none;
 }
 
-.login_form table tr td{
-	text-align:right;
+.login_form a:hover{
+       color:#a00017;
+       text-decoration:underline;
 }
 
-.login_form table label{
-	font-size:12px;
-	color:#13566f;
-}
-
-.login_form table tr td input{
-	border:1px solid #d6dade;
-	background-color:#fff;
-	margin:0px 2px 1px 2px;
-	padding:2px 0px 2px 0px;
-	background:url(/images/site/input_bg.gif) repeat-x;
-}
-
-.login_form table tr td input:focus{
-	
-	background:#fff url(/images/site/input_bg_hr.gif) repeat-x;
-}
-
-/*.login_form table tr td input{
-	border:none;
-	width:110px;
-	height:22px;
-	padding-right:10px;
-	background:url(images/input.gif) no-repeat;
-}
-input.textbox{
-	background:none;
- 	border:none;
- 	width:120px;
-	height:10px;
- 	margin:0;
-	padding: 2px 7px 0px 7px;
- 	font-family:Verdana, Arial, Helvetica, sans-serif;
- 	font-size:12px
-}*/
-
-.login_form table tr td.btn input{
-	background:url(/images/site/login_btn.gif) no-repeat;
-	border:none;
-	height:22px;
-	width:55px;
-	color:#fff;
-	font-weight:bold;
-	font-size:12px;
-}
-.login_form table tr td.btn input:hover{
-	color:#000;
-	border:none;
-}
-
-.btn input:hover{
-	background:url(/images/site/btn_hr.gif) repeat-x;
-	
-}
 
 #outer_image{
 	width:900px;
 	margin:0 auto;
 	height:250px;
-	background:#32a7d0;	
+	background:#a4a4a6;	
 }
 
 #inner_image{
@@ -131,30 +79,18 @@ input.textbox{
 	background:url(/images/site/Header.jpg) no-repeat ;	
 }
 
-#global_links {
-	float: right;
-	font-size: 0.9em;
-	color: #6084B3;
-	padding: 5px 10px 0px 0px;
-}
-#global_links a {
-	color: #014e96;
-}
-#global_links a:hover {
-	color: #00a8c6;
-	background-color: #e3fdff;
-}
-/*.............................Layout.........................*/
+/*.....................................Layout.........................*/
 
 .container{
-	width:900px;
-	margin:0 auto;	
+	width:950px;
+      	margin:0 auto;
+	background:#fefefe url(/images/site/container.gif) repeat-x ;
 }
 
 .container h2{
 	font-size:25px;
-	color:#01a8c6;
-	margin:10px 10px 15px 0px;
+	color:#1b1d78;
+	margin:10px 120px 15px 15px;
 	padding:15px 0px 0px 15px;
 	text-align:left;
 	font-weight:normal;
@@ -162,20 +98,34 @@ input.textbox{
 	font-family:Verdana, Arial, Sans-Serif;
 }
 
+p.third{
+	color:#1b1d78;
+}
+
+p.heading{
+	margin-bottom:0px;
+}
+
+p span{
+	font-size:12px;
+	color:#5a5757;
+}
+
+
 /*..................Left content box........*/
 
 .left_box{
 	width:280px;
-	height:450px;
+	height:550px;
 	margin:0px 0px 0px 10px;
-	background:url(/images/site/bg_side.gif) no-repeat left;
 	float:left;
+	border-right:1px solid #9a9999;
 	padding:8px 18px 8px 25px;
 }
 
 .left_box p{
 	font-size:15px;
-	margin-bottom:20px;	
+	margin-bottom:20px;
 }
 
 .left_box p.heading{
@@ -184,25 +134,30 @@ input.textbox{
 
 .left_box p.heading span{
 	font-size:12px;
-	color:#549826;
+	color:#000;
 }
 
-/*..........................middle content box........*/
+#photo{
+	margin-left:50px;
+	
+}
+
+/*..................middle content box........*/
 
 .mid_box{
 	width:250px;
-	height:450px;
+	height:550px;
 	margin:0px 0px 0px 0px;
-	background:url(/images/site/bg_side.gif) no-repeat left;
 	float:left;
+	border-right:1px solid #9a9999;
 	padding:8px 8px 8px 25px;
 }
 
 .mid_box p{
 	font-size:15px;
 	margin-bottom:20px;
-	text-align:left;	
-}
+	text-align:left;
+       }
 
 
 p span{
@@ -217,7 +172,7 @@ p span{
 
 .mid_box p.heading span{
 	font-size:12px;
-	color:#549826;
+	color:#000;
 }
 
 .mid_box ul{
@@ -230,18 +185,17 @@ p span{
 	padding:0px;
 	font-size:13px;
 	list-style:dotted;
-	color:#c48918;
+	color:#000;
 }
 
 /*..................right content box........*/
 
 .right_box{
 	width:270px;
-	height:450px;
+	height:550px;
 	margin:0px 0px 0px 0px;
-	background:url(/images/site/bg_side.gif) no-repeat left;
 	float:left;
-	padding:8px 8px 8px 25px;
+	padding:8px 8px 8px 15px;
 }
 
 .right_box p{
@@ -256,28 +210,9 @@ p span{
 
 .right_box p.heading span{
 	font-size:12px;
-	color:#549826;
+	color:#000;	
 }
 
-.first{
-	color:#c48918;
-}
-
-.second{
-	color:#549826;
-}
-.third{
-	color:#2f96bd;
-}
-
-.fourth{
-	font-size:12px;
-	margin:0px 0px 0px 0px;
-}
-
-.text_align{
-	text-align:justify;
-}
 
 
 /********************Strength behind us**/
@@ -301,14 +236,15 @@ p span{
 
 #right_box p.heading span{
 	font-size:12px;
-	color:#549826;
+	color:#000;
 }
+
+
 /****************************Foundation*************/
 .foundation_content{
 	width:670px;
 	height:550px;
 	margin:0px 0px 0px 10px;
-	background:url(/images/site/bg_side.gif) no-repeat left;
 	float:left;
 	padding:8px 8px 8px 25px;
 }
@@ -316,21 +252,22 @@ p span{
 .foundation_content h3{
 	font-size:18px;
 	font-weight:normal;
-	color:#c48918;
+	color:#1b1d78;
 	margin-bottom:5px;
 }
 
 .foundation_content h4{
 	font-size:15px;
 	font-weight:normal;
-	color:#c48918;
-	margin-bottom:5px;
+	color:#1b1d78;
+	margin-bottom:10px;
 }
 
 .foundation_content p{
-	font-size:13px;
-	color:#549826;
+	font-size:14px;
+	color:#000;
 }
+
 
 /*********Slider*************************************/	
 
@@ -361,6 +298,8 @@ p span{
 	height: 100%;
 	position: relative;
 	width: 950px; 
+        margin:3px 0px 0px 0px;
+        background:url(/images/site/mother_baby.jpg) no-repeat left top;
 }
 
 .stripViewer .panelContainer .panel .wrapper { 
@@ -369,14 +308,14 @@ p span{
 
 
 .stripNav {
-	margin:0px 0px 0px 25px;
-	width:900px;
+	margin:0px 0px 0px 0px;
+	width:980px;
 	height:35px;
 }
 
 .stripNav ul {
 	list-style: none;
-	margin:0px 0px 0px 0px;
+	margin:0px 0px 0px 35px;
 	padding:0px 0px 0px 0px;
 	width:900px;
 	font-family:Verdana, Arial, Sans-Serif;
@@ -387,23 +326,16 @@ p span{
 	margin:0px 5px 0px 2px;
 	padding:0px 0px 0px 0px;
 	height:35px;
-	border:#a2bec8 solid 1px;
-	border-bottom:none;
-	background:#d6d8d9 url(/images/site/tab.gif) repeat-x;
 }
-
-.stripNav ul li:hover {
-	background:#d6d8d9 url(/images/site/tab.gif) repeat-x;
-}
-
 
 .stripNav a { /* The nav links */
 	font-size: 13px;
         margin:0px 0px 5px 2px;
-	color:#21a4d5;
+	color:#000;
 	font-weight:bold;
 	text-decoration: none;
-	display: block;text-transform:uppercase;
+	display: block;
+	text-transform:uppercase;
 	padding: 10px 12px 10px 12px; 
 	font-family : "arial", helvetica, sans-serif;
 }
@@ -419,17 +351,19 @@ p span{
 }
 
 .stripNav li.tab1 a.current {
-	color:#000;}
+	color:#1b1d78;
+}
 
 .stripNav li.tab2 a.current {
-	color:#000;}
+	color:#1b1d78;
+}
 
 .stripNav li.tab3 a.current {
-	color:#000;
+	color:#1b1d78;
 }
 
 .stripNav li.tab4 a.current {
-	color:#000;
+	color:#1b1d78;
 }
 
 .stripNavL, .stripNavR { /* The left and right arrows */
@@ -443,14 +377,29 @@ p span{
 	height: 40px;
 	width: 40px;
 }
-
-	
 /*............................................footer....................................*/
 .footer{
-	width:100%;
-	height:25px;
-	background-color:#32a7d0;
-	border-top:5px solid #136280;
+	width:950px;
+	margin:0 auto;
+	height:15px;
+	padding:10px 0px 0px 0px;
+	background-color:#c6c0c0;
+	
+}
+.footer p{
+	color:#000;
+	text-align:center;
+	font-size:11px;
+}
+.footer p a{
+	color:#a60118;
+	text-decoration:underline;
+}
+.footer p a:hover{
+	color:#000;
+	text-decoration:none;
 }
 
+
+	
 

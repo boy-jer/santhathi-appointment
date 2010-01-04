@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   filter_parameter_logging :password, :password_confirmation
   helper_method :s, :current_company, :user_default_branch, :current_day, :current_accounting_period
-  before_filter :require_current_accounting_period, :require_current_day
+  #before_filter :require_current_accounting_period, :require_current_day
 
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store

@@ -12,6 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   map.login    '/login',    :controller => 'sessions', :action => 'new'
   map.logout   '/logout',   :controller => 'sessions', :action => 'destroy', :conditions => {:method => :delete}
   map.dashboard '/dashboard', :controller => 'dashboard', :action => 'index'
+  map.read_more '/read_more', :controller => 'dashboard', :action => 'index'
 
   map.user_troubleshooting '/users/troubleshooting', :controller => 'users', :action => 'troubleshooting'
   map.user_forgot_password '/users/forgot_password', :controller => 'users', :action => 'forgot_password'
@@ -115,7 +116,7 @@ ActionController::Routing::Routes.draw do |map|
                                               	:appointment_type_report => :get , :visit_type_report => :get
                                               }
   end
-  map.root :controller => 'dashboard', :action => 'index'
+  map.root :controller => 'dashboard', :action => 'home'
   map.resource :session
 
   # Install the default routes as the lowest priority.

@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+	<title>Santhathi Home Page</title>
+	<meta http-equiv="Content-Language" content="en-us" />
+	<%=javascript_include_tag 'site/jquery-1.2.1.pack.js', 'site/jquery-easing.1.2.pack.js', 'site/jquery-easing-compatibility.1.2.pack.js', 'site/coda-slider.1.1.1.pack.js', 'jquery_corner' %>
+        <%= stylesheet_link_tag 'site/style.css' %>
+	<script type="text/javascript">
+		jQuery(window).bind("load", function() {
+			jQuery("div#slider1").codaSlider()
+			
+		});
+	</script>
+</head>
+<body>
+<div class="container">
+<div id="header">
+	<div id="logo"><img src="/images/site/logo.gif" /></div>
+	<div id="site_heading"> <h1>Santhathi <span>Centre for reproductive medicine</span></h1></div>
+	<div class="login_form">
+		<%= link_to "Goto application", pms_appointments_url %>
+	</div>
+       
+</div>
+
+<div style="clear:both"></div>
+  <%= yield %>
+</div>
+
+<div class="footer"><p>Designed by  <a href="http://www.isiritech.com/">ISIRI</a></p><div>
+<script type="text/javascript">
+ jQuery("#outer_image").corner("corner 20px")
+jQuery("#inner_image").corner("corner 20px")
+</script>
+</body>
+</html>

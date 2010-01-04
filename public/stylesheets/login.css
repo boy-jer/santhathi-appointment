@@ -1,0 +1,124 @@
+* ---------------- restting all default styles -----------------------*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+margin: 0;
+padding: 0;
+border: 0;
+outline: 0;
+vertical-align: baseline;
+}
+
+/* remember to define focus styles!*/
+:focus {
+outline: 0;
+}
+body {
+
+color: black;
+background: white;
+}
+ol, ul {
+list-style: none;
+}
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+border-collapse: separate;
+border-spacing: 0;
+}
+caption, th, td {
+text-align: left;
+font-weight: normal;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+content: "";
+}
+blockquote, q {
+quotes: "" "";
+}
+/* ---------------- restting all default styles end here -----------------------*/
+html{ height: 100%;}
+
+body{ font-size:14px;font-family: Arial, Helvetica, sans-serif;color:#000;background:url(/images/img/bg.jpg) repeat-x #7097be;line-height:16px;}
+
+a{color:#162635;text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+#main_login {
+ margin: 20px;
+ width: 100%;
+}
+
+.login {
+
+   margin: 0 auto;
+   width: 350px ;
+
+}
+
+
+
+#login-box {
+  margin: 10px auto;
+  background: #fff;
+  width: 300px;
+  height: 100%;
+  padding: 20px 25px 15px 100px;
+
+}
+
+#login-logo {
+  margin: 0 auto;
+  padding: 0px 0px 10px 10px;
+}
+
+#login-box label {
+	font-weight: bold;
+        color: #2064a4;
+
+}
+
+#header h1{color:#fff;padding:0px;margin-left:10px;margin-top:8px;padding-left:0px;}
+#header h1 span{color:#fff;padding:0px;margin-left:10px;margin-top:0px;padding-left:0px; font-size: 13px;}
+
+#global_links {
+	float: right;
+	font-size: 0.9em;
+	color: #6084B3;
+	padding: 0px 10px 0px 0px;
+}
+#global_links a {
+	color: #fff;
+}
+#global_links a:hover {
+	color: #00a8c6;
+	background-color: #e3fdff;
+}
+
+#notice {
+	color: #2B3A16;
+	padding: 0.3em 1em;
+	margin: .5em .1em .5em;
+	background-color: #E0F8B7;
+	font-weight: bold;
+        border: 1px solid #ccc;
+}
+
+#error {
+	color: #fff;
+	padding: 0.3em 1em;
+	margin: .5em .1em .5em;
+	background-color: #e35555;
+	font-weight: bold;
+        border: 1px solid #ccc;
+}
+
+#footer{clear:both; }
+#footer{background:#f1f1f1;width:98.5%;padding:10px;-moz-border-radius:3px;margin :10px 0px;}
+#footer p{background:none;padding:0px;margin:0px}

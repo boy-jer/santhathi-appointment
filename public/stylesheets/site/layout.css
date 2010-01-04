@@ -1,0 +1,143 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li,textarea, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {margin : 0; padding : 0; border : 0; outline : 0; vertical-align : baseline}
+:focus {outline : 0}
+
+table {border-collapse : separate; border-spacing : 0}
+caption, th, td {text-align : left; font-weight : normal}
+blockquote:before, blockquote:after, q:before, q:after {content : ""}
+blockquote, q {quotes : "" ""}
+
+body {
+	font-family :"arial", helvetica, sans-serif;
+	color: #000;
+	margin:0px;
+	padding:0px;
+	background-color:#2c2b2b;
+}
+
+/*..............................header .............................*/
+
+#header{
+	width:920px;
+	margin:0 auto;
+        height:130px;       
+}
+
+#header a{
+       color:#fff;
+       font-size:12px;
+       text-decoration:none;
+       float:right;
+       margin:10px 30px 0px 0px;	
+}
+
+#header a:hover{
+       color:#a00017;
+       text-decoration:underline;
+}
+
+
+/*.....................................Layout.........................*/
+
+
+.container{
+	width:920px;
+        height:565px;
+       	margin:0 auto;
+	background:#000 url(/images/site/bg.jpg) no-repeat;
+}
+
+/*..................Left content box........*/
+
+.left_box{
+	width:350px;
+	margin:120px 0px 0px 35px;
+	float:left;
+	padding:0px;
+}
+
+.left_box p{
+	font-size:14px;
+      	margin-bottom:20px;
+        color:#1b1d78;
+}
+
+.left_box p.name{
+	font-size:15px;
+	font-weight:bold;
+	margin:20px 0px 0px 68px;
+
+}
+
+/*..................middle content box........*/
+
+.mid_box{
+	width:500px;
+	margin:0px 0px 0px 5px;
+	float:left;
+	padding:0px;
+	
+}
+
+.mid_box a img{
+	border:none;
+}
+
+h1 a{
+	font-family : "arial", helvetica, sans-serif;
+	color:#fff;
+	margin:0px 0px 0px 0px;
+	text-decoration:none;
+}
+
+p.sub-heading{
+	color:#fff;
+	font-size:13px;
+	letter-spacing:.8px;
+	margin:0px 0px 20px 0px;
+	text-align:center;
+	font-style:italic;
+}
+
+.mid_box p{
+	color:#fff;
+	font-size:16px;
+	margin-top:10px;
+}
+
+.mid_box p.link a{
+	color:#a60118;
+	font-size:12px;
+	float:right;
+	text-decoration:underline;
+}
+
+.mid_box p.link a:hover{
+	color:#fff;
+	text-decoration:none;
+}
+
+
+/*............................................footer....................................*/
+.footer{
+	width:920px;
+	margin:0 auto;
+	height:15px;
+	padding:10px 0px 0px 0px;
+	background-color:#c6c0c0;
+	
+}
+.footer p{
+	color:#000;
+	text-align:center;
+	font-size:11px;
+}
+
+.footer p a{
+	color:#a60118;
+	text-decoration:underline;
+}
+.footer p a:hover{
+	color:#000;
+	text-decoration:none;
+}
+

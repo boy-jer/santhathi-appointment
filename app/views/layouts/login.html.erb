@@ -3,7 +3,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <%= render :partial => 'shared/head' %>
+   <%= stylesheet_link_tag('login.css', :media => :screen) %>
+  <%=javascript_include_tag  'js/jquery-1.3.2.min.js', 'jquery_corner', 'js/jquery-ui-1.7.1.custom.min.js' %>
 </head>
 
 <body>
@@ -14,9 +15,10 @@
     </div>
       <h1><%= configatron.site_name %></h1>
   </div>
+ 
 
   <div id="main_login">
-    <div id="left-login">
+    <div class="login">
 
      <% if flash[:notice] %>
        <div id="notice"><%= flash[:notice] %></div>
@@ -34,7 +36,7 @@
   
     </div>
   </div>
-
+ <div class ='clear'> </div>
   <div id="footer">
       Copyright © <%= configatron.company_name %> &nbsp; &nbsp; | &nbsp; &nbsp;  Powered by <%= link_to "isiri Technologies Pvt. Ltd.", "http://isiritech.com" , {:target => "_blank" }%>
   </div>

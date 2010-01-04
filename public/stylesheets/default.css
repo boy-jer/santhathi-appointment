@@ -802,46 +802,7 @@ font-size: 14px; }
 	font-weight: normal;
 }
 
-#main_login {
-margin: 20px;
 
-}
-/*round corner */
-#left-login {
-   background: #FFFFFF;
-   height: 450px;
-   margin: 0 auto;
-   width: 60% ;
-}
-
-#left-login .head {
-	color: #204F85;
-	font-weight: normal;
-        border: #fff 1px solid;
-	padding: 0.3em 1em 0.3em;
-	margin: 0;
-	font-size: 1.8em;
-	text-align: center;
-}
-
-#login-box {
-  margin: 0 auto;
-  background: #ACCBEA;
-  width: 300px;
-  height: 100%;
-  padding: 25px 25px 15px 25px;
-}
-
-#login-logo {
-  margin: 0 auto;
-  width: 300px;
-  padding: 0px 0px 10px 40px;
-}
-
-#login-box label {
-	font-weight: bold;
-        color: #ffffff;
-}
 /*
 hr {
   border: 0;
@@ -894,7 +855,7 @@ hr {
 
 .right-box{
     float: left;
-    width: 49%;
+    width: 49%;background: #FFFFFF;
     margin:0px 0px 0px 0px;
 }
 /*------------------------- links as buttons --------------*/

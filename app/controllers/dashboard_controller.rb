@@ -1,7 +1,12 @@
 class DashboardController < ApplicationController
   # GET /
   # The default dashboard
-  layout 'home'
+
+  def home
+    render :layout => 'home'
+  end
+
   def index
+     render :layout => 'site'
   end
 end
