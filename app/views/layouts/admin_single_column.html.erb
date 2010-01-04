@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+   <%= render :partial => 'shared/head' %>
+
+<script type="text/javascript">
+      checked = false;
+      function checkedAll () {
+        if (checked == false){checked = true}else{checked = false}
+    for (var i = 0; i < document.getElementById('main-form').elements.length; i++) {
+      document.getElementById('main-form').elements[i].checked = checked;
+    }
+      }
+</script>
+</head>
+
+<body>
+<div class="container" id="container">
+   <div id="header">
+     <%= render :partial => 'admin/shared/header' %>
+   </div>
+
+   <div id="content">
+
+       <%= render :partial => 'admin/shared/tabs' %>
+
+		
+     <div id="content_main" class="clearfix">
+          <h2 class="ico_mug"> <%= yield :left_header %> </h2>
+	   <div id ="content_wrapper">
+	      <%= render :partial => 'shared/layout_body' %>
+	   </div>
+        </div><!-- end #dashboard -->
+
+	 
+	
+
+     </div><!-- end #content_main -->	
+   </div><!-- end #content -->
+		   
+    <div id="footer" class="clearfix">
+       <%= render :partial => 'shared/footer' %>
+    </div>
+</div><!-- end container -->
+
+</body>
+</html>

@@ -1,4 +1,5 @@
 <table class="listing">
+  <% unless @prescribed_tests.blank? %>
   <tr><th>Presc. Doctor</th>
       <th>Presc. Date</th>
       <th>Service </th>
@@ -7,7 +8,7 @@
       <th>Remarks </th>
       <th>Delete</th>
   </tr>
- <% unless @prescribed_tests.blank? %>
+ 
   <% for test in @prescribed_tests %>
         <tr><td> <%= @appointment.doctor.doctor_profile.name %> </td>
             <td> <%= @prescription.p_date %> </td>
@@ -19,3 +20,4 @@
         </tr>
   <%end%>
  <%end%>
+</table>

@@ -16,8 +16,6 @@
          </p> 
          <div id = 'test_<%= test.id %>'> </div>
       <% end %>
-
-       <div id = 'prescription-list'><%= render :partial => '/laboratory/prescriptions/prescreptions' %> </div>
        
         <p><%=image_tag('pointer.gif', :border => 0) %> &nbsp;
            <%= link_to_remote("Pharmacy Prescription" ,
@@ -27,6 +25,7 @@
                             :method => :get,
                             :with => "'appointment_id='+ #{@appointment.id}")%>
          </p> 
+        <div id = 'prescription-list'><%= render :partial => '/laboratory/prescriptions/prescreptions' %> </div>
      </div>
 
      <div id="second_tab">

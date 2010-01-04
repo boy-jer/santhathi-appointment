@@ -1,0 +1,22 @@
+<h2>Edit contact group</h2>
+
+
+<table>
+<% form_for([:admin,@contact_group]) do |f| %>
+  <%= f.error_messages %>
+
+  <tr>
+    <th>Name</th>
+    <td><%= f.text_field :name %></td>
+  </tr>
+  <tr>
+   <td></td>
+    <td><%= f.submit 'Update' %></td>
+  </tr>
+<% end %>
+</table>
+
+
+<%= link_to 'Show', admin_contact_group_path(@contact_group) %> |
+  
+<%= link_to 'Back', admin_contact_groups_path %>

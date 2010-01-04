@@ -1,0 +1,13 @@
+<p>
+  <b>Name:</b>
+  <%=h @contact_list.name %>
+</p>
+
+<p>
+  <b>Contact number:</b>
+  <%=h @contact_list.contact_number %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_contact_list_path(@contact_list) %> |
+<%= link_to 'Back', admin_contact_lists_path %>

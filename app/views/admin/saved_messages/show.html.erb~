@@ -1,0 +1,18 @@
+<p>
+  <b>Title:</b>
+  <%=h @saved_message.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @saved_message.description %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%=h @saved_message.content %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_saved_message_path(@saved_message) %> |
+<%= link_to 'Back', admin_saved_messages_path %>

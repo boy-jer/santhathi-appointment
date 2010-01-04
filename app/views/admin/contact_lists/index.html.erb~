@@ -1,0 +1,22 @@
+<h1>Contact lists</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Contact number</th>
+  </tr>
+
+<% @contact_lists.each do |contact_list| %>
+  <tr>
+    <td><%=h contact_list.name %></td>
+    <td><%=h contact_list.number %></td>
+    <td><%= link_to 'Show', admin_contact_list_path(contact_list) %>|</td>
+    <td><%= link_to 'Edit', edit_admin_contact_list_path(contact_list) %>|</td>
+    <td><%= link_to 'Destroy', admin_contact_list_path(contact_list), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New contact list', new_admin_contact_list_path %> 

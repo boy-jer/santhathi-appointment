@@ -151,4 +151,12 @@ module ApplicationHelper
     user_default_branch.inventory_unit_of_measurements.all.map{|m| [m.unit_name, m.id]}
   end
   #################
+  def all_contact_groups
+   ContactGroup.find(:all).map{|m|[m.name,m.id]}
+  end
+  
+   def all_messages
+  SavedMessage.find(:all).map{|m|[m.title,m.id]}
+ end
+
 end
