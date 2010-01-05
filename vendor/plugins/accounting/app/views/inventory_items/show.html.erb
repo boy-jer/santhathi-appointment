@@ -1,0 +1,43 @@
+<p>
+  <b>Name:</b>
+  <%=h @inventory_item.name %>
+</p>
+
+<p>
+  <b>Buy price:</b>
+  <%=h @inventory_item.unit_buy_price %>
+</p>
+
+<p>
+  <b>Sale price:</b>
+  <%=h @inventory_item.unit_sale_price %>
+</p>
+
+<p>
+  <b>Sub Unit Sale price:</b>
+  <%=h @inventory_item.sub_unit_sale_price %>
+</p>
+
+<p>
+  <b>Inventory group:</b>
+  <%=h @inventory_item.inventory_group_id %>
+</p>
+
+<p>
+  <b>Consumable:</b>
+  <%=h @inventory_item.consumable %>
+</p>
+
+<p>
+  <b>Discount allowed:</b>
+  <%=h @inventory_item.discount_allowed %>
+</p>
+
+<p>
+  <b>Inventory unit of measurement:</b>
+  <%=h @inventory_item.inventory_unit_of_measurement_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_inventory_item_path(@inventory_item) %> |
+<%= link_to 'Back', inventory_items_path %>

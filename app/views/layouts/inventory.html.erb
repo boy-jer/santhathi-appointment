@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <%= render :partial => 'shared/head' %>
+  <%= javascript_include_tag 'jquery.autocomplete' -%>
+  <%= stylesheet_link_tag 'main', 'jquery.autocomplete'  %>
+</head>
+
+<body>
+<div class="container" id="container">
+   <div id="header">
+     <div id="global_links">
+        <%= render :partial => 'shared/global_links' %>
+      </div>
+      <%= render :partial => 'admin/shared/header' %>
+
+   </div>
+
+   <div id="content">
+
+       <%= render :partial => 'admin/shared/tabs' %>
+
+		
+     <div id="content_main" class="clearfix">
+        <div id="dashboard" class="left">
+	   <h2 class="ico_mug"> <%= yield :left_header %> </h2>
+	   <div class="clearfix">
+	      <div class="inner_wrapper"><%= render :partial => 'shared/layout_body' %></div>
+	   </div>
+        </div><!-- end #dashboard -->
+
+	 
+	<div id="sidebar" class="right">
+           <div class="inner_wrapper">
+	    <div id='account_navigation'>
+	      Inventory <br />
+		<%= button_to 'Inventory Items', inventory_items_path, :method => :get, :style => "color:#050;font:bold 84% 'trebuchet ms',helvetica,sans-serif;background-color:#fed;border:1px solid;border-color: #696 #363 #363 #696;cursor:pointer;width:150px;" %> <br />
+		<%= button_to 'Inventory Groups', inventory_groups_path, :method => :get, :style => "color:#050;font:bold 84% 'trebuchet ms',helvetica,sans-serif;background-color:#fed;border:1px solid;border-color: #696 #363 #363 #696;cursor:pointer;width:150px;" %> <br />
+                <%= button_to 'Measurement Unit', inventory_unit_of_measurements_path, :method => :get, :style => "color:#050;font:bold 84% 'trebuchet ms',helvetica,sans-serif;background-color:#fed;border:1px solid;border-color: #696 #363 #363 #696;cursor:pointer;width:150px;" %> <br />
+	     		
+	      Pure Inventory Vouchers <br />    
+	    </div>
+           </div>
+	</div><!-- end #sidebar -->
+
+     </div><!-- end #content_main -->	
+   </div><!-- end #content -->
+		   
+    <div id="footer" class="clearfix">
+       <%= render :partial => 'shared/footer' %>
+    </div>
+</div><!-- end container -->
+
+</body>
+</html>
