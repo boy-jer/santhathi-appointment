@@ -1,8 +1,0 @@
-<p>
-  <b>Name:</b>
-  <%=h @contact_group.name %>
-</p>
-
-
-<%= link_to 'Edit', edit_contact_group_path(@contact_group) %> |
-<%= link_to 'Back', contact_groups_path %>
