@@ -1,0 +1,2 @@
+1) Added the column accounting_day_id for account_transactions table and neccessary model changes.
+1) Added the column accounting_day_id for account_transaction_items table and neccessary model changes.

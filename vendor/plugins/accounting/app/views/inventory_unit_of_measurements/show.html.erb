@@ -1,0 +1,28 @@
+<p>
+  <b>Unit name:</b>
+  <%=h @inventory_unit_of_measurements.unit_name %>
+</p>
+
+<p>
+  <b>Unit symbol:</b>
+  <%=h @inventory_unit_of_measurements.unit_symbol %>
+</p>
+
+<p>
+  <b>Sub unit name:</b>
+  <%=h @inventory_unit_of_measurements.sub_unit_name %>
+</p>
+
+<p>
+  <b>Sub unit symbol:</b>
+  <%=h @inventory_unit_of_measurements.sub_unit_symbol %>
+</p>
+
+<p>
+  <b>Unit value:</b>
+  <%=h @inventory_unit_of_measurements.unit_value %>
+</p>
+
+
+<%= link_to 'Edit', edit_inventory_unit_of_measurement_path(@inventory_unit_of_measurements) %> |
+<%= link_to 'Back', inventory_unit_of_measurements_path %>
