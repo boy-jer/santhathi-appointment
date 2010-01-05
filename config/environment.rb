@@ -18,8 +18,6 @@ Rails::Initializer.run do |config|
   config.gem "calendar_date_select"
   #config.gem "ruby-openid", :lib => "openid"
 
-  config.load_paths += %W( #{RAILS_ROOT}/app/controllers/accounting #{RAILS_ROOT}/app/controllers/inventory )
-
   # Make Time.zone default to the specified zone, and make Active Record store time values
   # in the database in UTC, and return them converted to the specified local zone.
   config.time_zone = 'UTC'
