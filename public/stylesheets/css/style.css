@@ -92,7 +92,8 @@ hr { color: #f1f1f1;
 button {text-transform:uppercase;font-size:13px;padding:3px;color:#fff;background:#4780ae;border-left:1px solid #084577;border-top:1px solid #084577;border-right:1px solid #7ab7e8;border-bottom:1px solid #7ab7e8;-moz-border-radius:3px;margin:3px;margin-top:5px;}
 button:hover { background-color: #ff6600;}
 
-
+.part1{ width: 45%;}
+.part2{ width: 45%;}
 /* ------------------------------------------------------------------------------------
  MENUS			 */
 #navigation, #navigation ul {		padding:0;	margin:0; list-style:none; line-height:1; float:left;	}
@@ -139,7 +140,7 @@ STRUCTURE					 */
 #form_middle_cont{width:940px}
 /* ------------------------------------------------------------------------------------
 ICONS				 */
-.ico_mug{background:url(/images/img/sort-nav-bg.gif) #eef1f4; padding-left:40px;margin-bottom:10px; font-size: 15px; border-bottom: 2px solid #dbdfe3; color: #484b4a; font-size: 23px; padding: 10px 5px 10px 50px; -moz-border-radius:3px; border-top: 2px solid #fff;}
+.ico_mug{background:url(/images/img/sort-nav-bg.gif) #eef1f4; padding-left:40px;margin-bottom:0px; font-size: 15px; border-bottom: 2px solid #dbdfe3; color: #484b4a; font-size: 23px; padding: 10px 5px 10px 50px; -moz-border-radius:3px; border-top: 2px solid #fff;}
 .ico_posts{background:url(/images/img/ico_posts.jpg) no-repeat 5px center #f1f1f1; padding-left:30px;}
 .ico_page{background:url(/images/img/ico_page.jpg) no-repeat 5px center #f1f1f1; padding-left:30px;}
 .ico_settings{background:url(/images/img/ico_settings.jpg) no-repeat 5px center #f1f1f1; padding-left:30px;}
@@ -400,8 +401,10 @@ textarea.textbox:focus{
 /******************************Appointment create***********************/
 #content_wrapper {
  background: #fff;
- padding:0px;
+ padding:10px;
  height: 100%;
+ border: 1px solid #ccc;
+ border-top: none;
 }
 
 .heading{color: #377242; font-size: 16px;  margin-bottom: 0px;}

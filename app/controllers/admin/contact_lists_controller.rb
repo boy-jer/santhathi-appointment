@@ -1,7 +1,7 @@
 class Admin::ContactListsController < ApplicationController
   # GET /admin_contact_lists
   # GET /admin_contact_lists.xml
-  layout 'admin'
+  layout 'admin_single_column'
   def index
     @contact_lists = ContactList.all
 

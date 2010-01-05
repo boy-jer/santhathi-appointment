@@ -1,20 +1,27 @@
-<h1>Contact groups</h1>
+<% content_for :left_header do -%>
+   Contact groups
+<%end-%>
 
-<table>
+<div class = 'right'>
+  <%= link_to("<span>New contact group</span>", new_admin_contact_group_path, :class => 'buttonAdd')  %>
+</div>
+<div class ='clear'></div>
+
+<table class ='listing'>
   <tr>
     <th>Name</th>
+    <th>Actions</th>
   </tr>
 
 <% @contact_groups.each do |contact_group| %>
   <tr>
     <td><%=h contact_group.name %></td>
-    <td><%= link_to 'Show', admin_contact_group_path(contact_group) %>|</td>
-    <td><%= link_to 'Edit', edit_admin_contact_group_path(contact_group) %>|</td>
-    <td><%= link_to 'Destroy', admin_contact_group_path(contact_group), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', admin_contact_group_path(contact_group) %>|
+    <%= link_to 'Edit', edit_admin_contact_group_path(contact_group) %>|
+   <%= link_to 'Destroy', admin_contact_group_path(contact_group), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New contact group', new_admin_contact_group_path %>

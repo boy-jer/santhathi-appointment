@@ -11,7 +11,7 @@
 <body>
 <div class="container">
 	<div id="header">
-             <a href="#">Login</a>
+             
 	</div>
 	<%= yield %>
 </div><!------Container--->

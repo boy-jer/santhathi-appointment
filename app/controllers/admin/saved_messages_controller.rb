@@ -1,7 +1,7 @@
 class Admin::SavedMessagesController < ApplicationController
   # GET /admin_saved_messages
   # GET /admin_saved_messages.xml
-  layout 'admin'
+layout 'admin_single_column'
   def index
     @saved_messages = Admin::SavedMessage.all
 

@@ -1,24 +1,31 @@
-<h1>Saved messages</h1>
+<% content_for :left_header do -%>
+   List of messages templates
+<%end-%>
 
-<table>
+<div class = 'right'>
+   <%= link_to("<span>New message template</span>", new_admin_saved_message_path, :class => 'buttonAdd')  %>
+</div>
+
+<div class ='clear'></div>
+<table class ='listing'>
   <tr>
     <th>Title</th>
     <th>Description</th>
-    <th>Content</th>
+    <th>Actions</th>
   </tr>
 
 <% @saved_messages.each do |saved_message| %>
   <tr>
     <td><%=h saved_message.title %></td>
     <td><%=h saved_message.description %></td>
-    <td><%=h saved_message.content %></td>
-    <td><%= link_to 'Show', admin_saved_message_path(saved_message)%>|</td>
-    <td><%= link_to 'Edit', edit_admin_saved_message_path(saved_message) %>|</td>
-    <td><%= link_to 'Destroy', admin_saved_message_path(saved_message), :confirm => 'Are you sure?', :method => :delete %></td>
+ 
+    <td><%= link_to 'Show', admin_saved_message_path(saved_message)%>|
+    <%= link_to 'Edit', edit_admin_saved_message_path(saved_message) %>|
+    <%= link_to 'Destroy', admin_saved_message_path(saved_message), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New saved message', new_admin_saved_message_path %>
+

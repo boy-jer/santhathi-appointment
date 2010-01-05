@@ -19,24 +19,24 @@
 <body>
 <div class="container" id="container">
    <div id="header">
+     <div id="global_links">
+       <%= render :partial => 'shared/global_links' %>
+     </div>
      <%= render :partial => 'admin/shared/header' %>
    </div>
 
    <div id="content">
-
+       
        <%= render :partial => 'admin/shared/tabs' %>
-
+       <div id="top_menu" class="clearfix">
+         <%= render :partial => 'admin/shared/sms_sub_tabs' %>
+       </div>
 		
      <div id="content_main" class="clearfix">
           <h2 class="ico_mug"> <%= yield :left_header %> </h2>
 	   <div id ="content_wrapper">
 	      <%= render :partial => 'shared/layout_body' %>
 	   </div>
-        </div><!-- end #dashboard -->
-
-	 
-	
-
      </div><!-- end #content_main -->	
    </div><!-- end #content -->
 		   

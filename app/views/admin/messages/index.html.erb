@@ -1,18 +1,20 @@
-<h1>Listing messages</h1>
+<% content_for :left_header do -%>
+   Listing all sent messages
+<%end-%>
 
-<table>
-  <tr>
-  </tr>
+<div class = 'right'>
+   <%= link_to("<span>Write new message</span>", new_message_path, :class => 'buttonAdd')  %>
+</div>
+<div class ='clear'></div>
 
+<table class='listing'>
 <% @messages.each do |message| %>
   <tr>
-    <td><%= link_to 'Show', message %></td>
-    <td><%= link_to 'Edit', edit_message_path(message) %></td>
-    <td><%= link_to 'Destroy', message, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', message %> | 
+    <%= link_to 'Edit', edit_message_path(message) %> | 
+    <%= link_to 'Destroy', message, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New message', new_message_path %>

@@ -1,4 +1,7 @@
-<h1>New saved message</h1>
+<% content_for :left_header do -%>
+   New message template
+<%end-%>
+
 
 <% form_for([:admin,@saved_message]) do |f| %>
   <%= f.error_messages %>
@@ -12,12 +15,12 @@
     <%= f.text_field :description %>
   </p>
   <p>
-    <%= f.label :content %><br />
+    <%= f.label :message_content %><br />
     <%= f.text_area :content %>
   </p>
   <p>
-    <%= f.submit 'Create' %>
+    <%= f.submit 'Create' %> | <%= link_to 'Cancel', admin_saved_messages_path %>
   </p>
 <% end %>
 
-<%= link_to 'Back', admin_saved_messages_path %>
+

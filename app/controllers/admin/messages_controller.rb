@@ -69,8 +69,8 @@ class Admin::MessagesController < ApplicationController
         end
          
        elsif !params[:message][:number].nil?
-          sms = MessageService.create(:sms => params[:admin_message])
-          @message.update_attributes({:status => "Sent", :sms_id => sms.id,:number => params[:message][:number] })
+          sms = Admin::MessageService.create(:sms => params[:admin_message].merge!({:number => params[:message][:number]}))
+          @message.update_attributes({:status => "Sent", :sms_id => sms.id, :number => params[:message][:number] })
        end
         rescue
           flash.now[:error] = 'There seems to be a problem in sending message. Please try again.'  

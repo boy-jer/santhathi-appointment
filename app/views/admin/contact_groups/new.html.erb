@@ -1,6 +1,8 @@
-<h2>New contact group</h2>
+<% content_for :left_header do -%>
+   New contact group
+<%end-%>
 
-<table>
+<table class ='form-table'>
 <% form_for([:admin,@contact_group]) do |f| %>
   <%= f.error_messages %>
 
@@ -8,10 +10,12 @@
     <th>Name</th>
     <td><%= f.text_field :name %></td>
   </tr>
+
   <tr>
    <td></td>
-    <td><%= f.submit 'Update' %></td>
+    <td><%= f.submit 'Create' %> | <%= link_to 'Back', admin_contact_groups_path %></td>
   </tr>
+
 <% end %>
 </table>
-<%= link_to 'Back', admin_contact_groups_path %>
+

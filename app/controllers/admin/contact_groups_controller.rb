@@ -1,7 +1,7 @@
 class Admin::ContactGroupsController < ApplicationController
   # GET /admin_contact_groups
   # GET /admin_contact_groups.xml
-  layout 'admin'
+  layout 'admin_single_column'
   def index
     @contact_groups = ContactGroup.all
 
