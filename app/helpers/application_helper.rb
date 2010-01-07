@@ -155,8 +155,14 @@ module ApplicationHelper
    ContactGroup.find(:all).map{|m|[m.name,m.id]}
   end
   
-   def all_messages
+ def all_messages
   SavedMessage.find(:all).map{|m|[m.title,m.id]}
  end
+
+  def message_filter(text)
+   unless text.nil?
+ 	text.slice!(0,40) + "..." unless text.nil?
+   end
+  end
 
 end
