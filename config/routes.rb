@@ -92,7 +92,7 @@ ActionController::Routing::Routes.draw do |map|
                                              :deleted   => :get }
     admin.resources :dashboard
     admin.resources :roles
-    admin.resources :messages ,:collection => {:render_message_template => :get,:render_contact_list => :get}
+    admin.resources :messages, :collection => {:render_message_template => :get,:render_contact_list => :get}
     admin.resources :saved_messages
     admin.resources :contact_groups
     admin.resources :contact_lists
@@ -103,13 +103,12 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace(:pms) do |pms|
   	pms.root :controller => 'pms/appointments', :action => 'index'
     pms.resources :appointments, :member => {:confirm => :get} ,
-                                 :collection=>{:update_doctors_list =>:get, :patient_search => :get}# ,
-                               #  :has_one =>[:clinical_screen,:discharge_summary,:next_appointment_remark,:clinical_comment]
+                                 :collection => {:update_doctors_list =>:get, :patient_search => :get} ,
+                                 :has_one => [:visit_report]
     pms.resources :pms
-    pms.resources :patients ,:collection =>{:associate_spouse=>:post, :associate_couple=>:get}
+    pms.resources :patients, :collection =>{:associate_spouse=> :post, :associate_couple=>:get}
     pms.resources :patients do |patient|
                                patient.resources :patient_appointments, :as => :pappointments
-
                             end
     pms.resources :departments
     pms.resources :doctors
@@ -118,6 +117,7 @@ ActionController::Routing::Routes.draw do |map|
                                               	:doctor_wise_report => :get , :update_doctors => :get ,
                                               	:appointment_type_report => :get , :visit_type_report => :get
                                               }
+     pms.resources :patient_discharges
   end
   map.root :controller => 'dashboard', :action => 'home'
   map.resource :session
