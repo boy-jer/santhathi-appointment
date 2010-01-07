@@ -13,7 +13,7 @@
   	<tr>
        		<td><%= check_box_tag("contacts[]", c.id, true, :contact_list_id=> c.id)%></td>
                 <td><%=h c.name %></td>
-    		<td><b><%=h c.number %></b></td>
+    		<td><b><%=h c.contact_number %></b></td>
 		
   	</tr>
 <%end%>
