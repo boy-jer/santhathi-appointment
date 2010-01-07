@@ -66,10 +66,12 @@ class Admin::MessagesController < ApplicationController
        params[:contacts].each do |c|
          contact = ContactList.find(c)
          sms = Admin::MessageService.create(:sms => params[:admin_message].merge!({:contact_number => contact.contact_number}))
-         message_contact = MessageContactList.create(:message_id => @message.id, :contact_list_id => contact.id, :sms_id => sms.id)                 
-         @message.update_attributes({:status => "Sent", :sms_id => sms.id, :contact_group_id => params[:contact_group] ,:user_id => current_user.id })
-        
-        end
+         message_contact = MessageContactList.create(:message_id => @message.id, :contact_list_id => contact.id, :sms_id => sms.id)  
+          @message.update_attributes({:status => "Sent", :sms_id => sms.id,:contact_group_id => contact.contact_group_id,:user_id => current_user.id })               
+         
+       end
+         
+         
          
        elsif !params[:message][:number].nil?
           sms = Admin::MessageService.create(:sms => params[:admin_message].merge!({:contact_number => params[:message][:number]}))
