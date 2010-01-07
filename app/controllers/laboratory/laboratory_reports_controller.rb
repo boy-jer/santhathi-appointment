@@ -1,6 +1,6 @@
 class Laboratory::LaboratoryReportsController < ApplicationController
   layout 'laboratory'
-
+  layout proc{ |c| ['show','new', 'create'].include?(c.action_name)? 'laboratory_single_column' : 'laboratory'}
   def index
 
   end
