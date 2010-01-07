@@ -3,15 +3,14 @@
 <table class="listing">
   <tr>
      <th> Item Name </th>
-     <th> Dosage Type </th>
+     <th> Dosage type </th>
      <th> Course type</th>
-     <th> Prescribing Date Time</th>
-     <th> Course Duration </th>
+     <th> Prescribing date time</th>
+     <th> Course duration </th>
 
-     <th> Course Start Date</th>
-     <th> Course End Date </th>
+     <th> Start date</th>
+     <th> End date </th>
      <th> Quantity</th>
-     <th> Other Remark</th>
      <th> Delete </th>
  </tr>
  <% @pharmacy_prescriptions.each do |pharmacy_prescription| %>
@@ -24,7 +23,7 @@
     <td> <%=h pharmacy_prescription.course_start_date%></td>
     <td> <%=h pharmacy_prescription.course_end_date%></td>
     <td> <%=h pharmacy_prescription.quantity %></td>
-    <td> <%=h pharmacy_prescription.other_remarks %></td>
+
 
  <td>
 
@@ -45,20 +44,19 @@
 <table class="listing">
   <tr>
      <th> Item Name </th>
-     <th> Dosage Type </th>
+     <th> Dosage type </th>
      <th> Course type</th>
-     <th> Prescribing Date Time</th>
-     <th> Course Duration </th>
+     <th> Prescribing date time</th>
+     <th> Course duration </th>
 
-     <th> Course Start Date</th>
-     <th> Course End Date </th>
+     <th> Start date</th>
+     <th> End date </th>
      <th> Quantity</th>
-     <th> Other Remark</th>
-     <th> Show | Edit | Delete </th>
+     <th> Delete </th>
  </tr>
  </table>
 <br/>
-  No Record created yet
+  No prescriptions yet
   <br/>
 <%end%>
 

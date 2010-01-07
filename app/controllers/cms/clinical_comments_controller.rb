@@ -10,8 +10,16 @@ class Cms::ClinicalCommentsController < ApplicationController
   end
 
   def new
-   	@appointment = Appointment.find(params[:appointment_id])
+    @appointment = Appointment.find(params[:appointment_id])
     @clinical_comment = ClinicalComment.new
+    respond_to do |format|
+      format.html
+      format.js  {
+                    render :update do |page|
+                      page.replace_html 'clinical-screen', :partial => 'new'
+                    end
+                  }
+    end
   end
 
   def edit
@@ -23,7 +31,7 @@ class Cms::ClinicalCommentsController < ApplicationController
     @clinical_comment = ClinicalComment.new(params[:clinical_comment])
     @clinical_comment.appointment = @appointment
     if @clinical_comment.save
-      flash[:notice] = 'ClinicalComment was successfully created.'
+      flash[:notice] = 'Clinical comment is successfully created.'
       redirect_to(new_cms_appointment_clinical_screen_path(@appointment))
     else
       render :action => "new"

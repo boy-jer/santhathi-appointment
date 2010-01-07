@@ -84,7 +84,7 @@
     <%= @appointment.next_appointment_remark.blank? ? (link_to "Next Appointment Remark" , new_cms_appointment_next_appointment_remark_path (@appointment) , :rel=> "facebox") : (link_to "Next Appointment Remark" , edit_cms_appointment_next_appointment_remark_path (:id =>@appointment.next_appointment_remark.id,:appointment_id =>@appointment.id) , :rel=> "facebox") %>
        <%=  %><br/><br/>
      <%=image_tag('arrow_right.png', :border => 0)  %> &nbsp;
-    <%= @appointment.clinical_comment.blank? ? (link_to "Clinical Comment " , new_cms_appointment_clinical_comment_path (@appointment)) : ( link_to "Clinical Comment",edit_cms_appointment_clinical_comment_path(:appointment_id => @appointment.id ,:id => @appointment.clinical_comment.id) ) %><br/><br/>
+    <%= @appointment.clinical_comment.blank? ? (link_to "Clinical comment " , new_cms_appointment_clinical_comment_path (@appointment), :rel => 'facebox') : ( link_to "Clinical comment", edit_cms_appointment_clinical_comment_path(:appointment_id => @appointment.id , :id => @appointment.clinical_comment.id) ) %><br/><br/>
 
      <%=image_tag('arrow_right.png', :border => 0)  %> &nbsp;
     <%= @appointment.patient.vital_signs.blank? ? (link_to "Registration Summary " , new_cms_vital_sign_path (:patient_id =>@appointment.patient.id) ,:rel =>'facebox') : (link_to "Registration Summary " ,edit_cms_vital_sign_path(:patient_id => @appointment.patient.id ,:id => 1),:rel =>'facebox' ) %> <br/><br/>

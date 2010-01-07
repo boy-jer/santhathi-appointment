@@ -25,13 +25,15 @@
   <br />
 
    <table class = 'form-table'>
-      <tr> <td colspan ="4"  class = 'blue-row'>
-	  <label>
-	     <%= link_to "Patient List",  cms_doctor_patients_url(current_user.id), :class => 'blue-link' %>
-	  </label>
-	  </td></tr>
+      <tr> <td class = 'blue-row'>
+	    <%= link_to "Return to patient list", cms_doctor_patients_url(current_user.id) %> &nbsp;&nbsp;|&nbsp;&nbsp;
+	    <%= link_to "Prescriptions", new_cms_appointment_clinical_screen_path(@appointment.id) %>&nbsp;&nbsp;|&nbsp;&nbsp; 
+	    <%= link_to_remote "Clinical comments", :url  => (@appointment.clinical_comment.blank? ? new_cms_appointment_clinical_comment_path (@appointment.id) : edit_cms_appointment_clinical_comment_path(:appointment_id => @appointment.id , :id => @appointment.clinical_comment.id)), :method => :get %>
+             
+	  </td>
+      </tr>
     </table>
-
+  <br />
   <div id='clinical-screen'>
      <h3 class = 'heading'> Prescriptions & reports </h3>  
      <%= render :partial => 'clinical_screen_sub_tabs' %>  

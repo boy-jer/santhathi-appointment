@@ -24,7 +24,10 @@
 
 <body>
 <div class="container" id="container">
-   <div  id="header">
+   <div id="header">
+      <div id="global_links">
+        <%= render :partial => 'shared/global_links' %>
+      </div>
      <%= render :partial => 'shared/header' %>
    </div>
 
@@ -34,8 +37,9 @@
      </div>
 		
      <div id="content_main" class="clearfix">
+        <h2 class="ico_mug"><%= yield :header %> </h2>
         <div id="content_wrapper">
-	   <h2 class="ico_mug"><%= yield :header %> </h2>
+	   
 	   <div class="clearfix">
 	      <%= render :partial => 'shared/layout_body' %>
 	   </div>
