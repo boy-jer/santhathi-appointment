@@ -764,4 +764,13 @@ a.buttonAdd:hover span {
   width :15px;
   height :10px;
 }
+/**************************** Visit report **************************/
+#visit_report {width: 800px; margin: 0 auto; border: 1px solid #ccc; padding: 30px 20px 30px 40px;}
+#visit_report .headline {font-weight: bold; color: black;  }
 
+
+table.visit_report {width: 100%; margin: 20px 0px 10px 0px;}
+table.visit_report tr th {font-weight: bold; vertical-align: middle; width: 150px; text-align: left;}
+table.visit_report tr td {padding: 10px 0px 10px 0px;}
+table.visit_report tr td.first {width: 120px;}
+table.vsiti_report tr td.second{width: 450px;}

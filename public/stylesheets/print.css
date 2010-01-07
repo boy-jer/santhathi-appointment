@@ -98,3 +98,14 @@ clinical-table th { padding: 0em;  text-align: left;}
 .clinical-table td {padding: 0em ; }
 
 .clinical-table{border-collapse: collapse; background-color: #fff; color: #000; width: 100%;   }
+
+/**************************** Visit report **************************/
+#visit_report { margin: 0 auto;  padding: 130px 20px 30px 40px;}
+#visit_report .headline {font-weight: bold; color: black;  }
+
+
+table.visit_report {width: 100%; margin: 20px 0px 10px 0px;}
+table.visit_report tr th {font-weight: bold; vertical-align: middle; width: 150px; text-align: left;}
+table.visit_report tr td {padding: 10px 0px 10px 0px;}
+table.visit_report tr td.first {width: 120px;}
+table.vsiti_report tr td.second{width: 450px;}
