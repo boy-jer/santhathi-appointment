@@ -6,6 +6,8 @@ class CreateAdminMessages < ActiveRecord::Migration
       t.string  :number
       t.string  :status
       t.integer :sms_id
+      t.integer :contact_group_id
+      t.integer :contact_list_id
       t.timestamps
     end
   end
