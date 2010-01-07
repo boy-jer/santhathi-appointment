@@ -1,3 +1,40 @@
+<div class="form_wrapper">
+  <h1 class = 'heading left'>Message sent to <span><%= @message.contact_group_id.nil? ? @message.contact_list.contact_number : @message.contact_group.name %></span> </h1>
 
-<%= link_to 'Edit', edit_message_path(@message) %> |
-<%= link_to 'Back', messages_path %>
+  <div class="clear" ></div>
+  <hr />
+
+
+ <table class="show_page">
+  <tr>
+   <%unless @message.user_id.nil?%>
+     <td><%=h @message.created_at.strftime('%d-%m-%Y') %></td>
+     <td><%=h @message.user.name %></td>
+   <%end%>
+  </tr>
+  <tr> <td colspan = '2' style ='border: 1px solid #ccc; background: #eef2f6; width: 300px;'><%=h @message.message_body %></td> </tr>
+
+  <% if !@contacts.nil? %>
+
+    <table class='listing'>
+     <tr>
+       <th>Name</th>
+       <th>Number</th>
+     </tr>
+
+
+      <% @contacts.each do |contact| %>
+       <tr>
+        <td><%= contact.name%></td>
+        <td><%=h contact.contact_number%></td>
+       </tr>
+      <% end %>
+    </table>
+
+  <%end%>
+                
+</table>
+
+
+
+<%= link_to 'Back', admin_messages_path %>

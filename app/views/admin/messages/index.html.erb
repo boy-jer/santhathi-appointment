@@ -3,16 +3,35 @@
 <%end-%>
 
 <div class = 'right'>
-   <%= link_to("<span>Write new message</span>", new_message_path, :class => 'buttonAdd')  %>
+   <%= link_to("<span>Write new message</span>", new_admin_message_path, :class => 'buttonAdd')  %>
 </div>
 <div class ='clear'></div>
 
 <table class='listing'>
+<tr>
+     
+     <th>Sent by</th>
+     <th>Message</th>
+     <th>Sent to.</th>
+     <th>View</th>
+  </tr>
+
+
 <% @messages.each do |message| %>
   <tr>
-    <td><%= link_to 'Show', message %> | 
-    <%= link_to 'Edit', edit_message_path(message) %> | 
-    <%= link_to 'Destroy', message, :confirm => 'Are you sure?', :method => :delete %></td>
+   <%unless message.user_id.nil?%>
+    <td><%= message.user.name%></td>
+   <%else%>
+    <td></td>
+   <%end%>
+    <td><%=h message_filter(message.message_body)%></td>
+    <%unless message.contact_group_id.nil?%>
+     <td><%=h message.contact_group.name%></td>
+     <%else%>
+     <td><%=h message.contact_list.name  unless message.contact_list_id.nil?  %></td>
+     <%end%>
+    <td><%= link_to 'Show', admin_message_path(message,:contact_group_id => message.contact_group_id) %>  
+    </td>
   </tr>
 <% end %>
 </table>

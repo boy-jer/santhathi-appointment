@@ -6,6 +6,7 @@ class Admin::MessagesController < ApplicationController
   # GET /admin_messages.xml
   def index
     @messages = Message.all
+   
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,6 +18,7 @@ class Admin::MessagesController < ApplicationController
   # GET /admin_messages/1.xml
   def show
     @message = Message.find(params[:id])
+    @contacts = ContactList.find(:all, :conditions => ['contact_group_id = ?', params[:contact_group_id]]) unless params[:contact_group_id].blank?
 
     respond_to do |format|
       format.html # show.html.erb
@@ -62,15 +64,19 @@ class Admin::MessagesController < ApplicationController
       begin
       if !params[:contacts].nil?
        params[:contacts].each do |c|
- 
-        contact = ContactList.find(c)
-        sms = Admin::MessageService.create(:sms => params[:admin_message].merge!({:number => contact.number}))
-        message_contact = MessageContactList.create(:message_id => @message.id, :contact_list_id => contact.id, :sms_id => sms.id)                 
+         contact = ContactList.find(c)
+         sms = Admin::MessageService.create(:sms => params[:admin_message].merge!({:contact_number => contact.contact_number}))
+         message_contact = MessageContactList.create(:message_id => @message.id, :contact_list_id => contact.id, :sms_id => sms.id)                 
+         @message.update_attributes({:status => "Sent", :sms_id => sms.id, :contact_group_id => params[:contact_group] ,:user_id => current_user.id })
+        
         end
          
        elsif !params[:message][:number].nil?
-          sms = Admin::MessageService.create(:sms => params[:admin_message].merge!({:number => params[:message][:number]}))
-          @message.update_attributes({:status => "Sent", :sms_id => sms.id, :number => params[:message][:number] })
+          sms = Admin::MessageService.create(:sms => params[:admin_message].merge!({:contact_number => params[:message][:number]}))
+          contact_list = ContactList.create(:name => 'NA', :contact_number => params[:message][:number]) 
+         message_contact = MessageContactList.create(:message_id => @message.id,  :sms_id => sms.id,:contact_list_id => contact_list.id ) 
+         
+          @message.update_attributes({:status => "Sent", :sms_id => sms.id,:user_id => current_user.id,:contact_list_id => contact_list.id  })
        end
         rescue
           flash.now[:error] = 'There seems to be a problem in sending message. Please try again.'  
