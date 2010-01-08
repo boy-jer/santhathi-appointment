@@ -3,7 +3,7 @@ class Laboratory::ParametersController < ApplicationController
 
   def index
   	@search = Parameter.new_search(params[:search])
-    @search.per_page ||= 15
+    @search.per_page ||= 50
     @parameters = @search.all
     respond_to do |format|
       format.html

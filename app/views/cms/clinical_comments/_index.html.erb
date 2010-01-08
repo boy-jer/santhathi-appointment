@@ -1,0 +1,14 @@
+<table class ='listing'>
+  <tr>
+    <th>PVR No</th>
+    <th>Commet</th>
+  </tr>
+
+<% @clinical_comments.each do |clinical_comment| %>
+  <tr>
+    <td><%=h @appointment.id %></td>
+    <td><%=h clinical_comment.commet %></td>
+    <td><%= link_to 'Destroy', cms_appointment_clinical_comment_path(@appointment,clinical_comment) , :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>

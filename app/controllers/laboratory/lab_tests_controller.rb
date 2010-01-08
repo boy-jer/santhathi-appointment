@@ -3,7 +3,7 @@ class Laboratory::LabTestsController < ApplicationController
 
   def index
     @search = LabTest.new_search(params[:search])
-    @search.per_page ||= 15
+    @search.per_page ||= 50
     @tests = @search.all
     @child_list = LabTest.find_all_by_parent_id(nil)
     respond_to do |format|

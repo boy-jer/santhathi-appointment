@@ -3,7 +3,7 @@ class Laboratory::MeasurementUnitsController < ApplicationController
 
   def index
     @search = MeasurementUnit.new_search(params[:search])
-    @search.per_page ||= 15
+    @search.per_page ||= 50
     @measurement_units  = @search.all
     respond_to do |format|
                   format.html

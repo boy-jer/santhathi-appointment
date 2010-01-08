@@ -2,6 +2,7 @@ class Cms::ClinicalCommentsController < ApplicationController
   layout 'cms'
 
   def index
+    @appointment = Appointment.find(params[:appointment_id])
     @clinical_comments = ClinicalComment.all
   end
 
@@ -11,6 +12,8 @@ class Cms::ClinicalCommentsController < ApplicationController
 
   def new
     @appointment = Appointment.find(params[:appointment_id])
+    @clinical_comments = ClinicalComment.find(:all, :conditions => "appointment_id in (#{@appointment.patient.appointments.collect{|p| p.id}})")
+
     @clinical_comment = ClinicalComment.new
     respond_to do |format|
       format.html
@@ -23,7 +26,19 @@ class Cms::ClinicalCommentsController < ApplicationController
   end
 
   def edit
+    @appointment = Appointment.find(params[:appointment_id])
+    patient = @appointment.patient
+    @clinical_comments = ClinicalComment.find(:all, :conditions => "appointment_id in (#{patient.appointments.collect{|p| p.id}})")
+
     @clinical_comment = ClinicalComment.find(params[:id])
+     respond_to do |format|
+      format.html
+      format.js  {
+                    render :update do |page|
+                      page.replace_html 'clinical-screen', :partial => 'edit'
+                    end
+                  }
+    end
   end
 
   def create
@@ -33,8 +48,6 @@ class Cms::ClinicalCommentsController < ApplicationController
     if @clinical_comment.save
       flash[:notice] = 'Clinical comment is successfully created.'
       redirect_to(new_cms_appointment_clinical_screen_path(@appointment))
-    else
-      render :action => "new"
     end
   end
 
@@ -42,10 +55,8 @@ class Cms::ClinicalCommentsController < ApplicationController
     @appointment = Appointment.find(params[:appointment_id])
     @clinical_comment = ClinicalComment.find(params[:id])
     if @clinical_comment.update_attributes(params[:clinical_comment])
-      flash[:notice] = 'ClinicalComment was successfully updated.'
+      flash[:notice] = 'Clinical comment is successfully updated.'
       redirect_to(new_cms_appointment_clinical_screen_path(@appointment))
-    else
-      render :action => "edit"
     end
   end
 
