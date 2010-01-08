@@ -1,6 +1,7 @@
-<div class='continer'>
-  <div class='continer-inner'>
-    <h1>Editing doctor</h1>
+<% content_for :left_header do -%>
+   Editting doctor record
+<%end-%>
+
 
      <% form_for ([:pms, @doctor],:url=>pms_doctor_url(@doctor),:html=>{:method=>:put}) do |f| %>
 
@@ -19,8 +20,8 @@
            <%= doctor_profile_form.select :minute, minutes, :selected =>(Time.parse(@doctor.doctor_profile.working_from.to_s).strftime('%H:%M').to_s.split(":").last).to_i %> </td> </tr>
 
           <tr><th> Working To : </th> <td><%= doctor_profile_form.select :hour_to, hours, :selected => (Time.parse(@doctor.doctor_profile.working_to.to_s).strftime('%H:%M').to_s.split(":").first).to_i%> <%= doctor_profile_form.select :minute_to, minutes, :selected => (Time.parse(@doctor.doctor_profile.working_to.to_s).strftime('%H:%M').to_s.split(":").last).to_i %>
-           &nbsp; &nbsp; <%= link_to_remote 'Configure Time Slots', :url => {:action => 'working_slots'},
-             :with => "'sth='+ $('doctor_doctor_profile_attributes_hour').value + '&stm='+ $('doctor_doctor_profile_attributes_minute').value + '&eth=' + $('doctor_doctor_profile_attributes_hour_to').value + '&etm=' + $('doctor_doctor_profile_attributes_minute_to').value" %>
+           &nbsp; &nbsp; <%= link_to_remote 'Configure time slots', :url => {:action => 'working_slots'},
+             :with => "'sth='+ $('#doctor_doctor_profile_attributes_hour').val() + '&stm='+ $('#doctor_doctor_profile_attributes_minute').val() + '&eth=' + $('#doctor_doctor_profile_attributes_hour_to').val() + '&etm=' + $('#doctor_doctor_profile_attributes_minute_to').val()" %>
           </td> </tr>
 
           <tr><th> Comments : </th><td><%= doctor_profile_form.text_field :comments, {:class => 'textbox'} %></td> </tr>
@@ -33,11 +34,9 @@
 
    <br />
 
-    <%= f.submit "Update" %>
+    <%= f.submit "Update" %> or <%= link_to 'Cancel', pms_doctors_url %>
 
 <% end %>
 
-<%= link_to 'Show', pms_doctor_url(@doctor) %> |
-<%= link_to 'Back', pms_doctors_url %>
- </div>
-</div>
+
+

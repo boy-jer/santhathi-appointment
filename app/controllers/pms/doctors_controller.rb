@@ -1,5 +1,5 @@
 class Pms::DoctorsController < ApplicationController
-  layout 'pms'
+    layout proc{ |c| ['show','new', 'create'].include?(c.action_name)? 'pms_single_column' : 'pms'}
 
   def index
     @search = Doctor.new_search(params[:search])
@@ -118,7 +118,7 @@ class Pms::DoctorsController < ApplicationController
   	slot = []
   	count = ((((dt2 - dt1))/60)/60).to_i
     count.times do
-      slot << "#{(dt1.strftime('%H:%M').to_s)}-#{(dt1 = dt1 + 60.minutes).strftime('%H:%M').to_s}"
+      slot << "#{(dt1.strftime('%H:%M').to_s)}-#{(dt1 = dt1 + 30.minutes).strftime('%H:%M').to_s}"
     end
     remain_min =  ((dt2 - dt1)/60)
     if remain_min != 0.0
@@ -126,7 +126,7 @@ class Pms::DoctorsController < ApplicationController
     end  
     return slot
 
- 	end
+  end
 
 
 end
