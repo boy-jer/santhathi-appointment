@@ -13,8 +13,7 @@
 
   <table class = 'visit_report'>
     <tr><th>Clinical comment:</th> 
-      <td> Had spoken to Anirban yesterday. I told him about the schools we visited and the response we got.
-He understood that we need to 'close' 4 schools a month. He is better in closing than we are.He said that if clients are showing interest then it is a good sign. He will start promoting it there. 
+      <td> <%= @appointment.clinical_comment.commet unless @appointment.clinical_comment.blank?%>
       </td>
    </tr>
    <tr><th>Next appointment:</th> <td> day 12/13 scan </td></tr>

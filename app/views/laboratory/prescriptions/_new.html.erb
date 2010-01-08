@@ -11,7 +11,7 @@
            </td>
         
          <td>Remarks: <br /> <%= f.text_field :remarks, :class => "textbox"%> <br />
-         <button>Prescribe</button></td> 
+         <button>Prescribe</button> or | <%= link_to_function 'Cancel', "$('#test_#{@lab_test.id}').hide()" %> </td> 
        </tr>
     </table>
     <input type="hidden" name="prescription[department_id]" value= <%= params[:department] %>>

@@ -3,10 +3,6 @@ class Cms::PharmacyPrescriptionsController < ApplicationController
   before_filter :find_appointment ,:except => [:pharamacy_item_detail]
 
 
-
-
-
-
   def new
     @pharmacy_prescription = PharmacyPrescription.new
     @pharmacy_prescriptions = @appointment.pharmacy_prescriptions
@@ -22,7 +18,6 @@ class Cms::PharmacyPrescriptionsController < ApplicationController
 
 
 
-
   def create
     @pharmacy_prescription = PharmacyPrescription.new(params[:pharmacy_prescription])
     @pharmacy_prescription.appointment_id = @appointment.id
@@ -30,10 +25,11 @@ class Cms::PharmacyPrescriptionsController < ApplicationController
 
     respond_to do |format|
       if @pharmacy_prescription.save
-        flash[:notice] = 'Cms::PharmacyPrescription was successfully created.'
+        flash[:notice] = 'Pharmacy prescription is successfully created.'
         format.html { redirect_to() }
         format.xml  { render :xml => @pharmacy_prescription, :status => :created, :location => @pharmacy_prescription }
          format.js { render :update do |page|
+                    page.replace_html 'clinical-screen', :partial => '/cms/pharmacy_prescriptions/new'
                     page.replace_html 'pharmacy_prescription-list', :partial => '/cms/pharmacy_prescriptions/prescreptions'
                   end
                 }

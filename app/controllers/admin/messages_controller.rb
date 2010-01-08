@@ -5,7 +5,7 @@ class Admin::MessagesController < ApplicationController
   # GET /admin_messages
   # GET /admin_messages.xml
   def index
-    @messages = Message.all
+    @messages = Admin::Message.all
    
 
     respond_to do |format|
@@ -17,7 +17,7 @@ class Admin::MessagesController < ApplicationController
   # GET /admin_messages/1
   # GET /admin_messages/1.xml
   def show
-    @message = Message.find(params[:id])
+    @message = Admin::Message.find(params[:id])
     @contacts = ContactList.find(:all, :conditions => ['contact_group_id = ?', params[:contact_group_id]]) unless params[:contact_group_id].blank?
 
     respond_to do |format|
@@ -29,7 +29,7 @@ class Admin::MessagesController < ApplicationController
   # GET /admin_messages/new
   # GET /admin_messages/new.xml
   def new
-    @message = Message.new
+    @message = Admin::Message.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -39,13 +39,13 @@ class Admin::MessagesController < ApplicationController
 
   # GET /admin_messages/1/edit
   def edit
-    @message = Message.find(params[:id])
+    @message = Admin::Message.find(params[:id])
   end
 
   # POST /admin_messages
   # POST /admin_messages.xml
   def create
-    @message = Message.new(params[:admin_message])
+    @message = Admin::Message.new(params[:admin_message])
      
      if params[:contacts].blank? and params[:message][:number].blank?
       flash.now[:error] = "Please select either a number from contact groups or enter a number."
@@ -103,7 +103,7 @@ class Admin::MessagesController < ApplicationController
   # PUT /admin_messages/1
   # PUT /admin_messages/1.xml
   def update
-    @message = Message.find(params[:id])
+    @message = Admin::Message.find(params[:id])
 
     respond_to do |format|
       if @message.update_attributes(params[:message])
@@ -120,7 +120,7 @@ class Admin::MessagesController < ApplicationController
   # DELETE /admin_messages/1
   # DELETE /admin_messages/1.xml
   def destroy
-    @message = Message.find(params[:id])
+    @message = Admin::Message.find(params[:id])
     @message.destroy
 
     respond_to do |format|

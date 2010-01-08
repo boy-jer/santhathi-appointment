@@ -1,18 +1,19 @@
-<div class='continer'>
+<% content_for :left_header do -%>
+  Listing all laboratory tests
+<% end %>
+
      <%=render :partial=> 'filters'%>
 
   <div id='lab-test'>
-     <h3>Laboratory Services Tree View</h3>
-     <br />
-
-   <div id="sidetree">
-    <table><tr><td><div id="sidetreecontrol"><a href="?#">Collapse All</a> | <a href="?#">Expand All</a> | </div> </td>
-     <td><%= link_to "<b>Create New Service</b>", new_laboratory_lab_test_path, :method => :get%></td></tr></table>
-     <br />
+    <div id="sidetree">
+      <table><tr><td><div id="sidetreecontrol"><a href="?#">Collapse All</a> &nbsp;|&nbsp; <a href="?#">Expand All</a>&nbsp;|&nbsp;</div> </td>
+        <td><%= link_to "<b>Create New Service</b>", new_laboratory_lab_test_path, :method => :get%></td></tr>
+      </table>
+        <br />
      <ul id="tree">
         <%= render :partial => 'service', :collection =>  @child_list %>
      </ul>
     </div>
 
   </div>
-</div>
+
