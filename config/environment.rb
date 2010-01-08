@@ -33,6 +33,7 @@ Rails::Initializer.run do |config|
   
   config.active_record.observers = :user_observer
 end
-CGI::Session.expire_after 1.day#ExceptionNotifier.exception_recipients = %w(vijendrakarkala@gmail.com)
-#ExceptionNotifier.sender_address = %("santhathi" <santhathi@isiritech.net>)
-#ExceptionNotifier.email_prefix = "[SANTHATHI_ERROR] "
+CGI::Session.expire_after 1.day
+ExceptionNotifier.exception_recipients = %w(vijendrakarkala@gmail.com)
+ExceptionNotifier.sender_address = %("santhathi" <vijendrakarkala@gmail.com>)
+ExceptionNotifier.email_prefix = "[SANTHATHI_ERROR] "

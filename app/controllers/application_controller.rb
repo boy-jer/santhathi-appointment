@@ -3,7 +3,7 @@
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
   include RoleRequirementSystem
- # include FaceboxRender
+  include ExceptionNotifiable
 
   helper :all # include all helpers, all the time
   filter_parameter_logging :password, :password_confirmation
