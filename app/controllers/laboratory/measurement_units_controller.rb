@@ -1,5 +1,5 @@
 class Laboratory::MeasurementUnitsController < ApplicationController
-  layout 'laboratory'
+  layout proc{ |c| ['show','new', 'create'].include?(c.action_name)? 'laboratory_single_column' : 'laboratory'}
 
   def index
     @search = MeasurementUnit.new_search(params[:search])
@@ -30,7 +30,7 @@ class Laboratory::MeasurementUnitsController < ApplicationController
   def create
     @measurement_unit = MeasurementUnit.new(params[:measurement_unit])
     if @measurement_unit.save
-      flash[:notice] = 'MeasurementUnit was successfully created.'
+      flash[:notice] = 'Measurement unit record is successfully created.'
       redirect_to(laboratory_measurement_units_url)
     else
       render :action => "new"
@@ -40,7 +40,7 @@ class Laboratory::MeasurementUnitsController < ApplicationController
   def update
     @measurement_unit = MeasurementUnit.find(params[:id])
     if @measurement_unit.update_attributes(params[:measurement_unit])
-      flash[:notice] = 'MeasurementUnit was successfully updated.'
+      flash[:notice] = 'Measurement unit record is successfully updated.'
       redirect_to(laboratory_measurement_units_url)
     else
       render :action => "edit"
