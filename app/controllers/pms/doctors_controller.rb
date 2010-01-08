@@ -1,5 +1,5 @@
 class Pms::DoctorsController < ApplicationController
-    layout proc{ |c| ['show','new', 'create'].include?(c.action_name)? 'pms_single_column' : 'pms'}
+    layout proc{ |c| ['show','new', 'create', 'edit'].include?(c.action_name)? 'pms_single_column' : 'pms'}
 
   def index
     @search = Doctor.new_search(params[:search])

@@ -17,9 +17,10 @@
 </table> <br />
 <table class ='links'>
   <tr><td><%= f.submit "Save" %> </td>
-      <td>|<%= link_to "<span>Sample specfications</span>", laboratory_lab_test_sample_specfications_path(@lab_test), :class => :button %> </td>
-      <td>|<%= link_to "<span>Parameter specfications</span>",  laboratory_lab_test_parameter_specifications_path(@lab_test), :class => :button %> </td>
-      <td>|<%= link_to "<span>Test list</span>",  laboratory_lab_tests_path , :class => :button %> </td>
+      <td>|<%= link_to "Sample specfications", laboratory_lab_test_sample_specfications_path(@lab_test) %> </td>
+      <td>|<%= link_to "Parameter specfications",  laboratory_lab_test_parameter_specifications_path(@lab_test) %> </td>
+      <td>|<%= link_to "Test list",  laboratory_lab_tests_path %> </td>
+      <td>|<%= link_to "Delete",  laboratory_lab_test_path(@lab_test), :confirm => 'Are you sure, you want to delete this?', :method => :delete %> </td>
   </tr>
 </table>
 <% end %>

@@ -45,12 +45,17 @@ class Laboratory::LabTestsController < ApplicationController
   end
   
    def update
-    @lab_test = LabTest.find(params[:lab_test])
+    @lab_test = LabTest.find(params[:id])
     if @lab_test.update_attributes(params[:lab_test])
       flash[:notice] = 'Lab test is successfully updated.'
       redirect_to(laboratory_lab_tests_url)
     else
       render :action => "edit"
     end
+  end
+
+  def destroy
+     LabTest.find(params[:id]).destroy
+     redirect_to(laboratory_lab_tests_url)
   end
 end
