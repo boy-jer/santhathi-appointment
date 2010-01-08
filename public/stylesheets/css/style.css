@@ -457,7 +457,11 @@ table.form-table-small{width: 60%;}
 
 #schedule {
            width:  98%;
-           height: 425px;/*---------------------------Table row colors----------------*/
+           height: 425px;
+           overflow: auto;
+          }
+
+/*---------------------------Table row colors----------------*/
 #reason-display {border:1px solid #e8ebec; }
 #reason-display td {padding: 0px;}
 
@@ -512,11 +516,7 @@ table.form-table-small{width: 60%;}
   width :15px;
   height :10px;
 }
-
-           overflow: auto;
-           border: 1px solid #eee;
-          }
-
+ 
 .time-slots{
 	    border-collapse: collapse;
             width: 99%;
