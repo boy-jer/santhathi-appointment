@@ -396,7 +396,7 @@ textarea.textbox:focus{
 
 .yellow-link{color: #a08000; }
 .blue-link{color: #1c60a0; font-weight: bold; }
-.green-link{color: #419100; font-weight: bold;}
+.green-link{color: #419100; font-weight: normal;}
 .actions{margin: 38px 5px 0px 0; font-size: 13px; color: #bdbdbd;}
 /******************************Appointment create***********************/
 #content_wrapper {
