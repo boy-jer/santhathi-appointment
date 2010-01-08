@@ -116,11 +116,11 @@ class Pms::DoctorsController < ApplicationController
   
   def calculate_time_slots(dt1 ,dt2)
   	slot = []
-  	count = ((((dt2 - dt1))/60)/60).to_i
+  	count = ((((dt2 - dt1))/60)/30).to_i
     count.times do
       slot << "#{(dt1.strftime('%H:%M').to_s)}-#{(dt1 = dt1 + 30.minutes).strftime('%H:%M').to_s}"
     end
-    remain_min =  ((dt2 - dt1)/60)
+    remain_min =  ((dt2 - dt1)/30)
     if remain_min != 0.0
       slot << "#{(dt1.strftime('%H:%M').to_s)}-#{(dt1 = dt1 + remain_min.minutes).strftime('%H:%M').to_s}"
     end  
