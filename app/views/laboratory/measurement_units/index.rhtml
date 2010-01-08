@@ -1,4 +1,6 @@
-<div class='continer'>
+<% content_for :left_header do -%>
+  Listing all measurement unit records
+<%end-%>
 
  <%=render :partial=> 'filters'%>
 
@@ -6,6 +8,3 @@
      <%=render :partial=> 'measurement_units_list'%>
   </div>
 
-
-
-</div>

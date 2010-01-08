@@ -1,7 +1,11 @@
+<script type="text/javascript">
+setTimeout(function() {
+    $('#notice').fadeOut('fast');
+}, 2000); 
+</script>
 
-
-     <% if flash[:notice] %>
-       <div id="notice" onclick="FadeEffect('hideshow')"> <%= flash[:notice] %> </div>
+<% if flash[:notice] %>
+       <div id="notice"> <%= flash[:notice] %> </div>
      <% end %>
 
      <% if flash[:warning] %>
