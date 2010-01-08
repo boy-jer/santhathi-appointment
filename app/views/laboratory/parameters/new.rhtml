@@ -1,14 +1,14 @@
-<div class='continer'>
-  <div class='continer-inner'>
-    <h3>New parameter</h3><br/>
+<% content_for :left_header do -%>
+   New parameter record
+<%end-%>
 
     <% form_for(:parameter , :url => laboratory_parameters_url , :html => { :method => :post } ) do |f| %>
       <%= f.error_messages %>
       <%= render :partial => 'fields', :locals => {:f => f} %>
       <br/>
-      <%= submit_tag "create" %>
+      <%= submit_tag "Create" %> or <%= link_to 'Cancel', laboratory_parameters_path %>
 
     <% end %>
 
-<%= link_to 'Back', laboratory_parameters_path %>
-</div></div>
+
+

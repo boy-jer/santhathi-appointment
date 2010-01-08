@@ -1,5 +1,5 @@
 class Cms::ServicesController < ApplicationController
-  layout 'cms'
+ layout proc{ |c| ['show','new', 'create'].include?(c.action_name)? 'cms_single_column' : 'cms'}
   def index
     @departments = Department.find(:all)
     @search = Service.new_search(params[:search])

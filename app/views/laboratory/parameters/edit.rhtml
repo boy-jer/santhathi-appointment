@@ -1,7 +1,6 @@
-<div class='continer'>
-  <div class='continer-inner'>
-
-<h3>Editing parameter</h3><br/>
+<% content_for :left_header do -%>
+   Editting parameter record
+<%end-%>
 
 
 <% form_for(:parameter , :url => laboratory_parameter_path(@parameter) ,:html => { :method => :put } ) do |f| %>
@@ -9,11 +8,10 @@
 
   <%= render :partial => 'fields', :locals => {:f => f} %>
   <br />
-  <%= f.submit "Update" %>
+  <%= f.submit "Update" %> or <%= link_to 'Cancel', laboratory_parameters_path %>
 
 <% end %><br/>
 
 
-<%= link_to 'Back', laboratory_parameters_path %>
-</div>
-</div>
+
+

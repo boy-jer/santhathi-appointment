@@ -1,9 +1,9 @@
-<div class='continer'>
+<% content_for :left_header do -%>
+   New doctor record
+<%end-%>
 
-<h3 class= 'head'>New doctor record</h3>
 
-
-<% form_for([:pms, @doctor],:doctor, :url => pms_doctors_url )do |f| %>
+<% form_for([:pms, @doctor], :doctor, :url => pms_doctors_url )do |f| %>
 <%= error_messages_for :doctor %>
   <table class ="form-table">
         <tr class ='table-top'>  <td colspan=2>Enter the login details here</td></tr>
@@ -36,8 +36,8 @@
     <tr><th><%= doctor_profile_form.label :working_to %> </th>
         <td> <%= doctor_profile_form.select :hour_to, hours, :selected => 9 %>
              <%= doctor_profile_form.select :minute_to, minutes, :selected => 30 %>
-             &nbsp; &nbsp; <%= link_to_remote 'Configure Time Slots', :url => {:action => 'working_slots'},
-             :with => "'sth='+ $('doctor_doctor_profile_attributes_hour').value + '&stm='+ $('doctor_doctor_profile_attributes_minute').value + '&eth=' + $('doctor_doctor_profile_attributes_hour_to').value + '&etm=' + $('doctor_doctor_profile_attributes_minute_to').value" %></td> </tr>
+             &nbsp; &nbsp; <%= link_to_remote 'Configure time slots', :url => {:action => 'working_slots'},
+             :with => "'sth='+ $('#doctor_doctor_profile_attributes_hour').val() + '&stm='+ $('#doctor_doctor_profile_attributes_minute').val() + '&eth=' + $('#doctor_doctor_profile_attributes_hour_to').val() + '&etm=' + $('#doctor_doctor_profile_attributes_minute_to').val()" %></td> </tr>
     <tr>
  </tr>
 
@@ -53,6 +53,3 @@
   </p>
 <% end %>
 
-
-
-</div>

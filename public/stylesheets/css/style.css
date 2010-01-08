@@ -28,7 +28,7 @@ border-collapse : separate;
 border-spacing : 0;
 }
  
-caption, th, td {text
+caption, th, td {
 text-align : left;
 font-weight : normal;
 }
@@ -140,7 +140,7 @@ STRUCTURE					 */
 #form_middle_cont{width:940px}
 /* ------------------------------------------------------------------------------------
 ICONS				 */
-.ico_mug{background:url(/images/img/sort-nav-bg.gif) #eef1f4; padding-left:40px;margin-bottom:0px; font-size: 15px; border-bottom: 2px solid #dbdfe3; color: #484b4a; font-size: 23px; padding: 10px 5px 10px 50px; -moz-border-radius:3px; border-top: 2px solid #fff;}
+.ico_mug{background:url(/images/img/sort-nav-bg.gif) #eef1f4; margin-bottom:0px; border-bottom: 2px solid #dbdfe3; color: #484b4a; font-size: 20px; padding: 10px 5px 10px 20px; -moz-border-radius:3px; border-top: 2px solid #fff;}
 .ico_posts{background:url(/images/img/ico_posts.jpg) no-repeat 5px center #f1f1f1; padding-left:30px;}
 .ico_page{background:url(/images/img/ico_page.jpg) no-repeat 5px center #f1f1f1; padding-left:30px;}
 .ico_settings{background:url(/images/img/ico_settings.jpg) no-repeat 5px center #f1f1f1; padding-left:30px;}
@@ -773,4 +773,6 @@ table.visit_report {width: 100%; margin: 20px 0px 10px 0px;}
 table.visit_report tr th {font-weight: bold; vertical-align: middle; width: 150px; text-align: left;}
 table.visit_report tr td {padding: 10px 0px 10px 0px;}
 table.visit_report tr td.first {width: 120px;}
-table.vsiti_report tr td.second{width: 450px;}
+table.visit_report tr td.second{width: 430px;}
+/**********************************links****************************/
+table.links a{color: #2064a4; padding: 0px 10px 0px 10px; font-weight: bold;}

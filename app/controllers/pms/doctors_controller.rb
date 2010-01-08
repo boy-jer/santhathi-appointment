@@ -95,6 +95,7 @@ class Pms::DoctorsController < ApplicationController
     strt_hr, strt_mnt, end_hr, end_mint = params[:sth].to_i, params[:stm].to_i, params[:eth].to_i, params[:etm].to_i
     dt1 = Time.parse("#{strt_hr}:#{strt_mnt}:00")
     dt2 = Time.parse("#{end_hr}:#{end_mint}:00")
+ 
     @timing_slot  = calculate_time_slots(dt1, dt2)
 
     render :update do |page|

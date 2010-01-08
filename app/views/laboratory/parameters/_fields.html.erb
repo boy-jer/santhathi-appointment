@@ -1,20 +1,20 @@
 <table class="form-table">
-      <tr><th><%= f.label :parameter_name %>:</th><td>
+      <tr><th><%= f.label :parameter_name %></th><td>
       <%= f.text_field :parameter_name,:class=>"textbox" %></td></tr>
 
-      <tr><th><%= f.label :value_type %>:</th>
+      <tr><th><%= f.label :value_type %></th>
       <td> <%= f.select :value_type, value_types, :class=>"textbox" %></td>
 
       </tr>
 
-      <tr><th><%= f.label :measurement_unit %>:</th>
+      <tr><th><%= f.label :measurement_unit %></th>
       <td><%= f.select :measurement_unit_id, [['Select UOM', '']] + MeasurementUnit.mesurement_units %></td></tr>
 
-      <tr><th><%= f.label :description %>:</th>
+      <tr><th><%= f.label :description %></th>
       <td><%= f.text_field :description,:class=>"address" %></td></tr>
 
       <% unless @values.blank? %>
-            <tr><th><label> Multiple option saparated by ,</label>:</th> <td>
+            <tr><th><label> Multiple option saparated by ,</label></th> <td>
             <%=  text_field_tag 'values',@values,:class=>"address" %></td></tr>
 
       <%end%>
@@ -24,12 +24,9 @@
 
      </div>
 
-
-
-
 <%= observe_field(:parameter_value_type, :frequency => 1.5,
-                    :before => "Element.show('spinner1')",
-                    :success => "Element.hide('spinner1')",
+                    :before => "$('#spinner').show();",
+                    :success => "$('#spinner').hide();",
                     :url =>  { :controller => 'parameters', :action => 'multiple_section'  },
                     :method => :post,
                     :with => "'value_type=' + value"

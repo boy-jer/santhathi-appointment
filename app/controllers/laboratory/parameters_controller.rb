@@ -38,7 +38,7 @@ class Laboratory::ParametersController < ApplicationController
     		 value = params[:values].strip.split(',')
     		 ParameterValue.transaction do
     		 	 value.each do |q|
-              ParameterValue.create({:parameter_id => @parameter.id ,:value => q})
+              ParameterValue.create({:parameter_id => @parameter.id ,:value => q.strip})
            end
          end
   		end
@@ -59,7 +59,7 @@ class Laboratory::ParametersController < ApplicationController
     		 value = params[:values].strip.split(',')
     		 ParameterValue.transaction do
     		 	 value.each do |q|
-              ParameterValue.create({:parameter_id => @parameter.id ,:value => q})
+              ParameterValue.create({:parameter_id => @parameter.id ,:value => q.strip})
            end
          end
   		end

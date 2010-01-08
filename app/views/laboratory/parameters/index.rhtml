@@ -1,4 +1,6 @@
-<div class='continer'>
+<% content_for :left_header do -%>
+  Listing all parameter records
+<%end-%>
 
 	 <%=render :partial=> 'filters'%>
 	 <br />
@@ -7,4 +9,3 @@
     	<%=render :partial=> 'parameters_list'%>
     </div>
 
-</div>
