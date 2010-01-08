@@ -21,7 +21,12 @@ Rails::Initializer.run do |config|
   # Make Time.zone default to the specified zone, and make Active Record store time values
   # in the database in UTC, and return them converted to the specified local zone.
   config.time_zone = 'UTC'
-  
+  config.action_mailer.smtp_settings = {
+  :address => "mail.isiritech.com",
+  :user_name => "sanath@isiritech.com",
+  :password => "trends",
+  :authentication => :login
+ }
   # Your secret key for verifying cookie session data integrity.
   # If you change this key, all old sessions will become invalid!
   # Make sure the secret is at least 30 characters and all random, 
@@ -35,5 +40,5 @@ Rails::Initializer.run do |config|
 end
 CGI::Session.expire_after 1.day
 ExceptionNotifier.exception_recipients = %w(vijendrakarkala@gmail.com)
-ExceptionNotifier.sender_address = %("santhathi" <vijendrakarkala@gmail.com>)
+ExceptionNotifier.sender_address = %(vijendrakarkala@gmail.com)
 ExceptionNotifier.email_prefix = "[SANTHATHI_ERROR] "
