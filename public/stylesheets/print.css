@@ -82,7 +82,7 @@ display: none;
  .report th {
  	     background: #EAEAEA;
              text-align: left;
-             padding: 0.3em .5em .3em .5em;
+             padding: 0.4em .5em .4em .5em;
              font-weight: bold; }
 			 
 .report td { padding: .2em .5em .2em .5em; color: #383838;  }
