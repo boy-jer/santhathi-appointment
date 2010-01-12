@@ -55,7 +55,7 @@ class Laboratory::LaboratoryReportsController < ApplicationController
                                                                     )
                                                                  }
     flash[:notice] = 'Report is successfully created.'
-    redirect_to laboratory_prescriptions_url
+    redirect_to laboratory_prescribed_tests_url
   end
   
   def edit
