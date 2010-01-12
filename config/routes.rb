@@ -101,7 +101,7 @@ ActionController::Routing::Routes.draw do |map|
 
 
   map.namespace(:pms) do |pms|
-  	pms.root :controller => 'pms/appointments', :action => 'index'
+    pms.root :controller => 'pms/appointments', :action => 'index'
     pms.resources :appointments, :member => {:confirm => :get} ,
                                  :collection => {:update_doctors_list =>:get, :patient_search => :get} ,
                                  :has_one => [:visit_report]
@@ -113,12 +113,21 @@ ActionController::Routing::Routes.draw do |map|
     pms.resources :departments
     pms.resources :doctors
     pms.resources :select_options
-    pms.resources :pms_reports,:collection => { :date_wise_reports => :get  ,:department_wise_report => :get ,
+    pms.resources :pms_reports, :collection => { :date_wise_reports => :get  ,:department_wise_report => :get ,
                                               	:doctor_wise_report => :get , :update_doctors => :get ,
                                               	:appointment_type_report => :get , :visit_type_report => :get
                                               }
      pms.resources :patient_discharges
   end
+
+  map.namespace(:pos) do |pos|
+    pos.root :controller => 'pos/payments', :action => 'index'
+    pos.resources :appointments do |appointment|
+      appointment.resources :payments
+    end
+    pos.resources :payments
+  end
+
   map.root :controller => 'dashboard', :action => 'home'
   map.resource :session
 

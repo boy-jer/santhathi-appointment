@@ -8,7 +8,8 @@
 
 
         <li><%= tab_to "Laboratory",[{:controller => "laboratory/prescribed_tests" ,:action =>"index"}] %></li>
-        <li><%= tab_to "Accounts", [{:controller => "/accounts"}] %></li>
         <li><%= tab_to "Inventory", [{:controller => "/inventory_items"}] %></li>
+        <li><%= tab_to "Accounts", [{:controller => "/accounts"}] %></li>
+        <li><%= tab_to "POS", [{:controller => "pos/payments"}] %></li>
    </ul>
 </div>

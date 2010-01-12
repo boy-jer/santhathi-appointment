@@ -43,14 +43,15 @@ class Appointment < ActiveRecord::Base
   end
   
   aasm_event :prescribe do
-   transitions :to => :prescribed,:from => [:visited]
+   transitions :to => :prescribed, :from => [:visited, :recommend_for_discharge]
   end
 
 
   named_scope :on_date, lambda { |date| {:conditions => ["appointment_date = ?", date ] } }
   named_scope :status, lambda { |state| {:conditions => ["state = ?", state] } }
 
-  named_scope :visited_and_discharge_recomonded, {:conditions => ["state = 'visited' or state = 'discharged'"] }
+  named_scope :visited_and_discharge_recomonded, {:conditions => ["state = 'visited' or state = 'recommend_for_discharge'"] }
+  named_scope :discharge_recomonded, {:conditions => ["state = 'recommend_for_discharge'"] }
 
   named_scope :doctor_name, lambda { |doct| {:joins => :doctor, :conditions => ["doctors.id = ?", doct ] }}
   named_scope :patient_name, lambda { |name| {:joins => :patient, :conditions => ["patients.patient_name like ?", '%'+ name +'%'] }}

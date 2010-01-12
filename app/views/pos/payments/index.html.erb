@@ -1,0 +1,10 @@
+<% content_for :left_header do -%>
+   Listing patients to be discharged
+<%end-%>
+
+  <%= render :partial=> 'filters'%>
+  
+  <div id='appointment-list'>
+     <%=render :partial=> 'appointments_list'%>
+  </div>
+
