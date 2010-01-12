@@ -1,5 +1,7 @@
-<h3 class = 'head'>Services</h3>
-<div class='continer'>
+<% content_for :left_header do -%>
+  Service list
+<% end %>
+
 <%=render :partial=> 'filters'%> <br /> 
 <div id='service-list'>
     <%= link_to "<span>Create New Service</span>", new_cms_service_path, :method => :get , :class=> "button"%> <br /><br /><br />
@@ -21,4 +23,3 @@
         </ul>
      </div>
    </div>
-</div>
