@@ -11,16 +11,16 @@ class Cms::ClinicalScreensController < ApplicationController
       @lab_services = LabTest.find_all_by_parent_id(nil)
       @department = Department.find_by_dept_name("laboratory")
       @prescribed_tests = @prescription.prescribed_tests unless @appointment.prescription.blank?
-      @last_visit_reports = last_visit_report(@appointment.id, @patient)
+      #@last_visit_reports = last_visit_report(@appointment.id, @patient)
+      @clinical_comments = ClinicalComment.find(:all, :conditions => "appointment_id in (#{@appointment.patient.appointments.collect{|p| p.id}})")
+      @clinical_comment = @appointment.clinical_comment.blank? ? ClinicalComment.new : @appointment.clinical_comment
+      @next_appointment_remark = @appointment.next_appointment_remark.blank? ? NextAppointmentRemark.new : @appointment.next_appointment_remark
     else
       flash[:notice]=" Please select at least one appointment."
        redirect_to cms_doctor_patients_path(current_user.id)
     end
   end
   
-  def tt
-    
-  end
 
   private
 

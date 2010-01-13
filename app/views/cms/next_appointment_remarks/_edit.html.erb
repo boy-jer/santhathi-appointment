@@ -1,0 +1,36 @@
+<% form_for(:next_appointment_remark,:url=>cms_appointment_next_appointment_remark_path(@next_appointment_remark.appointment,:id=>@next_appointment_remark),:html=>{:method => :put }) do |f| %>
+
+ <%= f.error_messages %>
+    
+      <table class="form-table" >
+        <tr>
+          <th><%= f.label :remarks %></th>
+          <td><%= f.text_area :remarks, :class =>'textbox' %> &nbsp;</td>
+        </tr>
+      </table>
+      <br /><br />
+     <div class = 'left' style ='width: 300px;'>
+      <div id="datepicker"></div>
+      <br />
+      Appointment date:<%= text_field_tag 'date' %>
+      <br /><br />
+      <div class= 'app_time'>Appointment time: <%= f.select :hour, hours, :selected => (@hour || 9) %> <%= f.select :minute, minutes, :selected => (@minute || 30) %></div>
+    </div>
+   
+    <div class = 'left'>
+      <div id ='main_schedules' style ='width: 280px;'>
+         <div id = 'schedule'>
+           <%= image_tag("spinner.gif",
+              :border => 0,
+              :id => "spinner2",
+              :style =>"display: none;" ) %>
+         </div>
+       </div>
+    </div>
+    
+    <div class = 'left' style ='margin: 60px 20px;'>  <%= submit_tag "Book appointment" %> </div>
+    <div class ='clear'> </div>
+    
+  
+<% end %>
+

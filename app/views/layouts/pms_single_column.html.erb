@@ -2,6 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <%= render :partial => 'shared/head' %>
+   <script type="text/javascript">
+      jQuery(document).ready(function(){
+         jQuery("#datepicker").datepicker({ altField: '#date', altFormat: 'dd MM, yy', onSelect: function(dateText, inst) { jQuery('#spinner').show(); jQuery.ajax({data:'date=' + dateText +'&doctor=' + jQuery('#appointment_doctor_id').val() + '&authenticity_token=' + encodeURIComponent("<%= escape_javascript form_authenticity_token %>"), dataType:'script', success:function(request){jQuery('#spinner').hide();}, type:'get', url:"<%= escape_javascript new_pms_appointment_url %>"}) }
+});
+      });
+   </script>
 </head>
 
 <body>

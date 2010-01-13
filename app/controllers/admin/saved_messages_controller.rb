@@ -14,7 +14,7 @@ layout 'admin_single_column'
   # GET /admin_saved_messages/1
   # GET /admin_saved_messages/1.xml
   def show
-    @saved_message = SavedMessage.find(params[:id])
+    @saved_message = Admin::SavedMessage.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,7 +25,7 @@ layout 'admin_single_column'
   # GET /admin_saved_messages/new
   # GET /admin_saved_messages/new.xml
   def new
-    @saved_message = SavedMessage.new
+    @saved_message = Admin::SavedMessage.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,13 +35,13 @@ layout 'admin_single_column'
 
   # GET /admin_saved_messages/1/edit
   def edit
-    @saved_message = SavedMessage.find(params[:id])
+    @saved_message = Admin::SavedMessage.find(params[:id])
   end
 
   # POST /admin_saved_messages
   # POST /admin_saved_messages.xml
   def create
-    @saved_message = SavedMessage.new(params[:saved_message])
+    @saved_message = Admin::SavedMessage.new(params[:saved_message])
 
     respond_to do |format|
       if @saved_message.save
@@ -75,7 +75,7 @@ layout 'admin_single_column'
   # DELETE /admin_saved_messages/1
   # DELETE /admin_saved_messages/1.xml
   def destroy
-    @saved_message = SavedMessage.find(params[:id])
+    @saved_message = Admin::SavedMessage.find(params[:id])
     @saved_message.destroy
 
     respond_to do |format|

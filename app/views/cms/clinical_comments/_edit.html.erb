@@ -1,12 +1,8 @@
- <h3 class = 'heading'> Clinical comments </h3>  
 <% form_for(@clinical_comment, :url=> cms_appointment_clinical_comment_path(@appointment, :id => @clinical_comment), :html=>{:method=>:put} ) do |f| %>
   <%= f.error_messages %>
 
    <table class="form-table">
-  <tr><th><%= f.label :Clinical_Comment %> </th><td>
-    <%= f.text_area :commet, :class =>'textbox'%></td></tr>
-    </table><br/><br/>
-   <%= submit_tag 'Submit' %>
-
+  <tr><th><%= f.label :Clinical_comment %> </th><td>
+    <%= f.text_area :commet, :class =>'textbox'%> &nbsp; <%= submit_tag 'Submit' %></td></tr>
+    </table>
 <% end %>
-<%= render :partial => 'index' %>

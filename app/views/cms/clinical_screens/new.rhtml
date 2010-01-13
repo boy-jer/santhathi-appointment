@@ -27,9 +27,7 @@
    <table class = 'form-table'>
       <tr> <td class = 'blue-row'>
 	    <%= link_to "Return to patient list", cms_doctor_patients_url(current_user.id) %> &nbsp;&nbsp;|&nbsp;&nbsp;
-	    <%= link_to "Prescriptions", new_cms_appointment_clinical_screen_path(@appointment.id) %>&nbsp;&nbsp;|&nbsp;&nbsp; 
-	    <%= link_to_remote "Clinical comments", :url  => (@appointment.clinical_comment.blank? ? new_cms_appointment_clinical_comment_path (@appointment.id) : edit_cms_appointment_clinical_comment_path(:appointment_id => @appointment.id , :id => @appointment.clinical_comment.id)), :method => :get %>
-             
+	    <%= link_to "Prescriptions", new_cms_appointment_clinical_screen_path(@appointment.id) %>&nbsp;&nbsp;|&nbsp;&nbsp;            
 	  </td>
       </tr>
     </table>

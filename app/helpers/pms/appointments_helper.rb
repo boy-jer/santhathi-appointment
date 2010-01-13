@@ -15,21 +15,7 @@ module  Pms::AppointmentsHelper
     return @doctors
   end
 
-  def hours
-     b = []
-     (0..23).step(1) do |num|
-      b << num
-     end
-    return b
-  end
-
-  def minutes
-     b = []
-     (0..55).step(5) do |num|
-      b << num
-     end
-    return b
-  end
+ 
 
   def status(original_state)
     show_state = case original_state

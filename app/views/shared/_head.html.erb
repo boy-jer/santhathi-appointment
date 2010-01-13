@@ -9,12 +9,7 @@
    <!-- JavaScript -->
    <%=javascript_include_tag  'js/jquery-1.3.2.min.js', 'jquery_corner', 'js/jquery-ui-1.7.1.custom.min.js', 'jrails', 'facebox', 'js/hoverIntent.js','jquery.simplyCountable.js', 'js/superfish.js', 'js/jquery.watermarkinput.js', 'jquery.tablednd' %>
 
-   <script type="text/javascript">
-      jQuery(document).ready(function(){
-         jQuery("#datepicker").datepicker({ altField: '#date', altFormat: 'dd MM, yy', onSelect: function(dateText, inst) { jQuery('#spinner').show(); jQuery.ajax({data:'date=' + dateText +'&doctor=' + jQuery('#appointment_doctor_id').val() + '&authenticity_token=' + encodeURIComponent("<%= escape_javascript form_authenticity_token %>"), dataType:'script', success:function(request){jQuery('#spinner').hide();}, type:'get', url:"<%= escape_javascript new_pms_appointment_url %>"}) }
-});
-      });
-   </script>
+
    
       <script type="text/javascript">
          jQuery(document).ready(function(){
