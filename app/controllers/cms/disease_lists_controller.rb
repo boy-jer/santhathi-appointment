@@ -1,5 +1,6 @@
 class Cms::DiseaseListsController < ApplicationController
   layout 'cms'
+  require_role ["doctor", "admin"]
 
   def index
     @disease_lists = DiseaseList.paginate :page => params[:page],:per_page => 10

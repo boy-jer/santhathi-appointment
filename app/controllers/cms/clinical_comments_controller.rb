@@ -1,5 +1,6 @@
 class Cms::ClinicalCommentsController < ApplicationController
   layout 'cms'
+  require_role ["doctor", "admin"]
 
   def index
     @appointment = Appointment.find(params[:appointment_id])

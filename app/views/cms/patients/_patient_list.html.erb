@@ -6,12 +6,12 @@
         <th></th>
         <th><%= remote_order_by_link({:patient => :reg_no} , :text => "Hospital No.") %></th>
         <th><%= remote_order_by_link(:id , :text => "PVR No.") %></th>
-        <th><%= remote_order_by_link({:patient => :patient_name} , :text => "Patient Name") %></th>
-        <th><%= remote_order_by_link ({:doctor => {:doctor_profile => :name}} , :text => "Doctor Name") %></th>
+        <th><%= remote_order_by_link({:patient => :patient_name} , :text => "Patient name") %></th>
+        <%if admin?%> <th><%= remote_order_by_link ({:doctor => {:doctor_profile => :name}} , :text => "Doctor name") %></th><%end%>
         <th> Date </th>
         <th><%= remote_order_by_link({:reason => :name }, :text => "Reason") %></th>
-        <th>App History</th>
-        <th>Clinical Screen</th>
+        <th>App. history</th>
+        <th>Clinical screen</th>
         <th>History</th>
       </tr>
 
@@ -21,14 +21,14 @@
          <td><%=h appointment.patient.reg_no %></td>
          <td><%=h appointment.id%></td>
          <td><%=h appointment.patient.patient_name%></td>
-         <td><%=h appointment.doctor.doctor_profile.name %></td>
+         <%if admin?%> <td><%=h appointment.doctor.doctor_profile.name %></td> <%end%>
          <td><%=h Time.parse(appointment.appointment_date.to_s).strftime("%d-%m-%y") %></td>
          <td><%=h appointment.reason.name%></td>
          <td><%= link_to 'Appointments', pms_patient_patient_appointments_url(appointment.patient), :rel=> "facebox" %></td>
          <td><%= link_to 'Clinical screen', new_cms_appointment_clinical_screen_path(appointment)%></td>
          <td>
 
-         <%= link_to "History" ,  {:action=>"show", :controller=>"cms/patient_histories",:id => appointment.patient.id } %>
+         <%= link_to "History", {:action=>"show", :controller=>"cms/patient_histories",:id => appointment.patient.id } %>
 
         </td>
        </tr>

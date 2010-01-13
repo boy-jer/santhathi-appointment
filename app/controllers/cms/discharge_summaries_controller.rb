@@ -1,5 +1,6 @@
 class  Cms::DischargeSummariesController < ApplicationController
   layout 'cms'
+  require_role ["doctor", "admin"]
 
   def index
     @discharge_summaries = DischargeSummary.all

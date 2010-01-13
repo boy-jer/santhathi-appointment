@@ -55,8 +55,8 @@ quotes : "" "";
 --- BASICS
 ---------------------------------------------------------------------------------------*/
 body{ font-size:14px;font-family: Arial, Helvetica, sans-serif;color:#000;background:url(/images/img/bg.jpg) repeat-x #7097be;line-height:16px;}
-a{color:#162635;text-decoration:none;}
-a:hover{text-decoration:underline;}
+a{color:#162635; text-decoration: none;}
+a:hover{text-decoration: underline;}
 a:active{	}
 a:visited{	}
 
@@ -84,11 +84,8 @@ fieldset{border:1px solid #ddd;padding:10px;background:#fff;margin:10px 0px;}
 legend{border:1px solid #ddd;padding:5px;background:#fff;}
 label{display:block;}
 label input{margin-left:30px;}
-hr { color: #f1f1f1;
-      height: 1px;
-      border-top: #ddd 1px solid;
+hr { color: #f1f1f1; height: 1px; border-top: #ddd 1px solid;}
 
-}
 button {text-transform:uppercase;font-size:13px;padding:3px;color:#fff;background:#4780ae;border-left:1px solid #084577;border-top:1px solid #084577;border-right:1px solid #7ab7e8;border-bottom:1px solid #7ab7e8;-moz-border-radius:3px;margin:3px;margin-top:5px;}
 button:hover { background-color: #ff6600;}
 
@@ -115,8 +112,8 @@ button:hover { background-color: #ff6600;}
 /*#top_menu ul li a:hover{background:url(/images/img/menutop_hover.jpg) bottom center no-repeat}*/
 /* ------------------------------------------------------------------------------------
 STRUCTURE					 */
-#container{	overflow:hidden;   width:100%; margin:0 auto; } /*background:url(/images/img/overlay.jpg) no-repeat;*/
-#header{height: auto;}
+#container{overflow:hidden; width:100%; margin:0 auto; } /*background:url(/images/img/overlay.jpg) no-repeat;*/
+#header{height: 55px;}
 #footer{clear:both; }
 #content_main{background:#f1f1f1; padding:12px;-moz-border-radius:3px;}
 #top_menu{background:url(/images/img/menutop.jpg) no-repeat top center;width:960px;margin-top:10px; height:35px;}
@@ -162,7 +159,7 @@ CUSTOM				 */
 .more{font-size:13px;}
 .approved{font-weight:bold;color:#25a21f}
 #success{margin:-px 0px;border:1px solid #b2dc4d;color:#40550d;font-family:"Arial", Arial, sans-serif;font-size:12px;background:#cce297;font-weight:700;padding:5px;-moz-border-radius:3px;-webkit-border-radius: 3px;}
-#fail{margin:5px 0px;border:1px solid #c82820;color:#c82820;font-family:"Arial", Arial, sans-serif;font-size:12px;font-weight:700;background:#e7928d;padding:5px;-moz-border-radius:3px;-webkit-border-radius: 3px;}
+#fail{margin:5px 0px;border:1px solid .only-for-print {display: none;}#c82820;color:#c82820;font-family:"Arial", Arial, sans-serif;font-size:12px;font-weight:700;background:#e7928d;padding:5px;-moz-border-radius:3px;-webkit-border-radius: 3px;}
 #warning{margin:5px 0px;border:1px solid #efdc90;color:#a9a014;font-family:"Arial", Arial, sans-serif;font-size:12px;font-weight:700;background:#fffecc;padding:5px;-moz-border-radius:3px;-webkit-border-radius: 3px;}
 
 .form_sidebar ul{margin:0px;padding:0px;list-style:none;}
@@ -358,7 +355,7 @@ textarea.textbox:focus{
 
 /********************************* Menu ***************************************/
 
-#menu { padding: 0; margin: 15px 0 0px 20px;   list-style: none;  }
+#menu { padding: 0; margin: 15px 0 0px 15px;   list-style: none;  }
 
 #menu ul{margin:0; padding: 0px 0px 0px 0px; list-style:none; }
 
@@ -776,3 +773,5 @@ table.visit_report tr td.first {width: 120px;}
 table.visit_report tr td.second{width: 430px;}
 /**********************************links****************************/
 table.links a{color: #2064a4; padding: 0px 10px 0px 10px; font-weight: bold;}
+
+.only-for-print {display: none;}

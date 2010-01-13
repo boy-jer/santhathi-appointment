@@ -1,7 +1,7 @@
 # This controller handles the login/logout function of the site.  
 class SessionsController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :create
-  
+  skip_before_filter :logged_in, :only => [:new, :create]
   layout 'login'
   
   def new

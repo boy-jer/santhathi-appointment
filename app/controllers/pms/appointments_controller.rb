@@ -1,10 +1,10 @@
 class Pms::AppointmentsController < ApplicationController
-  layout proc{ |c| ['show','new', 'create'].include?(c.action_name)? 'pms_single_column' : 'pms'}
+  layout proc{|c| ['show','new', 'create'].include?(c.action_name)? 'pms_single_column' : 'pms'}
   require 'fastercsv'
-  require_role ["doctor", "admin", "reception"]#, :only => [:delete, :edit]
+  
 
   def index
-    unless params.has_key?(:date) # IF it is a ajax request to update doctor's schedule don't do search TODO: move it to separate action
+    unless params.has_key?(:date) #If it is a ajax request to update doctor's schedule don't do search TODO: move it to separate action
       @search = Appointment.new_search(params[:search])
       @params = params[:search]
       @search.per_page ||= 15
@@ -90,7 +90,7 @@ class Pms::AppointmentsController < ApplicationController
       @patient = Patient.new(params[:patient])
       @patient.reg_date = Date.today
     else
-      @patient = Patient.find(params[:patient_id])
+      @patient = Patient.find(params[:patient])
     end
 
     if [@appointment.valid?, @patient.valid?].all?

@@ -1,5 +1,6 @@
 class Cms::ClinicalScreensController < ApplicationController
   layout 'cms_single_column'
+  require_role ["doctor", "admin"]
 
   def new
     unless params[:appointment_id].blank?

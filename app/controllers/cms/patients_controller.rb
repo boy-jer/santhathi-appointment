@@ -4,11 +4,10 @@ class Cms::PatientsController < ApplicationController
   def index
     @search = Appointment.new_search(params[:search])
     @search.conditions.state = ['visited', 'prescribed', 'recommend_for_discharge']
-    #@search.conditions.or_state = 'visited'
-    @search.conditions.doctor_id =  current_user.id unless admin?
+    @search.conditions.doctor_id = current_user.id unless admin?
     @search.order_as ||= "DESC"
     @search.order_by ||= "created_at"
-    @search.per_page ||= 15
+    @search.per_page ||= 50
     @appointments = @search.all
     respond_to do |format|
       format.html

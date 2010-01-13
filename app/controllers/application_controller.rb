@@ -4,11 +4,13 @@ class ApplicationController < ActionController::Base
   include AuthenticatedSystem
   include RoleRequirementSystem
   include ExceptionNotifiable
+  
 
   helper :all # include all helpers, all the time
   filter_parameter_logging :password, :password_confirmation
   helper_method :s, :current_company, :user_default_branch, :current_day, :current_accounting_period
   #before_filter :require_current_accounting_period, :require_current_day
+  before_filter :logged_in
 
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
@@ -19,16 +21,22 @@ class ApplicationController < ActionController::Base
     Setting.get(identifier)
   end
 
+  def logged_in
+    unless current_user
+        redirect_to(login_url)
+    end
+  end
+
   def admin?
     #logged_in? && @current_user.has_role?(:admin)
   end
 
   def admin?
-    logged_in? && current_user.has_role?(:admin)
+    logged_in? && current_user.has_role?('admin')
   end
 
   def doctor?
-    logged_in? && current_user.has_role?(:doctor)
+    logged_in? && current_user.has_role?('doctor')
   end
 
   ########### Accounts related

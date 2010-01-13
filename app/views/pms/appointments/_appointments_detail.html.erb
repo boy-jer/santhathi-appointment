@@ -26,7 +26,7 @@
                   <td class="available slot">
                       <%= link_to_function("#{slot} - #{(dt1 = dt1 + 5.minutes).strftime('%H:%M').to_s}", "setTime('#{slot}')") %> 
                   </td>
-                  <td class="available-new"> <%= link_to_function("Book this time", "setTime('#{slot}')") %></td>
+                  <td class="available-new"> <%= link_to_function("Book this time", "setTime('#{slot}'); $(this).effect('highlight', {}, 2000); $('.app_time').effect('highlight', {}, 2000)") %></td>
                </tr>
            <% else %>
               <tr>

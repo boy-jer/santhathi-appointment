@@ -1,5 +1,6 @@
 class Cms::DeactivateSlotsController < ApplicationController
   layout 'cms'
+  require_role ["doctor", "admin"]
 
   def index
   	@search = DeactivateSlot.new_search(params[:search])

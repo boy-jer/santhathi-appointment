@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
   # It may be a good idea to have "admin" roles return true always
   def has_role?(role)
     list ||= self.roles.collect(&:name)
-    list.include?(role.to_s) || list.include?('admin')
+    list.include?(role.to_s)
   end
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.

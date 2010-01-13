@@ -8,7 +8,7 @@
    <div id="first_tab">
       <% for test in @lab_services %>
          <p><%=image_tag('pointer.gif', :border => 0) %> &nbsp;
-            <%= link_to_remote("#{test.name} Prescription",
+            <%= link_to_remote("<b>#{test.name}</b> Prescription",
                                :before => "jQuery('#spinner').show()",
                                :success => "jQuery('#spinner').hide()",
                                :url => { :controller => '/laboratory/prescriptions', :action => @appointment.prescription.blank? ? :new : :edit },
@@ -18,7 +18,7 @@
       <% end %>
        
         <p><%=image_tag('pointer.gif', :border => 0) %> &nbsp;
-           <%= link_to_remote("Pharmacy Prescription" ,
+           <%= link_to_remote("Pharmacy prescription" ,
                             :before => "jQuery('#spinner').show()",
                             :success => "jQuery('#spinner').hide()",
                             :url => { :controller =>'/cms/pharmacy_prescriptions' ,:action => :new } ,

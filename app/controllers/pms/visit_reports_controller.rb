@@ -1,7 +1,6 @@
 class Pms::VisitReportsController < ApplicationController
   layout 'pms_single_column'
-  require_role ["doctor", "admin", "reception"]
-
+  
   def index
     
   end

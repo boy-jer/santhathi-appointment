@@ -18,8 +18,8 @@
            </div>
        </td> 
      </tr>
-      <tr id = 'appointment_time'><th><label>Appointment time </label></th>
-          <td> <%= f.select :hour, hours, :selected => (@hour || 9) %> <%= f.select :minute, minutes, :selected => (@minute || 30) %> </td> </tr>
+      <tr><th><div class= 'app_time'><label>Appointment time </label></div></th>
+          <td> <div class= 'app_time'><%= f.select :hour, hours, :selected => (@hour || 9) %> <%= f.select :minute, minutes, :selected => (@minute || 30) %> </div></td> </tr>
 
      <tr> <th><%= f.label :reason %></th> <td><%= f.select :reason_id, [['Select reason' , '']] + Reason.select_list %></td> </tr>
 

@@ -1,5 +1,6 @@
 class Cms::AppointmentsController < ApplicationController
   layout 'cms'
+  require_role ["doctor", "admin"]
 
   def index
     @search = Appointment.new_search(params[:search])
