@@ -156,7 +156,7 @@ module ApplicationHelper
   end
   
  def all_messages
-  SavedMessage.find(:all).map{|m|[m.title,m.id]}
+  Admin::SavedMessage.find(:all).map{|m|[m.title,m.id]}
  end
 
   def message_filter(text)
