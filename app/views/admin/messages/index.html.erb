@@ -28,7 +28,7 @@
     <%unless message.contact_group_id.nil?%>
      <td><%=h message.contact_group.name%></td>
      <%else%>
-     <td><%=h message.contact_list.name  unless message.contact_list_id.nil?  %></td>
+     <td><%=h message.contact_list.contact_number  unless message.contact_list_id.nil?  %></td>
      <%end%>
     <td><%= link_to 'Show', admin_message_path(message,:contact_group_id => message.contact_group_id) %>  
     </td>

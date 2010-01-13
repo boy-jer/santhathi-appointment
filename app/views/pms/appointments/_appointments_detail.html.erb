@@ -6,7 +6,7 @@
 
 <table class="time-slots">
      <tr><th><b>Slot</b>&nbsp; </th><th><b>Details</b> </th> </tr>
-       <% unless @doctor.blank? %>
+       <% unless (@doctor.blank?) %>
          <% dt1 = Time.parse(@doctor.doctor_profile.working_from.to_s) %>
          <% working_slots = working_slots(@doctor) %>
 
@@ -14,7 +14,7 @@
 
             <% slot = "#{(dt1.strftime('%H:%M').to_s)}" -%>
 
-            <% if @appointments.key?(slot) -%>
+            <% if (@appointments.key?(slot) unless @appointments.blank?)-%>
                <tr class="appointment slot">
                   <td>
                     <%= link_to "#{slot} - #{(dt1 = dt1 + 5.minutes).strftime('%H:%M').to_s}", pms_appointment_url(@appointments[slot]), :rel=> "facebox" -%>

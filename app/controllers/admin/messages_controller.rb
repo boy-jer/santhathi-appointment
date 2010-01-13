@@ -48,7 +48,7 @@ class Admin::MessagesController < ApplicationController
     @message = Admin::Message.new(params[:admin_message])
      
      if params[:contacts].blank? and params[:message][:number].blank?
-      flash.now[:error] = "Please select either a number from contact groups or enter a number."
+      flash.now[:error] = "Please select a contact group or enter number."
       render :action => "new"
       return nil
     end
@@ -59,24 +59,22 @@ class Admin::MessagesController < ApplicationController
       return nil
     end
     
- 
     if @message.save
       begin
       @counter = 1 
       if !params[:contacts].nil?
-       params[:contacts].each do |c|
-         contact = ContactList.find(c)
-         sms = Admin::MessageService.create(:sms => params[:admin_message].merge!({:contact_number => contact.contact_number}))
-         message_contact = MessageContactList.create(:message_id => @message.id, :contact_list_id => contact.id, :sms_id => sms.id)  
+         params[:contacts].each do |c|
+           contact = ContactList.find(c)
+           sms = Admin::MessageService.create(:sms => params[:admin_message].merge!({:number => contact.contact_number}))
+           message_contact = MessageContactList.create(:message_id => @message.id, :contact_list_id => contact.id, :sms_id => sms.id)  
          
-       @message.update_attributes({:status => "Sent", :sms_id => sms.id,:contact_group_id => contact.contact_group_id,:user_id => current_user.id }) unless @counter == 2
-         @counter = @counter + 1        
+           @message.update_attributes({:status => "Sent", :sms_id => sms.id,:contact_group_id => contact.contact_group_id,:user_id => current_user.id }) unless @counter == 2
+           @counter = @counter + 1        
        end
-        
          
          
        elsif !params[:message][:number].nil?
-          sms = Admin::MessageService.create(:sms => params[:admin_message].merge!({:contact_number => params[:message][:number]}))
+          sms = Admin::MessageService.create(:sms => params[:admin_message].merge!({:number => params[:message][:number]}))
           contact_list = ContactList.create(:name => 'NA', :contact_number => params[:message][:number]) 
          message_contact = MessageContactList.create(:message_id => @message.id,  :sms_id => sms.id,:contact_list_id => contact_list.id ) 
          
