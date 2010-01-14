@@ -8,17 +8,22 @@
    </ul>
 
    <div id="first_tab">
-      <% for test in @lab_services %>
-         <p><%=image_tag('pointer.gif', :border => 0) %> &nbsp;
+      <div class ='left part1'>
+        
+        <h3>Laboratory prescriptions </h3>
+        <% for test in @lab_services %>
+          <p><%=image_tag('pointer.gif', :border => 0) %> &nbsp;
             <%= link_to_remote("<b>#{test.name}</b> Prescription",
                                :before => "jQuery('#spinner').show()",
                                :success => "jQuery('#spinner').hide()",
                                :url => { :controller => '/laboratory/prescriptions', :action => @appointment.prescription.blank? ? :new : :edit },
                                :with => "'department='+ #{@department.id} + '&test_id='+ #{test.id} + '&appointment=' + #{@appointment.id}") %>
-         </p> 
+           </p> 
          <div id = 'test_<%= test.id %>'> </div>
-      <% end %>
-       
+        <% end %>
+      </div>
+      <div class ='left part2'>   
+        <h3>Other prescriptions </h3>
         <p><%=image_tag('pointer.gif', :border => 0) %> &nbsp;
            <%= link_to_remote("Pharmacy prescription" ,
                             :before => "jQuery('#spinner').show()",
@@ -27,6 +32,22 @@
                             :method => :get,
                             :with => "'appointment_id='+ #{@appointment.id}")%>
          </p> 
+         <% @departments.each do |dept| %>
+           <% unless (dept.dept_name.upcase =~ /LAB/ or dept.dept_name.upcase =~ /PHAR/) %>
+              <% for service in dept.services %>
+                 <p><%=image_tag('pointer.gif', :border => 0) %> &nbsp;
+                    <%= link_to_remote("<b>#{service.name}</b> Prescription",
+                               :before => "jQuery('#spinner').show()",
+                               :success => "jQuery('#spinner').hide()",
+                               :url => { :controller => '/laboratory/prescriptions', :action => @appointment.prescription.blank? ? :new : :edit },
+                               :with => "'department='+ #{@department.id} + '&test_id='+ #{service.id} + '&appointment=' + #{@appointment.id}") %>                </p>
+               <% end %>
+            <% end %>
+
+         <% end %>
+       </div>
+       <div class ='clear'> </div>
+       <hr />
         <div id = 'prescription-list'><%= render :partial => '/laboratory/prescriptions/prescreptions' %> </div>
      </div>
 

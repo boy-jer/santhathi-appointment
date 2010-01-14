@@ -20,9 +20,14 @@ class Cms::PatientsController < ApplicationController
   end
 
   def discharge
-    date = (Date.parse(params[:date]) unless params[:date].blank?) || Date.today
-    appointments = Appointment.on_date(date).visited_and_discharge_recomonded
-    appointments.map {|appointment| appointment.recommend_for_discharge!}
+    date = (Date.parse(params[:date]) unless params[:date].blank?)
+    unless date.blank?
+      appointments = Appointment.on_date(date).visited_and_discharge_recomonded_and_prescribed
+      appointments.map {|appointment| appointment.recommend_for_discharge! unless appointment.recommend_for_discharge?}
+    else
+      appointment = Appointment.find(params[:a]) unless params[:a].blank?
+      appointment.recommend_for_discharge! unless (appointment.blank? or appointment.recommend_for_discharge?)
+    end
     redirect_to cms_doctor_patients_path(current_user.id)
   end
 

@@ -10,6 +10,7 @@ class Cms::ClinicalScreensController < ApplicationController
       @doctor = @appointment.doctor
       @lab_services = LabTest.find_all_by_parent_id(nil)
       @department = Department.find_by_dept_name("laboratory")
+      @departments = Department.all
       @prescribed_tests = @prescription.prescribed_tests unless @appointment.prescription.blank?
       #@last_visit_reports = last_visit_report(@appointment.id, @patient)
       @clinical_comments = ClinicalComment.find(:all, :conditions => "appointment_id in (#{@appointment.patient.appointments.collect{|p| p.id}})")
