@@ -1,0 +1,20 @@
+<table class ='listing'>
+  <tr>
+    <th>Name</th>
+    <th>Number</th>
+    <th>Actions</th>
+  </tr>
+
+<% @contact_lists.each do |contact_list| %>
+  <tr>
+    <td><%=h contact_list.name %></td>
+    <td><%=h contact_list.contact_number %></td>
+    <td><%= link_to 'Show', admin_contact_list_path(contact_list) %>|
+        <%= link_to 'Edit', edit_admin_contact_list_path(contact_list) %>|
+        <%= link_to 'Destroy', admin_contact_list_path(contact_list), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

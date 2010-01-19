@@ -2,13 +2,32 @@ class Admin::ContactListsController < ApplicationController
   # GET /admin_contact_lists
   # GET /admin_contact_lists.xml
   layout 'admin_single_column'
-  def index
-    @contact_lists = ContactList.all
+  
 
+  def index
+     @search = ContactList.new_search(params[:search])
+     @search.per_page ||= 15
+     @search.order_as ||= "ASC"
+     @search.order_by ||= "name"
+   
+   
+    @contact_lists = @search.all
+    
+       
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @admin_contact_lists }
+      format.js {  render :update do |page|
+                           page.replace_html 'contact-list', :partial => 'list'
+                       end
+                  }
     end
+
+   # @contact_lists = ContactList.all
+
+    #respond_to do |format|
+      #format.html # index.html.erb
+      #format.xml  { render :xml => @admin_contact_lists }
+    #end
   end
 
   # GET /admin_contact_lists/1

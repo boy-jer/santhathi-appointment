@@ -4,5 +4,28 @@
 </p>
 
 
+
+<%unless @contact_lists.blank?%>
+
+<table class='listing'>
+<tr>
+     
+     <th>Name</th>
+     <th>Number</th>
+    
+  </tr>
+
+
+<% @contact_lists.each do |contact_list| %>
+  <tr>
+   <td><%=h contact_list.name%></td>
+   <td><%=h contact_list.contact_number%></td>
+  </tr>
+<% end %>
+</table>
+
+<% end %>
+
+
 <%= link_to 'Edit', edit_admin_contact_group_path(@contact_group) %> |
 <%= link_to 'Back', admin_contact_groups_path %>

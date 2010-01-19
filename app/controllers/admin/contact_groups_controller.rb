@@ -15,6 +15,7 @@ class Admin::ContactGroupsController < ApplicationController
   # GET /admin_contact_groups/1.xml
   def show
     @contact_group = ContactGroup.find(params[:id])
+    @contact_lists = ContactList.find(:all, :conditions => ['contact_group_id = ?', @contact_group.id]) 
 
     respond_to do |format|
       format.html # show.html.erb

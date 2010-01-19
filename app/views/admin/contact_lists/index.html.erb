@@ -8,23 +8,31 @@
 
 <div class ='clear'></div>
 
-<table class ='listing'>
-  <tr>
-    <th>Name</th>
-    <th>Number</th>
-    <th>Actions</th>
-  </tr>
-
-<% @contact_lists.each do |contact_list| %>
-  <tr>
-    <td><%=h contact_list.name %></td>
-    <td><%=h contact_list.contact_number %></td>
-    <td><%= link_to 'Show', admin_contact_list_path(contact_list) %>|
-        <%= link_to 'Edit', edit_admin_contact_list_path(contact_list) %>|
-        <%= link_to 'Destroy', admin_contact_list_path(contact_list), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+<table>
+	<tr>
+		
+		<td>
+			<% form_tag(admin_contact_lists_path, :method => :get )do %>
+			<% fields_for @search do |f|%>
+    		<% f.fields_for @search.conditions do |dealer| %>
+       		 <span>Search:</span><%= dealer.text_field :name_like   %>
+ 			<%end%>
+  			<%end%> 
+		</td>
+		<td>       
+   			<%=  submit_tag "Search" %> 
+				<%end%>
+		</td>
+        	<td>
+          		<%=link_to "Reset search",admin_contact_lists_path%> 
+       		</td>
+	</tr>
 </table>
 
-<br />
+
+<div id = 'contact-list'>
+  <%=render :partial => "list"%>
+</div>
+
+
 
