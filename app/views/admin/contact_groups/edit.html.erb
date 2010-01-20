@@ -1,22 +1,36 @@
-<h2>Edit contact group</h2>
 
-
-<table>
-<% form_for([:admin,@contact_group]) do |f| %>
-  <%= f.error_messages %>
-
-  <tr>
-    <th>Name</th>
-    <td><%= f.text_field :name %></td>
-  </tr>
-  <tr>
-   <td></td>
-    <td><%= f.submit 'Update' %></td>
-  </tr>
+	<% form_for([:admin,@contact_group],:html => {:id => 'main-form'}) do |f| %>
+  	<%= f.error_messages %>
+  	<p>
+    	<%= f.label :name %><br />
+    	<%= f.text_field :name %>
+  	</p>
+	<table>
+		<tr>
+		<th><input type='checkbox' title ="Check All/Uncheck" name='checkall' onclick='checkedAll();'/></th>
+     		<th>Name</th>
+			<th>Number</th>
+		</tr>
+ 		<%@contact_lists.each do |contact_list|%>
+		<tr>
+    			<td><%= check_box_tag("contacts[]", contact_list.id, true,:id=> contact_list.id)%></td>
+   			<td><%= h contact_list.name%></td>
+			<td><%= h contact_list.contact_number%></td>
+		</tr>
+	
+	   		<%end%>
+  		<%@non_group_contacts.each do |non_group_contact| %>
+  		<tr>
+      		  <td><%= check_box_tag("contacts[]", non_group_contact.id, false,:id=> non_group_contact.id)%></td>
+    		   <td><%=h non_group_contact.name %></td>
+    		   <td><%= h non_group_contact.contact_number%></td>
+		</tr>
+    		<%end%>
+	</table>
+	<p>
+		<%= f.submit 'Update' %>
+  	</p>
 <% end %>
-</table>
 
+   
 
-<%= link_to 'Show', admin_contact_group_path(@contact_group) %> |
-  
-<%= link_to 'Back', admin_contact_groups_path %>
