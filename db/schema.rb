@@ -9,7 +9,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD:db/schema.rb
+ActiveRecord::Schema.define(:version => 20100113112225) do
+=======
 ActiveRecord::Schema.define(:version => 20100120172523) do
+>>>>>>> 8515567165883ef936dfc09cde05ea9a3e51e6bd:db/schema.rb
 
   create_table "account_balances", :force => true do |t|
     t.integer  "account_id"
@@ -158,20 +162,35 @@ ActiveRecord::Schema.define(:version => 20100120172523) do
   add_index "accounts", ["account_group_id"], :name => "index_accounts_on_account_group_id"
   add_index "accounts", ["branch_id"], :name => "index_accounts_on_branch_id"
 
-  create_table "appointments", :force => true do |t|
-    t.integer  "department_id"
-    t.integer  "doctor_id"
-    t.integer  "patient_id"
-    t.integer  "reason_id"
-    t.date     "appointment_date"
-    t.time     "appointment_time"
-    t.string   "state"
-    t.integer  "mode_id"
-    t.string   "visit_type"
+  create_table "admin_message_services", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "admin_messages", :force => true do |t|
+    t.text     "message_body"
+    t.integer  "user_id"
+    t.string   "number"
+    t.string   "status"
+    t.integer  "sms_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "appointments", :force => true do |t|
+    t.integer  "doctor_id"
+    t.integer  "reason_id"
+    t.integer  "patient_id"
+    t.date     "appointment_date"
+    t.time     "appointment_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "mode_id"
+    t.string   "state"
     t.integer  "created_by_id"
     t.integer  "updated_by_id"
+    t.string   "visit_type"
+    t.integer  "department_id"
   end
 
   create_table "branches", :force => true do |t|
@@ -218,9 +237,12 @@ ActiveRecord::Schema.define(:version => 20100120172523) do
   end
 
   create_table "deactivate_slots", :force => true do |t|
+    t.integer  "department_id"
     t.integer  "doctor_id"
     t.date     "from_date"
+    t.date     "to_date"
     t.time     "time_from"
+    t.time     "time_to"
     t.string   "reason_for_absence"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -229,6 +251,7 @@ ActiveRecord::Schema.define(:version => 20100120172523) do
 
   create_table "departments", :force => true do |t|
     t.string   "dept_name"
+    t.string   "abbrevation"
     t.string   "description"
     t.string   "system_defined"
     t.datetime "created_at"
@@ -259,6 +282,11 @@ ActiveRecord::Schema.define(:version => 20100120172523) do
     t.datetime "updated_at"
   end
 
+  create_table "doctor_appointments", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "doctor_profiles", :force => true do |t|
     t.integer  "department_id"
     t.integer  "doctor_id"
@@ -278,6 +306,19 @@ ActiveRecord::Schema.define(:version => 20100120172523) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slots"
+    t.time     "slot"
+  end
+
+  create_table "doctors", :force => true do |t|
+    t.integer  "department_id"
+    t.string   "name"
+    t.string   "designation"
+    t.string   "medical_id"
+    t.time     "working_from"
+    t.time     "working_to"
+    t.string   "comments"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "inventory_groups", :force => true do |t|
@@ -293,7 +334,12 @@ ActiveRecord::Schema.define(:version => 20100120172523) do
     t.string   "name"
     t.decimal  "unit_buy_price",                   :precision => 11, :scale => 2
     t.decimal  "unit_sale_price",                  :precision => 11, :scale => 2
+    t.decimal  "unit_sale_net_price",              :precision => 11, :scale => 2
+    t.decimal  "unit_sale_vat_price",              :precision => 11, :scale => 2
     t.decimal  "sub_unit_sale_price",              :precision => 11, :scale => 2
+    t.decimal  "sub_unit_sale_net_price",          :precision => 11, :scale => 2
+    t.decimal  "sub_unit_sale_vat_price",          :precision => 11, :scale => 2
+    t.decimal  "vat_percent",                      :precision => 2,  :scale => 2
     t.integer  "inventory_group_id"
     t.boolean  "consumable"
     t.boolean  "discount_allowed"
@@ -335,6 +381,7 @@ ActiveRecord::Schema.define(:version => 20100120172523) do
     t.integer  "inventory_item_id"
     t.date     "transaction_date"
     t.string   "narration",                               :limit => 1000
+    t.string   "category"
     t.string   "unit_type"
     t.decimal  "quantity",                                                :precision => 11, :scale => 2
     t.integer  "price",                                   :limit => 10,   :precision => 10, :scale => 0
@@ -362,13 +409,13 @@ ActiveRecord::Schema.define(:version => 20100120172523) do
   end
 
   create_table "lab_tests", :force => true do |t|
-    t.string   "name"
     t.time     "duration"
     t.string   "pre_requisites"
-    t.integer  "parent_id"
-    t.integer  "depth"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "parent_id"
+    t.integer  "depth"
+    t.string   "name"
   end
 
   create_table "laboratory_reports", :force => true do |t|
@@ -387,11 +434,11 @@ ActiveRecord::Schema.define(:version => 20100120172523) do
   create_table "laboratory_test_results", :force => true do |t|
     t.string   "result"
     t.string   "remarks"
-    t.integer  "laboratory_report_id"
-    t.integer  "parameter_specification_id"
-    t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "parameter_specification_id"
+    t.integer  "laboratory_report_id"
+    t.integer  "position"
   end
 
   create_table "measurement_units", :force => true do |t|
@@ -430,21 +477,6 @@ ActiveRecord::Schema.define(:version => 20100120172523) do
     t.datetime "updated_at"
   end
 
-  create_table "open_id_authentication_associations", :force => true do |t|
-    t.integer "issued"
-    t.integer "lifetime"
-    t.string  "handle"
-    t.string  "assoc_type"
-    t.binary  "server_url"
-    t.binary  "secret"
-  end
-
-  create_table "open_id_authentication_nonces", :force => true do |t|
-    t.integer "timestamp",  :null => false
-    t.string  "server_url"
-    t.string  "salt",       :null => false
-  end
-
   create_table "parameter_specifications", :force => true do |t|
     t.integer  "lab_test_id"
     t.integer  "parameter_id"
@@ -455,9 +487,9 @@ ActiveRecord::Schema.define(:version => 20100120172523) do
     t.string   "min_value"
     t.string   "max_value"
     t.string   "special_condition"
-    t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position"
   end
 
   create_table "parameter_values", :force => true do |t|
@@ -474,22 +506,25 @@ ActiveRecord::Schema.define(:version => 20100120172523) do
     t.integer  "measurement_unit_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "values"
   end
 
   create_table "patients", :force => true do |t|
+    t.string   "hospital_no"
+    t.string   "reg_no"
+    t.string   "reg_type"
+    t.string   "gender"
     t.date     "reg_date"
     t.string   "patient_name"
-    t.string   "reg_no"
+    t.string   "age"
     t.date     "dob"
-    t.string   "gender"
     t.string   "spouse_name"
-    t.integer  "spouse"
-    t.string   "email"
-    t.text     "address"
+    t.string   "address"
     t.string   "contact_no"
-    t.string   "reg_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "spouse"
+    t.string   "email"
   end
 
   create_table "payment_items", :force => true do |t|
@@ -566,8 +601,8 @@ ActiveRecord::Schema.define(:version => 20100120172523) do
   create_table "prescribed_tests", :force => true do |t|
     t.integer  "prescription_id"
     t.integer  "lab_test_id"
+    t.string   "result"
     t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "prescriptions", :force => true do |t|
@@ -625,7 +660,7 @@ ActiveRecord::Schema.define(:version => 20100120172523) do
   create_table "sample_specfications", :force => true do |t|
     t.integer  "age_group_from"
     t.integer  "age_group_to"
-    t.integer  "sample_id"
+    t.string   "specimen"
     t.string   "volume"
     t.string   "min_volume"
     t.string   "sample_for"
@@ -657,6 +692,7 @@ ActiveRecord::Schema.define(:version => 20100120172523) do
   create_table "select_options", :force => true do |t|
     t.string   "name"
     t.string   "type"
+    t.string   "abbrevation"
     t.integer  "position"
     t.string   "description"
     t.datetime "created_at"
@@ -670,11 +706,15 @@ ActiveRecord::Schema.define(:version => 20100120172523) do
     t.string   "first_visit"
     t.string   "follow_up_visit"
     t.integer  "department_id"
-    t.integer  "parent_id"
-    t.integer  "depth"
+    t.boolean  "final_level"
     t.datetime "created_at"
     t.datetime "updated_at"
+<<<<<<< HEAD:db/schema.rb
+    t.integer  "parent_id"
+    t.integer  "depth"
+=======
     t.integer  "account_id"
+>>>>>>> 8515567165883ef936dfc09cde05ea9a3e51e6bd:db/schema.rb
   end
 
   create_table "settings", :force => true do |t|
@@ -692,6 +732,21 @@ ActiveRecord::Schema.define(:version => 20100120172523) do
     t.datetime "updated_at"
   end
 
+  create_table "test_results", :force => true do |t|
+    t.integer "prescription_id"
+    t.integer "service_id"
+    t.string  "result"
+  end
+
+  create_table "time_slots", :force => true do |t|
+    t.datetime "schedule_date"
+    t.time     "start_time"
+    t.integer  "doctor_id"
+    t.integer  "patient_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "login",                     :limit => 40
     t.string   "identity_url"
@@ -700,11 +755,11 @@ ActiveRecord::Schema.define(:version => 20100120172523) do
     t.string   "crypted_password",          :limit => 40
     t.string   "salt",                      :limit => 40
     t.string   "remember_token",            :limit => 40
+    t.string   "type",                      :limit => 40,                         :null => false
     t.string   "activation_code",           :limit => 40
     t.string   "state",                                    :default => "passive"
     t.datetime "remember_token_expires_at"
-    t.string   "password_reset_code"
-    t.string   "type"
+    t.string   "password_reset_cod"
     t.datetime "activated_at"
     t.datetime "deleted_at"
     t.datetime "created_at"
