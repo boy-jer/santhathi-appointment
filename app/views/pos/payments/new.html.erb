@@ -1,1 +1,52 @@
+<h3>Payment</h3>
+<% form_for(setup_payment(@payment), :url => pos_appointment_payments_path(@appointment_id)) do |f| %>
+<div>
+  <%= f.error_messages %>
+</div>
+<div>    
+    <table style='width:100%;height:100%;border:1px solid black;' cellspacing='0' cellpadding='0'>
+      <tr>
+        <th style='border:1px solid black;'>Particulars</th>
+        <th style='border:1px solid black;'>Quantity</th>
+        <th style='border:1px solid black;'>Amount</th>
+        <th style='border:1px solid black;'>Total Amount</th>
+      </tr>
+      <% f.fields_for :payment_items do |payment_form| %>
+        <tr>
+          <td>
+            <%= payment_form.text_field :payable_name %>
+            <%= payment_form.hidden_field :payable_type %>
+          </td>
+          <td><%= payment_form.text_field :quantity, :size => 5 %></td>
+          <td><%= payment_form.text_field :amount %></td>
+          <td><%= payment_form.text_field :total_amount -%></td>
+        </tr>
+      <% end %>
+    </table>
+    <%= submit_tag 'Enter payment' -%>
+</div>
+<div style='padding:10px;'>
+  <% @inventory_items.each do |inventory_item| %>
+    <%= button_to_function inventory_item.name, "set_payment(this)", :payable_name => inventory_item.name, :payable_type => inventory_item.class, :amount => inventory_item.sub_unit_sale_price -%>
+  <% end -%>
+  <br />
+  <% @services.each do |service| -%>
+    <%= button_to_function service.name, "set_payment(this)", :payable_name => service.name, :payable_type => service.class, :amount => service.cost -%>
+  <% end -%> 
+</div>
+<% end %>
+<script>
 
+var payment_list_pointer = 0;
+
+function set_payment(obj) {
+  var payable_name = $(obj).attr('payable_name');
+  var payable_type = $(obj).attr('payable_type');
+  var amount = $(obj).attr('amount');
+  $('#payment_payment_items_attributes_'+payment_list_pointer+'_payable_name').attr('value', payable_name);
+  $('#payment_payment_items_attributes_'+payment_list_pointer+'_payable_type').attr('value', payable_type);
+  $('#payment_payment_items_attributes_'+payment_list_pointer+'_amount').attr('value', amount);
+  payment_list_pointer += 1;
+}
+
+</script>

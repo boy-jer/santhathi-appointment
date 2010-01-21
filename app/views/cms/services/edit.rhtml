@@ -23,6 +23,11 @@
      <tr><th> <%= f.label :cost %></th><td>
      <%= f.text_field :cost, {:class => 'textbox-small'} %></td></tr>
 
+     <tr> <th> Associated with Account: </th>
+          <td colspan='3'>
+             <%= f.select :account_id, user_default_branch.accounts.map{|m| [m.name, m.id]} %>
+         </td>
+     </tr>
 
   </table><br /><br/>
    <%= f.submit "update" %> | <%= link_to "Cancel", cms_services_path() %> | <%= link_to "Delete",cms_service_path(@service), :confirm => 'Are you sure?', :method => :delete %>

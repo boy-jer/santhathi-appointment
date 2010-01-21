@@ -12,6 +12,22 @@ class Pos::PaymentsController < ApplicationController
   end
 
   def new
+    @appointment_id = params[:appointment_id]
+    @payment = Payment.new
+    @inventory_items = user_default_branch.inventory_items.non_consumables
+    @services = Service.all
+  end
 
+  def create
+    @appointment_id = params[:appointment_id]
+    @payment = Payment.new(params[:payment])
+    @payment.appointment_id = @appointment_id
+    if @payment.save
+      flash[:notice] = 'Payment has been done succussfully'
+      redirect_to pos_payments_path
+    else
+      @inventory_items = user_default_branch.inventory_items.non_consumables
+      render :action => 'new' 
+    end
   end
 end

@@ -9,7 +9,7 @@ class InventoryTransactionItem < ActiveRecord::Base
   validates_presence_of :inventory_closing_stock_quantity
 
   attr_accessor :inventory_item_name
-  attr_accessible :inventory_item_name, :quantity, :price, :total_price, :category, :unit_type
+  attr_accessible :inventory_item_name, :quantity, :price, :total_price, :category, :unit_type, :inventory_item_id
 
   before_validation :set_inventory_item, :set_inventory_item_balances
   before_save :set_transaction_date_and_type
@@ -23,12 +23,18 @@ class InventoryTransactionItem < ActiveRecord::Base
 
   def set_inventory_item_balances
     self.inventory_opening_stock_quantity = inventory_item.current_quantity
+    quantity_change = 0
     case category
       when "Purchase"
         self.inventory_closing_stock_quantity = inventory_item.current_quantity + quantity
         self.current_quantity = quantity
       when "Sale"
-        self.inventory_closing_stock_quantity = inventory_item.current_quantity - quantity
+        if unit_type == 'Sub'
+          quantity_change = quantity.quo(inventory_item.inventory_unit_of_measurement.unit_value)
+        elsif unit_type == 'Main'
+          quantity_change = quantity
+        end
+        self.inventory_closing_stock_quantity = inventory_item.current_quantity - quantity_change
     end
   end
 
