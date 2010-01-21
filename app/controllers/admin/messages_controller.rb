@@ -149,9 +149,9 @@ class Admin::MessagesController < ApplicationController
         format.html { redirect_to(admin_message_path(@message,:contact_group_id => params[:contact_group_id]))} 
         format.xml  { render :xml => @message }
       end
-     # rescue #ActiveResource::ResourceInvalid => e  
-        # flash[:error] = 'There seems to be some problem upadting the delevery status. Please try again latter.'    
-         #redirect_to(admin_messages_url) 
+      rescue #ActiveResource::ResourceInvalid => e  
+         flash[:error] = 'There seems to be some problem upadting the delevery status. Please try again latter.'    
+         redirect_to(admin_messages_url) 
     end
 
 
