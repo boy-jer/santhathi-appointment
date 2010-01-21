@@ -9,7 +9,7 @@
 
 <table class='listing'>
 <tr>
-     
+     <th>Sent date</th>
      <th>Sent by</th>
      <th>Message</th>
      <th>Sent to.</th>
@@ -19,6 +19,7 @@
 
 <% @messages.each do |message| %>
   <tr>
+    <td><%=h Time.parse(message.created_at.to_s).strftime('%Y-%m-%d') %></td>
    <%unless message.user_id.nil?%>
     <td><%= message.user.name%></td>
    <%else%>

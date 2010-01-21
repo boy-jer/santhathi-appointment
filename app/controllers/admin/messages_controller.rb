@@ -18,7 +18,7 @@ class Admin::MessagesController < ApplicationController
   # GET /admin_messages/1.xml
   def show
     @message = Admin::Message.find(params[:id])
-    @contacts = ContactList.find(:all, :conditions => ['contact_group_id = ?', params[:contact_group_id]]) unless params[:contact_group_id].blank?
+    @contacts = ContactList.find(:all,:include => [:message_contact_lists],:conditions =>['message_contact_lists.message_id =  ?',@message])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -130,25 +130,23 @@ class Admin::MessagesController < ApplicationController
 
   def status_update
        @message = Admin::Message.find(params[:id])
-       #messages = @message.contact_lists
-
-       #admin = current_user.has_role?('admin') ? current_user : User.find(current_user.parent_id)
-       #Admin::MessageService.user = admin.server_user_name
-       #Admin::MessageService.password = admin.server_password
-      #unless messages.blank?
-         #messages.each do |msg|
-        	#sms = Admin::MessageService.find(msg.sms_id)
-     	  	#sms.save   #calling update method of the API
-     	    #msg.update_attribute('status', sms.status) 
-      #end
-      #else
+       @messages = MessageContactList.find(:all,:conditions =>['message_id =  ?',@message]) rescue ' '
+       
+       
+      unless @messages.blank?
+         @messages.each do |msg|
+        	sms = Admin::MessageService.find(msg.sms_id)
+     	  	sms.save   #calling update method of the API
+     	    msg.update_attribute('status', sms.status) 
+      end
+      else
         sms =Admin:: MessageService.find(@message.sms_id)
         sms.save   #calling update method of the API
         @message.update_attribute('status', sms.status) 
-     #end  
+     end  
       respond_to do |format|
         flash[:notice] = 'Status is successfully updated.'
-        format.html { redirect_to(admin_message_url(@message))} 
+        format.html { redirect_to(admin_message_path(@message,:contact_group_id => params[:contact_group_id]))} 
         format.xml  { render :xml => @message }
       end
      # rescue #ActiveResource::ResourceInvalid => e  

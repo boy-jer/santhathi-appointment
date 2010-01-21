@@ -39,9 +39,13 @@ class Admin::ContactGroupsController < ApplicationController
   def edit
     @contact_group = ContactGroup.find(params[:id])
     @contact_lists = ContactList.find(:all, :conditions => ['contact_group_id = ?', @contact_group.id]) 
-    
-    @non_group_contacts = ContactList.find(:all, :conditions => ['id not IN (?)',@contact_lists]) 
-   
+    group_contact_ids  =@contact_group.contact_lists.find(:all).map{|h|h.id}
+     unless group_contact_ids.blank?
+         @non_group_contacts = ContactList.find(:all, :conditions => ['id not IN (?) and name!=?', group_contact_ids,'NA']) 
+       
+      else
+       @non_group_contacts  = ContactList.find(:all, :conditions => ['name!=?','NA'])
+      end
 
   end
 

@@ -186,4 +186,8 @@ module ApplicationHelper
      end
     return b
   end
+
+ def find_message_status(message,contact)
+      MessageContactList.find(:first,:conditions =>['message_id = ? and contact_list_id = ?',message,contact]).status rescue ''
+   end
 end

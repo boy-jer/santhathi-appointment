@@ -28,6 +28,7 @@ class Admin::ContactListsController < ApplicationController
   # GET /admin_contact_lists/1.xml
   def show
     @contact_list = ContactList.find(params[:id])
+   
 
     respond_to do |format|
       format.html # show.html.erb

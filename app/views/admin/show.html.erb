@@ -4,7 +4,19 @@
   <div class="clear" ></div>
   <hr />
 
-  
+   <table class="show_page">
+		<tr>		
+		   <td><%=h @message.created_at.strftime('%d-%m-%Y') %></td>
+            <td><%=h @message.user.name %></td>
+		</tr>
+        <tr> <td colspan = '2' style ='border: 1px solid #ccc; background: #eef2f6; width: 300px;'><%=h @message.message_body %></td> </tr>
+                
+
+		<%if @message.sms_id!=nil and @contacts.nil? %>	
+		<tr>
+	    <td>Status:<%= @message.status%></td>
+     	
+		<%end%>
 
 
  <table class="show_page">
@@ -15,12 +27,7 @@
    <%end%>
   </tr>
   <tr> <td colspan = '2' style ='border: 1px solid #ccc; background: #eef2f6; width: 400px; height: 150px; margin: 10px; padding: 10px;'><%=h @message.message_body %></td> </tr>
-
-        <%if @message.sms_id!=nil and @contacts.nil? %>	
-		<tr>
-	    <td>Status:<%= @message.status%></td>
-     	
-		<%end%>
+>>>>>>> 744dac16fbe774fc87f8a187bb4fb555e9bdfe28:app/views/admin/messages/show.html.erb
 
 		<%if @message.sms_id==nil and @contacts.nil?%>
 			 <td>Status:Failed</td>
@@ -37,11 +44,10 @@
         </tr>
 
 		<% @contacts.each do |contact| %>
-         <% status = find_message_status(@message.id, contact) %>
        <tr>
-        <td><%= contact.name unless contact.contact_group_id.nil?%></td>
+        <td><%= contact.name%></td>
         <td><%=h contact.contact_number%></td>
-        <td><%=status%></td>
+        <td></td>
        </tr>
       <% end %>
     </table>
