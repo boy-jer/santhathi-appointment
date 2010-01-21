@@ -40,6 +40,10 @@
     <%= f.label :shelf_no %><br />
     <%= f.text_field :shelf_no %>
   </p>
+  <p>
+    <%= f.label :account_id, 'Associated with account' %><br />
+    <%= f.select :account_id, user_default_branch.accounts.map{|m| [m.name, m.id]} %>
+  </p>
 <script>
 
 var unit_hash = <%= user_default_branch.inventory_unit_of_measurements.all.map{|m| [m.id,m.unit_name,m.sub_unit_name]}.to_json -%>

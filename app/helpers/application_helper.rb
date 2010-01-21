@@ -133,6 +133,12 @@ module ApplicationHelper
     end
   end
 
+  def setup_payment(payment)
+    returning(payment) do |p|
+      p.payment_items.build([{},{},{},{},{}]) if p.payment_items.blank?
+    end
+  end
+
   def setup_inventory(inventory_transaction)
     returning(inventory_transaction) do |it|
       it.inventory_transaction_items.build([{},{},{},{},{},{},{},{},{},{}]) if it.inventory_transaction_items.blank?

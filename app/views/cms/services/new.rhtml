@@ -36,6 +36,13 @@
               :style =>"display: none;" ) %>
          </td>
      </tr>
+
+     <tr> <th> Associated with Account: </th>
+          <td colspan='3'>
+             <%= f.select :account_id, user_default_branch.accounts.map{|m| [m.name, m.id]} %>
+         </td>
+     </tr>
+      
   </table> <br/>
 
   <input type="hidden" id = "service_parent_id", name="service[parent_id]" value="">

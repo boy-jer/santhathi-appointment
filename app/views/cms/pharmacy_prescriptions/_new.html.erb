@@ -13,7 +13,7 @@
 
      <tr style ='display:none'><th > Prescribing Date: </th><td><%= calendar_date_select_tag "pharmacy_prescription[prescribing_date]" ,Date.today, :class =>'textbox' %> </td> </tr>
 
-     <tr><th>Select Item:</th><td> <%= f.collection_select :pharamacy_item_information_id, PharamacyItemInformation.pharamacy_item_information_list, :id, :item_name, options ={:prompt => "-Select an Item"} %>
+     <tr><th>Select Item:</th><td> <%= f.collection_select :inventory_item_id, InventoryItem.non_consumables, :id, :name, options ={:prompt => "-Select an Item"} %>
  <%= image_tag("spinner.gif",
               :border => 0,
               :id => "spinner1",

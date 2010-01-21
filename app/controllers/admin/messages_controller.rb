@@ -5,7 +5,7 @@ class Admin::MessagesController < ApplicationController
   # GET /admin_messages
   # GET /admin_messages.xml
   def index
-    @messages = Admin::Message.all
+    @messages = Admin::Message.find(:all, :order => "created_at DESC")
    
 
     respond_to do |format|

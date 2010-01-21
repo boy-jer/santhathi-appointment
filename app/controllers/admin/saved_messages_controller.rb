@@ -41,7 +41,7 @@ layout 'admin_single_column'
   # POST /admin_saved_messages
   # POST /admin_saved_messages.xml
   def create
-    @saved_message = Admin::SavedMessage.new(params[:saved_message])
+    @saved_message = Admin::SavedMessage.new(params[:admin_saved_message])
 
     respond_to do |format|
       if @saved_message.save
@@ -61,7 +61,7 @@ layout 'admin_single_column'
     @saved_message = Admin::SavedMessage.find(params[:id])
 
     respond_to do |format|
-      if @saved_message.update_attributes(params[:saved_message])
+      if @saved_message.update_attributes(params[:admin_saved_message])
         flash[:notice] = 'Message was successfully updated.'
         format.html { redirect_to(admin_saved_messages_path) }
         format.xml  { head :ok }

@@ -9,7 +9,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD:db/schema.rb
 ActiveRecord::Schema.define(:version => 20100113112225) do
+=======
+ActiveRecord::Schema.define(:version => 20100120172523) do
+>>>>>>> 8515567165883ef936dfc09cde05ea9a3e51e6bd:db/schema.rb
 
   create_table "account_balances", :force => true do |t|
     t.integer  "account_id"
@@ -340,11 +344,17 @@ ActiveRecord::Schema.define(:version => 20100113112225) do
     t.boolean  "consumable"
     t.boolean  "discount_allowed"
     t.integer  "inventory_unit_of_measurement_id"
-    t.integer  "current_quantity",                                                :default => 0
-    t.integer  "opening_quantity"
+    t.decimal  "current_quantity",                 :precision => 11, :scale => 2, :default => 0.0
+    t.decimal  "opening_quantity",                 :precision => 11, :scale => 2
     t.string   "shelf_no"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "unit_sale_net_price",              :precision => 11, :scale => 2
+    t.decimal  "unit_sale_vat_price",              :precision => 11, :scale => 2
+    t.decimal  "sub_unit_sale_net_price",          :precision => 11, :scale => 2
+    t.decimal  "sub_unit_sale_vat_price",          :precision => 11, :scale => 2
+    t.decimal  "vat_percent",                      :precision => 2,  :scale => 2
+    t.integer  "account_id"
   end
 
   add_index "inventory_items", ["branch_id"], :name => "index_inventory_items_on_branch_id"
@@ -355,10 +365,10 @@ ActiveRecord::Schema.define(:version => 20100113112225) do
     t.integer  "accounting_period_id"
     t.integer  "accounting_day_id"
     t.integer  "branch_id"
-    t.integer  "opening_stock"
-    t.integer  "closing_stock"
-    t.decimal  "opening_stock_value",  :precision => 8, :scale => 2
-    t.decimal  "closing_stock_value",  :precision => 8, :scale => 2
+    t.decimal  "opening_stock",        :precision => 11, :scale => 2
+    t.decimal  "closing_stock",        :precision => 11, :scale => 2
+    t.decimal  "opening_stock_value",  :precision => 8,  :scale => 2
+    t.decimal  "closing_stock_value",  :precision => 8,  :scale => 2
     t.date     "for_date"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -373,17 +383,18 @@ ActiveRecord::Schema.define(:version => 20100113112225) do
     t.string   "narration",                               :limit => 1000
     t.string   "category"
     t.string   "unit_type"
-    t.integer  "quantity"
+    t.decimal  "quantity",                                                :precision => 11, :scale => 2
     t.integer  "price",                                   :limit => 10,   :precision => 10, :scale => 0
     t.decimal  "total_price",                                             :precision => 11, :scale => 2
-    t.integer  "inventory_opening_stock_quantity",        :limit => 10,   :precision => 10, :scale => 0
-    t.integer  "inventory_closing_stock_quantity",        :limit => 10,   :precision => 10, :scale => 0
-    t.integer  "current_quantity"
+    t.decimal  "inventory_opening_stock_quantity",                        :precision => 11, :scale => 2
+    t.decimal  "inventory_closing_stock_quantity",                        :precision => 11, :scale => 2
+    t.decimal  "current_quantity",                                        :precision => 11, :scale => 2
     t.integer  "purchased_inventory_transaction_item_id"
     t.decimal  "total_vat_price",                                         :precision => 11, :scale => 2
     t.decimal  "total_item_price",                                        :precision => 11, :scale => 2
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "category"
   end
 
   create_table "inventory_unit_of_measurements", :force => true do |t|
@@ -516,6 +527,23 @@ ActiveRecord::Schema.define(:version => 20100113112225) do
     t.string   "email"
   end
 
+  create_table "payment_items", :force => true do |t|
+    t.integer  "payment_id"
+    t.integer  "payable_id"
+    t.string   "payable_type"
+    t.integer  "quantity"
+    t.decimal  "amount",       :precision => 11, :scale => 2
+    t.decimal  "total_amount", :precision => 11, :scale => 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "payments", :force => true do |t|
+    t.integer  "appointment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "pharamacy_item_information_details", :force => true do |t|
     t.integer  "quantity"
     t.integer  "course_duration"
@@ -558,11 +586,11 @@ ActiveRecord::Schema.define(:version => 20100113112225) do
     t.time     "time_of_prescription"
     t.date     "course_end_date"
     t.integer  "appointment_id"
-    t.integer  "pharamacy_item_information_id"
     t.integer  "pharmacy_course_list_id"
     t.integer  "pharmacy_dosage_list_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "inventory_item_id"
   end
 
   create_table "pms", :force => true do |t|
@@ -681,8 +709,12 @@ ActiveRecord::Schema.define(:version => 20100113112225) do
     t.boolean  "final_level"
     t.datetime "created_at"
     t.datetime "updated_at"
+<<<<<<< HEAD:db/schema.rb
     t.integer  "parent_id"
     t.integer  "depth"
+=======
+    t.integer  "account_id"
+>>>>>>> 8515567165883ef936dfc09cde05ea9a3e51e6bd:db/schema.rb
   end
 
   create_table "settings", :force => true do |t|

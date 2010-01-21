@@ -15,7 +15,7 @@
  </tr>
  <% @pharmacy_prescriptions.each do |pharmacy_prescription| %>
   <tr>
-    <td> <%=h pharmacy_prescription.pharamacy_item_information.item_name %></td>
+    <td> <%=h pharmacy_prescription.inventory_item.name %></td>
     <td> <%=h pharmacy_prescription.pharmacy_dosage_list.dosage_type_name %></td>
     <td> <%=h pharmacy_prescription.pharmacy_course_list.course_type_name %></td>
     <td> <%=h pharmacy_prescription.prescribing_date%> - <%= Time.parse(pharmacy_prescription.time_of_prescription.to_s).strftime('%H:%M').to_s  %></td>

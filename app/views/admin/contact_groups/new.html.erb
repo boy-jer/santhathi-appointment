@@ -2,20 +2,35 @@
    New contact group
 <%end-%>
 
-<table class ='form-table'>
-<% form_for([:admin,@contact_group]) do |f| %>
-  <%= f.error_messages %>
+<%  form_for([:admin,@contact_group],:html => {:id =>'main-form'}) do |f| %>
+<%= f.error_messages %>
+ 		<p>
+   		 <%= f.label :Name %><br />
+    	 <%= f.text_field :name %>
+  		</p>
+		<br />
+   		<table>
+    			
+			<tr>
+			 <th><input type='checkbox' title ="Check All/Uncheck" name='checkall' onclick='checkedAll();'/></th>
+     			<th>Select Contacts:</th>
+				<th>Number</th>
+			</tr>
+  
+   			<%@contact_lists.each do |contact| %>
+  			<tr>
+       			<td><%= check_box_tag("contacts[]", contact.id, false,:id=> contact.id)%></td>
+    			<td><%=h contact.name %></td>
+				<td><%=h contact.contact_number%></td>
+			</tr>	
+    		<%end%>
+		</table>
+    	
+    		<%= f.submit 'Create' %> or <%=link_to "Back",admin_contact_groups_path%>
+  		
+  	
 
-  <tr>
-    <th>Name</th>
-    <td><%= f.text_field :name %></td>
-  </tr>
-
-  <tr>
-   <td></td>
-    <td><%= f.submit 'Create' %> | <%= link_to 'Back', admin_contact_groups_path %></td>
-  </tr>
+	
 
 <% end %>
-</table>
 
