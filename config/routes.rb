@@ -92,7 +92,7 @@ ActionController::Routing::Routes.draw do |map|
                                              :deleted   => :get }
     admin.resources :dashboard
     admin.resources :roles
-    admin.resources :messages, :collection => {:render_message_template => :get,:render_contact_list => :get}
+    admin.resources :messages, :collection => {:render_message_template => :get,:render_contact_list => :get} ,:member => {:status_update => :any }
     admin.resources :saved_messages
     admin.resources :contact_groups
     admin.resources :contact_lists

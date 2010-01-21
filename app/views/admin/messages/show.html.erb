@@ -1,40 +1,49 @@
 <div class="form_wrapper">
   <h1 class = 'heading left'>Message sent to <span><%= @message.contact_group_id.nil? ? @message.contact_list.contact_number : @message.contact_group.name %></span> </h1>
-
+  
   <div class="clear" ></div>
   <hr />
 
+   <table class="show_page">
+		<tr>		
+		   <td><%=h @message.created_at.strftime('%d-%m-%Y') %></td>
+            <td><%=h @message.user.name %></td>
+		</tr>
+        <tr> <td colspan = '2' style ='border: 1px solid #ccc; background: #eef2f6; width: 300px;'><%=h @message.message_body %></td> </tr>
+                
 
- <table class="show_page">
-  <tr>
-   <%unless @message.user_id.nil?%>
-     <td><%=h @message.created_at.strftime('%d-%m-%Y') %></td>
-     <td><%=h @message.user.name %></td>
-   <%end%>
-  </tr>
-  <tr> <td colspan = '2' style ='border: 1px solid #ccc; background: #eef2f6; width: 400px; height: 300px; margin: 10px;'><%=h @message.message_body %></td> </tr>
-
-  <% if !@contacts.nil? %>
-
-    <table class='listing'>
-     <tr>
-       <th>Name</th>
-       <th>Number</th>
-     </tr>
+		<%if @message.sms_id!=nil and @contacts.nil? %>	
+		<tr>
+	    <td>Status:<%= @message.status%></td>
+     	
+		<%end%>
 
 
-      <% @contacts.each do |contact| %>
+		<%if @message.sms_id==nil and @contacts.nil?%>
+			 <td>Status:Failed</td>
+     	<%end%>
+	</table>
+
+
+   <%if !@contacts.nil? %>
+       <table class='listing'>
+		<tr>
+         <th>Name</th>
+		 <th>Number</th>
+         <th>Status</th>
+        </tr>
+
+		<% @contacts.each do |contact| %>
        <tr>
         <td><%= contact.name%></td>
         <td><%=h contact.contact_number%></td>
+        <td></td>
        </tr>
       <% end %>
     </table>
+ <% end %>
+	</table>
+        <br />
+	<%= button_to "Delivery status", status_update_admin_message_path(@message)%> 
+</div>
 
-  <%end%>
-                
-</table>
-
-
-
-<%= link_to 'Back', admin_messages_path %>
