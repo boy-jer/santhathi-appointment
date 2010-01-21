@@ -127,6 +127,36 @@ class Admin::MessagesController < ApplicationController
     end
   end
 
+
+  def status_update
+       @message = Admin::Message.find(params[:id])
+       #messages = @message.contact_lists
+
+       #admin = current_user.has_role?('admin') ? current_user : User.find(current_user.parent_id)
+       #Admin::MessageService.user = admin.server_user_name
+       #Admin::MessageService.password = admin.server_password
+      #unless messages.blank?
+         #messages.each do |msg|
+        	#sms = Admin::MessageService.find(msg.sms_id)
+     	  	#sms.save   #calling update method of the API
+     	    #msg.update_attribute('status', sms.status) 
+      #end
+      #else
+        sms =Admin:: MessageService.find(@message.sms_id)
+        sms.save   #calling update method of the API
+        @message.update_attribute('status', sms.status) 
+     #end  
+      respond_to do |format|
+        flash[:notice] = 'Status is successfully updated.'
+        format.html { redirect_to(admin_message_url(@message))} 
+        format.xml  { render :xml => @message }
+      end
+     # rescue #ActiveResource::ResourceInvalid => e  
+        # flash[:error] = 'There seems to be some problem upadting the delevery status. Please try again latter.'    
+         #redirect_to(admin_messages_url) 
+    end
+
+
  def render_message_template
    @message = SavedMessage.find(params[:admin_message_id]).content rescue ''
    render :update do |page|
