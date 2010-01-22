@@ -27,7 +27,7 @@ class Admin::ContactGroupsController < ApplicationController
   # GET /admin_contact_groups/new.xml
   def new
     @contact_group = ContactGroup.new
-    @contact_lists = ContactList.find(:all)
+    @contact_lists = ContactList.find(:all,:conditions => ['name!=?','NA'])
 
     respond_to do |format|
       format.html # new.html.erb
