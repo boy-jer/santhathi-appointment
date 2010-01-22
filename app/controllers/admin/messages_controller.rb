@@ -139,10 +139,7 @@ class Admin::MessagesController < ApplicationController
      	  	sms.save   #calling update method of the API
      	    msg.update_attribute('status', sms.status) 
       end
-      else
-        sms =Admin:: MessageService.find(@message.sms_id)
-        sms.save   #calling update method of the API
-        @message.update_attribute('status', sms.status) 
+      
      end  
       respond_to do |format|
         flash[:notice] = 'Status is successfully updated.'
