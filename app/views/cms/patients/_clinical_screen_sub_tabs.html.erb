@@ -18,7 +18,7 @@
        <ul>
           <% unless @prescribed_tests.blank? %>
              <% for test in @prescribed_tests %>
-                <li><%= link_to "#{test.lab_test.name}", prescribed_test_laboratory_report_path(:prescribed_test_id=> test.id, :id => test.lab_test.laboratory_report.id) unless test.lab_test.laboratory_report.blank? %> </li>
+                <li><%= link_to "#{test.lab_test.name}", prescribed_test_laboratory_report_path(:prescribed_test_id=> test.id, :id => test.service.laboratory_report.id) unless test.service.laboratory_report.blank? %> </li>
              <%end%>
            <% else %>
              <br /><p> No report available yet.</p> <br />

@@ -6,7 +6,7 @@ class Laboratory::LaboratoryReportsController < ApplicationController
 
   def show
     @prescribed_test = PrescribedTest.find(params[:prescribed_test_id])
-    @prescription, @lab_test = @prescribed_test.prescription, @prescribed_test.lab_test
+    @prescription, @lab_test = @prescribed_test.prescription, @prescribed_test.service
     @appointment = @prescription.appointment
     @patient = @appointment.patient
     @specifications = @lab_test.parameter_specifications.gender_filter(@patient.gender)
@@ -35,7 +35,7 @@ class Laboratory::LaboratoryReportsController < ApplicationController
 
   def new
     @prescribed_test = PrescribedTest.find(params[:prescribed_test_id])
-    @prescription, @lab_test = @prescribed_test.prescription, @prescribed_test.lab_test
+    @prescription, @lab_test = @prescribed_test.prescription, @prescribed_test.service
     @appointment = @prescription.appointment
     @patient = @appointment.patient
     @specifications = @lab_test.parameter_specifications.gender_filter(@patient.gender)
@@ -60,7 +60,7 @@ class Laboratory::LaboratoryReportsController < ApplicationController
   
   def edit
   	@prescribed_test = PrescribedTest.find(params[:prescribed_test_id])
-    @prescription, @lab_test = @prescribed_test.prescription, @prescribed_test.lab_test
+    @prescription, @lab_test = @prescribed_test.prescription, @prescribed_test.service
     @appointment = @prescription.appointment
     @patient = @appointment.patient
     @specifications = @lab_test.parameter_specifications.gender_filter(@patient.gender)

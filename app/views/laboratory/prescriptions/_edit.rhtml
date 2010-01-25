@@ -1,7 +1,7 @@
 <div class = 'presc_list'>
   <% remote_form_for(:prescription, :url =>laboratory_prescription_path(@prescription), :html => { :method => :put }) do |f| %>
   <%= f.error_messages %>
-    <table class = 'form-table'>
+    <table class ='precribe'>
        <tr>
            <td> 
                <div id='prescription'>
@@ -10,15 +10,14 @@
                   </ul>
                </div>
            </td>
-           <td>Remarks: <br /> <%= f.text_field :remarks, :class => "textbox"%> <br />
-           <button>Prescribe</button> | <%= link_to_function "Cancel", "jQuery('.presc_list').hide(); return false;"%> </td> 
+           <td>Remarks: <br /> <%= f.text_area :remarks, :class => "textbox"%> <br />
+           <button>Prescribe</button> | <%= link_to_function 'Cancel', "$('#test_#{@lab_test.id}').hide();" %> </td> 
        </tr>
     </table>
     <input type="hidden" name="prescription[department_id]" value= <%= params[:department] %>>
     <input type="hidden" name="prescription[appointment_id]" value= <%=  params[:appointment] %>>
     <input type="hidden" name="test_id" value= <%=  params[:test_id] %>>
 <% end %>
-<br />
 <br />
 </div>
 

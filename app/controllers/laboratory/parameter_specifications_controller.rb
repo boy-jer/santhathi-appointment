@@ -1,6 +1,6 @@
 class Laboratory::ParameterSpecificationsController < ApplicationController
   layout 'laboratory'
-  before_filter :find_lab_test, :except => ['load_fields']
+  before_filter :find_service, :except => ['load_fields']
 
   def index
     @parameter_specifications = @lab_test.parameter_specifications.find(:all, :order => 'position ASC')
@@ -49,7 +49,7 @@ class Laboratory::ParameterSpecificationsController < ApplicationController
     @parameter_specification = @lab_test.parameter_specifications.new(params[:parameter_specification])
     respond_to do |format|
       if @parameter_specification.save
-        flash[:notice] = 'ParameterSpecification was successfully created.'
+        flash[:notice] = 'Parameter specification is successfully created.'
         format.html { redirect_to(laboratory_lab_test_parameter_specifications_path(@lab_test)) }
         format.xml  { render :xml => @parameter_specification, :status => :created, :location => @parameter_specification }
       else
@@ -118,8 +118,8 @@ class Laboratory::ParameterSpecificationsController < ApplicationController
 
   private
 
-  def find_lab_test
-     @lab_test = LabTest.find(params[:lab_test_id])
+  def find_service
+     @lab_test = Service.find(params[:lab_test_id])
   end
 
 

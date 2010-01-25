@@ -1,5 +1,5 @@
 class Laboratory::SampleSpecficationsController < ApplicationController
-  layout 'laboratory'
+  layout 'laboratory_single_column'
   before_filter :find_lab_test
 
   def index
@@ -50,7 +50,7 @@ class Laboratory::SampleSpecficationsController < ApplicationController
   private
 
   def find_lab_test
-  	@lab_test = LabTest.find(params[:lab_test_id])
+  	@lab_test = Service.find(params[:lab_test_id])
   end
 
 

@@ -1,7 +1,7 @@
 module Laboratory::LaboratoryReportsHelper
 
     def display_parameter_specification(lab_test_id,parameter_id)
-		para_spec = ParameterSpecification.find_by_lab_test_id_and_parameter_id(lab_test_id,parameter_id)
+		para_spec = ParameterSpecification.find_by_service_id_and_parameter_id(lab_test_id,parameter_id)
 		unless para_spec.blank?
 		  result = nil
 	      unless (para_spec.min_value.blank? && para_spec.max_value.blank?)
@@ -18,7 +18,7 @@ module Laboratory::LaboratoryReportsHelper
    	end
 
     def find_parameter_specification(lab_test_id,parameter_id)
-      para_spec = ParameterSpecification.find_by_lab_test_id_and_parameter_id(lab_test_id,parameter_id)
+      para_spec = ParameterSpecification.find_by_service_id_and_parameter_id(lab_test_id,parameter_id)
       return para_spec
    	end
 

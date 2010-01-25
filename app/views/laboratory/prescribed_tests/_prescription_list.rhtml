@@ -5,7 +5,7 @@
     <th> <%= remote_order_by_link({:prescription =>  { :appointment => { :patient => :id }} } , :text => "PVR No") %>  </th>
     <th> <%= remote_order_by_link({:prescription => { :appointment => { :patient => :patient_name }}} , :text => "Patient Name") %></th>
     <th> <%= remote_order_by_link({:prescription =>  :follow_up },:text => "Follow Up" ) %>   </th>
-    <th><%= remote_order_by_link( {:lab_test =>:name }  , :text => "Test Prescribed") %> </th>
+    <th><%= remote_order_by_link( {:service =>:name }  , :text => "Test Prescribed") %> </th>
     <th> Test Report </th>
     <th> Presc. Details </th>
    </tr>
@@ -19,8 +19,8 @@
           <td> <%=h patient.id %>  </td>
           <td> <%= patient.patient_name %> </td>
           <td> <%= prescription.follow_up %></td>
-	  <td> <%= test.lab_test.name %> </td>
-	  <td> <%= lab_report_for_prescribed_test(test).blank? ? (link_to "Create report", new_laboratory_prescribed_test_laboratory_report_path(test)) : (link_to "View report", laboratory_prescribed_test_laboratory_report_path(:prescribed_test_id => test, :id => test.lab_test.laboratory_report)) %>
+	  <td> <%= test.service.name %> </td>
+	  <td> <%= lab_report_for_prescribed_test(test).blank? ? (link_to "Create report", new_laboratory_prescribed_test_laboratory_report_path(test)) : (link_to "View report", laboratory_prescribed_test_laboratory_report_path(:prescribed_test_id => test, :id => test.service.laboratory_report)) %>
 	  </td>
           <td> <%= link_to 'Details', laboratory_prescribed_test_path(prescription.id) , :rel=> "facebox" %></td>
 	</tr>

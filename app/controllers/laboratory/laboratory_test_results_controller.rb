@@ -9,12 +9,12 @@ class Laboratory::LaboratoryTestResultsController < ApplicationController
   def show
     @appointment = Appointment.find(params[:appointment_id])
     @prescription = Prescription.find(params[:prescription_id])
-    @lab_test = LabTest.find(params[:lab_test_id])
+    @lab_test = Service.find(params[:lab_test_id])
 
     @patient = @appointment.patient
     @specifications = @lab_test.parameter_specifications
 
-    @laboratory_test_results = LaboratoryTestResult.find(:all, :conditions =>['appointment_id = ? AND prescription_id = ? AND lab_test_id = ?',                params[:appointment_id], params[:prescription_id], params[:lab_test_id]] )
+    @laboratory_test_results = LaboratoryTestResult.find(:all, :conditions =>['appointment_id = ? AND prescription_id = ? AND service_id = ?',                params[:appointment_id], params[:prescription_id], params[:lab_test_id]] )
     @results = {}
     @laboratory_test_results.map{|r|  @results[r.parameter_specification_id] = [r.result, r.remarks] }
 
@@ -23,7 +23,7 @@ class Laboratory::LaboratoryTestResultsController < ApplicationController
   def new
     @appointment = Appointment.find(params[:appointment_id])
     @prescription = Prescription.find(params[:prescription_id])
-    @lab_test = LabTest.find(params[:lab_test_id])
+    @lab_test = Service.find(params[:lab_test_id])
     @patient = @appointment.patient
     @specifications = @lab_test.parameter_specifications
     @laboratory_test_result = LaboratoryTestResult.new
@@ -73,7 +73,7 @@ class Laboratory::LaboratoryTestResultsController < ApplicationController
   def find_all_things
   	@appointment = Appointment.find(params[:appointment_id])
   	@prescription = Prescription.find(params[:prescription_id])
-  	@lab_test = LabTest.find(params[:lab_test_id])
+  	@lab_test = Service.find(params[:lab_test_id])
   end
 
 end

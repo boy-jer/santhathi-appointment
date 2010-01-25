@@ -13,8 +13,8 @@
               <%end%>
             <% end %>
           <% end %> 
-          <% p.fields_for p.object.lab_test do |lab_test| %>
-              <p> <label> Prescribed Test:</label>  <%= lab_test.text_field :name_like, :class => 'textbox' %> </p>
+          <% p.fields_for p.object.service do |service| %>
+              <p> <label> Prescribed Test:</label>  <%= service.text_field :name_like, :class => 'textbox' %> </p>
           <%end%>
          <%end%>
        <%end%>

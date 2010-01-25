@@ -11,7 +11,7 @@
   <% for test in @prescribed_tests %>
         <tr><td> <%= @appointment.doctor.doctor_profile.name %> </td>
             <td> <%= @prescription.p_date %> </td>
-            <td> <%= test.lab_test.name %> </td>
+            <td> <%= test.service.name %> </td>
             <td> <%= @prescription.quantity %> </td>
             <td> <%= @prescription.follow_up %> </td>
             <td> <%= @prescription.remarks %> </td>

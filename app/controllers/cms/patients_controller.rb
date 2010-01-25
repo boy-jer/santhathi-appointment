@@ -47,7 +47,7 @@ class Cms::PatientsController < ApplicationController
       @appointment = Appointment.find(params[:id])
       @patient = @appointment.patient
       @doctor = @appointment.doctor
-      @lab_services = LabTest.find_all_by_parent_id(nil)
+      @lab_services = Service.lab_services.top_level
       @department = Department.find_by_dept_name("laboratory")
       @prescribed_tests = @appointment.prescription.prescribed_tests unless @appointment.prescription.blank?
     else

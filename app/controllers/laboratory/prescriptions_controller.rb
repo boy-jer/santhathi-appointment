@@ -25,7 +25,7 @@ class Laboratory::PrescriptionsController < ApplicationController
 
   def new
     @prescription = Prescription.new
-    @lab_test = LabTest.find(params[:test_id])
+    @lab_test = Service.find(params[:test_id])
     @appointment = Appointment.find(params[:appointment])
     @department = Department.find_by_dept_name('Laboratory')
     @services = []
@@ -33,6 +33,8 @@ class Laboratory::PrescriptionsController < ApplicationController
       format.html
       format.js { render :update do |page|
                     page.replace_html "test_#{@lab_test.id}", :partial => '/laboratory/prescriptions/new'
+                    page.show "test_#{@lab_test.id}"
+                    page.visual_effect(:highlight, "test_#{@lab_test.id}", :duration => 1)
                   end
                 }
     end
@@ -41,15 +43,15 @@ class Laboratory::PrescriptionsController < ApplicationController
 
   def create
     @prescription = Prescription.new(params[:prescription])
-    @lab_test = LabTest.find(params[:test_id])
+    @lab_test = Service.find(params[:test_id])
     @department = Department.find(params[:prescription][:department_id])
     @appointment = Appointment.find(params[:prescription][:appointment_id])
 
-    @appointment.prescribe!
     if @prescription.save
-      params[:services].map{|service| PrescribedTest.create(:prescription_id => @prescription.id, :lab_test_id => service)}
+      @appointment.prescribe!
+      params[:services].map{|service| PrescribedTest.create(:prescription_id => @prescription.id, :service_id => service)}
       @prescribed_tests = @prescription.prescribed_tests
-      @services = @prescribed_tests.map{|p| p.lab_test.id}
+      @services = @prescribed_tests.map{|p| p.service.id}
       respond_to do |format|  
         format.html
         format.js { render :update do |page|
@@ -67,15 +69,17 @@ class Laboratory::PrescriptionsController < ApplicationController
   def edit
     @appointment = Appointment.find(params[:appointment])
     @prescription = @appointment.prescription
-    @lab_test = LabTest.find(params[:test_id])
+    @lab_test = Service.find(params[:test_id])
     @department = Department.find_by_dept_name('Laboratory')
     @prescribed_tests = @prescription.prescribed_tests
-    @services = @prescribed_tests.map{|p| p.lab_test.id}
+    @services = @prescribed_tests.map{|p| p.service.id}
 
     respond_to do |format|
       format.html
       format.js { render :update do |page|
                     page.replace_html "test_#{@lab_test.id}", :partial => '/laboratory/prescriptions/edit'
+                     page.show "test_#{@lab_test.id}"
+                    page.visual_effect(:highlight, "test_#{@lab_test.id}", :duration => 1)
                   end
                 }
     end
@@ -83,14 +87,14 @@ class Laboratory::PrescriptionsController < ApplicationController
 
    def update
      @prescription = Prescription.find(params[:id])
-     @lab_test = LabTest.find(params[:test_id])
+     @lab_test = Service.find(params[:test_id])
      @department = Department.find(params[:prescription][:department_id])
      @appointment = Appointment.find(params[:prescription][:appointment_id])
 
      if @prescription.save
-        params[:services].map{|service| PrescribedTest.create(:prescription_id => @prescription.id, :lab_test_id => service)}
+        params[:services].map{|service| PrescribedTest.create(:prescription_id => @prescription.id, :service_id => service)}
         @prescribed_tests = @prescription.prescribed_tests
-        @services = @prescribed_tests.map{|p| p.lab_test.id}
+        @services = @prescribed_tests.map{|p| p.service.id}
         respond_to do |format|
           format.html
           format.js { render :update do |page|

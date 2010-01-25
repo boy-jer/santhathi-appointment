@@ -2,10 +2,10 @@ class Laboratory::LabTestsController < ApplicationController
   layout 'laboratory'
 
   def index
-    @search = LabTest.new_search(params[:search])
+    @search = Service.new_search(params[:search])
     @search.per_page ||= 50
     @tests = @search.all
-    @child_list = LabTest.find_all_by_parent_id(nil)
+    @child_list = Service.lab_services.top_level
     respond_to do |format|
               format.html
               format.js {
@@ -17,27 +17,26 @@ class Laboratory::LabTestsController < ApplicationController
   end
 
   def new
-    @lab_test = LabTest.new
-    @child_list = LabTest.find_all_by_parent_id(nil)
+    @lab_test = Service.new
+    @child_list = Service.lab_services.top_level
   end
 
   def edit
-     @lab_test = LabTest.find(params[:id])
+     @lab_test = Service.find(params[:id])
   end
 
   def show
-    @lab_test = LabTest.find(params[:id])
+    @lab_test = Service.find(params[:id])
   end
 
   def create
     lab_test = params[:lab_test]
-    @lab_test = LabTest.new(lab_test)
-    parent = LabTest.find(lab_test[:parent_id]) unless lab_test[:parent_id].blank?
+    @lab_test = Service.new(lab_test)
+    parent = Service.find(lab_test[:parent_id]) unless lab_test[:parent_id].blank?
     @lab_test.depth = parent.blank? ? 1 : parent.depth.to_i + 1
-    service_parent = Service.find_by_name(parent.name) unless lab_test[:parent_id].blank?
+   
     if @lab_test.save
-      Service.create( :name => lab_test[:name], :parent_id => service_parent.blank? ? nil : service_parent.id, :depth => service_parent.blank? ? 1 : service_parent.depth.to_i + 1, :department_id => Department.find_by_dept_name("laboratory").id)
-      flash[:notice] = 'Service was successfully created.'
+      flash[:notice] = 'Laboratory test is successfully created.'
       redirect_to(laboratory_lab_tests_url)
     else
       render :action => "new"
@@ -45,7 +44,7 @@ class Laboratory::LabTestsController < ApplicationController
   end
   
    def update
-    @lab_test = LabTest.find(params[:id])
+    @lab_test = Service.find(params[:id])
     if @lab_test.update_attributes(params[:lab_test])
       flash[:notice] = 'Lab test is successfully updated.'
       redirect_to(laboratory_lab_tests_url)
@@ -55,7 +54,7 @@ class Laboratory::LabTestsController < ApplicationController
   end
 
   def destroy
-     LabTest.find(params[:id]).destroy
+     Service.find(params[:id]).destroy
      redirect_to(laboratory_lab_tests_url)
   end
 end

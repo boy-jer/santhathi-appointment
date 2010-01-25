@@ -1,7 +1,7 @@
 module Laboratory::PrescribedTestsHelper
   
   def lab_report_for_prescribed_test(test)
-     LaboratoryReport.find_by_prescription_id_and_lab_test_id(test.prescription_id, test.lab_test_id )
+     LaboratoryReport.find_by_prescription_id_and_service_id(test.prescription_id, test.service_id )
   end
 
 end
