@@ -49,8 +49,8 @@
 
 
    <%= observe_field(:pharmacy_prescription_pharamacy_item_information_id, :frequency =>0.6,
-                 :before => "Element.show('spinner1')",
-                 :success => "Element.hide('spinner1')",
+                 :before => "$('#spinner1').show()",
+                 :success => "$('#spinner1').hide()",
                  :url => { :action=>'pharamacy_item_detail' },
                  :method => :get,
                  :with => "'pharamacy_item_information_id=' + value") %>

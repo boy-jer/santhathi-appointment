@@ -29,8 +29,8 @@
 
 <%= link_to_remote "Delete ",
                            :url => { :controller => '/cms/pharmacy_prescriptions',:action => "destroy", },
-                           :before => "Element.show('spinner')",
-                           :success => "Element.hide('spinner')",
+                           :before => "$('#spinner').show()",
+                           :success => "$('#spinner').hide()",
                            :confirm => 'Are you sure?',
 
                            :with => "'appointment_id='+ #{@appointment.id}+'&id='+#{pharmacy_prescription.id}"

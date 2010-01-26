@@ -11,8 +11,11 @@ class Cms::ClinicalScreensController < ApplicationController
       @lab_services = Service.lab_services.top_level
       @department = Department.find_by_dept_name("laboratory")
       @departments = Department.all
-      @prescribed_tests = @prescription.prescribed_tests unless @appointment.prescription.blank?
-      #@last_visit_reports = last_visit_report(@appointment.id, @patient)
+      unless @appointment.prescription.blank?
+        @prescribed_lab_tests = @prescription.prescribed_tests
+        @prescribed_services = @prescription.prescribed_tests
+      end
+
       @clinical_comments = ClinicalComment.find(:all, :conditions => "appointment_id in (#{@appointment.patient.appointments.collect{|p| p.id}})")
       @clinical_comment = @appointment.clinical_comment.blank? ? ClinicalComment.new : @appointment.clinical_comment
       @next_appointment_remark = @appointment.next_appointment_remark.blank? ? NextAppointmentRemark.new : @appointment.next_appointment_remark

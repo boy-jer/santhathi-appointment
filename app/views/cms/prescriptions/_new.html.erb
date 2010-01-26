@@ -1,0 +1,21 @@
+<div class = 'presc_list'>
+  <% remote_form_for(:prescription , :url => cms_prescriptions_path() ,:html => { :method => :post }) do |f| %>
+  <%= f.error_messages %>
+    <table class ='precribe'>         
+       <tr>
+         <td> <div id='prescription'>
+                  <ul class='treeview'>
+                      <%= render :partial => 'child_list', :collection => [@lab_test], :as => :service %>
+                  </ul>
+               </div>
+         </td>
+         <td>Remarks: <br /> <%= f.text_area :remarks, :class => "textbox"%> <br />
+         <button>Prescribe</button> or | <%= link_to_function 'Cancel', "$('#test_#{@lab_test.id}').hide();" %> </td> 
+       </tr>
+    </table>
+    <input type="hidden" name="prescription[department_id]" value= <%= params[:department] %>>
+    <input type="hidden" name="prescription[appointment_id]" value= <%=  params[:appointment] %>>
+    <input type="hidden" name="test_id" value= <%=  params[:test_id] %>>
+<% end %>
+<br />
+</div>
