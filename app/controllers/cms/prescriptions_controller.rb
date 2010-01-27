@@ -37,20 +37,24 @@ class Cms::PrescriptionsController < ApplicationController
   def create
     @prescription = Prescription.new(params[:prescription])
     @lab_test = Service.find(params[:test_id])
-    @department = Department.find(params[:prescription][:department_id])
+    @department = Department.find(params[:department_id])
     @appointment = Appointment.find(params[:prescription][:appointment_id])
+    @lab_services = Service.lab_services.top_level
+    @departments = Department.all
+     
 
     if @prescription.save
       @appointment.prescribe! unless @appointment.prescribed?
-      params[:services].map{|service| PrescribedTest.create(:prescription_id => @prescription.id, :service_id => service)}
-      @prescribed_tests = @prescription.prescribed_tests
-      @services = @prescribed_tests.map{|p| p.service.id}
+      params[:services].map{|service| PrescribedTest.create(:prescription_id => @prescription.id, :service_id => service,:department_id => @department.id)}
+      lab_department = Department.find_by_dept_name("laboratory")
+      @prescribed_lab_tests = @prescription.prescribed_tests.by_laboratory_dept(lab_department.id)
+      @prescribed_services = @prescription.prescribed_tests.by_other_dept(lab_department.id)
+      prescribed_tests = @prescription.prescribed_tests
+      @services = prescribed_tests.map{|p| p.service.id}
       respond_to do |format|  
         format.html
         format.js { render :update do |page|
-                       page.replace_html "service_#{@lab_test.id}", :partial => '/laboratory/prescriptions/edit'
-                       page.replace_html "prescription-list", :partial => '/laboratory/prescriptions/prescreptions'
-                       page.visual_effect(:highlight, 'clinical-screen', :duration => 0.5)
+                       page.replace_html "first_tab", :partial => 'cms/clinical_screens/first_tab'
                     end
 
                     }
@@ -83,19 +87,21 @@ class Cms::PrescriptionsController < ApplicationController
    def update
      @prescription = Prescription.find(params[:id])
      @lab_test = Service.find(params[:test_id])
-     @department = Department.find(params[:prescription][:department_id])
+     @department = Department.find(params[:department_id])
      @appointment = Appointment.find(params[:prescription][:appointment_id])
-
-     if @prescription.save
-        params[:services].map{|service| PrescribedTest.create(:prescription_id => @prescription.id, :service_id => service)}
-        @prescribed_tests = @prescription.prescribed_tests
-        @services = @prescribed_tests.map{|p| p.service.id}
+     @departments = Department.all
+     @lab_services = Service.lab_services.top_level
+     if @prescription.update_attributes(params[:prescription])
+        params[:services].map{|service| PrescribedTest.create(:prescription_id => @prescription.id, :service_id => service,:department_id => @department.id)} unless  params[:services].blank?
+        lab_department = Department.find_by_dept_name("laboratory")
+        @prescribed_lab_tests = @prescription.prescribed_tests.by_laboratory_dept(lab_department.id)
+        @prescribed_services = @prescription.prescribed_tests.by_other_dept(lab_department.id)
+        prescribed_tests = @prescription.prescribed_tests
+        @services = prescribed_tests.map{|p| p.service.id}
         respond_to do |format|
           format.html
           format.js { render :update do |page|
-                        page.replace_html "service_#{@lab_test.id}", :partial => '/laboratory/prescriptions/edit'
-                        page.replace_html "prescription-list", :partial => '/laboratory/prescriptions/prescreptions'
-                        page.visual_effect(:highlight, 'clinical-screen', :duration => 0.5)
+                       page.replace_html "first_tab", :partial => 'cms/clinical_screens/first_tab'
                       end
                   }
         end

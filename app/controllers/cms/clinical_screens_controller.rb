@@ -13,8 +13,8 @@ class Cms::ClinicalScreensController < ApplicationController
       @department = Department.find_by_dept_name("laboratory")
       @departments = Department.all
       unless @appointment.prescription.blank?
-        @prescribed_lab_tests = @prescription.prescribed_tests
-        @prescribed_services = @prescription.prescribed_tests
+        @prescribed_lab_tests = @prescription.prescribed_tests.by_laboratory_dept(@department.id)
+        @prescribed_services = @prescription.prescribed_tests.by_other_dept(@department.id)
       end
 
       @clinical_comments = ClinicalComment.find(:all, :conditions => "appointment_id in (#{@appointment.patient.appointments.collect{|p| p.id}})")

@@ -8,7 +8,7 @@
                                :success => "jQuery('#spinner').hide()",
                                :url => @prescription.blank? ? new_laboratory_prescription_url() : edit_laboratory_prescription_url(@prescription),
                                :method => 'get',
-                               :with => "'department='+ #{@department.id} + '&test_id='+ #{test.id} + '&appointment=' + #{@appointment.id}") %>
+                               :with => "'department='+ #{test.department_id} + '&test_id='+ #{test.id} + '&appointment=' + #{@appointment.id}") %>
            </p> 
          <div id = 'test_<%= test.id %>'> </div>
         <% end %>
@@ -34,7 +34,7 @@
                                :success => "jQuery('#spinner').hide()",
                                :url => @prescription.blank? ? new_cms_prescription_url() : edit_cms_prescription_url(@prescription),
                                :method => 'get',
-                               :with => "'department='+ #{@department.id} + '&test_id='+ #{service.id} + '&appointment=' + #{@appointment.id}") %>                </p>
+                               :with => "'department='+ #{service.department_id} + '&test_id='+ #{service.id} + '&appointment=' + #{@appointment.id}") %>                </p>
                   <div id = 'service_<%= service.id %>'> </div>
                <% end %>
             <% end %>

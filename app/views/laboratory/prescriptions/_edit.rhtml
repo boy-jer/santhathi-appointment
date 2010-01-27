@@ -14,7 +14,7 @@
            <button>Prescribe</button> | <%= link_to_function 'Cancel', "$('#test_#{@lab_test.id}').hide();" %> </td> 
        </tr>
     </table>
-    <input type="hidden" name="prescription[department_id]" value= <%= params[:department] %>>
+    <input type="hidden" name="department_id" value= <%= params[:department] %>>
     <input type="hidden" name="prescription[appointment_id]" value= <%=  params[:appointment] %>>
     <input type="hidden" name="test_id" value= <%=  params[:test_id] %>>
 <% end %>

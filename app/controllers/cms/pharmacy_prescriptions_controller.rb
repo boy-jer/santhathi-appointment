@@ -9,7 +9,7 @@ class Cms::PharmacyPrescriptionsController < ApplicationController
     respond_to do |format|
       format.html
       format.js { render :update do |page|
-                    page.replace_html 'clinical-screen', :partial => '/cms/pharmacy_prescriptions/new'
+                    page.replace_html 'pharmacy_prescription_replace', :partial => '/cms/pharmacy_prescriptions/new'
                   end
                 }
     end

@@ -39,7 +39,7 @@ class Laboratory::PrescriptionsController < ApplicationController
   def create
     @prescription = Prescription.new(params[:prescription])
     @lab_test = Service.find(params[:test_id])
-    @department = Department.find(params[:prescription][:department_id])
+    @department = Department.find(params[:department_id])
     @appointment = Appointment.find(params[:prescription][:appointment_id])
     @lab_services = Service.lab_services.top_level
     @departments = Department.all
@@ -49,9 +49,12 @@ class Laboratory::PrescriptionsController < ApplicationController
 
     if @prescription.save
       @appointment.prescribe!
-      params[:services].map{|service| PrescribedTest.create(:prescription_id => @prescription.id, :service_id => service)}
-      @prescribed_tests = @prescription.prescribed_tests
-      @services = @prescribed_tests.map{|p| p.service.id}
+      params[:services].map{|service| PrescribedTest.create(:prescription_id => @prescription.id, :service_id => service,:department_id => @department.id)}
+      lab_department = Department.find_by_dept_name("laboratory")
+      @prescribed_lab_tests = @prescription.prescribed_tests.by_laboratory_dept(lab_department.id)
+      @prescribed_services = @prescription.prescribed_tests.by_other_dept(lab_department.id)
+      prescribed_tests = @prescription.prescribed_tests
+      @services = prescribed_tests.map{|p| p.service.id}
       respond_to do |format|  
         format.html
         format.js { render :update do |page|
@@ -90,17 +93,21 @@ class Laboratory::PrescriptionsController < ApplicationController
    def update
      @prescription = Prescription.find(params[:id])
      @lab_test = Service.find(params[:test_id])
-     @department = Department.find(params[:prescription][:department_id])
+     @department = Department.find(params[:department_id])
      @appointment = Appointment.find(params[:prescription][:appointment_id])
      @lab_services = Service.lab_services.top_level
      @departments = Department.all
      @clinical_comments = ClinicalComment.find(:all, :conditions => "appointment_id in (#{@appointment.patient.appointments.collect{|p| p.id}})")
      @clinical_comment = @appointment.clinical_comment.blank? ? ClinicalComment.new : @appointment.clinical_comment
      @next_appointment_remark = @appointment.next_appointment_remark.blank? ? NextAppointmentRemark.new : @appointment.next_appointment_remark
-     if @prescription.save
-        params[:services].map{|service| PrescribedTest.create(:prescription_id => @prescription.id, :service_id => service)}
-        @prescribed_tests = @prescription.prescribed_tests
-        @services = @prescribed_tests.map{|p| p.service.id}
+
+     if @prescription.update_attributes(params[:prescription])
+        params[:services].map{|service| PrescribedTest.create(:prescription_id => @prescription.id, :service_id => service, :department_id => @department.id)} unless  params[:services].blank?
+        lab_department = Department.find_by_dept_name("laboratory")
+        @prescribed_lab_tests = @prescription.prescribed_tests.by_laboratory_dept(lab_department.id)
+        @prescribed_services = @prescription.prescribed_tests.by_other_dept(lab_department.id)
+        prescribed_tests = @prescription.prescribed_tests
+        @services = prescribed_tests.map{|p| p.service.id}
         
         respond_to do |format|
           format.html
