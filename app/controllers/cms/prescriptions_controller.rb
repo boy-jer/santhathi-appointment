@@ -48,7 +48,7 @@ class Cms::PrescriptionsController < ApplicationController
       respond_to do |format|  
         format.html
         format.js { render :update do |page|
-                       page.replace_html "test_#{@lab_test.id}", :partial => '/laboratory/prescriptions/edit'
+                       page.replace_html "service_#{@lab_test.id}", :partial => '/laboratory/prescriptions/edit'
                        page.replace_html "prescription-list", :partial => '/laboratory/prescriptions/prescreptions'
                        page.visual_effect(:highlight, 'clinical-screen', :duration => 0.5)
                     end
@@ -67,6 +67,7 @@ class Cms::PrescriptionsController < ApplicationController
     @department =  @lab_test.department
     @prescribed_tests = @prescription.prescribed_tests
     @services = @prescribed_tests.map{|p| p.service.id}
+    
 
     respond_to do |format|
       format.html
@@ -92,7 +93,7 @@ class Cms::PrescriptionsController < ApplicationController
         respond_to do |format|
           format.html
           format.js { render :update do |page|
-                        page.replace_html "test_#{@lab_test.id}", :partial => '/laboratory/prescriptions/edit'
+                        page.replace_html "service_#{@lab_test.id}", :partial => '/laboratory/prescriptions/edit'
                         page.replace_html "prescription-list", :partial => '/laboratory/prescriptions/prescreptions'
                         page.visual_effect(:highlight, 'clinical-screen', :duration => 0.5)
                       end

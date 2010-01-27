@@ -41,6 +41,11 @@ class Laboratory::PrescriptionsController < ApplicationController
     @lab_test = Service.find(params[:test_id])
     @department = Department.find(params[:prescription][:department_id])
     @appointment = Appointment.find(params[:prescription][:appointment_id])
+    @lab_services = Service.lab_services.top_level
+    @departments = Department.all
+    @clinical_comments = ClinicalComment.find(:all, :conditions => "appointment_id in (#{@appointment.patient.appointments.collect{|p| p.id}})")
+    @clinical_comment = @appointment.clinical_comment.blank? ? ClinicalComment.new : @appointment.clinical_comment
+     @next_appointment_remark = @appointment.next_appointment_remark.blank? ? NextAppointmentRemark.new : @appointment.next_appointment_remark
 
     if @prescription.save
       @appointment.prescribe!
@@ -50,9 +55,10 @@ class Laboratory::PrescriptionsController < ApplicationController
       respond_to do |format|  
         format.html
         format.js { render :update do |page|
-                       page.replace_html "test_#{@lab_test.id}", :partial => '/laboratory/prescriptions/edit'
-                       page.replace_html "prescription-list", :partial => '/laboratory/prescriptions/prescreptions'
-                       page.visual_effect(:highlight, 'clinical-screen', :duration => 0.5)
+                       #page.replace_html "test_#{@lab_test.id}", :partial => '/laboratory/prescriptions/edit'
+                       page.replace_html "first_tab", :partial => 'cms/clinical_screens/first_tab'
+                      # page.replace_html "prescription-list", :partial => '/laboratory/prescriptions/prescreptions'
+                       #page.visual_effect(:highlight, 'clinical-screen', :duration => 0.5)
                     end
 
                     }
@@ -86,17 +92,20 @@ class Laboratory::PrescriptionsController < ApplicationController
      @lab_test = Service.find(params[:test_id])
      @department = Department.find(params[:prescription][:department_id])
      @appointment = Appointment.find(params[:prescription][:appointment_id])
-
+     @lab_services = Service.lab_services.top_level
+     @departments = Department.all
+     @clinical_comments = ClinicalComment.find(:all, :conditions => "appointment_id in (#{@appointment.patient.appointments.collect{|p| p.id}})")
+     @clinical_comment = @appointment.clinical_comment.blank? ? ClinicalComment.new : @appointment.clinical_comment
+     @next_appointment_remark = @appointment.next_appointment_remark.blank? ? NextAppointmentRemark.new : @appointment.next_appointment_remark
      if @prescription.save
         params[:services].map{|service| PrescribedTest.create(:prescription_id => @prescription.id, :service_id => service)}
         @prescribed_tests = @prescription.prescribed_tests
         @services = @prescribed_tests.map{|p| p.service.id}
+        
         respond_to do |format|
           format.html
           format.js { render :update do |page|
-                        page.replace_html "test_#{@lab_test.id}", :partial => '/laboratory/prescriptions/edit'
-                        page.replace_html "prescription-list", :partial => '/laboratory/prescriptions/prescreptions'
-                        page.visual_effect(:highlight, 'clinical-screen', :duration => 0.5)
+                        page.replace_html "first_tab", :partial => 'cms/clinical_screens/first_tab'
                       end
                   }
         end

@@ -5,6 +5,7 @@ class Cms::ClinicalScreensController < ApplicationController
   def new
     unless params[:appointment_id].blank?
       @appointment = Appointment.find(params[:appointment_id])
+
       @prescription = @appointment.prescription
       @patient = @appointment.patient
       @doctor = @appointment.doctor
