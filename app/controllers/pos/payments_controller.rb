@@ -16,6 +16,8 @@ class Pos::PaymentsController < ApplicationController
     @payment = Payment.new
     @inventory_items = user_default_branch.inventory_items.non_consumables.all
     @services = Service.all
+    @inventory_groups = user_default_branch.inventory_groups.all
+    @departments = Department.all
   end
 
   def create

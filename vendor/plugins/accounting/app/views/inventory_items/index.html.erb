@@ -14,6 +14,7 @@
               Measured in <%= h inventory_item.inventory_unit_of_measurement.unit_name -%>
            </span>
           </td>
+          <td><%= link_to 'Transactions', transactions_list_inventory_item_path(inventory_item) -%></td>
           <td><%= link_to 'Edit', edit_inventory_item_path(inventory_item) %></td>     
         </tr>
         <tr>

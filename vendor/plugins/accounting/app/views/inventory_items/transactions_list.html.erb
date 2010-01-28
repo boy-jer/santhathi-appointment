@@ -1,0 +1,17 @@
+<h2>Inventory Transaction List</h2>
+<table style='width:100%;'>
+  <tr>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Total</th>
+    <th>Action</th>
+  </tr>  
+  <% @inventory_item_transactions.each do |item| -%>
+    <tr>
+      <td><%= item.quantity -%></td>
+      <td><%= item.price -%></td>
+      <td><%= item.total_price -%></td>
+      <td><%= item.category -%></td>
+    </tr>
+  <% end -%>
+</table>

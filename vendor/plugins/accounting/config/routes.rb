@@ -31,7 +31,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :account_group_types
 
-  map.resources :inventory_items 
+  map.resources :inventory_items, :member => {:transactions_list => :get}
   map.resources :inventory_groups 
   map.resources :inventory_unit_of_measurements
   

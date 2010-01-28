@@ -87,4 +87,9 @@ class InventoryItemsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def transactions_list
+    @inventory_item_transactions = user_default_branch.inventory_items.find(params[:id]).inventory_transaction_items.all(:order => 'transaction_date')
+    
+  end
 end

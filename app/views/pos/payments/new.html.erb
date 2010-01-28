@@ -26,13 +26,48 @@
     <%= submit_tag 'Enter payment' -%>
 </div>
 <div style='padding:10px;'>
-  <% @inventory_items.each do |inventory_item| %>
-    <%= button_to_function inventory_item.name, "set_payment(this)", :payable_name => inventory_item.name, :payable_type => inventory_item.class, :amount => inventory_item.sub_unit_sale_price -%>
-  <% end -%>
-  <br />
-  <% @services.each do |service| -%>
-    <%= button_to_function service.name, "set_payment(this)", :payable_name => service.name, :payable_type => service.class, :amount => service.cost -%>
-  <% end -%> 
+  <div style='float:left;width:20%;bxorder:1px solid black;'>
+    <div>
+      <div id='inv_group_list' class='payment_list_set'>
+      <% @inventory_groups.each do |inventory_group| -%>
+        <%= button_to_function inventory_group.name, "show_items('inventory_group_#{inventory_group.id}')" -%>
+      <% end -%>
+      </div>
+      <div id='department_list' style='display:none;' class='payment_list_set'>
+      <% @departments.each do |department| -%>
+        <%= button_to_function department.dept_name, "show_items('department_#{department.id}')" -%>
+      <% end -%>
+      </div>
+    </div>
+    <div>
+
+    </div>
+    <%= button_to_function '<<', "show_item_set('inv_group_list')" -%>
+    <%= button_to_function '>>', "show_item_set('department_list')" -%>
+  </div>
+  <div style='float:right;width:75%;bxorder:1px solid black;'>
+	<div style='padding:10px;'>
+          <div id='inventory_list'>
+            <% @inventory_groups.each do |inventory_group| -%>
+              <div id='inventory_group_<%= inventory_group.id -%>' class='payment_list_items' style='display:none;'>
+      	        <% inventory_group.inventory_items.each do |inventory_item| %>
+	          <%= button_to_function inventory_item.name, "set_payment(this)", :payable_name => inventory_item.name, :payable_type => inventory_item.class, :amount => inventory_item.sub_unit_sale_price -%>
+	        <% end -%>
+              </div>
+            <% end -%>
+          </div>
+	  <div id='service_list'>
+            <% @departments.each do |department| -%>
+              <div id='department_<%= department.id -%>' class='payment_list_items' style='display:none;'>
+	        <% department.services.each do |service| -%>
+	          <%= button_to_function service.name, "set_payment(this)", :payable_name => service.name, :payable_type => service.class, :amount => service.cost -%>
+	        <% end -%> 
+              </div>
+            <% end -%>
+          </div>
+	</div>
+  </div>
+  <div style='clear:both;'></div>
 </div>
 <% end %>
 <script>
@@ -47,6 +82,31 @@ function set_payment(obj) {
   $('#payment_payment_items_attributes_'+payment_list_pointer+'_payable_type').attr('value', payable_type);
   $('#payment_payment_items_attributes_'+payment_list_pointer+'_amount').attr('value', amount);
   payment_list_pointer += 1;
+}
+
+function show_items(category) {
+  hide_all_payment_list_items();
+  $('#'+category).show();
+}
+
+function show_item_set(set) {
+  hide_all_payment_list_set();
+  hide_all_payment_list_items();
+  $('#'+set).show();
+}
+
+function hide_all_payment_list_items() {
+  var payment_list_items = $('.payment_list_items');
+  for(var i=0;i<payment_list_items.length;i++) {
+    $(payment_list_items[i]).hide();
+  }
+}
+
+function hide_all_payment_list_set() {
+  var payment_list_sets = $('.payment_list_set');
+  for(var i=0;i<payment_list_sets.length;i++) {
+    $(payment_list_sets[i]).hide();
+  }
 }
 
 </script>
