@@ -1,5 +1,5 @@
 class Laboratory::ParametersController < ApplicationController
-  layout 'laboratory'
+ layout proc{ |c| ['show','new', 'create','edit'].include?(c.action_name)? 'laboratory_single_column' : 'laboratory'}
 
   def index
   	@search = Parameter.new_search(params[:search])
@@ -97,3 +97,4 @@ class Laboratory::ParametersController < ApplicationController
     end
   end
 end
+

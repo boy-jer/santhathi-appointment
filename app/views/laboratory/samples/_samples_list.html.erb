@@ -1,11 +1,11 @@
-<h3>Sample List</h3> 
+
 <table class="listing">
   <tr>
     <th><%= remote_order_by_link(:sample_name,:text =>"Sample Name") %></th>
     <th><%= remote_order_by_link(:description,:text =>"Description") %></th>
     <th><%= remote_order_by_link(:used_in_diagnosis_of,:text =>"Used In Diagnosis Of") %></th>
     <th>Show</th>
-    <th>Modify</th>
+    <th>Edit</th>
     <th>Delete</th>
   </tr>
 <% for sample in @samples %>
@@ -14,12 +14,12 @@
     <td><%=h sample.description %></td>
     <td><%=h sample.used_in_diagnosis_of %></td>
     <td><%= link_to 'Show', laboratory_sample_path(sample) , :rel=> "facebox"%></td>
-    <td><%= link_to 'Modify', edit_laboratory_sample_path(sample) %></td>
+    <td><%= link_to 'Edit', edit_laboratory_sample_path(sample) %></td>
     <td><%= link_to 'Delete', laboratory_sample_path(sample), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 <tr class="table-footer">
-  	<td colspan = 1><%= link_to "<span>New Sample</span>", new_laboratory_sample_path(), :class=> "button" %></td>
+  	<td colspan = 1></td>
         <td colspan = 1><%= remote_per_page_select %></td>
         <td colspan = 1>
          <% form_tag(laboratory_samples_url, :method => :get, :id => "goto") do %>
@@ -56,3 +56,4 @@
 </table>
 
 <br />
+

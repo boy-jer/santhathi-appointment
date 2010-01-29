@@ -1,5 +1,5 @@
 class Laboratory::MeasurementUnitsController < ApplicationController
-  layout proc{ |c| ['show','new', 'create'].include?(c.action_name)? 'laboratory_single_column' : 'laboratory'}
+  layout proc{ |c| ['show','new', 'create','edit'].include?(c.action_name)? 'laboratory_single_column' : 'laboratory'}
 
   def index
     @search = MeasurementUnit.new_search(params[:search])
@@ -54,3 +54,4 @@ class Laboratory::MeasurementUnitsController < ApplicationController
   end
 
 end
+

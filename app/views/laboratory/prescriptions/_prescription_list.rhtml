@@ -1,5 +1,5 @@
 
-<% unless @prescribed_test.blank? %>
+<% unless @prescriptions.blank? %>
 
 <table class="listing">
   <tr>
@@ -13,9 +13,9 @@
     <th> Presc. Details </th>
    </tr>
 
-  <% for test in @prescribed_tests %>
+  <% for prescription in @prescriptions %>
         <tr class="<%= cycle('odd', 'even') %>" >
-          <% prescription = test.prescription %>
+
           <% patient = prescription.appointment.patient %>
           <td> <%=h Time.parse(test.created_at.to_s).strftime('%Y-%m-%d') %>  </td>
           <td> <%=h patient.reg_no %>  </td>

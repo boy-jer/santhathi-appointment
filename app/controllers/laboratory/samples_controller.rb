@@ -1,5 +1,5 @@
 class Laboratory::SamplesController < ApplicationController
-  layout 'laboratory'
+layout proc{ |c| ['show','new', 'create','edit'].include?(c.action_name)? 'laboratory_single_column' : 'laboratory'}
   def index
     @search = Sample.new_search(params[:search])
     @search.per_page ||= 15
@@ -52,3 +52,4 @@ class Laboratory::SamplesController < ApplicationController
     redirect_to(laboratory_samples_url)
   end
 end
+

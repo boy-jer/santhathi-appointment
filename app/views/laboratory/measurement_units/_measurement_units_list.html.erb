@@ -4,7 +4,7 @@
     <th><%= remote_order_by_link(:abbreviation,:text =>"Abbreviation") %></th>
     <th><%= remote_order_by_link(:description,:text =>"Description") %></th>
     <th>Show</th>
-    <th>Modify</th>
+    <th>Edit</th>
     <th>Delete</th>
   </tr>
 
@@ -14,12 +14,12 @@
     <td><%=h measurement_unit.abbreviation %></td>
     <td><%=h measurement_unit.description %></td>
     <td><%= link_to 'Show', laboratory_measurement_unit_path(measurement_unit) , :rel=> "facebox"%></td>
-    <td><%= link_to 'Modify', edit_laboratory_measurement_unit_path(measurement_unit) %></td>
+    <td><%= link_to 'Edit', edit_laboratory_measurement_unit_path(measurement_unit) %></td>
     <td><%= link_to 'Delete', laboratory_measurement_unit_path(measurement_unit), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 <tr class="table-footer">
-  	<td colspan = 1><%= link_to "<span>New Measurement Unit</span>", new_laboratory_measurement_unit_path(), :class=> "button" %></td>
+  	<td colspan = 1></td>
         <td colspan = 1><%= remote_per_page_select %></td>
         <td colspan = 1>
          <% form_tag(laboratory_measurement_units_url, :method => :get, :id => "goto") do %>
@@ -56,3 +56,4 @@
 </table>
 
 <br />
+

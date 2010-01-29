@@ -7,7 +7,7 @@ class Laboratory::PrescriptionsController < ApplicationController
 
     @search.order_as ||= "DESC"
     @search.order_by ||= [:p_date ,:p_time]
-    @prescreptions = @search.all 
+    @prescreptions = @search.all
 
     respond_to do |format|
       format.html
@@ -55,7 +55,7 @@ class Laboratory::PrescriptionsController < ApplicationController
       @prescribed_services = @prescription.prescribed_tests.by_other_dept(lab_department.id)
       prescribed_tests = @prescription.prescribed_tests
       @services = prescribed_tests.map{|p| p.service.id}
-      respond_to do |format|  
+      respond_to do |format|
         format.html
         format.js { render :update do |page|
                        #page.replace_html "test_#{@lab_test.id}", :partial => '/laboratory/prescriptions/edit'
@@ -108,7 +108,7 @@ class Laboratory::PrescriptionsController < ApplicationController
         @prescribed_services = @prescription.prescribed_tests.by_other_dept(lab_department.id)
         prescribed_tests = @prescription.prescribed_tests
         @services = prescribed_tests.map{|p| p.service.id}
-        
+
         respond_to do |format|
           format.html
           format.js { render :update do |page|
@@ -120,3 +120,4 @@ class Laboratory::PrescriptionsController < ApplicationController
    end
 
 end
+
