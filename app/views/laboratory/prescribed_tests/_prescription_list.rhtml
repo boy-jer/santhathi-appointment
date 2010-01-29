@@ -22,7 +22,7 @@
 	  <td> <%= test.service.name %> </td>
 	  <td> <%= lab_report_for_prescribed_test(test).blank? ? (link_to "Create report", new_laboratory_prescribed_test_laboratory_report_path(test)) : (link_to "View report", laboratory_prescribed_test_laboratory_report_path(:prescribed_test_id => test, :id => test.service.laboratory_report)) %>
 	  </td>
-          <td> <%= link_to 'Details', laboratory_prescribed_test_path(prescription.id) , :rel=> "facebox" %></td>
+          <td> <%= link_to 'Details', laboratory_prescribed_test_path(test) , :rel=> "facebox" %></td>
 	</tr>
   <% end %>
 
@@ -54,3 +54,4 @@
                  :success => "Element.hide('spinner')",
                  :url => laboratory_prescribed_tests_url, :method => :get) %>
  </table>
+

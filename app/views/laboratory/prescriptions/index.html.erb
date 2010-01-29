@@ -1,7 +1,10 @@
-<div class='continer'>
+
+ <% content_for :header do -%>
+     Prescription List
+ <% end -%>
  <%=render :partial=> 'filters'%>
 
   <div id='prescription-list'>
      <%= render :partial=> 'prescription_list'%>
   </div>
-</div>
+

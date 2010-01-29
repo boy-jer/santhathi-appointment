@@ -2,7 +2,7 @@ class Laboratory::PrescribedTestsController < ApplicationController
   layout 'laboratory'
 
   def index
-    
+
     @search = PrescribedTest.new_search(params[:search])
     @search.per_page ||= 15
     @search.order_as ||= "DESC"
@@ -44,7 +44,7 @@ class Laboratory::PrescribedTestsController < ApplicationController
       params[:services].map{ |service| PrescribedTest.create(:prescription_id => @prescription.id, :service_id => service ) }
       @prescribed_tests = @prescription.prescribed_tests
       @services = @prescribed_tests.map{|p| p.service.id }
-      respond_to do |format|  
+      respond_to do |format|
         format.html
         format.js { render :update do |page|
                       page.replace_html 'clinical-screen', :partial => '/laboratory/prescribed_tests/edit'
@@ -74,9 +74,9 @@ class Laboratory::PrescribedTestsController < ApplicationController
                 }
     end
   end
-  
+
   def show
-    @prescription = Prescription.find(params[:id])
+    @prescribed_test = PrescribedTest.find(params[:id])
     render :layout => false
   end
 
@@ -130,3 +130,4 @@ def destroy
 
 
 end
+

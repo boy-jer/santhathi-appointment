@@ -1,5 +1,5 @@
 class Cms::PharmacyDosageListsController < ApplicationController
-  layout 'cms'
+  layout 'cms_single_column'
   def index
     @pharmacy_dosage_lists = PharmacyDosageList.paginate :page => params[:page],:per_page => 10
   end
@@ -45,3 +45,4 @@ class Cms::PharmacyDosageListsController < ApplicationController
   end
 
 end
+

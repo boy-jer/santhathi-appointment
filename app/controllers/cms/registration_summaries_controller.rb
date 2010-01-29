@@ -6,7 +6,7 @@ class Cms::RegistrationSummariesController < ApplicationController
 
   def show
     @registration_summary = RegistrationSummary.find(params[:id])
-    render :layout => false
+
   end
 
   def new

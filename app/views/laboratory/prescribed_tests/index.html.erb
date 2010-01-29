@@ -1,8 +1,11 @@
-<div class='continer'>
-  <h3 class = 'head'>Listing all prescribed tests </h3>
+ <% content_for :header do -%>
+   Listing all prescribed tests
+ <% end -%>
+
+
  <%=render :partial=> 'filters'%>
 
   <div id='prescription-list'>
      <%= render :partial=> 'prescription_list'%>
   </div>
-</div>
+

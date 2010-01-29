@@ -15,7 +15,7 @@
     <th>Registration summary</th>
     <th>Description</th>
     <th>Show</th>
-    <th>Modify</th>
+    <th>Edit</th>
     <th>Delete</th>
   </tr>
 
@@ -23,8 +23,8 @@
   <tr>
     <td><%=h registration_summary.name %></td>
     <td><%=h registration_summary.description %></td>
-    <td><%= link_to 'Show', cms_registration_summary_url(registration_summary) , :rel=> "facebox" %></td>
-    <td><%= link_to 'Modify', edit_cms_registration_summary_path(registration_summary) %></td>
+    <td><%= link_to 'Show', cms_registration_summary_url(registration_summary)  %></td>
+    <td><%= link_to 'Edit', edit_cms_registration_summary_path(registration_summary) %></td>
     <td><%= link_to 'Delete', cms_registration_summary_path(registration_summary), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

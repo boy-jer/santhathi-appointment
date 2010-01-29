@@ -1,7 +1,7 @@
+ <% content_for :header do -%>
+   Editing Pharmacy Dosage List
+ <% end -%>
 
-<div class='continer'>
-  <div class='continer-inner'>
-<h3>Editing Pharmacy Dosage List</h3><br/>
 
 
 <% form_for(:pharmacy_dosage_list ,:url => cms_pharmacy_dosage_list_url(@pharmacy_dosage_list) ,:html => { :method => :put }) do |f| %>
@@ -10,11 +10,10 @@
 
 <table cellpadding="5px" class="form-table">
 
-<tr><th> <%= f.label :dosage_type_name %>:</th><td>
+<tr><th> <%= f.label :dosage_type_name %> </th><td>
     <%= f.text_field :dosage_type_name,:classname =>"textbox" %></td></tr>
     </table><br/>
-    <%= f.submit "Update" %>
+    <%= f.submit "Update" %> or  <%= link_to 'Cancel and retrun to Pharmacy dosage list', cms_pharmacy_dosage_lists_path %>
 
 <% end %>
-<%= link_to 'Back', cms_pharmacy_dosage_lists_path %>
-</div></div>
+

@@ -1,5 +1,5 @@
 class Cms::DiseaseListsController < ApplicationController
-  layout 'cms'
+  layout 'cms_single_column'
   require_role ["doctor", "admin"]
 
   def index
@@ -46,3 +46,4 @@ class Cms::DiseaseListsController < ApplicationController
   end
 
 end
+

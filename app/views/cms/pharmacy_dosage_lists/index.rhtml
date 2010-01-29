@@ -1,14 +1,22 @@
-<div class='continer'>
-  <div class='continer-inner'>
-<h3>Pharmacy Dosage List</h3>
+ <% content_for :header do -%>
+   Pharmacy Dosage List
+ <% end -%>
 
-<br/>
+
+<div id = 'top-links'>
+   <div class = 'right'>
+      <%= link_to("<span>New Pharmacy Dosage list </span>", new_cms_pharmacy_dosage_list_path, :class => 'buttonAdd', :title => 'Create Pharmacy Dosage lis')  %>
+    </div>
+
+    <div class = 'clear'></div>
+  </div>
+
 
 <table class="listing">
   <tr>
     <th>Dosage type name</th>
     <th>Show</th>
-    <th>Modify</th>
+    <th>Edit</th>
     <th>Delete</th>
   </tr>
 
@@ -16,7 +24,7 @@
   <tr>
     <td><%=h pharmacy_dosage_list.dosage_type_name %></td>
     <td><%= link_to 'Show', cms_pharmacy_dosage_list_url(pharmacy_dosage_list), :rel=> "facebox" %></td>
-    <td><%= link_to 'Modify', edit_cms_pharmacy_dosage_list_path(pharmacy_dosage_list) %></td>
+    <td><%= link_to 'Edit', edit_cms_pharmacy_dosage_list_path(pharmacy_dosage_list) %></td>
     <td><%= link_to 'Delete', cms_pharmacy_dosage_list_url(pharmacy_dosage_list), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
@@ -25,7 +33,3 @@
 <br />
 <%= will_paginate @pharmacy_dosage_lists %>
 
-<%= link_to "<span>New #{params[:type]}</span>", new_cms_pharmacy_dosage_list_path(:type => params[:type]), :class=> "button" %>
-
-</div>
-</div>

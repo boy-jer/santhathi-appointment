@@ -1,8 +1,14 @@
-<div class='continer'>
-  <div class='continer-inner'>
-<h3>Disease Lists</h3>
+ <% content_for :header do -%>
+   Disease Lists
+ <% end -%>
 
-<br/>
+<div id = 'top-links'>
+   <div class = 'right'>
+      <%= link_to("<span>New Disease List </span>", new_cms_disease_list_path, :class => 'buttonAdd', :title => 'Create Disease List')  %>
+    </div>
+
+    <div class = 'clear'></div>
+  </div>
 
 <table class="listing">
   <tr>
@@ -14,7 +20,7 @@
     <th>Gyno history</th>
     <th>Description</th>
     <th>Show</th>
-    <th>Modify</th>
+    <th>Edit</th>
     <th>Delete</th>
   </tr>
 
@@ -28,7 +34,7 @@
     <td><%=h disease_list.gyno_history %></td>
     <td><%=h disease_list.description %></td>
     <td><%= link_to 'Show', cms_disease_list_url(disease_list) , :rel=> "facebox"  %></td>
-    <td><%= link_to 'Modify', edit_cms_disease_list_path(disease_list) %></td>
+    <td><%= link_to 'Edit', edit_cms_disease_list_path(disease_list) %></td>
     <td><%= link_to 'Delete', cms_disease_list_url(disease_list), :confirm => 'Are you sure?', :method => :delete %></td>  </tr>
 
 <%end%>
@@ -36,7 +42,3 @@
 <br />
 <%= will_paginate @disease_lists %>
 
-<%= link_to "<span>New #{params[:type]}</span>", new_cms_disease_list_path(:type => params[:type]), :class=> "button" %>
-
-</div>
-</div>
