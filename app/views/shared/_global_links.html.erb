@@ -1,4 +1,7 @@
 <% if logged_in? %>
+        <% unless current_day.blank? -%>
+           <span style='color:white;'>Current day: <%= current_day.for_date -%></span> | <%= link_to 'Close this day', close_accounting_days_path -%> | 
+        <% end -%> 
  	<%= link_to "My Account", profile_url(current_user) %> |
 	<% if admin? -%>
 	  <% unless request.request_uri =~ /admin/%>
@@ -6,7 +9,7 @@
 	  <% else -%>	
 	     <%= link_to "Go to application", pms_appointments_url %> |  
 	  <% end -%> 	  
-	<% end -%>
+	<% end -%>        
 	<%= link_to "Log out", logout_url, :method => :delete %>
 <% else %>
 	<%= link_to "Sign up", signup_url %> |
