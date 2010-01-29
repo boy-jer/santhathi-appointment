@@ -1,5 +1,5 @@
 class Cms::RegistrationSummariesController < ApplicationController
-  layout 'cms'
+  layout 'cms_single_column'
   def index
     @registration_summaries = RegistrationSummary.paginate :page => params[:page],:per_page => 10
   end
@@ -45,3 +45,4 @@ class Cms::RegistrationSummariesController < ApplicationController
   end
 
 end
+

@@ -1,4 +1,4 @@
-<% content_for :left_header do -%>
+<% content_for :header do -%>
    Listing all sent messages
 <%end-%>
 
@@ -31,10 +31,11 @@
      <%else%>
      <td><%=h message.contact_list.contact_number  unless message.contact_list_id.nil?  %></td>
      <%end%>
-    <td><%= link_to 'Show', admin_message_path(message,:contact_group_id => message.contact_group_id) %>  
+    <td><%= link_to 'Show', admin_message_path(message,:contact_group_id => message.contact_group_id) %>
     </td>
   </tr>
 <% end %>
 </table>
 
 <br />
+

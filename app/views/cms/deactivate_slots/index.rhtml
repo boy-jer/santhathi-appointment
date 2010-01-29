@@ -1,11 +1,20 @@
-<div class='continer'>
-<%= render :partial => 'filters' %>
-<br/>
+<% content_for :header do -%>
+  Deactivate Slot List
+<% end -%>
 
-<h3>Deactivate Slot List</h3>
+
+<%= render :partial => 'filters' %>
+
+
+   <div id = 'top-links'>
+   <div class = 'right'>
+      <%= link_to("<span> New Deactivate Slot </span>", new_cms_deactivate_slot_path(), :class => 'buttonAdd', :title => 'Create New deactivate slot')  %>
+    </div>
+
+    <div class = 'clear'></div>
+  </div>
 
  <div id='deactivate_slot'>
     <%=render :partial=> 'deactivate_slots_list' %>
   </div>
 
-</div>

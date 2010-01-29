@@ -1,4 +1,4 @@
-<% content_for :left_header do -%>
+<% content_for :header do -%>
    Contact lists
 <%end-%>
 
@@ -10,21 +10,21 @@
 
 <table>
 	<tr>
-		
+
 		<td>
 			<% form_tag(admin_contact_lists_path, :method => :get )do %>
 			<% fields_for @search do |f|%>
     		<% f.fields_for @search.conditions do |dealer| %>
        		 <span>Search:</span><%= dealer.text_field :name_like   %>
  			<%end%>
-  			<%end%> 
+  			<%end%>
 		</td>
-		<td>       
-   			<%=  submit_tag "Search" %> 
+		<td>
+   			<%=  submit_tag "Search" %>
 				<%end%>
 		</td>
         	<td>
-          		<%=link_to "Reset search",admin_contact_lists_path%> 
+          		<%=link_to "Reset search",admin_contact_lists_path%>
        		</td>
 	</tr>
 </table>
@@ -33,6 +33,4 @@
 <div id = 'contact-list'>
   <%=render :partial => "list"%>
 </div>
-
-
 

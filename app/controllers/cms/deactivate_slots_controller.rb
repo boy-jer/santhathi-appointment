@@ -1,5 +1,5 @@
 class Cms::DeactivateSlotsController < ApplicationController
-  layout 'cms'
+   layout proc{ |c| ['show','new', 'create','edit'].include?(c.action_name)? 'cms_single_column' : 'cms'}
   require_role ["doctor", "admin"]
 
   def index
@@ -97,12 +97,12 @@ class Cms::DeactivateSlotsController < ApplicationController
   end
 
   private
-  
+
   def calculate_slots(dt1 ,dt2)
     slots = []
-    while(dt1< dt2) 
+    while(dt1< dt2)
       slots << "#{dt1.strftime('%H:%M').to_s}"
-      dt1 += TIMING_SLOT.minutes 
+      dt1 += TIMING_SLOT.minutes
     end
     return slots
   end
@@ -116,9 +116,10 @@ class Cms::DeactivateSlotsController < ApplicationController
     remain_min =  ((dt2 - dt1)/60)
     if remain_min != 0.0
       slot << "#{(dt1.strftime('%H:%M').to_s)}-#{(dt1 = dt1 + remain_min.minutes).strftime('%H:%M').to_s}"
-    end  
+    end
     return slot
 
  	end
 
 end
+

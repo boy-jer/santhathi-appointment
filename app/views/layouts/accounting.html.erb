@@ -22,23 +22,23 @@
 
        <%= render :partial => 'admin/shared/tabs' %>
 
-		
+
      <div id="content_main" class="clearfix">
         <div id="dashboard" class="left">
-	   <h2 class="ico_mug"> <%= yield :left_header %> </h2>
+	   <h2 class="ico_mug"> <%= yield :header %> </h2>
 	   <div class="clearfix">
 	      <div class="inner_wrapper"><%= render :partial => 'shared/layout_body' %></div>
 	   </div>
         </div><!-- end #dashboard -->
 
-	 
+
 	<div id="sidebar" class="right">
            <div class="inner_wrapper">
 	    <div id='account_navigation'>
 	      Accounts <br />
 		<%= button_to 'Accounts', accounts_path, :method => :get, :style => "color:#050;font:bold 84% 'trebuchet ms',helvetica,sans-serif;background-color:#fed;border:1px solid;border-color: #696 #363 #363 #696;cursor:pointer;width:150px;" %> <br />
 		<%= button_to 'Account Groups', account_groups_path, :method => :get, :style => "color:#050;font:bold 84% 'trebuchet ms',helvetica,sans-serif;background-color:#fed;border:1px solid;border-color: #696 #363 #363 #696;cursor:pointer;width:150px;" %> <br />
-	     
+
 		<br />
 		Reports <br />
 		<%= button_to 'Entries', account_transactions_path, :method => :get, :style => "color:#050;font:bold 84% 'trebuchet ms',helvetica,sans-serif;background-color:#fed;border:1px solid;border-color: #696 #363 #363 #696;cursor:pointer;width:150px;" %> <br />
@@ -55,19 +55,20 @@
 		<%= button_to 'Sales Voucher', new_sales_voucher_entry_path, :method => :get, :style => "color:#050;font:bold 84% 'trebuchet ms',helvetica,sans-serif;background-color:#fed;border:1px solid;border-color: #696 #363 #363 #696;cursor:pointer;width:150px;" %> <br />
 		<%= button_to 'Purchase Voucher', new_purchase_voucher_entry_path, :method => :get, :style => "color:#050;font:bold 84% 'trebuchet ms',helvetica,sans-serif;background-color:#fed;border:1px solid;border-color: #696 #363 #363 #696;cursor:pointer;width:150px;" %> <br />
 		<%= button_to 'Contra Voucher', new_contra_voucher_entry_path, :method => :get, :style => "color:#050;font:bold 84% 'trebuchet ms',helvetica,sans-serif;background-color:#fed;border:1px solid;border-color: #696 #363 #363 #696;cursor:pointer;width:150px;" %> <br />
-	      
+
 	      __________________<br /><br />
-	      <%= button_to 'Close Financial Year', close_accounting_periods_path, :method => :get, :style => "color:#050;font:bold 84% 'trebuchet ms',helvetica,sans-serif;background-color:#DC9292;border:1px solid;border-color: #696 #363 #363 #696;cursor:pointer;width:150px;" %> <br />      
+	      <%= button_to 'Close Financial Year', close_accounting_periods_path, :method => :get, :style => "color:#050;font:bold 84% 'trebuchet ms',helvetica,sans-serif;background-color:#DC9292;border:1px solid;border-color: #696 #363 #363 #696;cursor:pointer;width:150px;" %> <br />
 	    </div>
            </div>
 	</div><!-- end #sidebar -->
 
-     </div><!-- end #content_main -->	
+     </div><!-- end #content_main -->
    </div><!-- end #content -->
-		   
+
     <div id="footer" class="clearfix">
        <%= render :partial => 'shared/footer' %>
     </div>
 </div><!-- end container -->
 </body>
 </html>
+

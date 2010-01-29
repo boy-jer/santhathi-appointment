@@ -1,7 +1,14 @@
-<div class='continer'>
-  <div class='continer-inner'>
-<h3>Registration Summaries</h3>
-<br/>
+ <% content_for :header do -%>
+   Registration Summaries
+ <% end -%>
+
+<div id = 'top-links'>
+   <div class = 'right'>
+      <%= link_to("<span>New Registration summary</span>", new_cms_registration_summary_path(), :class => 'buttonAdd', :title => 'Create Registration summary')  %>
+    </div>
+
+    <div class = 'clear'></div>
+  </div>
 
 <table class="listing">
   <tr>
@@ -27,7 +34,3 @@
 <br />
 <%= will_paginate @registration_summaries %>
 
-<%= link_to "<span>New #{params[:type]}</span>", new_cms_registration_summary_path(:type => params[:type]), :class=> "button" %>
-
-</div>
-</div>

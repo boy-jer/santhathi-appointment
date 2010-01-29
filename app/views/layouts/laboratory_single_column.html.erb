@@ -14,16 +14,16 @@
      <div id="top_menu" class="clearfix">
         <%= render :partial => 'shared/laboratory_sub_tabs' %>
      </div>
-		
+
      <div id="content_main" class="clearfix">
-       <h2 class="ico_mug"><%= yield :left_header%> </h2>
+       <h2 class="ico_mug"><%= yield :header%> </h2>
        <div id="content_wrapper">
-	  
+
 	  <%= render :partial => 'shared/layout_body' %>
        </div>
-     </div><!-- end #content_main -->	
+     </div><!-- end #content_main -->
     </div><!-- end #content -->
-		   
+
     <div  id="footer" class="clearfix">
        <%= render :partial => 'shared/footer' %>
     </div>
@@ -31,3 +31,4 @@
 
 </body>
 </html>
+

@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <%= render :partial => 'shared/head' %>
-    
+
 </head>
 
 <body>
@@ -20,24 +20,24 @@
      <div id="top_menu" class="clearfix">
         <%= render :partial => 'shared/pms_sub_tabs' %>
      </div>
-		
+
      <div id="content_main" class="clearfix">
         <div id="dashboard" class="left">
-	   <h2 class="ico_mug"> <%= yield :left_header %> </h2>
+	   <h2 class="ico_mug"> <%= yield :header %> </h2>
 	   <div class="clearfix">
 	      <div class="inner_wrapper"><%= render :partial => 'shared/layout_body' %></div>
 	   </div>
         </div><!-- end #dashboard -->
 
-	 
+
 	<div id="sidebar" class="right">
 	   <h2 class="ico_mug"> Searchbar </h2>
            <div class="inner_wrapper"> <%= yield :sidebar %></div>
 	</div><!-- end #sidebar -->
 
-     </div><!-- end #content_main -->	
+     </div><!-- end #content_main -->
    </div><!-- end #content -->
-		   
+
     <div id="footer" class="clearfix">
        <%= render :partial => 'shared/footer' %>
     </div>
@@ -45,3 +45,4 @@
 
 </body>
 </html>
+

@@ -1,5 +1,5 @@
 class Cms::ServicesController < ApplicationController
- layout proc{ |c| ['show','new', 'create'].include?(c.action_name)? 'cms_single_column' : 'cms'}
+ layout proc{ |c| ['show','new', 'create','edit'].include?(c.action_name)? 'cms_single_column' : 'cms'}
   def index
     @departments = Department.find(:all)
     @search = Service.new_search(params[:search])
@@ -63,3 +63,4 @@ class Cms::ServicesController < ApplicationController
     redirect_to(cms_services_path ())
   end
 end
+

@@ -1,8 +1,16 @@
-<div class='continer'>
-  <h3 class = 'head'> Listing Doctor Records </h3>
+ <% content_for :header do -%>
+     Listing Doctor Records
+ <% end -%>
+   <div id = 'top-links'>
+   <div class = 'right'>
+      <%= link_to("<span>New Doctor Record </span>", new_pms_doctor_url, :class => 'buttonAdd', :title => 'Create New Doctor')  %>
+    </div>
+
+    <div class = 'clear'></div>
+  </div>
   <%=render :partial=> 'filters'%>
-  
+
   <div id='doctor-list'>
     <%=render :partial=> 'doctors_list'%>
   </div>
-</div>
+

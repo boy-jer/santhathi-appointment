@@ -1,5 +1,5 @@
 class Pms::DepartmentsController < ApplicationController
-  layout 'pms'
+  layout proc{|c| ['show','new', 'create','edit'].include?(c.action_name)? 'pms_single_column' : 'pms'}
 
   def index
     @search = Department.new_search(params[:search])
@@ -52,3 +52,4 @@ class Pms::DepartmentsController < ApplicationController
     redirect_to(pms_departments_url)
   end
 end
+

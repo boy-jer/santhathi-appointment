@@ -1,4 +1,4 @@
-<% content_for :left_header do -%>
+<% content_for :header do -%>
    Editting service record
 <%end-%>
 
@@ -31,7 +31,6 @@
 
   </table><br /><br/>
    <%= f.submit "update" %> | <%= link_to "Cancel", cms_services_path() %> | <%= link_to "Delete",cms_service_path(@service), :confirm => 'Are you sure?', :method => :delete %>
-   
-<% end %>
 
+<% end %>
 

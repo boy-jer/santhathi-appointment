@@ -1,14 +1,13 @@
-<div class='continer'>
-<label> Showing <%=h @option.type %> </label>
+<% content_for :header do -%>
+    Showing <%=h @option.type %>
+<% end -%>
+
 <p>
   <b>Name :</b>
   <%=h @option.name %>
 </p>
 
-<p>
-  <b>Abbrevation:</b>
-  <%=h @option.abbrevation %>
-</p>
+
 
 <p>
   <b>Description:</b>
@@ -21,3 +20,4 @@
 <%= link_to 'Edit', edit_pms_select_option_url(@option) %> |
 <%= link_to 'Back', pms_select_options_url %>
 </div>
+

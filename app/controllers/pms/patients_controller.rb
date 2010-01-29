@@ -1,5 +1,5 @@
 class Pms::PatientsController < ApplicationController
-  layout 'pms'
+  layout proc{ |c| ['show','new', 'create', 'edit','associate_couple'].include?(c.action_name)? 'pms_single_column' : 'pms'}
 
   def index
     @search = Patient.new_search(params[:search])
@@ -178,3 +178,4 @@ class Pms::PatientsController < ApplicationController
 
 
 end
+

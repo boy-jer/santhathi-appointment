@@ -1,8 +1,11 @@
-<div class='continer'>
-  <fieldset >
+
+
 
      <% if @type == "Appointment"%>
-     <label><h2> Appointments </h2></label><br/>
+      <% content_for :header do -%>
+        Appointments
+      <% end -%>
+
       <ul>
           <li> <%= link_to "Date Wise Report", date_wise_reports_pms_pms_reports_url()%> </li>
           <li> <%= link_to "Department Wise Report", department_wise_report_pms_pms_reports_url()   %> </li>
@@ -10,18 +13,22 @@
           <li> <%= link_to "AppointmentType Report",appointment_type_report_pms_pms_reports_url()%>
       </ul>
      <% elsif @type =="Registration" %>
-     <label><h2>Registration Reports </h2></label><br/>
+      <% content_for :header do -%>
+        Registration Reports
+      <% end -%>
+
       <ul>
           <li> <%= link_to "VisitType Report",visit_type_report_pms_pms_reports_url() %> </li>
           <li> <%= link_to "Referral Reports", pms_patients_path%> Not done</li>
       </ul>
 
        <%elsif @type == "vist_report"%>
-      <label><h2>Visit Report </h2></label><br/>
+        <% content_for :header do -%>
+        Visit Report
+      <% end -%>
+
        <ul>
           <%= link_to "Visit Report List",pms_patients_path%> Not done </li>
        </ul>
        <%end%>
 
-  </fieldset>
-</div>

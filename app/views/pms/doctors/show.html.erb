@@ -1,17 +1,17 @@
-<div class='continer'>
-  <div class='continer-inner'>
-   <table class ="listing">
-     <tr><th> Department:</th> <td><%=h Department.find(@doctor.doctor_profile.department_id).dept_name %> </td> </tr>
-     <tr><th> Doctor name:</th> <td> <%=h @doctor.doctor_profile.name %> </td> </tr>
-     <tr><th>Designation:</th> <td> <%=h @doctor.doctor_profile.designation %> </td> </tr>
-     <tr><th>Medical:</th> <td> <%=h @doctor.doctor_profile.medical_id %> </td> </tr>
-     <tr><th>Working from:</th> <td> <%=h Time.parse(@doctor.doctor_profile.working_from.to_s).strftime('%H:%M').to_s %> </td> </tr>
-     <tr><th>Working to:</th> <td> <%=h Time.parse(@doctor.doctor_profile.working_to.to_s).strftime('%H:%M').to_s %></td> </tr>
-     <tr><th>Comments:</th> <td> <%=h @doctor.doctor_profile.comments %> </td> </tr>
-   </table>
+<% content_for :header do -%>
+   Showing <%=h @doctor.doctor_profile.name %> details
+<% end -%>
+
+     <p><b> Department:</b><%=h Department.find(@doctor.doctor_profile.department_id).dept_name %> </p>
+     <p><b> Doctor name:</b> <%=h @doctor.doctor_profile.name %> </p>
+     <p><b>Designation:</b> <%=h @doctor.doctor_profile.designation %> </p>
+     <p><b>Medical:</b> <%=h @doctor.doctor_profile.medical_id %> </p>
+     <p><b>Working from:</b> <%=h Time.parse(@doctor.doctor_profile.working_from.to_s).strftime('%H:%M').to_s %> </p>
+     <p><b>Working to:</b> <%=h Time.parse(@doctor.doctor_profile.working_to.to_s).strftime('%H:%M').to_s %></p>
+     <p><b>Comments:</b> <%=h @doctor.doctor_profile.comments %> </p>
+
 
  <br/>
 <%= link_to 'Edit', edit_pms_doctor_url(@doctor) %> |
 <%= link_to 'Back', pms_doctors_url %>
-</div>
-</div>
+

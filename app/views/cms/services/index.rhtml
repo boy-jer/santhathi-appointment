@@ -1,10 +1,17 @@
-<% content_for :left_header do -%>
+<% content_for :header do -%>
   Service list
 <% end %>
 
-<%=render :partial=> 'filters'%> <br /> 
+<%=render :partial=> 'filters'%> <br />
 <div id='service-list'>
-    <%= link_to "<span>Create New Service</span>", new_cms_service_path, :method => :get , :class=> "button"%> <br /><br /><br />
+   <div id = 'top-links'>
+   <div class = 'right'>
+      <%= link_to("<span>Create New Service</span>", new_cms_service_path, :class => 'buttonAdd', :title => 'Create New Service')  %>
+    </div>
+
+    <div class = 'clear'></div>
+  </div>
+
     <div id="sidetree">
        <table><tr><td><div id="sidetreecontrol"><a href="?#">Collapse All</a> | <a href="?#">Expand All</a> </div></td>
             </tr>
@@ -23,3 +30,4 @@
         </ul>
      </div>
    </div>
+

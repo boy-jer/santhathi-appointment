@@ -16,7 +16,7 @@
 <% end %>
 
 <tr class="table-footer">
-  	     <td colspan =4><%= link_to "<span>Create New #{params[:type]}</span>", new_pms_select_option_url(:type => params[:type]), :class=> "button" %></td>
+  	     <td colspan =4></td>
          <td colspan = 2> <% if @options.size > 1 %>
                              <div class="pagination">
                                 <%= remote_page_links %>
@@ -28,3 +28,4 @@
 
 <br />
 </div>
+

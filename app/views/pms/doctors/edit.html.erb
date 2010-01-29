@@ -1,4 +1,4 @@
-<% content_for :left_header do -%>
+<% content_for :header do -%>
    Editting doctor record
 <%end-%>
 
@@ -34,9 +34,7 @@
 
    <br />
 
-    <%= f.submit "Update" %> or <%= link_to 'Cancel', pms_doctors_url %>
+    <%= f.submit "Update" %> or <%= link_to 'Cancel and return to doctor list', pms_doctors_url %>
 
 <% end %>
-
-
 

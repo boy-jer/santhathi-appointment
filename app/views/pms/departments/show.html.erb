@@ -1,4 +1,7 @@
-<div class='continer'>
+<% content_for :header do -%>
+    Showing Department <%=h @department.dept_name %>
+<% end -%>
+
 <p>
   <b>Dept name:</b>
   <%=h @department.dept_name %>
@@ -21,4 +24,4 @@
 
 <%= link_to 'Edit', edit_pms_department_url(@department) %> |
 <%= link_to 'Back', pms_departments_url %>
-</div>
+

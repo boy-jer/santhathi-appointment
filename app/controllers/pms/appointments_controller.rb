@@ -1,7 +1,7 @@
 class Pms::AppointmentsController < ApplicationController
   layout proc{|c| ['show','new', 'create'].include?(c.action_name)? 'pms_single_column' : 'pms'}
   require 'fastercsv'
-  
+
 
   def index
     unless params.has_key?(:date) #If it is a ajax request to update doctor's schedule don't do search TODO: move it to separate action
@@ -10,8 +10,8 @@ class Pms::AppointmentsController < ApplicationController
       @search.per_page ||= 15
       @search.order_as ||= "DESC"
       @search.order_by ||= "appointment_date"
-      
-      @appointments = @search.all 
+
+      @appointments = @search.all
     end
 
     respond_to do |format|
@@ -19,7 +19,7 @@ class Pms::AppointmentsController < ApplicationController
       format.js { render :update do |page|
                     unless params[:tab]
                       page.replace_html 'appointment-list', :partial => 'appointments_list'
-                    else  
+                    else
                       page.replace_html 'appointment-list', :partial => 'appointments_list_table'
                     end
                   end
@@ -147,15 +147,15 @@ class Pms::AppointmentsController < ApplicationController
 
   def confirm
     @appointment = Appointment.find(params[:id])
-	if @appointment.patient.reg_no.blank? 
+	if @appointment.patient.reg_no.blank?
       flash[:notice] = "Patient is not yet registered, Please Register first."
-    else  
+    else
        if @appointment.new_appointment?
         @appointment.mark_visited!
         page = params[:page].blank? ? 1 : params[:page]
        end
     end
-    redirect_to(pms_appointments_url(:page => page)) 
+    redirect_to(pms_appointments_url(:page => page))
   end
 
 
@@ -176,3 +176,4 @@ class Pms::AppointmentsController < ApplicationController
   end
 
 end
+

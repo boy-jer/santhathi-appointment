@@ -1,5 +1,5 @@
 class Pms::SelectOptionsController < ApplicationController
- layout 'pms'
+    layout proc{ |c| ['show','new', 'create', 'edit'].include?(c.action_name)? 'pms_single_column' : 'pms'}
 
   def index
   # @type = params[:type]
@@ -20,7 +20,7 @@ class Pms::SelectOptionsController < ApplicationController
 
   def show
   	@option = SelectOption.find(params[:id])
-  	render :layout => false
+
  	end
 
   def edit
@@ -57,3 +57,4 @@ class Pms::SelectOptionsController < ApplicationController
   end
 
 end
+

@@ -1,4 +1,4 @@
-<% content_for :left_header do -%>
+<% content_for :header do -%>
    Edit contact groups
 <%end-%>
 <% form_for([:admin,@contact_group],:html => {:id => 'main-form'}) do |f| %>
@@ -19,7 +19,7 @@
    			  <td><%= h group_contact.name%></td>
 			  <td><%= h group_contact.contact_number%></td>
 		</tr>
-	
+
 	   		<%end%>
   		<%@non_group_contacts.each do |non_group_contact| %>
   		<tr>
@@ -33,6 +33,4 @@
 		<%= f.submit 'Update' %>
   	</p>
 <% end %>
-
-   
 

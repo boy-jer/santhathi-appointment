@@ -20,7 +20,7 @@
 <% for patient in @patients %>
   <tr class="<%= cycle('odd', 'even') %>">
  <td class='radio-column'><%=radio_button_tag ('patient', patient.id, checked = false, options = {:onclick => "$('main_form').patient_id.value=#{patient.id};"})%></td>
-   
+
     <td><%= patient.reg_no.blank? ? link_to('Register', edit_pms_patient_url(patient)) : patient.reg_no %> </td>
     <td><%=h Time.parse(patient.reg_date.to_s).strftime('%d-%m-%y') %></td>
     <td><%=h patient.patient_name %></td>
@@ -34,12 +34,12 @@
 </table>
 <table class='table-bottom'>
   <tr class="table-footer">
-      <td colspan = 3><%= link_to "<span>Create New Patient Record</span>", new_pms_patient_url, :class=> "button" %></td>
+      <td colspan = 3> </td>
       <td colspan = 1>
       <% form_tag(new_pms_appointment_path, :id => 'main_form') do -%>
          <input id="patient_id" name="patient_id" type="hidden" value=""/>
          <a class="button" onclick="$(this).up('form').submit(); return false;"><span>Create Appointment</span></a>
-         
+
       <%end%>
 
        </td>
@@ -64,3 +64,4 @@
                  :before => "Element.show('spinner')",
                  :success => "Element.hide('spinner')",
                  :url => pms_patients_url, :method => :get) %>
+

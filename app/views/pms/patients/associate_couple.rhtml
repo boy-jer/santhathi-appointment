@@ -6,7 +6,7 @@
          <%end%>
 </div>
 
-<h3 id='patient-search-header'>  Associate Couple:  <span>(Enter atleast one search parameter:)</span></h3>
+<% content_for :header do -%> Associate Couple:  <span>(Enter atleast one search parameter:)</span> <%end%>
   <div class='left-box'>
 
   <% form_remote_tag(:url =>{ :action => :patient_search}, :html => {:id => 'left_form'}) do %>
@@ -48,6 +48,7 @@
   <% form_tag(associate_spouse_pms_patients_url, :id => 'main_form') do -%>
        <input id="patient_id" name="patient_id" type="hidden" value=""/>
        <input id="spouse_id" name="spouse_id" type="hidden" value=""/>
-  <button> Associate </button>  
+  <button> Associate </button>
   <%end%>
     </div>
+

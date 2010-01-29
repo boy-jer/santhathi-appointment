@@ -21,7 +21,7 @@
 </table>
 <table class='table-bottom'>
     <tr class="table-footer">
-      <td colspan = 2> <%= link_to "<span>New #{params[:type]}</span>", new_cms_deactivate_slot_path(:type => params[:type]), :class=> "button" %> </td>
+      <td colspan = 2>  </td>
       <td colspan = 2> <%= remote_per_page_select %></td>
       <td colspan = 2> <% form_tag(cms_deactivate_slots_path, :method => :get ) do %>
                               <% fields_for @search do |f|%>
@@ -44,3 +44,4 @@
     </table>
 
    <br/>
+

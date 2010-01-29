@@ -1,21 +1,21 @@
-<% content_for :left_header do -%>
+<% content_for :header do -%>
    New message
 <%end-%>
 
 <% form_for(@message,:html => {:id => 'main-form'}) do |f| %>
-  <%= f.error_messages %>	
+  <%= f.error_messages %>
 <div class = "left part1">
           <p><%= f.select :id, all_messages, options={:prompt => 'Select saved message'}%></p>
           <%= image_tag("spinner.gif",
                	    :border => 0,
                     :id => "spinner",
-                    :style =>"display: none;" ) %> </p> 
-     
+                    :style =>"display: none;" ) %> </p>
+
          <p><%= f.text_area :message_body, :class => 'textbox' %> </p>
         <p><span id="counter"></span>&nbsp; characters left to complete one message.</p>
-        
 
-     
+
+
   <p>
     <div class = 'clear'> </div>
     <%= f.submit 'Send SMS' %>
@@ -29,19 +29,19 @@
                   :url => {:action=>'render_message_template'}, :method => :get,
                   :with => "'admin_message_id=' + value")%>
 
-  
+
 <div class = "left part2">
    <p><%= select:contact_group, "contact_group", [['Select group', '']] + all_contact_groups %> or </p>
 
         <div id = 'contact'>
-          <%=render :partial => "mobile_number"%> 
+          <%=render :partial => "mobile_number"%>
         </div>
 
 	<%= image_tag("spinner.gif",
                	    :border => 0,
                     :id => "spinner1",
                     :style =>"display: none;" ) %>
- 
+
         <p><div id = 'contact-number'> </div></p>
 
 </div>

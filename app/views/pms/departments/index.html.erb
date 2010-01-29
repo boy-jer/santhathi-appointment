@@ -1,10 +1,16 @@
-<div class='continer'>
+  <% content_for :header do -%>
+     Listing All Departments
+  <%end-%>
+   <div id = 'top-links'>
+   <div class = 'right'>
+      <%= link_to("<span>New department </span>", new_pms_department_url, :class => 'buttonAdd', :title => 'Create New Department')  %>
+    </div>
 
- <%=render :partial=> 'filters'%>
+    <div class = 'clear'></div>
+  </div>
 
-  <h3 class='head'>Listing All Departments</h3>
+  <%=render :partial=> 'filters'%>
   <div id='department_list'>
      <%=render :partial=> 'departments_list'%>
   </div>
 
-</div>

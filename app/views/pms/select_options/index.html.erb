@@ -1,7 +1,19 @@
-<div class='continer'>
+<% content_for :header do -%>
+  Listing All <%= params[:type].pluralize%>
+<% end -%>
+
+<div id = 'top-links'>
+   <div class = 'right'>
+      <%= link_to("<span>Create New #{params[:type]}</span>",new_pms_select_option_url(:type => params[:type]), :class => 'buttonAdd', :title => "Create New #{params[:type]}")  %>
+    </div>
+
+    <div class = 'clear'></div>
+  </div>
+
+
     <%=render :partial=> 'filters'%>
     <div id='select_option_list'>
-        <h3 class = 'head'> Listing All <%= params[:type].pluralize%> </h3>
+
         <%=render :partial=> 'select_option_list'%>
     </div>
-</div>
+

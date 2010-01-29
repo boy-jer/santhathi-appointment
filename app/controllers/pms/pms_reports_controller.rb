@@ -1,5 +1,5 @@
 class Pms::PmsReportsController < ApplicationController
-  layout 'pms'
+  layout 'pms_single_column'
 
   def index
   	#@type = params[:type].nil? @type ="Appointment" : @type = params[:type]
@@ -117,3 +117,4 @@ end
    @search.group = [:appointment_date]
     @search.select = ['count(*) AS count_all, appointment_date AS appointment_date']
 =end
+

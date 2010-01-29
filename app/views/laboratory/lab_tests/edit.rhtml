@@ -1,4 +1,4 @@
-<% content_for :left_header do -%>
+<% content_for :header do -%>
   Editing laboratory test
 <% end %>
 
@@ -9,7 +9,7 @@
     <tr> <th><%= f.label :test_name %></th>
      <td><%= f.text_field :name, {:class => 'textbox'} %></td> </tr>
 
-     <tr><th><label>Approximate Time For Test</label></th> 
+     <tr><th><label>Approximate Time For Test</label></th>
          <td><%= time_select("lab_test", "duration")  %></td>
      </tr>
      <tr> <th><%= f.label :pre_requisites %></th>

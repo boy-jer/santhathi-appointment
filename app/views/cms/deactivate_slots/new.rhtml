@@ -1,6 +1,6 @@
-<div class='continer'>
-
-<h3>New Deactivate Slot</h3><br/>
+<% content_for :header do -%>
+ New Deactivate Slot
+<% end -%>
 
 <% form_for(:deactivate_slot ,:url => cms_deactivate_slots_url ,:html =>{ :method =>:post} ) do |f| %>
   <%= f.error_messages %>
@@ -42,7 +42,7 @@
 
   </div>
   <br />
-      <%= image_submit_tag "create.gif" %>
+      <%= image_submit_tag "create.gif" %> or <%= link_to 'Cancle and Retrun to Deactivate slot list',cms_deactivate_slots_url %>
 
 <% end %>
 <%= observe_field(:department_id, :frequency => 1.5,
@@ -53,7 +53,3 @@
                     :with => "'department_id=' + value"
                    ) %>
 
-
-
-
-</div>

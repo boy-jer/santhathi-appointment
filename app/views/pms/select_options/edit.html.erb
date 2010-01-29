@@ -1,6 +1,6 @@
-<div class='continer'>
-
-     <h2>Editing <%= params[:type] %></h2>
+ <% content_for :header do -%>
+     New <%= params[:type] %>
+ <% end -%>
      <% form_for (:option, :url => pms_select_option_url(@option),:html => {:method =>:put }) do |f| %>
      <%= f.error_messages %>
 
@@ -12,10 +12,8 @@
        <%= f.label :description %><br />
        <%= f.text_field :description, {:class => 'textbox'} %>
 
-       <table><tr><td><%= submit_tag "submit" %></td> </tr></table>
+       <table><tr><td><%= submit_tag "submit" %> or <%= link_to 'Cancel and return ', pms_select_options_path(:type =>  params[:type]) %> </td> </tr></table>
      </p>
 
    <% end %>
-<%= link_to 'Back', pms_select_options_url(:type =>@option.type) %>
 
-</div>

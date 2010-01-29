@@ -1,14 +1,12 @@
-<div class='continer'>
+
      <% form_for :patient,:url=> pms_patients_url do |f| %>
        <%= f.error_messages %>
        <%= render :partial => @partial, :locals => {:f => f} %>
        <div class = 'clear'> </div>
        <p>
          <br />
-         <tabel><tr> <td> <button> Create </button> or 
+         <tabel><tr> <td> <button> Create </button> or
                      </td> <td><%= link_to 'Cancel and return to Patient List', pms_patients_url %></td></tr></table>
        </p>
      <% end %>
 
-     
-</div>

@@ -1,9 +1,11 @@
+<% content_for :header do -%>
+    Listing all Appointments
+<% end -%>
 
-<div class='continer'>
 
-  <%= render :partial => 'filters' %> 
+  <%= render :partial => 'filters' %>
   <%= render :partial => 'reason_display' %>
- 
+
 
   <!-- Ajax search result indicator -->
   <%= image_tag("spinner.gif",
@@ -18,4 +20,3 @@
     <br />
   </div>
 
-</div>

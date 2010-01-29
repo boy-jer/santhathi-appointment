@@ -1,4 +1,4 @@
-<% content_for :left_header do -%>
+<% content_for :header do -%>
    List of messages templates
 <%end-%>
 
@@ -18,7 +18,7 @@
   <tr>
     <td><%=h saved_message.title %></td>
     <td><%=h saved_message.description %></td>
- 
+
     <td><%= link_to 'Show', admin_saved_message_path(saved_message)%>|
     <%= link_to 'Edit', edit_admin_saved_message_path(saved_message) %>|
     <%= link_to 'Destroy', admin_saved_message_path(saved_message), :confirm => 'Are you sure?', :method => :delete %></td>
@@ -27,5 +27,4 @@
 </table>
 
 <br />
-
 
