@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password, :password_confirmation
   helper_method :s, :current_company, :user_default_branch, :current_day, :current_accounting_period
   #before_filter :require_current_accounting_period, :require_current_day
-  before_filter :logged_in
+  before_filter :logged_in, :require_current_accounting_period, :require_current_day
 
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
