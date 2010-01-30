@@ -1,6 +1,4 @@
       <div class ='left part1'>
-        
-        <h3>Laboratory prescriptions </h3>
         <% for test in @lab_services %>
           <p><%=image_tag('pointer.gif', :border => 0) %> &nbsp;
             <%= link_to_remote("<b>#{test.name}</b> Prescription",
@@ -15,7 +13,6 @@
       </div>
 
       <div class ='left part2'>   
-        <h3>Other prescriptions </h3>
         <p><%=image_tag('pointer.gif', :border => 0) %> &nbsp;
            <%= link_to_remote("Pharmacy prescription" ,
                             :before => "jQuery('#spinner').show()",

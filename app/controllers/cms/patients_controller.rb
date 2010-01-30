@@ -1,5 +1,5 @@
 class Cms::PatientsController < ApplicationController
-  layout 'cms'
+  layout 'cms_single_column'
 
   def index
     @search = Appointment.new_search(params[:search])

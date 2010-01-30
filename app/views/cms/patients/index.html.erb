@@ -5,19 +5,12 @@
   <div>
     <p>
        <%form_tag (discharge_cms_doctor_patients_path(current_user.id), :method=>:post )do %>
-         <table>
-           <tr>
-             <td> Discharge patients visited on: &nbsp;&nbsp;</td>
-             <td><%= text_field_tag "date", Date.today , :class =>'textbox-small' %></td>
-             <td><%= submit_tag "Discharge" %></td> <td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>
-           </tr>
-         </table>
-           <br />
+         
          <table >
            <tr>
 
-             <td>Prescribed:  &nbsp;</td><td style="width: 15px; border: #ddd 1px solid; background: #ECF7FF"> </td> <td> &nbsp; </td>
-             <td>Discharge Recommended:  &nbsp; </td><td style="width: 15px;border: #ddd 1px solid; background: #F1FED7"></td> <td> &nbsp;  &nbsp; &nbsp; </td>
+             <td>Prescribed:  &nbsp;</td><td style="width: 15px; border: #ddd 1px solid; background: #ECF7FF"> </td> <td> &nbsp; &nbsp;&nbsp;</td>
+             <td>Discharge Recommended:  &nbsp; </td><td style="width: 15px;border: #ddd 1px solid; background: #baf8c0"></td>
            </tr>
         </table>
       <%end%>
@@ -42,4 +35,11 @@
      <%=render :partial=> 'patient_list'%>
   </div>
   <br />
-
+  <table>
+           <tr>
+             <td> Discharge patients visited on: &nbsp;&nbsp;</td>
+             <td><%= text_field_tag "date", Date.today , :class =>'textbox-small' %></td>
+             <td><%= submit_tag "Discharge" %></td> <td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>
+           </tr>
+         </table>
+           <br />

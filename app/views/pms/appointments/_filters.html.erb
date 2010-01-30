@@ -1,39 +1,49 @@
 <%content_for :sidebar do -%>
   <div class="search1">
-      <p> <label>No of records, I want to see </label> <%= remote_per_page_select -%>   </p>
- 
+       
 	  <%form_remote_tag(:url => pms_appointments_url, :method => :get) do -%>
 	     <%fields_for @search do |f|%>
               <% f.fields_for @search.conditions do |p| %>
-			     <p>
-                   <% unless Doctor.doctors_list.blank? %>
-                      <%= p.select :doctor_id_like,  [['Select doctor', '']] + Doctor.doctors_list, :class =>'select-list' %>
-                   <%end%>
-		         </p>
-
-			     <p><label>Appointment Date:</label>
-                    <%= p.text_field :appointment_date_like, :class =>'textbox-small', :id => "date" %>
-                 </p>
+			   <table class ='listing'>
+			      <tr>
+				    <th>Doctor</th>
+				    <th>Date</th>
+				    <th>Patient</th>
+				    <th>Hospital No</th>
+				    <th>Phone No</th>
+					<th>Search</th>
+			       </tr>
+				   <tr>
+                     <td>
+				       <% unless Doctor.doctors_list.blank? %>
+                         <%= p.select :doctor_id_like,  [['Select doctor', '']] + Doctor.doctors_list, :class =>'select-list' %>
+                       <%end%>
+				     </td>
+				    	 
+		             <td>
+                       <%= p.text_field :appointment_date_like, :class =>'textbox-small', :id => "date" %>
+                     </td>
 				 <% p.fields_for p.object.patient do |patient| %>
-                    <p>
-					   <label>Patient Name:</label>
+                    <td>
                        <%= patient.text_field :patient_name_like, :class => 'textbox-small' %>
-                    </p>
+                    </td>
 
-                    <p>
-                       <label>Registration No: </label>
+                    <td>
                        <%= patient.text_field :reg_no_like, :class => 'textbox-small' %>
-                    </p>
+                    </td>
 
-                    <p>
-                       <label> Phone No: </label>
+                    <td>
                        <%= patient.text_field :contact_no_like, :class => 'textbox-small' %>
-					</p>
-                 <%end%>
-                 
+					</td>
+				  <%end%>
+				<td>
+				   <input type="reset" value="Reset" /> &nbsp; <button> Search</button>
+				</td>
+				</tr>
+			  </table>
 			  <%end%>
 		 <%end%>
-		 <input type="reset" value="Reset" /> &nbsp; &nbsp;  <button> Search</button>
+		 
 
 	  <%end%> 
 

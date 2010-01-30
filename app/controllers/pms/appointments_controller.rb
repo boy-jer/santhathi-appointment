@@ -1,5 +1,5 @@
 class Pms::AppointmentsController < ApplicationController
-  layout proc{|c| ['show','new', 'create'].include?(c.action_name)? 'pms_single_column' : 'pms'}
+  layout proc{|c| ['show','new', 'create', 'index'].include?(c.action_name)? 'pms_single_column' : 'pms'}
   require 'fastercsv'
 
 

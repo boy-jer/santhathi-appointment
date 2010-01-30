@@ -3,19 +3,37 @@
   <%form_remote_tag(:url => cms_patients_url, :method => :get) do %>
      <% fields_for @search do |f|%>
        <% f.fields_for @search.conditions do |p| %>
-                 
-         <% if admin? %>
-           <p> <%=  p.select :doctor_id ,  [['Select doctor' , '']] + Doctor.doctors_list, :class =>'select-list' %> </p>
-         <% end %>
-         <p> <label> Appointment date : </label> <%= p.text_field :appointment_date_like, :class =>'textbox-small' ,:id =>'date' %> </p>
-          <% p.fields_for p.object.patient do |patient| %>
-           <p> <label> Patient name : </label> <%= patient.text_field :patient_name_like, :class => 'textbox' %> </p>
-           <p> <label> Registration No: </label> <%= patient.text_field :reg_no_like, :class => 'textbox-small' %>  </p>
-          <%end%> 
-         <input class="textbox-small" id="search_conditions_state_is" name="search[conditions][state_is]"  value="visited" type="hidden">
+         <table class ='listing'>
+			<tr>
+			  <th>Doctor</th>
+			  <th>Date</th>
+			  <th>Patient</th>
+			  <th>Hospital No</th>
+			  <th>Search</th>
+			</tr>
+			<tr>
+              <td>        
+                <% if admin? %>
+                  <%=  p.select :doctor_id ,  [['Select doctor' , '']] + Doctor.doctors_list, :class =>'select-list' %>
+                <% end %>
+			  </td>	
+              <td>
+			    <%= p.text_field :appointment_date_like, :class =>'textbox-small' ,:id =>'date' %>
+			  </td> 	
+			  
+              <% p.fields_for p.object.patient do |patient| %>
+                <td><%= patient.text_field :patient_name_like, :class => 'textbox-small' %> </td>
+                <td> <%= patient.text_field :reg_no_like, :class => 'textbox-small' %>  </td>
+              <%end%> 
+             <input class="textbox-small" id="search_conditions_state_is" name="search[conditions][state_is]"  value="visited" type="hidden">
+			 <td>
+				   <input type="reset" value="Reset" /> &nbsp; <button> Search</button>
+			 </td>
+		</tr>
+		</table>
        <% end %>
      <% end %>
-      <input type="reset" value="Reset"> &nbsp;&nbsp; <%= submit_tag "Search" %> 
+      
   <% end %>
   </div>
  <% end -%>

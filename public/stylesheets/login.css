@@ -45,7 +45,7 @@ quotes: "" "";
 /* ---------------- restting all default styles end here -----------------------*/
 html{ height: 100%;}
 
-body{ font-size:14px;font-family: Arial, Helvetica, sans-serif;color:#000;background:url(/images/img/bg.jpg) repeat-x #7097be;line-height:16px;}
+body{ font-size:14px;font-family: Arial, Helvetica, sans-serif;color:#000;background:url(/images/img/bg.jpg) repeat-x #D4E3F7;line-height:16px;}
 
 a{color:#162635;text-decoration:none;}
 a:hover{text-decoration:underline;}

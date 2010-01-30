@@ -16,8 +16,8 @@
       </tr>
 
     <%for appointment in @appointments %>
-     <tr id = <%=row_class(appointment.state)%> >
-         <td><%= check_box_tag("appointment[]", appointment.id, false,:id=>appointment.id)%></td>
+     <tr>
+         <td  id = <%=row_class(appointment.state)%> ><%= check_box_tag("appointment[]", appointment.id, false,:id=>appointment.id)%></td>
          <td><%=h appointment.patient.reg_no %></td>
          <td><%=h appointment.id%></td>
          <td><%=h appointment.patient.patient_name%></td>
@@ -36,7 +36,14 @@
     <tr class="table-footer">
 
        <td colspan = 2> <%= remote_per_page_select %></td>
-        <td colspan = 2> <% form_tag(cms_patients_url, :method => :get, :id => "goto") do %>
+        
+       <td colspan=6> <% if @appointments.size > 1 %>
+                          <div class="pagination">
+                                <%= remote_page_links %>
+                          </div>
+                          <%end%>
+         </td>
+		 <td colspan = 2> <% form_tag(cms_patients_url, :method => :get, :id => "goto") do %>
                                         <% fields_for @search do |f|%>
                                           <%= f.text_field :page, :class => 'textbox-tiny' %>
 
@@ -46,12 +53,6 @@
 
 
         </td>
-       <td colspan=6> <% if @appointments.size > 1 %>
-                          <div class="pagination">
-                                <%= remote_page_links %>
-                          </div>
-                          <%end%>
-         </td>
      </tr>
 
 

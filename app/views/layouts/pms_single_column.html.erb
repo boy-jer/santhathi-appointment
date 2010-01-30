@@ -27,9 +27,11 @@
      <div id="content_main" class="clearfix">
        <h2 class="ico_mug"><%= yield :header%> </h2>
        <div id="content_wrapper">
-	  
-	  <%= render :partial => 'shared/layout_body' %>
+	      <%= yield :sidebar %>
+		  <br />
+	      <%= render :partial => 'shared/layout_body' %>
        </div>
+	    
      </div><!-- end #content_main -->	
     </div><!-- end #content -->
 		   

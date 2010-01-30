@@ -6,10 +6,10 @@
 
    <div id = 'top-links'>
     <div class = 'left' id = 'listing_links'>
-      <%= link_to_remote "#{image_tag('/images/img/list_view.png')} Show appointments as list", :url =>{ :controller => "/pms/appointments" ,:action =>"index" ,:tab => false },:method =>:get %>  &nbsp; or &nbsp;
-      <%= link_to_remote "#{image_tag('/images/img/tablular_view.png')} Show appointments in table",:url =>{ :controller => "/pms/appointments" ,:action =>"index" ,:tab => true },:method =>:get %>
+      <%= link_to_remote "#{image_tag('/images/img/list_view.png')}", :url =>{ :controller => "/pms/appointments" ,:action =>"index" ,:tab => false },:method =>:get %>  &nbsp; | &nbsp; 
+      <%= link_to_remote "#{image_tag('/images/img/tablular_view.png')}",:url =>{ :controller => "/pms/appointments" ,:action =>"index" ,:tab => true },:method =>:get %>
     </div>
-
+    
     <div class = 'right'>
       <%= link_to("<span>New Appointment</span>", new_pms_appointment_path, :class => 'buttonAdd', :title => 'Create New Appointment')  %>
     </div>
@@ -19,6 +19,6 @@
 
 
   <div id='appointment-list'>
-     <%=render :partial=> 'appointments_list'%>
+     <%=render :partial=> 'appointments_list_table'%>
   </div>
 

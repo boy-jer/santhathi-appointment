@@ -11,7 +11,6 @@
     <th><%= remote_order_by_link(:appointment_time, :text => "Time") %></th>
     <th><%= remote_order_by_link({:doctor => :name}, :text => "Doctor") %></th>
     <th><%= remote_order_by_link({:patient => :patient_name}, :text => "Patient") %></th>
-    <th>Reason</th>
 
     <th><%= remote_order_by_link :status %></th>
     <th><%= remote_order_by_link ({:patient => :reg_no}, :text => "Reg.No" )%></th>
@@ -25,7 +24,6 @@
     <td><%=h Time.parse(appointment.appointment_time.to_s).strftime('%H:%M').to_s %></td>
     <td>  <%=h appointment.doctor.doctor_profile.name%></td>
     <td><%= link_to appointment.patient.patient_name, pms_patient_url(appointment.patient), :rel=> "facebox" %></td>
-    <td><%=h appointment.reason.name %></td>
 
 
     <td><%= appointment.state == 'new_appointment'? link_to('Confirm', confirm_pms_appointment_url(appointment, :page => params[:page]), :method => :get, :confirm => 'This action will mark this appointment as patient visited. are you sure?') : status(appointment.state) %></td>
