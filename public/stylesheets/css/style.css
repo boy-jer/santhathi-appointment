@@ -115,7 +115,7 @@ STRUCTURE					 */
 
 #footer{clear:both; }
 #content_main{background:#fff; padding:12px;-moz-border-radius:3px;}
-#top_menu{background: #96C0F3 url(/images/img/menutop1.jpg) no-repeat top center;width:100%;margin-top:10px; height:26px; border: 1px solid #a5bccb;}
+#top_menu{background: #98bfe7 url(/images/img/menutop1.jpg) no-repeat top center;width:100%;margin-top:10px; height:26px; border: 1px solid #a5bccb;}
 #profile_info{background:url(/images/img/loginbox.jpg) no-repeat top center;width:231px;height:59px;padding:4px;float:right;margin-top:0px;font-size:12px;color:#fff;line-height:10px;}
 #profile_info p{background:none;}
 #avatar{float:left;margin:0px 10px;}
@@ -250,7 +250,7 @@ input#post_title{width:925px;margin:0px;border-left:1px solid #a8a8a8;border-top
 
 }
 
-.listing td { padding: .8em .5em .8em .5em; color: #000; border-bottom:1px solid #96ABBB; }
+.listing td { padding: .7em .5em .7em .5em; color: #000; border-bottom:1px solid #96ABBB; }
 .listing tr{background: #FfFfFf; }
 
 .listing .even {background: #FFF;}
@@ -531,7 +531,7 @@ table.form-table-small{width: 60%;}
 
 .clinical-table{border-collapse: collapse; background-color: #fbfbfb; color: #000; width: 100%; border: 1px solid #808080; margin: 4px; }
 
-#first_tab a{color: #881280;}
+#first_tab a{color: #881280; font-size: 12px;}
 /*--------------------------Lab test reports ------------------*/
 .report-create th {background: #eee; text-align: left; padding: 0.3em .5em .3em .5em; border-bottom:1px solid #ABBFCF; font-size: 12px; font-weight: bold;}
 
@@ -667,7 +667,7 @@ a.buttonAdd:hover span {
   height :10px;
 }
 #color5{
-  background-color :#EEF6FF;
+  background-color :#5387bc;
   width :15px;
   height :5px;
 }
