@@ -1,5 +1,5 @@
 <h3>Payment</h3>
-<% form_for(setup_payment(@payment), :url => pos_appointment_payments_path(@appointment_id)) do |f| %>
+<% form_for(setup_payment(@payment), :url => pos_appointment_payments_path(@appointment)) do |f| %>
 <div>
   <%= f.error_messages %>
 </div>
@@ -11,6 +11,23 @@
         <th style='border:1px solid black;'>Amount</th>
         <th style='border:1px solid black;'>Total Amount</th>
       </tr>
+      <% unless @prescribed_services.blank? -%>
+        <% @prescribed_services.each do |service| -%>
+          <% f.fields_for :payment_items do |payment_form| %>
+             <tr>
+               <td>
+                 <%= payment_form.text_field :payable_name, :value => service.name %>
+                 <%= payment_form.hidden_field :payable_type %>
+               </td>
+               <td><%= payment_form.text_field :quantity, :size => 5, :value => 1 %></td>
+               <td><%= payment_form.text_field :amount, :value => service.cost %></td>
+               <td><%= payment_form.text_field :total_amount, :value => service.cost -%></td>
+             </tr>
+           <% end -%>
+        <% end -%>
+
+      <% end -%>
+
       <% f.fields_for :payment_items do |payment_form| %>
         <tr>
           <td>

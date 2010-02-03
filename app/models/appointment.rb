@@ -8,18 +8,14 @@ class Appointment < ActiveRecord::Base
   belongs_to :patient
   belongs_to :reason
   belongs_to :mode
-
-  #belongs_to :department
   has_one :prescription
-  has_many :laboratory_test_results
-  has_one :clinical_screen
   has_one :discharge_summary
   has_one :next_appointment_remark
   has_one :clinical_comment
   has_many :pharmacy_prescriptions
   has_many :refer_doctors
 
-  validates_presence_of :doctor_id, :reason_id, :mode_id, :appointment_date
+  validates_presence_of :doctor_id, :reason_id, :mode_id, :appointment_date, :appointment_time
 
   aasm_column :state
   aasm_initial_state :new_appointment
@@ -61,7 +57,7 @@ class Appointment < ActiveRecord::Base
   named_scope :active, lambda { |time| { :conditions => ["state != ?", 'canceled'] } }
 
   def update_time
-    time = "#{hour}:#{minute}" unless hour.blank?
+    time = Time.parse("#{hour}:#{minute}") unless hour.blank?
     write_attribute(:appointment_time, time) unless time.blank?
   end
 

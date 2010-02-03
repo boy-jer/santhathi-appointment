@@ -42,7 +42,7 @@ class Cms::ServicesController < ApplicationController
     @service = Service.find(params[:id])
     if @service.update_attributes(params[:service])
       flash[:notice] = 'Service was successfully updated.'
-      redirect_to(cms_services_path ())
+      redirect_to(cms_services_path())
     else
       render :action => "edit"
     end
@@ -60,7 +60,7 @@ class Cms::ServicesController < ApplicationController
   def destroy
     @service = Service.find(params[:id])
     @service.destroy
-    redirect_to(cms_services_path ())
+    redirect_to(cms_services_path())
   end
 end
 

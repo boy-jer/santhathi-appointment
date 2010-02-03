@@ -8,7 +8,7 @@
 
   <table class="form-table">
      <tr> <th><%= f.label :department %></th>
-     <td><%= f.select :department_id, Department.departments_for_select_list_without_lab %></td> <th COLSPAN=2>Service - Visit Type Mapping </th></tr>
+     <td><%= f.select :department_id, Department.departments_for_select_list %></td> <th COLSPAN=2>Service - Visit Type Mapping </th></tr>
      <tr><th> <%= f.label :name %></th><td>
      <%= f.text_field :name, {:class => 'textbox'} %></td>
 

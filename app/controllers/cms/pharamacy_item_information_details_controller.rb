@@ -44,7 +44,7 @@ class Cms::PharamacyItemInformationDetailsController < ApplicationController
     respond_to do |format|
       if @pharamacy_item_information_detail.update_attributes(params[:pharamacy_item_information_detail])
         flash[:notice] = 'PharamacyItemInformationDetail was successfully updated.'
-        format.html { redirect_to(cms_pharamacy_item_informations_path () ) }
+        format.html { redirect_to(cms_pharamacy_item_informations_path() ) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

@@ -12,12 +12,14 @@ class Pos::PaymentsController < ApplicationController
   end
 
   def new
-    @appointment_id = params[:appointment_id]
+    @appointment = Appointment.find(params[:appointment_id])
     @payment = Payment.new
     @inventory_items = user_default_branch.inventory_items.non_consumables.all
     @services = Service.all
     @inventory_groups = user_default_branch.inventory_groups.all
     @departments = Department.all
+    @prescribed_services = @appointment.prescription.prescribed_tests.map{|pt| pt.service}
+    @prescribed_medicines = @appointment.pharmacy_prescriptions
   end
 
   def create
