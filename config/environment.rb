@@ -17,7 +17,9 @@ Rails::Initializer.run do |config|
   config.gem "configatron"
   config.gem "calendar_date_select"
   #config.gem "ruby-openid", :lib => "openid"
-
+  config.gem "thoughtbot-shoulda", :lib => "shoulda", :source => "http://gems.github.com"
+  config.gem "factory_girl", :source => "http://gemcutter.org"
+  #config.gem 'searchlogic', :version => '1.6.5', :source => "http://gems.github.com"
   # Make Time.zone default to the specified zone, and make Active Record store time values
   # in the database in UTC, and return them converted to the specified local zone.
   config.time_zone = 'UTC'
