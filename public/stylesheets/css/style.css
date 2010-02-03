@@ -115,7 +115,7 @@ STRUCTURE					 */
 
 #footer{clear:both; }
 #content_main{background:#fff; padding:12px;-moz-border-radius:3px;}
-#top_menu{background: #98bfe7 url(/images/img/menutop1.jpg) no-repeat top center;width:100%;margin-top:10px; height:26px; border: 1px solid #a5bccb;}
+#top_menu{background: #98bfe7 url(/images/img/menutop1.jpg) no-repeat top center;width:100%;margin-top:10px; height:26px; border: 1px solid #a5bccb; border-bottom: 1px solid #313647;}
 #profile_info{background:url(/images/img/loginbox.jpg) no-repeat top center;width:231px;height:59px;padding:4px;float:right;margin-top:0px;font-size:12px;color:#fff;line-height:10px;}
 #profile_info p{background:none;}
 #avatar{float:left;margin:0px 10px;}
@@ -169,13 +169,9 @@ span.date{display:block;padding-left:20px; font-style:italic;font-family:10px;}
 a#visit{display:block;color:#fff;background:#4780ae;border-left:1px solid #084577;border:1px solid #7ab7e8;padding:4px;margin:5px 15px 0px 0px;-moz-border-radius:3px;}
 a.add{display:block;width:80px;text-align:center;color:#fff;background:#4780ae;border:1px solid #4780ae;padding:4px;margin:10px 15px 0px 0px;-moz-border-radius:3px;text-transform:uppercase;}
 
-
-
 #table_options ul li a {color:#000;display:block;padding-top:5px;}
 
-
-
-input#post_title{width:925px;margin:0px;border-left:1px solid #a8a8a8;border-top:1px solid #a8a8a8;border-right:1px solid #d8d8d8;border-bottom:1px solid #d8d8d8;-moz-border-radius:3px;font-size:28px;padding:5px;}
+minput#post_title{width:925px;margin:0px;border-left:1px solid #a8a8a8;border-top:1px solid #a8a8a8;border-right:1px solid #d8d8d8;border-bottom:1px solid #d8d8d8;-moz-border-radius:3px;font-size:28px;padding:5px;}
 .form_sidebar span{display:block;padding:5px 5px;background:#eee;margin-bottom:10px;}
 #save{width:100px;color:#fff;background:#4780ae;border-left:1px solid #084577;border-top:1px solid #084577;border-right:1px solid #7ab7e8;border-bottom:1px solid #7ab7e8;}
 
@@ -363,6 +359,11 @@ textarea.textbox:focus{
 	text-align:center;
 	background:  url('/images/img/menu-bg.gif') no-repeat;
 
+}
+
+#menu .current {
+color: #2e69a5;
+background:  url('/images/img/menu-hover-bg.gif') no-repeat;
 }
 /******************************Appointment listing section***********************/
 .clear{ clear:both;}

@@ -1,15 +1,14 @@
 <div id="menu">
    <ul>
-        <li><%= tab_to "PMS", [{:controller => "pms/appointments" , :action => "index"}] %></li>
+        <li><%= link_to "PMS",  pms_appointments_url, :class =>('current' if request.request_uri =~ /pms/) %></li>
 
-	           <% if doctor? or admin? -%>
-	              <li>  <%= link_to "CMS",  cms_doctor_patients_url(current_user.id)  %>  </li>
-	           <% end %>
+	<% if doctor? or admin? -%>
+	    <li>  <%= link_to "CMS",  cms_doctor_patients_url(current_user.id), :class =>('current' if request.request_uri =~ /cms/)  %>  </li>
+	<% end %>
 
-
-        <li><%= tab_to "Laboratory",[{:controller => "laboratory/prescribed_tests" ,:action =>"index"}] %></li>
-        <li><%= tab_to "Inventory", [{:controller => "/inventory_items"}] %></li>
-        <li><%= tab_to "Accounts", [{:controller => "/accounts"}] %></li>
-        <li><%= tab_to "POS", [{:controller => "pos/payments"}] %></li>
+        <li><%= link_to "Laboratory",  laboratory_prescribed_tests_path, :class =>('current' if request.request_uri =~ /laboratory/) %></li>
+        <li><%= link_to "Inventory", inventory_items_url, :class =>('current' if request.request_uri =~ /inventory/)%></li>
+        <li><%= link_to "Accounts", accounts_url, :class =>('current' if request.request_uri =~ /accounts/) %></li>
+        <li><%= link_to "POS",  pos_payments_url, :class =>('current' if request.request_uri =~ /pos/)  %></li>
    </ul>
 </div>
