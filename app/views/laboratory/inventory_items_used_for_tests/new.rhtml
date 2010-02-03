@@ -1,0 +1,30 @@
+<% content_for :header do -%>
+  Adding inventory item used for test <%=  @lab_test.name %>
+<% end %>
+
+<% form_for (:inventory_item_used_for_test, :url => laboratory_lab_test_inventory_items_used_for_tests_path(@lab_test) , :html => { :method => :post }) do |f| %>
+
+  <%= f.error_messages %>
+<table class="form-table">
+  <tr><th><label>Inventory item</label></th>
+      <td>
+        <%= f.collection_select :inventory_item_id, InventoryItem.non_consumables, :id, :name, options ={:prompt => "-Select an Item"} %>
+      </td>
+  </tr>
+  <tr><th><label>Quantity</label></th>
+      <td>
+        <%= f.text_field :quantity, :class =>'textbox-tiny', :value => '1'%>
+      </td>
+  </tr> 
+  <tr><th><label>Comments</label></th>
+      <td>
+        <%= f.text_area :comments, :class =>'textbox' %>
+      </td>
+  </tr> 
+  </table>
+  <br />
+ <%= submit_tag "Create" %> or <%= link_to 'Back',  laboratory_lab_test_inventory_items_used_for_tests_path(@lab_test) %>
+    
+<% end %>
+
+

@@ -1,0 +1,3 @@
+module Laboratory::InventoryItemsUsedForTestsHelper
+
+end

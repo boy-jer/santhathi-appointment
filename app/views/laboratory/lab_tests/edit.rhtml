@@ -19,7 +19,8 @@
   <tr><td><%= f.submit "Save" %> </td>
       <td>|<%= link_to "Sample specfications", laboratory_lab_test_sample_specfications_path(@lab_test) %> </td>
       <td>|<%= link_to "Parameter specfications",  laboratory_lab_test_parameter_specifications_path(@lab_test) %> </td>
-      <td>|<%= link_to "Test list",  laboratory_lab_tests_path %> </td>
+      <td>|<%= link_to "Back to test list",  laboratory_lab_tests_path %> </td>
+      <td>|<%= link_to "Inventory items used",  laboratory_lab_test_inventory_items_used_for_tests_path(@lab_test) %> </td>
       <td>|<%= link_to "Delete",  laboratory_lab_test_path(@lab_test), :confirm => 'Are you sure, you want to delete this?', :method => :delete %> </td>
   </tr>
 </table>

@@ -45,6 +45,14 @@ class Laboratory::LaboratoryReportsController < ApplicationController
   def create
     @laboratory_report = LaboratoryReport.new(params[:laboratory_report])
     @laboratory_report.save
+    #reduce the inventory item balance
+    inventory_items = PrescribedTest.find(params[:prescribed_test_id]).service.inventory_items_used_for_tests
+    #unless inventory_items.blank?
+      #inventory_items.each |it| do
+        #item = InventryItem.find(it.inventory_item_id)
+        #item.update_attribute('balance', item.opening_balance - it.quantity)
+      #end
+    #end
     specs = params[:specifications]
   
     specs[:ids].each_pair{ |key, value| LaboratoryTestResult.create(:parameter_specification_id => key,

@@ -39,12 +39,12 @@ ActionController::Routing::Routes.draw do |map|
 
 
    map.namespace(:laboratory) do |laboratory|
-   	 laboratory.root :controller => 'laboratory/prescribed_tests', :action => 'index'
-   	 laboratory.resources :prescriptions
-   	 laboratory.resources :parameters
+     laboratory.root :controller => 'laboratory/prescribed_tests', :action => 'index'
+     laboratory.resources :prescriptions
+     laboratory.resources :parameters
      laboratory.resources :samples
      laboratory.resources :measurement_units
-     laboratory.resources :lab_tests ,:has_many =>[:sample_specfications, :parameter_specifications]
+     laboratory.resources :lab_tests ,:has_many =>[:sample_specfications, :parameter_specifications, :inventory_items_used_for_tests]
      laboratory.resources :prescribed_tests , :has_many => :laboratory_reports
      laboratory.resources :laboratory_test_results, :collection => { :details =>:get }
    end
