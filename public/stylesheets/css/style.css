@@ -115,7 +115,7 @@ STRUCTURE					 */
 
 #footer{clear:both; }
 #content_main{background:#fff; padding:12px;-moz-border-radius:3px;}
-#top_menu{background: #98bfe7 url(/images/img/menutop1.jpg) no-repeat top center;width:100%;margin-top:10px; height:26px; border: 1px solid #a5bccb; border-bottom: 1px solid #313647;}
+#top_menu{background: #98bfe7 url(/images/img/menutop1.jpg) no-repeat top center;width:100%;margin-top:10px; height:26px; border: 1px solid #a5bccb; border-bottom: 1px solid #7b705a;}
 #profile_info{background:url(/images/img/loginbox.jpg) no-repeat top center;width:231px;height:59px;padding:4px;float:right;margin-top:0px;font-size:12px;color:#fff;line-height:10px;}
 #profile_info p{background:none;}
 #avatar{float:left;margin:0px 10px;}
@@ -362,7 +362,7 @@ textarea.textbox:focus{
 }
 
 #menu .current {
-color: #2e69a5;
+color: #fff;
 background:  url('/images/img/menu-hover-bg.gif') no-repeat;
 }
 /******************************Appointment listing section***********************/
