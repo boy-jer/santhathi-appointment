@@ -5,6 +5,7 @@
     <th>Patient</th>
     <th>State</th>
     <th>Total</th>
+    <th>Billed on</th>
     <th>Action</th>
   </tr>
   <% @bills.each do |bill| -%>
@@ -14,7 +15,20 @@
       <td><%= h bill.appointment.patient.patient_name unless bill.appointment.blank? -%></td>
       <td><%= h bill.state.humanize unless bill.state.blank? -%></td>
       <td><%= h bill.total_bill_amount-%></td>
+      <td><%= Time.parse(bill.created_at.to_s).strftime("%d-%m-%y") -%></td>
       <td><%= link_to 'Details', pos_payment_path(bill) -%></td>
     </tr>
   <% end -%>
+</table>
+<table class='table-bottom'>
+  <tr class="table-footer">
+    <td><%= per_page_select -%></td>
+    <td> 
+      <% unless @bills.blank? -%>
+        <div class="pagination">
+          <%= page_links -%>
+        </div>
+      <% end %>
+    </td>
+  </tr>
 </table>

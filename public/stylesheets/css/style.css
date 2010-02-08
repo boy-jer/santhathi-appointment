@@ -736,3 +736,7 @@ table.links a{color: #2064a4; padding: 0px 10px 0px 10px; font-weight: bold;}
 .pos_payment_item_numeric {
  text-align: right;
 }
+
+#bill_items_table td, th {
+  padding: 5px;
+}
