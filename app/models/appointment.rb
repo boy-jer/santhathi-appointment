@@ -1,6 +1,6 @@
 class Appointment < ActiveRecord::Base
   include AASM
-  before_save :update_time
+  before_validation :update_time
 
   attr_accessor :hour, :minute
 
@@ -25,6 +25,8 @@ class Appointment < ActiveRecord::Base
   aasm_state :canceled
   aasm_state :recommend_for_discharge
   aasm_state :prescribed
+  aasm_state :bill_generated
+  aasm_state :bill_paid
 
   aasm_event :mark_visited do
     transitions :to => :visited, :from => [:new_appointment]
@@ -42,6 +44,17 @@ class Appointment < ActiveRecord::Base
    transitions :to => :prescribed, :from => [:visited, :recommend_for_discharge]
   end
 
+  aasm_event :generate_bill do
+   transitions :to => :bill_generated, :from => [:recommend_for_discharge]
+  end
+
+  aasm_event :cancel_bill do
+   transitions :to => :recommend_for_discharge, :from => [:bill_generated]
+  end
+
+  aasm_event :pay_bill do
+   transitions :to => :bill_paid, :from => [:bill_generated]
+  end
 
   named_scope :on_date, lambda { |date| {:conditions => ["appointment_date = ?", date ] } }
   named_scope :status, lambda { |state| {:conditions => ["state = ?", state] } }

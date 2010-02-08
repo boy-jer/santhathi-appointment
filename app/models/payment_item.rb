@@ -8,7 +8,7 @@ class PaymentItem < ActiveRecord::Base
   validates_numericality_of :amount, :total_amount, :quantity
 
   before_validation :set_payable_id
-  after_create :transact_account_on_create
+#  after_create :transact_account_on_create
 
   private
 
@@ -16,6 +16,7 @@ class PaymentItem < ActiveRecord::Base
     self.payable_id = eval("#{payable_type}.find_by_name(payable_name).id") if payable_id.blank?
   end
 
+=begin
   def transact_account_on_create
     cash_account = Account.find_by_name(CASH_AC[:name])
     cash_debit = {:category => 'Debit', :amount => total_amount, :account_id => cash_account.id}
@@ -37,4 +38,5 @@ class PaymentItem < ActiveRecord::Base
     end
     transaction.save!
   end
+=end
 end

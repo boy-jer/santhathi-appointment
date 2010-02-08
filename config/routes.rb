@@ -125,7 +125,8 @@ ActionController::Routing::Routes.draw do |map|
     pos.resources :appointments do |appointment|
       appointment.resources :payments
     end
-    pos.resources :payments
+    pos.resources :payments, :member => {:recieve_payment => :post, :cancel_payment => :post}
+    pos.resources :bills
   end
 
   map.root :controller => 'dashboard', :action => 'home'

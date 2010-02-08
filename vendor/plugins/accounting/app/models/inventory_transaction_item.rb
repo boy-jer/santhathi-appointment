@@ -35,13 +35,20 @@ class InventoryTransactionItem < ActiveRecord::Base
           quantity_change = quantity
         end
         self.inventory_closing_stock_quantity = inventory_item.current_quantity - quantity_change
+      when "LaboratoryUse"
+        if unit_type == 'Sub'
+          quantity_change = quantity.quo(inventory_item.inventory_unit_of_measurement.unit_value)
+        elsif unit_type == 'Main'
+          quantity_change = quantity
+        end
+        self.inventory_closing_stock_quantity = inventory_item.current_quantity - quantity_change      
     end
   end
 
   def set_transaction_date_and_type
-    self.accounting_day_id = account_transaction.accounting_day_id
-    self.transaction_date = account_transaction.transaction_date
-    self.branch_id = account_transaction.branch_id
+    self.branch = account_transaction.branch unless account_transaction.blank?
+    self.accounting_day_id = branch.default_current_open_day.id 
+    self.transaction_date = accounting_day.for_date
   end
 
   def update_current_quantity_in_inventory_items

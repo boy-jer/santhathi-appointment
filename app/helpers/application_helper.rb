@@ -135,7 +135,27 @@ module ApplicationHelper
 
   def setup_payment(payment)
     returning(payment) do |p|
-      p.payment_items.build([{},{},{},{},{}]) if p.payment_items.blank?
+      if p.payment_items.blank?
+        @prescribed_services.each do |service|
+          p.payment_items.build(:payable_name => service.name,
+                                :quantity => 1,
+                                :amount => service.cost,
+                                :total_amount => service.cost,
+                                :payable_type => service.class
+                               )
+        end
+        @prescribed_medicines.each do |ph_med|
+          p.payment_items.build(:payable_name => ph_med.inventory_item.name,
+                                :quantity => ph_med.quantity,
+                                :amount => ph_med.inventory_item.sub_unit_sale_price,
+                                :total_amount => (ph_med.quantity * ph_med.inventory_item.sub_unit_sale_price),
+                                :payable_type => ph_med.inventory_item.class
+                               )
+        end
+      end
+      (10 - p.payment_items.length).times do
+        p.payment_items.build
+      end
     end
   end
 

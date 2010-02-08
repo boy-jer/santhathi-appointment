@@ -706,3 +706,33 @@ table.visit_report tr td.second{width: 430px;}
 table.links a{color: #2064a4; padding: 0px 10px 0px 10px; font-weight: bold;}
 
 .only-for-print {display: none;}
+
+/* POS */
+.pos_group {
+  width: 100px;
+  height: 50px;
+  background: #D8E4C3;
+}
+
+.pos_group_navigator {
+  width: 100px;
+  height: 50px;
+}
+
+.pos_group_item {
+  width: 100px;
+  height: 50px;
+  background: #FEE4C9;
+}
+
+.pos_payment_item_text {
+ border: 1px solid white;
+}
+
+.pos_payment_item_text:focus {
+ background: #EDEAE7;
+}
+
+.pos_payment_item_numeric {
+ text-align: right;
+}

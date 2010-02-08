@@ -28,11 +28,32 @@ class Pos::PaymentsController < ApplicationController
     @payment.appointment_id = @appointment_id
     if @payment.save
       flash[:notice] = 'Payment has been done succussfully'
-      redirect_to pos_payments_path
+      redirect_to pos_payment_path(@payment)
     else
+      @appointment = Appointment.find(params[:appointment_id])
       @inventory_items = user_default_branch.inventory_items.non_consumables.all
       @services = Service.all
+      @inventory_groups = user_default_branch.inventory_groups.all
+      @departments = Department.all
+      @prescribed_services = @appointment.prescription.prescribed_tests.map{|pt| pt.service}
+      @prescribed_medicines = @appointment.pharmacy_prescriptions
       render :action => 'new' 
     end
+  end
+
+  def show
+    @payment = Payment.find(params[:id])    
+  end
+
+  def recieve_payment
+    @payment = Payment.find(params[:id])  
+    @payment.recieve_payment!
+    redirect_to pos_payment_path(@payment) 
+  end
+
+  def cancel_payment
+    @payment = Payment.find(params[:id])
+    @payment.cancel_payment!  
+    redirect_to pos_payment_path(@payment)
   end
 end

@@ -47,12 +47,14 @@ class Laboratory::LaboratoryReportsController < ApplicationController
     @laboratory_report.save
     #reduce the inventory item balance
     inventory_items = PrescribedTest.find(params[:prescribed_test_id]).service.inventory_items_used_for_tests
-    #unless inventory_items.blank?
-      #inventory_items.each |it| do
-        #item = InventryItem.find(it.inventory_item_id)
-        #item.update_attribute('balance', item.opening_balance - it.quantity)
-      #end
-    #end
+    unless inventory_items.blank?
+      inventory_items.each do |it|
+        item = InventoryItem.find(it.inventory_item_id)
+        transaction = user_default_branch.inventory_transaction_items.new(:quantity => it.quantity, :price => item.unit_buy_price, :total_price => (item.unit_buy_price * it.quantity), :category => 'LaboratoryUse', :unit_type => 'Main')
+        transaction.inventory_item_id = it.inventory_item_id
+        transaction.save!
+      end
+    end
     specs = params[:specifications]
   
     specs[:ids].each_pair{ |key, value| LaboratoryTestResult.create(:parameter_specification_id => key,

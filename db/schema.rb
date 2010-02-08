@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100127065859) do
+ActiveRecord::Schema.define(:version => 20100206122755) do
 
   create_table "account_balances", :force => true do |t|
     t.integer  "account_id"
@@ -314,6 +314,15 @@ ActiveRecord::Schema.define(:version => 20100127065859) do
   add_index "inventory_items", ["branch_id"], :name => "index_inventory_items_on_branch_id"
   add_index "inventory_items", ["inventory_group_id"], :name => "index_inventory_items_on_inventory_group_id"
 
+  create_table "inventory_items_used_for_tests", :force => true do |t|
+    t.integer  "service_id"
+    t.integer  "inventory_item_id"
+    t.decimal  "quantity",          :precision => 11, :scale => 2
+    t.string   "comments"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "inventory_stocks", :force => true do |t|
     t.integer  "inventory_item_id"
     t.integer  "accounting_period_id"
@@ -507,6 +516,7 @@ ActiveRecord::Schema.define(:version => 20100127065859) do
     t.integer  "appointment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "state"
   end
 
   create_table "pharamacy_item_information_details", :force => true do |t|

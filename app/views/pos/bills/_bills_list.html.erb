@@ -1,0 +1,20 @@
+<table class="listing">
+  <tr>
+    <th>Bill No.</th>
+    <th>PVR No.</th>
+    <th>Patient</th>
+    <th>State</th>
+    <th>Total</th>
+    <th>Action</th>
+  </tr>
+  <% @bills.each do |bill| -%>
+    <tr>
+      <td><%= bill.id -%></td>
+      <td><%= h bill.appointment.id unless bill.appointment.blank? -%></td>
+      <td><%= h bill.appointment.patient.patient_name unless bill.appointment.blank? -%></td>
+      <td><%= h bill.state.humanize unless bill.state.blank? -%></td>
+      <td><%= h bill.total_bill_amount-%></td>
+      <td><%= link_to 'Details', pos_payment_path(bill) -%></td>
+    </tr>
+  <% end -%>
+</table>
