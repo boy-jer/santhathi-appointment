@@ -1,10 +1,8 @@
-# Filters added to this controller apply to all controllers in the application.
-# Likewise, all the methods added will be available for all controllers.
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
   include RoleRequirementSystem
   include ExceptionNotifiable
-  
+
 
   helper :all # include all helpers, all the time
   filter_parameter_logging :password, :password_confirmation
@@ -48,12 +46,12 @@ class ApplicationController < ActionController::Base
   end
 
   def current_company
-    return @current_company if defined?(@current_company)    
+    return @current_company if defined?(@current_company)
     @current_company = Company.find_by_name('Santhathi')
   end
 
   def current_day
-    return @current_day if defined?(@current_day)    
+    return @current_day if defined?(@current_day)
     @current_day = user_default_branch.default_current_open_day
   end
 
@@ -71,3 +69,4 @@ class ApplicationController < ActionController::Base
   end
   #################
 end
+
