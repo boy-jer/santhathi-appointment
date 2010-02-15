@@ -1,7 +1,7 @@
 <div>
   <p><%= link_to_function 'Print this bill', "top.print();" -%></p>
   <p>
-  Status: <%= @payment.state.humanize -%>
+  Status: <%= @payment.state.blank? ? '' : @payment.state.humanize -%>
   <% if @payment.state == 'pending' -%>
     <%= link_to 'Recieve Payment', recieve_payment_pos_payment_path(@payment), :method => :post -%>
     <%= link_to 'Cancel this bill', cancel_payment_pos_payment_path(@payment), :method => :post -%>

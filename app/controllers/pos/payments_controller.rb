@@ -18,7 +18,11 @@ class Pos::PaymentsController < ApplicationController
     @services = Service.all
     @inventory_groups = user_default_branch.inventory_groups.all
     @departments = Department.all
-    @prescribed_services = @appointment.prescription.prescribed_tests.map{|pt| pt.service}
+    unless @appointment.prescription.blank?
+      @prescribed_services = @appointment.prescription.prescribed_tests.map{|pt| pt.service}
+    else
+      @prescribed_services = []
+    end
     @prescribed_medicines = @appointment.pharmacy_prescriptions
   end
 
@@ -35,7 +39,11 @@ class Pos::PaymentsController < ApplicationController
       @services = Service.all
       @inventory_groups = user_default_branch.inventory_groups.all
       @departments = Department.all
-      @prescribed_services = @appointment.prescription.prescribed_tests.map{|pt| pt.service}
+      unless @appointment.prescription.blank?
+        @prescribed_services = @appointment.prescription.prescribed_tests.map{|pt| pt.service}
+      else
+        @prescribed_services = []
+      end
       @prescribed_medicines = @appointment.pharmacy_prescriptions
       render :action => 'new' 
     end
