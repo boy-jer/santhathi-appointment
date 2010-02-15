@@ -13,7 +13,7 @@
 
 <% for item in @items_used %>
   <tr>
-    <td><%=h item.inventory_item_id %> </td>
+    <td><%=h item.inventory_item.name %> </td>
      <td><%=h item.quantity %> </td>
     <td><%= link_to 'Show', laboratory_lab_test_inventory_items_used_for_test_path(@lab_test, item) , :rel=> "facebox" %> |
     <%= link_to 'Edit', edit_laboratory_lab_test_inventory_items_used_for_test_path(@lab_test, item) %> |

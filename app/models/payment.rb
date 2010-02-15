@@ -40,11 +40,11 @@ class Payment < ActiveRecord::Base
     pay_appointment_bill
   end
 
-  def transact_account_on_pay
-    cash_account = Account.find_by_name(CASH_AC[:name])
-    cash_debit = {:category => 'Debit', :amount => total_bill_amount, :account_id => cash_account.id}
-
+  def transact_account_on_pay   
     payment_items.each do |payment_item|
+      cash_account = Account.find_by_name(CASH_AC[:name])
+      cash_debit = {:category => 'Debit', :amount => payment_item.total_amount, :account_id => cash_account.id}
+
       payment_account = payment_item.payable.account
       payment_credit = {:category => 'Credit', :amount => payment_item.total_amount, :account_id => payment_account.id}
  
