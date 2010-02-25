@@ -7,10 +7,11 @@ class Pms::AppointmentsController < ApplicationController
     unless params.has_key?(:date) #If it is a ajax request to update doctor's schedule don't do search TODO: move it to separate action
       @search = Appointment.new_search(params[:search])
       @params = params[:search]
-      @search.per_page ||= 15
+      @search.per_page ||= 25
+      #@search.order_as ||= "DESC"
+      #@search.order_by ||= "appointment_date"
       @search.order_as ||= "DESC"
-      @search.order_by ||= "appointment_date"
-
+      @search.order_by ||= "appointment_time"
       @appointments = @search.all
     end
 
@@ -18,9 +19,9 @@ class Pms::AppointmentsController < ApplicationController
       format.html
       format.js { render :update do |page|
                     unless params[:tab]
-                      page.replace_html 'appointment-list', :partial => 'appointments_list'
-                    else
                       page.replace_html 'appointment-list', :partial => 'appointments_list_table'
+                    else
+                      page.replace_html 'appointment-list', :partial => 'appointments_list'
                     end
                   end
                 }
@@ -148,7 +149,7 @@ class Pms::AppointmentsController < ApplicationController
   def confirm
     @appointment = Appointment.find(params[:id])
 	if @appointment.patient.reg_no.blank?
-      flash[:notice] = "Patient is not yet registered, Please Register first."
+      flash[:error] = "Patient is not yet registered, Please Register first."
     else
        if @appointment.new_appointment?
         @appointment.mark_visited!

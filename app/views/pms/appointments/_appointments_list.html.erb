@@ -37,8 +37,7 @@
       </div>
      </div>
     <div class = 'actions right'>
-      <%= link_to 'History', pms_patient_patient_appointments_url(appointment.patient), :rel=> "facebox", :class => 'blue-link' %> |
-      <%= link_to 'Edit', edit_pms_appointment_path(appointment), :class => 'blue-link' %> |  
+      <%= link_to 'History', pms_patient_patient_appointments_url(appointment.patient), :rel=> "facebox", :class => 'blue-link' %>  |  
       <%= appointment.state != 'new_appointment' ? 'Delete' : link_to('Delete', pms_appointment_path(appointment), :confirm => 'Are you sure?', :method => :delete, :class => 'blue-link') %>
     </div>
     <div class = 'clear'></div>

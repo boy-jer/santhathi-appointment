@@ -17,11 +17,11 @@
        <br/>
        <div class='clear'> </div>
        <table><tr><td><button> Register </button> </td>
-             <td><%= link_to "<span>Cancel</span>", pms_patients_url, :class=> "button" %></td></tr></table>
+             <td>-or- <%= link_to "<span>Cancel</span>", :back, :class=> "button" %></td></tr></table>
 
            <%= observe_field(:type_couple, :frequency => 0.5,
-                    :before => "Element.show('spinner1')",
-                    :success => "Element.hide('spinner1')",
+                    :before => "$('#spinner1').show();",
+                    :success => "$('#spinner1').hide();",
                     :url => {:controller => 'patients', :action => 'edit'},
                     :method => :get,
                     :with => "'patient_id=' + value"

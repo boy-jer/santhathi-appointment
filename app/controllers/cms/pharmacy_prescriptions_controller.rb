@@ -17,30 +17,25 @@ class Cms::PharmacyPrescriptionsController < ApplicationController
   end
 
 
-
   def create
     @pharmacy_prescription = PharmacyPrescription.new(params[:pharmacy_prescription])
     @pharmacy_prescription.appointment_id = @appointment.id
     @pharmacy_prescriptions = @appointment.pharmacy_prescriptions
 
-    respond_to do |format|
-      if @pharmacy_prescription.save
-        flash[:notice] = 'Pharmacy prescription is successfully created.'
-        format.html { redirect_to() }
-        format.xml  { render :xml => @pharmacy_prescription, :status => :created, :location => @pharmacy_prescription }
-         format.js { render :update do |page|
-                    page.replace_html 'clinical-screen', :partial => '/cms/pharmacy_prescriptions/new'
-                    page.replace_html 'pharmacy_prescription-list', :partial => '/cms/pharmacy_prescriptions/prescreptions'
-                  end
-                }
+    if @pharmacy_prescription.save
+        #flash[:notice] = 'Pharmacy prescription is successfully created.'
+        render :update do |page|
+           page.replace_html 'pharmacy_prescription-new', :partial => '/cms/pharmacy_prescriptions/new'
+           page.replace_html 'pharmacy_prescription-list', :partial => '/cms/pharmacy_prescriptions/prescreptions'
+        end
+        
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @pharmacy_prescription.errors, :status => :unprocessable_entity }
+        render :update do |page|
+          page.replace_html 'pharmacy_prescription-list', " <div id='error'> #{@pharmacy_prescription.errors.full_messages.join('<br />')} </div>"
+        end 
       end
 
-
-
-    end
+ 
   end
 
 

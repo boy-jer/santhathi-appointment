@@ -18,22 +18,18 @@
     <td> <%=h pharmacy_prescription.inventory_item.name %></td>
     <td> <%=h pharmacy_prescription.pharmacy_dosage_list.dosage_type_name %></td>
     <td> <%=h pharmacy_prescription.pharmacy_course_list.course_type_name %></td>
-    <td> <%=h pharmacy_prescription.prescribing_date%> - <%= Time.parse(pharmacy_prescription.time_of_prescription.to_s).strftime('%H:%M').to_s  %></td>
+    <td> <%=h pharmacy_prescription.prescribing_date %> - <%= Time.parse(pharmacy_prescription.time_of_prescription.to_s).strftime('%H:%M').to_s  %></td>
     <td><%=h pharmacy_prescription.course_duration%></td>
     <td> <%=h pharmacy_prescription.course_start_date%></td>
     <td> <%=h pharmacy_prescription.course_end_date%></td>
     <td> <%=h pharmacy_prescription.quantity %></td>
-
-
  <td>
 
-<%= link_to_remote "Delete ",
-                           :url => { :controller => '/cms/pharmacy_prescriptions',:action => "destroy", },
-                           :before => "$('#spinner').show()",
-                           :success => "$('#spinner').hide()",
-                           :confirm => 'Are you sure?',
-
-                           :with => "'appointment_id='+ #{@appointment.id}+'&id='+#{pharmacy_prescription.id}"
+<%= link_to_remote "Delete ", :url => { :controller => '/cms/pharmacy_prescriptions',:action => "destroy", },
+                              :before => "$('#spinner').show()",
+                              :success => "$('#spinner').hide()",
+                              :confirm => 'Are you sure?',
+                              :with => "'appointment_id='+ #{@appointment.id}+'&id='+#{pharmacy_prescription.id}"
 
                              %>
     </td>

@@ -28,7 +28,7 @@
     <td><%=h patient.contact_no %></td>
     <td><%=h patient.spouse_name %></td>
     <td><%= link_to 'Appointments', pms_patient_patient_appointments_url(patient), :rel=> "facebox" %></td>
-    <td>&nbsp;&nbsp; <%= link_to image_tag('show.png', {:title => 'Show', :border => 0}), pms_patient_url(patient), :rel=> "facebox" %> &nbsp;&nbsp;| &nbsp;&nbsp; <%= link_to image_tag('edit.png', {:title => 'Edit', :border => 0}), edit_pms_patient_url(patient) %> &nbsp;&nbsp;|&nbsp;&nbsp; <%= link_to image_tag('delete.png', {:title => 'delete', :border => 0}), pms_patient_url(patient), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td nowrap>&nbsp; <%= link_to image_tag('show.png', {:title => 'Show', :border => 0}), pms_patient_url(patient), :rel=> "facebox" %> &nbsp;| &nbsp; <%= link_to image_tag('edit.png', {:title => 'Edit', :border => 0}), edit_pms_patient_url(patient) %> &nbsp;|&nbsp; <%= link_to image_tag('delete.png', {:title => 'delete', :border => 0}), pms_patient_url(patient), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

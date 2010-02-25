@@ -32,7 +32,7 @@
 
     <td><%= link_to 'Appointments', pms_patient_patient_appointments_url(appointment.patient), :rel=> "facebox" %></td>
 
-    <td NOWRAP = NOWRAP class='hide-for-print'><%= link_to image_tag('show.png', {:title => 'Show', :border => 0}), pms_appointment_url(appointment), :rel=> "facebox" %> &nbsp;|&nbsp; <%= link_to image_tag('edit.png', {:title => 'Edit', :border => 0}), edit_pms_appointment_path(appointment) %> &nbsp; |<% unless appointment.state == 'visited' %>&nbsp; <%= link_to image_tag('delete.png', {:title => 'cancel appointment', :border => 0}), pms_appointment_path(appointment), :confirm => 'Are you sure?', :method => :delete %> <%end %></td>
+    <td NOWRAP = NOWRAP class='hide-for-print'><%= link_to image_tag('show.png', {:title => 'Show', :border => 0}), pms_appointment_url(appointment), :rel=> "facebox" %> &nbsp; |<% unless appointment.state == 'visited' %>&nbsp; <%= link_to image_tag('delete.png', {:title => 'cancel appointment', :border => 0}), pms_appointment_path(appointment), :confirm => 'Are you sure?', :method => :delete %> <%end %></td>
 
   </tr>
 <% end %>
@@ -61,6 +61,7 @@
                  :before => "Element.show('spinner')",
                  :success => "Element.hide('spinner')",
                  :url =>  pms_appointments_url, :method => :get) %>
+<br />
 
 <table class='listing-top'><tr>
 
@@ -73,10 +74,11 @@
                <%= link_to(image_tag('excel.png', :border => '0'),  pms_appointments_url(:format => "csv", :search => @params) )%> &nbsp;
                <%= link_to("Export This Page to CSV",  pms_appointments_url(:format => "csv", :search => @params) )%>
            </td>
-
+<!--
            <td class='hide-for-print'>
                <%= link_to(image_tag("acrobat.png", :border => '0'),  pms_appointments_url(:format => "pdf", :search => @params)) %> &nbsp;
                <%= link_to("Export This Page to PDF",  pms_appointments_url(:format => "pdf", :search => @params)) %>
             </td>
+-->
          </tr>
 </table>

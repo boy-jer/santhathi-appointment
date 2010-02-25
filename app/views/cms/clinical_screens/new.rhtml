@@ -25,9 +25,11 @@
   <br />
 
    <table class = 'form-table'>
-      <tr> <td class = 'blue-row'>
-	    <%= link_to "Return to patient list", cms_doctor_patients_url(current_user.id) %> &nbsp;&nbsp;|&nbsp;&nbsp;
-	    <%= link_to "Prescriptions", new_cms_appointment_clinical_screen_path(@appointment.id) %>&nbsp;&nbsp;|&nbsp;&nbsp;            
+      <tr> <td style ='width: 100px;'>
+	      <%= button_to "Back to patient list", cms_doctor_patients_url(current_user.id) %>  
+            </td>
+            <td>
+	      <%= button_to "Back to prescriptions list", new_cms_appointment_clinical_screen_path(@appointment.id) %>          
 	  </td>
       </tr>
     </table>

@@ -1,12 +1,18 @@
       <div class ='left part1'>
         <% for test in @lab_services %>
           <p><%=image_tag('pointer.gif', :border => 0) %> &nbsp;
-            <%= link_to_remote("<b>#{test.name}</b> Prescription",
-                               :before => "jQuery('#spinner').show()",
-                               :success => "jQuery('#spinner').hide()",
+            <%= link_to_remote("#{test.name}",
+                               :before => "jQuery('.spinner#{test.name}').show()",
+                               :success => "jQuery('.spinner#{test.name}').hide()",
                                :url => @prescription.blank? ? new_laboratory_prescription_url() : edit_laboratory_prescription_url(@prescription),
                                :method => 'get',
                                :with => "'department='+ #{test.department_id} + '&test_id='+ #{test.id} + '&appointment=' + #{@appointment.id}") %>
+
+             <%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :class => "spinner#{test.name}",
+              :style =>"display: none;" ) %>
            </p> 
          <div id = 'test_<%= test.id %>'> </div>
         <% end %>
@@ -15,11 +21,17 @@
       <div class ='left part2'>   
         <p><%=image_tag('pointer.gif', :border => 0) %> &nbsp;
            <%= link_to_remote("Pharmacy prescription" ,
-                            :before => "jQuery('#spinner').show()",
-                            :success => "jQuery('#spinner').hide()",
+                            :before => "jQuery('#spinner1').show()",
+                            :success => "jQuery('#spinner1').hide()",
                             :url => { :controller =>'/cms/pharmacy_prescriptions' ,:action => :new } ,
                             :method => :get,
                             :with => "'appointment_id='+ #{@appointment.id}")%>
+
+           <%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner1",
+              :style =>"display: none;" ) %>
          </p> 
 
          <% @departments.each do |dept| %>
@@ -40,8 +52,11 @@
        </div>
        <div class ='clear'> </div>
        <hr />
-        <h3 class="heading"> Laboratory prescriptions </h3>
-        <div id = 'prescription-list'><%= render :partial => '/laboratory/prescriptions/prescreptions' %> </div>
+        <div id = 'prescription-list'>
+            <%= render :partial => '/laboratory/prescriptions/prescreptions' %> 
+        </div>
         <br />
-        <h3 class="heading"> Other prescriptions </h3>
-        <div id = 'other-prescription-list'><%= render :partial => '/cms/prescriptions/prescreptions' %> </div>
+        
+        <div id = 'other-prescription-list'>
+           <%= render :partial => '/cms/prescriptions/prescreptions' %> 
+        </div>

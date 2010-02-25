@@ -1,23 +1,25 @@
+<div id = 'errors'> </div>
+
 <div id='pharmacy_prescription-new'>
-<% remote_form_for(:pharmacy_prescription ,:url =>cms_appointment_pharmacy_prescriptions_url(:appointment_id => @appointment.id) , :html => { :method => :post }) do |f| %>
+  
+
+  <%= button_to "Cancel", new_cms_appointment_clinical_screen_path(@appointment), :method => :get %> 
+
+  <% remote_form_for(:pharmacy_prescription, :url =>cms_appointment_pharmacy_prescriptions_url(:appointment_id => @appointment.id), :html => { :method => :post }) do |f| %>
   <%= f.error_messages %>
 
-   <table class="form-table">
-      <tr> <td colspan="2"> <%= link_to "Back" , new_cms_appointment_clinical_screen_path(@appointment.id) %> &nbsp; | &nbsp;
-          <% if doctor? or admin? -%>
-	     <%= link_to "Patient List",  cms_doctor_patients_url(current_user.id)  %> &nbsp; | &nbsp;
-	  <% end %>
-          <%= link_to "Cancel" , new_cms_appointment_clinical_screen_path(@appointment.id) %> </td></tr>
-    </table>
-    <table class="form-table">
+  <table class="form-table">
 
      <tr style ='display:none'><th > Prescribing Date: </th><td><%= calendar_date_select_tag "pharmacy_prescription[prescribing_date]" ,Date.today, :class =>'textbox' %> </td> </tr>
 
-     <tr><th>Select Item:</th><td> <%= f.collection_select :inventory_item_id, InventoryItem.non_consumables, :id, :name, options ={:prompt => "-Select an Item"} %>
- <%= image_tag("spinner.gif",
-              :border => 0,
-              :id => "spinner1",
-              :style =>"display: none;" ) %> </td>  
+     <tr><th>Select Item:</th>
+       <td> 
+         <%= f.collection_select :inventory_item_id, InventoryItem.non_consumables, :id, :name, options ={:prompt => "-Select an Item"} %>
+     <%= image_tag("spinner.gif",
+                   :border => 0,
+                   :id => "spinner1",
+                   :style =>"display: none;" ) %> 
+       </td>  
 
       <th>Frequency:</th><td>
      <%= f.collection_select :pharmacy_dosage_list_id, PharmacyDosageList.pharamacy_dosage_lists, :id ,:dosage_type_name, options ={:prompt => "-Select dosage type"}%>

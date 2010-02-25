@@ -55,15 +55,18 @@ class Laboratory::LaboratoryReportsController < ApplicationController
         transaction.save!
       end
     end
+
     specs = params[:specifications]
-  
-    specs[:ids].each_pair{ |key, value| LaboratoryTestResult.create(:parameter_specification_id => key,
-                                                                    :result => value,
-                                                                    :remarks => specs[:remarks]["r_#{key}"],
-                                                                    :laboratory_report_id =>  @laboratory_report.id,
-                                                                    :position => ParameterSpecification.find(key).position
+    unless specs.blank?
+      specs[:ids].each_pair{ |key, value| LaboratoryTestResult.create(:parameter_specification_id => key,
+                                                                     :result => value,
+                                                                     :remarks => specs[:remarks]["r_#{key}"],
+                                                                     :laboratory_report_id =>  @laboratory_report.id,
+                                                                     :position => ParameterSpecification.find(key).position
                                                                     )
                                                                  }
+    end
+
     flash[:notice] = 'Report is successfully created.'
     redirect_to laboratory_prescribed_tests_url
   end

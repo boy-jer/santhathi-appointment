@@ -125,7 +125,7 @@ class Pms::PatientsController < ApplicationController
          @patient.save
       end
       flash[:notice] = 'Patient was successfully updated.'
-      redirect_to pms_patients_url
+      redirect_to :pms_appointments
     else
       render :action => "edit"
     end

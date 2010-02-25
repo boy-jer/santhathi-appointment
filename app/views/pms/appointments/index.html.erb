@@ -2,8 +2,6 @@
    Listing all appointments
 <%end-%>
 
-  <%= render :partial=> 'filters'%>
-
    <div id = 'top-links'>
     <div class = 'left' id = 'listing_links'>
       <%= link_to_remote "#{image_tag('/images/img/list_view.png')}", :url =>{ :controller => "/pms/appointments" ,:action =>"index" ,:tab => false },:method =>:get %>  &nbsp; | &nbsp; 
@@ -17,6 +15,8 @@
     <div class = 'clear'></div>
   </div>
 
+  <%= render :partial=> 'filters'%>
+  <br />
 
   <div id='appointment-list'>
      <%=render :partial=> 'appointments_list_table'%>

@@ -77,7 +77,7 @@
 
   $.extend($.facebox, {
     settings: {
-      opacity      : 0.2,
+      opacity      : 0.4,
       overlay      : true,
       loadingImage : '/images/loading.gif',
       closeImage   : '/images/closelabel.gif',
@@ -97,7 +97,7 @@
                 </div> \
                 <div class="footer"> \
                   <a href="#" class="close"> \
-                    <img src="/facebox/closelabel.gif" title="close" class="close_image" /> \
+                    <img src="/images/closelabel.gif" title="close" class="close_image" /> \
                   </a> \
                 </div> \
               </td> \
@@ -187,7 +187,7 @@
     $.facebox.settings.imageTypesRegexp = new RegExp('\.' + imageTypes + '$', 'i')
 
     if (settings) $.extend($.facebox.settings, settings)
-    $('body').append($.facebox.settings.faceboxHtml)
+    $('form').append($.facebox.settings.faceboxHtml)
 
     var preload = [ new Image(), new Image() ]
     preload[0].src = $.facebox.settings.closeImage

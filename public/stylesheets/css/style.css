@@ -54,7 +54,7 @@ quotes : "" "";
 /*---------------------------------------------------------------------------------------
 --- BASICS
 ---------------------------------------------------------------------------------------*/
-body{ font-size:12px;font-family: Helvetica,Arial,Sans-Serif; font-style: normal; line-height: normal;color:#000;background:url(/images/img/bg.jpg) repeat-x #fff;line-height:16px;}
+body{ font-size:13px;font-family: Helvetica,Arial,Sans-Serif; font-style: normal; line-height: normal;color:#000;background: #fff url(/images/img/bg.jpg) repeat-x ;line-height:16px;}
 a{color:#881280; text-decoration: none;}
 a:hover{text-decoration: underline;}
 a:active{	}
@@ -76,7 +76,10 @@ h3{color:#2d2d2d;padding:0px;margin:0px;padding:5px;}
 h4{color:#2d2d2d;padding:0px;margin:0px;padding:5px;}
 h5{color:#2d2d2d;padding:0px;margin:0px;padding:5px;}
 p{padding:5px;}
+/*
 input{padding:3px;border-left:1px solid #a8a8a8;border-top:1px solid #a8a8a8;border-right:1px solid #d8d8d8;border-bottom:1px solid #d8d8d8;-moz-border-radius:3px;margin:3px;}
+*/
+
 ul{list-style:circle;margin:10px;margin-left:20px;}
 ol{list-style:decimal;margin:10px;margin-left:20px;}
 p.info{border:1px solid #6aa6d6;background:#c9e3f8;}
@@ -86,8 +89,8 @@ label{display:block;}
 label input{margin-left:30px;}
 hr { color: #f1f1f1; height: 1px; border-top: #ddd 1px solid;}
 
-button {text-transform:uppercase;font-size:13px;padding:3px;color:#fff;background:#4780ae;border-left:1px solid #084577;border-top:1px solid #084577;border-right:1px solid #7ab7e8;border-bottom:1px solid #7ab7e8;-moz-border-radius:3px;margin:3px;margin-top:5px;}
-button:hover { background-color: #ff6600;}
+/*button {text-transform:uppercase;font-size:13px;padding:3px;color:#fff;background:#4780ae;border-left:1px solid #084577;border-top:1px solid #084577;border-right:1px solid #7ab7e8;border-bottom:1px solid #7ab7e8;-moz-border-radius:3px;margin:3px;margin-top:5px;}
+button:hover { background-color: #ff6600;}*/
 
 .part1{ width: 45%;}
 .part2{ width: 45%;}
@@ -106,16 +109,16 @@ button:hover { background-color: #ff6600;}
 #navigation li:hover ul, #navigation li li:hover ul, #navigation li li li:hover ul,
 #navigation li.sfhover ul, #navigation li li.sfhover ul, #navigation li li li.sfhover ul { left: auto;	}
 
-#top_menu ul {margin-right:10px;padding:0px;list-style:none;font-size:11px;}
-#top_menu ul li{float:left;display:block;}
+#top_menu ul {margin-right:10px; margin-left: 10px; padding:0px;list-style:none;font-size:11px; }
+#top_menu ul li{float:left; display:block; margin-left: 30px;}
 
 /* ------------------------------------------------------------------------------------
 STRUCTURE					 */
 #container{overflow:hidden; width:100%; margin:0 auto; } /*background:url(/images/img/overlay.jpg) no-repeat;*/
 
 #footer{clear:both; }
-#content_main{background:#fff; padding:12px;-moz-border-radius:3px;}
-#top_menu{background: #98bfe7 url(/images/img/menutop1.jpg) no-repeat top center;width:100%;margin-top:10px; height:26px; border: 1px solid #a5bccb; border-bottom: 1px solid #7b705a;}
+#content_main{background:#ddd; padding:12px;-moz-border-radius:3px;}
+#top_menu{background: #fff url(/images/img/menutop1.jpg) no-repeat top center;width:100%;margin-top:10px; height:26px; border: 1px solid #ddd; border-bottom: 2px solid #8f8f8f;}
 #profile_info{background:url(/images/img/loginbox.jpg) no-repeat top center;width:231px;height:59px;padding:4px;float:right;margin-top:0px;font-size:12px;color:#fff;line-height:10px;}
 #profile_info p{background:none;}
 #avatar{float:left;margin:0px 10px;}
@@ -136,7 +139,7 @@ STRUCTURE					 */
 #form_middle_cont{width:940px}
 /* ------------------------------------------------------------------------------------
 ICONS				 */
-.ico_mug{background:url(/images/img/sort-nav-bg.gif) #eef1f4; margin-bottom:0px; border: 1px solid #bbb; color: #2B2E32; font-size: 18px; padding: 5px 5px 5px 20px; -moz-border-radius:3px; }
+.ico_mug{background:url(/images/img/sort-nav-bg.gif) #eef1f4; margin-bottom:0px; border: 1px solid #bbb; color: #646464; font-size: 18px; padding: 7px 5px 7px 20px; -moz-border-radius:3px; }
 .ico_posts{background:url(/images/img/ico_posts.jpg) no-repeat 5px center #f1f1f1; padding-left:30px;}
 .ico_page{background:url(/images/img/ico_page.jpg) no-repeat 5px center #f1f1f1; padding-left:30px;}
 .ico_settings{background:url(/images/img/ico_settings.jpg) no-repeat 5px center #f1f1f1; padding-left:30px;}
@@ -196,7 +199,7 @@ minput#post_title{width:925px;margin:0px;border-left:1px solid #a8a8a8;border-to
 }
 
 
-#header h1{color:#fff;padding:0px;margin-left:10px;margin-top:5px;padding-left:0px; font-size: 24px;}
+#header h1{color:#fff;padding:0px;margin-left:10px;margin-top:5px;padding-left:0px; font-size: 20px;}
 #header h1 span{color:#fff;padding:0px;margin-left:10px;margin-top:0px;padding-left:0px; font-size: 13px;}
 
 #global_links {
@@ -238,15 +241,15 @@ minput#post_title{width:925px;margin:0px;border-left:1px solid #a8a8a8;border-to
 
 /*.listing tr:hover {background-color: #f2f7f9; color: #000;} not for IE*/
 .listing th {background: #F9F9F9 url(/images/table-header.jpg) repeat-x bottom;
-             color: #004891;
+             color: #265a8f;
              text-align: left;
-             padding: 0.3em .5em .3em .5em;
-             border:1px solid #96ABBB;    
+             padding: 0.5em .5em .5em .5em;
+             border:1px solid #bcc3c8;    
              font-weight: bold;    
 
 }
 
-.listing td { padding: .7em .5em .7em .5em; color: #000; border-bottom:1px solid #96ABBB; }
+.listing td { padding: .9em .5em .9em .5em; color: #000; border-bottom:1px solid #bcc3c8; }
 .listing tr{background: #FfFfFf; }
 
 .listing .even {background: #FFF;}
@@ -256,11 +259,11 @@ minput#post_title{width:925px;margin:0px;border-left:1px solid #a8a8a8;border-to
             width: 100%;
             color: #000;
 	    margin-top: 0.5em;
-            border: 1px #96ABBB solid;
+            border: 1px #bcc3c8 solid;
 
          }
 
-.listing a { color: #004891;
+.listing a { color: #265a8f;
 	     text-decoration: none;
            }
 .listing td a { color: #881280;
@@ -334,7 +337,7 @@ textarea.textbox:focus{
 
 /********************************* Menu ***************************************/
 
-#menu { padding: 0; margin: 15px 0 0px 15px;   list-style: none;  }
+#menu { padding: 0; margin: 15px 0 0px 15px;   list-style: none;}
 
 #menu ul{margin:0; padding: 0px 0px 0px 0px; list-style:none; }
 
@@ -349,7 +352,7 @@ textarea.textbox:focus{
 	display: block;
 	float: left;
 	margin: 0px 5px 0px 5px;
-	padding: 6px 15px 5px 15px;
+	padding: 6px 20px 5px 20px;
 	text-transform: uppercase;
 	text-decoration: none;
 	font-size: 12px;
@@ -362,7 +365,7 @@ textarea.textbox:focus{
 }
 
 #menu .current {
-color: #fff;
+color: #fdc742;
 background:  url('/images/img/menu-hover-bg.gif') no-repeat;
 }
 /******************************Appointment listing section***********************/
@@ -378,6 +381,8 @@ background:  url('/images/img/menu-hover-bg.gif') no-repeat;
 .yellow-link{color: #a08000; }
 .blue-link{color: #1c60a0; font-weight: bold; }
 .green-link{color: #419100; font-weight: normal;}
+.cancel{margin: 5px 10px 5px 10px; color: #3472ad; font-size: 14px; font-weight: bold;}
+
 .actions{margin: 38px 5px 0px 0; font-size: 13px; color: #bdbdbd;}
 /******************************Appointment create***********************/
 #content_wrapper {
@@ -386,7 +391,7 @@ background:  url('/images/img/menu-hover-bg.gif') no-repeat;
  height: 100%;
  border: 1px solid #ccc;
  border-top: none;
-}
+}pharmacy_prescription-new
 
 .heading{color: #0a68bf; font-size: 14px;  margin-bottom: 0px;}
 
@@ -435,6 +440,7 @@ table.form-table-small{width: 60%;}
 /* ---------------------schedule(time slots) --------------------*/
 
 
+#pharmacy_prescription-new{margin: 10px;}
 
 #schedule {
            width:  98%;
@@ -570,9 +576,9 @@ table.form-table-small{width: 60%;}
 #report-results td { padding: .3em .5em .3em .5em; color: #383838; border: 1px #383838 solid;  }
 
 /*---------------------------top links---------------------------*/
-#top-links{margin: 0px 0px 15px 0px;}
-#listing_links {padding-top: 7px;}
-#listing_links a{font-weight: bold; color: #1c60a0; font-size: 17px; } 
+#top-links{margin: 0px 0px 10px 0px;}
+#listing_links {padding-top: 0px;}
+#listing_links a{font-weight: bold; color: #1c60a0; font-size: 15px; } 
 
 /* ---------------------------Add button------------------------- */
 a.buttonAdd {
