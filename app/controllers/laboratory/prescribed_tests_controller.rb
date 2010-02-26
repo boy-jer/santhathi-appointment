@@ -7,7 +7,7 @@ class Laboratory::PrescribedTestsController < ApplicationController
     @search.per_page ||= 15
     @search.order_as ||= "DESC"
     @search.order_by ||= "created_at"
-    @prescribed_tests, @count = @search.all(:include => {:prescriptions_tests => :prescriptions}), @search.count
+    @prescribed_tests  = @search.all(:include => {:prescribed_tests => :service}) 
     respond_to do |format|
       format.html
       format.js { render :update do |page|

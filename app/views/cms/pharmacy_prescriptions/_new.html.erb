@@ -1,10 +1,7 @@
-<div id = 'errors'> </div>
+<div id ='errors'> </div>
 
 <div id='pharmacy_prescription-new'>
-  
-
   <%= button_to "Cancel", new_cms_appointment_clinical_screen_path(@appointment), :method => :get %> 
-
   <% remote_form_for(:pharmacy_prescription, :url =>cms_appointment_pharmacy_prescriptions_url(:appointment_id => @appointment.id), :html => { :method => :post }) do |f| %>
   <%= f.error_messages %>
 
@@ -37,15 +34,15 @@
       <th>Time of prescription:</th><td><%= f.time_select :time_of_prescription %> </td> </tr>
      
      
-     <tr><th>Other Remark:</th><td colaspan ='3'><%= f.text_area :other_remarks ,:class =>'textbox'%> </td> </tr>
+     <tr><th>Other Remarks:</th><td colaspan ='3'><%= f.text_area :other_remarks, :class =>'remarks'%> </td> </tr>
 
 </table>
-  <br />
-  <%= f.submit 'Prescribe' %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" value="Reset">
+<br />
+  
+   <%= f.submit 'Prescribe' %> -or- <input type="reset" value="Reset">  
 
 <% end %>
-
-<br/>
+<hr />
 <div id = 'pharmacy_prescription-list'> <%= render :partial => '/cms/pharmacy_prescriptions/prescreptions'%> </div>
 
 

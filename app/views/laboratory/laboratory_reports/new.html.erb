@@ -1,5 +1,5 @@
 <% content_for :header do %>
-  Creating test report for: <%= @lab_test.name%>
+  Creating test report for: <%= @prescribed_test.service.name%>
 <% end %>
 
 <% form_for([:laboratory, @prescribed_test,  @laboratory_report]) do |f| %>
@@ -15,7 +15,7 @@
           <th> PVR No :</th>
      </tr>
      <tr>
-          <td> <%=h @lab_test.name %> </td>
+          <td> <%=h @prescribed_test.service.name %> </td>
           <td> <%=h @patient.patient_name %> </td>
           <td> <%=h calculate_age(@patient.dob) %> </td>
           <td> <%= @patient.gender %> </td>
@@ -47,7 +47,7 @@
                   <td><%= text_field_tag "specifications[ids][#{spec.id}]", '', :class => 'textbox' %></td>
               <%end%>
 
-              <td><%= text_area_tag "specifications[remarks][r_#{spec.id}]", display_parameter_specification(@lab_test.id,spec.parameter_id), :class => 'textbox' %></td>
+              <td><%= text_area_tag "specifications[remarks][r_#{spec.id}]", display_parameter_specification(@prescribed_test.service.id, spec.parameter_id), :class => 'textbox' %></td>
               <td><%= link_to 'Details', details_laboratory_laboratory_test_results_url(:patient_id =>@patient.id,:specification_id => spec), :rel=> "facebox" %></td>
            </tr>
 
@@ -64,23 +64,23 @@
     </table> <br/><br/><br/>
 
     <table class="form-table">
-      <tr  class='table-top'><td colspan =2>Prescription Action Details </td>
-      <tr> <th> Date of Action</th> <td><%= calendar_date_select_tag "laboratory_report[date_of_action]", Date.today , :class =>'textbox' %></td></tr>
-      <tr> <th> Time of Action</th> <td><%= f.time_select  :time_of_action%></td></tr>
-      <tr> <th> Action Taken By</th> <td>
-       <%= select :laboratory_report,"action_taken_by_id",[['Select Doctor' , '']] + Doctor.doctors_list %> </td> </tr>
-      <tr> <th> Authorised By </th> <td>
+      <tr class='table-top'><td colspan =2>Prescription action details </td>
+      <tr> <th> Date of action</th> <td><%= calendar_date_select_tag "laboratory_report[date_of_action]", Date.today , :class =>'textbox-small' %></td></tr>
+      <tr> <th> Time of action</th> <td><%= f.time_select  :time_of_action%></td></tr>
+      <tr> <th> Action taken By</th> <td>
+       <%= select :laboratory_report, "action_taken_by_id", [['Select Doctor' , '']] + Doctor.doctors_list, :selected => current_user.id %> </td> </tr>
+      <tr> <th> Authorised by </th> <td>
        <%= select :laboratory_report,"authorised_by_id",[['Select Doctor' , '']] + Doctor.doctors_list %>
        </td> </tr>
-      <tr> <th> Description</th> <td> <%= f.text_field :description ,:class => 'address' %> </td> </tr>
+      <tr> <th> Remarks</th> <td> <%= f.text_area :description, :class => 'remarks' %> </td> </tr>
     </table>
 
 <br/><br/>
 
 <%= f.hidden_field :appointment_id , :value =>  @appointment.id %>
-<%= f.hidden_field :prescription_id , :value =>  @prescription.id %>
-<%= f.hidden_field :service_id , :value =>  @lab_test.id %>
+<%= f.hidden_field :prescribed_test_id , :value =>  @prescribed_test.id %>
+
 <hr />
-<button> Create report </button> or <%= link_to 'Cancel', :controller =>:laboratory_prescriptions, :action =>'index'%>
+<button> Create report </button> -or- <%= link_to 'Cancel', :controller =>:laboratory_prescriptions, :action =>'index'%>
 
 <% end %>

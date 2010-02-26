@@ -1,3 +1,7 @@
+<% content_for :header do -%>
+  Visit report
+<%end-%>
+
 <div id = 'visit_report'>
   <h2 style = 'text-align: center;'>VISIT REPORT - <%= @appointment.appointment_date %> </h2>
   <table class = 'visit_report'>
@@ -36,3 +40,7 @@
     </tr>
  </table>
 </div>
+<br />
+<div class = 'hide-for-print'>
+   <%= button_to_function("Print report", "javascript:print()") %> | <%= button_to_function("Preview", "javascript:print()") %> 
+</div> 

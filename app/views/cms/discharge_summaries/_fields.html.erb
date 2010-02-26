@@ -1,0 +1,19 @@
+<table cellpadding="5px" class="form-table">
+     <tr><th>  <%= f.label :Date_Of_Preparation %></th><td>
+    <%= f.calendar_date_select  :preparation, :class =>'textbox-small'%></td></tr>
+   <tr><th>
+    <%= f.label :Complaints %></th><td>
+    <%= f.text_area :complaints,:class =>'remarks' %></td></tr>
+   <tr><th>
+    <%= f.label :Symptoms %></th><td>
+    <%= f.text_area :symptoms,:class =>'remarks' %></td></tr>
+   <tr><th>
+    <%= f.label :Line_Of_Treatment %></th><td>
+    <%= f.text_area :treatment ,:class =>'remarks'%></td></tr>
+   <tr><th>
+    <%= f.label :Treatment_result %></th><td>
+    <%= f.text_area :treatment_result, :class =>'remarks' %></td></tr>
+   <tr><th>
+    <%= f.label :remarks %></th><td>
+    <%= f.text_area :remarks, :class =>'remarks' %></td></tr>
+    </table>

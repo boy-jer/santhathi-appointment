@@ -1,7 +1,7 @@
       <div class ='left part1'>
         <% for test in @lab_services %>
           <p><%=image_tag('pointer.gif', :border => 0) %> &nbsp;
-            <%= link_to_remote("#{test.name}",
+            <%= link_to_remote(test.name,
                                :before => "jQuery('.spinner#{test.name}').show()",
                                :success => "jQuery('.spinner#{test.name}').hide()",
                                :url => @prescription.blank? ? new_laboratory_prescription_url() : edit_laboratory_prescription_url(@prescription),
@@ -38,7 +38,7 @@
            <% unless (dept.dept_name.upcase =~ /LAB/ or dept.dept_name.upcase =~ /PHAR/) %>
               <% for service in dept.services %>
                  <p><%=image_tag('pointer.gif', :border => 0) %> &nbsp;
-                    <%= link_to_remote("<b>#{service.name}</b> Prescription",
+                    <%= link_to_remote(service.name,
                                :before => "jQuery('#spinner').show()",
                                :success => "jQuery('#spinner').hide()",
                                :url => @prescription.blank? ? new_cms_prescription_url() : edit_cms_prescription_url(@prescription),

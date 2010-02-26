@@ -3,40 +3,33 @@ class Cms::PatientHistoriesController < ApplicationController
   before_filter :find_appointment ,:except =>[:show,:index,:prescribed_tests]
 
   def index
-  	@patient = Patient.find(65)
-  	@appointment = Appointment.find(6)
+   @patient = Patient.find(65)
+   @appointment = Appointment.find(6)
   end
 
-
-
-
   def show
-  	@patient = Patient.find(params[:id])
-  	@appointments = @patient.appointments
+    @patient = Patient.find(params[:id])
+    @appointments = @patient.appointments
   end
 
   def prescription
-  	@prescription = @appointment.prescription
- 		@prescribed_tests = @prescription.prescribed_tests
+     prescription = @appointment.prescription
+     @prescribed_tests = prescription.prescribed_tests
+     render :update do |page|
+       page.replace_html 'patient-history', :partial => 'cms/patient_histories/prescriptions'
+     end
+  end
 
-
+  def reports
+    @prescription = @appointment.prescription
+    @prescribed_tests = @prescription.prescribed_tests
     render :update do |page|
-      page.replace_html 'patient-history', :partial => 'cms/patient_histories/prescription'
+      page.replace_html 'patient-history', :partial => 'cms/patient_histories/reports'
     end
+  end
 
- 	end
-
-
- 	def reports
- 		@prescription = @appointment.prescription
- 		@prescribed_tests = @prescription.prescribed_tests
- 		render :update do |page|
-                       page.replace_html 'patient-history', :partial => 'cms/patient_histories/reports'
-                  end
-	end
-
-	def pharmacy_prescription
-		@pharmacy_prescriptions = @appointment.pharmacy_prescriptions
+  def pharmacy_prescription
+    @pharmacy_prescriptions = @appointment.pharmacy_prescriptions
 		    render :update do |page|
                         page.replace_html 'patient-history', :partial => 'cms/patient_histories/pharmacy_prescription'
                       end

@@ -25,9 +25,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def admin?
-    #logged_in? && @current_user.has_role?(:admin)
-  end
 
   def admin?
     logged_in? && current_user.has_role?('admin')

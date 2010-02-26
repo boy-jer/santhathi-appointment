@@ -1,46 +1,26 @@
 <% content_for :header do -%>
    Clinical screen for  <%= @patient.patient_name %>
 <%end-%>
- <h3 class = 'heading'> Patient and appointment detail </h3>
- <table class="clinical-table">
-     <tr><th>Visit Date:</th><td> <%= Date.today %></td>
-         <th>Visit Type:</th><td></td>
-         <th>Patient Type:</th><td></td>
+   
+  <table class="clinical-table">
+     <tr>
+        <th>Name:</th><td><%= @patient.patient_name %></td>
+        <th>PVR No:</th><td><%= @appointment.id %></td>
+        <th>Registration No:</th><td><%= @patient.reg_no %></td>
      </tr>
      <tr>
-       <th>Name:</th><td><%= @patient.patient_name %></td>
-       <th>PVR No:</th><td><%= @appointment.id %></td>
-       <th>Registration No:</th><td><%= @patient.reg_no %></td></tr>
-     <tr>
-       <th>Dob:</th><td><%= @patient.dob %></td>
-       <th>Age:</th><td><%= calculate_age(@patient.dob) %></td>
-       <th>Gender:</th><td><%= @patient.gender %></td>
-     </tr>
-     <tr>
-       <th>Dept:</th><td><%= Department.find(@doctor.doctor_profile.department_id).dept_name %></td>
-       <th>Doctor/Unit:</th><td><%= @doctor.doctor_profile.name %></td>
-       <th></th><td></td>
-     </tr>
+         <th>Visit date:</th><td> <%= Date.today %></td>
+         <th>Age:</th><td><%= calculate_age(@patient.dob) %></td>
+         <th>Gender:</th><td><%= @patient.gender %></td>
+     </tr>    
   </table>
-  <br />
+  <br /> 
 
-   <table class = 'form-table'>
-      <tr> <td style ='width: 100px;'>
-	      <%= button_to "Back to patient list", cms_doctor_patients_url(current_user.id) %>  
-            </td>
-            <td>
-	      <%= button_to "Back to prescriptions list", new_cms_appointment_clinical_screen_path(@appointment.id) %>          
-	  </td>
-      </tr>
-    </table>
-  <br />
+  <h3 class ='heading'> Prescriptions and reports </h3>
   <div id='clinical-screen'>
-     <h3 class = 'heading'> Prescriptions & reports </h3>  
      <%= render :partial => 'clinical_screen_sub_tabs' %>  
   </div>
 
-  <%= image_tag("spinner.gif",
-              :align => "absmiddle",
-              :border => 0,
-              :id => "spinner",
-              :style =>"display: none;" ) %>
+  <%= button_to "Back to patient list", cms_doctor_patients_url(current_user.id), :method => :get %>  
+
+ 

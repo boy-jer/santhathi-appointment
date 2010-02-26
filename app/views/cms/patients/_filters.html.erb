@@ -5,18 +5,19 @@
        <% f.fields_for @search.conditions do |p| %>
          <table class ='listing'>
 			<tr>
-			  <th>Doctor</th>
+			  <% if admin? %><th>Doctor</th><%end%>
 			  <th>Date</th>
 			  <th>Patient</th>
 			  <th>Hospital No</th>
 			  <th>Search</th>
 			</tr>
 			<tr>
-              <td>        
+                    
                 <% if admin? %>
-                  <%=  p.select :doctor_id ,  [['Select doctor' , '']] + Doctor.doctors_list, :class =>'select-list' %>
+                  <td>  
+                    <%=  p.select :doctor_id ,  [['Select doctor' , '']] + Doctor.doctors_list, :class =>'select-list' %>   </td>
                 <% end %>
-			  </td>	
+			 	
               <td>
 			    <%= p.text_field :appointment_date_like, :class =>'textbox-small' ,:id =>'date' %>
 			  </td> 	

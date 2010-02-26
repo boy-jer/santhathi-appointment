@@ -67,7 +67,11 @@ class SessionsController < ApplicationController
     
     new_cookie_flag = (params[:remember_me] == "1")
     handle_remember_cookie! new_cookie_flag
-    redirect_to pms_appointments_url
+    if doctor? 
+      redirect_to cms_patients_url 
+    else
+     redirect_to pms_appointments_url
+    end
     flash[:notice] = "Logged in successfully"
   end
 

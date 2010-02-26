@@ -1,16 +1,15 @@
 class  Cms::VitalSignsController < ApplicationController
   before_filter :find_patient, :only => [:new, :create,:edit ]
+  layout 'cms_single_column'
 
   def new
     @registration_summaries = RegistrationSummary.find(:all)
-    render :layout => false
   end
 
   def edit
     @all_summaries = {}
     @all_summaries= RegistrationSummary.find(:all).map{|reg|  [reg.id , reg.name]  }
     @vital_signs = @patient.vital_signs
-    render :layout => false
   end
 
   def create
@@ -34,7 +33,7 @@ class  Cms::VitalSignsController < ApplicationController
   private
 
  	def find_patient
-		@patient = Patient.find_by_id(params[:patient_id])
+		@patient = Patient.find_by_id(params[:p])
 	end
 
 end

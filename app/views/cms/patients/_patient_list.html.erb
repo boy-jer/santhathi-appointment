@@ -26,7 +26,7 @@
          <td><%=h appointment.reason.name%></td>
          <td><%= link_to 'Clinical screen', new_cms_appointment_clinical_screen_path(appointment)%></td>
          <td><%= link_to "History", {:action=>"show", :controller=>"cms/patient_histories",:id => appointment.patient.id } %>
-         <td><%= link_to "Discharge", discharge_cms_doctor_patients_path(current_user.id, :a => appointment.id), :method => :post unless appointment.recommend_for_discharge?%>
+         <td><%= appointment.recommend_for_discharge? ? (link_to "Discharge", discharge_cms_doctor_patients_path(current_user.id, :a => appointment.id), :method => :post) : "<span class ='dull'> Discharge </span>" %>
         </td>
        </tr>
      <%end%>

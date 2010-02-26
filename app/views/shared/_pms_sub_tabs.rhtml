@@ -8,7 +8,7 @@ jQuery('ul.sf-menu').superfish();
  
 <ul class="sf-menu hide-for-print">
   <li class="current">
-    <a href="#pms-transact"><%= image_tag ('application.png') %>Transact</a><!-- First level MENU -->
+    <a href="#pms-transact">Transact</a><!-- First level MENU -->
    <ul>
 <li class="current">
 <a href="#pms-appointments">Appointments</a> <!-- Second level MENU -->
@@ -32,7 +32,7 @@ jQuery('ul.sf-menu').superfish();
 </li>
  
 <li>
-<a href="#"><%= image_tag ('masters.png')%> Masters</a>
+<a href="#"> Masters</a>
 <ul>
 <li> <%= link_to "Departments", pms_departments_url %> </li>
     <li> <%= link_to "Doctors", pms_doctors_path %> </li>
@@ -43,7 +43,7 @@ jQuery('ul.sf-menu').superfish();
   </li>
  
 <li>
-<a href="#"><%= image_tag ('report.png') %> Reports</a>
+<a href="#"> Reports</a>
 <ul>
 <li> <%= link_to "Appointments reports" , pms_pms_reports_path(:type =>"Appointment") %> </li>
     <li> <%= link_to "Registration Reports" , pms_pms_reports_path(:type =>"Registration") %> </li>

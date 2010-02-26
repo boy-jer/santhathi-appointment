@@ -35,12 +35,13 @@
         <%= render :partial => 'shared/global_links' %>
       </div>
      <%= render :partial => 'shared/header' %>
-   </div>
-
-   <div id="content">
      <div id="top_menu" class="clearfix">
         <%= render :partial => 'shared/cms_sub_tabs' %>
      </div>
+   </div>
+
+   <div id="content">
+     
 		
      <div id="content_main" class="clearfix">
         <h2 class="ico_mug"><%= yield :header %> </h2>
@@ -53,10 +54,11 @@
      </div><!-- end #content_main -->	
     </div><!-- end #content -->
 		   
-    <div  id="footer" class="clearfix">
-       <%= render :partial => 'shared/footer' %>
-    </div>
+    
 </div><!-- end container -->
-
+<script type="text/javascript">
+  jQuery(".ico_mug").corner("top 8px") 
+  jQuery("#content_wrapper").corner("bottom 8px") 
+</script>
 </body>
 </html>

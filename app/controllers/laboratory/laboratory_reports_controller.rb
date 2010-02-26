@@ -6,8 +6,8 @@ class Laboratory::LaboratoryReportsController < ApplicationController
 
   def show
     @prescribed_test = PrescribedTest.find(params[:prescribed_test_id])
-    @prescription, @lab_test = @prescribed_test.prescription, @prescribed_test.service
-    @appointment = @prescription.appointment
+    @lab_test = @prescribed_test.service
+    @appointment = @prescribed_test.prescription.appointment
     @patient = @appointment.patient
     @specifications = @lab_test.parameter_specifications.gender_filter(@patient.gender)
     @laboratory_report = LaboratoryReport.find(params[:id])
@@ -18,16 +18,14 @@ class Laboratory::LaboratoryReportsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @laboratory_test_results}
-      format.pdf {
-                               options = {:left_margin   => 20,
-                                          :right_margin  => 20,
-                                          :top_margin    => 20,
-                                          :bottom_margin => 20
-    				         }
-                               prawnto :inline=>true, :prawn=> options, :filename => "appointments.pdf"
-                            render :layout => false
-                   }
+      format.pdf { options = {:left_margin   => 20,
+                               :right_margin  => 20,
+                               :top_margin    => 20,
+                               :bottom_margin => 20
+    			     }
+                             prawnto :inline=>true, :prawn=> options, :filename => "appointments.pdf"
+                   render :layout => false
+                 }
 
 
     end
@@ -35,16 +33,16 @@ class Laboratory::LaboratoryReportsController < ApplicationController
 
   def new
     @prescribed_test = PrescribedTest.find(params[:prescribed_test_id])
-    @prescription, @lab_test = @prescribed_test.prescription, @prescribed_test.service
-    @appointment = @prescription.appointment
+    @appointment = @prescribed_test.prescription.appointment
     @patient = @appointment.patient
-    @specifications = @lab_test.parameter_specifications.gender_filter(@patient.gender)
+    @specifications = @prescribed_test.service.parameter_specifications.gender_filter(@patient.gender)
     @laboratory_report = LaboratoryReport.new
   end
   
   def create
     @laboratory_report = LaboratoryReport.new(params[:laboratory_report])
     @laboratory_report.save
+
     #reduce the inventory item balance
     inventory_items = PrescribedTest.find(params[:prescribed_test_id]).service.inventory_items_used_for_tests
     unless inventory_items.blank?

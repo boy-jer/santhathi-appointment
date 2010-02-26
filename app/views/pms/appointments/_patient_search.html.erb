@@ -5,9 +5,16 @@
 
    <table>
      <tr><td><%=label_tag 'Name:'%></td><td><%=label_tag 'Contact No:'%></td><td><%=label_tag 'Register No:'%></td></tr>
-     <tr><td><%= text_field_tag 'name', '', {:class => 'textbox'}%></td>
+     <tr><td><%= text_field_tag 'name', '', {:class => 'textbox-small'}%></td>
          <td><%= text_field_tag 'number','', {:class => 'textbox-small'}%></td>
          <td><%= text_field_tag 'reg_num', '', {:class => 'textbox-small'}%></td>
+         <td>
+             <%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner3",
+              :style =>"display: none;" ) -%>
+         </td>
      </tr>
    </table>
 
@@ -18,24 +25,24 @@
 
 
 <%= observe_field(:name, :frequency => 0.5,
-                    :before => "jQuery('#spinner').show();",
-                    :success => "jQuery('#spinner').hide();",
+                    :before => "jQuery('#spinner3').show();",
+                    :success => "jQuery('#spinner3').hide();",
                     :url => patient_search_pms_appointments_url,
                     :method => :get,
                     :with => "'name=' + value +'&number=' + $('#number').val() + '&reg_num='+$('#reg_num').val()"
                   ) %> 
                   
 <%= observe_field(:number, :frequency => 0.5,
-                    :before => "jQuery('#spinner').show();",
-                    :success => "jQuery('#spinner').hide();",
+                    :before => "jQuery('#spinner3').show();",
+                    :success => "jQuery('#spinner3').hide();",
                     :url => patient_search_pms_appointments_url,
                     :method => :get,
                     :with => "'name=' + $('#name').val() +'&number=' + value + '&reg_num='+$('#reg_num').val()"
                   ) %> 
                   
 <%= observe_field(:reg_num, :frequency => 0.5,
-                    :before => "jQuery('#spinner').show();",
-                    :success => "jQuery('#spinner').hide();",
+                    :before => "jQuery('#spinner3').show();",
+                    :success => "jQuery('#spinner3').hide();",
                     :url => patient_search_pms_appointments_url,
                     :method => :get,
                     :with => "'name=' + $('#name').val() +'&number=' + $('#number').val() + '&reg_num='+value"

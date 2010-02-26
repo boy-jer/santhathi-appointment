@@ -1,21 +1,18 @@
 <% form_for(:next_appointment_remark, :url=> cms_appointment_next_appointment_remark_path(:appointment_id => @appointment), :html=>{:method=>:post} ) do |f| %>
 
   <%= f.error_messages %>
-    
-      <table class="form-table" >
-        <tr>
-          <th><%= f.label :remarks %></th>
-          <td><%= f.text_area :remarks, :class =>'textbox' %> &nbsp;
-           <%= submit_tag "Submit" %></td>
-        </tr>
-      </table>
-
-     <div class = 'left' style ='width: 300px;'>
+  
+     <div class = 'left' style ='width: 400px;'>
       <div id="datepicker"></div>
       <br />
       Appointment date:<%= text_field_tag 'date' %>
       <br /><br />
       <div class= 'app_time'>Appointment time: <%= f.select :hour, hours, :selected => (@hour || 9) %> <%= f.select :minute, minutes, :selected => (@minute || 30) %></div>
+
+      <p><%= f.label :remarks %> 
+          <%= f.text_area :remarks, :class =>'remarks' %><br />
+           <%= submit_tag "Submit" %>
+      </p>
     </div>
    
     <div class = 'left'>

@@ -1,27 +1,22 @@
+<% content_for :header do -%>
+    Registration summary
+<% end -%>
 
-<div class='continer'>
- <% form_tag ("vital_signs/update/#{@patient.id}",  :method => :put) do %>
-<h3>Editing Vital Sign</h3><br/>
-	<table cellpadding="5px" class="form-table">
-
-	  <% for reg_summary in @all_summaries %>
-	    <tr>
-		    <th>
-		        <%= label_tag("#{reg_summary[1]}")%>:</th>
-		        <td>
-  		         <% reg_value = reg_summary(@vital_signs,reg_summary[0]) %>
-		           <%= text_field_tag("vital_signs[#{reg_summary[0]}]","#{reg_value}",:class=>"textbox" )%>
-		        </td>
+<% form_tag ("vital_signs/update/#{@patient.id}",  :method => :put) do %>
+   <table class="form-table">
+      <% for reg_summary in @all_summaries %>
+	  <tr> 
+             <th> <%= label_tag("#{reg_summary[1]}")%> </th>
+	     <td>
+  		  <% reg_value = reg_summary(@vital_signs,reg_summary[0]) %>
+		  <%= text_field_tag("vital_signs[#{reg_summary[0]}]","#{reg_value}",:class=>"textbox-small" )%>
+	     </td>
           </tr>
+      <%end%>
+   </table>
 
-	 <%end%>
-	</table>
-
-	<br/>
-
-	 <%= submit_tag "update" %>
-
-
-
-   <%end%>
-    </div>
+<br/>
+  <%= submit_tag "update" %> -or- <%= link_to 'Cancel', :back %>
+ 
+<%end%>
+ 

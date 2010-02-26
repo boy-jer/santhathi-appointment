@@ -6,86 +6,69 @@
 	 <li><a href="#fourth_tab">Next appointment</a></li>
 	 <li><a href="#fifth_tab"> General section </a></li>
    </ul>
+
 <div id="pharmacy_prescription_replace">
    <div id="first_tab">
       <%= render :partial => 'first_tab' %>
    </div>
-
-     <div id="second_tab">
-	<ul> <li><a href="#current_visit_tab"> Current Visit </a></li>
-	     <li><a href="#last_visit_tab"> Last Visit </a></li></ul>
-             <br/><br/>
-	  <% unless @prescribed_tests.blank? %>
-             <% for test in @prescribed_tests %>
-               <% unless test.service.laboratory_report.blank? %>
-                <%=image_tag('arrow_right.png', :border => 0)  %> &nbsp;
-                <%= link_to "#{test.service.name}",laboratory_prescribed_test_laboratory_report_path(:prescribed_test_id=> test.id, :id => test.service.laboratory_report.id) %><br/>
-                <%end%>
+   
+   <div id="second_tab">
+      <h3 class = 'heading'> Current visit reports </h3>
+      <% unless @prescribed_lab_tests.blank? %>
+          <% for test in @prescribed_lab_tests %>
+             <% unless test.laboratory_report.blank? %>
+                 <%=image_tag('arrow_right.png', :border => 0) %> &nbsp;
+                 <%= link_to test.service.name, laboratory_prescribed_test_laboratory_report_path(:prescribed_test_id=> test.id, :id => test.laboratory_report.id), {:target => "_blank"} %><br/>
+                <% else %>
+                <br /><p> Report is not available yet.</p> <br />
              <%end%>
-           <% else %>
-             <br /><p> No report available yet.</p> <br />
-           <%end%>
-     </div>
-<!--
-	<div id="last_visit_tab">
-	<ul> <li><a href="#current_visit_tab"> Current Visit </a></li>
-	        <li><a href="#last_visit_tab"> Last Visit </a></li></ul><br/><br/>
-    <% unless @last_visit_reports.blank? %>
-      <% for test in @last_visit_reports %>
-         <% unless test.service.laboratory_report.blank? %>
-             <%=image_tag('arrow_right.png', :border => 0)  %> &nbsp;
-             <%= link_to "#{test.service.name}", laboratory_prescribed_test_laboratory_report_path(:prescribed_test_id=> test.id, :id => test.service.laboratory_report.id) %><br/><br/>
-         <%end%>
+          <%end%>
       <%end%>
-    <% else %>
-       <br /><p> No report available for last visit.</p> <br />
-    <%end%>
-</div>
+      <hr />
 
- <div id="current_visit_tab">
-     <ul> <li><a href="#current_visit_tab"> Current Visit </a></li>
-	        <li><a href="#last_visit_tab"> Last Visit </a></li></ul>
-	        <br/><br/>
-       <% unless @prescribed_tests.blank? %>
-             <% for test in @prescribed_tests %>
-               <% unless test.service.laboratory_report.blank? %>
-                <%=image_tag('arrow_right.png', :border => 0)  %> &nbsp;
-                <%= link_to "#{test.service.name}", laboratory_prescribed_test_laboratory_report_path(:prescribed_test_id=> test.id, :id => test.service.laboratory_report.id) %> <br/><br/>
-                <%end%>
+      <h3 class = 'heading'> Last visit reports </h3>
+      <% unless @last_visit_prescribed_tests.blank? %>
+          <% for test in @last_visit_prescribed_tests %>
+             <% unless test.laboratory_report.blank? %>
+                 <%=image_tag('arrow_right.png', :border => 0) %> &nbsp;
+                 <%= link_to test.service.name, laboratory_prescribed_test_laboratory_report_path(:prescribed_test_id=> test.id, :id => test.laboratory_report.id), {:target => "_blank"} %><br/>
+                <% else %>
+                <br /><p> Report is not available for last visit.</p> <br />
              <%end%>
-           <% else %>
-            <br/> <br/><p> No report available yet.</p> <br/>
-           <%end%>
- </div>
--->
-
-<div id="third_tab">
-  <% if @appointment.clinical_comment.blank? %> 
-    <%= render :partial => '/cms/clinical_comments/new' %>
-  <% else %>
-    <%= render :partial => '/cms/clinical_comments/edit' %>
-  <% end %>
-  <br/>
-  <%= render :partial => '/cms/clinical_comments/index' %>
-</div>
-
-
-<div id="fourth_tab">
-   <% if @appointment.next_appointment_remark.blank? %> 
-    <%= render :partial => '/cms/next_appointment_remarks/new' %>
-  <% else %>
-    <%= render :partial => '/cms/next_appointment_remarks/edit' %>
-  <% end %>
+          <%end%>
+      <%end%>
+   </div>
+   
  
-</div>
+ 
+
+  <div id="third_tab">
+    <% if @appointment.clinical_comment.blank? %> 
+      <%= render :partial => '/cms/clinical_comments/new' %>
+    <% else %>
+      <%= render :partial => '/cms/clinical_comments/edit' %>
+    <% end %>
+    <br/>
+    <%= render :partial => '/cms/clinical_comments/index' %>
+  </div>
+
+
+  <div id="fourth_tab">
+     <% if @appointment.next_appointment_remark.blank? %> 
+      <%= render :partial => '/cms/next_appointment_remarks/new' %>
+    <% else %>
+      <%= render :partial => '/cms/next_appointment_remarks/edit' %>
+    <% end %>
+  
+  </div>
 
 
  <div id="fifth_tab">
     <%=image_tag('arrow_right.png', :border => 0)  %> &nbsp;
-       <%= @appointment.discharge_summary.blank? ? (link_to "Discharge Summary" , new_cms_appointment_discharge_summary_path(@appointment)) : (link_to "Discharge Summary" , edit_cms_appointment_discharge_summary_path(:appointment_id=>@appointment.id,:id => @appointment.discharge_summary.id) )  %><br/><br/>
+       <%= @appointment.discharge_summary.blank? ? (link_to "Discharge summary" , new_cms_appointment_discharge_summary_path(@appointment)) : (link_to "Discharge summary" , edit_cms_appointment_discharge_summary_path(:appointment_id=>@appointment.id,:id => @appointment.discharge_summary.id) )  %><br/><br/>
    
      <%=image_tag('arrow_right.png', :border => 0)  %> &nbsp;
-    <%= @appointment.patient.vital_signs.blank? ? (link_to "Registration Summary " , new_cms_vital_sign_path (:patient_id =>@appointment.patient.id) ,:rel =>'facebox') : (link_to "Registration Summary " ,edit_cms_vital_sign_path(:patient_id => @appointment.patient.id ,:id => 1),:rel =>'facebox' ) %> <br/><br/>
+    <%= @appointment.patient.vital_signs.blank? ? (link_to "Registration summary ", new_cms_vital_sign_path (:p =>@appointment.patient.id) ) : (link_to "Registration summary ", edit_cms_vital_sign_path(:p => @appointment.patient.id, :id => 1)  ) %> <br/><br/>
 
   <%= link_to "Refer To Another Doctor"  ,cms_appointment_refer_doctors_path(:appointment_id => @appointment) %>
 

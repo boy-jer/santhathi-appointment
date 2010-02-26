@@ -34,16 +34,8 @@
 </table>
 <table class='table-bottom'>
   <tr class="table-footer">
-      <td colspan = 3> </td>
-      <td colspan = 1>
-      <% form_tag(new_pms_appointment_path, :id => 'main_form') do -%>
-         <input id="patient_id" name="patient_id" type="hidden" value=""/>
-         <a class="button" onclick="$(this).up('form').submit(); return false;"><span>Create Appointment</span></a>
-
-      <%end%>
-
-       </td>
-        <td colspan = 1> <%= remote_per_page_select %></td>
+    
+        <td colspan = 5> <%= remote_per_page_select %></td>
         <td colspan = 2>  <% form_tag(pms_patients_url, :method => :get, :id => "goto") do %>
                                         <% fields_for @search do |f|%>
                                           <%= f.text_field :page, :class => 'textbox-tiny' %>
@@ -53,7 +45,7 @@
 
 
         </td>
-      <td colspan = 5> <% if @patients.size > 1 %>
+      <td colspan = 2> <% if @patients.size > 1 %>
                           <div class="pagination">
                                 <%= remote_page_links %>
                           </div>

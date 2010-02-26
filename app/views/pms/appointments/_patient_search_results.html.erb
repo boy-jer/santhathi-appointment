@@ -3,22 +3,18 @@
   <table id="patients">
     <thead>
       <tr>
-        <th>Reg date</th>
         <th>Name</th>
-        <th>Age</th>
-        <th>Spouse name</th>
-        <th>Contact no</th>
-	    <th>Select</th>
+        <th>Reg. No</th>
+        <th>Phone</th>
+	<th>Select</th>
       </tr>
     </thead>
     <% for patient in @patients %>
        <tbody>
          <tr>
-           <td><%=h patient.reg_date %></td>
-           <td><%=h patient.patient_name %></td>
-           <td>  <%=h calculate_age(patient.dob) %>               </td>
-           <td><%=h patient.spouse_name %></td>
-           <td><%=h patient.contact_no %></td>
+           <td> <%=h patient.patient_name %></td>
+           <td> <%=h patient.reg_no %> </td>
+           <td> <%=h patient.contact_no %></td>
 	   <td> <%=radio_button_tag ('patient', patient.id, checked = false)%></td>
           </tr>
        <tbody>

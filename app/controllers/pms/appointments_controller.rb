@@ -8,10 +8,10 @@ class Pms::AppointmentsController < ApplicationController
       @search = Appointment.new_search(params[:search])
       @params = params[:search]
       @search.per_page ||= 25
-      #@search.order_as ||= "DESC"
-      #@search.order_by ||= "appointment_date"
       @search.order_as ||= "DESC"
-      @search.order_by ||= "appointment_time"
+      @search.order_by ||= "appointment_date"
+      #@search.order_as ||= "DESC"
+      #@search.order_by ||= "appointment_time"
       @appointments = @search.all
     end
 
@@ -95,7 +95,8 @@ class Pms::AppointmentsController < ApplicationController
     end
 
     if [@appointment.valid?, @patient.valid?].all?
-      if @appointment.save && @patient.save
+      if @appointment.save
+        @patient.save if @patient.new_record? 
         @appointment.patient = @patient
         @appointment.created_by_id = @current_user.id
         @appointment.updated_by_id = @current_user.id
@@ -139,7 +140,7 @@ class Pms::AppointmentsController < ApplicationController
   end
 
   def patient_search
-    @patients = Patient.all(:conditions =>{:patient_name_like => params[:name] ,:contact_no_like => params[:number] ,:reg_no_like => params[:reg_num],:spouse_is_null => true})
+    @patients = Patient.all(:conditions =>{:patient_name_like => params[:name] , :contact_no_like => params[:number] , :reg_no_like => params[:reg_num]})
     render :update do |page|
       page.replace_html 'patient_search_results', :partial => 'patient_search_results', :object => @patients
     end

@@ -1,5 +1,9 @@
+<% content_for :header do -%>
+   Test report
+<%end-%>
+
 <div id ='print_wrapper'>  
-  <center> 
+  <center class ='only-for-print' > 
      <h3 class = 'head'> <%= @lab_test.name.upcase %> REPORT  </h3> 
   </center> 
 
@@ -92,6 +96,6 @@
     </div>
 
     <div class = 'hide-for-print'>
-       <%= button_to_function("Print report", "javascript:print()") %> | <%= button_to_function("Preview", "javascript:print()") %> 
+       <%= button_to_function("Print report", "javascript:print()") %> -or- <%= button_to_function("Preview", "javascript:print()")%> -or- <%= link_to "cancel", :back %> 
     </div> 
 </div>
