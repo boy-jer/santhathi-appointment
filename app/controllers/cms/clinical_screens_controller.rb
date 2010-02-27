@@ -32,7 +32,7 @@ class Cms::ClinicalScreensController < ApplicationController
 
   def last_visit_report(patient)
     appointments = patient.appointments(:order => 'created_at DESC')
-    appointments[1].prescription.prescribed_tests unless appointments[1].blank?
+    appointments[1].prescription.prescribed_tests unless (appointments[1].blank? || appointments[1].prescription.blank?)
   end
 
 end
