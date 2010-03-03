@@ -1,2 +1,0 @@
-module Laboratory::MeasurementUnitsHelper
-end

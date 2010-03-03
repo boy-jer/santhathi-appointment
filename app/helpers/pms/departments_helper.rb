@@ -1,2 +1,0 @@
-module Pms::DepartmentsHelper
-end

@@ -1,2 +1,0 @@
-module Cms::PharmacyDosageListsHelper
-end
