@@ -1,0 +1,13 @@
+<div class='continer'>
+  <div class='continer-inner'>
+
+  <h3>Showing Pharmacy Cpurse List</h3><br />
+  <table class="form-table">
+  <tr> <th>Course type name:</th><td>
+  <%=h @pharmacy_course_list.course_type_name %></td></tr></table>
+
+<br/>
+
+<%= link_to 'Edit', edit_admin_masters_pharmacy_course_list_path(@pharmacy_course_list) %> |
+<%= link_to 'Back', admin_masters_pharmacy_course_lists_path %>
+

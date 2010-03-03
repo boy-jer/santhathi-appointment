@@ -1,0 +1,23 @@
+<% content_for :header do -%>
+    Showing <%=h @option.type %>
+<% end -%>
+
+<p>
+  <b>Name :</b>
+  <%=h @option.name %>
+</p>
+
+
+
+<p>
+  <b>Description:</b>
+  <%=h @option.description %>
+</p>
+
+
+
+
+<%= link_to 'Edit', edit_admin_masters_select_option_url(@option) %> |
+<%= link_to 'Back', admin_masters_select_options_url(:type =>  @option.type ) %>
+</div>
+

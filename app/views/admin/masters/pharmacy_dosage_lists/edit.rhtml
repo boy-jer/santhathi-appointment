@@ -1,0 +1,19 @@
+ <% content_for :header do -%>
+   Editing Pharmacy Dosage List
+ <% end -%>
+
+
+
+<% form_for(:pharmacy_dosage_list ,:url => admin_masters_pharmacy_dosage_list_url(@pharmacy_dosage_list) ,:html => { :method => :put }) do |f| %>
+  <%= f.error_messages %>
+
+
+<table cellpadding="5px" class="form-table">
+
+<tr><th> <%= f.label :dosage_type_name %> </th><td>
+    <%= f.text_field :dosage_type_name,:classname =>"textbox" %></td></tr>
+    </table><br/>
+    <%= f.submit "Update" %> or  <%= link_to 'Cancel and retrun to Pharmacy dosage list', admin_masters_pharmacy_dosage_lists_path %>
+
+<% end %>
+

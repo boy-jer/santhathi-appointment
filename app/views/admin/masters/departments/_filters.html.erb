@@ -1,0 +1,13 @@
+<% content_for :sidebar do -%>
+  <div class="search1">
+    <% form_remote_tag(:url => admin_masters_departments_url, :method => :get) do %>
+      <%fields_for @search do |f|%>
+        <% f.fields_for @search.conditions do |p| %>
+          <p> <label> Department Name: </label> <%= p.text_field :dept_name_like, :class => 'textbox-small' %> </p>
+        <%end%>
+      <%end%>
+      <input type="reset" value="Reset"> &nbsp;&nbsp; <%= submit_tag "Search" %>
+    <%end%>
+  </div>
+<%end-%>
+

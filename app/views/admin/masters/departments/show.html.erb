@@ -1,0 +1,27 @@
+<% content_for :header do -%>
+    Showing Department <%=h @department.dept_name %>
+<% end -%>
+
+<p>
+  <b>Dept name:</b>
+  <%=h @department.dept_name %>
+</p>
+<p>
+  <b> Abbrevation :</b>
+  <%=h @department.abbrevation %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @department.description %>
+</p>
+
+<p>
+  <b>System defined:</b>
+  <%=h @department.system_defined %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_masters_department_url(@department) %> |
+<%= link_to 'Back', :back %>
+

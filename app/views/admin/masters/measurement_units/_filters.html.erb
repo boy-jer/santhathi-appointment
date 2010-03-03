@@ -1,0 +1,15 @@
+<% content_for :sidebar do -%>
+  <div class="search1">
+    <p> <%= remote_per_page_select -%>   </p>
+      <% form_remote_tag(:url => admin_masters_measurement_units_url, :method => :get) do %>
+        <%fields_for @search do |f|%>
+          <% f.fields_for @search.conditions do |p| %>
+            <p> <label> Name: </label>  <%= p.text_field :name_like, :class => 'textbox-small' %> </p>
+            <p> <label> Abbrevation: </label> <%= p.text_field :abbreviation_like, :class => 'textbox-small' %> </p>
+          <%end%>
+        <%end%>
+        <input type="reset" value="Reset"> &nbsp; &nbsp;  <%= submit_tag "Search" %>
+      <% end %>
+  </div>
+<%end%>
+

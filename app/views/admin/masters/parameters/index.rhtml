@@ -1,0 +1,17 @@
+<% content_for :header do -%>
+  Listing all parameter records
+<%end-%>
+ <div id = 'top-links'>
+   <div class = 'right'>
+      <%= link_to("<span>New Parameter</span>", new_admin_masters_parameter_path(), :class => 'buttonAdd', :title => 'Create Parameter')  %>
+    </div>
+
+    <div class = 'clear'></div>
+  </div>
+	 <%=render :partial=> 'filters'%>
+	 <br />
+
+	<div id='parameters_list'>
+    	<%=render :partial=> 'parameters_list'%>
+    </div>
+

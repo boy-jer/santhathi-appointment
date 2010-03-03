@@ -1,0 +1,14 @@
+<div class='continer'>
+  <div class='continer-inner'>
+ <h3>Showing Pharmacy Dosage List</h3><br />
+     <table class="form-table">
+  <tr> <th>Dosage type name:</th><td>
+  <%=h @pharmacy_dosage_list.dosage_type_name %></td></tr>
+  </table>
+
+<br/>
+<%= link_to 'Edit', edit_admin_masters_pharmacy_dosage_list_path(@pharmacy_dosage_list) %> |
+<%= link_to 'Back', admin_masters_pharmacy_dosage_lists_path %>
+
+</div></div>
+

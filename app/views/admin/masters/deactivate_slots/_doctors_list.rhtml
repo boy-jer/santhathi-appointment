@@ -1,0 +1,16 @@
+<%fields_for :deactivate_slot do |f| %>
+  <%= f.select :doctor_id, [['Select doctor' , '']] + @doctors %>
+<%end%>
+  <%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner1",
+              :style =>"display: none;" ) %>
+<%= observe_field(:deactivate_slot_doctor_id, :frequency => 0.8,
+                    :before => "jQuery('#spinner').show();",
+                    :success => "jQuery('#spinner').hide();",
+                    :url => time_slot_admin_masters_deactivate_slots_url,
+                    :method => :get,
+                    :with => "'doctor_id=' + value"
+                   ) %>
+

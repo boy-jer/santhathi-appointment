@@ -1,0 +1,13 @@
+<% content_for :sidebar do -%>
+  <div class="search1">
+  <% form_remote_tag(:url => admin_masters_lab_tests_url, :method => :get) do %>
+    <%fields_for @search do |f|%>
+      <% f.fields_for @search.conditions do |p| %>
+        <p> <label> Lab Test Name : </label>  <%= p.text_field :name_like ,:class =>'textbox' %> </p>
+      <%end%>
+    <%end%>
+	  <input type="reset" value="Reset"> &nbsp; &nbsp;  <%= submit_tag "Search" %>
+    <% end %>
+  </div>
+<%end%>
+

@@ -1,0 +1,36 @@
+ <% content_for :header do -%>
+   Registration Summaries
+ <% end -%>
+
+<div id = 'top-links'>
+   <div class = 'right'>
+      <%= link_to("<span>New Registration summary</span>", new_admin_masters_registration_summary_path(), :class => 'buttonAdd', :title => 'Create Registration summary')  %>
+    </div>
+
+    <div class = 'clear'></div>
+  </div>
+
+<table class="listing">
+  <tr>
+    <th>Registration summary</th>
+    <th>Description</th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+
+<% for registration_summary in @registration_summaries %>
+  <tr>
+    <td><%=h registration_summary.name %></td>
+    <td><%=h registration_summary.description %></td>
+    <td><%= link_to 'Show', admin_masters_registration_summary_url(registration_summary)  %></td>
+    <td><%= link_to 'Edit', edit_admin_masters_registration_summary_path(registration_summary) %></td>
+    <td><%= link_to 'Delete', admin_masters_registration_summary_path(registration_summary), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+
+<br />
+<%= will_paginate @registration_summaries %>
+

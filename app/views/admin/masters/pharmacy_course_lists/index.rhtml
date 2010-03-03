@@ -1,0 +1,34 @@
+<% content_for :header do -%>
+  Pharmacy Course Lists
+<%end-%>
+
+ <div id = 'top-links'>
+   <div class = 'right'>
+      <%= link_to "<span>New  Pharmacy Course List</span>", new_admin_masters_pharmacy_course_list_path(),:class => 'buttonAdd' %>
+    </div>
+
+    <div class = 'clear'></div>
+  </div>
+
+
+<table class="listing">
+  <tr>
+    <th>Course type name</th>
+    <th>Show</th>
+    <th>Modify</th>
+    <th>Delete</th>
+  </tr>
+
+<% for pharmacy_course_list in @pharmacy_course_lists %>
+  <tr>
+    <td><%=h pharmacy_course_list.course_type_name %></td>
+    <td><%= link_to 'Show', admin_masters_pharmacy_course_list_path(pharmacy_course_list), :rel=> "facebox" %></td>
+    <td><%= link_to 'Modify', edit_admin_masters_pharmacy_course_list_path(pharmacy_course_list) %></td>
+    <td><%= link_to 'Delete', admin_masters_pharmacy_course_list_path(pharmacy_course_list), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= will_paginate @pharmacy_course_lists  %>
+

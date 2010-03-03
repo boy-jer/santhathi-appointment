@@ -1,0 +1,20 @@
+ <% content_for :header do -%>
+   New sample
+ <% end -%>
+
+
+<% form_for(:sample ,:url => admin_masters_samples_url(),:html => { :method => :post }) do |f| %>
+  <%= f.error_messages %>
+
+<table cellpadding="5px" class="form-table">
+   <tr><th> <%= f.label :sample_name %> </th>
+    <td><%= f.text_field :sample_name,:class=>"textbox" %></td></tr>
+ <tr><th><%= f.label :description %> </th>
+  <td>    <%= f.text_field :description ,:class=>"address"%></td></tr>
+ <tr><th><%= f.label :used_in_diagnosis_of %> </th><td>
+    <%= f.text_field :used_in_diagnosis_of,:class=>"address" %></td></tr>
+ </table><br/>
+ <%= f.submit "create" %> or  <%= link_to 'Cancel and Retrun to samples list', admin_masters_samples_path %>
+
+<% end %>
+

@@ -1,0 +1,35 @@
+ <% content_for :header do -%>
+   Pharmacy Dosage List
+ <% end -%>
+
+
+<div id = 'top-links'>
+   <div class = 'right'>
+      <%= link_to("<span>New Pharmacy Dosage list </span>", new_admin_masters_pharmacy_dosage_list_path, :class => 'buttonAdd', :title => 'Create Pharmacy Dosage lis')  %>
+    </div>
+
+    <div class = 'clear'></div>
+  </div>
+
+
+<table class="listing">
+  <tr>
+    <th>Dosage type name</th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+
+<% for pharmacy_dosage_list in @pharmacy_dosage_lists %>
+  <tr>
+    <td><%=h pharmacy_dosage_list.dosage_type_name %></td>
+    <td><%= link_to 'Show', admin_masters_pharmacy_dosage_list_url(pharmacy_dosage_list), :rel=> "facebox" %></td>
+    <td><%= link_to 'Edit', edit_admin_masters_pharmacy_dosage_list_path(pharmacy_dosage_list) %></td>
+    <td><%= link_to 'Delete', admin_masters_pharmacy_dosage_list_url(pharmacy_dosage_list), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= will_paginate @pharmacy_dosage_lists %>
+

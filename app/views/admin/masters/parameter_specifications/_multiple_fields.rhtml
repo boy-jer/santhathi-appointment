@@ -1,0 +1,36 @@
+<% fields_for(@parameter_specification) do |f| %>
+  <table class="form-table form-table-small">
+  <tr>
+    <th><%= f.label :parameter_name %></th>
+    <td><%= f.select :parameter_id, [['Select parameter' , '']] + Parameter.parameter_list ,:selected =>@parameter.id %>
+     <%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner1",
+              :style =>"display: none;" ) %></td>
+      </tr>
+     <tr><th> <label>Age Group</label></th>
+        <td>
+          <p>From: <%= f.text_field :age_group_from, :class =>'textbox-small' %>
+             To:
+             <%= f.text_field :age_group_to, :class =>'textbox-small' %>
+          </p>
+        </td>
+     </tr>
+     <tr><th><label>Sex </label></th>
+         <td> 
+           <%= f.radio_button :gender, "male", :checked => @parameter_specification[:gender] == "male" %> Male
+           &nbsp;&nbsp;&nbsp; <%= f.radio_button :gender, "female", :checked => @parameter_specification[:gender] == "female" %>  Female 
+           &nbsp;&nbsp;&nbsp; <%= f.radio_button :gender, "both", :checked => @parameter_specification[:gender] == "both" %> Both(Male/Female)
+         </td>
+     </tr>
+  </table>
+<%end%>
+
+<%= observe_field(:parameter_specification_parameter_id, :frequency => 1,
+                    :before => "jQuery('#spinner').show();",
+                    :success => "jQuery('#spinner').hide();",
+                    :url => {:controller => 'parameter_specifications', :action => 'new'},
+                    :method => :get,
+                    :with => "'parameter_id=' + value"
+                   ) %>

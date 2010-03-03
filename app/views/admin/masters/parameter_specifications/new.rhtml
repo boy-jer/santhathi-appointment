@@ -1,0 +1,34 @@
+<% content_for :header do -%>
+   Adding New Test Parameter for the  <%= @lab_test.name %>
+<%end-%>
+
+<% form_for(:parameter_specification , :url => admin_masters_lab_test_parameter_specifications_url(@lab_test) , :html => { :method => :post }) do |f| %>
+  <%= f.error_messages %>
+  <h4 class='heading'> Enter parameter specification details <h4>
+
+  <div id='parameter_fields'>
+     <table class="form-table form-table-small">
+       <tr>
+         <th><%= f.label :select_parameter_name %></th>
+         <td><%= f.select :parameter_id, [['Select parameter' , '']] + Parameter.parameter_list %>
+         <%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner",
+              :style =>"display: none;" ) %></td>
+        </tr>
+     </table>
+   </div>
+
+   <%= observe_field(:parameter_specification_parameter_id, :frequency => .6,
+                    :before => "jQuery('#spinner').show();",
+                    :success => "jQuery('#spinner').hide();",
+                    :url => {:controller => 'parameter_specifications', :action => 'new'},
+                    :method => :get,
+                    :with => "'parameter_id=' + value"
+                   ) %>
+                   <br/>  <br/>
+
+   <p> <button> Create specification </button> or <%= link_to 'Cancel', admin_masters_lab_test_parameter_specifications_path(@lab_test) %></p>
+<% end %>
+

@@ -1,0 +1,36 @@
+<div class="search1">
+  <%form_remote_tag(:url => pms_visit_reports_url, :method => :get) do -%>
+	   <%fields_for @search do |f|%>
+       <% f.fields_for @search.conditions do |p| %>
+			   <table class ='listing'>
+			     <tr>
+				      <th> Patient Name </th>
+    			    <th> Hospital No </th>
+    			    <th> Phone No </th>
+					    <th> Search </th>
+			     </tr>
+				   <tr>
+             <% p.fields_for p.object.patient do |patient| %>
+               <td>
+                  <%= patient.text_field :patient_name_like, :class => 'textbox-small' %>
+               </td>
+               <td>
+                  <%= patient.text_field :reg_no_like, :class => 'textbox-small' %>
+               </td>
+               <td>
+                  <%= patient.text_field :contact_no_like, :class => 'textbox-small' %>
+      				 </td>
+				     <%end%>
+				    <td>
+				      <input type="reset" value="Reset" /> &nbsp; <button> Search</button>
+				    </td>
+				  </tr>
+			  </table>
+			  <%end%>
+		 <%end%>
+
+
+	  <%end%>
+
+   </div>
+

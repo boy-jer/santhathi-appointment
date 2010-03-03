@@ -1,0 +1,20 @@
+<% content_for :header do -%>
+  New measurement unit record
+<%end-%>
+
+<br/>
+
+<% form_for(:measurement_unit , :url => admin_masters_measurement_units_url ,:html => { :method => :post }) do |f| %>
+  <%= f.error_messages %>
+<table cellpadding="5px" class="form-table">
+ <tr><th><%= f.label :name %></th>
+     <td><%= f.text_field :name ,:class=>"textbox"%></td></tr>
+  <tr><th><%= f.label :abbreviation %></th>
+      <td><%= f.text_field :abbreviation,:class=>"textbox" %></td></tr>
+  <tr><th><%= f.label :description %></th>
+      <td><div><%= f.text_field :description, :class=>"address"  %></div></td></tr>
+</table><br />
+    <%= submit_tag 'Create' %> or <%= link_to 'Cancel and Return  to measurement unit  ', admin_masters_measurement_units_path %>
+
+<% end %>
+

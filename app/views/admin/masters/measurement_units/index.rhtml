@@ -1,0 +1,18 @@
+<% content_for :header do -%>
+  Listing all measurement unit records
+<%end-%>
+
+ <div id = 'top-links'>
+   <div class = 'right'>
+      <%= link_to("<span>New Measurement Unit</span>", new_admin_masters_measurement_unit_path, :class => 'buttonAdd', :title => 'Create Measurement Unit')  %>
+    </div>
+
+    <div class = 'clear'></div>
+  </div>
+
+ <%=render :partial=> 'filters'%>
+
+  <div id='measurement_unit'>
+     <%=render :partial=> 'measurement_units_list'%>
+  </div>
+

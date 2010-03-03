@@ -1,0 +1,17 @@
+<ul>
+    <li> <%= link_to "Departments",  admin_masters_departments_url %> </li>
+    <li> <%= link_to "Doctors", admin_masters_doctors_path %> </li>
+    <li> <%= link_to "Reasons", admin_masters_select_options_url(:type => 'Reason') %> </li>
+    <li> <%= link_to "Visit types" ,admin_masters_select_options_path(:type => 'VisitType') %> </li>
+    <li> <%= link_to "Modes" ,admin_masters_select_options_path(:type => 'Mode') %> </li>
+    <li> <%= link_to "Deactivate Slot", admin_masters_deactivate_slots_url %></li>
+    <li> <%= link_to "Registration Summary", admin_masters_registration_summaries_path %></li>
+    <li> <%= link_to "Disease List", admin_masters_disease_lists_url %></li>
+    <li> <%= link_to "Prescription Dosage Type",admin_masters_pharmacy_dosage_lists_url %></li>
+    <li> <%= link_to "Prescription Course Type", admin_masters_pharmacy_course_lists_url %></li>
+    <li> <%= link_to "Measurement units", admin_masters_measurement_units_url %></li>
+  	<li> <%= link_to "Parameters", admin_masters_parameters_url %></li>
+    <li> <%= link_to "Samples", admin_masters_samples_path %></li>
+    <li> <%= link_to "Laboratory tests",  admin_masters_lab_tests_path %></li>
+</ul>
+

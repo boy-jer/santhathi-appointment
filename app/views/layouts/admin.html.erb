@@ -4,6 +4,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <%= render :partial => 'shared/head' %>
+  <%=javascript_include_tag 'jquery.cookie', 'jquery.treeview.min' %>
+  <%= stylesheet_link_tag 'jquery.treeview' %>
+    <script type="text/javascript">
+		jQuery(function() {
+			jQuery("#tree").treeview({
+				collapsed: false,
+				animated: "medium",
+				control:"#sidetreecontrol",
+				persist: "location"
+			});
+		})
+
+   </script>
 </head>
 
 <body>

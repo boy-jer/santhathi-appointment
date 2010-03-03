@@ -14,29 +14,29 @@ border : 0;
 outline : 0;
 vertical-align : baseline;
 }
- 
+
 :focus {
 outline : 0;
 }
- 
+
 ol, ul {
 list-style : none;
 }
- 
+
 table {
 border-collapse : separate;
 border-spacing : 0;
 }
- 
+
 caption, th, td {
 text-align : left;
 font-weight : normal;
 }
- 
+
 blockquote:before, blockquote:after, q:before, q:after {
 content : "";
 }
- 
+
 blockquote, q {
 quotes : "" "";
 }
@@ -131,7 +131,7 @@ STRUCTURE					 */
 /* ------------------------------------------------------------------------------------
 ICONS				 */
 .ico_mug{background:url(/images/img/sort-nav-bg.gif) #eef1f4; margin-bottom:0px; border: 1px solid #bbb; border-bottom: none; color: #3472ad; font-size: 16px; padding: 8px 5px 7px 20px; }
- 
+
 /* ----------------value------------dbdfe3--------------------------------------------------------
 LOGO				 */
 div#logo h1{padding:0px;margin:0px;}
@@ -227,8 +227,8 @@ minput#post_title{width:925px;margin:0px;border-left:1px solid #a8a8a8;border-to
              color: #265a8f;
              text-align: left;
              padding: 0.5em .5em .5em .5em;
-             border:1px solid #bcc3c8;    
-             font-weight: bold;    
+             border:1px solid #bcc3c8;
+             font-weight: bold;
 
 }
 
@@ -328,7 +328,7 @@ textarea.textbox:focus{
 
 /********************************* Menu ***************************************/
 
-#menu { padding: 0; margin: 15px 0 0px 15px;   list-style: none;}
+#menu { padding: 0; margin: 15px 0 0px 15px;   list-style: none; height: 22px;}
 
 #menu ul{margin:0; padding: 0px 0px 0px 0px; list-style:none; }
 
@@ -383,7 +383,7 @@ background:  url('/images/img/menu-hover-bg.gif') no-repeat;
  height: 100%;
  border: 1px solid #ccc;precribe
  border-top: none;
-} 
+}
 
 .heading{color: #3472ad; font-size: 14px;  margin-bottom: 0px;}
 
@@ -552,10 +552,10 @@ table.form-table-small{width: 60%;}
  	     background: #EAEAEA;
              text-align: left;
              padding: 0.3em .5em .3em .5em;
-             border: 1px #808080 solid; 
-			 font-size: 12px;     
+             border: 1px #808080 solid;
+			 font-size: 12px;
 			 font-weight: bold; }
-			 
+
 .report td { padding: .3em .5em .3em .5em; color: #383838; border: 1px #808080 solid;  }
 
 .report { border-collapse: collapse;
@@ -572,7 +572,7 @@ table.form-table-small{width: 60%;}
 /*---------------------------top links---------------------------*/
 #top-links{margin: 0px 20px 10px 20px; padding: 0px;}
 #listing_links {padding-top: 0px;}
-#listing_links a{font-weight: bold; color: #1c60a0; font-size: 15px; } 
+#listing_links a{font-weight: bold; color: #1c60a0; font-size: 15px; }
 
 /* ---------------------------Add button------------------------- */
 a.buttonAdd {
@@ -618,7 +618,7 @@ a.buttonAdd:hover span {
               padding: 0.2em 1em 0.2em 1em;
               border:1px solid #d6dcde;
               font-size: 12px;
-             }            
+             }
 
 #patients td {padding: 0.1em 1em;
               font-size: 11px;
@@ -760,3 +760,4 @@ table.links a{color: #2064a4; padding: 0px 10px 0px 10px; font-weight: bold;}
  float: right;
  height: 100%;
 }
+

@@ -1,0 +1,23 @@
+ <% content_for :header do -%>
+     New <%= params[:type] %>
+ <% end -%>
+
+     <% form_for(:option, :url => admin_masters_select_options_url(:type => params[:type]) )do |f| %>
+     <%= f.error_messages %>
+
+     <p>
+       <%= f.label :name %><br />
+       <%= f.text_field :name, {:class => 'textbox'} %>
+     </p>
+     <p>
+       <%= f.label :description %><br />
+       <%= f.text_field :description, {:class => 'textbox'} %>
+     </p>
+       <%= f.hidden_field :type, {:value=> params[:type]} %>
+     <p>
+       <table><tr><td><%= submit_tag "create" %></td>
+
+       <td>or <%= link_to 'Cancel and return ', admin_masters_select_options_path(:type =>  params[:type]) %></td></tr></table>
+     </p>
+   <% end %>
+

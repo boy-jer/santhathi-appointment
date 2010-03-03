@@ -1,0 +1,12 @@
+<% content_for :header do -%>
+   New parameter record
+<%end-%>
+
+    <% form_for(:parameter , :url => admin_masters_parameters_url , :html => { :method => :post } ) do |f| %>
+      <%= f.error_messages %>
+      <%= render :partial => 'fields', :locals => {:f => f} %>
+      <br/>
+      <%= submit_tag "Create" %> or <%= link_to 'Cancel and retrun to parameter list' , admin_masters_parameters_path %>
+
+    <% end %>
+

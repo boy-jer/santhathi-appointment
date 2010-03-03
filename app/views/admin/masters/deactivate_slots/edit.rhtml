@@ -1,0 +1,37 @@
+<div class='continer'>
+  <div class='continer-inner'>
+<h3>Editing Deactivate slot</h3><br/>
+
+<% form_for(:deactivate_slot ,:url =>admin_masters_deactivate_slot_url(@deactivate_slot) , :html =>{:method =>:put} ) do |f| %>
+  <%= f.error_messages %>
+
+<table cellpadding="5px" class="form-table">
+   <% unless doctor? %>
+   <tr><th> <%= f.label :department %>:</th><td>
+   <%= select :departament, :id, [['Select department' , '']] + Department.departments_for_select_list %></td>
+              </td></tr>
+  <tr><th>
+
+    <%= f.label :doctor_name %>:</th><td>
+    <div id="doctors"> <%=render :partial => 'doctors_list', :locals => {:f => f, :doctors => doctors_list} %></div>
+
+
+    </td></tr>
+    <% end %>
+<tr><th><%= f.label :from_date %>:</th><td>
+    <%= f.date_select :from_date,:class =>"textbox" %></td></tr>
+<tr><th><%= f.label :to_date %>:</th><td>
+    <%= f.date_select :to_date,:class =>"textbox" %></td></tr>
+<tr><th><%= f.label :time_from ,:class =>"textbox"%>:</th><td>
+    <%= f.time_select :time_from,:class =>"textbox" %></td></tr>
+<tr><th><%= f.label :time_to %>:</th><td>
+    <%= f.time_select :time_to ,:class =>"textbox"%></td></tr>
+<tr><th><%= f.label :reason_for_absence %>:</th><td>
+    <%= f.text_field :reason_for_absence ,:class =>"textbox"%></td></tr>
+</table><br/>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+</div></div>
+

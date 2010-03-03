@@ -1,0 +1,14 @@
+<% content_for :header do -%>
+   Editting parameter record
+<%end-%>
+
+
+<% form_for(:parameter , :url => admin_masters_parameter_path(@parameter) ,:html => { :method => :put } ) do |f| %>
+  <%= f.error_messages %>
+
+  <%= render :partial => 'fields', :locals => {:f => f} %>
+  <br />
+  <%= f.submit "Update" %> or <%= link_to 'Cancel and retrun to parameter list' , admin_masters_parameters_path %>
+
+<% end %><br/>
+

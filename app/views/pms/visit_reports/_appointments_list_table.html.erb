@@ -1,0 +1,44 @@
+<%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner",
+              :style =>"display: none;" ) %>
+
+<table class="listing">
+  <tr>
+    <th><%= remote_order_by_link(:id, :text =>"PVR No") %></th>
+    <th><%= remote_order_by_link ({:patient => :hospital_no}, :text => "Hospital.No" )%></th>
+    <th><%= remote_order_by_link(:appointment_date, :text => "Date") %></th>
+    <th><%= remote_order_by_link(:appointment_time, :text => "Time") %></th>
+    <th><%= remote_order_by_link({:doctor => :name}, :text => "Doctor") %></th>
+    <th><%= remote_order_by_link({:patient => :patient_name}, :text => "Patient") %></th>
+    <th class='hide-for-print'>Show</th>
+    <th class='hide-for-print'>Visit report</th>
+  </tr>
+<% for appointment in @appointments %>
+  <tr valign="top" class="<%= cycle('odd', 'even') %>">
+    <td><%=h appointment.id %></td>
+    <td><%= appointment.patient.reg_no%> </td>
+    <td><%=h Time.parse(appointment.appointment_date.to_s).strftime('%d-%m-%y') %></td>
+    <td><%=h Time.parse(appointment.appointment_time.to_s).strftime('%H:%M').to_s %></td>
+    <td>  <%=h appointment.doctor.doctor_profile.name%></td>
+    <td><%= link_to appointment.patient.patient_name, pms_patient_url(appointment.patient), :rel=> "facebox" %></td>
+
+    <td class='hide-for-print'><%= link_to 'Show', pms_appointment_url(appointment), :rel=> "facebox" %> </td>
+    <td class='hide-for-print'><%= link_to 'Visit report', new_pms_appointment_visit_report_url(appointment), :action => :get %> </td>
+  </tr>
+<% end %>
+</table>
+
+<table class='table-bottom'>
+  <tr class="table-footer">
+  	<td><%= remote_per_page_select -%></td>
+        <td> <% unless @appointments.blank? -%>
+                             <div class="pagination">
+                                <%= remote_page_links -%>
+                             </div>
+                           <% end %>
+         </td>
+  </tr>
+</table>
+
