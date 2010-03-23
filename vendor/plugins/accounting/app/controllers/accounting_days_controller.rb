@@ -1,7 +1,7 @@
 class AccountingDaysController < ApplicationController
   layout 'accounting'
   skip_before_filter :require_current_day, :only => [:new, :create, :re_open]
-  before_filter :require_no_current_day, :only => [:new, :create, :re_open]
+  #before_filter :require_no_current_day, :only => [:new, :create, :re_open]
 
   def new
     @accounting_day = user_default_branch.accounting_days.build
