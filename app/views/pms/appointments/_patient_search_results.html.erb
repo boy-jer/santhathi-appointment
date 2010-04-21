@@ -15,7 +15,7 @@
            <td> <%=h patient.patient_name %></td>
            <td> <%=h patient.reg_no %> </td>
            <td> <%=h patient.contact_no %></td>
-	   <td> <%=radio_button_tag ('patient', patient.id, checked = false)%></td>
+	   <td> <%=radio_button_tag ('patient_id', patient.id, checked = false)%></td>
           </tr>
        <tbody>
     <% end %>

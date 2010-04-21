@@ -1,5 +1,5 @@
 class Pos::BillsController < ApplicationController
-  layout 'pms'
+  layout 'pms_single_column'
 
   def index
     @search = Payment.new_search(params[:search])

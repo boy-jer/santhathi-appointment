@@ -112,8 +112,7 @@ button:hover { background-color: #ff6600;}*/
 
 #top_menu ul {margin-right:10px; margin-left: 10px; padding:0px;list-style:none;font-size:11px;}
 #top_menu ul li{float:left; display:block; margin-right: 30px; margin-left: 10px;}
-#top_menu{background: #fff url(/images/img/menutop1.jpg) no-repeat top center;width:100%;margin-top:15px; height:23px; border: 1px solid #ddd; border-bottom: 1px solid #8f8f8f; padding-top: 1px;}
-
+#top_menu{background: #eaeef4;width:100%;margin-top:15px; height:23px; border: 1px solid #bbb; border-bottom: 1px solid #8f8f8f; padding-top: 1px;}
 /* ------------------------------------------------------------------------------------
 STRUCTURE					 */
 #container{overflow:hidden; width:100%; margin:0 auto; } /*background:url(/images/img/overlay.jpg) no-repeat;*/
