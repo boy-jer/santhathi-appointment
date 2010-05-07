@@ -153,7 +153,7 @@ class Admin::MessagesController < ApplicationController
 
 
  def render_message_template
-   saved_message = Admin::SavedMessage.find(params[:admin_message_id])
+   saved_message = Admin::SavedMessage.find(params[:admin_message_id]) unless params[:admin_message_id].blank?
    @message = saved_message.content unless saved_message.blank?
    render :update do |page|
      page << "jQuery('#admin_message_message_body').val('#{@message}')"
