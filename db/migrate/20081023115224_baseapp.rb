@@ -1,4 +1,6 @@
 class Baseapp < ActiveRecord::Migration
+  require 'csv'
+
   def self.up
     
     # Create Settings Table
@@ -29,7 +31,9 @@ class Baseapp < ActiveRecord::Migration
       t.datetime :deleted_at
       t.timestamps
     end
-    
+  
+  
+
     add_index :users, :login, :unique => true
     
     # Create Profile Table
@@ -94,4 +98,6 @@ class Baseapp < ActiveRecord::Migration
     drop_table :roles
     drop_table :roles_users
   end
+
+  
 end
