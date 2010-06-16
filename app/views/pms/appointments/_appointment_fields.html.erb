@@ -21,9 +21,9 @@
       <tr><th><div class= 'app_time'><label>Appointment time </label></div></th>
           <td> <div class= 'app_time'><%= f.select :hour, hours, :selected => (@hour || 9) %> <%= f.select :minute, minutes, :selected => (@minute || 30) %> </div></td> </tr>
 
-     <tr> <th><%= f.label :reason %></th> <td><%= f.select :reason_id, [['Select reason' , '']] + Reason.select_list %></td> </tr>
+     <tr> <th><%= f.label :reason %></th> <td><%= f.select :reason_id,  Reason.select_list %></td> </tr>
 
-     <tr> <th><%= f.label :mode %></th> <td><%= f.select :mode_id, [['Select mode' , '']] + Mode.select_list %></td> </tr>
+     <tr> <th><%= f.label :mode %></th> <td><%= f.select :mode_id,  Mode.select_list %></td> </tr>
 
      <tr> <th><label> Visit type</label></th>
           <td><%= radio_button_tag ('appointment[visit_type]', 'yes', checked = params[:patient_id].blank?,

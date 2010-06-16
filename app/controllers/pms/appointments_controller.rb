@@ -84,8 +84,9 @@ class Pms::AppointmentsController < ApplicationController
   end
 
   def create
-    date = session[:date].blank? ? Date.today : session[:date]
-    @appointment = Appointment.new(params[:appointment].merge({:appointment_date => date}))
+    #date = session[:date].blank? ? Date.today : session[:date]
+    @appointment = Appointment.new(params[:appointment].merge({:appointment_date => params[:date]}))
+
     @appointment.department_id = params[:departament][:id]
     if params[:appointment][:visit_type] == 'yes'
       @patient = Patient.new(params[:patient])

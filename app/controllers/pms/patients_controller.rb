@@ -7,7 +7,7 @@ class Pms::PatientsController < ApplicationController
     @patients = @search.all
     @search.order_as ||= "DESC"
     @search.order_by ||= "reg_no"
-
+    
     respond_to do |format|
       format.html
        format.js {
@@ -20,7 +20,7 @@ class Pms::PatientsController < ApplicationController
 
   def show
     @patient = Patient.find(params[:id])
-    render :layout => false
+    @appointments = @patient.appointments
   end
 
   def new
@@ -41,7 +41,7 @@ class Pms::PatientsController < ApplicationController
       format.js {
                   @patient1 = @patient.spouse.blank? ? Patient.new : Patient.find(@patient.spouse)
                   render :update do |page|
-                    page.replace_html 'couple_fields', :partial => 'couple'
+                    page.replace_html 'couple_fields', :partial => 'couple', :object => @patient1
                   end
                 }
    end
@@ -159,7 +159,7 @@ class Pms::PatientsController < ApplicationController
 
   def associate_spouse
     if !params[:spouse_id].blank? and !params[:patient_id].blank?
-  	  patient = Patient.find(params[:patient_id])
+      patient = Patient.find(params[:patient_id])
       spouse =  Patient.find(params[:spouse_id])
       patient.spouse_name = spouse.patient_name
       patient.spouse = spouse.id

@@ -417,10 +417,10 @@ background:  url('/images/img/menu-hover-bg.gif') no-repeat;
 #main_schedules hr{ margin: 5px 0px 15px 0px;}
 #calendar_display hr{ margin: 5px 0px 15px 0px;}
 
-table.form-table {border-collapse: collapse; width: 100%; border: #B1C4D2 1px solid; margin: 0px 5px 0px 5px; }
-table.form-table th {padding: 0.1em .8em ;  border:1px solid #B1C4D2; text-align: right; background: #fff; vertical-align: middle; font-weight: bold; color: #6a737c;}
+table.form-table {border-collapse: collapse; width: 65%; border: #B1C4D2 1px solid; margin: 0px 5px 0px 5px; }
+table.form-table th {padding: 0.1em .2em ;  border:1px solid #B1C4D2; text-align: left; background: #fff; vertical-align: middle; font-weight: bold; color: #6a737c;}
 table.form-table th.left-label {text-align: left;}
-table.form-table td { padding: 0.3em .8em 0.3em ; border-bottom:1px solid #B1C4D2; border-right:1px solid #B1C4D2;background: #fff; }
+table.form-table td { padding: 0.3em .8em 0.1em ; border-bottom:1px solid #B1C4D2; border-right:1px solid #B1C4D2;background: #fff; }
 
 table.form-table .table-top td {color: #304d66; font-size: 15px; font-weight: bold;  }
 table.form-table .green-row{background: #cddecb;}
