@@ -1,0 +1,95 @@
+<%unless @appointment.blank?%>
+<% content_for :header do -%>
+  Visit report
+<%end-%>
+
+<div id = 'visit_report'>
+  <h2 style = 'text-align: center;'>VISIT REPORT - <%= @appointment.appointment_date %> </h2>
+  <table class = 'visit_report'>
+    <tr>
+       <td class='first'> Name:</td> <td class ='second'><b><%=@appointment.patient.patient_name %></b></td>
+       <td class='first'> Hospital No:</td> <td><b><%=@appointment.patient.reg_no %></b></td>
+    </tr>
+    <tr>
+       <td> Age(Years):</td> <td><%=calculate_age(@appointment.patient.dob) %></td>
+       <td> PVR No:</td> <td><%=@appointment.id %></td>
+    </tr>
+  </table>
+
+  <table class = 'visit_report'>
+    <tr><th>Clinical comment:</th> 
+      <td> <%= @appointment.clinical_comment.commet unless @appointment.clinical_comment.blank?%>
+      </td>
+   </tr>
+   <tr><th>Next appointment:</th> <td> day 12/13 scan </td></tr>
+  </table>
+
+  <div class ='headline'>PHARMACY PRESCRIPTION</div>
+ 
+  <table class = 'visit_report'>
+    <tr>
+       <th>Item</th> <th>Frequency</th><th>Route</th><th>Quantity</th><th>Remarks</th>
+    </tr>
+    <tr>
+       <td>Item</td> <td>Frequency</td><td>Route</td><td>Quantity</td><td>Remarks</td>
+    </tr>
+  </table>
+  <br /> 
+ <table class = 'visit_report'>
+    <tr>
+       <th>Dispensed by:</th> <th>Injection given by:</th><th>Prescribed by:</th>
+    </tr>
+ </table>
+</div>
+<br />
+<div class = 'hide-for-print'>
+   <%= button_to_function("Print report", "javascript:print()") %> | <%= button_to_function("Preview", "javascript:print()") %> 
+</div> 
+<%end%>
+
+
+<%unless @pharmacy_prescriptions.blank? %>
+<h3>Pharamacy Prescription </h3>
+
+<table class="search-table">
+<tr> <th>
+ 	Date</th><th>  	Time </th><th> 	Doctor  </th><th>	Item Name </th><th>	Frequency </th><th> 	Course Time</th><th>  	Duration </th><th> 	Start Date</th><th>  	End Date</th><th>  	Remarks</th><th></tr>
+ <% for ph in @pharmacy_prescriptions %>
+  <tr>
+    <td><%= ph.prescribing_date %></td>
+    <td><%= Time.parse(ph.time_of_prescription.to_s).strftime('%H:%M').to_s  %></td>
+    <td><%= ph.appointment.doctor.doctor_profile.name %></td>
+    <td><%= ph.pharamacy_item_information.item_name %></td>
+    <td><%= ph.pharmacy_dosage_list.dosage_type_name %></td>
+    <td><%= ph.pharmacy_course_list.course_type_name %></td>
+    <td><%= ph.course_duration%></td>
+    <td><%= ph.course_start_date%></td>
+    <td><%= ph.course_end_date%></td>
+    <td><%= ph.other_remarks%></td>
+
+ <%end%>
+<%end%>
+</table>
+
+<% unless @discharge_summary.blank? %>
+<br/><div>
+<h3> Discharge Summary </h3><br/>
+  <table class="form-table">
+   <tr> <th>Preparation: </th><td><%=h @discharge_summary.preparation %> </td></tr>
+   <tr><th>Complaints: </th><td><%=h @discharge_summary.complaints %></td></tr>
+   <tr><th> Symptoms: </th> <td><%=h @discharge_summary.symptoms %> </td></tr>
+   <tr><th> Treatment: </th><td><%=h @discharge_summary.treatment %></td></tr>
+   <tr><th> Treatment result:</th><td><%=h @discharge_summary.treatment_result %></td></tr>
+   <tr><th>Remarks:</th><td> <%=h @discharge_summary.remarks %></td></tr>
+</table>
+</div>
+<%end%>
+
+<%unless @clinical_comment.blank?%>
+<br/><div>
+<h3> Clinical Comment </h3>
+   <table class="form-table">
+
+   		<tr><th>Commet: </th><td> <%=h @clinical_comment.commet %> </td></tr>
+   </table>
+<%end%>

@@ -117,7 +117,7 @@ ActionController::Routing::Routes.draw do |map|
                                  :collection => {:update_doctors_list =>:get, :patient_search => :get} ,
                                  :has_one => [:visit_report]
     pms.resources :pms
-    pms.resources :patients, :collection =>{:associate_spouse=> :post, :associate_couple=>:get}
+    pms.resources :patients, :collection =>{:associate_spouse=> :post, :associate_couple=>:get, :report => :get}
     pms.resources :patients do |patient|
                                patient.resources :patient_appointments, :as => :pappointments
                             end

@@ -176,6 +176,19 @@ class Pms::PatientsController < ApplicationController
   end
 
 
+  def report
+    @appointment_object = Appointment.find(params[:appointment_id])
+    if params[:report_type] == "visit"
+      @appointment = Appointment.find(params[:appointment_id])
+    elsif params[:report_type] == "pharamacy"
+       @pharmacy_prescriptions = @appointment_object.pharmacy_prescriptions
+    elsif params[:report_type] == "discharge_summary"
+      @discharge_summary = @appointment_object.discharge_summary
+    elsif params[:report_type] == "clinical_comment"
+      @clinical_comment = @appointment_object.clinical_comment
+    end
+  end
+
 
 end
 
