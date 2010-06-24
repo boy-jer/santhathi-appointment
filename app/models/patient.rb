@@ -1,6 +1,6 @@
 class Patient < ActiveRecord::Base
   has_many :appointments
-
+  has_many :appointment_sms
   has_many :vital_signs
   validates_presence_of :patient_name, :contact_no
 

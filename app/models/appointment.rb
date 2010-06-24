@@ -8,6 +8,7 @@ class Appointment < ActiveRecord::Base
   belongs_to :patient
   belongs_to :reason
   belongs_to :mode
+  belongs_to :department
   has_one :prescription
   has_one :discharge_summary
   has_one :next_appointment_remark

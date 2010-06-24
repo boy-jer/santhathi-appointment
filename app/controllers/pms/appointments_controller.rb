@@ -102,6 +102,9 @@ class Pms::AppointmentsController < ApplicationController
         @appointment.created_by_id = @current_user.id
         @appointment.updated_by_id = @current_user.id
         @appointment.save
+        if params[:sms] == "1"
+          AppointmentSms.send_message(@patient.id,@appointment.id)
+        end
         flash[:notice] = 'Appointment is successfully created.'
         redirect_to pms_appointments_url
       else
