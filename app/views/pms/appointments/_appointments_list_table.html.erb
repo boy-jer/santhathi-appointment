@@ -23,7 +23,7 @@
     <td><%=h Time.parse(appointment.appointment_date.to_s).strftime('%d-%m-%y') %></td>
     <td><%=h Time.parse(appointment.appointment_time.to_s).strftime('%H:%M').to_s %></td>
     <td>  <%=h appointment.doctor.doctor_profile.name%></td>
-    <td><%= link_to appointment.patient.patient_name, pms_patient_url(appointment.patient), :rel=> "facebox" %></td>
+    <td><%= link_to appointment.patient.patient_name, pms_patient_url(appointment.patient)%></td>
 
 
     <td><%= appointment.state == 'new_appointment'? link_to('Confirm', confirm_pms_appointment_url(appointment, :page => params[:page]), :method => :get, :confirm => 'This action will mark this appointment as patient visited. are you sure?') : status(appointment.state) %></td>
