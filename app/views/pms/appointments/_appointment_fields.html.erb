@@ -3,13 +3,13 @@
   <hr />
   <table cellpadding="5px" class="form-table">
      <tr> <th><%= f.label :department %></th>
-          <td><%= select :departament, :id, [['Select department' , '']] + Department.departments_for_select_list %> <%= image_tag("spinner.gif",
+          <td><%= select :departament, :id,Department.departments_for_select_list %> <%= image_tag("spinner.gif",
               :align => "absmiddle",
               :border => 0,
               :id => "spinner1",
               :style =>"display: none;" ) %></td> 
      </tr>
-
+     <%=f.hidden_field :patient_id,:value=>params[:patient_id]%>
      <tr id ='doctor-list'>
        <th><label>Doctor</label></th>
        <td>

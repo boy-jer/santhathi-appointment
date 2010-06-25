@@ -20,7 +20,7 @@ class Pms::PatientsController < ApplicationController
 
   def show
     @patient = Patient.find(params[:id])
-    @appointments = @patient.appointments
+    @appointments = @patient.appointments.find(:all,:order => "created_at DESC")
   end
 
   def new
@@ -177,6 +177,7 @@ class Pms::PatientsController < ApplicationController
 
 
   def report
+   unless params[:appointment_id].blank?
     @appointment_object = Appointment.find(params[:appointment_id])
     if params[:report_type] == "visit"
       @appointment = Appointment.find(params[:appointment_id])
@@ -187,6 +188,7 @@ class Pms::PatientsController < ApplicationController
     elsif params[:report_type] == "clinical_comment"
       @clinical_comment = @appointment_object.clinical_comment
     end
+   end
   end
 
 

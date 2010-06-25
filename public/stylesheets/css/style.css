@@ -237,6 +237,9 @@ minput#post_title{width:925px;margin:0px;border-left:1px solid #a8a8a8;border-to
 .listing .even {background: #FFF;}
 .listing .odd {background: #FFF;}
 
+.listing .make_yellow {background: #fbf9e7;}
+.listing .make_white {background: #FFF;}
+
 .listing { border-collapse: collapse;
             width: 100%;
             color: #000;

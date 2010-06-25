@@ -18,7 +18,11 @@
     <th NOWRAP = NOWRAP class='hide-for-print'>Actions</th>
   </tr>
 <% for appointment in @appointments %>
-  <tr valign="top" class="<%= cycle('odd', 'even') %>">
+ <%if appointment.appointment_date > Date.today%>
+   <tr valign="top" class="make_yellow">
+ <%else%>
+   <tr valign="top" class="make_white">
+ <%end%>
     <td><%=h appointment.id %></td>
     <td><%=h Time.parse(appointment.appointment_date.to_s).strftime('%d-%m-%y') %></td>
     <td><%=h Time.parse(appointment.appointment_time.to_s).strftime('%H:%M').to_s %></td>
