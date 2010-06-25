@@ -9,7 +9,7 @@ class Cms::PatientHistoriesController < ApplicationController
 
   def show
     @patient = Patient.find(params[:id])
-    @appointments = @patient.appointments
+    @appointments = @patient.appointments.find(:all,:order => "created_at DESC")
   end
 
   def prescription
@@ -26,6 +26,13 @@ class Cms::PatientHistoriesController < ApplicationController
     render :update do |page|
       page.replace_html 'patient-history', :partial => 'cms/patient_histories/reports'
     end
+  end
+
+  def visit_report
+    @appointment = Appointment.find(params[:appointment_id])
+    render :update do |page|
+       page.replace_html 'visit-report', :partial => 'cms/patient_histories/visit_report'
+     end
   end
 
   def pharmacy_prescription

@@ -1,0 +1,47 @@
+<% content_for :header do -%>
+  Visit report
+<%end-%>
+
+<div id = 'visit_report'>
+  <h2 style = 'text-align: center;'>VISIT REPORT - <%= @appointment.appointment_date %> </h2>
+  <table class = 'visit_report'>
+    <tr>
+       <td class='first'> Name:</td> <td class ='second'><b><%=@appointment.patient.patient_name %></b></td>
+       <td class='first'> Hospital No:</td> <td><b><%=@appointment.patient.reg_no %></b></td>
+    </tr>
+    <tr>
+       <td> Age(Years):</td> <td><%=calculate_age(@appointment.patient.dob) %></td>
+       <td> PVR No:</td> <td><%=@appointment.id %></td>
+    </tr>
+  </table>
+
+  <table class = 'visit_report'>
+    <tr><th>Clinical comment:</th> 
+      <td> <%= @appointment.clinical_comment.commet unless @appointment.clinical_comment.blank?%>
+      </td>
+   </tr>
+   <tr><th>Next appointment:</th> <td> day 12/13 scan </td></tr>
+  </table>
+
+  <div class ='headline'>PHARMACY PRESCRIPTION</div>
+ 
+  <table class = 'visit_report'>
+    <tr>
+       <th>Item</th> <th>Frequency</th><th>Route</th><th>Quantity</th><th>Remarks</th>
+    </tr>
+    <tr>
+       <td>Item</td> <td>Frequency</td><td>Route</td><td>Quantity</td><td>Remarks</td>
+    </tr>
+  </table>
+  <br /> 
+ <table class = 'visit_report'>
+    <tr>
+       <th>Dispensed by:</th> <th>Injection given by:</th><th>Prescribed by:</th>
+    </tr>
+ </table>
+</div>
+<br />
+<div class = 'hide-for-print'>
+   <%= button_to_function("Print report", "javascript:print()") %> | <%= button_to_function("Preview", "javascript:print()") %> 
+</div> 
+

@@ -69,7 +69,7 @@ ActionController::Routing::Routes.draw do |map|
      cms.resources :vital_signs
    	 cms.resources :cms
 
-   	 cms.resources :patient_histories ,:collection => { :prescription => :get ,:reports => :get , :pharmacy_prescription=> :get ,:transfer_history => :get ,:alerts => :get ,:discharge_summary => :get , :clinical_comment=> :get }
+   	 cms.resources :patient_histories ,:collection => { :prescription => :get ,:reports => :get , :pharmacy_prescription=> :get ,:transfer_history => :get ,:alerts => :get ,:discharge_summary => :get , :clinical_comment=> :get ,:visit_report => :get}
    end
 
 

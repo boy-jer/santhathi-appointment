@@ -3,25 +3,10 @@
     <% @appointments.each do |appointment| %>
        <li> <a href="#"><%=h appointment.appointment_date%> | Pvr No :<%=h appointment.id %></a>
  	  <ul>
-   	     <li>  
-                <%= link_to_remote "Prescriptions", 
-                           :url => { :action => "prescription", :controller=>"cms/patient_histories", 
-                                     :appointment_id => appointment.id 
-                                   }, 
-                           :before => "$('#spinner').show();",
-                           :success => "$('#spinner').hide();"
-                %>  
-            </li>
             <li>
-               <%= link_to_remote "Reports" ,:url => {:action=>"reports", :controller=>"cms/patient_histories" ,:appointment_id => appointment.id } %>
+               <%= link_to_remote 'Visit report', :url=>{:action=>"visit_report",:controller=>"cms/patient_histories",:report_type=>"visit",:appointment_id => appointment.id } %> 
             </li>
-            <li>
-               <%= link_to_remote "Pharamacy prescription" ,:url => {:action=>"pharmacy_prescription", :controller=>"cms/patient_histories" ,:appointment_id => appointment.id } %> 
-            </li>
-            <li>
-               <%= link_to_remote "Discharge summary" ,:url => {:action=>"discharge_summary", :controller=>"cms/patient_histories" ,:appointment_id => appointment.id } %> </li><li> <%= link_to_remote "Clinical comment" ,:url =>{:action=>"clinical_comment", :controller=>"cms/patient_histories" ,:appointment_id => appointment.id } %>
-            </li>
-         </ul>
+          </ul>
      </li>
    <%end%>
  </ul>
