@@ -20,7 +20,7 @@
      </table>
    </div>
 
-   <%= observe_field(:parameter_specification_parameter_id, :frequency => .6,
+   <%= observe_field(:parameter_specification_parameter_id, :frequency => 0.6,
                     :before => "jQuery('#spinner').show();",
                     :success => "jQuery('#spinner').hide();",
                     :url => {:controller => 'parameter_specifications', :action => 'new'},

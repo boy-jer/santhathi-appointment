@@ -14,8 +14,8 @@ class CreatePatients < ActiveRecord::Migration
       t.string :reg_type
       t.timestamps
     end
-
-   f = File.open("#{RAILS_ROOT}/config/rashmi.csv","r")
+=begin
+   f = File.open("#{RAILS_ROOT}/config/patients.csv","r")
    i = 0
    f.readlines.each do |record|
      record_split = record.split(",")
@@ -37,6 +37,7 @@ class CreatePatients < ActiveRecord::Migration
         end
       end
     end
+=end
  end
    
 

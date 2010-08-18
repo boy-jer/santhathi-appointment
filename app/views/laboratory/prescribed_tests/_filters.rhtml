@@ -13,9 +13,11 @@
               <%end%>
             <% end %>
           <% end %> 
-          <% p.fields_for p.object.service do |service| %>
+          <% unless p.object.id.blank? %>
+            <% p.fields_for p.object.service do |service| %>
               <p> <label> Prescribed Test:</label>  <%= service.text_field :name_like, :class => 'textbox' %> </p>
-          <%end%>
+            <%end%>
+          <%end-%>
          <%end%>
        <%end%>
       <input type="reset" value="Reset"> &nbsp; &nbsp;  <%= submit_tag "Search" %> 

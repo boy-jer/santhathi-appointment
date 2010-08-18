@@ -5,6 +5,7 @@ class Admin::Masters::LabTestsController < ApplicationController
     @search = Service.new_search(params[:search])
     @search.per_page ||= 50
     @tests = @search.all
+    
     @child_list = Service.lab_services.top_level
     respond_to do |format|
               format.html

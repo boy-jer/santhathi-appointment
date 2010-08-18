@@ -5,7 +5,7 @@ class Department < ActiveRecord::Base
  # has_many :doctors , :through => :doctor_profiles
   #has_many :doctor_profiles
 
-  validates_presence_of :dept_name, :description
+  validates_presence_of :dept_name #, :description
   validates_uniqueness_of :dept_name
 
   def self.departments_for_select_list
