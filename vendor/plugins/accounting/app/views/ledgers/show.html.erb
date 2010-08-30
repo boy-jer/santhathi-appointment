@@ -1,6 +1,7 @@
 <% balance = @account_opening_balance -%>
 <div>
   <h3><%= @account.name -%> Ledger </h3>
+  <p>Opening Balance: <%= number_to_currency(balance, :unit => 'Rs.' ) -%></p>
   <table style='width:100%;' cellspacing='2' cellpadding='2'>
     <tr>
       <th class='account_heading'>Date</th>
