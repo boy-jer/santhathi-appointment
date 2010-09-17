@@ -1,4 +1,4 @@
-      <div class ='left part1'>
+      <div class ='left diagnosis_list'>
         <% for test in @lab_services %>
           <p><%=image_tag('pointer.gif', :border => 0) %> &nbsp;
             <%= link_to_remote(test.name,
@@ -18,22 +18,8 @@
         <% end %>
       </div>
 
-      <div class ='left part2'>   
-        <p><%=image_tag('pointer.gif', :border => 0) %> &nbsp;
-           <%= link_to_remote("Pharmacy prescription" ,
-                            :before => "jQuery('#spinner1').show()",
-                            :success => "jQuery('#spinner1').hide()",
-                            :url => { :controller =>'/cms/pharmacy_prescriptions' ,:action => :new } ,
-                            :method => :get,
-                            :with => "'appointment_id='+ #{@appointment.id}")%>
-
-           <%= image_tag("spinner.gif",
-              :align => "absmiddle",
-              :border => 0,
-              :id => "spinner1",
-              :style =>"display: none;" ) %>
-         </p> 
-
+      <div class ='left diagnosis_list'>   
+       
          <% @departments.each do |dept| %>
            <% unless (dept.dept_name.upcase =~ /LAB/ or dept.dept_name.upcase =~ /PHAR/) %>
               <% for service in dept.services %>
@@ -50,13 +36,42 @@
 
          <% end %>
        </div>
-       <div class ='clear'> </div>
-       <hr />
-        <div id = 'prescription-list'>
+       <div class = 'right prescribed_tests_list'>
+          <%= link_to_function("<span>Clinical comments</span>",  
+               "jQuery('#new_clinical_comments').dialog({ title: 'Clinical comments',
+                                                          width: 750,
+                                                          modal: true,
+                                                          height: 500,
+                                                          overlay: {opacity: 1, background: 'white'},
+                                                          close: function() {
+					                     jQuery('#new_clinical_comments').dialog('destroy');
+                                                           }
+                                                        })", 
+               :class => 'buttonAdd' )  %>
+          
+            <%= link_to_function("<span>Pharmacy prescription</span>",  
+               "jQuery('#inline_pharmacy_precription').dialog({ title: 'Pharmacy prescription',
+                                                          width: $(window).width() - 60,
+                                                          modal: true,
+                                                          height: $(window).height() -100,
+                                                          overlay: {opacity: 1, background: 'white'},
+                                                          close: function() {
+					                     jQuery('#inline_pharmacy_precription').dialog('destroy');
+                                                           }
+                                                        })", 
+               :class => 'buttonAdd' )  %>
+
+          <div class ='clear'> </div>
+          <hr />
+          <h3>Prescribed tests:</h3>
+          <div id = 'prescription-list'>
             <%= render :partial => '/laboratory/prescriptions/prescreptions' %> 
-        </div>
-        <br />
+          </div>
         
-        <div id = 'other-prescription-list'>
+         <br />
+        
+         <div id = 'other-prescription-list'>
            <%= render :partial => '/cms/prescriptions/prescreptions' %> 
-        </div>
+         </div>
+       </div>
+       <div class ='clear'> </div>

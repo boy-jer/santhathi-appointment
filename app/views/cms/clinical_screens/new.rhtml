@@ -1,22 +1,7 @@
 <% content_for :header do -%>
-   Clinical screen for  <%= @patient.patient_name %>
+   Clinical screen for &nbsp; <span style = 'font-size: 24px;'><%= @patient.patient_name %> </span> <span><%= @patient.gender %> <%= calculate_age(@patient.dob) %>, &nbsp;   </span>  &nbsp; PVR No: <span><%= @appointment.id %></span> Reg No: <span><%= @patient.reg_no %></span> 
 <%end-%>
-   
-  <table class="clinical-table">
-     <tr>
-        <th>Name:</th><td><%= @patient.patient_name %></td>
-        <th>PVR No:</th><td><%= @appointment.id %></td>
-        <th>Registration No:</th><td><%= @patient.reg_no %></td>
-     </tr>
-     <tr>
-         <th>Visit date:</th><td> <%= Date.today %></td>
-         <th>Age:</th><td><%= calculate_age(@patient.dob) %></td>
-         <th>Gender:</th><td><%= @patient.gender %></td>
-     </tr>    
-  </table>
-  <br /> 
 
-  <h3 class ='heading'> Prescriptions and reports </h3>
   <div id='clinical-screen'>
      <%= render :partial => 'clinical_screen_sub_tabs' %>  
   </div>

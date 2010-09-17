@@ -1,7 +1,7 @@
 <div id ='errors'> </div>
 
 <div id='pharmacy_prescription-new'>
-  <%= button_to "Back", new_cms_appointment_clinical_screen_path(@appointment), :method => :get %> 
+
   <% remote_form_for(:pharmacy_prescription, :url =>cms_appointment_pharmacy_prescriptions_url(:appointment_id => @appointment.id), :html => { :method => :post }) do |f| %>
   <%= f.error_messages %>
 

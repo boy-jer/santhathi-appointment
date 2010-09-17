@@ -28,3 +28,5 @@ end
 end
 
 #ConfigValue.find_or_create_by_name('DISABLE_AUTO_ACCOUNT_TRANSACTION')
+
+Department.find_or_create_by_dept_name('Laboratory')

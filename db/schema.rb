@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100206122755) do
+ActiveRecord::Schema.define(:version => 20100624044119) do
 
   create_table "account_balances", :force => true do |t|
     t.integer  "account_id"
@@ -158,6 +158,12 @@ ActiveRecord::Schema.define(:version => 20100206122755) do
   add_index "accounts", ["account_group_id"], :name => "index_accounts_on_account_group_id"
   add_index "accounts", ["branch_id"], :name => "index_accounts_on_branch_id"
 
+  create_table "appointment_sms", :force => true do |t|
+    t.integer  "patient_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "appointments", :force => true do |t|
     t.integer  "department_id"
     t.integer  "doctor_id"
@@ -293,7 +299,12 @@ ActiveRecord::Schema.define(:version => 20100206122755) do
     t.string   "name"
     t.decimal  "unit_buy_price",                   :precision => 11, :scale => 2
     t.decimal  "unit_sale_price",                  :precision => 11, :scale => 2
+    t.decimal  "unit_sale_net_price",              :precision => 11, :scale => 2
+    t.decimal  "unit_sale_vat_price",              :precision => 11, :scale => 2
     t.decimal  "sub_unit_sale_price",              :precision => 11, :scale => 2
+    t.decimal  "sub_unit_sale_net_price",          :precision => 11, :scale => 2
+    t.decimal  "sub_unit_sale_vat_price",          :precision => 11, :scale => 2
+    t.decimal  "vat_percent",                      :precision => 2,  :scale => 2
     t.integer  "inventory_group_id"
     t.boolean  "consumable"
     t.boolean  "discount_allowed"
@@ -303,11 +314,6 @@ ActiveRecord::Schema.define(:version => 20100206122755) do
     t.string   "shelf_no"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "unit_sale_net_price",              :precision => 11, :scale => 2
-    t.decimal  "unit_sale_vat_price",              :precision => 11, :scale => 2
-    t.decimal  "sub_unit_sale_net_price",          :precision => 11, :scale => 2
-    t.decimal  "sub_unit_sale_vat_price",          :precision => 11, :scale => 2
-    t.decimal  "vat_percent",                      :precision => 2,  :scale => 2
     t.integer  "account_id"
   end
 
@@ -344,6 +350,7 @@ ActiveRecord::Schema.define(:version => 20100206122755) do
     t.integer  "inventory_item_id"
     t.date     "transaction_date"
     t.string   "narration",                               :limit => 1000
+    t.string   "category"
     t.string   "unit_type"
     t.decimal  "quantity",                                                :precision => 11, :scale => 2
     t.integer  "price",                                   :limit => 10,   :precision => 10, :scale => 0
@@ -356,7 +363,6 @@ ActiveRecord::Schema.define(:version => 20100206122755) do
     t.decimal  "total_item_price",                                        :precision => 11, :scale => 2
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "category"
   end
 
   create_table "inventory_unit_of_measurements", :force => true do |t|
@@ -382,8 +388,6 @@ ActiveRecord::Schema.define(:version => 20100206122755) do
 
   create_table "laboratory_reports", :force => true do |t|
     t.integer  "appointment_id"
-    t.integer  "prescription_id"
-    t.integer  "service_id"
     t.date     "date_of_action"
     t.time     "time_of_action"
     t.integer  "action_taken_by_id"
@@ -391,6 +395,7 @@ ActiveRecord::Schema.define(:version => 20100206122755) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "prescribed_test_id"
   end
 
   create_table "laboratory_test_results", :force => true do |t|
@@ -426,10 +431,10 @@ ActiveRecord::Schema.define(:version => 20100206122755) do
     t.string   "number"
     t.string   "status"
     t.integer  "sms_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.integer  "contact_group_id"
     t.integer  "contact_list_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "next_appointment_remarks", :force => true do |t|
@@ -455,7 +460,7 @@ ActiveRecord::Schema.define(:version => 20100206122755) do
   end
 
   create_table "parameter_specifications", :force => true do |t|
-    t.integer  "service_id"
+    t.integer  "lab_test_id"
     t.integer  "parameter_id"
     t.integer  "age_group_from"
     t.integer  "age_group_to"
@@ -499,6 +504,7 @@ ActiveRecord::Schema.define(:version => 20100206122755) do
     t.string   "reg_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "spouse_id"
   end
 
   create_table "payment_items", :force => true do |t|
@@ -575,7 +581,7 @@ ActiveRecord::Schema.define(:version => 20100206122755) do
 
   create_table "prescribed_tests", :force => true do |t|
     t.integer  "prescription_id"
-    t.integer  "service_id"
+    t.integer  "lab_test_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "department_id"
@@ -643,7 +649,7 @@ ActiveRecord::Schema.define(:version => 20100206122755) do
     t.string   "specimen_condition"
     t.string   "container_type"
     t.string   "storage_instructions"
-    t.integer  "service_id"
+    t.integer  "lab_test_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

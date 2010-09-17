@@ -1,10 +1,9 @@
-<div id="tabs">
+ <div id="tabs">
    <ul>
 	 <li><a href="#first_tab">Diagnosis & prescription</a></li>
 	 <li><a href="#second_tab">Test reports</a></li>
-         <li><a href="#third_tab">Clinical comments</a></li>
-	 <li><a href="#fourth_tab">Next appointment</a></li>
-	 <li><a href="#fifth_tab"> General section </a></li>
+	 <li><a href="#third_tab">Next appointment</a></li>
+	 <li><a href="#fourth_tab"> General section </a></li>
    </ul>
 
 <div id="pharmacy_prescription_replace">
@@ -39,21 +38,8 @@
       <%end%>
    </div>
    
- 
- 
 
   <div id="third_tab">
-    <% if @appointment.clinical_comment.blank? %> 
-      <%= render :partial => '/cms/clinical_comments/new' %>
-    <% else %>
-      <%= render :partial => '/cms/clinical_comments/edit' %>
-    <% end %>
-    <br/>
-    <%= render :partial => '/cms/clinical_comments/index' %>
-  </div>
-
-
-  <div id="fourth_tab">
      <% if @appointment.next_appointment_remark.blank? %> 
       <%= render :partial => '/cms/next_appointment_remarks/new' %>
     <% else %>
@@ -63,7 +49,7 @@
   </div>
 
 
- <div id="fifth_tab">
+ <div id="fourth_tab">
     <%=image_tag('arrow_right.png', :border => 0)  %> &nbsp;
        <%= @appointment.discharge_summary.blank? ? (link_to "Discharge summary" , new_cms_appointment_discharge_summary_path(@appointment)) : (link_to "Discharge summary" , edit_cms_appointment_discharge_summary_path(:appointment_id=>@appointment.id,:id => @appointment.discharge_summary.id) )  %><br/><br/>
    
@@ -71,9 +57,22 @@
     <%= @appointment.patient.vital_signs.blank? ? (link_to "Registration summary ", new_cms_vital_sign_path (:p =>@appointment.patient.id) ) : (link_to "Registration summary ", edit_cms_vital_sign_path(:p => @appointment.patient.id, :id => 1)  ) %> <br/><br/>
 
   <%= link_to "Refer To Another Doctor"  ,cms_appointment_refer_doctors_path(:appointment_id => @appointment) %>
-
-
-</div>
+ </div>
 </div>
 
+
+<div id="new_clinical_comments" style = 'display: none'>
+   <% if @appointment.clinical_comment.blank? %> 
+      <%= render :partial => '/cms/clinical_comments/new' %>
+   <% else %>
+      <%= render :partial => '/cms/clinical_comments/edit' %>
+   <% end %>
+    <br/>
+   <b>Previous comments: </b>
+   <%= render :partial => '/cms/clinical_comments/index' %>
+</div>
+
+
+<div id ="inline_pharmacy_precription" style ='display:none;'>
+  <%= render :partial => '/cms/pharmacy_prescriptions/new' %>
 </div>

@@ -17,7 +17,7 @@ class Laboratory::LaboratoryReportsController < ApplicationController
     @laboratory_test_results.map{|r|  @results[r.parameter_specification_id] = [r.result, r.remarks] }
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.pdf { options = {:left_margin   => 20,
                                :right_margin  => 20,
                                :top_margin    => 20,
@@ -37,6 +37,11 @@ class Laboratory::LaboratoryReportsController < ApplicationController
     @patient = @appointment.patient
     @specifications = @prescribed_test.service.parameter_specifications.gender_filter(@patient.gender)
     @laboratory_report = LaboratoryReport.new
+
+    respond_to do |format|
+      format.html
+      format.js {   }
+    end
   end
   
   def create

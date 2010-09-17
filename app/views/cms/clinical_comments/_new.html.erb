@@ -1,10 +1,9 @@
- <% form_for(:clinical_comment, :url=>cms_appointment_clinical_comment_path(:appointment_id => @appointment), :html=>{:method=>:post} ) do |f| %>
+ <% form_for(@clinical_comment, :url=>cms_appointment_clinical_comment_path(:appointment_id => @appointment), :html=>{:method=>:post} ) do |f| %>
   <%= f.error_messages %>
-
-  <table class="form-table">
-  <tr><th><%= f.label :Clinical_Comment %> </th><td>
-    <%= f.text_area :commet, :class =>'textbox'%> &nbsp; <%= submit_tag 'Submit' %></td></tr>
-    </table>
-
+  <p>
+    <b>Enter clinical comment:</b> <br />
+    <%= f.text_area :commet, :class =>'textbox'%> <br />
+    <%= submit_tag 'Submit' %>
+  </p>
 <% end %>
 

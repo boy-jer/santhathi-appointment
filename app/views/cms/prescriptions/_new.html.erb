@@ -1,5 +1,5 @@
 <div class = 'presc_list'>
-  <% remote_form_for(:prescription , :url => cms_prescriptions_path() ,:html => { :method => :post }) do |f| %>
+  <% remote_form_for(Prescription.new , :url => cms_prescriptions_path() ,:html => { :method => :post }) do |f| %>
   <%= f.error_messages %>
     <table class ='precribe'>         
        <tr>
