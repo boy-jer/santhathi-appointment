@@ -1,3 +1,0 @@
-class JournalVoucherEntry < AccountTransaction
-
-end

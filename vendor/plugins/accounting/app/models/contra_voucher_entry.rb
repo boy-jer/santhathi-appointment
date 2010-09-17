@@ -1,3 +1,0 @@
-class ContraVoucherEntry < AccountTransaction
-
-end
