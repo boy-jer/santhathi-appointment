@@ -130,6 +130,12 @@ module ApplicationHelper
   def setup_particulars(account_transaction)
     returning(account_transaction) do |at|
       at.account_transaction_items.build([{},{},{},{},{},{},{},{},{},{}]) if at.account_transaction_items.blank?
+      unless at.account_transaction_items.blank?
+        extra_transaction_items = 10 - at.account_transaction_items.length
+        extra_transaction_items.times do 
+          at.account_transaction_items << AccountTransactionItem.new
+        end
+      end
     end
   end
 
