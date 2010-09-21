@@ -1,0 +1,39 @@
+<div style='font-size:16px;padding:10px;'>
+  <h2>Please set the Current Finanical Year before continuing</h2>
+  <fieldset>
+    <legend><b>Setup a financial year</b></legend>
+    <% form_for(@accounting_period) do |f| %>
+      <%= f.error_messages %>
+
+      <p>
+        <%= f.label :name %><br />
+        <%= f.text_field :name %>
+      </p>
+      <p>
+        <%= f.label :start_date %><br />
+        <%= f.date_select :start_date %>
+      </p>
+      <p>
+        <%= f.label :end_date %><br />
+        <%= f.date_select :end_date %>
+      </p>
+      <p>
+        <%= f.submit 'Create' %>
+      </p>
+  <% end %>
+  </fieldset>
+  <% unless @last_closed_period.blank? -%>
+    <br />
+    <fieldset>
+      <legend><b>Re-Open last closed financial year</b></legend>
+      <% form_tag re_open_accounting_periods_path, :method => :put do %> 
+        <p>
+          Financial Year was last closed for  <b><%= @last_closed_period.name -%></b> defined for the period <b><%= @last_closed_period.start_date -%></b> to <b><%= @last_closed_period.end_date -%></b>
+        </p>
+        <p>
+          <%= submit_tag 'Re-Open this finanical year' %>
+        </p>
+      <% end -%>
+    </fieldset>
+  <% end -%>
+</div>

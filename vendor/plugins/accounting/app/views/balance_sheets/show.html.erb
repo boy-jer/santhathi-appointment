@@ -1,0 +1,30 @@
+<div>
+  <div class='left'>
+    <h2>Assets</h2>
+    <% asset_acc_hash = {} -%>
+    <% @assets.each do |asset| %>      
+       <% unless asset_acc_hash[asset.account_group_id] == 1 -%>
+         <div style='margin-left:15px;'><h3><%= asset.account_group.name %></h3></div>
+       <% end -%>
+       <div style='margin-left:30px;'>
+         <%= asset.name %>
+         <%= number_to_currency(asset.amount, :unit => 'Rs.') %> <br /> <br />
+       </div>
+      <% asset_acc_hash[asset.account_group.id] = 1 -%>
+    <% end %>
+  </div>
+  <div class='right'>
+    <h2>Liabilities </h2>
+    <% liability_acc_hash = {} -%>
+    <% @liabilities.each do |liability| %>
+      <% unless liability_acc_hash[liability.account_group_id] == 1 -%>
+        <div style='margin-left:15px;'><h3><%= liability.account_group.name %> </h3></div>
+      <% end -%>
+       <div style='margin-left:30px;'>
+         <%= liability.name %>
+         <%= number_to_currency(liability.amount, :unit => 'Rs.') %> <br /> <br />
+      </div>      
+      <% liability_acc_hash[liability.account_group.id] = 1  -%>
+    <% end %>
+  </div>
+</div>

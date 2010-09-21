@@ -3,7 +3,7 @@ class AccountsController < ApplicationController
   # GET /accounts
   # GET /accounts.xml
   def index
-    @accounts = user_default_branch.accounts.all(:order => 'name')
+    @accounts = user_default_branch.accounts.all
 
     respond_to do |format|
       format.html # index.html.erb

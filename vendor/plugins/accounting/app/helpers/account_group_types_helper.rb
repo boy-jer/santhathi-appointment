@@ -1,0 +1,2 @@
+module AccountGroupTypesHelper
+end

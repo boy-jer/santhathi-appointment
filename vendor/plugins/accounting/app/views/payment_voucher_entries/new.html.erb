@@ -1,27 +1,31 @@
-<h3>Journal voucher</h3>
-<% form_for(setup_particulars(@journal_voucher_entry)) do |f| %>
+<h3>Payment voucher</h3>
+<% form_for(setup_particulars(@payment_voucher_entry)) do |f| %>
 <div>
   <%= f.error_messages %>
 </div>
-<div>    
+<div>
+    Cash/Bank Ledger: <%= f.select :cash_or_bank_account_id, @cash_bank_accounts.map{|m| [m.name, m.id.to_s]} %> [Credit] <br /><br />
     <table style='width:100%;height:100%;border:1px solid black;' cellspacing='0' cellpadding='0'>
       <tr>
         <th style='border:1px solid black;'>Particulars</th>
         <th style='border:1px solid black;'>Amount</th>
         <th style='border:1px solid black;'></th>
       </tr>
+      <% i = 0 -%>
       <% f.fields_for :account_transaction_items do |transaction_form| %>
+        <%= transaction_form.hidden_field :category, :value => 'Debit' %>
         <tr>
-          <td><%= transaction_form.text_field :account_name, :style => 'border:0px;', :class => 'auto_complete_field' %></td>
+          <td><%= transaction_form.text_field :account_name, :style => 'border:0px;', :class => 'auto_complete_field', :onblur => "display_category_in_voucher(this, #{i}, 'Debit')" %></td>
           <td><%= transaction_form.text_field :amount, :style => 'border:0px;' %></td>
-          <td><%= transaction_form.select :category, ['', 'Credit', 'Debit'] -%></td>
+          <td id="tr_category_<%= i -%>"></td>
+          <% i += 1 -%>
         </tr>
       <% end %>
     </table>
     <br /><br />
     Narrations <br />
     <%= f.text_area :narrations, {:rows => 3, :cols => 103} %>
-    <br />
+    <br /><br />
     <%= submit_tag 'Create payment' %>
 </div>
 <% end %>
@@ -29,7 +33,7 @@
 <script>
 
   var particular_index;
-  var accounts_arr = ['<%= @non_cash_bank_accounts.map{|m| m.name}.join("', '") -%>'];
+  var accounts_arr = ['<%= @all_accounts.map{|m| m.name}.join("', '") -%>'];
   $(".auto_complete_field").autocomplete(accounts_arr, {
 		minChars: 0,
 		width: 310,

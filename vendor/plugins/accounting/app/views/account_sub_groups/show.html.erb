@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%=h @account_sub_group.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @account_sub_group.description %>
+</p>
+
+<p>
+  <b>Under:</b>
+  <%=h @account_sub_group.account_main_group.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_account_sub_group_path(@account_sub_group) %> |
+<%= link_to 'Back', account_sub_groups_path %>

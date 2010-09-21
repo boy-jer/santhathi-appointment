@@ -1,0 +1,5 @@
+<% if @account_transaction.account_transactionable.blank? -%>
+  <%= render :partial => 'default_show' -%>
+<% else -%>
+  <%= render :partial => "#{@account_transaction.account_transactionable_type.underscore}_show" -%>
+<% end -%>

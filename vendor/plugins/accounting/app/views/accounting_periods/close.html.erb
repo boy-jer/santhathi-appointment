@@ -1,0 +1,14 @@
+<div style='font-size:16px;padding:10px;'>
+  <fieldset>
+    <legend><b>Financial Year Close</b></legend>
+    <p>
+      You are trying to close the financial year <b><%= current_accounting_period.name -%></b> defined for the period <b><%= current_accounting_period.start_date -%></b> to <b><%= current_accounting_period.end_date -%></b>.
+    </p>
+    <p>
+      Are you sure you want to continue? <br />
+      <% form_tag '', :method => :put do %>
+        <%= submit_tag "Yes, close this financial year" -%> or <%= link_to 'Cancel', accounts_path -%>
+      <% end %>
+    </p>
+  </fieldset>
+</div>

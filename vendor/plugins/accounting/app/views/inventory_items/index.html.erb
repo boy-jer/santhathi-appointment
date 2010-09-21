@@ -1,0 +1,26 @@
+<div>
+  <div style='text-align:right;'>
+    <%= button_to 'Add a new inventory item', new_inventory_item_path, :method => :get %>
+  </div>
+  <div>
+    <table style='width:100%;'>
+      <% @inventory_items.each do |inventory_item| %>
+        <tr>
+          <td>
+            <span style='font-size:18px;'><%=h inventory_item.name %></span><br />
+            <span style='font-size:13px;'>
+              <%=h inventory_item.inventory_group.name %> /
+              Current stock is <%=h inventory_item.cumulative_current_quantity %> /
+              Measured in <%= h inventory_item.inventory_unit_of_measurement.unit_name -%>
+           </span>
+          </td>
+          <td><%= link_to 'Transactions', transactions_list_inventory_item_path(inventory_item) -%></td>
+          <td><%= link_to 'Edit', edit_inventory_item_path(inventory_item) %></td>     
+        </tr>
+        <tr>
+          <td colspan='2'><hr /></td>
+         </tr>
+      <% end %>      
+    </table>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<h1>Editing account</h1>
+
+<% form_for(@account) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :account_group_id %><br />
+    <%= select_tag 'account[account_group_id]', grouped_options_for_select(grouped_account_group_options_array, @account.account_group_id), :disabled => 'disabled' %>
+  </p>
+  <p>
+    <%= f.label :opening_balance %><br />
+    <%= f.text_field :opening_balance %> 
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+

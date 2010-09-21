@@ -1,5 +1,5 @@
-<h3>Journal voucher</h3>
-<% form_for(setup_particulars(@journal_voucher_entry)) do |f| %>
+<h3>Contra voucher</h3>
+<% form_for(setup_particulars(@contra_voucher_entry)) do |f| %>
 <div>
   <%= f.error_messages %>
 </div>
@@ -29,7 +29,7 @@
 <script>
 
   var particular_index;
-  var accounts_arr = ['<%= @non_cash_bank_accounts.map{|m| m.name}.join("', '") -%>'];
+  var accounts_arr = ['<%= @cash_bank_accounts.map{|m| m.name}.join("', '") -%>'];
   $(".auto_complete_field").autocomplete(accounts_arr, {
 		minChars: 0,
 		width: 310,

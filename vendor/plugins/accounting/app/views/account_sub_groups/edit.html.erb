@@ -1,0 +1,24 @@
+<h1>Editing account_sub_group</h1>
+
+<% form_for(@account_sub_group) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :rows => 5, :cols => 30 %>
+  </p>
+  <p>
+    <%= f.label :parent_id, 'Under Group' %><br />
+    <%= f.select :parent_id, account_main_group_options_array %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @account_sub_group %> |
+<%= link_to 'Back', account_sub_groups_path %>

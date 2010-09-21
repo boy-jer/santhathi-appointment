@@ -1,0 +1,17 @@
+<div>
+  <div style='text-align:right;'>
+    <%= button_to 'Add a new account group', new_account_group_path, :method => :get %>
+  </div>
+  <div>
+    <% @account_group_types.each do |account_group_type| %>
+      <span style='font-size:20px;'><%= account_group_type.name %></span><br />
+      ----------------------------------------------------- <br />
+      <% account_group_type.account_groups.each do |account_group| %>
+        <%= account_group.name %> 
+          <%= "(#{account_group.account_main_group.name})" if account_group.type == 'AccountSubGroup' %>
+        <br />
+      <% end %>
+      <br />
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<p>
+  <b>Name:</b>
+  <%=h @inventory_group.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @inventory_group.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_inventory_group_path(@inventory_group) %> |
+<%= link_to 'Back', inventory_groups_path %>

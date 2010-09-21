@@ -1,0 +1,29 @@
+<div>
+    <h3>Payment voucher</h3>      
+    <p>
+      Cash/Bank A/C: <%= @payment_credit_item.account.name -%> [Credit]
+    </p>
+    <div style='height:300px;border:1px solid black;overflow:auto;'>
+      <table style='width:100%;hxeight:100%;bxorder:1px solid black;' cellspacing='0' cellpadding='6'>
+        <tr>
+          <th style='border:1px solid black;'>Particulars</th>
+          <th style='border:1px solid black;'>Amount</th>
+          <th style='border:1px solid black;'></th>
+        </tr>
+        <% @payment_debit_items.each do |item| %>
+          <tr>
+            <td><%= item.account.name %></td>
+            <td><%= number_to_currency(item.amount, :unit => 'Rs.') %></td>
+            <td><%= item.category -%></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <p>
+      Transaction date <br /> <%= @payment_voucher_entry.transaction_date.to_s -%>
+    </p>
+    <p>
+      Narrations <br />
+      <%= @payment_voucher_entry.narrations %>
+    </p>
+</div>

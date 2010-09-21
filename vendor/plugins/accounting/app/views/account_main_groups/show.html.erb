@@ -1,0 +1,23 @@
+<p>
+  <b>Name:</b>
+  <%=h @account_main_group.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @account_main_group.description %>
+</p>
+
+<p>
+  <b>Is p and l acct:</b>
+  <%=h @account_main_group.is_p_and_l_acct %>
+</p>
+
+<p>
+  <b>Account group type:</b>
+  <%=h @account_main_group.account_group_type_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_account_main_group_path(@account_main_group) %> |
+<%= link_to 'Back', account_main_groups_path %>
