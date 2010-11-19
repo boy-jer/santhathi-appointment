@@ -14,7 +14,6 @@
     <th>Contact No</th>
     <th>Spouse Name</th>
     <th>Appointments</th>
-    <th>Registration summary</th>
     <th>Actions</th>
   </tr>
 
@@ -28,8 +27,6 @@
     <td><%=h calculate_age(patient.dob) unless patient.dob.blank? %></td>
     <td><%=h patient.contact_no %></td>
     <td><%=h patient.spouse_name %></td>
-    <td> <%= patient.vital_signs.blank? ? (link_to "Registration summary ", new_cms_vital_sign_path (:p =>patient.id) ) : (link_to "Registration summary ", edit_cms_vital_sign_path(:p => patient.id, :id => 1)  ) %>
-    </td>
     <td><%= link_to 'Appointments', pms_patient_patient_appointments_url(patient), :rel=> "facebox" %></td>
     <td nowrap>&nbsp; <%= link_to image_tag('show.png', {:title => 'Show', :border => 0}), pms_patient_url(patient) %> &nbsp;| &nbsp; <%= link_to image_tag('edit.png', {:title => 'Edit', :border => 0}), edit_pms_patient_url(patient) %> &nbsp; </td>
   </tr>

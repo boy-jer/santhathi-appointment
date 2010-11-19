@@ -3,10 +3,10 @@ class Pms::PatientsController < ApplicationController
 
   def index
     @search = Patient.new_search(params[:search])
-    @search.per_page ||= 5
-    @patients = @search.all
     @search.order_as ||= "DESC"
     @search.order_by ||= "reg_no"
+    @patients = @search.all
+
     
     respond_to do |format|
       format.html

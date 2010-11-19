@@ -1,5 +1,5 @@
 class  Cms::VitalSignsController < ApplicationController
-  before_filter :find_patient, :only => [:new, :create,:edit ]
+  before_filter :find_patient
   layout 'cms_single_column'
 
   def new
@@ -8,7 +8,7 @@ class  Cms::VitalSignsController < ApplicationController
 
   def edit
     @all_summaries = {}
-    @all_summaries= RegistrationSummary.find(:all).map{|reg|  [reg.id , reg.name]  }
+    @all_summaries= RegistrationSummary.find(:all)
     @vital_signs = @patient.vital_signs
   end
 
@@ -16,18 +16,18 @@ class  Cms::VitalSignsController < ApplicationController
   	params[:vital_signs].each {  |key, value|
   		             @patient.vital_signs.create(:registration_summary_id=>"#{key}",:value=>"#{value}")
                               }
-    flash[:notice] = 'VitalSign was successfully created.'
+    flash[:notice] = 'Registration summary is successfully created.'
     redirect_to cms_doctor_patients_path(current_user.id)
   end
 
   def update
-    patient = Patient.find_by_id(params[:id])
-    patient.vital_signs.map { |vital_sign| vital_sign.destroy}
-    params[:vital_signs].each {  |key, value|
-                  patient.vital_signs.create(:registration_summary_id=>"#{key}",:value=>"#{value}")
-                             }
-    flash[:notice] = 'VitalSign was successfully updated.'
-     redirect_to cms_doctor_patients_path(current_user.id)
+ 
+    @patient.vital_signs.map { |vital_sign| vital_sign.destroy}
+    params[:vital_signs].each { |key, value|
+                                @patient.vital_signs.create(:registration_summary_id=>"#{key}",:value=>"#{value}")
+                              }
+    flash[:notice] = 'Registration summary is successfully updated.'
+     redirect_to :back
   end
 
   private

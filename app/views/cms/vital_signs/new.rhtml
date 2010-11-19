@@ -2,7 +2,7 @@
     Registration summary
 <% end -%>
 
-<% form_tag :action => 'create', :patient_id => @patient.id do %>
+<% form_tag :action => 'create', :p => @patient.id do %>
   <table cellpadding="5px" class="form-table">
     <% for registration_summary1 in @registration_summaries%>
       <tr>
@@ -10,7 +10,7 @@
 	  <%= label_tag("#{registration_summary1.name}")%>
 	</th>
 	<td>
-          <%= text_field_tag("vital_signs[#{registration_summary1.id}]", "", :class=>"textbox-small" )%>
+          <%= text_area_tag("vital_signs[#{registration_summary1.id}]", "", :class=>"summary" )%>
         </td>
       </tr>
     <% end %>
