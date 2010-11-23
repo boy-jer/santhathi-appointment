@@ -61,6 +61,7 @@ class Pms::PatientsController < ApplicationController
    	      @patient2.gender = "male"
    	    end
 		@patient2.contact_no = @patient1.contact_no if @patient2.contact_no.nil?	
+		@patient2.email = @patient1.email if @patient2.email.nil?	    
         @patient2.spouse  =  @patient1.id
         @patient1.spouse_name, @patient2.spouse_name = @patient2.patient_name, @patient1.patient_name
         @patient2.address = @patient1.address
