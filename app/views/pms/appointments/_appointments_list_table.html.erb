@@ -36,7 +36,7 @@
 
     <td><%= link_to 'Appointments', pms_patient_patient_appointments_url(appointment.patient), :rel=> "facebox" %></td>
 
-    <td NOWRAP = NOWRAP class='hide-for-print'><%= link_to image_tag('show.png', {:title => 'Show', :border => 0}), pms_appointment_url(appointment), :rel=> "facebox" %> &nbsp; |<% unless appointment.state == 'visited' %>&nbsp; <%= link_to image_tag('delete.png', {:title => 'cancel appointment', :border => 0}), pms_appointment_path(appointment), :confirm => 'Are you sure?', :method => :delete %> <%end %></td>
+    <td NOWRAP = NOWRAP class='hide-for-print'> <%= link_to image_tag('edit.png', {:title => 'Edit', :border => 0}), edit_pms_appointment_path(appointment) %> &nbsp;|&nbsp; <%= link_to image_tag('show.png', {:title => 'Show', :border => 0}), pms_appointment_url(appointment), :rel=> "facebox" %> &nbsp; |<% unless appointment.state == 'visited' %>&nbsp; <%= link_to image_tag('delete.png', {:title => 'cancel appointment', :border => 0}), pms_appointment_path(appointment), :confirm => 'Are you sure?', :method => :delete %> <%end %></td>
 
   </tr>
 <% end %>
@@ -86,3 +86,4 @@
 -->
          </tr>
 </table>
+

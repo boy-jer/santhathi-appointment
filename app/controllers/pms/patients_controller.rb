@@ -7,7 +7,7 @@ class Pms::PatientsController < ApplicationController
     @search.order_by ||= "reg_no"
     @patients = @search.all
 
-    
+
     respond_to do |format|
       format.html
        format.js {
@@ -60,8 +60,8 @@ class Pms::PatientsController < ApplicationController
    	    else
    	      @patient2.gender = "male"
    	    end
-		@patient2.contact_no = @patient1.contact_no if @patient2.contact_no.blank?	
-		@patient2.email = @patient1.email if @patient2.email.blank?	    
+		@patient2.contact_no = @patient1.contact_no if @patient2.contact_no.blank?
+		@patient2.email = @patient1.email if @patient2.email.blank?
         @patient2.spouse  =  @patient1.id
         @patient1.spouse_name, @patient2.spouse_name = @patient2.patient_name, @patient1.patient_name
         @patient2.address = @patient1.address
@@ -71,7 +71,7 @@ class Pms::PatientsController < ApplicationController
         @patient1.save
       end
       flash[:notice] = 'Patient was successfully created.'
-      redirect_to pms_patients_url
+      redirect_to pms_patient_url(@patient)
     else
     	flash[:notice] = 'Please Enter all Fields '
       @partial = params[:partial]
@@ -127,7 +127,7 @@ class Pms::PatientsController < ApplicationController
          @patient.save
       end
       flash[:notice] = 'Patient was successfully updated.'
-      redirect_to :pms_appointments
+      redirect_to pms_patient_url(@patient)
     else
       render :action => "edit"
     end
