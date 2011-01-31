@@ -71,7 +71,7 @@ class Pms::PatientsController < ApplicationController
         @patient1.save
       end
       flash[:notice] = 'Patient was successfully created.'
-      redirect_to pms_patient_url(@patient)
+      redirect_to pms_patient_url(@patient1)
     else
     	flash[:notice] = 'Please Enter all Fields '
       @partial = params[:partial]
