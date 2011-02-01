@@ -1,11 +1,11 @@
 <% content_for :header do -%>
-    Registration summary
+    Registration summary <%= link_to 'Back', :back %>
 <% end -%>
 
 <% form_tag url_for(:action => 'update', :controller => 'cms/vital_signs'), :p => @patient.id,:method => :put do %>
    <table class="form-table">
       <% for reg_summary in @all_summaries %>
-	    <tr> 
+	    <tr>
        <th> <%= label_tag(reg_summary.name)%> </th>
 	     <td>
   		   <% reg_value = @patient.vital_signs.find(:first, :conditions => "registration_summary_id = #{reg_summary.id}").value rescue '' %>
@@ -18,6 +18,6 @@
 
 <br/>
   <%= submit_tag "update" %> -or- <%= link_to 'Cancel', :back %>
- 
+
 <%end%>
- 
+

@@ -1,5 +1,5 @@
 <% content_for :header do -%>
-    Registration summary
+    Registration summary   <%= link_to "Back", :back %>
 <% end -%>
 
 <% form_tag :action => 'create', :p => @patient.id do %>
@@ -18,3 +18,4 @@
    <%= submit_tag "save" %> -or- <%= link_to 'Cancel', :back %>
 
 <%end%>
+
