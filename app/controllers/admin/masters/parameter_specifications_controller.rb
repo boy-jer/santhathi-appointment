@@ -31,7 +31,9 @@ class Admin::Masters::ParameterSpecificationsController < ApplicationController
                    end
 
                  render :update do |page|
-                   page.replace_html 'parameter_fields', :partial => partial_name, :object => {:parameter_specification => @parameter_specification}
+                   unless partial_name.blank?
+                     page.replace_html 'parameter_fields', :partial => partial_name, :object => {:parameter_specification => @parameter_specification}
+                   end  
                  end
 
               }
