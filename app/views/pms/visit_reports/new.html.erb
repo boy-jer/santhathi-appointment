@@ -14,6 +14,19 @@
        <td> PVR No:</td> <td><%=@appointment.id %></td>
     </tr>
   </table>
+<b>Laboratory Prescription:</b>
+<table>
+   <tr>
+     <% @tests.each do |test| %>
+      <th><%=test%></th>
+      <%end%>
+   </tr>
+    <% @prescribed_tests.each do |p_t| %>
+     <tr>
+       <td><%=p_t.prescription.remarks%></td>
+       </tr>
+       <%end%>
+   </table>
 
   <table class = 'visit_report'>
     <tr><th>Clinical comment:</th> 
