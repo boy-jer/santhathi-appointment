@@ -7,7 +7,8 @@ class Laboratory::PrescribedTestsController < ApplicationController
     @search.per_page ||= 15
     @search.order_as ||= "DESC"
     @search.order_by ||= "created_at"
-    @prescribed_tests  = @search.all(:include => {:prescribed_tests => :service}) 
+    @search.conditions.service.department_id_is = Department.find(:first, :select => :id, :conditions => "dept_name like '%Lab%'").id
+    @prescribed_tests  = @search.all(:include => {:prescribed_tests => :service} ) 
     respond_to do |format|
       format.html
       format.js { render :update do |page|
