@@ -17,15 +17,12 @@
 <b>Laboratory Prescription:</b>
 <table>
    <tr>
-     <% @tests.each do |test| %>
-      <th><%=test%></th>
-      <%end%>
-   </tr>
-    <% @prescribed_tests.each do |p_t| %>
-     <tr>
-       <td><%=p_t.prescription.remarks%></td>
-       </tr>
+        <% @prescribed_tests.each do |p_t| %>
+    
+       <td><%=p_t.service.name%></td>
+       
        <%end%>
+</tr>
    </table>
 
   <table class = 'visit_report'>
