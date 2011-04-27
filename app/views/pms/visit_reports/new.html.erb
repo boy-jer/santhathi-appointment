@@ -15,15 +15,12 @@
     </tr>
   </table>
 <b>Laboratory Prescription:</b>
-<table>
-   <tr>
+<br />
         <% @prescribed_tests.each do |p_t| %>
     
-       <td><%=p_t.service.name%></td>
+       &nbsp;&nbsp;&nbsp;<%=p_t.service.name%>
        
        <%end%>
-</tr>
-   </table>
 
   <table class = 'visit_report'>
     <tr><th>Clinical comment:</th> 
