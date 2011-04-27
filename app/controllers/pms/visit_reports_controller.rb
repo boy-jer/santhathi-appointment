@@ -22,12 +22,10 @@ class Pms::VisitReportsController < ApplicationController
 
   def new
    @appointment = Appointment.find(params[:appointment_id])
-   #@tests = ['PROLACTIN','IUI','BLOOD GROUP','RBS','FSH','HB','VDRL','TSH','TESTOSTERONE','LH','HIV','HBSAG','ULTRASOUND SCAN']
-   #service_ids = []
-   #@tests.each  do |test|
-  #service_ids << Service.find_by_name(test).id unless Service.find_by_name(test).nil?
-#end
-    @prescribed_tests = PrescribedTest.find(:all,:include =>[:prescription],:conditions =>['prescriptions.appointment_id = ?' ,@appointment.id])
+   @prescribed_tests = PrescribedTest.find(:all,:include =>[:prescription],:conditions =>['prescriptions.appointment_id = ?' ,@appointment.id])
+   @next_appointment = Appointment.find(:last,:conditions => ['patient_id = ? and state =? and doctor_id = ?',@appointment.patient_id,"new_appointment",@appointment.doctor_id])
+   @pharmacy_prescriptions = @appointment.pharmacy_prescriptions
+
   end
 
    def search

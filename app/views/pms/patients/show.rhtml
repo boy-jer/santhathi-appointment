@@ -39,7 +39,7 @@
       <tr valign="top" class="<%= cycle('odd', 'even') %>">
         <td><%=h Time.parse(appointment.appointment_date.to_s).strftime('%d-%m-%y') %></td>
         <td><%=h Time.parse(appointment.appointment_time.to_s).strftime('%H:%M').to_s %></td>
-        <td>  <%=h appointment.doctor.doctor_profile.name%></td>
+        <td>  <%=h appointment.doctor.doctor_profile.name unless appointment.doctor.nil?%></td>
         <td><%= appointment.patient.reg_no.blank? ? link_to('Register', edit_pms_patient_url(appointment.patient)) : appointment.patient.reg_no%> </td>
          <td><%= link_to 'Visit report', report_pms_patients_path(:report_type=>"visit",:appointment_id => appointment.id ) %> | <%= link_to "Pharamacy prescription" ,report_pms_patients_path(:report_type=>"pharamacy",:appointment_id => appointment.id ) %> | <%=link_to "Discharge Summary",report_pms_patients_path(:report_type=>"discharge_summary",:appointment_id => appointment.id )%> | <%=link_to "Clinical Comment",report_pms_patients_path(:report_type=>"clinical_comment",:appointment_id => appointment.id )%></td>
       </tr>

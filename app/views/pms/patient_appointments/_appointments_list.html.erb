@@ -22,7 +22,7 @@
     <td><%=h appointment.id %></td>
     <td><%=h appointment.appointment_date %></td>
     <td><%=h Time.parse(appointment.appointment_time.to_s).strftime('%H:%M').to_s %></td>
-    <td><%=h appointment.doctor.doctor_profile.name%></td>
+    <td><%=h appointment.doctor.doctor_profile.name unless appointment.doctor.nil?%></td>
     <td><%=h appointment.reason.name %></td>
     <td><%=h appointment.state %></td>
     <td>&nbsp;&nbsp; <%= link_to image_tag('show.png', {:title => 'Show', :border => 0}), pms_appointment_url(appointment), :rel=> "facebox" %> </td>

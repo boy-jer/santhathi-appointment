@@ -21,7 +21,7 @@
          <td><%=h appointment.patient.reg_no %></td>
          <td><%=h appointment.id%></td>
          <td><%=h appointment.patient.patient_name%></td>
-         <%if admin?%> <td><%=h appointment.doctor.doctor_profile.name %></td> <%end%>
+         <%if admin?%> <td><%=h appointment.doctor.doctor_profile.name  unless appointment.doctor.nil?%></td> <%end%>
          <td><%=h Time.parse(appointment.appointment_date.to_s).strftime("%d-%m-%y") %></td>
          <td><%=h appointment.reason.name%></td>
          <td><%= link_to 'Clinical screen', new_cms_appointment_clinical_screen_path(appointment)%></td>
