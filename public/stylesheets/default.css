@@ -978,7 +978,7 @@ a.button:hover span {
 .report td { padding: .3em .5em .3em .5em; color: #383838; border: 1px #808080 solid;  }
 
 .report { border-collapse: collapse;
-            width: 100%;
+            width: 80%;
             color: #000;
             border:1px solid #808080;
 			margin-top: 2em;
