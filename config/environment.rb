@@ -45,7 +45,7 @@ Rails::Initializer.run do |config|
 end
 CGI::Session.expire_after 1.day
 
-ExceptionNotifier.exception_recipients = %w(vijendrakarkala@gmail.com, nithinstany@gmail.com)
+ExceptionNotifier.exception_recipients = %w(vijendrakarkala@gmail.com)
 ExceptionNotifier.sender_address = %(vijendrakarkala@gmail.com)
 ExceptionNotifier.email_prefix = "[SANTHATHI_ERROR] "
 
