@@ -14,30 +14,45 @@
        <td> PVR No:</td> <td><%=@appointment.id %></td>
     </tr>
   </table>
-
-  <table class = 'visit_report'>
+<b>Laboratory Prescription:</b>
+  <br />
+      <% @prescribed_tests.each do |p_t| %>
+       &nbsp;<%=p_t.service.name%>,
+       <%end%>
+<table class = 'visit_report'>
     <tr><th>Clinical comment:</th> 
       <td> <%= @appointment.clinical_comment.commet unless @appointment.clinical_comment.blank?%>
       </td>
    </tr>
-   <tr><th>Next appointment:</th> <td> day 12/13 scan </td></tr>
+   <tr><th>Next appointment:</th>
+    <%unless @next_appointment.nil?%> 
+ <td><%=  @next_appointment.appointment_date  unless @next_appointment.nil?%> &nbsp;<%= @next_appointment.appointment_time.strftime('%H:%M').to_s  unless @next_appointment.nil?%> &nbsp;&nbsp;<%= @appointment.next_appointment_remark.remarks unless @appointment.next_appointment_remark.nil? %></td>
+ <%end%>
+</tr>
   </table>
 
   <div class ='headline'>PHARMACY PRESCRIPTION</div>
  
   <table class = 'visit_report'>
     <tr>
-       <th>Item</th> <th>Frequency</th><th>Route</th><th>Quantity</th><th>Remarks</th>
+       <th>Item</th> <th>Route</th><th>Frequency</th><th>Quantity</th><th>Remarks</th>
     </tr>
-    <tr>
-       <td>Item</td> <td>Frequency</td><td>Route</td><td>Quantity</td><td>Remarks</td>
+    <% @pharmacy_prescriptions.each do |prescription|%>
+      <tr>
+        <td><%= prescription.inventory_item.name unless prescription.inventory_item.nil?%></td>
+                <td><%= prescription.pharmacy_course_list.course_type_name unless prescription.pharmacy_course_list.nil?%></td> 
+        <td><%= prescription.pharmacy_dosage_list.dosage_type_name unless prescription.pharmacy_dosage_list.nil?%></td>
+      <td><%= prescription.quantity%></td>
+       <td><%= prescription.other_remarks%></td>
     </tr>
+  <%end%>
   </table>
   <br /> 
  <table class = 'visit_report'>
     <tr>
        <th>Dispensed by:</th> <th>Injection given by:</th><th>Prescribed by:</th>
-    </tr>
+     </tr>
+    <tr><td></td><td></td><td><%= @appointment.doctor.doctor_profile.name unless @appointment.doctor.nil?%></td></tr>
  </table>
 </div>
 <br />

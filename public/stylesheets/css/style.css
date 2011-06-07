@@ -547,7 +547,7 @@ table.form-table-small{width: 60%;}
 
 .clinical-table td {padding: 0.3em .8em; border: 1px solid #ddd;}
 
-.clinical-table{border-collapse: collapse; background-color: #fbfbfb; color: #272727; width: 100%; border: 1px solid #b5b5b5; margin-top: 5px; }
+.clinical-table{border-collapse: collapse; background-color: #fbfbfb; color: #272727; width: 80%; border: 1px solid #b5b5b5; margin-top: 5px; }
 
 #first_tab a{color: #881280; font-size: 12px;}
 .presc_list {background: #f1f1f1; padding: 10px; width: 90%; border: 1px solid #ddd;}
@@ -584,7 +584,7 @@ table.form-table-small{width: 60%;}
 .report td { padding: .3em .5em .3em .5em; color: #383838; border: 1px #808080 solid;  }
 
 .report { border-collapse: collapse;
-            width: 100%;
+            width: 80%;
             color: #000;
             border:1px solid #808080;
 			margin-top: 2em;

@@ -21,8 +21,8 @@
     <td><%= appointment.patient.reg_no%> </td>
     <td><%=h Time.parse(appointment.appointment_date.to_s).strftime('%d-%m-%y') %></td>
     <td><%=h Time.parse(appointment.appointment_time.to_s).strftime('%H:%M').to_s %></td>
-    <td>  <%=h appointment.doctor.doctor_profile.name%></td>
-    <td><%= link_to appointment.patient.patient_name, pms_patient_url(appointment.patient), :rel=> "facebox" %></td>
+     <td>  <%=h appointment.doctor.doctor_profile.name  unless appointment.doctor.nil?%></td>
+  <td><%= link_to appointment.patient.patient_name, pms_patient_url(appointment.patient), :rel=> "facebox" %></td>
 
     <td class='hide-for-print'><%= link_to 'Show', pms_appointment_url(appointment), :rel=> "facebox" %> </td>
     <td class='hide-for-print'><%= link_to 'Visit report', new_pms_appointment_visit_report_url(appointment), :action => :get %> </td>

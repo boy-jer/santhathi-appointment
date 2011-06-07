@@ -1,5 +1,5 @@
 <% content_for :header do -%>
-   Test report
+ 
 <%end-%>
 
 <div id ='print_wrapper'>  
@@ -83,14 +83,15 @@
     <br/>
     <div class ='only-for-print' >
       <table class="clinical-table">
-         <tr> <td> <b>Lab-Tech </b> </td>
-              <td> <b>Scientist </b> </td>
-              <td> <b>Medical Director </b> </td>
+         <tr> </tr>
+         <tr> <td> ---------------------------  </td>
+              <td> ---------------------------  </td>
+              <td> ---------------------------  </td>
          </tr>
 
          <tr> <td> <b>Lab-Tech </b> </td>
               <td> <b>Scientist </b> </td>
-              <td> <b>Medical Director </b> </td>
+              <td> <b><%= @laboratory_report.appointment.doctor.doctor_profile.name %></b> </td>
          </tr>
       </table>
     </div>

@@ -4,6 +4,6 @@ class ParameterSpecification < ActiveRecord::Base
   has_one :laboratory_test_result
   acts_as_list :scope => :service
 
-  named_scope :gender_filter, lambda{|gender| {:conditions => ["gender = ? or gender = ? ", gender,"both"] } }
+  named_scope :gender_filter, lambda{|gender| {:conditions => ["gender = ? or gender = ? ", gender, "both"] } }
 
 end

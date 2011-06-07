@@ -26,8 +26,8 @@
             <th>Course duration:</th><td> <%= f.text_field :course_duration, :class =>'textbox-tiny' %></td> 
        </tr>
 
-       <tr><th>Course start date:</th><td><%= f.calendar_date_select :course_start_date , :class =>'textbox-small' %> </td>
-            <th>Course end date:</th><td><%= f.calendar_date_select :course_end_date , :class =>'textbox-small' %> </td> 
+       <tr><th>Course start date:</th><td><%= f.date_select :course_start_date , :class =>'textbox-small' %> </td>
+            <th>Course end date:</th><td><%= f.date_select :course_end_date , :class =>'textbox-small' %> </td> 
        </tr>
     
      <tr><th>Route:</th><td> <%= f.collection_select :pharmacy_course_list_id, PharmacyCourseList.pharamacy_course_lists ,:id ,:course_type_name ,options = { :prompt =>"-Select course type" }%> </td> 

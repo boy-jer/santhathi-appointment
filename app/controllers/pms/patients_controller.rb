@@ -183,6 +183,9 @@ class Pms::PatientsController < ApplicationController
     @appointment_object = Appointment.find(params[:appointment_id])
     if params[:report_type] == "visit"
       @appointment = Appointment.find(params[:appointment_id])
+      @prescribed_tests = PrescribedTest.find(:all,:include =>[:prescription,:service],:conditions =>['prescriptions.appointment_id = ? and services.department_id =?' ,@appointment.id,Department.find(:first, :select => :id, :conditions => "dept_name like '%Lab%'").id])
+   @next_appointment = Appointment.find(:last,:conditions => ['patient_id = ? and state =? and doctor_id = ?',@appointment.patient_id,"new_appointment",@appointment.doctor_id])
+     @pharmacy_prescription = @appointment.pharmacy_prescriptions
     elsif params[:report_type] == "pharamacy"
        @pharmacy_prescriptions = @appointment_object.pharmacy_prescriptions
     elsif params[:report_type] == "discharge_summary"

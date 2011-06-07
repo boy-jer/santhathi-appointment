@@ -26,6 +26,10 @@
 <body>
 <div class="container" id="container">
    <div  id="header">
+
+<div id="global_links">
+        <%= render :partial => 'shared/global_links' %>
+      </div>
      <%= render :partial => 'shared/header' %>
    </div>
 
@@ -47,7 +51,8 @@
               <%= yield(:sidebar) %>
 	    </div><!-- end #sidebar -->
 
-     </div><!-- end #content_main -->
+     </div><!-- end #content_main -->
+
     </div><!-- end #content -->
 
     <div  id="footer" class="clearfix">

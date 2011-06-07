@@ -11,11 +11,14 @@
        <tr>
          <th><%= f.label :select_parameter_name %></th>
          <td><%= f.select :parameter_id, [['Select parameter' , '']] + Parameter.parameter_list %>
+         
          <%= image_tag("spinner.gif",
               :align => "absmiddle",
               :border => 0,
               :id => "spinner",
-              :style =>"display: none;" ) %></td>
+              :style =>"display: none;" ) %>
+            <%= f.hidden_field :gender, :value => 'both' %>   
+          </td>  
         </tr>
      </table>
    </div>
