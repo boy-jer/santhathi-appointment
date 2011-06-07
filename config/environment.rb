@@ -24,23 +24,28 @@ Rails::Initializer.run do |config|
   # in the database in UTC, and return them converted to the specified local zone.
   config.time_zone = 'UTC'
   config.action_mailer.smtp_settings = {
-  :address => "mail.isiritech.com",
-  :user_name => "sanath@isiritech.com",
-  :password => "trends",
+  :address => "smtp.gmail.com",
+  :port => 587,
+  :enable_starttls_auto => true,
+  :domain =>  "santhathi.org",
+  :user_name => "shashank.isiri@gmail.com",
+  :password => "isiritech99",
   :authentication => :login
  }
   # Your secret key for verifying cookie session data integrity.
   # If you change this key, all old sessions will become invalid!
-  # Make sure the secret is at least 30 characters and all random, 
+  # Make sure the secret is at least 30 characters and all random,
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
     :session_key => '_base_session',
     :secret      => '7389ea9180b15f1495a5e73a69a893311f859ccff1ffd0fa2d7ea25fdf1fa324f280e6ba06e3e5ba612e71298d8fbe7f15fd7da2929c45a9c87fe226d2f77347'
   }
-  
+
   config.active_record.observers = :user_observer
 end
 CGI::Session.expire_after 1.day
-ExceptionNotifier.exception_recipients = %w(vijendrakarkala@gmail.com)
+
+ExceptionNotifier.exception_recipients = %w(vijendrakarkala@gmail.com, nithinstany@gmail.com)
 ExceptionNotifier.sender_address = %(vijendrakarkala@gmail.com)
 ExceptionNotifier.email_prefix = "[SANTHATHI_ERROR] "
+
