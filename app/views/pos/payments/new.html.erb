@@ -19,8 +19,8 @@
                  <%= payment_form.text_field :payable_name, :class => 'pos_payment_item_text' %>
                  <%= payment_form.hidden_field :payable_type %>
                </td>
-               <td><%= payment_form.text_field :quantity, :size => 5, :class => 'pos_payment_item_text pos_payment_item_numeric' %></td>
-               <td><%= payment_form.text_field :amount, :class => 'pos_payment_item_text pos_payment_item_numeric' %></td>
+               <td><%= payment_form.text_field :quantity, :size => 5, :class => 'pos_payment_item_text pos_payment_item_numeric', :onchange => 'set_bill_total();'  %></td>
+               <td><%= payment_form.text_field :amount, :class => 'pos_payment_item_text pos_payment_item_numeric', :onchange => 'set_bill_total();' %></td>
                <td><%= payment_form.text_field :total_amount, :class => 'pos_payment_item_text pos_payment_item_numeric pos_payment_item_total_amount', :onchange => 'set_bill_total();' -%></td>
                <% hide_class = "style='display:none;'" if payment_form.object.payable_name.blank? -%>
                <td <%= hide_class -%> id='payment_item_reset_image_td_<%= counter -%>'><%= image_tag "img/cancel.png", :onclick => "reset_fields(#{counter});" -%></td>
@@ -133,7 +133,16 @@ function reset_fields(row) {
 function set_bill_total(row) {
   var total_amt_fields = $('.pos_payment_item_total_amount');
   var total_bill_amt = 0;
-  for(var i=0;i<total_amt_fields.length;i++) {
+  
+  for(var i=0; i < total_amt_fields.length; i++) {
+    //First reset all subtotal fields.
+    var quantity = $('#payment_payment_items_attributes_' + i + '_quantity').val();
+    var amount = $('#payment_payment_items_attributes_' + i + '_amount').val();
+    
+    if(quantity != '' && amount != ''){ 
+      $('#payment_payment_items_attributes_' + i + '_total_amount').val(quantity * amount);
+    }
+    
     var amt = $(total_amt_fields[i]).attr('value')
     if(amt != '' && row != i) {
       total_bill_amt += parseFloat($(total_amt_fields[i]).attr('value'));
