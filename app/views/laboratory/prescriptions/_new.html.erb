@@ -9,10 +9,11 @@
      <hr />
      <label><b>Remarks:</b></label> <%= f.text_area :remarks, :class => "remarks"%> <br />
      <button>Prescribe</button> -or- <%= link_to_function 'Cancel', "$('#test_#{@lab_test.id}').hide();" %>
-
+    <div id="error_<%=  params[:test_id] %>"> </div>
     <input type="hidden" name="department_id" value= <%= params[:department] %>>
     <input type="hidden" name="prescription[appointment_id]" value= <%=  params[:appointment] %>>
     <input type="hidden" name="test_id" value= <%=  params[:test_id] %>>
 <% end %>
 <br />
 </div>
+
