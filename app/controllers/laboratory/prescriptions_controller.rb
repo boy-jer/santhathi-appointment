@@ -55,7 +55,7 @@ class Laboratory::PrescriptionsController < ApplicationController
                      @next_appointment_remark = @appointment.next_appointment_remark.blank? ? NextAppointmentRemark.new : @appointment.next_appointment_remark
 
                     if @prescription.save
-                      @appointment.prescribe!
+                      @appointment.prescribe! unless @appointment.state == 'prescribed'
                       params[:services].map{|service| PrescribedTest.create(:prescription_id => @prescription.id, :service_id => service,:department_id => @department.id)}
                      lab_department = Department.find_by_dept_name("laboratory")
                      @prescribed_lab_tests = @prescription.prescribed_tests.by_laboratory_dept(lab_department.id)
