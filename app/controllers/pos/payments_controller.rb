@@ -18,6 +18,7 @@ class Pos::PaymentsController < ApplicationController
     @services = Service.all
     @inventory_groups = user_default_branch.inventory_groups.all
     @departments = Department.all
+
     unless @appointment.prescription.blank?
       @prescribed_services = @appointment.prescription.prescribed_tests.map{|pt| pt.service}
     else
@@ -51,10 +52,14 @@ class Pos::PaymentsController < ApplicationController
 
   def show
     @payment = Payment.find(params[:id])    
+    @accounts = user_default_branch.accounts
+    @cash_account = @accounts.find_by_name(CASH_AC[:name])
   end
 
   def recieve_payment
-    @payment = Payment.find(params[:id])  
+    @payment = Payment.find(params[:id])
+    debit_account = user_default_branch.accounts.find(params[:debit_account_id])
+    @payment.update_attribute(:debit_account_id, debit_account.id)
     @payment.recieve_payment!
     redirect_to pos_payment_path(@payment) 
   end

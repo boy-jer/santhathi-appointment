@@ -42,13 +42,13 @@ class Payment < ActiveRecord::Base
 
   def transact_account_on_pay   
     payment_items.each do |payment_item|
-      cash_account = Account.find_by_name(CASH_AC[:name])
-      cash_debit = {:category => 'Debit', :amount => payment_item.total_amount, :account_id => cash_account.id}
+      debit_account = Account.find(debit_account_id)
+      debit = {:category => 'Debit', :amount => payment_item.total_amount, :account_id => debit_account.id}
 
       payment_account = payment_item.payable.account
       payment_credit = {:category => 'Credit', :amount => payment_item.total_amount, :account_id => payment_account.id}
  
-      account_transaction_items_attributes = {"0" => payment_credit , "1" => cash_debit}
+      account_transaction_items_attributes = {"0" => payment_credit , "1" => debit}
 
       inventory_transaction_items_attributes = {"0" => {:category => "Sale", :quantity => payment_item.quantity, :price => payment_item.amount, :total_price => payment_item.total_amount, :inventory_item_id => payment_item.payable.id, :unit_type => 'Sub'} }
 

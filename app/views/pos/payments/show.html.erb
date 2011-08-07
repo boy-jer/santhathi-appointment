@@ -3,7 +3,10 @@
   <p>
   Status: <%= @payment.state.blank? ? '' : @payment.state.humanize -%>
   <% if @payment.state == 'pending' -%>
-    <%= link_to 'Recieve Payment', recieve_payment_pos_payment_path(@payment), :method => :post -%>
+    <% form_tag recieve_payment_pos_payment_path(@payment) do %>
+       Debit to: <%= select_tag :debit_account_id, options_for_select(@accounts.map{|m| [m.name, m.id]}, @cash_account.id) %>  
+       <%= submit_tag "Recieve Payment" %>
+    <% end %>
     <%= link_to 'Cancel this bill', cancel_payment_pos_payment_path(@payment), :method => :post -%>
   <% end -%>
   </p>
