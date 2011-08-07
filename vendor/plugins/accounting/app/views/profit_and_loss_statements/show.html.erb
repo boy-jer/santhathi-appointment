@@ -1,42 +1,39 @@
 <% total_profit = 0 -%>
 <% total_loss = 0 -%>
 <div>
+  <div><span style='font-weight:bold;font-size:20px;'>Profit and Loss statement</span> <br /><br /></div>
   <div class='left'>
-    <h2>Expense</h2> 
+    <span style='font-weight:bold;font-size:18px;'> Expense </span> 
     <% expense_acc_hash = {} -%>
     <% @expenses.each do |expense| %>      
        <% unless expense_acc_hash[expense.account_group_id] == 1 -%>
-         <div style='margin-left:15px;'><h3><%= expense.account_group.name %></h3> </div>
+         <br /><br /><span style='font-weight:bold;font-size:15px;'><%= expense.account_group.name %></span>
        <% end -%>
-       <div style='margin-left:30px;'>
+         <br />
          <%= expense.name %>
-         <%= number_to_currency(expense.amount, :unit => 'Rs.') %> <br /> <br />
+         <%= number_to_currency(expense.amount, :unit => 'Rs.') %> 
          <% total_loss += expense.amount.to_f -%>
-       </div>
       <% expense_acc_hash[expense.account_group.id] = 1 -%>
     <% end %>
-    <div style='margin-left:15px;'>
-        -----------------------------------------<br />
-        <h3>Total <%= number_to_currency(total_loss, :unit => 'Rs.') -%></h3>
-    </div>    
+    <br />
+    -----------------------------------------<br />
+    Total <%= number_to_currency(total_loss, :unit => 'Rs.') -%> 
   </div>
   <div class='right'>
-    <h2>Income</h2> 
+    <span style='font-weight:bold;font-size:18px;'> Income </span> 
     <% income_acc_hash = {} -%>
     <% @incomes.each do |income| %>
       <% unless income_acc_hash[income.account_group_id] == 1 -%>
-        <div style='margin-left:15px;'><h3><%= income.account_group.name %></h3> </div>
+        <br /><br /><span style='font-weight:bold;font-size:15px;'><%= income.account_group.name %></span>
       <% end -%>
-       <div style='margin-left:30px;'>
+         <br />
          <%= income.name %>
-         <%= number_to_currency(income.amount, :unit => 'Rs.') %> <br /> <br />
-         <% total_profit += income.amount.to_f -%>
-      </div>      
+         <%= number_to_currency(income.amount, :unit => 'Rs.') %>
+         <% total_profit += income.amount.to_f -%>      
       <% income_acc_hash[income.account_group.id] = 1  -%>
     <% end %>
-    <div style='margin-left:15px;'>
-      -----------------------------------------<br />
-      <h3>Total <%= number_to_currency(total_profit, :unit => 'Rs.') -%></h3>
-    </div> 
+    <br />
+    -----------------------------------------<br />
+    Total <%= number_to_currency(total_profit, :unit => 'Rs.') -%>
   </div>
 </div>

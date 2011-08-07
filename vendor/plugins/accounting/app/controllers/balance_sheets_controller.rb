@@ -1,6 +1,7 @@
 class BalanceSheetsController < ApplicationController
   layout 'accounting'
   def show
+    @current_accounting_period = user_default_branch.current_accounting_period
     asset_group_type_id = user_default_branch.account_group_types.find_by_name('Assets').id
     @assets = user_default_branch.accounts.find(:all,
                                                                    :select => "accounts.name, (accounts.current_balance + accounts.opening_balance)as amount, accounts.id, accounts.account_group_id",
