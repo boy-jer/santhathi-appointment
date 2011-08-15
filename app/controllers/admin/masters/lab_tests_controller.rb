@@ -20,6 +20,7 @@ class Admin::Masters::LabTestsController < ApplicationController
   def new
     @lab_test = Service.new
     @child_list = Service.lab_services.top_level
+    @lab_test.account = user_default_branch.accounts.find_by_name(CASH_AC[:name])
   end
 
   def edit

@@ -19,6 +19,9 @@
                <%= render :partial => 'child_list', :collection => @child_list, :as => :service %> </div></ul>
          </td>
      </tr>
+
+     <tr> <th><%= f.label :account, 'Associated with account' %></th>
+     <td><%= f.select :account_id, user_default_branch.accounts.map{|m| [m.name, m.id]} %></td> </tr>
   </table> <br/>
 
   <input type="hidden" id = "lab_test_parent_id", name="lab_test[parent_id]" value="">
