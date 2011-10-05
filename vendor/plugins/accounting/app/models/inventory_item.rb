@@ -3,6 +3,8 @@ class InventoryItem < ActiveRecord::Base
   belongs_to :inventory_unit_of_measurement
   belongs_to :inventory_group
   belongs_to :account
+  belongs_to :pharmacy_dosage_list
+  belongs_to :pharmacy_course_list
   has_many :inventory_transaction_items
 
   validates_presence_of :name, :inventory_group_id, :inventory_unit_of_measurement_id
@@ -14,6 +16,9 @@ class InventoryItem < ActiveRecord::Base
   attr_accessible :discount_allowed, :sub_unit_sale_price, :opening_quantity
   attr_accessible :unit_sale_net_price, :unit_sale_vat_price, :sub_unit_sale_net_price
   attr_accessible :sub_unit_sale_vat_price, :vat_percent, :account_id
+  attr_accessible :pharmacy_dosage_list_id, :course_duration,  :quantity 		
+  attr_accessible :pharmacy_course_list_id, :inventory_group_id, :other_remarks
+
 
   named_scope :non_consumables, :conditions => {:consumable => false}
 

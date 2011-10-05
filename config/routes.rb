@@ -103,6 +103,7 @@ ActionController::Routing::Routes.draw do |map|
  	    masters.resources :pharmacy_dosage_lists
  	    masters.resources :parameters
       masters.resources :samples
+      masters.resources :services
       masters.resources :measurement_units
       masters.resources :lab_tests ,:has_many =>[:sample_specfications, :parameter_specifications, :inventory_items_used_for_tests]
     end

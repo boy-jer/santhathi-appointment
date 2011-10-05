@@ -1,0 +1,32 @@
+<div class='continer'>
+  <% unless @tests.blank? %>
+
+  <h3>Showing Lab Test </h3><br />
+
+  <table class="listing">
+  <tr><th>Name </th><th> Duration </th><th> Description  </th></tr>
+
+  <%for test in @tests %>
+   <tr>
+     <td><%=h test.name %></td>
+     <td><%=h test.duration %></td>
+     <td> <%=h test.description %></td>
+   </tr>
+  <%end%>
+
+
+  </table>
+  <br/>
+
+    <%= link_to "Back", admin_masters_lab_tests_path() %> </td>
+ <%else%>
+  <br/>
+  <br/>
+   <label> Lab Test with specified Name Not Found. </label><br/><br/>
+    <br/>
+    <%= link_to "Back", admin_masters_lab_tests_path() %> </td>
+  <%end%>
+
+
+</div>
+

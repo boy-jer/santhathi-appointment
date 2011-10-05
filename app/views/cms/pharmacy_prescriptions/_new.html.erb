@@ -53,6 +53,14 @@
                  :url => { :action=>'pharamacy_item_detail' },
                  :method => :get,
                  :with => "'pharamacy_item_information_id=' + value") %>
+                 
+   <%= observe_field(:pharmacy_prescription_inventory_item_id, :frequency =>0.4,
+                 :before => "$('#spinner1').show()",
+                 :success => "$('#spinner1').hide()",
+                 :url => { :action=>'pharamacy_item_informations', :controller => "cms/pharmacy_prescriptions" },
+                 :method => :get,
+                 :with => "'pharamacy_item_id=' + value") %>                 
+                 
 </div>
 
  <script type="text/javascript">

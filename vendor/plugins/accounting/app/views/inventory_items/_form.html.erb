@@ -1,7 +1,29 @@
   <p>
+    <%= f.label :inventory_group_id %><br />
+    <%= f.select :inventory_group_id, inventory_groups_options_array %>
+  </p>
+  <p>
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>
+
+	<div id="medicines" style="display:none;">
+      <p>
+		      <%= f.label :pharmacy_dosage_list_id, "Frequency" %><br />
+    			 <%= f.collection_select :pharmacy_dosage_list_id, PharmacyDosageList.pharamacy_dosage_lists, :id ,:dosage_type_name, options ={:prompt => "-Select dosage type"}%>
+ 			 </p>
+ 			<p> 
+ 			  <%= f.label :pharmacy_course_list_id, "Route" %><br />
+ 			<%= f.collection_select :pharmacy_course_list_id, PharmacyCourseList.pharamacy_course_lists ,:id ,:course_type_name ,options = { :prompt =>"-Select course type" }%>
+ 			</p> 
+ 			<p>  <%= f.label :quantity %><br />
+    			<%= f.text_field :quantity %></p>
+ 			<p> <%= f.label :course_duration %><br />
+    	<%= f.text_field :course_duration %> </p>
+<p> <%= f.label :other_remarks %><br />
+    	<%= f.text_area :other_remarks, :cols => 35, :rows => 3 %> </p>    	
+	</div>
+
   <% disable_unit_of_measurement = {} -%>
   <% disable_unit_of_measurement = {:disabled => 'disabled'} unless @inventory_item.new_record? -%>
   <p>
@@ -20,10 +42,7 @@
     <%= f.label :sub_unit_sale_price, 'Sale price per sub unit' ,:id => 'sub_unit_sale_price_label_id' %><br />
     <%= f.text_field :sub_unit_sale_price %>
   </p>
-  <p>
-    <%= f.label :inventory_group_id %><br />
-    <%= f.select :inventory_group_id, inventory_groups_options_array %>
-  </p>
+
   <p>
     <%= f.label :consumable %><br />
     <%= f.check_box :consumable %>
@@ -74,4 +93,19 @@ function get_sub_unit_name(unit_id) {
       return unit_hash[i][2];
   }
 }
+
+function show_medicines_details() {
+ 	if($('#inventory_item_inventory_group_id').val() == "1")
+  {  $('#medicines').show(); $('#medicines').effect('highlight', {}, 2000); }
+ 	else
+	{  $('#medicines').hide();  }
+	   
+}
+
+$(function($){
+  show_medicines_details();
+	$('#inventory_item_inventory_group_id').change(function() {
+		show_medicines_details();
+	});
+});
 </script>

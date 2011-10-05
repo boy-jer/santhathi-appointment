@@ -47,6 +47,7 @@
 	  <th> Parameter </th>
           <th class = 'hide-for-print'> UOM </th>
           <th> Result </th>
+					<th> Remarks </th>
           <th> Normal value </th>
           <th class = 'hide-for-print'>Ideal Value</th>
           <th class = 'hide-for-print'> Min Limit </th>
@@ -64,12 +65,13 @@
                 <td><%= @results[spec.id][0] unless @results[spec.id].blank?%></td>
                 <td><%= @results[spec.id][1] unless @results[spec.id].blank? %></td>
                  <% test = find_parameter_specification(@lab_test.id, spec.parameter_id) %>
+                <td class = 'hide-for-print'> <%=h test.normal_value.to_s %> </td>
                 <td class = 'hide-for-print'> <%=h test.ideal_value %> </td>
                 <td class = 'hide-for-print'> <%=h test.min_value %></td>
                 <td class = 'hide-for-print'> <%=h test.max_value %> </td>
                </tr>
            <%else%>
-              <tr class='header' id = "spec_<%= "#{spec.id}" %>"><td  colspan=7><b><%= parameter.parameter_name %></b></td> </tr>
+              <tr class='header' id = "spec_<%= "#{spec.id}" %>"><td  colspan=8><b><%= parameter.parameter_name %></b></td> </tr>
            <%end%>
         <%end%>
        <%end%>

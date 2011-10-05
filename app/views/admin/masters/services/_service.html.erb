@@ -1,0 +1,7 @@
+<li> <%=link_to( image_tag("file-icon.gif", :border => 0), edit_admin_masters_lab_test_path(service)) %>
+   <%= link_to(service.name, edit_admin_masters_lab_test_path(service)) %> &nbsp;---- &nbsp;<%= link_to "(Parameter specfications)",  admin_masters_lab_test_parameter_specifications_path(service), :class => 'green-link', :style => 'color: #419100; font-size: 12px;' %>
+   <% unless service.children.empty? %>
+     <ul><%= render :partial => 'service', :collection => service.children %></ul>
+   <% end %>
+</li>
+
