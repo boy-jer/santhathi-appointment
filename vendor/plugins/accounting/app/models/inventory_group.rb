@@ -3,5 +3,8 @@ class InventoryGroup < ActiveRecord::Base
   has_many :inventory_items
   validates_presence_of :name, :branch_id
   validates_uniqueness_of :name, :scope => :branch_id
-  attr_accessible :name, :description
+  attr_accessible :name, :description, :branch_id
+  
+  
+  
 end

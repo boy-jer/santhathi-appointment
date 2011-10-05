@@ -1,6 +1,6 @@
 class Cms::PharmacyPrescriptionsController < ApplicationController
   layout 'cms'
-  before_filter :find_appointment ,:except => [:pharamacy_item_detail]
+  before_filter :find_appointment ,:except => [:pharamacy_item_detail, :pharamacy_item_informations]
 
 
   def new
@@ -53,6 +53,21 @@ class Cms::PharmacyPrescriptionsController < ApplicationController
                   end
                 }
     end
+  end
+  
+  def pharamacy_item_informations
+     unless params[:pharamacy_item_id].blank?
+       inventory_item =  InventoryItem.find(params[:pharamacy_item_id])
+       render :update do |page|
+       	     page << "$('#pharmacy_prescription_pharmacy_dosage_list_id').val('#{inventory_item.pharmacy_dosage_list_id}');"
+        page << "$('#pharmacy_prescription_other_remarks').val('#{inventory_item.other_remarks.to_s}');"
+        page << "$('#pharmacy_prescription_course_duration').val('#{inventory_item.course_duration}');"
+        page << "$('#pharmacy_prescription_quantity').val('#{inventory_item.quantity}');"
+        page << "$('#pharmacy_prescription_pharmacy_course_list_id').val('#{inventory_item.pharmacy_course_list_id}');"
+       	 
+       	 
+       end  
+     end
   end
 
   def pharamacy_item_detail

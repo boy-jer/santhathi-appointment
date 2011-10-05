@@ -3,6 +3,29 @@
   <%=h @inventory_item.name %>
 </p>
 
+<% if @inventory_item.inventory_group_id == 1 %>
+<p>
+  <b>Frequency:</b>
+  <%=h @inventory_item.pharmacy_dosage_list.dosage_type_name  rescue "" %>
+</p>
+<p>
+  <b>Route:</b>
+  <%=h @inventory_item.pharmacy_course_list.course_type_name  rescue "" %>
+</p>
+<p>
+  <b>Quantity:</b>
+  <%=h @inventory_item.quantity  rescue "" %>
+</p>
+<p>
+  <b>Course duration:</b>
+  <%=h @inventory_item.course_duration  rescue "" %>
+</p>
+<p>
+  <b>Other Remarks:</b>
+  <%=h @inventory_item.other_remarks  rescue "" %>
+</p>
+<%end%>
+
 <p>
   <b>Buy price:</b>
   <%=h @inventory_item.unit_buy_price %>

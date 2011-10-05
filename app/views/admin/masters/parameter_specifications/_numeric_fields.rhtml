@@ -14,6 +14,10 @@
            To:  <%= f.text_field :age_group_to, :class =>'textbox-small' %>
         </td>
      </tr>
+		 <tr>
+				<th> <label>Normal Value</label></th>
+				<td> <%= f.text_field :normal_value, :class =>'textbox-small' %> </td>
+     </tr>
      <tr><th><label>Sex:</label> </th>
          <td>
             <%= f.radio_button :gender, "male", :checked => @parameter_specification[:gender] == "male" %> Male
