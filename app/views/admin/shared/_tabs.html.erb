@@ -4,7 +4,7 @@
 	<li style="float: right;"><%= tab_to "Settings", [{:controller => "admin/settings"}] %></li>
      <% end %>
 
-     <li><%= tab_to "Dashboard", [{:controller => "admin/dashboard"}] %></li>
+     <li><%= tab_to "Dashboard", [{:controller => "/admin/dashboard"}] %></li>
      <li><%= tab_to "<span>Users</span>", [{:controller => "admin/users"}] %></li>
      <li><%=tab_to  "<span>Roles</span>", [{:controller => "admin/roles"}]  %></li>
      <li><%= link_to 'SMS', new_admin_message_url %></li>
