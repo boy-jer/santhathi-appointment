@@ -2,14 +2,14 @@
 <% form_tag session_path do -%>
    <div id= 'login-box'>
 
-     <div id= 'login-logo'>  
-        <%= image_tag('Logo.jpeg') %> 
+     <div id= 'login-logo'>
+        <%= image_tag('Logo.jpeg') %>
      </div>
-     
+
 	 <p><%=image_tag('lock.png', :border => 0) %> <span class='heading'>Santhathi login</span></p><br/>
 	 <p><label for="login">Login</label><br/>
 	 <%= text_field_tag 'login', '', :class => 'textbox' %></p>
- 
+
          <p><label for="password">Password</label><br/>
 	 <%= password_field_tag 'password', '', :class => 'textbox' %></p>
 
@@ -26,4 +26,11 @@
     </ul>-->
 </div>
 <% end -%>
+
+
+<script>
+   $(document).ready(function() {
+        $("input[type='text']:first", document.forms[0]).focus();
+    });
+ </script>
 
