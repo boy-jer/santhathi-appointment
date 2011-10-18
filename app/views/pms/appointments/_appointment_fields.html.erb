@@ -7,7 +7,7 @@
               :align => "absmiddle",
               :border => 0,
               :id => "spinner1",
-              :style =>"display: none;" ) %></td> 
+              :style =>"display: none;" ) %></td>
      </tr>
      <%=f.hidden_field :patient_id,:value=>params[:patient_id]%>
      <tr id ='doctor-list'>
@@ -16,10 +16,10 @@
            <div id="doctors">
               <%=render :partial => 'doctors_list', :locals => {:f => f, :doctors => doctors_list} %>
            </div>
-       </td> 
+       </td>
      </tr>
       <tr><th><div class= 'app_time'><label>Appointment time </label></div></th>
-          <td> <div class= 'app_time'><%= f.select :hour, hours, :selected => (@hour || 9) %> <%= f.select :minute, minutes, :selected => (@minute || 30) %> </div></td> </tr>
+          <td> <div class= 'app_time'><%= f.select :hour, hours, :selected => (@hour || 9)  %> <%= f.select :minute, minutes, :selected => (@minute || 30)  %> </div></td> </tr>
 
      <tr> <th><%= f.label :reason %></th> <td><%= f.select :reason_id,  Reason.select_list %></td> </tr>
 
@@ -28,12 +28,13 @@
      <tr> <th><label> Visit type</label></th>
           <td><%= radio_button_tag ('appointment[visit_type]', 'yes', checked = params[:patient_id].blank?,
                     options ={:onclick => "jQuery('#new_patient').show(); jQuery('#new_patient').highlight(); jQuery('#patient_search').hide(); "})%> First visit &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <%= radio_button_tag ('appointment[visit_type]', 'no', checked = !params[:patient_id].blank?,
-                    options ={:onclick => "jQuery('#patient_search').show(); jQuery('#new_patient').hide(); jQuery('#patient_search').highlight();"})%> Follow up visit        
+
+              <%= radio_button_tag ('appointment[visit_type]', 'no', checked = !params[:patient_id].blank?,
+                    options ={:onclick => "jQuery('#patient_search').show(); jQuery('#new_patient').hide(); jQuery('#patient_search').highlight();"})%> Follow up visit
           </td>
      </tr>
   </table>
-  
+
 <br />
 <br />
 
@@ -76,5 +77,6 @@
                     :url => new_pms_appointment_url,
                     :method => :get,
                     :with => "'doctor=' + value +'&date=' + jQuery('#date').val()"
-                  ) %> 
+                  ) %>
 </div>
+
