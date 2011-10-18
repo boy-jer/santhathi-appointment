@@ -16,7 +16,7 @@
    </tr>
 
    <tr><th><lable> DOB </label></th>
-      <td><%= f.date_select :dob,:start_year => 1950, :default => {:year => Time.now.year - 30}%></td>
+      <td><%= f.date_select :dob,:start_year => 1950, :default => {:year => Time.now.year - 30}, :end_year =>  Time.now.year%></td>
    </tr>
    <tr><th><%= f.label :gender %></th>
       <td><%= f.select :gender, {'Female' => 'female', 'Male' => 'male'} %></td>
@@ -54,7 +54,7 @@
         </tr>
 
         <tr><th><%= p.label :dob %></th>
-            <td><%= p.date_select :dob,:start_year => 1950, :default => {:year => Time.now.year - 30} %></td>
+            <td><%= p.date_select :dob,:start_year => 1950, :default => {:year => Time.now.year - 30}, :end_year =>  Time.now.year %></td>
         </tr>
 
         <tr><th><%= p.label :email %></th>

@@ -1,10 +1,11 @@
 <table class="form-table">
    <tr><th> <%= patient.label :patient_name %> </th> <td> <%= patient.text_field :patient_name, {:class => 'textbox'} %></td></tr>
-   <tr><th> <label> DOB </label> </th> <td>  <%= patient.date_select :dob,:start_year => 1950, :default => {:year => Time.now.year - 30}%> </td></tr>
-   <tr><th> <%= patient.label :gender %> </th> 
+   <tr><th> <label> DOB </label> </th> <td>  <%= patient.date_select :dob,:start_year => 1950, :default => {:year => Time.now.year - 30}, :end_year =>  Time.now.year %> </td></tr>
+   <tr><th> <%= patient.label :gender %> </th>
        <td>
            <%= patient.select :gender, genders, :selected => @patient.gender %>
        </td>
    </tr>
    <tr><th> <label> Contact no </label> </th> <td> <%= patient.text_field :contact_no, {:class => 'textbox'} %></td></tr>
 </table>
+

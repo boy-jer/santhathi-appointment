@@ -16,7 +16,8 @@ class Appointment < ActiveRecord::Base
   has_many :pharmacy_prescriptions
   has_many :refer_doctors
 
-  validates_presence_of :doctor_id, :reason_id, :mode_id, :appointment_date, :appointment_time
+     validates_presence_of :doctor_id, :reason_id, :mode_id, :appointment_date, :appointment_time
+  validates_uniqueness_of :appointment_time, :scope => :appointment_date
 
   aasm_column :state
   aasm_initial_state :new_appointment
@@ -40,7 +41,7 @@ class Appointment < ActiveRecord::Base
   aasm_event :recommend_for_discharge do
    transitions :to => :recommend_for_discharge, :from => [:visited, :prescribed]
   end
-  
+
   aasm_event :prescribe do
    transitions :to => :prescribed, :from => [:visited, :recommend_for_discharge]
   end
@@ -190,3 +191,4 @@ class Appointment < ActiveRecord::Base
 
 
 end
+
