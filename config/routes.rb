@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  
+
   map.resources :messages
 
   map.resources :user_roles
@@ -93,6 +95,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :contact_groups
     admin.resources :contact_lists
     admin.namespace(:masters) do |masters|
+      masters.resources :laboratory_test_groups
       masters.resources :departments
       masters.resources :doctors
       masters.resources :select_options
