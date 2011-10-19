@@ -1,0 +1,78 @@
+
+<% content_for :header do -%>
+  Listing all Laboratory Test Groups records
+<%end-%>
+ <div id = 'top-links'>
+   <div class = 'right'>
+      <%= link_to("<span>New Group</span>", new_admin_masters_laboratory_test_group_path(), :class => 'buttonAdd', :title => 'Create Parameter')  %>
+    </div>
+
+    <div class = 'clear'></div>
+  </div>
+	 <%=render :partial=> 'filters'%>
+	 <br />
+	<div id='parameters_list'>
+    	
+   
+
+
+<table class="listing">
+  <tr>
+    <th><%= remote_order_by_link(:name,:text => "Group Name") %> </th>
+ 
+  
+   
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+
+<% @laboratory_test_groups.each do |laboratory_test_group| %>
+  <tr>
+    <td><%=h laboratory_test_group.name %></td>
+    
+ 
+    <td><%= link_to 'Edit', edit_admin_masters_laboratory_test_group_path(laboratory_test_group) %></td>
+    <td><%= link_to 'Delete',admin_masters_laboratory_test_group_path(laboratory_test_group), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+<tr class="table-footer">
+  	<td colspan = 1></td>
+        <td colspan = 1><%= remote_per_page_select %></td>
+        <td colspan = 1>
+         <% form_tag(admin_masters_laboratory_test_groups_url, :method => :get, :id => "goto") do %>
+             <% fields_for @search do |f|%>
+                     <%= f.text_field :page, :class => 'textbox-tiny' %></td>
+             <%end%>
+         <%end%>
+
+
+        </td>
+         <td colspan = 4> <% unless @laboratory_test_groups.blank? %>
+                             <div class="pagination">
+                                <%= remote_page_links %>
+                             </div>
+                           <% end %>
+         </td>
+  </tr>
+
+
+
+<%= observe_form("goto", :frequency => 1,
+                :before => "jQuery('#spinner').show();",
+                    :success => "jQuery('#spinner').hide();",
+                 :url => admin_masters_laboratory_test_groups_url, :method => :get) %>
+<%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner1",
+              :style =>"display: none;" ) %>
+
+
+
+
+</table>
+
+<br />
+ </div>
+
+

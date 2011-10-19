@@ -1,0 +1,15 @@
+<h1>Editing laboratory test group</h1>
+
+<% form_for @laboratory_test_group,:url => admin_masters_laboratory_test_group_path(@laboratory_test_group),:method => :put do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+
