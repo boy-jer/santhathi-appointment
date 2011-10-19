@@ -3,45 +3,49 @@
 <div>
   <%= f.error_messages %>
 </div>
-<div>    
-    <table style='width:100%;height:100%;border:1px solid black;' cellspacing='0' cellpadding='0'>
+<div>
+<div class='right'>
+    <table style='border:1px solid black;' cellspacing='0' cellpadding='0' class='clinical-table'>
       <tr>
-        <th style='border:1px solid black;text-align:center;'>Particulars</th>
-        <th style='border:1px solid black;text-align:center;'>Quantity</th>
-        <th style='border:1px solid black;text-align:center;'>Amount</th>
-        <th style='border:1px solid black;text-align:center;'>Total Amount</th>
-        <th style='border:1px solid black;text-align:center;'></th>
+        <th style="border:1px solid black;text-align:center;width:55px;">Particulars</th>
+        <th style="border:1px solid black;text-align:center;width:10px;"  >Quantity</th>
+        <th style="border:1px solid black;text-align:center;width:25px;">Amount</th>
+        <th style="border:1px solid black;text-align:center;width:35px;">Total Amount</th>
+        <th style="border:1px solid black;text-align:center;width:25px;"></th>
       </tr>
           <% counter = 0 -%>
           <% f.fields_for :payment_items do |payment_form| %>
-             <tr id='payment_item_row_<%= counter -%>'>
+             <tr  id='payment_item_row_<%= counter -%>' >
                <td>
                  <%= payment_form.text_field :payable_name, :class => 'pos_payment_item_text' %>
                  <%= payment_form.hidden_field :payable_type %>
                </td>
-               <td><%= payment_form.text_field :quantity, :size => 5, :class => 'pos_payment_item_text pos_payment_item_numeric', :onchange => 'set_bill_total();'  %></td>
-               <td><%= payment_form.text_field :amount, :class => 'pos_payment_item_text pos_payment_item_numeric', :onchange => 'set_bill_total();' %></td>
-               <td><%= payment_form.text_field :total_amount, :class => 'pos_payment_item_text pos_payment_item_numeric pos_payment_item_total_amount', :onchange => 'set_bill_total();' -%></td>
+               <td style='width:10px;text-align:right;' ><%= payment_form.text_field :quantity, :size => 5, :class => 'pos_payment_item_text pos_payment_item_numeric', :onchange => 'set_bill_total();'  %></td>
+               <td style='width:25px;text-align:right;'><%= payment_form.text_field :amount, :size => 13, :class => 'pos_payment_item_text pos_payment_item_numeric', :onchange => 'set_bill_total();' %></td>
+               <td style='width:35px;text-align:right;'> <%= payment_form.text_field :total_amount, :class => 'pos_payment_item_text pos_payment_item_numeric pos_payment_item_total_amount',:size => 13,  :onchange => 'set_bill_total();' -%></td>
                <% hide_class = "style='display:none;'" if payment_form.object.payable_name.blank? -%>
-               <td <%= hide_class -%> id='payment_item_reset_image_td_<%= counter -%>'><%= image_tag "img/cancel.png", :onclick => "reset_fields(#{counter});" -%></td>
-               <td style="display:none;">  <%= payment_form.hidden_field :_destroy, :value => 0 %></td>              
+               <td class='hide-for-print' <%= hide_class -%> id='payment_item_reset_image_td_<%= counter -%>'><%= image_tag "img/cancel.png", :onclick => "reset_fields(#{counter});" -%></td>
+               <td class='hide-for-print' style="display:none;">  <%= payment_form.hidden_field :_destroy, :value => 0 %></td>
              </tr>
              <% counter += 1 -%>
              <% total_bill_amount += payment_form.object.total_amount unless payment_form.object.total_amount.blank? -%>
 
-           
+
            <% end -%>
     </table>
-    <div style='text-align:right;padding:15px;'>
+    </div>
+    <div class='clear'> </div>
+     <div style='text-align:right;padding:15px;'>
       <span id='total_bill_amount_span' style='font-size:22px;font-weight:bold;'>
         Total: <%= total_bill_amount -%>
       </span>
-      <p>
-        <%= submit_tag 'Done' -%>
+      <p class = 'hide-for-print'>
+        <%= submit_tag 'Done' -%> &nbsp; | &nbsp; <%= button_to_function("Print", "javascript:print()") %>
       </p>
     </div>
 </div>
-<div style='padding:10px;'>
+
+<div style='padding:10px;' class = 'hide-for-print'>
   <div style='float:left;width:25%;'>
     <div>
       <div id='inv_group_list' class='payment_list_set'>
@@ -74,10 +78,10 @@
           </div>
 	  <div id='service_list'>
             <% @departments.each do |department| -%>
-              <div id='department_<%= department.id -%>' class='payment_list_items' style='display:none;'>
+              <div id="department_<%= department.id -%>" class='payment_list_items' style='display:none;'>
 	        <% department.services.each do |service| -%>
 	          <%= button_to_function service.name, "set_payment(this)", :payable_name => service.name, :payable_type => service.class, :amount => service.cost, :class => 'pos_group_item' -%>
-	        <% end -%> 
+	        <% end -%>
               </div>
             <% end -%>
           </div>
@@ -135,16 +139,16 @@ function reset_fields(row) {
 function set_bill_total(row) {
   var total_amt_fields = $('.pos_payment_item_total_amount');
   var total_bill_amt = 0;
-  
+
   for(var i=0; i < total_amt_fields.length; i++) {
     //First reset all subtotal fields.
     var quantity = $('#payment_payment_items_attributes_' + i + '_quantity').val();
     var amount = $('#payment_payment_items_attributes_' + i + '_amount').val();
-    
-    if(quantity != '' && amount != ''){ 
+
+    if(quantity != '' && amount != ''){
       $('#payment_payment_items_attributes_' + i + '_total_amount').val(quantity * amount);
     }
-    
+
     var amt = $(total_amt_fields[i]).attr('value')
     if(amt != '' && row != i) {
       total_bill_amt += parseFloat($(total_amt_fields[i]).attr('value'));
@@ -155,3 +159,4 @@ function set_bill_total(row) {
 }
 
 </script>
+

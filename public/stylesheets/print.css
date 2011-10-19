@@ -1,8 +1,8 @@
 body {
-      font: 12px Verdana, Arial, Sans-Serif, Serif;    
+      font: 12px Verdana, Arial, Sans-Serif, Serif;
       color: #000;
       background-position: center center;
-      background-position: 45% 55%; 
+      background-position: 45% 55%;
       margin: 0;
       padding: 0;
       line-height: 1.33
@@ -71,7 +71,7 @@ display: none;
 }
 .listing a {
 	     color: #000;
-             
+
             font-size: 12px;
 }
 
@@ -84,7 +84,7 @@ display: none;
              text-align: left;
              padding: 0.4em .5em .4em .5em;
              font-weight: bold; }
-			 
+
 .report td { padding: .2em .5em .2em .5em; color: #383838;  }
 
 .report { border-collapse: collapse;
@@ -95,11 +95,15 @@ display: none;
 .report .header {background: #B9C2EE; padding: .3em .5em .3em .5em; }
 
 
-clinical-table th { padding: 0em;  text-align: left;}
+table.clinical-table{border-collapse: collapse; background-color: #fff; color: #000; width: 80%;   }
 
-.clinical-table td {padding: 0em ; }
+table.clinical-table tr th { padding: 0em;  text-align: left;}
 
-.clinical-table{border-collapse: collapse; background-color: #fff; color: #000; width: 100%;   }
+table.clinical-table tr td {padding: 0em ; }
+
+
+table.clinical-table tr td.quantity {width: 20px;}
+table.clinical-table tr td.amount {width: 20px;}
 
 /**************************** Visit report **************************/
 #visit_report { margin: 0 auto;  padding: 130px 20px 30px 40px;}
@@ -111,3 +115,4 @@ table.visit_report tr th {font-weight: bold; vertical-align: middle; width: 150p
 table.visit_report tr td {padding: 10px 0px 10px 0px;}
 table.visit_report tr td.first {width: 120px;}
 table.vsiti_report tr td.second{width: 450px;}
+

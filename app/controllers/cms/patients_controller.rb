@@ -57,3 +57,4 @@ class Cms::PatientsController < ApplicationController
   end
 
 end
+

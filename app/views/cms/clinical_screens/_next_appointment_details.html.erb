@@ -1,0 +1,22 @@
+<% unless @appointment.next_appointments.blank? %>
+   <h2> Next Appointment Details </h2>
+    <table class="listing">
+      <tr>
+      <th> NO</th>
+      <th> Date </th>
+      <th> Time</th>
+      <th> Doctor</th>
+       <% @appointment.next_appointments.each do |next_app| %>
+         <tr>
+           <td><%=h next_app.id %></td>
+           <td><%=h Time.parse(next_app.appointment_date.to_s).strftime('%d-%m-%y') %></td>
+         <td><%=h Time.parse(next_app.appointment_time.to_s).strftime('%H:%M').to_s %></td>
+        <td>  <%=h next_app.doctor.doctor_profile.name unless next_app.doctor.blank? %></td>
+
+    </tr>
+       <%end%>
+       </table>
+    <%end%>
+    <br />
+    <%= link_to "<h3>Book Appointment</h3>", new_pms_appointment_url(:patient_id => @appointment.patient_id)%>
+

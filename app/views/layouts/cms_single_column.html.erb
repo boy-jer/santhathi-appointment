@@ -22,7 +22,7 @@
    </script>
      <script type="text/javascript">
       jQuery(document).ready(function(){
-         jQuery("#datepicker").datepicker({ altField: '#date', altFormat: 'dd MM, yy', onSelect: function(dateText, inst) { jQuery('#spinner2').show(); jQuery.ajax({data:'date=' + dateText + '&doctor=' + "<%= current_user.id%>" +'&authenticity_token=' + encodeURIComponent("<%= escape_javascript form_authenticity_token %>"), dataType:'script', success:function(request){jQuery('#spinner').hide();}, type:'get', url:"<%= escape_javascript new_pms_appointment_url %>"}) }
+         jQuery("#datepicker").datepicker({ altField: '#date', altFormat: 'dd MM, yy', onSelect: function(dateText, inst) { jQuery('#spinner2').show(); jQuery.ajax({data:'date=' + dateText + '&doctor=' + jQuery('#appointment_doctor_id').val() +'&authenticity_token=' + encodeURIComponent("<%= escape_javascript form_authenticity_token %>"), dataType:'script', success:function(request){jQuery('#spinner').hide();}, type:'get', url:"<%= escape_javascript new_pms_appointment_url %>"}) }
 });
       });
    </script>
@@ -41,8 +41,8 @@
    </div>
 
    <div id="content">
-     
-		
+
+
      <div id="content_main" class="clearfix">
         <h2 class="ico_mug"><%= yield :header %> </h2>
         <div id="content_wrapper">
@@ -51,14 +51,16 @@
 	      <%= render :partial => 'shared/layout_body' %>
 	   </div>
         </div>
-     </div><!-- end #content_main -->	
+     </div><!-- end #content_main -->
+
     </div><!-- end #content -->
-		   
-    
+
+
 </div><!-- end container -->
 <script type="text/javascript">
-  jQuery(".ico_mug").corner("top 8px") 
-  jQuery("#content_wrapper").corner("bottom 8px") 
+  jQuery(".ico_mug").corner("top 8px")
+  jQuery("#content_wrapper").corner("bottom 8px")
 </script>
 </body>
 </html>
+

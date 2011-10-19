@@ -1,10 +1,10 @@
-<div>
+<div class='hide-for-print'>
   <p><%= link_to_function 'Print this bill', "top.print();" -%></p>
   <p>
   Status: <%= @payment.state.blank? ? '' : @payment.state.humanize -%>
   <% if @payment.state == 'pending' -%>
     <% form_tag recieve_payment_pos_payment_path(@payment) do %>
-       Debit to: <%= select_tag :debit_account_id, options_for_select(@accounts.map{|m| [m.name, m.id]}, @cash_account.id) %>  
+       Debit to: <%= select_tag :debit_account_id, options_for_select(@accounts.map{|m| [m.name, m.id]}, @cash_account.id) %>
        <%= submit_tag "Recieve Payment" %>
     <% end %>
     <%= link_to 'Cancel this bill', cancel_payment_pos_payment_path(@payment), :method => :post -%>
@@ -35,7 +35,7 @@
         <tr>
            <td>PVR No: <%= @payment.appointment.id -%> </td>
            <td style='text-align:right;'>Date: <%= @payment.created_at.to_date.to_s -%> </td>
-        </tr>          
+        </tr>
         <tr>
           <td>Registration No: <%= @payment.appointment.patient.reg_no -%></td>
           <td style='text-align:right;'>Name: <%= @payment.appointment.patient.patient_name -%></td>
@@ -48,14 +48,14 @@
           <th style='border:1px solid black;text-align:center;'>Item</th>
           <th style='border:1px solid black;text-align:right;'>Quantity</th>
           <th style='border:1px solid black;text-align:right;'>Amount</th>
-          <th style='border:1px solid black;text-align:right;'>Total Amount</th>        
+          <th style='border:1px solid black;text-align:right;'>Total Amount</th>
         </tr>
              <% @payment.payment_items.each do |item| -%>
                <tr>
                  <td><%= item.payable.name -%></td>
                  <td style='text-align:right;'><%= item.quantity -%></td>
                  <td style='text-align:right;'><%= number_to_currency(item.amount, :unit => '') -%></td>
-                 <td style='text-align:right;'><%= number_to_currency(item.total_amount, :unit => '') -%></td>               
+                 <td style='text-align:right;'><%= number_to_currency(item.total_amount, :unit => '') -%></td>
                </tr>
              <% end -%>
              <tr><td colspan='4' style='border-bottom:1px solid black;'></td></tr>
@@ -65,3 +65,4 @@
       </table>
     </div>
 </div>
+

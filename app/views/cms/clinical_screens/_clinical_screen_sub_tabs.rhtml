@@ -10,7 +10,7 @@
    <div id="first_tab">
       <%= render :partial => 'first_tab' %>
    </div>
-   
+
    <div id="second_tab">
       <h3 class = 'heading'> Current visit reports </h3>
       <% unless @prescribed_lab_tests.blank? %>
@@ -37,22 +37,23 @@
           <%end%>
       <%end%>
    </div>
-   
+
 
   <div id="third_tab">
-     <% if @appointment.next_appointment_remark.blank? %> 
+    <% if @appointment.next_appointment_remark.blank? %>
       <%= render :partial => '/cms/next_appointment_remarks/new' %>
     <% else %>
       <%= render :partial => '/cms/next_appointment_remarks/edit' %>
     <% end %>
-  
+    <%= render :partial => 'next_appointment_details' %>
+
   </div>
 
 
  <div id="fourth_tab">
     <%=image_tag('arrow_right.png', :border => 0)  %> &nbsp;
        <%= @appointment.discharge_summary.blank? ? (link_to "Discharge summary" , new_cms_appointment_discharge_summary_path(@appointment)) : (link_to "Discharge summary" , edit_cms_appointment_discharge_summary_path(:appointment_id=>@appointment.id,:id => @appointment.discharge_summary.id) )  %><br/><br/>
-   
+
      <%=image_tag('arrow_right.png', :border => 0)  %> &nbsp;
     <%= @appointment.patient.vital_signs.blank? ? (link_to "Registration summary ", new_cms_vital_sign_path (:p =>@appointment.patient.id) ) : (link_to "Registration summary ", edit_cms_vital_sign_path(:p => @appointment.patient.id, :id => 1)  ) %> <br/><br/>
 
@@ -61,8 +62,10 @@
 </div>
 
 
+
+
 <div id="new_clinical_comments" style = 'display: none'>
-   <% if @appointment.clinical_comment.blank? %> 
+   <% if @appointment.clinical_comment.blank? %>
       <%= render :partial => '/cms/clinical_comments/new' %>
    <% else %>
       <%= render :partial => '/cms/clinical_comments/edit' %>
@@ -76,3 +79,4 @@
 <div id ="inline_pharmacy_precription" style ='display:none;'>
   <%= render :partial => '/cms/pharmacy_prescriptions/new' %>
 </div>
+

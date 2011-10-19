@@ -17,7 +17,7 @@ class Appointment < ActiveRecord::Base
   has_many :refer_doctors
 
      validates_presence_of :doctor_id, :reason_id, :mode_id, :appointment_date, :appointment_time
-  validates_uniqueness_of :appointment_time, :scope => :appointment_date
+  validates_uniqueness_of :appointment_time, :scope => [:appointment_date, :doctor_id]
 
   aasm_column :state
   aasm_initial_state :new_appointment
@@ -93,6 +93,11 @@ class Appointment < ActiveRecord::Base
   def self.count_appointment(from,to)
     temp =  Appointment.find(:all,:conditions => ["appointment_date BETWEEN ? AND ?",from,to]).size
     return temp
+  end
+
+
+  def next_appointments
+    Appointment.find(:all, :limit => 1, :conditions => ["id > ? and patient_id = ?", self.id, self.patient_id])
   end
 
   def self.count_department_appointment(from,to,department)
