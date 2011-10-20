@@ -10,8 +10,7 @@
      <td><%= f.text_field :name, {:class => 'textbox'} %></td> </tr>
       <tr> <th><%= f.label :lab_test,'Lab Test' %></th>
      <td><%= f.check_box :lab_test %> (UnSelect for other than Lab test EX:Ultrasound Scan)</td></tr>
-     <tr> <th><%= f.label :laboratory_test_group_id, "Group" %></th>
-     <td><%= f.select :laboratory_test_group_id, LaboratoryTestGroup.option_for_select, :class => 'textbox' %></td> </tr>
+
      <tr><th><label>Approximate Time For Test</label></th>
          <td><%= time_select("lab_test", "duration")  %></td>
      </tr>

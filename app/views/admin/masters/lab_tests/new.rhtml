@@ -12,8 +12,7 @@
      <td><%= f.check_box :lab_test %> (UnSelect for other than Lab test EX:Ultrasound Scan)</td> </tr>
      <tr><th><label>Approximate time for test</label></th> <td><%= time_select("lab_test", "duration")  %></td></tr>
 
-     <tr> <th><%= f.label :laboratory_test_group_id, "Group" %></th>
-     <td><%= f.select :laboratory_test_group_id, LaboratoryTestGroup.option_for_select, :class => 'textbox' %></td> </tr>
+
 
      <tr> <th><%= f.label :pre_requisites %></th>
      <td><%= f.text_area :description, :class => 'textbox' %></td> </tr>
