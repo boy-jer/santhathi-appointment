@@ -1,11 +1,11 @@
 <% content_for :header do -%>
- 
+
 <%end-%>
 
-<div id ='print_wrapper'>  
-  <center class ='only-for-print' > 
-     <h3 class = 'head'> <%= @lab_test.name.upcase %> REPORT  </h3> 
-  </center> 
+<div id ='print_wrapper'>
+  <center class ='only-for-print' >
+     <h3 class = 'head'> <%= @lab_test.name.upcase %> REPORT  </h3>
+  </center>
 
   <div class = 'hide-for-print'>
    <br />
@@ -18,7 +18,7 @@
             <th> Hospital No :</th>
             <th> PVR No :</th>
        </tr>
-	   
+
        <tr>
           <td> <%=h @lab_test.name %> </td>
           <td> <%=h @patient.patient_name %> </td>
@@ -29,7 +29,7 @@
        </tr>
     </table><br/>
   </div>
-  
+
   <div class ='only-for-print' >
     <table class="clinical-table">
        <tr> <th> <b> Name: </b> </th> <td> <%=h @patient.patient_name %> </td>
@@ -37,17 +37,17 @@
             <th> <b> Hospital: </b> No </th> <td> <%=h @patient.reg_no%> </td>
             <th> <b> Date: </b></th>  <td> <%=h Time.now.strftime('%d/%m/%Y') %> </td>
        </tr>
-	   
+
     </table>
   </div>
 
   <table class="report" style="cursor: move;">
   	<thead>
-       <tr> 
+       <tr>
 	  <th> Parameter </th>
-	        <% if @lab_test.lab_test?%> 
+	        <% if @lab_test.lab_test?%>
           <th class = 'hide-for-print'> UOM </th>
-          <%end%> 
+          <%end%>
           <th> Result </th>
 					<th> Remarks </th>
 					<% if @lab_test.lab_test?%>
@@ -55,7 +55,7 @@
             <th class = 'hide-for-print'>Ideal Value</th>
             <th class = 'hide-for-print'> Min Limit </th>
             <th class = 'hide-for-print'>	Max Limit </th>
-          <%end%>  
+          <%end%>
        </tr>
 	 </thead>
 	 <tbody id = "results">
@@ -81,6 +81,48 @@
            <%end%>
         <%end%>
        <%end%>
+
+      <!-- Other prescribed Test -->
+       <% unless @other_prescribed_tests.blank? %>
+
+        <% @other_prescribed_tests.each do |other_prescribed_test| %>
+           <% unless other_prescribed_test.laboratory_report.blank? %>
+             <% results = lab_report_for_other_prescribed_test(other_prescribed_test.service, other_prescribed_test.laboratory_report ) %>
+             <% unless @other_specifications.blank? %>
+                 <% for spec in @other_specifications %>
+                   <%parameter = spec.parameter%>
+                   <% unless parameter.value_type == 'Header' %>
+                      <tr  id = "spec_<%= "#{spec.id}" %>">
+                          <td><%= parameter.parameter_name %></td>
+                      	    <% if other_prescribed_test.service.lab_test? %>
+                      	        <td class = 'hide-for-print'><%= parameter.measurement_unit.name %></td>
+                      	    <%else%>
+                      	        <td class = 'hide-for-print'> </td>
+                      	     <%end%>
+
+                        <td><%= results[spec.id][0] unless results[spec.id].blank?%></td>
+                        <td><%= results[spec.id][1] unless results[spec.id].blank? %></td>
+                         <% test = find_parameter_specification(other_prescribed_test.service.id, spec.parameter_id) %>
+                         	<% if other_prescribed_test.service.lab_test?%>
+                          <td class = 'hide-for-print'> <%=h test.normal_value.to_s %> </td>
+                          <td class = 'hide-for-print'> <%=h test.ideal_value %> </td>
+                          <td class = 'hide-for-print'> <%=h test.min_value %></td>
+                          <td class = 'hide-for-print'> <%=h test.max_value %> </td>
+                       </tr>
+                       <%end%>
+                   <%else%>
+                      <tr class='header' id = "spec_<%= "#{spec.id}" %>"><td  colspan=8><b><%= parameter.parameter_name %></b></td> </tr>
+                   <%end%><!-- -->
+                <%end%><!-- -->
+               <%end%><!-- -->
+         <%end%><!-- unless other_prescribed_test.laboratory_report blank -->
+       <%end%> <!-- other prescribe_tests loop-->
+
+
+
+       <%end%> <!-- unless other prescribe_tests-->
+
+
 	  </tbody>
     </table>
 	<%= sortable_element 'results',
@@ -91,20 +133,28 @@
     <br/>
     <div class ='only-for-print' >
       <table class="clinical-table">
-         <tr> </tr>
-         <!-- <tr> <td> ---------------------------  </td>
+         <tr>
+         </tr>
+         <tr>
+           <% if  @lab_test.lab_test? %>
               <td> ---------------------------  </td>
+              <td> ---------------------------  </td>
+           <%end%>
               <td> ---------------------------  </td>
          </tr>
 
-         <tr> <td> <b>Lab-Tech </b> </td>
+         <tr>
+            <% if  @lab_test.lab_test?%>
+              <td> <b>Lab-Tech </b> </td>
               <td> <b>Scientist </b> </td>
+             <%end%>
               <td> <b><%= @laboratory_report.appointment.doctor.doctor_profile.name %></b> </td>
-         </tr> -->
+         </tr>
       </table>
     </div>
 
     <div class = 'hide-for-print'>
-       <%= button_to_function("Print report", "javascript:print()") %> -or- <%= button_to_function("Preview", "javascript:print()")%> -or- <%= link_to "cancel", :back %> 
-    </div> 
+       <%= button_to_function("Print report", "javascript:print()") %> -or- <%= button_to_function("Preview", "javascript:print()")%> -or- <%= link_to "cancel", :back %>
+    </div>
 </div>
+

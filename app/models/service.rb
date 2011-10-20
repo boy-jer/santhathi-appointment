@@ -9,9 +9,10 @@ class Service < ActiveRecord::Base
 
   has_one :laboratory_report
   belongs_to :prescription
-
+  belongs_to :laboratory_test_group
   acts_as_tree :order => "name"
-  
-  named_scope :lab_services, :conditions => ["department_id = ?", Department.find(:first, :select => :id, :conditions => "dept_name like '%Lab%'").id] 
+
+  named_scope :lab_services, :conditions => ["department_id = ?", Department.find(:first, :select => :id, :conditions => "dept_name like '%Lab%'").id]
   named_scope :top_level, :conditions => ["parent_id is null"]
 end
+

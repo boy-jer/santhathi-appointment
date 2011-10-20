@@ -1,0 +1,33 @@
+
+<% content_for :header do -%>
+  Listing all Services in Laboratory Test Group
+<%end-%>
+
+
+
+ <% form_tag(admin_masters_laboratory_test_group_laboratory_test_group_services_path(@group)  ) do  %>
+<table class="listing">
+  <tr>
+    <th> Service Name</th>
+    <th> </th>
+    <th>Service Name </th>
+    <th> </th>
+  </tr>
+<% i = 0 %>
+<% @services.each do |service| %>
+  <% if i == 0 %>
+   <tr>
+  <%end%>
+    <td><%=h service.name %></td>
+    <td> <%= check_box_tag "service[service_ids][]", service.id , @service_ids.member?(service.id) %> </td>
+ <% i +=1  %>
+ <% if i == 2 %>
+  </tr>
+   <% i = 0%>
+ <%end%>
+ <%end%>
+</table>
+<br />
+<%= submit_tag "Submit" %> -or- <%= link_to "Lab test Groups", admin_masters_laboratory_test_groups_path%>
+<%end%>
+

@@ -32,4 +32,14 @@ module Laboratory::LaboratoryReportsHelper
      vals.nil? ? [] : vals.map{|v| v.value}
    end
 
+   def lab_report_for_other_prescribed_test(service, laboratory_report )
+     @other_specifications = service.parameter_specifications.gender_filter(@patient.gender)
+     laboratory_report = laboratory_report
+     laboratory_test_results =  laboratory_report.laboratory_test_results
+     results = {}
+     laboratory_test_results.map{|r|  results[r.parameter_specification_id] = [r.result, r.remarks] }
+     return results
+   end
+
 end
+

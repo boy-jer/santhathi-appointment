@@ -5,8 +5,8 @@
      <% end %>
 
      <li><%= tab_to "Dashboard", [{:controller => "/admin/dashboard"}] %></li>
-     <li><%= tab_to "<span>Users</span>", [{:controller => "admin/users"}] %></li>
-     <li><%=tab_to  "<span>Roles</span>", [{:controller => "admin/roles"}]  %></li>
+     <li><%= tab_to "<span>Users</span>", [{:controller => "/admin/users"}] %></li>
+     <li><%=tab_to  "<span>Roles</span>", [{:controller => "/admin/roles"}]  %></li>
      <li><%= link_to 'SMS', new_admin_message_url %></li>
      <li> <%= link_to "Master", masters_admin_dashboard_path %> </li>
      <li> <%= link_to "Reports", reports_admin_dashboard_path %> </li>

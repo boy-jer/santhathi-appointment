@@ -7,6 +7,19 @@ class Laboratory::LaboratoryReportsController < ApplicationController
   def show
     @prescribed_test = PrescribedTest.find(params[:prescribed_test_id])
     @lab_test = @prescribed_test.service
+
+    unless @lab_test.laboratory_test_group_id.blank?
+      @prescreption = @prescribed_test.prescription
+      prescribe_test_ids = @prescreption.prescribed_tests.collect(&:id)
+      prescribe_test_ids = prescribe_test_ids - [@prescribed_test.id]
+      @other_prescribed_tests = if prescribe_test_ids.blank?
+         []
+      else
+        PrescribedTest.find(:all,:joins => [:service],
+      :conditions => ["prescribed_tests.id in (?) and services.laboratory_test_group_id = ?", prescribe_test_ids, @lab_test.laboratory_test_group_id])
+      end
+    end
+
     @appointment = @prescribed_test.prescription.appointment
     @patient = @appointment.patient
     @specifications = @lab_test.parameter_specifications.gender_filter(@patient.gender)
@@ -43,7 +56,7 @@ class Laboratory::LaboratoryReportsController < ApplicationController
       format.js {   }
     end
   end
-  
+
   def create
     @laboratory_report = LaboratoryReport.new(params[:laboratory_report])
     @laboratory_report.save
@@ -73,7 +86,7 @@ class Laboratory::LaboratoryReportsController < ApplicationController
     flash[:notice] = 'Report is successfully created.'
     redirect_to laboratory_prescribed_tests_url
   end
-  
+
   def edit
   	@prescribed_test = PrescribedTest.find(params[:prescribed_test_id])
     @prescription, @lab_test = @prescribed_test.prescription, @prescribed_test.service
@@ -108,11 +121,12 @@ class Laboratory::LaboratoryReportsController < ApplicationController
     @laboratory_report.destroy
     redirect_to(laboratory_laboratory_reports_url)
   end
-  
+
   def sort_results
-    params[:results].map{|r| 
+    params[:results].map{|r|
                               test_result = ParameterSpecification.find(r).laboratory_test_result
-                              test_result.update_attribute('position', params[:results].index(r) + 1) unless test_result.blank? }               
-  end  
+                              test_result.update_attribute('position', params[:results].index(r) + 1) unless test_result.blank? }
+  end
 
 end
+

@@ -56,7 +56,7 @@ class Laboratory::PrescriptionsController < ApplicationController
 
                     if @prescription.save
                       @appointment.prescribe! unless @appointment.state == 'prescribed'
-                      params[:services].map{|service| PrescribedTest.create(:prescription_id => @prescription.id, :service_id => service,:department_id => @department.id)}
+                      params[:services].map{|service| PrescribedTest.create(:prescription_id => @prescription.id, :service_id => service,:department_id => @department.id, :appointment_id => @appointment.id )}
                      lab_department = Department.find_by_dept_name("laboratory")
                      @prescribed_lab_tests = @prescription.prescribed_tests.by_laboratory_dept(lab_department.id)
                      @prescribed_services = @prescription.prescribed_tests.by_other_dept(lab_department.id)
@@ -104,7 +104,7 @@ class Laboratory::PrescriptionsController < ApplicationController
      @next_appointment_remark = @appointment.next_appointment_remark.blank? ? NextAppointmentRemark.new : @appointment.next_appointment_remark
 
      if @prescription.update_attributes(params[:prescription])
-        params[:services].map{|service| PrescribedTest.create(:prescription_id => @prescription.id, :service_id => service, :department_id => @department.id)} unless  params[:services].blank?
+        params[:services].map{|service| PrescribedTest.create(:prescription_id => @prescription.id, :service_id => service, :department_id => @department.id,:appointment_id => @appointment.id)} unless  params[:services].blank?
         lab_department = Department.find_by_dept_name("laboratory")
         @prescribed_lab_tests = @prescription.prescribed_tests.by_laboratory_dept(lab_department.id)
         @prescribed_services = @prescription.prescribed_tests.by_other_dept(lab_department.id)

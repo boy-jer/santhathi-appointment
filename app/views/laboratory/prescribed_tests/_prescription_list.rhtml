@@ -1,3 +1,4 @@
+
 <table class="listing">
   <tr>
     <th> <%= remote_order_by_link(:created_at , :text => "Date") %> </th>
@@ -5,7 +6,7 @@
     <th> <%= remote_order_by_link({:prescription => { :appointment => { :patient => :reg_no }}} , :text => "Hospital No") %>   </th>
     <th> <%= remote_order_by_link({:prescription =>  { :appointment => { :patient => :id }} } , :text => "PVR No") %>  </th>
     <th> <%= remote_order_by_link({:prescription => { :appointment => { :patient => :patient_name }}} , :text => "Patient Name") %></th>
-   
+
     <th> Test Report </th>
     <th> Presc. Details </th>
    </tr>

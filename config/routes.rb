@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  
+
 
   map.resources :messages
 
@@ -95,7 +95,9 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :contact_groups
     admin.resources :contact_lists
     admin.namespace(:masters) do |masters|
-      masters.resources :laboratory_test_groups
+      masters.resources :laboratory_test_groups do |group|
+         group.resources :laboratory_test_group_services
+      end
       masters.resources :departments
       masters.resources :doctors
       masters.resources :select_options
