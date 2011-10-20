@@ -8,11 +8,11 @@
 
     <% form_for(:laboratory_test_group , :url => admin_masters_laboratory_test_groups_url , :html => { :method => :post } ) do |f| %>
       <%= f.error_messages %>
-      <%= f.label :name,'Group Name'%> 
+      <%= f.label :name,'Group Name'%>
      <br/>
       <%= f.text_field :name%>
       <br/>
-      <%= submit_tag "Create" %> or <%= link_to 'Cancel and retrun to test group list' , admin_masters_laboratory_test_groups_path %>
+      <%= submit_tag "Create" %> or <%= link_to 'Cancel and retrun to Laboratory Report Groups' , admin_masters_laboratory_test_groups_path %>
 
     <% end %>
 
