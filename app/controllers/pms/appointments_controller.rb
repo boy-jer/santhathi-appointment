@@ -92,7 +92,11 @@ class Pms::AppointmentsController < ApplicationController
       @patient = Patient.new(params[:patient])
       @patient.reg_date = Date.today
     else
-      @patient = Patient.find(params[:appointment][:patient_id])
+      if(params[:appointment] && params[:appointment][:patient_id])
+      	@patient = Patient.find(params[:appointment][:patient_id])
+      else
+        @patient = Patient.find(params[:patient_id])
+      end
     end
 
     if [@appointment.valid?, @patient.valid?].all?
