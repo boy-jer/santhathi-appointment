@@ -6,7 +6,7 @@
       </span> 
      </div>
      <div class='right'>
-        <%= link_to "Grouped Balance Sheet", grouped_balance_sheet_path %>
+        <%= link_to "Detail Balance Sheet", balance_sheet_path %>
      </div>  
      <div class='clear'> </div>
     <br /><br />
@@ -24,23 +24,22 @@
       </tr>
      
       <% liability_total = @incomes.first.amount.to_f - @expenses.first.amount.to_f%>
-      <% @liabilities.group_by { |t| t.account_group_id }.each do |account_group_id, liabilities| %>
+      <% @liabilities.group_by { |t| t.account_group_id }.each do |account_group_id, liabilities| %>  
+        <% liability_ind_total = 0.0 %>
         <tr>
-          <td colspan="2" class='heading1'> 
+          <td class='heading1'> 
              <span style='font-weight:bold;font-size:15px;'>
-                <%= AccountGroup.find(account_group_id).name %> &nbsp;&nbsp; 
+                <%= AccountGroup.find(account_group_id).name %> 
              </span>  
           </td>
-        </tr>
-        <% liabilities.each do |liability| %>
-          <tr>
-             <td class='heading2'> &nbsp;&nbsp;&nbsp; <%= liability.name %> </td>
-             <td class='heading2'> 
-                <% liability_total += liability.amount.to_f %>
-                <%= number_to_currency(liability.amount, :unit => 'Rs.') %>  
-             </td>
-          </tr>       
-        <% end %>
+          <% liabilities.each do |liability| %>
+            <% liability_total += liability.amount.to_f %>
+            <% liability_ind_total += liability.amount.to_f%>
+          <% end %>
+          <td class='heading2'>
+             <%= number_to_currency(liability_ind_total, :unit => 'Rs.') %> 
+          </td>
+        </tr>  
       <% end %>
     <tr>
        <td  class='total'> <span style='font-weight:bold;font-size:16px;'> Total : </span> </td>
@@ -48,7 +47,7 @@
     </tr>   
     </table>
   </div>
-  <div class='right'>
+ <div class='right'>
     <table class='accounting'>
       <tr>
          <td colspan="2">
@@ -57,22 +56,22 @@
       </tr>      
       <% asset_total = 0.00 %>
       <% @assets.group_by { |t| t.account_group_id }.each do |account_group_id, assets| %>
+        <% asset_ind_total = 0.0 %>
         <tr>
-          <td colspan="2" class='heading1'> 
+          <td class='heading1'> 
              <span style='font-weight:bold;font-size:15px;'>
-                <%= AccountGroup.find(account_group_id).name %> &nbsp;&nbsp; 
+                <%= AccountGroup.find(account_group_id).name %> 
              </span>  
           </td>
-        </tr>
         <% assets.each do |asset| %>      
-         <tr>
-           <td class='heading2'> &nbsp;&nbsp;&nbsp; <%= asset.name %> </td>
-           <td class='heading2'> 
-              <% asset_total += asset.amount.to_f %> 
-              <%= number_to_currency(asset.amount, :unit => 'Rs.') %>  
-           </td>
-         </tr>  
+          <% asset_total += asset.amount.to_f %> 
+          <% asset_ind_total += asset.amount.to_f %> 
         <% end %>
+        <td class='heading1'> 
+            <%= number_to_currency(asset_ind_total, :unit => 'Rs.') %> 
+        </td>
+        
+        
      <% end %>
      <tr>
        <td class='total'> <span style='font-weight:bold;font-size:16px;'> Total : </span> </td>

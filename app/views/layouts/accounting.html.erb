@@ -29,16 +29,16 @@
         </div><!-- end #dashboard -->
 
 
-	<div id="sidebar" class="right">
+	<div id="sidebar" class="right hide-for-print">
            <div class="inner_wrapper">
 	    <div id='account_navigation'>
 	      Accounts <br />
-		<%= button_to 'Accounts', accounts_path, :method => :get, :style => "color:#050;font:bold 84% 'trebuchet ms',helvetica,sans-serif;background-color:#fed;border:1px solid;border-color: #696 #363 #363 #696;cursor:pointer;width:150px;" %> <br />
+		<%= button_to 'Accounts / Ledger', accounts_path, :method => :get, :style => "color:#050;font:bold 84% 'trebuchet ms',helvetica,sans-serif;background-color:#fed;border:1px solid;border-color: #696 #363 #363 #696;cursor:pointer;width:150px;" %> <br />
 		<%= button_to 'Account Groups', account_groups_path, :method => :get, :style => "color:#050;font:bold 84% 'trebuchet ms',helvetica,sans-serif;background-color:#fed;border:1px solid;border-color: #696 #363 #363 #696;cursor:pointer;width:150px;" %> <br />
 
 		<br />
 		Reports <br />
-		<%= button_to 'Entries', account_transactions_path, :method => :get, :style => "color:#050;font:bold 84% 'trebuchet ms',helvetica,sans-serif;background-color:#fed;border:1px solid;border-color: #696 #363 #363 #696;cursor:pointer;width:150px;" %> <br />
+		<%= button_to 'Journal Entries', account_transactions_path, :method => :get, :style => "color:#050;font:bold 84% 'trebuchet ms',helvetica,sans-serif;background-color:#fed;border:1px solid;border-color: #696 #363 #363 #696;cursor:pointer;width:150px;" %> <br />
 		<%= button_to 'Trial Balance', trial_balance_path, :method => :get, :style => "color:#050;font:bold 84% 'trebuchet ms',helvetica,sans-serif;background-color:#fed;border:1px solid;border-color: #696 #363 #363 #696;cursor:pointer;width:150px;" %> <br />
 		<%= button_to 'Day Book', day_book_path, :method => :get, :style => "color:#050;font:bold 84% 'trebuchet ms',helvetica,sans-serif;background-color:#fed;border:1px solid;border-color: #696 #363 #363 #696;cursor:pointer;width:150px;" %> <br />
 		<%= button_to 'Profit and Loss', profit_and_loss_statement_path, :method => :get, :style => "color:#050;font:bold 84% 'trebuchet ms',helvetica,sans-serif;background-color:#fed;border:1px solid;border-color: #696 #363 #363 #696;cursor:pointer;width:150px;" %> <br />
@@ -59,7 +59,8 @@
            </div>
 	</div><!-- end #sidebar -->
 
-     </div><!-- end #content_main -->
+     </div><!-- end #content_main -->
+
    </div><!-- end #content -->
 
     <div id="footer" class="clearfix">

@@ -25,7 +25,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource  :trial_balance
   map.resource  :day_book
   map.resource  :profit_and_loss_statement
-  map.resource  :balance_sheet
+  map.resource  :balance_sheet, :collection => {:grouped => :get}
 
   # The priority is based upon order of creation: first created -> highest priority.
 

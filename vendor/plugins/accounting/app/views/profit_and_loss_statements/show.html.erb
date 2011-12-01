@@ -1,39 +1,74 @@
 <% total_profit = 0 -%>
 <% total_loss = 0 -%>
 <div>
-  <div><span style='font-weight:bold;font-size:20px;'>Profit and Loss statement</span> <br /><br /></div>
+  <div>
+      <span style='font-weight:bold;font-size:20px;'>
+          Profit and Loss statement  for the year <%= @current_accounting_period.name %>
+       </span> <br /><br />
+  </div>
   <div class='left'>
-    <span style='font-weight:bold;font-size:18px;'> Expense </span> 
+    <table class='accounting'>
+      <tr>
+        <td colspan="2">
+          <span style='font-weight:bold;font-size:18px;'> Expense </span> 
+        </td>
+      </tr>  
     <% expense_acc_hash = {} -%>
     <% @expenses.each do |expense| %>      
        <% unless expense_acc_hash[expense.account_group_id] == 1 -%>
-         <br /><br /><span style='font-weight:bold;font-size:15px;'><%= expense.account_group.name %></span>
+         <tr>
+            <td colspan="2" class='heading1'> 
+              <span style='font-weight:bold;font-size:15px;'>
+                <%= expense.account_group.name %>
+              </span>
+            </td>
+         </tr>     
        <% end -%>
-         <br />
-         <%= expense.name %>
-         <%= number_to_currency(expense.amount, :unit => 'Rs.') %> 
+         <tr>
+           <td class='heading2'> <%= expense.name %> </td>
+           <td class='heading2'> <%= number_to_currency(expense.amount, :unit => 'Rs.') %> </td>
+         </tr>  
          <% total_loss += expense.amount.to_f -%>
       <% expense_acc_hash[expense.account_group.id] = 1 -%>
     <% end %>
-    <br />
-    -----------------------------------------<br />
-    Total <%= number_to_currency(total_loss, :unit => 'Rs.') -%> 
+     <tr>
+       <td class='total'> <span style='font-weight:bold;font-size:16px;'> Total : </span> </td>
+       <td class='total'><span style='font-weight:bold;font-size:15px;'> <%= number_to_currency(total_loss, :unit => 'Rs.') %> </span> </td>
+    </tr> 
+    </table>
   </div>
+  
   <div class='right'>
-    <span style='font-weight:bold;font-size:18px;'> Income </span> 
+    <table class='accounting'>
+      <tr>
+        <td colspan="2">
+          <span style='font-weight:bold;font-size:18px;'> Income </span> 
+        </td>
+      </tr>    
     <% income_acc_hash = {} -%>
     <% @incomes.each do |income| %>
       <% unless income_acc_hash[income.account_group_id] == 1 -%>
-        <br /><br /><span style='font-weight:bold;font-size:15px;'><%= income.account_group.name %></span>
+         <tr>
+            <td colspan="2" class='heading1'> 
+              <span style='font-weight:bold;font-size:15px;'>
+                <%= income.account_group.name %>
+              </span>
+            </td>
+         </tr>        
+
       <% end -%>
-         <br />
-         <%= income.name %>
-         <%= number_to_currency(income.amount, :unit => 'Rs.') %>
+      <tr>
+        <td class='heading2'>    <%= income.name %> </td>
+        <td class='heading2'>  <%= number_to_currency(income.amount, :unit => 'Rs.') %> </td>
+      </tr>  
          <% total_profit += income.amount.to_f -%>      
       <% income_acc_hash[income.account_group.id] = 1  -%>
     <% end %>
-    <br />
-    -----------------------------------------<br />
-    Total <%= number_to_currency(total_profit, :unit => 'Rs.') -%>
+     <tr>
+       <td class='total'> <span style='font-weight:bold;font-size:16px;'> Total : </span> </td>
+       <td class='total'><span style='font-weight:bold;font-size:15px;'> <%= number_to_currency(total_profit, :unit => 'Rs.') %> <span> </td>
+    </tr> 
+    </table>
   </div>
+  <div class='clear'></div>
 </div>
