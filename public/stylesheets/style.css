@@ -31,3 +31,12 @@ ul.dropdown ul li a					{ border-right: none; width: 100%; display: inline-block
 */
 ul.dropdown ul ul 					{ left: 100%; top: 0; }
 ul.dropdown li:hover > ul 			{ visibility: visible; }
+
+
+/*.accounting tr:hover {background-color: #f2f7f9; color: #000;} not for IE*/
+ 
+
+.left table.accounting td { padding: .9em .5em .9em .5em; color: #000; border-bottom:1px solid #bcc3c8; }
+.left table.accounting tr{background: #FfFfFf; }
+
+ 

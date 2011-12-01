@@ -789,3 +789,9 @@ table.links a{color: #2064a4; padding: 0px 10px 0px 10px; font-weight: bold;}
 ul.treeview{list-style: none;}
 
 #clinical-screen{margin-top: 10px;}
+
+/***   accounting **/
+.accounting td.heading1 { padding: .9em .5em .2em .5em; color: #000; border-bottom:1px solid #bcc3c8; }
+.accounting td.heading2 { padding: 5px; color: #000; border-bottom:1px solid #bcc3c8; }
+.accounting tr{background: #FfFfFf; }
+.accounting td.total{padding: 15px 5px 5px 5px;}
