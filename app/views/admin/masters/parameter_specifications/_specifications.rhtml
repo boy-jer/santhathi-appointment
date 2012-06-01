@@ -20,7 +20,7 @@
           <td><%=h parameter_specification.position %>
        <%=  link_to_remote(image_tag('arrow_up.png',:border=>0), :url => { :controller =>"/admin/masters/parameter_specifications", :action => "move_one_up",:id => parameter_specification.id,:lab_test_id => parameter_specification.service_id }, :method => :post) %>
        <%= link_to_remote(image_tag("arrow_down.png",:border=>0), :url => {:controller =>"/admin/masters/parameter_specifications",  :action => "move_one_down" ,:id => parameter_specification.id,:lab_test_id => parameter_specification.service_id }, :method => :post) %>
-          <td><%=h parameter_specification.parameter.parameter_name %></td>
+          <td><%=h parameter_specification.parameter.parameter_name rescue "" %></td>
           <td><%=h parameter_specification.age_group_from %> -
              <%=h parameter_specification.age_group_to %></td>
           <td><%=h parameter_specification.gender %></td>
